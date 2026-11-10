@@ -1,0 +1,37 @@
+TITLE    FILE unspecified
+PATTERN  unspecified
+AUTHOR   unspecified
+REVISION Created from PLA file 
+COMPANY  unspecified
+DATE     Mon Nov 09 21:50:51 2026
+
+CHIP     PROBE MACH111
+PIN    1            GND 
+PIN   12            GND 
+PIN   22            VCC 
+PIN   23            GND 
+PIN   34            GND 
+PIN   44            VCC 
+PIN    ?              A 
+PIN    ?              B 
+PIN    ?              C 
+PIN    ?              D 
+PIN    ?              E 
+PIN    ?              V 
+PIN    ?              W 
+PIN    ?              X 
+PIN    ?              Y 
+PIN    ?              Z 
+
+EQUATIONS
+
+V              = A * B
+
+W              = C * D
+
+X              = A * C
+
+Y              = B * D
+
+Z              = E
+

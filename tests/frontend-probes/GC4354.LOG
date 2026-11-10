@@ -1,0 +1,150 @@
+
+*** Start MACHPAR.E 03:25:48 
+Gc4354.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP GC4354 MACH435
+   2     |PIN ? A[5..0]
+   3     |PIN 20 CLK
+   4     |PIN ? Q REG
+   5     |NODE ? NN REG PAIR Q
+   6     |EQUATIONS
+   7     |Q=/A[5]*/A[4]*/A[3]*/A[2]*/A[1]*A[0]+/A[5]*/A[4]*/A[3]*/A[2]*A[1]*/A[0]+/A[5]*/A[4]*/A[3]*A[2]*/A[1]*/A[0]+/A[5]*/A[4]*/A[3]*A[2]*A[1]*A[0]+
+   8     |Q.CLKF=CLK
+   9     |MINIMIZE_OFF
+  10     |NN=/A[5]*/A[4]*/A[3]*/A[2]*/A[1]*A[0]+/A[5]*/A[4]*/A[3]*/A[2]*A[1]*/A[0]+/A[5]*/A[4]*/A[3]*A[2]*/A[1]*/A[0]+/A[5]*/A[4]*/A[3]*A[2]*A[1]*A[0]
+  11     |NN.CLKF=CLK
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Gc4354.pds
+
+*** End MACHPAR.EXE 03:25:49; (MACHPAR.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 03:25:49 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q
+Processing equation for ====>Q.CLKF
+Processing equation for ====>NN
+Processing equation for ====>NN.CLKF
+
+ %%  MACHBPP  %% Maximum memory allocated was: 113148 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Gc4354.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 03:25:50; (MACHBPP.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 03:25:50 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node NN and paired pin Q...
+Gate splitting (PIN ? Q) to (NODE ? _N_O_D_E_0).
+====> NN                 MIN_ON (32 + pt --> 13 + pt)
+====> NN.CLKF            MIN_ON (1 + pt)
+====> Q                  MIN_ON (32 + pt --> 13 + pt)
+====> Q.CLKF             MIN_ON (1 + pt)
+====> _N_O_D_E_0         MIN_ON (20 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 69284 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Gc4354.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 03:25:51; (MACHMIN.EXE= 1 sec.) elapsed time= 3 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 03:25:51 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file gc4354.tre to PLA file gc4354.pla...
+
+...
+...
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 65456 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Gc4354.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 03:25:52; (MACHMIN.EXE= 1 sec.) elapsed time= 4 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 03:25:52 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Gc4354.pds . Device is MACH435 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+|> WARNING z5071 - Nodes not referenced - discarded :
+NN 
+Check clock rules
+
+List of global clocks:
+   CLK:
+...... Is preplaced at a global clock pin.
+
+List of non-global clocks:
+   None.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is Gc4354.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File Gc4354.pds .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 1 .
+
+*** End MACHFITR.EX 03:25:54; (MACHFITR.EXE= 2 sec.) elapsed time= 6 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

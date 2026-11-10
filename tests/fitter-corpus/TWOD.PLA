@@ -1,0 +1,27 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME Twod.pds
+#AMD TITLE 
+#AMD PATTERN 
+#AMD REVISION 
+#AMD AUTHOR 
+#AMD COMPANY 
+#AMD DATE 
+#AMD CHIP PROBE
+#AMD DEVICE MACH111
+#AMD JED_FILE Twod.jed
+#AMD SIGNATURE 
+#AMD PIN 11 GND:1 A:3 Q:5 R:6 CA:11 GND:12 B:20 VCC:22 GND:23 CB:33 GND:34 
+#AMD PIN 1 VCC:44 
+.type f
+.i 4
+.o 4
+.ilb A CA B CB
+.ob  Q.REG Q.C R.REG R.C
+.phase 1111
+.p 5
+--1- 1~~~
+1--- 1~~~
+-1-- ~1~~
+1-1- ~~1~
+---1 ~~~1
+.e

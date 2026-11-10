@@ -1,0 +1,1402 @@
+{
+  "description": "Independent DOS MACHXL2.1 inputs and full native fitter comparison",
+  "cases": [
+    {
+      "name": "U111C0",
+      "device": "MACH111",
+      "files": {
+        "U111C0.PDS": "48f7b5ef5a6a3986fcb365d9647c595a21e0ec63341c349d32cef3e39887e918",
+        "U111C0.JED": "1e97c15921c6b62a32efbeca046ed314af4f9de892bf6768a55ef710ae0f98e3",
+        "U111C0.MXL": "c444b422d0fcb3e0f64921976bbfe2257e4277e093e9996f1e26a7a8183a52f2"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "48f7b5ef5a6a3986fcb365d9647c595a21e0ec63341c349d32cef3e39887e918"
+    },
+    {
+      "name": "U111C1",
+      "device": "MACH111",
+      "files": {
+        "U111C1.PDS": "48f7b5ef5a6a3986fcb365d9647c595a21e0ec63341c349d32cef3e39887e918",
+        "U111C1.JED": "d38498a9cd85ed4003379f80b64f7e61f24317ea16b4a07928de2ce5537c46d6",
+        "U111C1.MXL": "571139e1698edab204c69bb9b99340c0141ea091fb1c0dda27dd042ba0ac1be9"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "48f7b5ef5a6a3986fcb365d9647c595a21e0ec63341c349d32cef3e39887e918"
+    },
+    {
+      "name": "U111C2",
+      "device": "MACH111",
+      "files": {
+        "U111C2.PDS": "48f7b5ef5a6a3986fcb365d9647c595a21e0ec63341c349d32cef3e39887e918",
+        "U111C2.JED": "33ba83535786f40c46de839b1df909ab229ab59827747a6117dfae32b6391437",
+        "U111C2.MXL": "1da4aff49eb629fa6ced4cba1239526f643530205aee3eae92afbf79983b707a"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "48f7b5ef5a6a3986fcb365d9647c595a21e0ec63341c349d32cef3e39887e918"
+    },
+    {
+      "name": "U111C3",
+      "device": "MACH111",
+      "files": {
+        "U111C3.PDS": "48f7b5ef5a6a3986fcb365d9647c595a21e0ec63341c349d32cef3e39887e918",
+        "U111C3.JED": "fa71a382fa55e1747614c235422a9c431b06bc7a0c82b00e299db4951ab663fa",
+        "U111C3.MXL": "0a3dadd4da745aff2d33c1ac05d8fadc1adec3bcd2162bb00ad0e0d8fb7f95b6"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "48f7b5ef5a6a3986fcb365d9647c595a21e0ec63341c349d32cef3e39887e918"
+    },
+    {
+      "name": "U111D0",
+      "device": "MACH111",
+      "files": {
+        "U111D0.PDS": "6e599d41cb7b37f98da6a3b5a629e97caa8497a8db508542cfacf7b754237e0f",
+        "U111D0.JED": "5000ac3287b077cc4ecb8eb074913d2082b09a9c65d65b9d6f05feb44cdf8100",
+        "U111D0.MXL": "c8e211cd34f079831419de75309ffece2c38b52471abf04a22c48054a80f5407"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "6e599d41cb7b37f98da6a3b5a629e97caa8497a8db508542cfacf7b754237e0f"
+    },
+    {
+      "name": "U111D1",
+      "device": "MACH111",
+      "files": {
+        "U111D1.PDS": "6e599d41cb7b37f98da6a3b5a629e97caa8497a8db508542cfacf7b754237e0f",
+        "U111D1.JED": "88b86cbc42bc6191a9d8d1d3f680c7793e218eb10a09faa0bfd438727e9a4a8e",
+        "U111D1.MXL": "c7c6b4f2ef97938abbb75260c6a021e44a804fa2e7efc5962c7dd6f9e4c48184"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "6e599d41cb7b37f98da6a3b5a629e97caa8497a8db508542cfacf7b754237e0f"
+    },
+    {
+      "name": "U111D2",
+      "device": "MACH111",
+      "files": {
+        "U111D2.PDS": "6e599d41cb7b37f98da6a3b5a629e97caa8497a8db508542cfacf7b754237e0f",
+        "U111D2.JED": "d68b6d74b9d241763dc461ae6cec72271b3061b7f76705c5e6dc648cedc4ccab",
+        "U111D2.MXL": "9af726781ef96b9b70236c83d955aa574f08174474e27712024b149cd0c9887d"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "6e599d41cb7b37f98da6a3b5a629e97caa8497a8db508542cfacf7b754237e0f"
+    },
+    {
+      "name": "U111D3",
+      "device": "MACH111",
+      "files": {
+        "U111D3.PDS": "6e599d41cb7b37f98da6a3b5a629e97caa8497a8db508542cfacf7b754237e0f",
+        "U111D3.JED": "23e42fbd157b3800175950a53a8acfd6fa7eccf2fc7b08c78fece17d631f7fe0",
+        "U111D3.MXL": "c716714d68aec03e8b31e743c24c96472139e5e016ad48ca1ff3a359d3bd0645"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "6e599d41cb7b37f98da6a3b5a629e97caa8497a8db508542cfacf7b754237e0f"
+    },
+    {
+      "name": "U131C0",
+      "device": "MACH131",
+      "files": {
+        "U131C0.PDS": "83be716416a4f89f87da47b14b2e6ececc7aff6921920219e2f4368649778559",
+        "U131C0.JED": "de3b54a5627798e985b12ad8d9ad50345164d426fbed0699832eca042a38b10c",
+        "U131C0.MXL": "f1ab6812d87565c49b61fd9b374e679dc73883d09fb8b8751b950c9b317ef210"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "83be716416a4f89f87da47b14b2e6ececc7aff6921920219e2f4368649778559"
+    },
+    {
+      "name": "U131C1",
+      "device": "MACH131",
+      "files": {
+        "U131C1.PDS": "83be716416a4f89f87da47b14b2e6ececc7aff6921920219e2f4368649778559",
+        "U131C1.JED": "80fae63d54fae47c1ca49d59ff91c0931c9d81f0c8ca5ada93ee85344a3075b6",
+        "U131C1.MXL": "c5f2b842936ec30ded9a0507a6eb4ec19c204e2291121984fcff71b2ea7abf7a"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "83be716416a4f89f87da47b14b2e6ececc7aff6921920219e2f4368649778559"
+    },
+    {
+      "name": "U131C2",
+      "device": "MACH131",
+      "files": {
+        "U131C2.PDS": "83be716416a4f89f87da47b14b2e6ececc7aff6921920219e2f4368649778559",
+        "U131C2.JED": "70b11e0cfc0ee9cc9bf31bb7690f2e2a6760b76a9d1918e8f780ccdbb42fc523",
+        "U131C2.MXL": "7edb6e0e810774c6883733044fedcfdc420ca23e9283682dc2b44e818389cba7"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "83be716416a4f89f87da47b14b2e6ececc7aff6921920219e2f4368649778559"
+    },
+    {
+      "name": "U131C3",
+      "device": "MACH131",
+      "files": {
+        "U131C3.PDS": "83be716416a4f89f87da47b14b2e6ececc7aff6921920219e2f4368649778559",
+        "U131C3.JED": "af430d11bb142007d7d647cf1a624c51bfee77f0c7ccdc3ba6e36709701bded0",
+        "U131C3.MXL": "c700bcd3a9f8680c7df672f5b841d2f2df74d00b444a4b03cf7a83451d934172"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "83be716416a4f89f87da47b14b2e6ececc7aff6921920219e2f4368649778559"
+    },
+    {
+      "name": "U131D0",
+      "device": "MACH131",
+      "files": {
+        "U131D0.PDS": "4572ba096f3e0f502f849f0d5f7b2e2763eee4019de879ac55cd7b7adf098895",
+        "U131D0.JED": "3257bb7e0f885dc4affd6a5ba2583a2e3d976816162a1ce8b35d944bce2ed910",
+        "U131D0.MXL": "ce61ecdb772fbcc50fe89fb0b09381d316668ee6e686467cb72891ae03c00331"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "4572ba096f3e0f502f849f0d5f7b2e2763eee4019de879ac55cd7b7adf098895"
+    },
+    {
+      "name": "U131D1",
+      "device": "MACH131",
+      "files": {
+        "U131D1.PDS": "4572ba096f3e0f502f849f0d5f7b2e2763eee4019de879ac55cd7b7adf098895",
+        "U131D1.JED": "aa802002a77c4fc99effaff612df56f8cd1ab08f2a4e30a2c2d8f2a7d5b63e91",
+        "U131D1.MXL": "bf757b994a4dd5ab4dc0a681e9b38925ab6445d85c7dece000dc6a80af10c6b2"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "4572ba096f3e0f502f849f0d5f7b2e2763eee4019de879ac55cd7b7adf098895"
+    },
+    {
+      "name": "U131D2",
+      "device": "MACH131",
+      "files": {
+        "U131D2.PDS": "4572ba096f3e0f502f849f0d5f7b2e2763eee4019de879ac55cd7b7adf098895",
+        "U131D2.JED": "1984976fb7aea4000177f9534bc0bbffbc82fd3c11ab6b4d6494654f774124b2",
+        "U131D2.MXL": "d72dbb50e3460461c797a71e788bc09801e7cc24480e71888e0c92155c6d334f"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "4572ba096f3e0f502f849f0d5f7b2e2763eee4019de879ac55cd7b7adf098895"
+    },
+    {
+      "name": "U131D3",
+      "device": "MACH131",
+      "files": {
+        "U131D3.PDS": "4572ba096f3e0f502f849f0d5f7b2e2763eee4019de879ac55cd7b7adf098895",
+        "U131D3.JED": "4dc270eb86352a31a56f290a2e00fd960f2abc51dfb12f2555fbb6a097f92f11",
+        "U131D3.MXL": "a2f91752d42f81a8d3fed8e5e8f6a2f3bf0788fe14d6d4805d8a950d948d82f1"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "4572ba096f3e0f502f849f0d5f7b2e2763eee4019de879ac55cd7b7adf098895"
+    },
+    {
+      "name": "U211C0",
+      "device": "MACH211",
+      "files": {
+        "U211C0.PDS": "14fd287e352155e290c1f7944e96f9f2827e0a1a28a804f44379970131193aca",
+        "U211C0.JED": "b6806833ccb0a4f25bffd86f2dbe97ee36296a6fea0360b18f4cf6195da9cc66",
+        "U211C0.MXL": "ddf6594bb166a2dbdc8481347bbab5ad00cceb789878c5d51686bd3c994c78dd"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "14fd287e352155e290c1f7944e96f9f2827e0a1a28a804f44379970131193aca"
+    },
+    {
+      "name": "U211C1",
+      "device": "MACH211",
+      "files": {
+        "U211C1.PDS": "14fd287e352155e290c1f7944e96f9f2827e0a1a28a804f44379970131193aca",
+        "U211C1.JED": "c6fea4714f1d29798c34a3f57b55a8708379767f1555fd3b6e3b77f4aabe85ec",
+        "U211C1.MXL": "9dfb2c9d4bbbd9e1c43579d5a39287e1f2ee8250439ba946beb630284c45ae8d"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "14fd287e352155e290c1f7944e96f9f2827e0a1a28a804f44379970131193aca"
+    },
+    {
+      "name": "U211C2",
+      "device": "MACH211",
+      "files": {
+        "U211C2.PDS": "14fd287e352155e290c1f7944e96f9f2827e0a1a28a804f44379970131193aca",
+        "U211C2.JED": "ed3a9d00c0a520f94460cb33e1d17ebc7d42d5b3d7ae556a9704e2e479c48c1d",
+        "U211C2.MXL": "4eadc2d71e77368daa25938a6016b08cc204a0223a2f7e56176fe87ea7a83591"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "14fd287e352155e290c1f7944e96f9f2827e0a1a28a804f44379970131193aca"
+    },
+    {
+      "name": "U211C3",
+      "device": "MACH211",
+      "files": {
+        "U211C3.PDS": "14fd287e352155e290c1f7944e96f9f2827e0a1a28a804f44379970131193aca",
+        "U211C3.JED": "bc9a5329a34c2898d38f04bd78e32aa5c098a99a8502f4a6b3d969285be2b2d6",
+        "U211C3.MXL": "7af11ba6f6928293f671c5279ca2be937918f5cb79958b8f0e46374f237168ea"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "14fd287e352155e290c1f7944e96f9f2827e0a1a28a804f44379970131193aca"
+    },
+    {
+      "name": "U211D0",
+      "device": "MACH211",
+      "files": {
+        "U211D0.PDS": "021fcb9d23a80e07cf2694de0ff5a99dff7fb7af881ba2702fd80c34659ec144",
+        "U211D0.JED": "0ba86967616ecc7751d1c6bda65732467ac376f2f71fc6c5571a20c881b0667b",
+        "U211D0.MXL": "3ddc5e40bc3925ec1ebe024ec9b842efda46be49517aaf8e3221ba15c3a22ac9"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "021fcb9d23a80e07cf2694de0ff5a99dff7fb7af881ba2702fd80c34659ec144"
+    },
+    {
+      "name": "U211D1",
+      "device": "MACH211",
+      "files": {
+        "U211D1.PDS": "021fcb9d23a80e07cf2694de0ff5a99dff7fb7af881ba2702fd80c34659ec144",
+        "U211D1.JED": "72116b175fc1621aadee03f2722310b136251f88aaf93941ae2317d07e1d6c11",
+        "U211D1.MXL": "ce827367ce6acdf76433a94fbe00d959e832870868e06ddfdd96420e0233a787"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "021fcb9d23a80e07cf2694de0ff5a99dff7fb7af881ba2702fd80c34659ec144"
+    },
+    {
+      "name": "U211D2",
+      "device": "MACH211",
+      "files": {
+        "U211D2.PDS": "021fcb9d23a80e07cf2694de0ff5a99dff7fb7af881ba2702fd80c34659ec144",
+        "U211D2.JED": "0c0a9d964887187bacdd0e1db12548b9000e61f0f76404fc73e67342699aa36b",
+        "U211D2.MXL": "5ba5db5063db1b56b678625cdfcdb91488be659470c6a30a28993d8a83c3dd8c"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "021fcb9d23a80e07cf2694de0ff5a99dff7fb7af881ba2702fd80c34659ec144"
+    },
+    {
+      "name": "U211D3",
+      "device": "MACH211",
+      "files": {
+        "U211D3.PDS": "021fcb9d23a80e07cf2694de0ff5a99dff7fb7af881ba2702fd80c34659ec144",
+        "U211D3.JED": "e3620fb69c2f73224ba4f4629e0fa78fbe9c65f3c6dd24ed00529e4e12abc456",
+        "U211D3.MXL": "307df63fd832f49c8ab55a8fdbf0bb8bb46d131604ff3af19e33025308e5df49"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "021fcb9d23a80e07cf2694de0ff5a99dff7fb7af881ba2702fd80c34659ec144"
+    },
+    {
+      "name": "U215C0",
+      "device": "MACH215",
+      "files": {
+        "U215C0.PDS": "34f04bd3f544c09fd4390a4fc6a68bdfb1c4b3010d8d0e2c059cc0987e231d26",
+        "U215C0.JED": "f66ae00c4c91b320f992900fa6c7c2d8dcbee6325c5dec32e52e6d51efcae208",
+        "U215C0.MXL": "175c234c7ff4038cf0684dc0cd801b36fb12695c6d0269c0d48467a040df46a0"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "34f04bd3f544c09fd4390a4fc6a68bdfb1c4b3010d8d0e2c059cc0987e231d26"
+    },
+    {
+      "name": "U215C1",
+      "device": "MACH215",
+      "files": {
+        "U215C1.PDS": "34f04bd3f544c09fd4390a4fc6a68bdfb1c4b3010d8d0e2c059cc0987e231d26",
+        "U215C1.JED": "b045e243d152e4050a27303985e230228663be3adff96103db07710eab70a6fd",
+        "U215C1.MXL": "cb4809c4ef746c9c3b5c147b6fb86916e6771d43025e4b368666031924fbe2f1"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "34f04bd3f544c09fd4390a4fc6a68bdfb1c4b3010d8d0e2c059cc0987e231d26"
+    },
+    {
+      "name": "U215C2",
+      "device": "MACH215",
+      "files": {
+        "U215C2.PDS": "34f04bd3f544c09fd4390a4fc6a68bdfb1c4b3010d8d0e2c059cc0987e231d26",
+        "U215C2.JED": "4b4ec93452c54ee2e0334d3ebe410a4f014a4882047009dbd0cad8a14de8034e",
+        "U215C2.MXL": "a33ec731eb5a14468a24b8be735f3a1497994f0198c240d11689b67b4c6f5525"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "34f04bd3f544c09fd4390a4fc6a68bdfb1c4b3010d8d0e2c059cc0987e231d26"
+    },
+    {
+      "name": "U215C3",
+      "device": "MACH215",
+      "files": {
+        "U215C3.PDS": "34f04bd3f544c09fd4390a4fc6a68bdfb1c4b3010d8d0e2c059cc0987e231d26",
+        "U215C3.JED": "c3bdeace8627866c2d1eb70430e25fc8626fc27a6edc8a6da27814df37cd43fd",
+        "U215C3.MXL": "b708c805e74c67ebe8f64fb41a2429915bf7a9ea6cc33179908add0b08a24f30"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "34f04bd3f544c09fd4390a4fc6a68bdfb1c4b3010d8d0e2c059cc0987e231d26"
+    },
+    {
+      "name": "U215D0",
+      "device": "MACH215",
+      "files": {
+        "U215D0.PDS": "eba2780b3b12c19b7b30082659f247a53e298e7bb5b40ceeae4ecd327fc29ba4",
+        "U215D0.JED": "2046aaf2d84e3fcb88407c2edf9cc9c462f2e0d3bea1108feaf19df2dc0b97e2",
+        "U215D0.MXL": "d4a0d8feb0ea74c420a3f3298dcd15e56100d8d59026d6d8a9756ee50a164d37"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "eba2780b3b12c19b7b30082659f247a53e298e7bb5b40ceeae4ecd327fc29ba4"
+    },
+    {
+      "name": "U215D1",
+      "device": "MACH215",
+      "files": {
+        "U215D1.PDS": "eba2780b3b12c19b7b30082659f247a53e298e7bb5b40ceeae4ecd327fc29ba4",
+        "U215D1.JED": "be6acc777afb4335e572f1d809e99f2532c44857bc942e413786cb7efc193629",
+        "U215D1.MXL": "af8687ae08deaeebc249ef1d0278040b6359a9b07de51569dda23667be50118f"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "eba2780b3b12c19b7b30082659f247a53e298e7bb5b40ceeae4ecd327fc29ba4"
+    },
+    {
+      "name": "U215D2",
+      "device": "MACH215",
+      "files": {
+        "U215D2.PDS": "eba2780b3b12c19b7b30082659f247a53e298e7bb5b40ceeae4ecd327fc29ba4",
+        "U215D2.JED": "d689a0b772a2e339ce3cbb395a1cbeb9ed89416c1317d471c7e034b0d4db19eb",
+        "U215D2.MXL": "9f6b083d1feebff943b7005dcb55c7cfcbcb5c0d10a3681be019a18f18696edf"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "eba2780b3b12c19b7b30082659f247a53e298e7bb5b40ceeae4ecd327fc29ba4"
+    },
+    {
+      "name": "U215D3",
+      "device": "MACH215",
+      "files": {
+        "U215D3.PDS": "eba2780b3b12c19b7b30082659f247a53e298e7bb5b40ceeae4ecd327fc29ba4",
+        "U215D3.JED": "dff1f08c23c7060d1c2d15323706b398a33ecd88b5b1923f762a26129281aa97",
+        "U215D3.MXL": "86d75cebf783444d5903862f66a51d9f5abee6b684779bf2a9e584d71c0010ef"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "eba2780b3b12c19b7b30082659f247a53e298e7bb5b40ceeae4ecd327fc29ba4"
+    },
+    {
+      "name": "U111C4",
+      "device": "MACH111",
+      "files": {
+        "U111C4.PDS": "48f7b5ef5a6a3986fcb365d9647c595a21e0ec63341c349d32cef3e39887e918",
+        "U111C4.JED": "c9bd0210f5d1e5b81f6ae7a79a733198392e6665cf7484abe762776100dd798d",
+        "U111C4.MXL": "ff770209d6b7228ee95663046addfa9ffc4587ece53caec9c7163c2c39b78d6b"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "48f7b5ef5a6a3986fcb365d9647c595a21e0ec63341c349d32cef3e39887e918"
+    },
+    {
+      "name": "U111D4",
+      "device": "MACH111",
+      "files": {
+        "U111D4.PDS": "6e599d41cb7b37f98da6a3b5a629e97caa8497a8db508542cfacf7b754237e0f",
+        "U111D4.JED": "4dd0dc2d20859925068069f2677883d4d24b99527a5be5823279ceee7464fd41",
+        "U111D4.MXL": "a946f7dbfc55669f4de9c2de125233377821503f4fd12f2e2fca9c9ea7948c62"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "6e599d41cb7b37f98da6a3b5a629e97caa8497a8db508542cfacf7b754237e0f"
+    },
+    {
+      "name": "U131C4",
+      "device": "MACH131",
+      "files": {
+        "U131C4.PDS": "83be716416a4f89f87da47b14b2e6ececc7aff6921920219e2f4368649778559",
+        "U131C4.JED": "5c971fed1a21b4f5b384b640ff96f60799bffa1c61aa865003da9181e518eeae",
+        "U131C4.MXL": "152d11601d27657e3580b04a4a41bf3e971644065f3904e80cceb8991ee5dc98"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "83be716416a4f89f87da47b14b2e6ececc7aff6921920219e2f4368649778559"
+    },
+    {
+      "name": "U131D4",
+      "device": "MACH131",
+      "files": {
+        "U131D4.PDS": "4572ba096f3e0f502f849f0d5f7b2e2763eee4019de879ac55cd7b7adf098895",
+        "U131D4.JED": "1974f956c864fb2aa2c19d86d3a6bf4c39f16e0de38b8154b234d39851119937",
+        "U131D4.MXL": "83f9d457afed44d49424548f6a507fbfdf23ee90ed954eed3d54f925a0584020"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "4572ba096f3e0f502f849f0d5f7b2e2763eee4019de879ac55cd7b7adf098895"
+    },
+    {
+      "name": "U211C4",
+      "device": "MACH211",
+      "files": {
+        "U211C4.PDS": "14fd287e352155e290c1f7944e96f9f2827e0a1a28a804f44379970131193aca",
+        "U211C4.JED": "1ef6b888fefc305750e104f87fa0cd4ad26b279e2fc113f89c9578c3bc859482",
+        "U211C4.MXL": "bb9a3313a830dd71facc3968c18045487bb716620a2bb48057be58ba61ba084b"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "14fd287e352155e290c1f7944e96f9f2827e0a1a28a804f44379970131193aca"
+    },
+    {
+      "name": "U211D4",
+      "device": "MACH211",
+      "files": {
+        "U211D4.PDS": "021fcb9d23a80e07cf2694de0ff5a99dff7fb7af881ba2702fd80c34659ec144",
+        "U211D4.JED": "37958d6fa1f1972008de343f7f28ead09e63d24ee8990003b51e1c39d47b4817",
+        "U211D4.MXL": "cc18f5dc1714220792ebc562f7f352f785c960acd894e5c1a649331617b8cf76"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "021fcb9d23a80e07cf2694de0ff5a99dff7fb7af881ba2702fd80c34659ec144"
+    },
+    {
+      "name": "U215C4",
+      "device": "MACH215",
+      "files": {
+        "U215C4.PDS": "34f04bd3f544c09fd4390a4fc6a68bdfb1c4b3010d8d0e2c059cc0987e231d26",
+        "U215C4.JED": "6504d31b5d08b6330afff320863c70658f3987ec655a4fc21247d70a9a356687",
+        "U215C4.MXL": "f7b3d449cdc9190d278b9296616e2a45049fafcce668faa0d06880fb9313a1a4"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "34f04bd3f544c09fd4390a4fc6a68bdfb1c4b3010d8d0e2c059cc0987e231d26"
+    },
+    {
+      "name": "U215D4",
+      "device": "MACH215",
+      "files": {
+        "U215D4.PDS": "eba2780b3b12c19b7b30082659f247a53e298e7bb5b40ceeae4ecd327fc29ba4",
+        "U215D4.JED": "6520217588b6984a8dd64412d6871b7b0fabbf0dd9298e3a3c63a57338182b72",
+        "U215D4.MXL": "6fd0ab14ab572864ab18de156e464c45329345c935f8153304d76b455192dd35"
+      },
+      "oracle_manifest": "build/device-legacy-options/manifest.json",
+      "source_sha256": "eba2780b3b12c19b7b30082659f247a53e298e7bb5b40ceeae4ecd327fc29ba4"
+    },
+    {
+      "name": "E110C0",
+      "device": "MACH110",
+      "files": {
+        "E110C0.PDS": "c321eca464171133f849f5b7e48be521ea84d20e77748e5f553be05fefaff4e5",
+        "E110C0.JED": "1ee596a6782eda90e67a7aa811def930064d1a03a2ab0bc4b7769c18a7c4b343",
+        "E110C0.MXL": "2a5c999406282b3e63b4924736d0f44bb1a6289ef5e9a2eaf450e0e897ebf7ab"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "c321eca464171133f849f5b7e48be521ea84d20e77748e5f553be05fefaff4e5"
+    },
+    {
+      "name": "E110C1",
+      "device": "MACH110",
+      "files": {
+        "E110C1.PDS": "c321eca464171133f849f5b7e48be521ea84d20e77748e5f553be05fefaff4e5",
+        "E110C1.JED": "29b54a8a730fe4e5081786ff9c568f1c0b7124d80166932f0f52ae1e25244f8e",
+        "E110C1.MXL": "64318f986c3cbb02445ee4c6a9cc3e09a3e469f1a4b1ccbf6cb92dc4a5785819"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "c321eca464171133f849f5b7e48be521ea84d20e77748e5f553be05fefaff4e5"
+    },
+    {
+      "name": "E110D0",
+      "device": "MACH110",
+      "files": {
+        "E110D0.PDS": "f0899ee91f238c540802e11235ee5343607ef5658b8fe4e7a406a5937b613632",
+        "E110D0.JED": "3498beacb5feb6452b4a60e0d99f5b9b793874f0af88abe22da020d5d1303c94",
+        "E110D0.MXL": "857afc175295f6d83658e873e62b0cee44e9b475ca35d16c4a226e64fd950a74"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "f0899ee91f238c540802e11235ee5343607ef5658b8fe4e7a406a5937b613632"
+    },
+    {
+      "name": "E110D1",
+      "device": "MACH110",
+      "files": {
+        "E110D1.PDS": "f0899ee91f238c540802e11235ee5343607ef5658b8fe4e7a406a5937b613632",
+        "E110D1.JED": "10dbf83e351ffd6314ad4849aa8d65e07a14f3f09bc71c88a6884a6a62857132",
+        "E110D1.MXL": "3285349598cf7fed21812dc150477b9d00201e410e990aafa16ca62e99118a16"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "f0899ee91f238c540802e11235ee5343607ef5658b8fe4e7a406a5937b613632"
+    },
+    {
+      "name": "E111C0",
+      "device": "MACH111",
+      "files": {
+        "E111C0.PDS": "48f7b5ef5a6a3986fcb365d9647c595a21e0ec63341c349d32cef3e39887e918",
+        "E111C0.JED": "3833c780f18fdd012d1ee01461c60d1465f697736ad3327a64188f9e9bb856c2",
+        "E111C0.MXL": "c1bf6ab449f139cf493ae9c49346138a0d797ba38a54daf1b637668d908454cc"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "48f7b5ef5a6a3986fcb365d9647c595a21e0ec63341c349d32cef3e39887e918"
+    },
+    {
+      "name": "E111C1",
+      "device": "MACH111",
+      "files": {
+        "E111C1.PDS": "48f7b5ef5a6a3986fcb365d9647c595a21e0ec63341c349d32cef3e39887e918",
+        "E111C1.JED": "0eb21f968cbedbadaf6288ff5c2e207ca8d137814a401bdc559060cce948794e",
+        "E111C1.MXL": "7b6287239613e123cfe92731c4a47ecd60cd450a5b96bc13e0c3b4df52dc7211"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "48f7b5ef5a6a3986fcb365d9647c595a21e0ec63341c349d32cef3e39887e918"
+    },
+    {
+      "name": "E111D0",
+      "device": "MACH111",
+      "files": {
+        "E111D0.PDS": "6e599d41cb7b37f98da6a3b5a629e97caa8497a8db508542cfacf7b754237e0f",
+        "E111D0.JED": "a783a3bc6eb7550d9eddbd7e428e98559b4dc2baa2aa84080df8d51198fe6248",
+        "E111D0.MXL": "b2c88f5e8e1371014362eb191073c72a09a9b4de5c2a311bdea88ec97ba86657"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "6e599d41cb7b37f98da6a3b5a629e97caa8497a8db508542cfacf7b754237e0f"
+    },
+    {
+      "name": "E111D1",
+      "device": "MACH111",
+      "files": {
+        "E111D1.PDS": "6e599d41cb7b37f98da6a3b5a629e97caa8497a8db508542cfacf7b754237e0f",
+        "E111D1.JED": "439cfeb326c342cd1411f9c5586546c46e9d3d40ecf4596169c695c08bb5f414",
+        "E111D1.MXL": "5001538cf974e9ad27603f5e63cd3636b55586c9ceae178486ed784add0fdf47"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "6e599d41cb7b37f98da6a3b5a629e97caa8497a8db508542cfacf7b754237e0f"
+    },
+    {
+      "name": "E120C0",
+      "device": "MACH120",
+      "files": {
+        "E120C0.PDS": "71195813e4e48e672d143dc2baac036ae48ab786cc96f75b224333062003a5b7",
+        "E120C0.JED": "15a8005b2a62b805455b85506669b2475bfabec00fe6d80466238a09a68e930e",
+        "E120C0.MXL": "8f337cb9dbceac8ed6f6617c229bda9135f6aa32dcf27677740b99ce8694a629"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "71195813e4e48e672d143dc2baac036ae48ab786cc96f75b224333062003a5b7"
+    },
+    {
+      "name": "E120C1",
+      "device": "MACH120",
+      "files": {
+        "E120C1.PDS": "71195813e4e48e672d143dc2baac036ae48ab786cc96f75b224333062003a5b7",
+        "E120C1.JED": "b73983f8f0befbcbb3e598788e1a938022a6bdc919bfeae506fd0d1dd88c560f",
+        "E120C1.MXL": "b9075512d91ca0bf7793a4a4932b2b653d6a881c6e915b5e883a182f86475ab6"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "71195813e4e48e672d143dc2baac036ae48ab786cc96f75b224333062003a5b7"
+    },
+    {
+      "name": "E120D0",
+      "device": "MACH120",
+      "files": {
+        "E120D0.PDS": "729d9668c569a0717827c2575d50925a12fb33dfb0d022018fe19f424b700431",
+        "E120D0.JED": "54aecd4a78a0c4e80ee83be00ec2ff5e7634b703b3488a7fc0951bcfd04046b3",
+        "E120D0.MXL": "3864296d061e18cdacb3aa696ce8f33fa7a5f0f37717acaa0c3652d6d1a3512a"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "729d9668c569a0717827c2575d50925a12fb33dfb0d022018fe19f424b700431"
+    },
+    {
+      "name": "E120D1",
+      "device": "MACH120",
+      "files": {
+        "E120D1.PDS": "729d9668c569a0717827c2575d50925a12fb33dfb0d022018fe19f424b700431",
+        "E120D1.JED": "46a7b33d9f222bcd500830328673b5e635fc7a45db916cba41a00779cc0368da",
+        "E120D1.MXL": "21e31a47b87137e4d80c4bcfc01545ff3db4e07e001f510ed124e6e8e8d5648d"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "729d9668c569a0717827c2575d50925a12fb33dfb0d022018fe19f424b700431"
+    },
+    {
+      "name": "E121C0",
+      "device": "MACH121",
+      "files": {
+        "E121C0.PDS": "5b74f413438ea818cd16bf00e016572b831f8063fba3d664fa7f88fadc81ff54",
+        "E121C0.JED": "4fe820f77d58d760ff8f40c8cac631652492dab137ffaa7723bdbdc69eedae47",
+        "E121C0.MXL": "32a5dd7958817a58af43b93b342f2ae1f7d4aac0326dc195888e7ced06c311bb"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "5b74f413438ea818cd16bf00e016572b831f8063fba3d664fa7f88fadc81ff54"
+    },
+    {
+      "name": "E121C1",
+      "device": "MACH121",
+      "files": {
+        "E121C1.PDS": "5b74f413438ea818cd16bf00e016572b831f8063fba3d664fa7f88fadc81ff54",
+        "E121C1.JED": "a70e0b2cd11af650b6dd708e14c77c5867c81907306a555ede35a7be0356589d",
+        "E121C1.MXL": "5ed37cd1937e6baa33ee063dfb789773d2206dc446b7b61c9a6fc19bd1de34f5"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "5b74f413438ea818cd16bf00e016572b831f8063fba3d664fa7f88fadc81ff54"
+    },
+    {
+      "name": "E121D0",
+      "device": "MACH121",
+      "files": {
+        "E121D0.PDS": "bd6955897d1fb064afae2304f14a5408c5c7b8ba6035a52c0545f9d2614ffc4b",
+        "E121D0.JED": "3c1c4b3330c4f2acaf9aa77a56651af99f8f3f206cb1c27bada6dc0b8688e2ad",
+        "E121D0.MXL": "5d2f48136809702a1552389503512da890926a95ba10e65f24b7e0187d318ba2"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "bd6955897d1fb064afae2304f14a5408c5c7b8ba6035a52c0545f9d2614ffc4b"
+    },
+    {
+      "name": "E121D1",
+      "device": "MACH121",
+      "files": {
+        "E121D1.PDS": "bd6955897d1fb064afae2304f14a5408c5c7b8ba6035a52c0545f9d2614ffc4b",
+        "E121D1.JED": "12cb3e1def4d6b569d1576894158d7422ab00404bd51860e3988230a1bfc7e35",
+        "E121D1.MXL": "0f173c874777582a561f8de32bdfe55f422a40d813ac612fa8e8de975de736b4"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "bd6955897d1fb064afae2304f14a5408c5c7b8ba6035a52c0545f9d2614ffc4b"
+    },
+    {
+      "name": "E130C0",
+      "device": "MACH130",
+      "files": {
+        "E130C0.PDS": "8c46323bb8d961359fe0ce7ef23bb93ddef5b2eb20ddc91932a5089b2a1dff15",
+        "E130C0.JED": "03b32e0860204a82fc3df94e4a3029498ea29fcf35638dd399ed81894247cac8",
+        "E130C0.MXL": "96660311b13c63b9a6951a184a5cb7f7176fb713f33022592da48174d2a518d6"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "8c46323bb8d961359fe0ce7ef23bb93ddef5b2eb20ddc91932a5089b2a1dff15"
+    },
+    {
+      "name": "E130C1",
+      "device": "MACH130",
+      "files": {
+        "E130C1.PDS": "8c46323bb8d961359fe0ce7ef23bb93ddef5b2eb20ddc91932a5089b2a1dff15",
+        "E130C1.JED": "876e442796396297372d84561f501ae6e81a08d6c3a52b3c3d068056e6b9f3f1",
+        "E130C1.MXL": "ded22840658f0816b6e4c7731b10c01812a255b9b45e1742c6f1c785a440ef6c"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "8c46323bb8d961359fe0ce7ef23bb93ddef5b2eb20ddc91932a5089b2a1dff15"
+    },
+    {
+      "name": "E130D0",
+      "device": "MACH130",
+      "files": {
+        "E130D0.PDS": "b819edb606ee4c5e144fcacf05ae33a6a081cdeea588b47bd953b42ae789306c",
+        "E130D0.JED": "68013c91ede6e7a46f7d7de92a9bd8df28053e00b5c3e3c05c75059b46969fda",
+        "E130D0.MXL": "da0efe575383c882a7dbae315d13ddbd7fdfaed4a1217ee5bef93ac60e478785"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "b819edb606ee4c5e144fcacf05ae33a6a081cdeea588b47bd953b42ae789306c"
+    },
+    {
+      "name": "E130D1",
+      "device": "MACH130",
+      "files": {
+        "E130D1.PDS": "b819edb606ee4c5e144fcacf05ae33a6a081cdeea588b47bd953b42ae789306c",
+        "E130D1.JED": "cfd1a00df75c8fa9cffcf941f512653750b57b9d47f6103ec81639fd75bd7a58",
+        "E130D1.MXL": "a23701ed1eee1e1d8a545631a16d73fa59f7793e8e6324f333a7ddd5f2a4c1a2"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "b819edb606ee4c5e144fcacf05ae33a6a081cdeea588b47bd953b42ae789306c"
+    },
+    {
+      "name": "E131C0",
+      "device": "MACH131",
+      "files": {
+        "E131C0.PDS": "88195f6de069a8eca11d953462e1e6fb42f771ffc0d2286477ff18ba8e2cb32c",
+        "E131C0.JED": "45bfdd4416c07a5d03a3e4f0acc35fb1f9e15e19522cdfcd5da13003800d2dec",
+        "E131C0.MXL": "04c7e07ebb56aaf7184529f98c909a94939c22ef27115c4affb99c5202ee5254"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "88195f6de069a8eca11d953462e1e6fb42f771ffc0d2286477ff18ba8e2cb32c"
+    },
+    {
+      "name": "E131C1",
+      "device": "MACH131",
+      "files": {
+        "E131C1.PDS": "88195f6de069a8eca11d953462e1e6fb42f771ffc0d2286477ff18ba8e2cb32c",
+        "E131C1.JED": "da06eeaa114533ab18b46e78b5d01e71ecb632f81bff0b00663110cdb90a100c",
+        "E131C1.MXL": "53d098d7a1ddaaaeaa41da0e2803c263e66ac0fb108b50e566cbd4882efa5356"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "88195f6de069a8eca11d953462e1e6fb42f771ffc0d2286477ff18ba8e2cb32c"
+    },
+    {
+      "name": "E131D0",
+      "device": "MACH131",
+      "files": {
+        "E131D0.PDS": "aab862defb86bd8e1c8ddbb73a38a483b41d1d84e7b0d4266b339685ec8477fb",
+        "E131D0.JED": "88c787856e1610aceb59acd388df20682d7815886752302fd862ddeb7094a53b",
+        "E131D0.MXL": "e2f86a1c5729e284a55a6c01072dd269346a59338d391a1da7853b1ec5fd790b"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "aab862defb86bd8e1c8ddbb73a38a483b41d1d84e7b0d4266b339685ec8477fb"
+    },
+    {
+      "name": "E131D1",
+      "device": "MACH131",
+      "files": {
+        "E131D1.PDS": "aab862defb86bd8e1c8ddbb73a38a483b41d1d84e7b0d4266b339685ec8477fb",
+        "E131D1.JED": "6453a0ca55bd830987f6a365b0957b818dad2faba7a8fe6cbf106139ef6ecefe",
+        "E131D1.MXL": "0fd166bb5eb16c8f4c0319d0a1dedd74102671395757a714f91136bbfdc538c1"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "aab862defb86bd8e1c8ddbb73a38a483b41d1d84e7b0d4266b339685ec8477fb"
+    },
+    {
+      "name": "E210C0",
+      "device": "MACH210",
+      "files": {
+        "E210C0.PDS": "8d0d85eb733cf79d27271d4cd19e997b673b68a5750368d87019860a3a0149e6",
+        "E210C0.JED": "17d0fe0ef7295835de3a4cf6bfba256d54ac891f1e65c5809c2b1e6c38bf7c67",
+        "E210C0.MXL": "d3f80fd0fab4965337fc42305a03529a1942d28e69df2db68c1f18f74ff43767"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "8d0d85eb733cf79d27271d4cd19e997b673b68a5750368d87019860a3a0149e6"
+    },
+    {
+      "name": "E210C1",
+      "device": "MACH210",
+      "files": {
+        "E210C1.PDS": "8d0d85eb733cf79d27271d4cd19e997b673b68a5750368d87019860a3a0149e6",
+        "E210C1.JED": "117625ddc04d3bd945d7f300045940f3878c309399bcee001eb25a8f420c5661",
+        "E210C1.MXL": "c9bfb0bb3d5e399fedb3af6a0eb65ad36474705cd57617fb475ecbfc59be7ea3"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "8d0d85eb733cf79d27271d4cd19e997b673b68a5750368d87019860a3a0149e6"
+    },
+    {
+      "name": "E210D0",
+      "device": "MACH210",
+      "files": {
+        "E210D0.PDS": "7c46e80738cbc51d38d7b3ae83a82d409fd276db54d342024f5c6450f6c4f49e",
+        "E210D0.JED": "9f4b2dceefe75241b68ae490c1602b627dfa855918b7fea7a4a1ab6f180edd54",
+        "E210D0.MXL": "9b5eb42e5e5d79c0933dc70f4572b384e81f61dc02de3d0df5eaad62ebd27737"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "7c46e80738cbc51d38d7b3ae83a82d409fd276db54d342024f5c6450f6c4f49e"
+    },
+    {
+      "name": "E210D1",
+      "device": "MACH210",
+      "files": {
+        "E210D1.PDS": "7c46e80738cbc51d38d7b3ae83a82d409fd276db54d342024f5c6450f6c4f49e",
+        "E210D1.JED": "64da749a1298450537aaede6fa3756a43f11de7b4872163d465e62f1b6273e3e",
+        "E210D1.MXL": "1ebb29b0ceb38a12eb174d61e8b8823dea1d478c91cad30c25618fbbfc2c656d"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "7c46e80738cbc51d38d7b3ae83a82d409fd276db54d342024f5c6450f6c4f49e"
+    },
+    {
+      "name": "E211C0",
+      "device": "MACH211",
+      "files": {
+        "E211C0.PDS": "be5f15fcdf6e46c0ec98b9a9541fd73404a03503bd8bf930240f18b2527bfe85",
+        "E211C0.JED": "457acd3aabdcb7ec03028bd11b5754783cc5dee1b1185fcb665845cb5d4719f9",
+        "E211C0.MXL": "ba5b9e00d781921ec3a6683824a8e7ce39631da876356ffc2c5f08792cd3f6b4"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "be5f15fcdf6e46c0ec98b9a9541fd73404a03503bd8bf930240f18b2527bfe85"
+    },
+    {
+      "name": "E211C1",
+      "device": "MACH211",
+      "files": {
+        "E211C1.PDS": "be5f15fcdf6e46c0ec98b9a9541fd73404a03503bd8bf930240f18b2527bfe85",
+        "E211C1.JED": "cd037f5d3ffc7ffe3e3faa9a03c6b7ff84d994461986d9f0cd4ba5086b1078e3",
+        "E211C1.MXL": "edf49a18d6487760ed54eaaa7f93ffc916738f086bc60a6636746e489df59800"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "be5f15fcdf6e46c0ec98b9a9541fd73404a03503bd8bf930240f18b2527bfe85"
+    },
+    {
+      "name": "E211D0",
+      "device": "MACH211",
+      "files": {
+        "E211D0.PDS": "5f92aee8872258c392efffaf6c265131d2a58acc60ad82eb2a7a673acce79416",
+        "E211D0.JED": "93e30d175d6ff787cee6d82debd31e4f6aabb3fbd9babaa2c8dbdfa46a15dad1",
+        "E211D0.MXL": "d40ce76adec4a4dc2e5fd6499ee0a5255ce674aefca34da5ff218cd859b5769b"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "5f92aee8872258c392efffaf6c265131d2a58acc60ad82eb2a7a673acce79416"
+    },
+    {
+      "name": "E211D1",
+      "device": "MACH211",
+      "files": {
+        "E211D1.PDS": "5f92aee8872258c392efffaf6c265131d2a58acc60ad82eb2a7a673acce79416",
+        "E211D1.JED": "71f93c2774b6f04076a394b06fa0f4bf850b94c577af1b5f6ba0fda06083497d",
+        "E211D1.MXL": "34ce1cc4f10b73aeaca1f3136cda5ffd4ae0481e15c9c8eb4901ea39905c6513"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "5f92aee8872258c392efffaf6c265131d2a58acc60ad82eb2a7a673acce79416"
+    },
+    {
+      "name": "E215C0",
+      "device": "MACH215",
+      "files": {
+        "E215C0.PDS": "04fe6e8426b354539a79db1ed5fd353f0b7e90de7a36ae5dd25de7d47fab2c6c",
+        "E215C0.JED": "4e0b2472e1ba77acd78aa8a8b64fb0a2435700bf9a7b0ebd3d179856ee5335d9",
+        "E215C0.MXL": "e85ddb3d10a6a1722a7170a22ff32b469ee667f6d251e5e36e589b7d4ca74aa8"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "04fe6e8426b354539a79db1ed5fd353f0b7e90de7a36ae5dd25de7d47fab2c6c"
+    },
+    {
+      "name": "E215C1",
+      "device": "MACH215",
+      "files": {
+        "E215C1.PDS": "04fe6e8426b354539a79db1ed5fd353f0b7e90de7a36ae5dd25de7d47fab2c6c",
+        "E215C1.JED": "5c441756db612a37f1217f597f5df36e8a437ecfde6df8c9c9698feced63cc6b",
+        "E215C1.MXL": "c8e8d0520f69c3ca6a33deb188ada882cc8f2589a2409155daa108685c3084ac"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "04fe6e8426b354539a79db1ed5fd353f0b7e90de7a36ae5dd25de7d47fab2c6c"
+    },
+    {
+      "name": "E215D0",
+      "device": "MACH215",
+      "files": {
+        "E215D0.PDS": "c7722f395400f92ed452fab072129ec617d88059501ea4c2c990e39baf98796c",
+        "E215D0.JED": "d25c3999c441be6f4af282601294dcddfc55f7f2993e54c7467c7a179f626046",
+        "E215D0.MXL": "496d8092d53efdf338cd7f903f41115fb96f8fd24e695023bd4558f8324622e6"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "c7722f395400f92ed452fab072129ec617d88059501ea4c2c990e39baf98796c"
+    },
+    {
+      "name": "E215D1",
+      "device": "MACH215",
+      "files": {
+        "E215D1.PDS": "c7722f395400f92ed452fab072129ec617d88059501ea4c2c990e39baf98796c",
+        "E215D1.JED": "c96a0be6316894da7ce59fef749bb2ce1785ac2a41227dd211715be4f4d9ce7d",
+        "E215D1.MXL": "a345cf6e82e6dae097442fe05b1c965562a5c8d33de52f0a5527d1f862fe9cc3"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "c7722f395400f92ed452fab072129ec617d88059501ea4c2c990e39baf98796c"
+    },
+    {
+      "name": "E220C0",
+      "device": "MACH220",
+      "files": {
+        "E220C0.PDS": "07baf6d49aa19bbe9afa37734640668b218b8cc6f28671147c3f8ff5e0c35a77",
+        "E220C0.JED": "d35f126058f0c96f955a175031c48765f91411375eb4ba2ce01e5005dbb4e694",
+        "E220C0.MXL": "22db49ce572c95959d4bb639c695ad3e48681866ffb7a7348b96070940392e9e"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "07baf6d49aa19bbe9afa37734640668b218b8cc6f28671147c3f8ff5e0c35a77"
+    },
+    {
+      "name": "E220C1",
+      "device": "MACH220",
+      "files": {
+        "E220C1.PDS": "07baf6d49aa19bbe9afa37734640668b218b8cc6f28671147c3f8ff5e0c35a77",
+        "E220C1.JED": "027074f1e44f0b9b7c2f4ea603eb44102896c5dadb573951df7caeccba305efa",
+        "E220C1.MXL": "34a7d69a291e2fec1aa694e6c3511573828c6cc1071bb1e2a1e2f265dc7abc27"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "07baf6d49aa19bbe9afa37734640668b218b8cc6f28671147c3f8ff5e0c35a77"
+    },
+    {
+      "name": "E220D0",
+      "device": "MACH220",
+      "files": {
+        "E220D0.PDS": "56011becc1b758375ef73d305dc66d62e925e040a08a3c562893bab8b4872ada",
+        "E220D0.JED": "82203ded39b63c02d9b11a1f7286fd53309cd66118033c5dc43b1827f6d59d9e",
+        "E220D0.MXL": "be0461c3c0ed16f0ec484aa317748fbad6249c4e4a58800029f07eb79143c81d"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "56011becc1b758375ef73d305dc66d62e925e040a08a3c562893bab8b4872ada"
+    },
+    {
+      "name": "E220D1",
+      "device": "MACH220",
+      "files": {
+        "E220D1.PDS": "56011becc1b758375ef73d305dc66d62e925e040a08a3c562893bab8b4872ada",
+        "E220D1.JED": "6af08389fcc2e023b93bd2182de3eca9d76b588711436efcd20ab209978e09ed",
+        "E220D1.MXL": "243bb9f8e421b19b3ba1b639c0aec1ac505e0197aad8979ff817ec13fb17b761"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "56011becc1b758375ef73d305dc66d62e925e040a08a3c562893bab8b4872ada"
+    },
+    {
+      "name": "E221C0",
+      "device": "MACH221",
+      "files": {
+        "E221C0.PDS": "6d2585944bc7cf679c9613c22067bccbae683a576d2b20ee3380d5180859446e",
+        "E221C0.JED": "1b49705a80e8cc8b16b9d14936d4c8710d2874b107afe26850677e11edc67904",
+        "E221C0.MXL": "1e36fca40e0d81dc7a15c4f6239ed5cec9a7202940afb31c46799f260197076c"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "6d2585944bc7cf679c9613c22067bccbae683a576d2b20ee3380d5180859446e"
+    },
+    {
+      "name": "E221C1",
+      "device": "MACH221",
+      "files": {
+        "E221C1.PDS": "6d2585944bc7cf679c9613c22067bccbae683a576d2b20ee3380d5180859446e",
+        "E221C1.JED": "af6b5484a41775e841390175c37adb49bba7352890d7aafb7a232e8f012b80e7",
+        "E221C1.MXL": "dbb18e7dfac4a826376ff0323a4426f4f06ae0877192675d88dcd9cc7991b41c"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "6d2585944bc7cf679c9613c22067bccbae683a576d2b20ee3380d5180859446e"
+    },
+    {
+      "name": "E221D0",
+      "device": "MACH221",
+      "files": {
+        "E221D0.PDS": "5883c295086c84277a5f80da1bebf4b303cfb3a7da7a2f204a069003cc169665",
+        "E221D0.JED": "924a7338e08078d51d409d419bc1a05eff854ac1197242a0e15d45cf37d12ad2",
+        "E221D0.MXL": "cecff85816a1f9346e8bbb48c8f24adcd5362d67015ed63261791360d7b8471d"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "5883c295086c84277a5f80da1bebf4b303cfb3a7da7a2f204a069003cc169665"
+    },
+    {
+      "name": "E221D1",
+      "device": "MACH221",
+      "files": {
+        "E221D1.PDS": "5883c295086c84277a5f80da1bebf4b303cfb3a7da7a2f204a069003cc169665",
+        "E221D1.JED": "f22444dd64f034567a45470318ea36fec7237dc11bd976ef9b6b7bef5cf49076",
+        "E221D1.MXL": "39eb43e1a752a73a6527131d25077d90f185d10fca472f69501975059901cc95"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "5883c295086c84277a5f80da1bebf4b303cfb3a7da7a2f204a069003cc169665"
+    },
+    {
+      "name": "E231C0",
+      "device": "MACH231",
+      "files": {
+        "E231C0.PDS": "04fa79d28385d1db2a91495ccd247f747d5086bfcb3f7c58764993500d31254a",
+        "E231C0.JED": "db7a2a72d51468f61b86b771eaeedce64c4328a812def3fd192c477110ba4b2f",
+        "E231C0.MXL": "fe7e57b04a4cddf68ed518681ce4772dca911600c0a7edff0fc3779870a38ee9"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "04fa79d28385d1db2a91495ccd247f747d5086bfcb3f7c58764993500d31254a"
+    },
+    {
+      "name": "E231C1",
+      "device": "MACH231",
+      "files": {
+        "E231C1.PDS": "04fa79d28385d1db2a91495ccd247f747d5086bfcb3f7c58764993500d31254a",
+        "E231C1.JED": "4699f48647c1d3b49a7b5ca5a9110998c20858d645be4a15b2890e0e72d5a017",
+        "E231C1.MXL": "58b90e15381c38c0370f225729ecdb935a50d4d71ffb414844843c8353676f09"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "04fa79d28385d1db2a91495ccd247f747d5086bfcb3f7c58764993500d31254a"
+    },
+    {
+      "name": "E231D0",
+      "device": "MACH231",
+      "files": {
+        "E231D0.PDS": "82b096fa9625111a142ff3b8553de14435b3861efa38241cfae2dd3928366306",
+        "E231D0.JED": "78343a0431abcef2b9493a6f4043fa449c1c4d458560b5685cce0c50d30c3b0a",
+        "E231D0.MXL": "66fac7ddd37d40f6bc3e796cb946d0e3be60d3526ce03e73e8a98027a2ae8f10"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "82b096fa9625111a142ff3b8553de14435b3861efa38241cfae2dd3928366306"
+    },
+    {
+      "name": "E231D1",
+      "device": "MACH231",
+      "files": {
+        "E231D1.PDS": "82b096fa9625111a142ff3b8553de14435b3861efa38241cfae2dd3928366306",
+        "E231D1.JED": "514745104f049e8fddcd68bf5dac76e2b2a1d607b925515fdde3cd5fbfbde202",
+        "E231D1.MXL": "f897f7798c0361dacf062825afd29edda1f9cc5c0c241aa0009f02aa25ac5212"
+      },
+      "oracle_manifest": "build/device-legacy-phase-options/manifest.json",
+      "source_sha256": "82b096fa9625111a142ff3b8553de14435b3861efa38241cfae2dd3928366306"
+    },
+    {
+      "name": "LC1101",
+      "device": "MACH110",
+      "files": {
+        "LC1101.PDS": "f0899ee91f238c540802e11235ee5343607ef5658b8fe4e7a406a5937b613632",
+        "LC1101.JED": "2554c0c18a6bd16203fedd1192fdda89fac459b5203a4adb6696d1ce4787fbd4",
+        "LC1101.MXL": "73d46b8f4f01065509bdb0efabe395d92648d669030af30f5079bcdba2486c4d"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "f0899ee91f238c540802e11235ee5343607ef5658b8fe4e7a406a5937b613632"
+    },
+    {
+      "name": "LC1102",
+      "device": "MACH110",
+      "files": {
+        "LC1102.PDS": "f0899ee91f238c540802e11235ee5343607ef5658b8fe4e7a406a5937b613632",
+        "LC1102.JED": "2554c0c18a6bd16203fedd1192fdda89fac459b5203a4adb6696d1ce4787fbd4",
+        "LC1102.MXL": "e421b4a182b38a902ad18f299a88099ceead81316c39dd45adb9d728641e2bcf"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "f0899ee91f238c540802e11235ee5343607ef5658b8fe4e7a406a5937b613632"
+    },
+    {
+      "name": "LC1111",
+      "device": "MACH111",
+      "files": {
+        "LC1111.PDS": "6e599d41cb7b37f98da6a3b5a629e97caa8497a8db508542cfacf7b754237e0f",
+        "LC1111.JED": "26535349b3210422fae790a28cec14c3715c37c8b95ea356f460a6f2f8c332ce",
+        "LC1111.MXL": "359b12c5aa5963c25c10fec8bb0a7588c47336073dba9a87bb04289541e9d615"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "6e599d41cb7b37f98da6a3b5a629e97caa8497a8db508542cfacf7b754237e0f"
+    },
+    {
+      "name": "LC1112",
+      "device": "MACH111",
+      "files": {
+        "LC1112.PDS": "6e599d41cb7b37f98da6a3b5a629e97caa8497a8db508542cfacf7b754237e0f",
+        "LC1112.JED": "26535349b3210422fae790a28cec14c3715c37c8b95ea356f460a6f2f8c332ce",
+        "LC1112.MXL": "82857880b3989c81342b55374bd55cd0bbebe092bcee0357a9d9865e0d5bb905"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "6e599d41cb7b37f98da6a3b5a629e97caa8497a8db508542cfacf7b754237e0f"
+    },
+    {
+      "name": "LC1201",
+      "device": "MACH120",
+      "files": {
+        "LC1201.PDS": "729d9668c569a0717827c2575d50925a12fb33dfb0d022018fe19f424b700431",
+        "LC1201.JED": "89213c3990b8c0f0d4cf2f11bfea463fcb7d008093f0d5fc07958869841f8ad5",
+        "LC1201.MXL": "61c9798691c359af1c0ce75cef475ea1c408ed7b742a0c9386ee749f051593a6"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "729d9668c569a0717827c2575d50925a12fb33dfb0d022018fe19f424b700431"
+    },
+    {
+      "name": "LC1202",
+      "device": "MACH120",
+      "files": {
+        "LC1202.PDS": "729d9668c569a0717827c2575d50925a12fb33dfb0d022018fe19f424b700431",
+        "LC1202.JED": "89213c3990b8c0f0d4cf2f11bfea463fcb7d008093f0d5fc07958869841f8ad5",
+        "LC1202.MXL": "605cdb95d646c12353ffc5b241dad26aa2803deb6ff380764f9e72b862c67401"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "729d9668c569a0717827c2575d50925a12fb33dfb0d022018fe19f424b700431"
+    },
+    {
+      "name": "LC1211",
+      "device": "MACH121",
+      "files": {
+        "LC1211.PDS": "bd6955897d1fb064afae2304f14a5408c5c7b8ba6035a52c0545f9d2614ffc4b",
+        "LC1211.JED": "9a0a601dce82930bcc8a8af9a49796b6ee64f808b6b5b92865f8ebb548d1b273",
+        "LC1211.MXL": "c26576b7a162ca3ed375c33f29b933e2b4ff6224000f08afed3ad3a8acd7b1de"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "bd6955897d1fb064afae2304f14a5408c5c7b8ba6035a52c0545f9d2614ffc4b"
+    },
+    {
+      "name": "LC1212",
+      "device": "MACH121",
+      "files": {
+        "LC1212.PDS": "bd6955897d1fb064afae2304f14a5408c5c7b8ba6035a52c0545f9d2614ffc4b",
+        "LC1212.JED": "9a0a601dce82930bcc8a8af9a49796b6ee64f808b6b5b92865f8ebb548d1b273",
+        "LC1212.MXL": "f908108b2c4fa8177c514efcdd446f1dcf16d567969370887eee21312a5613d2"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "bd6955897d1fb064afae2304f14a5408c5c7b8ba6035a52c0545f9d2614ffc4b"
+    },
+    {
+      "name": "LC1301",
+      "device": "MACH130",
+      "files": {
+        "LC1301.PDS": "b819edb606ee4c5e144fcacf05ae33a6a081cdeea588b47bd953b42ae789306c",
+        "LC1301.JED": "2c6ac36bd412c7732253aaeda418241fc4163ddcbc4b9afe04ad20aa48a7b661",
+        "LC1301.MXL": "61e168f6d773c42bc99391506b412ef47ccca53bb464c0fd9a13e5b481ec26b5"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "b819edb606ee4c5e144fcacf05ae33a6a081cdeea588b47bd953b42ae789306c"
+    },
+    {
+      "name": "LC1302",
+      "device": "MACH130",
+      "files": {
+        "LC1302.PDS": "b819edb606ee4c5e144fcacf05ae33a6a081cdeea588b47bd953b42ae789306c",
+        "LC1302.JED": "2c6ac36bd412c7732253aaeda418241fc4163ddcbc4b9afe04ad20aa48a7b661",
+        "LC1302.MXL": "0c0163dcf12b810ba09f4d54759976ca8ea8846fa140ec83df2f417cd6108624"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "b819edb606ee4c5e144fcacf05ae33a6a081cdeea588b47bd953b42ae789306c"
+    },
+    {
+      "name": "LC1311",
+      "device": "MACH131",
+      "files": {
+        "LC1311.PDS": "aab862defb86bd8e1c8ddbb73a38a483b41d1d84e7b0d4266b339685ec8477fb",
+        "LC1311.JED": "024fec74e159044929f7a246046df1756c6e3b151bf83a2e19c1fe66b531d9d6",
+        "LC1311.MXL": "0c5ae10f69457e87ba623b0e8bafd58d42ee707cc68be737db8041adc06e015a"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "aab862defb86bd8e1c8ddbb73a38a483b41d1d84e7b0d4266b339685ec8477fb"
+    },
+    {
+      "name": "LC1312",
+      "device": "MACH131",
+      "files": {
+        "LC1312.PDS": "aab862defb86bd8e1c8ddbb73a38a483b41d1d84e7b0d4266b339685ec8477fb",
+        "LC1312.JED": "024fec74e159044929f7a246046df1756c6e3b151bf83a2e19c1fe66b531d9d6",
+        "LC1312.MXL": "1f7ce20de0fc5811c91046f5d659690bd93d54057614c25450617e38591936e8"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "aab862defb86bd8e1c8ddbb73a38a483b41d1d84e7b0d4266b339685ec8477fb"
+    },
+    {
+      "name": "LC2101",
+      "device": "MACH210",
+      "files": {
+        "LC2101.PDS": "7c46e80738cbc51d38d7b3ae83a82d409fd276db54d342024f5c6450f6c4f49e",
+        "LC2101.JED": "c507b2eb02474300afeff1e9303766c12fb6a96b15ed37c972781c6e7cf5a2ab",
+        "LC2101.MXL": "5a371d6071133d099a85f4ddf6c1da57ac0291e0c6f7686a9ae743575eae38ae"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "7c46e80738cbc51d38d7b3ae83a82d409fd276db54d342024f5c6450f6c4f49e"
+    },
+    {
+      "name": "LC2102",
+      "device": "MACH210",
+      "files": {
+        "LC2102.PDS": "7c46e80738cbc51d38d7b3ae83a82d409fd276db54d342024f5c6450f6c4f49e",
+        "LC2102.JED": "c507b2eb02474300afeff1e9303766c12fb6a96b15ed37c972781c6e7cf5a2ab",
+        "LC2102.MXL": "c6b70cf3835b0b1c5cf5c0cc5398d9a9ec9bfb68322f1a229a17e8f33280dee0"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "7c46e80738cbc51d38d7b3ae83a82d409fd276db54d342024f5c6450f6c4f49e"
+    },
+    {
+      "name": "LC2111",
+      "device": "MACH211",
+      "files": {
+        "LC2111.PDS": "5f92aee8872258c392efffaf6c265131d2a58acc60ad82eb2a7a673acce79416",
+        "LC2111.JED": "d13b9258a9842df258fda0c39f9a53c70cbd9663a7fb9b38ed48125ef16a71e0",
+        "LC2111.MXL": "b6803f82e90a0aeb1935e70819cfa08bdc7be2c271811b80d9d7ccc03baff65e"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "5f92aee8872258c392efffaf6c265131d2a58acc60ad82eb2a7a673acce79416"
+    },
+    {
+      "name": "LC2112",
+      "device": "MACH211",
+      "files": {
+        "LC2112.PDS": "5f92aee8872258c392efffaf6c265131d2a58acc60ad82eb2a7a673acce79416",
+        "LC2112.JED": "d13b9258a9842df258fda0c39f9a53c70cbd9663a7fb9b38ed48125ef16a71e0",
+        "LC2112.MXL": "5dafe62ffebfc4d4edc85fb1b723aaffe3b67b964df4de249e0f91510d0490c4"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "5f92aee8872258c392efffaf6c265131d2a58acc60ad82eb2a7a673acce79416"
+    },
+    {
+      "name": "LC2201",
+      "device": "MACH220",
+      "files": {
+        "LC2201.PDS": "56011becc1b758375ef73d305dc66d62e925e040a08a3c562893bab8b4872ada",
+        "LC2201.JED": "80302beb4750a3122b96864b8af1bd38221348d66222a9c38e48ce93b39ca5a6",
+        "LC2201.MXL": "49daf79566676e0f76bc874ac1c29b6fbf3a3dd7b748f18dc96285775fd5d1fc"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "56011becc1b758375ef73d305dc66d62e925e040a08a3c562893bab8b4872ada"
+    },
+    {
+      "name": "LC2202",
+      "device": "MACH220",
+      "files": {
+        "LC2202.PDS": "56011becc1b758375ef73d305dc66d62e925e040a08a3c562893bab8b4872ada",
+        "LC2202.JED": "80302beb4750a3122b96864b8af1bd38221348d66222a9c38e48ce93b39ca5a6",
+        "LC2202.MXL": "890279ce52ad3189b868bfeb11fb1168fe6c0527704138c4853be78e9678eb71"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "56011becc1b758375ef73d305dc66d62e925e040a08a3c562893bab8b4872ada"
+    },
+    {
+      "name": "LC2211",
+      "device": "MACH221",
+      "files": {
+        "LC2211.PDS": "5883c295086c84277a5f80da1bebf4b303cfb3a7da7a2f204a069003cc169665",
+        "LC2211.JED": "41505295ddb80d22e916ec9ba421e87e23f91d9036f9098c8314f0dd6d9ba0d5",
+        "LC2211.MXL": "04747cb70eb61e76861a917d64e67360699296d013d89f4798802053013ff063"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "5883c295086c84277a5f80da1bebf4b303cfb3a7da7a2f204a069003cc169665"
+    },
+    {
+      "name": "LC2212",
+      "device": "MACH221",
+      "files": {
+        "LC2212.PDS": "5883c295086c84277a5f80da1bebf4b303cfb3a7da7a2f204a069003cc169665",
+        "LC2212.JED": "41505295ddb80d22e916ec9ba421e87e23f91d9036f9098c8314f0dd6d9ba0d5",
+        "LC2212.MXL": "c6a707476a81494f7c98d289bab031b1a3a93cc6f323ff6e66c1b9d1ef0df744"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "5883c295086c84277a5f80da1bebf4b303cfb3a7da7a2f204a069003cc169665"
+    },
+    {
+      "name": "LC2311",
+      "device": "MACH231",
+      "files": {
+        "LC2311.PDS": "82b096fa9625111a142ff3b8553de14435b3861efa38241cfae2dd3928366306",
+        "LC2311.JED": "9507272a7c97600b2188fad45a4b8b8fa47b946b08311fbb69e5b3cd2969b381",
+        "LC2311.MXL": "a60160fe5f8d9cab9aefbadfabfa8565364c30b4d7ff5103a742396abc53cf0d"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "82b096fa9625111a142ff3b8553de14435b3861efa38241cfae2dd3928366306"
+    },
+    {
+      "name": "LC2312",
+      "device": "MACH231",
+      "files": {
+        "LC2312.PDS": "82b096fa9625111a142ff3b8553de14435b3861efa38241cfae2dd3928366306",
+        "LC2312.JED": "9507272a7c97600b2188fad45a4b8b8fa47b946b08311fbb69e5b3cd2969b381",
+        "LC2312.MXL": "85333bc3813a87359d66b4292a80e4740feac9b34c75ad3c1e89e8b8331c9691"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/non215-manifest.json",
+      "source_sha256": "82b096fa9625111a142ff3b8553de14435b3861efa38241cfae2dd3928366306"
+    },
+    {
+      "name": "KC00",
+      "device": "MACH215",
+      "files": {
+        "KC00.PDS": "e8d6fef3d41db39b8a05b94e72fa274955d807b1a58cfb19e065257ef8555e6d",
+        "KC00.JED": "c45b7965d402c5566f2b9bf29237081611c67a9a990b5a584f2d306a39e3dd92",
+        "KC00.MXL": "b4b12ed89c65e54cecd96ba5da9f2a8d26ee63838e5b6bc3c30532cdb63a5572"
+      },
+      "oracle_manifest": "build/mach215-clock-reduction/manifest.json",
+      "source_sha256": "e8d6fef3d41db39b8a05b94e72fa274955d807b1a58cfb19e065257ef8555e6d"
+    },
+    {
+      "name": "KC01",
+      "device": "MACH215",
+      "files": {
+        "KC01.PDS": "e8d6fef3d41db39b8a05b94e72fa274955d807b1a58cfb19e065257ef8555e6d",
+        "KC01.JED": "c45b7965d402c5566f2b9bf29237081611c67a9a990b5a584f2d306a39e3dd92",
+        "KC01.MXL": "11eff58761ff1643c335da512e3d6da1b4601a5dc782a297763865bd87968eca"
+      },
+      "oracle_manifest": "build/mach215-clock-reduction/manifest.json",
+      "source_sha256": "e8d6fef3d41db39b8a05b94e72fa274955d807b1a58cfb19e065257ef8555e6d"
+    },
+    {
+      "name": "KC02",
+      "device": "MACH215",
+      "files": {
+        "KC02.PDS": "e8d6fef3d41db39b8a05b94e72fa274955d807b1a58cfb19e065257ef8555e6d",
+        "KC02.JED": "aa9a95ea01349477acbe0d0ba9310821ff50e7b3f2a550f8d1e16c20626abd1b",
+        "KC02.MXL": "2baba23897fc079cb3554da2666afd662cfad8083a16bb4da6936bf94882da58"
+      },
+      "oracle_manifest": "build/mach215-clock-reduction/manifest.json",
+      "source_sha256": "e8d6fef3d41db39b8a05b94e72fa274955d807b1a58cfb19e065257ef8555e6d"
+    },
+    {
+      "name": "KC10",
+      "device": "MACH215",
+      "files": {
+        "KC10.PDS": "66c455cd441bbf0d66d32c4a94ab34c452e2d1432b5a723af4f8b176fa4908ce",
+        "KC10.JED": "b0ca0b7ffc0adbe6b5b116b5c747aab7d034f58742071426a35e6bf696844f30",
+        "KC10.MXL": "bd6009dddea4723987c9b9a52689e2f954c2a4d7f4c4d032b1117c4136b86093"
+      },
+      "oracle_manifest": "build/mach215-clock-reduction/manifest.json",
+      "source_sha256": "66c455cd441bbf0d66d32c4a94ab34c452e2d1432b5a723af4f8b176fa4908ce"
+    },
+    {
+      "name": "KC11",
+      "device": "MACH215",
+      "files": {
+        "KC11.PDS": "66c455cd441bbf0d66d32c4a94ab34c452e2d1432b5a723af4f8b176fa4908ce",
+        "KC11.JED": "c38e098377fb5a40baa8d88c148286794cd5cb249558239b6cb5fd93579cfeef",
+        "KC11.MXL": "d0d1aa24ef08fbcbdacd64c1e3ca64f36daa315bfd6aeab57b0b4376ccc00531"
+      },
+      "oracle_manifest": "build/mach215-clock-reduction/manifest.json",
+      "source_sha256": "66c455cd441bbf0d66d32c4a94ab34c452e2d1432b5a723af4f8b176fa4908ce"
+    },
+    {
+      "name": "KC12",
+      "device": "MACH215",
+      "files": {
+        "KC12.PDS": "66c455cd441bbf0d66d32c4a94ab34c452e2d1432b5a723af4f8b176fa4908ce",
+        "KC12.JED": "21fb27c7ec7e4f91eb73dd0549296ca61e0fb46985f655b27d2d0cc272263440",
+        "KC12.MXL": "6518c05b97f067ff45ae04dd3afe93e8ca6754d3eaa6020529ca001dbece5be7"
+      },
+      "oracle_manifest": "build/mach215-clock-reduction/manifest.json",
+      "source_sha256": "66c455cd441bbf0d66d32c4a94ab34c452e2d1432b5a723af4f8b176fa4908ce"
+    },
+    {
+      "name": "KC20",
+      "device": "MACH215",
+      "files": {
+        "KC20.PDS": "eff52fb18d8249e5d9a686d3d3d6bc133c22d2b30be2322d58953cc5b0f11c3d",
+        "KC20.JED": "3e90191bcb0c9db46ca21a71dfe378d440727473fc434b29b0cb4b67b76f242b",
+        "KC20.MXL": "de7136757220e4e97aee381ba8c9c00f2927ee2e89f4b85c17fc8d591cd39736"
+      },
+      "oracle_manifest": "build/mach215-clock-reduction/manifest.json",
+      "source_sha256": "eff52fb18d8249e5d9a686d3d3d6bc133c22d2b30be2322d58953cc5b0f11c3d"
+    },
+    {
+      "name": "KC21",
+      "device": "MACH215",
+      "files": {
+        "KC21.PDS": "eff52fb18d8249e5d9a686d3d3d6bc133c22d2b30be2322d58953cc5b0f11c3d",
+        "KC21.JED": "c055dab35e149f6b94ed1f04f6a50ea5090cdf60593957d0e212b02f9cd7b52e",
+        "KC21.MXL": "5485eca86281f7e700b791cf4fbf2a401a0c4bd0f092fc8af2c26dc830b93d2e"
+      },
+      "oracle_manifest": "build/mach215-clock-reduction/manifest.json",
+      "source_sha256": "eff52fb18d8249e5d9a686d3d3d6bc133c22d2b30be2322d58953cc5b0f11c3d"
+    },
+    {
+      "name": "KC22",
+      "device": "MACH215",
+      "files": {
+        "KC22.PDS": "eff52fb18d8249e5d9a686d3d3d6bc133c22d2b30be2322d58953cc5b0f11c3d",
+        "KC22.JED": "a680b43311eec5a0814c89e84686dac463182c12ae96622a1e700792b0ed569d",
+        "KC22.MXL": "06aed861a89bd16111598e6ad75a0716987cd0ea2a8029dacbbdc334732f3ee5"
+      },
+      "oracle_manifest": "build/mach215-clock-reduction/manifest.json",
+      "source_sha256": "eff52fb18d8249e5d9a686d3d3d6bc133c22d2b30be2322d58953cc5b0f11c3d"
+    },
+    {
+      "name": "KC30",
+      "device": "MACH215",
+      "files": {
+        "KC30.PDS": "611e23768ae972a1f1b46dae684845a1fdc6b190bbf4db820d8ec765ab05823d",
+        "KC30.JED": "9c12d6ac7023718a653588233ed58f9706ca0426f4d0496205bb85c9d41744be",
+        "KC30.MXL": "899c22c8fad0143b7019240e1587ebf19dce8072624f3a043d07ff9e01390a52"
+      },
+      "oracle_manifest": "build/mach215-clock-reduction/manifest.json",
+      "source_sha256": "611e23768ae972a1f1b46dae684845a1fdc6b190bbf4db820d8ec765ab05823d"
+    },
+    {
+      "name": "KC31",
+      "device": "MACH215",
+      "files": {
+        "KC31.PDS": "611e23768ae972a1f1b46dae684845a1fdc6b190bbf4db820d8ec765ab05823d",
+        "KC31.JED": "231c4494cde34bf84aca256efa3de7a94433c41a625b7b1da91c7bd49dc3bbcc",
+        "KC31.MXL": "01246ad0949bf0de2d0fc3455dbbbc2b0c2ee81bd5bc3934174bc3465b22efe4"
+      },
+      "oracle_manifest": "build/mach215-clock-reduction/manifest.json",
+      "source_sha256": "611e23768ae972a1f1b46dae684845a1fdc6b190bbf4db820d8ec765ab05823d"
+    },
+    {
+      "name": "KC32",
+      "device": "MACH215",
+      "files": {
+        "KC32.PDS": "611e23768ae972a1f1b46dae684845a1fdc6b190bbf4db820d8ec765ab05823d",
+        "KC32.JED": "231c4494cde34bf84aca256efa3de7a94433c41a625b7b1da91c7bd49dc3bbcc",
+        "KC32.MXL": "c6f89985b78fb9f2d9c9377c8c0e48bd6e0d1b26f57151cdd27c8f9a779daad2"
+      },
+      "oracle_manifest": "build/mach215-clock-reduction/manifest.json",
+      "source_sha256": "611e23768ae972a1f1b46dae684845a1fdc6b190bbf4db820d8ec765ab05823d"
+    },
+    {
+      "name": "KC40",
+      "device": "MACH215",
+      "files": {
+        "KC40.PDS": "3cacf7ac7ce52e99b19e40aeb39abc8c5e07b923d13777f13282b4f74f76682a",
+        "KC40.JED": "7d0d59b5e420ac7e888438017e88a0b3e5ef36b70489da6ca930e4f982db2592",
+        "KC40.MXL": "7e2e87735f7fddaaa1601f7cdfc9b9895827f46b8248eceba3c747192d09a34a"
+      },
+      "oracle_manifest": "build/mach215-clock-reduction/manifest.json",
+      "source_sha256": "3cacf7ac7ce52e99b19e40aeb39abc8c5e07b923d13777f13282b4f74f76682a"
+    },
+    {
+      "name": "KC41",
+      "device": "MACH215",
+      "files": {
+        "KC41.PDS": "3cacf7ac7ce52e99b19e40aeb39abc8c5e07b923d13777f13282b4f74f76682a",
+        "KC41.JED": "b7f131fe6c4aedb60572effbef969abdb914442e5f922e2ea862491704a8f6de",
+        "KC41.MXL": "f2b067fa408ed791a1814f0cccc43322b4ddf4c8bc97c21a5ad963306832b7b9"
+      },
+      "oracle_manifest": "build/mach215-clock-reduction/manifest.json",
+      "source_sha256": "3cacf7ac7ce52e99b19e40aeb39abc8c5e07b923d13777f13282b4f74f76682a"
+    },
+    {
+      "name": "KC42",
+      "device": "MACH215",
+      "files": {
+        "KC42.PDS": "3cacf7ac7ce52e99b19e40aeb39abc8c5e07b923d13777f13282b4f74f76682a",
+        "KC42.JED": "824cc06f35fcee010cacdd3e07d444360190ad7e4ada2be9369fe9b207596f7c",
+        "KC42.MXL": "237d2db6973c9a886e3da890a96dba7f91243d5a66eae57bfe252bcacc82dab8"
+      },
+      "oracle_manifest": "build/mach215-clock-reduction/manifest.json",
+      "source_sha256": "3cacf7ac7ce52e99b19e40aeb39abc8c5e07b923d13777f13282b4f74f76682a"
+    },
+    {
+      "name": "LC2151",
+      "device": "MACH215",
+      "files": {
+        "LC2151.PDS": "c7722f395400f92ed452fab072129ec617d88059501ea4c2c990e39baf98796c",
+        "LC2151.JED": "6632c5e8296d83b39b69144bf4ed38bf3a509277bdb2251502ae2b0a4e031584",
+        "LC2151.MXL": "cba9c568dc4a503310bad9c25486c134c63173019e330bfa830358920b413b31"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/215-manifest.json",
+      "source_sha256": "c7722f395400f92ed452fab072129ec617d88059501ea4c2c990e39baf98796c"
+    },
+    {
+      "name": "LC2152",
+      "device": "MACH215",
+      "files": {
+        "LC2152.PDS": "c7722f395400f92ed452fab072129ec617d88059501ea4c2c990e39baf98796c",
+        "LC2152.JED": "6632c5e8296d83b39b69144bf4ed38bf3a509277bdb2251502ae2b0a4e031584",
+        "LC2152.MXL": "7735491a6eae4ec78fbda8550b22d4b1ca166ca689a64ef5a260fa391e024777"
+      },
+      "oracle_manifest": "build/legacy-clock-reduction/215-manifest.json",
+      "source_sha256": "c7722f395400f92ed452fab072129ec617d88059501ea4c2c990e39baf98796c"
+    }
+  ]
+}

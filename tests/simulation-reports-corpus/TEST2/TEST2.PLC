@@ -1,0 +1,36 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file Test2.pds
+; FITTER-generated Placements.
+; DEVICE   MACH435
+; DATE     Mon Nov 09 20:22:11 2026
+
+
+Pin   20  CLOCK1
+Pin   6  SENSOR
+Pin   12  VOUT[5] Reg  ; S6=1  S9=1  Pair 22
+Pin   75  VOUT[4] Reg  ; S6=1  S9=1  Pair 118
+Pin   73  VOUT[3] Reg  ; S6=0  S9=1  Pair 102
+Pin   54  VOUT[2] Reg  ; S6=1  S9=1  Pair 86
+Pin   56  VOUT[1] Reg  ; S6=0  S9=1  Pair 82
+Pin   14  VOUT[0] Reg  ; S6=1  S9=1  Pair 18
+Pin   77  ST[1] Reg  ; S6=0  S9=1  Pair 114
+Pin   71  ST[0] Reg  ; S6=1  S9=1  Pair 98
+Pin   23  CLOCK2
+Pin   5  _RESET1
+Pin   4  _RESET2
+Pin   9  RING
+Pin   7  ENDGREETING
+Pin   3  DIALTONE
+Pin   13  ENDMESSAGES
+Pin   10  ST2[1] Reg  ; S6=0  S9=1  Pair 6
+Pin   35  ST2[0] Reg  ; S6=1  S9=1  Pair 50
+Pin   50  ANSWER Reg  ; S6=1  S9=1  Pair 66
+Pin   29  PLAY Reg  ; S6=1  S9=1  Pair 34
+Pin   8  RECORD Reg  ; S6=0  S9=1  Pair 2
+Node  114  RN_ST[1] Reg  ; S6=0  S9=1 
+Node  98  RN_ST[0] Reg  ; S6=1  S9=1 
+Node  6  RN_ST2[1] Reg  ; S6=0  S9=1 
+Node  50  RN_ST2[0] Reg  ; S6=1  S9=1 
+; Unused Pins & Nodes
+; -> None Found.

@@ -1,0 +1,488 @@
+;MACHXL Design Description
+
+;---------------------------------- Declaration Segment ------------
+TITLE    TWO 16-COUNTER FOLLOWED BY MULTIPLEXER
+PATTERN  B
+REVISION 1.0
+AUTHOR   J. ENGINEER
+COMPANY  AMD
+DATE     10/09/92
+
+CHIP  CNTMUX  MACH435
+pin ?  gnd 
+pin ?  vcc 
+
+;---------------------------------- PIN Declarations ---------------
+pin ?  CLK 
+PIN ?  COUNT ;
+PIN ?  UP ;
+PIN ?  LOAD ;
+PIN ?  SELECT ;
+PIN ?  I0 ;
+PIN ?  I1 ;
+PIN ?  I2 ;
+PIN ?  I3 ;
+PIN ?  I4 ;
+PIN ?  I5 ;
+PIN ?  I6 ;
+PIN ?  I7 ;
+PIN ?  I8 ;
+PIN ?  I9 ;
+PIN ?  I10 ;
+PIN ?  I11 ;
+PIN ?  I12 ;
+PIN ?  I13 ;
+PIN ?  I14 ;
+PIN ?  I15 ;
+PIN ?  I16 ;
+PIN ?  I17 ;
+PIN ?  I18 ;
+PIN ?  I19 ;
+PIN ?  I20 ;
+PIN ?  I21 ;
+PIN ?  I22 ;
+PIN ?  I23 ;
+PIN ?  I24 ;
+PIN ?  I25 ;
+PIN ?  I26 ;
+PIN ?  I27 ;
+PIN ?  I28 ;
+PIN ?  I29 ;
+PIN ?  I30 ;
+PIN ?  I31 ;
+PIN ?  O0 COMBINATORIAL ;
+PIN ?  O1 COMBINATORIAL ;
+PIN ?  O2 COMBINATORIAL ;
+PIN ?  O3 COMBINATORIAL ;
+PIN ?  O4 COMBINATORIAL ;
+PIN ?  O5 COMBINATORIAL ;
+PIN ?  O6 COMBINATORIAL ;
+PIN ?  O7 COMBINATORIAL ;
+PIN ?  O8 COMBINATORIAL ;
+PIN ?  O9 COMBINATORIAL ;
+PIN ?  O10 COMBINATORIAL ;
+PIN ?  O11 COMBINATORIAL ;
+PIN ?  O12 COMBINATORIAL ;
+PIN ?  O13 COMBINATORIAL ;
+PIN ?  O14 COMBINATORIAL ;
+PIN ?  O15 COMBINATORIAL ;
+PIN ?  O16 COMBINATORIAL ;
+PIN ?  O17 COMBINATORIAL ;
+PIN ?  O18 COMBINATORIAL ;
+PIN ?  O19 COMBINATORIAL ;
+PIN ?  O20 COMBINATORIAL ;
+PIN ?  O21 COMBINATORIAL ;
+PIN ?  O22 COMBINATORIAL ;
+PIN ?  O23 COMBINATORIAL ;
+PIN ?  O24 COMBINATORIAL ;
+PIN ?  O25 COMBINATORIAL ;
+PIN ?  O26 COMBINATORIAL ;
+PIN ?  O27 COMBINATORIAL ;
+PIN ?  O28 COMBINATORIAL ;
+PIN ?  O29 COMBINATORIAL ;
+PIN ?  O30 COMBINATORIAL ;
+PIN ?  O31 COMBINATORIAL ;
+NODE ?  Q0 REGISTERED ;
+NODE ?  Q1 REGISTERED ;
+NODE ?  Q2 REGISTERED ;
+NODE ?  Q3 REGISTERED ;
+NODE ?  Q4 REGISTERED ;
+NODE ?  Q5 REGISTERED ;
+NODE ?  Q6 REGISTERED ;
+NODE ?  Q7 REGISTERED ;
+NODE ?  Q8 REGISTERED ;
+NODE ?  Q9 REGISTERED ;
+NODE ?  Q10 REGISTERED ;
+NODE ?  Q11 REGISTERED ;
+NODE ?  Q12 REGISTERED ;
+NODE ?  Q13 REGISTERED ;
+NODE ?  Q14 REGISTERED ;
+NODE ?  Q15 REGISTERED ;
+NODE ?  Q16 REGISTERED ;
+NODE ?  Q17 REGISTERED ;
+NODE ?  Q18 REGISTERED ;
+NODE ?  Q19 REGISTERED ;
+NODE ?  Q20 REGISTERED ;
+NODE ?  Q21 REGISTERED ;
+NODE ?  Q22 REGISTERED ;
+NODE ?  Q23 REGISTERED ;
+NODE ?  Q24 REGISTERED ;
+NODE ?  Q25 REGISTERED ;
+NODE ?  Q26 REGISTERED ;
+NODE ?  Q27 REGISTERED ;
+NODE ?  Q28 REGISTERED ;
+NODE ?  Q29 REGISTERED ;
+NODE ?  Q30 REGISTERED ;
+NODE ?  Q31 REGISTERED ;
+
+group qreg q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 q14 q15 q16
+           q17 q18 q19 q20 q21 q22 q23 q24 q25 q26 q27 q28 q29 q30 q31
+
+group mach_seg_a q15 o15 q14 o14 q13 o13 q12 o12
+group mach_seg_h q11 o11 q10 o10 q9 o9 q8 o8
+group mach_seg_b q31 o31 q30 o30 q29 o29 q28 o28
+group mach_seg_g q27 o27 q26 o26 q25 o25 q24 o24
+group mach_seg_c q7 o7 q6 o6 q5 o5 q4 o4
+group mach_seg_f q3 o3 q2 o2 q1 o1 q0 o0
+group mach_seg_d q23 o23 q22 o22 q21 o21 q20 o20
+group mach_seg_e q19 o19 q18 o18 q17 o17 q16 o16
+
+;----------------------------------- Boolean Equation Segment ------
+EQUATIONS
+
+QREG.CLKF = CLK
+QREG.RSTF = GND
+QREG.SETF = GND
+
+Q0.T := COUNT
+      + LOAD * I0 * /Q0
+      + LOAD * /I0 * Q0
+
+Q1.T := COUNT * UP * Q0
+      + COUNT * /UP * /Q0
+      + LOAD * I1 * /Q1
+      + LOAD * /I1 * Q1
+
+Q2.T := COUNT * UP * Q0 * Q1
+      + COUNT * /UP * /Q0 * /Q1
+      + LOAD * I2 * /Q2
+      + LOAD * /I2 * Q2
+
+Q3.T := COUNT * UP * Q0 * Q1 * Q2
+      + COUNT * /UP * /Q0 * /Q1 * /Q2
+      + LOAD * I3 * /Q3
+      + LOAD * /I3 * Q3
+
+Q4.T := COUNT * UP * Q0 * Q1 * Q2 * Q3
+      + COUNT * /UP * /Q0 * /Q1 * /Q2 * /Q3
+      + LOAD * I4 * /Q4
+      + LOAD * /I4 * Q4
+
+Q5.T := COUNT * UP * Q0 * Q1 * Q2 * Q3 * Q4
+      + COUNT * /UP * /Q0 * /Q1 * /Q2 * /Q3 * /Q4
+      + LOAD * I5 * /Q5
+      + LOAD * /I5 * Q5
+
+Q6.T := COUNT * UP * Q0 * Q1 * Q2 * Q3 * Q4 * Q5
+      + COUNT * /UP * /Q0 * /Q1 * /Q2 * /Q3 * /Q4 * /Q5
+      + LOAD * I6 * /Q6
+      + LOAD * /I6 * Q6
+
+Q7.T := COUNT * UP * Q0 * Q1 * Q2 * Q3 * Q4 * Q5 *Q6
+      + COUNT * /UP * /Q0 * /Q1 * /Q2 * /Q3 * /Q4 * /Q5 * /Q6
+      + LOAD * I7 * /Q7
+      + LOAD * /I7 * Q7
+
+Q8.T := COUNT * UP * Q0 * Q1 * Q2 * Q3 * Q4 * Q5 * Q6 * Q7
+      + COUNT * /UP * /Q0 * /Q1 * /Q2 * /Q3 * /Q4 * /Q5 * /Q6 * /Q7
+      + LOAD * I8 * /Q8
+      + LOAD * /I8 * Q8
+
+Q9.T := COUNT * UP * Q0 * Q1 * Q2 * Q3 * Q4 * Q5 * Q6 * Q7 * Q8
+      + COUNT * /UP * /Q0 * /Q1 * /Q2 * /Q3 * /Q4 * /Q5 * /Q6 * /Q7 * /Q8
+      + LOAD * I9 * /Q9
+      + LOAD * /I9 * Q9
+
+Q10.T := COUNT * UP * Q0 * Q1 * Q2 * Q3 * Q4 * Q5 * Q6 * Q7 * Q8 * Q9
+      + COUNT * /UP * /Q0 * /Q1 * /Q2 * /Q3 * /Q4 * /Q5 * /Q6 * /Q7 * /Q8
+        * /Q9
+      + LOAD * I10 * /Q10
+      + LOAD * /I10 * Q10
+
+Q11.T := COUNT * UP * Q0 * Q1 * Q2 * Q3 * Q4 * Q5 * Q6 * Q7 * Q8 * Q9 * Q10
+      + COUNT * /UP * /Q0 * /Q1 * /Q2 * /Q3 * /Q4 * /Q5 * /Q6 * /Q7 * /Q8
+        * /Q9 * /Q10
+      + LOAD * I11 * /Q11
+      + LOAD * /I11 * Q11
+
+Q12.T := COUNT * UP * Q0 * Q1 * Q2 * Q3 * Q4 * Q5 * Q6 * Q7 * Q8 * Q9 * Q10
+         * Q11
+      + COUNT * /UP * /Q0 * /Q1 * /Q2 * /Q3 * /Q4 * /Q5 * /Q6 * /Q7 * /Q8
+        * /Q9 * /Q10 * /Q11
+      + LOAD * I12 * /Q12
+      + LOAD * /I12 * Q12
+
+Q13.T := COUNT * UP * Q0 * Q1 * Q2 * Q3 * Q4 * Q5 * Q6 * Q7 * Q8 * Q9 * Q10
+         * Q11 * Q12
+      + COUNT * /UP * /Q0 * /Q1 * /Q2 * /Q3 * /Q4 * /Q5 * /Q6 * /Q7 * /Q8
+        * /Q9 * /Q10 * /Q11 * /Q12
+      + LOAD * I13 * /Q13
+      + LOAD * /I13 * Q13
+
+Q14.T := COUNT * UP * Q0 * Q1 * Q2 * Q3 * Q4 * Q5 * Q6 * Q7 * Q8 * Q9 * Q10
+         * Q11 * Q12 * Q13
+      + COUNT * /UP * /Q0 * /Q1 * /Q2 * /Q3 * /Q4 * /Q5 * /Q6 * /Q7 * /Q8
+        * /Q9 * /Q10 * /Q11 * /Q12 * /Q13
+      + LOAD * I14 * /Q14
+      + LOAD * /I14 * Q14
+
+Q15.T := COUNT * UP * Q0 * Q1 * Q2 * Q3 * Q4 * Q5 * Q6 * Q7 * Q8 * Q9 * Q10
+         * Q11 * Q12 * Q13 * Q14
+      + COUNT * /UP * /Q0 * /Q1 * /Q2 * /Q3 * /Q4 * /Q5 * /Q6 * /Q7 * /Q8
+        * /Q9 * /Q10 * /Q11 * /Q12 * /Q13 * /Q14
+      + LOAD * I15 * /Q15
+      + LOAD * /I15 * Q15
+
+Q16.T := COUNT
+      + LOAD * I16 * /Q16
+      + LOAD * /I16 * Q16
+
+Q17.T := COUNT * UP * Q16
+      + COUNT * /UP * /Q16
+      + LOAD * I17 * /Q17
+      + LOAD * /I17 * Q17
+
+Q18.T := COUNT * UP * Q16 * Q17
+      + COUNT * /UP * /Q16 * /Q17
+      + LOAD * I18 * /Q18
+      + LOAD * /I18 * Q18
+
+Q19.T := COUNT * UP * Q16 * Q17 * Q18
+      + COUNT * /UP * /Q16 * /Q17 * /Q18
+      + LOAD * I19 * /Q19
+      + LOAD * /I19 * Q19
+
+Q20.T := COUNT * UP * Q16 * Q17 * Q18 * Q19
+      + COUNT * /UP * /Q16 * /Q17 * /Q18 * /Q19
+      + LOAD * I20 * /Q20
+      + LOAD * /I20 * Q20
+
+Q21.T := COUNT * UP * Q16 * Q17 * Q18 * Q19 * Q20
+      + COUNT * /UP * /Q16 * /Q17 * /Q18 * /Q19 * /Q20
+      + LOAD * I21 * /Q21
+      + LOAD * /I21 * Q21
+
+Q22.T := COUNT * UP * Q16 * Q17 * Q18 * Q19 * Q20 * Q21
+      + COUNT * /UP * /Q16 * /Q17 * /Q18 * /Q19 * /Q20 * /Q21
+      + LOAD * I22 * /Q22
+      + LOAD * /I22 * Q22
+
+Q23.T := COUNT * UP * Q16 * Q17 * Q18 * Q19 * Q20 * Q21 * Q22
+      + COUNT * /UP * /Q16 * /Q17 * /Q18 * /Q19 * /Q20 * /Q21 * /Q22
+      + LOAD * I23 * /Q23
+      + LOAD * /I23 * Q23
+
+Q24.T := COUNT * UP * Q16 * Q17 * Q18 * Q19 * Q20 * Q21 * Q22 * Q23
+      + COUNT * /UP * /Q16 * /Q17 * /Q18 * /Q19 * /Q20 * /Q21 * /Q22 * /Q23
+      + LOAD * I24 * /Q24
+      + LOAD * /I24 * Q24
+
+Q25.T := COUNT * UP * Q16 * Q17 * Q18 * Q19 * Q20 * Q21 * Q22 * Q23 * Q24
+      + COUNT * /UP * /Q16 * /Q17 * /Q18 * /Q19 * /Q20 * /Q21 * /Q22 * /Q23
+        * /Q24
+      + LOAD * I25 * /Q25
+      + LOAD * /I25 * Q25
+
+Q26.T := COUNT * UP * Q16 * Q17 * Q18 * Q19 * Q20 * Q21 * Q22 * Q23 * Q24
+         * Q25
+      + COUNT * /UP * /Q16 * /Q17 * /Q18 * /Q19 * /Q20 * /Q21 * /Q22 * /Q23
+        * /Q24 * /Q25
+      + LOAD * I26 * /Q26
+      + LOAD * /I26 * Q26
+
+Q27.T := COUNT * UP * Q16 * Q17 * Q18 * Q19 * Q20 * Q21 * Q22 * Q23 * Q24
+         * Q25 * Q26
+      + COUNT * /UP * /Q16 * /Q17 * /Q18 * /Q19 * /Q20 * /Q21 * /Q22 * /Q23
+        * /Q24 * /Q25 * /Q26
+      + LOAD * I27 * /Q27
+      + LOAD * /I27 * Q27
+
+Q28.T := COUNT * UP * Q16 * Q17 * Q18 * Q19 * Q20 * Q21 * Q22 * Q23 * Q24
+         * Q25 * Q26 * Q27
+      + COUNT * /UP * /Q16 * /Q17 * /Q18 * /Q19 * /Q20 * /Q21 * /Q22 * /Q23
+        * /Q24 * /Q25 * /Q26 * /Q27
+      + LOAD * I28 * /Q28
+      + LOAD * /I28 * Q28
+
+Q29.T := COUNT * UP * Q16 * Q17 * Q18 * Q19 * Q20 * Q21 * Q22 * Q23 * Q24
+         * Q25 * Q26 * Q27 * Q28
+      + COUNT * /UP * /Q16 * /Q17 * /Q18 * /Q19 * /Q20 * /Q21 * /Q22 * /Q23
+        * /Q24 * /Q25 * /Q26 * /Q27 * /Q28
+      + LOAD * I29 * /Q29
+      + LOAD * /I29 * Q29
+
+Q30.T := COUNT * UP * Q16 * Q17 * Q18 * Q19 * Q20 * Q21 * Q22 * Q23 * Q24
+         * Q25 * Q26 * Q27 * Q28 * Q29
+      + COUNT * /UP * /Q16 * /Q17 * /Q18 * /Q19 * /Q20 * /Q21 * /Q22 * /Q23
+        * /Q24 * /Q25 * /Q26 * /Q27 * /Q28 * /Q29
+      + LOAD * I30 * /Q30
+      + LOAD * /I30 * Q30
+
+Q31.T := COUNT * UP * Q16 * Q17 * Q18 * Q19 * Q20 * Q21 * Q22 * Q23 * Q24
+         * Q25 * Q26 * Q27 * Q28 * Q29 * Q30
+      + COUNT * /UP * /Q16 * /Q17 * /Q18 * /Q19 * /Q20 * /Q21 * /Q22 * /Q23
+        * /Q24 * /Q25 * /Q26 * /Q27 * /Q28 * /Q29 * /Q30
+      + LOAD * I31 * /Q31
+      + LOAD * /I31 * Q31
+
+O0 = SELECT * I0
+   + /SELECT * Q0
+
+O1 = SELECT * I1
+   + /SELECT * Q1
+
+O2 = SELECT * I2
+   + /SELECT * Q2
+
+O3 = SELECT * I3
+   + /SELECT * Q3
+
+O4 = SELECT * I4
+   + /SELECT * Q4
+
+O5 = SELECT * I5
+   + /SELECT * Q5
+
+O6 = SELECT * I6
+   + /SELECT * Q6
+
+O7 = SELECT * I7
+   + /SELECT * Q7
+
+O8 = SELECT * I8
+   + /SELECT * Q8
+
+O9 = SELECT * I9
+   + /SELECT * Q9
+
+O10 = SELECT * I10
+   + /SELECT * Q10
+
+O11 = SELECT * I11
+   + /SELECT * Q11
+
+O12 = SELECT * I12
+   + /SELECT * Q12
+
+O13 = SELECT * I13
+   + /SELECT * Q13
+
+O14 = SELECT * I14
+   + /SELECT * Q14
+
+O15 = SELECT * I15
+   + /SELECT * Q15
+
+O16 = SELECT * I16
+   + /SELECT * Q16
+
+O17 = SELECT * I17
+   + /SELECT * Q17
+
+O18 = SELECT * I18
+   + /SELECT * Q18
+
+O19 = SELECT * I19
+   + /SELECT * Q19
+
+O20 = SELECT * I20
+   + /SELECT * Q20
+
+O21 = SELECT * I21
+   + /SELECT * Q21
+
+O22 = SELECT * I22
+   + /SELECT * Q22
+
+O23 = SELECT * I23
+   + /SELECT * Q23
+
+O24 = SELECT * I24
+   + /SELECT * Q24
+
+O25 = SELECT * I25
+   + /SELECT * Q25
+
+O26 = SELECT * I26
+   + /SELECT * Q26
+
+O27 = SELECT * I27
+   + /SELECT * Q27
+
+O28 = SELECT * I28
+   + /SELECT * Q28
+
+O29 = SELECT * I29
+   + /SELECT * Q29
+
+O30 = SELECT * I30
+   + /SELECT * Q30
+
+O31 = SELECT * I31
+   + /SELECT * Q31
+
+;----------------------------------- Simulation Segment ------------
+SIMULATION
+TRACE_ON CLK COUNT UP LOAD SELECT Q0 O0 Q1 O1 Q2 O2 Q3 O3 Q4 Q5 Q6 Q7 Q8 Q9
+      Q10 Q11 Q12 Q13 Q14 Q15 Q16 Q17 Q18 Q19 Q20 Q21 Q22
+      Q23 Q24 Q25 Q26 Q27 Q28 Q29 Q30 Q31;
+SETF /LOAD /CLK /UP /COUNT /SELECT;
+SETF /I0 /I1 /I2 /I3 /I4 /I5 /I6 /I7 /I8 /I9 /I10
+     /I11 /I12 /I13 /I14 /I15 /I16 /I17 /I18 /I19 /I20 /I21 /I22 /I23
+     /I24 /I25 /I26 /I27 /I28 /I29 /I30 /I31;
+SETF LOAD
+CLOCKF CLK
+CHECK /Q0 /Q1 /Q2 /Q3 /Q4 /Q5 /Q6 /Q7 /Q8 /Q9 /Q10 /Q11 /Q12 /Q13 /Q14
+      /Q15 /Q16 /Q17 /Q18 /Q19 /Q20 /Q21 /Q22
+      /Q23 /Q24 /Q25 /Q26 /Q27 /Q28 /Q29 /Q30 /Q31;
+SETF /LOAD
+CLOCKF CLK
+SETF I0 /I1 I2 /I3 I4 /I5 I6 /I7 I8 /I9 I10
+     /I11 I12 /I13 I14 /I15 I16 /I17 I18 /I19 I20 /I21 I22 /I23
+     I24 /I25 I26 /I27 I28 /I29 I30 /I31;
+SETF LOAD
+CLOCKF CLK
+CHECK Q0 /Q1 Q2 /Q3 Q4 /Q5 Q6 /Q7 Q8 /Q9 Q10 /Q11 Q12 /Q13 Q14
+      /Q15 Q16 /Q17 Q18 /Q19 Q20 /Q21 Q22
+      /Q23 Q24 /Q25 Q26 /Q27 Q28 /Q29 Q30 /Q31;
+SETF /LOAD
+CLOCKF CLK
+SETF /I0 I1 /I2 I3 /I4 I5 /I6 I7 /I8 I9 /I10
+     I11 /I12 I13 /I14 I15 /I16 I17 /I18 I19 /I20 I21 /I22 I23
+     /I24 I25 /I26 I27 /I28 I29 /I30 I31;
+SETF LOAD
+CLOCKF CLK
+CHECK /Q0 Q1 /Q2 Q3 /Q4 Q5 /Q6 Q7 /Q8 Q9 /Q10 Q11 /Q12 Q13 /Q14
+      Q15 /Q16 Q17 /Q18 Q19 /Q20 Q21 /Q22
+      Q23 /Q24 Q25 /Q26 Q27 /Q28 Q29 /Q30 Q31;
+SETF /LOAD
+CLOCKF CLK
+SETF I0 I1 I2 I3 I4 I5 I6 I7 I8 I9 I10
+     I11 I12 I13 I14 I15 I16 I17 I18 I19 I20 I21 I22 I23
+     I24 I25 I26 I27 I28 I29 I30 I31;
+SETF LOAD
+CLOCKF CLK
+CHECK Q0 Q1 Q2 Q3 Q4 Q5 Q6 Q7 Q8 Q9 Q10 Q11 Q12 Q13 Q14
+      Q15 Q16 Q17 Q18 Q19 Q20 Q21 Q22
+      Q23 Q24 Q25 Q26 Q27 Q28 Q29 Q30 Q31;
+SETF /LOAD
+CLOCKF CLK
+SETF /I0 /I1 /I2 /I3 /I4 /I5 /I6 /I7 /I8 /I9 /I10
+     /I11 /I12 /I13 /I14 /I15 /I16 /I17 /I18 /I19 /I20 /I21 /I22 /I23
+     /I24 /I25 /I26 /I27 /I28 /I29 /I30 /I31;
+SETF LOAD
+CLOCKF CLK
+CHECK /Q0 /Q1 /Q2 /Q3 /Q4 /Q5 /Q6 /Q7 /Q8 /Q9 /Q10 /Q11 /Q12 /Q13 /Q14
+      /Q15 /Q16 /Q17 /Q18 /Q19 /Q20 /Q21 /Q22
+      /Q23 /Q24 /Q25 /Q26 /Q27 /Q28 /Q29 /Q30 /Q31;
+SETF /LOAD
+SETF COUNT UP
+CLOCKF CLK
+CHECK Q0 /Q1 /Q2 /Q3 /Q4 /Q5 /Q6 /Q7 /Q8 /Q9 /Q10 /Q11 /Q12 /Q13 /Q14
+CLOCKF CLK
+CHECK /Q0 Q1 /Q2 /Q3 /Q4 /Q5 /Q6 /Q7 /Q8 /Q9 /Q10 /Q11 /Q12 /Q13 /Q14
+CLOCKF CLK
+CHECK Q0 Q1 /Q2 /Q3 /Q4 /Q5 /Q6 /Q7 /Q8 /Q9 /Q10 /Q11 /Q12 /Q13 /Q14
+CLOCKF CLK
+CHECK /Q0 /Q1 Q2 /Q3 /Q4 /Q5 /Q6 /Q7 /Q8 /Q9 /Q10 /Q11 /Q12 /Q13 /Q14
+CLOCKF CLK
+CHECK Q0 /Q1 Q2 /Q3 /Q4 /Q5 /Q6 /Q7 /Q8 /Q9 /Q10 /Q11 /Q12 /Q13 /Q14
+CLOCKF CLK
+CHECK /Q0 Q1 Q2 /Q3 /Q4 /Q5 /Q6 /Q7 /Q8 /Q9 /Q10 /Q11 /Q12 /Q13 /Q14
+FOR I :=1 TO 100 DO
+BEGIN
+  CLOCKF CLK
+END
+TRACE_OFF
+
+

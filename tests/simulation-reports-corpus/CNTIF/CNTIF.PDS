@@ -1,0 +1,86 @@
+;Implementation of previous Counter using If-Then Statements.
+
+;---------------------------------- Declaration Segment ------------
+TITLE    8-BIT COUNTER with Parallel Load
+PATTERN  1
+REVISION 1
+AUTHOR   J. ENGINEER
+COMPANY  AMD
+DATE    4/26/94
+
+CHIP  cntif  MACH111
+
+;---------------------------------- PIN Declarations --------------
+
+PIN  ?          DATA[0..7]          
+PIN  ?          TC[0..10]           REGISTERED
+PIN  ?          COUNT
+PIN  ?          CLK
+PIN  ?          RST
+PIN  ?          OE
+
+STRING LOAD '(/COUNT)'
+
+EQUATIONS
+
+TC[0..7].CLKF = CLK
+TC[0..7].RSTF =RST
+TC[0..7].TRST =OE
+
+IF LOAD THEN
+BEGIN
+TC[7].T:= DATA[7]*/TC[7] +/DATA[7]*TC[7]
+TC[6].T:= DATA[6]*/TC[6] +/DATA[6]*TC[6]
+TC[5].T:= DATA[5]*/TC[5] +/DATA[5]*TC[5]
+TC[4].T:= DATA[4]*/TC[4] +/DATA[4]*TC[4]
+TC[3].T:= DATA[3]*/TC[3] +/DATA[3]*TC[3]
+TC[2].T:= DATA[2]*/TC[2] +/DATA[2]*TC[2]
+TC[1].T:= DATA[1]*/TC[1] +/DATA[1]*TC[1]
+TC[0].T:= DATA[0]*/TC[0] +/DATA[0]*TC[0]
+END
+
+IF COUNT THEN
+BEGIN 
+TC[7].T:= TC[0] * TC[1] * TC[2] *TC[3]* TC[4]*TC[5]*TC[6]
+TC[6].T:= TC[0] * TC[1] * TC[2] *TC[3]* TC[4]*TC[5] 
+TC[5].T:= TC[0] * TC[1] * TC[2] * TC[3] * TC[4]     
+TC[4].T:= TC[0] * TC[1] * TC[2] * TC[3]             
+TC[3].T:= TC[0] * TC[1] * TC[2]                     
+TC[2].T:= TC[0] * TC[1]                            
+TC[1].T:= TC[0]                                        
+TC[0].T:= COUNT                                     
+END
+
+;________________________________________________________
+SIMULATION
+;--------------------------------------------------------
+
+TRACE_ON   TC[7..0] CLK COUNT DATA[7..0]
+          
+;Setting inputs and reseting registers
+
+SETF RST OE DATA[7..0] = #h3e 
+SETF /RST COUNT 
+CHECKQ /TC[7..0]
+
+FOR X:= 1 TO 3 DO
+        BEGIN
+             CLOCKF CLK
+        END
+
+;Checking if it counted to 3
+CHECKQ TC[7..0] = #H03
+
+SETF /COUNT     ;loading counter
+CLOCKF CLK
+CHECKQ TC[7..0] = #H3E   
+
+SETF  COUNT
+
+FOR X:= 1 TO 3 DO
+        BEGIN
+             CLOCKF CLK
+        END
+CHECKQ TC[7..0] = #H41    
+TRACE_OFF
+

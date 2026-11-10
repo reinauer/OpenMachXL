@@ -1,0 +1,257 @@
+Ap10.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP AUXILIARY MACH435
+   2     |PIN ? A0
+   3     |PIN ? A1
+   4     |PIN ? A2
+   5     |PIN ? A3
+   6     |PIN ? A4
+   7     |PIN ? A5
+   8     |PIN ? X
+   9     |PIN 8 Q
+  10     |NODE ? N0 REG
+  11     |NODE ? N1 REG
+  12     |NODE ? N2 REG
+  13     |NODE ? N3 REG
+  14     |NODE ? N4 REG
+  15     |NODE ? N5 REG
+  16     |NODE ? N6 REG
+  17     |NODE ? N7 REG
+  18     |NODE ? N8 REG
+  19     |NODE ? N9 REG
+  20     |GROUP MACH_SEG_A Q N0 N1 N2 N3 N4 N5 N6 N7 N8 N9
+  21     |EQUATIONS
+  22     |N0:=X :+: (A0*/A1*/A2*/A3*/A4*A5+/A0*A1*A2*A3*/A4*A5+A0*A1*A2*/A3*/A4*A5+A0*/A1*A2*A3*A4*/A5+A0*/A1*/A2*A3*A4*A5)
+  23     |N0.CLKF=A0*A1
+  24     |N1:=X :+: (A0*/A1*/A2*/A3*/A4*A5+/A0*A1*A2*A3*/A4*A5+A0*A1*A2*/A3*/A4*A5+A0*/A1*A2*A3*A4*/A5+A0*/A1*/A2*A3*A4*A5)
+  25     |N1.CLKF=A0*A1
+  26     |N2:=X :+: (A0*/A1*/A2*/A3*/A4*A5+/A0*A1*A2*A3*/A4*A5+A0*A1*A2*/A3*/A4*A5+A0*/A1*A2*A3*A4*/A5+A0*/A1*/A2*A3*A4*A5)
+  27     |N2.CLKF=A0*A1
+  28     |N3:=X :+: (A0*/A1*/A2*/A3*/A4*A5+/A0*A1*A2*A3*/A4*A5+A0*A1*A2*/A3*/A4*A5+A0*/A1*A2*A3*A4*/A5+A0*/A1*/A2*A3*A4*A5)
+  29     |N3.CLKF=A0*A1
+  30     |N4:=X :+: (A0*/A1*/A2*/A3*/A4*A5+/A0*A1*A2*A3*/A4*A5+A0*A1*A2*/A3*/A4*A5+A0*/A1*A2*A3*A4*/A5+A0*/A1*/A2*A3*A4*A5)
+  31     |N4.CLKF=A0*A1
+  32     |N5:=X :+: (A0*/A1*/A2*/A3*/A4*A5+/A0*A1*A2*A3*/A4*A5+A0*A1*A2*/A3*/A4*A5+A0*/A1*A2*A3*A4*/A5+A0*/A1*/A2*A3*A4*A5)
+  33     |N5.CLKF=A0*A1
+  34     |N6:=X :+: (A0*/A1*/A2*/A3*/A4*A5+/A0*A1*A2*A3*/A4*A5+A0*A1*A2*/A3*/A4*A5+A0*/A1*A2*A3*A4*/A5+A0*/A1*/A2*A3*A4*A5)
+  35     |N6.CLKF=A0*A1
+  36     |N7:=X :+: (A0*/A1*/A2*/A3*/A4*A5+/A0*A1*A2*A3*/A4*A5+A0*A1*A2*/A3*/A4*A5+A0*/A1*A2*A3*A4*/A5+A0*/A1*/A2*A3*A4*A5)
+  37     |N7.CLKF=A0*A1
+  38     |N8:=X :+: (A0*/A1*/A2*/A3*/A4*A5+/A0*A1*A2*A3*/A4*A5+A0*A1*A2*/A3*/A4*A5+A0*/A1*A2*A3*A4*/A5+A0*/A1*/A2*A3*A4*A5)
+  39     |N8.CLKF=A0*A1
+  40     |N9:=X :+: (A0*/A1*/A2*/A3*/A4*A5+/A0*A1*A2*A3*/A4*A5+A0*A1*A2*/A3*/A4*A5+A0*/A1*A2*A3*A4*/A5+A0*/A1*/A2*A3*A4*A5)
+  41     |N9.CLKF=A0*A1
+  42     |Q=N0+N1+N2+N3+N4+N5+N6+N7+N8+N9
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Ap10.pds
+
+*** Start MACHBPP.E 02:53:34 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>N0
+Processing equation for ====>N0.CLKF
+Processing equation for ====>N1
+Processing equation for ====>N1.CLKF
+Processing equation for ====>N2
+Processing equation for ====>N2.CLKF
+Processing equation for ====>N3
+Processing equation for ====>N3.CLKF
+Processing equation for ====>N4
+Processing equation for ====>N4.CLKF
+Processing equation for ====>N5
+Processing equation for ====>N5.CLKF
+Processing equation for ====>N6
+Processing equation for ====>N6.CLKF
+Processing equation for ====>N7
+Processing equation for ====>N7.CLKF
+Processing equation for ====>N8
+Processing equation for ====>N8.CLKF
+Processing equation for ====>N9
+Processing equation for ====>N9.CLKF
+Processing equation for ====>Q
+
+ %%  MACHBPP  %% Maximum memory allocated was: 95594 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Ap10.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 02:53:35; (MACHBPP.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 02:53:35 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node N9...
+====> N9                 MIN_ON (6 + pt)
+====> N9.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for node N8...
+====> N8                 MIN_ON (6 + pt)
+====> N8.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for node N7...
+====> N7                 MIN_ON (6 + pt)
+====> N7.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for node N6...
+====> N6                 MIN_ON (6 + pt)
+====> N6.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for node N5...
+====> N5                 MIN_ON (6 + pt)
+====> N5.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for node N4...
+====> N4                 MIN_ON (6 + pt)
+====> N4.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for node N3...
+====> N3                 MIN_ON (6 + pt)
+====> N3.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for node N2...
+====> N2                 MIN_ON (6 + pt)
+====> N2.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for node N1...
+====> N1                 MIN_ON (6 + pt)
+====> N1.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for node N0...
+====> N0                 MIN_ON (6 + pt)
+====> N0.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for pin Q...
+====> Q                  MIN_ON (10 + pt --> 1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 64984 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Ap10.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 02:53:37; (MACHMIN.EXE= 2 sec.) elapsed time= 3 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 02:53:37 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file ap10.tre to PLA file ap10.pla...
+
+...........
+...........
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 65846 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Ap10.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 02:53:38; (MACHMIN.EXE= 1 sec.) elapsed time= 4 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 02:53:38 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Ap10.pds . Device is MACH435 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of non-global clocks:
+   A0:
+...... is part of a multiple-literal clock.
+   A1:
+...... is part of a multiple-literal clock.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+. . . . . . . . . . . . . . . . . . . . . .  
+. . . . . . . . . . . . . . . . . . . . 
+Reshuffle Equations
+.  
+. . . . . . . . . . . . . . . . . . . . 
+Shift to FANIN_PHASE.
+.  
+. . . . . . . . . . . . . . . . . . . . 
+Shift to FANIN_PHASE2.
+.  
+. . . . . . . . . . . . . . . . . . . . 
+Shift to BUR_NOD_PHASE.
+.  
+. . . . . . . . . . . . . . . . . . . . 
+GND -> Implied SET/RESET
+.  
+. . . . . . . . . . . . . . . . . . . . .  
+. . . . . . . . . . . . . . . . 
+Reshuffle Equations
+. . . . .  
+. . . . . . . . . . . . . . 
+Shift to FANIN_PHASE.
+. . . . . . .  
+. . . . . . . . . . . . 
+Shift to FANIN_PHASE2.
+. . . . . . . . .  
+. . . . . . . . . . 
+Shift to BUR_NOD_PHASE.
+. . . . . . . . . . .  
+. . . . . . . . 
+Aggressive pterm counting.
+. . . . . . . . . . . . .  
+. . . . . . 
+Reshuffle Equations
+. . . . . . . . . . . . . . .  
+. . . . 
+Shift to FANIN_PHASE.
+. . . . . . . . . . . . . . . . .  
+. . . . 
+Shift to FANIN_PHASE2.
+. . . . . . . . . . . . . . . . .  
+. . . . 
+Shift to BUR_NOD_PHASE.
+. . . . . . . . . . . . . . . . .  
+. .  
+|> ERROR z8007 - *** Cannot find a Partition.
+..... Only 50 percent of all signals are partitioned.
+
+*** Report Generator invoked.
+
+Partitioning  50% - Completed
+Placement      0% - Completed
+Routing        0% - Completed
+%%% Fitting process has failed %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Ap10.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 0 .
+
+*** End MACHFITR.EX 02:53:39; (MACHFITR.EXE= 1 sec.) elapsed time= 5 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

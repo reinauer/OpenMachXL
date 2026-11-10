@@ -1,0 +1,154 @@
+
+*** Start MACHPAR.E 03:24:12 
+Ge2110.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP GE2110 MACH211
+   2     |PIN ? A[5..0]
+   3     |PIN 11 CLK
+   4     |PIN ? Q COMB
+   5     |NODE ? NN REG PAIR Q
+   6     |EQUATIONS
+   7     |Q=/A[5]*/A[4]*/A[3]*/A[2]*/A[1]*A[0]+/A[5]*/A[4]*/A[3]*/A[2]*A[1]*/A[0]+/A[5]*/A[4]*/A[3]*A[2]*/A[1]*/A[0]+/A[5]*/A[4]*/A[3]*A[2]*A[1]*A[0]+
+   8     |NN=/A[5]*/A[4]*/A[3]*/A[2]*/A[1]*A[0]+/A[5]*/A[4]*/A[3]*/A[2]*A[1]*/A[0]+/A[5]*/A[4]*/A[3]*A[2]*/A[1]*/A[0]+/A[5]*/A[4]*/A[3]*A[2]*A[1]*A[0]
+   9     |NN.CLKF=CLK
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Ge2110.pds
+
+*** End MACHPAR.EXE 03:24:12; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 03:24:12 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q
+Processing equation for ====>NN
+Processing equation for ====>NN.CLKF
+|> WARNING B619
+     Node NN paired with pin Q does not have the same
+     equation type attribute. Hence, PAIR declaration deleted.
+
+ %%  MACHBPP  %% Maximum memory allocated was: 105894 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Ge2110.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 1
+
+*** End MACHBPP.EXE 03:24:13; (MACHBPP.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 03:24:13 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node NN...
+Gate splitting (NODE ? NN) to (NODE ? _N_O_D_E_0).
+Gate splitting (NODE ? NN) to (NODE ? _N_O_D_E_1).
+====> NN                 MIN_ON (32 + pt --> 2 + pt)
+====> NN.CLKF            MIN_ON (1 + pt)
+====> _N_O_D_E_0         MIN_ON (16 + pt)
+====> _N_O_D_E_1         MIN_ON (16 + pt)
+Processing equation(s) for pin Q...
+Gate splitting (PIN ? Q) to (NODE ? _N_O_D_E_2).
+Gate splitting (PIN ? Q) to (NODE ? _N_O_D_E_3).
+====> Q                  MIN_ON (32 + pt --> 2 + pt)
+====> _N_O_D_E_2         MIN_ON (16 + pt)
+====> _N_O_D_E_3         MIN_ON (16 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 63656 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: GE2110.PDS.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 03:24:14; (MACHMIN.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 03:24:14 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file ge2110.tre to PLA file ge2110.pla...
+
+......
+......
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 61244 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: GE2110.PDS.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 03:24:15; (MACHMIN.EXE= 1 sec.) elapsed time= 3 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 03:24:15 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is GE2110.PDS . Device is MACH211 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+|> WARNING z5073 - If a declared input signal is not used in any equation,
+                   then that signal may be discarded in order to reduce the
+                   number of pins required to fit the design. Input Pins
+                   not referenced - discarded :
+CLK 
+|> WARNING z5071 - Nodes not referenced - discarded :
+NN _N_O_D_E_0 _N_O_D_E_1 
+Check clock rules
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is GE2110.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File GE2110.PDS .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 2 .
+
+*** End MACHFITR.EX 03:24:16; (MACHFITR.EXE= 1 sec.) elapsed time= 4 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

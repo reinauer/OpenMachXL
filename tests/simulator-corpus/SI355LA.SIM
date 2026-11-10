@@ -1,0 +1,39 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  SI355LA.PDS
+Title  
+
+
+
+   1-V1 - TRACE_ON
+          A  N  CLK  Q  
+   1-V1 - SETF
+          /A  /CLK  
+   2-V2 - SETF
+          A  
+   6-V3 - CLOCKF
+          CLK  
+   6-V4 - SETF
+          /A  
+  10-V5 - CLOCKF
+          CLK  
+  10-V6 - SETF
+          CLK  
+  11-V7 - SETF
+          A  
+  12-V8 - SETF
+          /CLK  
+  13-V9 - SETF
+          /A  
+  14-V10 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> SI355LA.HST
+Simulation results (trace) are in   ===> SI355LA.TRF
+Merged results (JEDEC) are in       ===> SI355LA.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 153882 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: SI355LA.PDS.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0

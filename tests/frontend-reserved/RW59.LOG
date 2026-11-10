@@ -1,0 +1,29 @@
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+
+ %% MACHPAR %%    Processing design file.......Rw59.pds
+
+ %% MACHPAR %%    Listing file.................Rw59.lis
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP SIGNATURE MACH111
+  ERROR --^ (L1/C1)
+|> ERROR P75  Missing device type or illegal syntax on chip statement.
+
+  ERROR --^ (L1/C1)
+|> ERROR P74  Missing or invalid design name in chip statement.
+
+   5     |Q=A
+  ERROR --^ (L5/C1)
+|> ERROR P60  Undeclared signal name Q
+
+  ERROR ----^ (L5/C3)
+|> ERROR P60  Undeclared signal name A
+
+
+ %% MACHPAR %%    ERROR count:  4     WARNING count:  1
+
+ %% MACHPAR %%    File processing terminated.     File:  Rw59.pds

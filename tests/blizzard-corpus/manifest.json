@@ -1,0 +1,412 @@
+{
+  "scope": "Fresh DOS references for all seven external Blizzard1260 MACH111 designs. Native regressions require ordered PLA matrices, Boolean functions and complete main/electrical/auxiliary JEDEC parity in both modes.",
+  "source_project": "Blizzard1260_KiCad",
+  "source_project_commit_context": "01a1df583750c8aabfd8452530adb8902f20775b",
+  "source_wrapper": {
+    "path": "tools/machxl.py",
+    "sha256": "7736b225c4fd003c6f5bd40c2afdac0952894143cf0fd13624797e54e9a411e7"
+  },
+  "pin_translation": "PLCC = ((TQFP - 1 + 6) % 44) + 1",
+  "source_encoding": "Latin-1; prepared DOS source uses CRLF",
+  "dos_archive_sha256": {
+    "DAT.ZIP": "e142c7e385492f89240efba3cba46d2bdc97d1f410825a8444ceae1ea89e2af3",
+    "DOC.ZIP": "d700e822b4e3324e51c64e8bc2488ecedff9694c0439c2a076294669a3ae71f5",
+    "EXAMPLES.ZIP": "6381d09ec30cb1412e9a497c110ace112857731941510573667eea086a521383",
+    "EXE-0.ZIP": "5c365d6578ec3d0f1b6c5d8b8dad19db086f0924f68f3e20a9fa0aca2fcab404",
+    "EXE-1.ZIP": "25180232178a5e0ad502874553a7bcec98ea0b8a6770167507d5c983a51b673a",
+    "EXE-2.ZIP": "ef15cb45ba642a103e6db15e6014f9a52d7772c6958fc8e938098c422639051e"
+  },
+  "dos_program_sha256": {
+    "MACHXL.EXE": "51abc540210a654ec17e2aedb4722c7600b9eb73fa53b8cb87103ce6de9d8f37",
+    "MACHP32.EXE": "547817b5a618faeb3ecb0dda387be12d77265a22b159197a447e04f9760f5ac5",
+    "MACHBPP.EXE": "1e7cdbf1010eba3c04ed94010dfc651d0110b75f05cbbbc3f5ac3118c2198779",
+    "MACHMIN.EXE": "b4fc5f44eabbec8f60f17dab8577d746a92fdaafe3b9a649a44f5eb4650784de",
+    "MACHFITR.EXE": "770f34627c654c66dbb2fecaa40946615c51d83dbca87beae0382f9a733d5726",
+    "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+    "MACHJED.EXE": "ee377b6aa718a1768cee81b5d0fd95509902426c1d0bc67f05d7f2eb65a3735a"
+  },
+  "oracle_driver": "machxl -D -BR NAME.MXL NAME.PDS",
+  "oracle_harness": "research/blizzard1260/compare_project.py",
+  "oracle_harness_sha256": "85a8e6e2b9b846159f55fdc47512d561d86f1220f9e0a8c60daa0a2e6dfb607e",
+  "reference_native_compiler_sha256": "84a1bb060da9114984171fac392c17bdd3ea72982d65dd6ecbf8222ed5cac063",
+  "cases": [
+    {
+      "name": "U1",
+      "external_source": "logic/U1/U1.pds",
+      "files": {
+        "U1.tqfp.pds": {
+          "sha256": "84e8206f2fb4cdaef9daea378c8603f6089c7f2ef8bcb617c17372a9ec1453ac",
+          "bytes": 5420
+        },
+        "U1.PDS": {
+          "sha256": "9c6a079cbd76c452dd76268932611fe3a8a4db01be74c8ce3bc59e0ea3b5932d",
+          "bytes": 5543
+        },
+        "U1.MXL": {
+          "sha256": "c30f6d445b10bc993daa386e66ffcb18a96f058f3a6514d538509fc4a7572558",
+          "bytes": 1281
+        },
+        "U1.PLA": {
+          "sha256": "133e625a9bf9e35568deb3ce712519fdf53882949b99d2968506a416fac7f5a1",
+          "bytes": 2845
+        },
+        "U1.JED": {
+          "sha256": "5e9d8210f09bc308492413115efdf0025071a28e658fab80f562805374f31ba2",
+          "bytes": 11640
+        },
+        "U1.DBG": {
+          "sha256": "8b96ad90bf0aa9f03760da392d195ccf6763da643109aba29560608faeafd664",
+          "bytes": 852
+        },
+        "U1.LOG": {
+          "sha256": "fa31f024fd159f468b4f83605cfe3bca3985003848bba82849de2950f649d415",
+          "bytes": 14347
+        }
+      },
+      "source_pin_package": "TQFP44",
+      "prepared_pin_package": "PLCC44",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "U1.PDS",
+        "RUN_LOG": "U1.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "original_jedec": {
+        "fuses": 7724,
+        "electrical_fuses": 32,
+        "fuse_checksum": 10996,
+        "transmission_checksum": 61054,
+        "transmission_verified": true
+      }
+    },
+    {
+      "name": "U10",
+      "external_source": "logic/U10/U10.pds",
+      "files": {
+        "U10.tqfp.pds": {
+          "sha256": "1f4f1f8359f7680054f09e214a9448d48968d1a980a019dcf65c46da9de9be0d",
+          "bytes": 6165
+        },
+        "U10.PDS": {
+          "sha256": "172ededdfd8648e083005fb56f915c2b50ec4750d7648796588dbe9803b10b28",
+          "bytes": 6357
+        },
+        "U10.MXL": {
+          "sha256": "25b049cf37bfaa5ac22cf742815065b9d20324cee08f8fc0d8192d3cb3607010",
+          "bytes": 1283
+        },
+        "U10.PLA": {
+          "sha256": "73c1a8b6d6c349222b48d014657331fa10d93b45664fc6ae2727574fbcad2cb9",
+          "bytes": 9270
+        },
+        "U10.JED": {
+          "sha256": "896a1aaec17f9b540e1a991c05bb9f25a03c4d2466c34af8fe84e24bf240dbd2",
+          "bytes": 11712
+        },
+        "U10.DBG": {
+          "sha256": "3a296e0935b867cb6da570d58fd482d795afc10b88bff6b6b6f87443765b66a2",
+          "bytes": 861
+        },
+        "U10.LOG": {
+          "sha256": "c1bcd02f768bc5ebbe6645256f5eab68cbed2c3de3b5a3a01ae2d65142f526c2",
+          "bytes": 19649
+        }
+      },
+      "source_pin_package": "TQFP44",
+      "prepared_pin_package": "PLCC44",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "U10.PDS",
+        "RUN_LOG": "U10.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "original_jedec": {
+        "fuses": 7724,
+        "electrical_fuses": 32,
+        "fuse_checksum": 51421,
+        "transmission_checksum": 62492,
+        "transmission_verified": true
+      }
+    },
+    {
+      "name": "U11",
+      "external_source": "logic/U11/U11.pds",
+      "files": {
+        "U11.tqfp.pds": {
+          "sha256": "3c8ea32cf40dd85ec22159223cc6440db9d69907f4a1d672c85036d3985303ad",
+          "bytes": 6166
+        },
+        "U11.PDS": {
+          "sha256": "756bc82a738ddbd37e2e6369add3e92ced4b9787e206c1abba1bcb5627191f94",
+          "bytes": 6358
+        },
+        "U11.MXL": {
+          "sha256": "044cfd8534aefeca1ab0abd25648990604f03b23a2a500be6a6756598adb6d88",
+          "bytes": 1283
+        },
+        "U11.PLA": {
+          "sha256": "368b0e8b56beb0ba7055d7044f79f562734e0fcf29a3caa0043fd3ed718906ed",
+          "bytes": 9271
+        },
+        "U11.JED": {
+          "sha256": "2e9fb3522ace5dbcbd725c45352bf03b94a257009d879fc214a897f2cd0a0ed0",
+          "bytes": 11713
+        },
+        "U11.DBG": {
+          "sha256": "a597ad0307143cf481209e3a28086d507240848e2b27aae25e1b0c33baee5311",
+          "bytes": 861
+        },
+        "U11.LOG": {
+          "sha256": "5e6f25491c069ea2d3cf84a5c5b4699c44f9ef2e6f2c8b0cdef51fac3db01fbf",
+          "bytes": 19650
+        }
+      },
+      "source_pin_package": "TQFP44",
+      "prepared_pin_package": "PLCC44",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "U11.PDS",
+        "RUN_LOG": "U11.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "original_jedec": {
+        "fuses": 7724,
+        "electrical_fuses": 32,
+        "fuse_checksum": 51421,
+        "transmission_checksum": 62445,
+        "transmission_verified": true
+      }
+    },
+    {
+      "name": "U14",
+      "external_source": "logic/U14/U14.pds",
+      "files": {
+        "U14.tqfp.pds": {
+          "sha256": "3b254992280e3aac4e1d6b4331fb2fd76afa8dca1befe04dd7ff5c9a9aa3788b",
+          "bytes": 9163
+        },
+        "U14.PDS": {
+          "sha256": "9d0713701eb4c659d7645115425e41c520af3bb81f2af3bd094a902bc3df5e75",
+          "bytes": 9384
+        },
+        "U14.MXL": {
+          "sha256": "7e4084c43b39f6316ade05f4ea05abdf545627e5b4c8085c950dde7cc53568c0",
+          "bytes": 1283
+        },
+        "U14.PLA": {
+          "sha256": "27d5a72d2d00ada3edcc320e3930166cabe18e007b4887530162242d2e321c61",
+          "bytes": 9349
+        },
+        "U14.JED": {
+          "sha256": "1bbb5353a39a3240d21e784f275e1f23762d758ba677d87d6d8a968036afe539",
+          "bytes": 11806
+        },
+        "U14.DBG": {
+          "sha256": "3ccd313f5957e69a20c491a3327e780238fd90e393ecce7252f17c94f3701d3b",
+          "bytes": 861
+        },
+        "U14.LOG": {
+          "sha256": "534b324fd690cc9d611d1957fc59ccbb2254d53ccabbc12cbb6f7534e223dc64",
+          "bytes": 22705
+        }
+      },
+      "source_pin_package": "TQFP44",
+      "prepared_pin_package": "PLCC44",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "U14.PDS",
+        "RUN_LOG": "U14.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "original_jedec": {
+        "fuses": 7724,
+        "electrical_fuses": 32,
+        "fuse_checksum": 2989,
+        "transmission_checksum": 6141,
+        "transmission_verified": true
+      }
+    },
+    {
+      "name": "U7",
+      "external_source": "logic/U7/U7.pds",
+      "files": {
+        "U7.tqfp.pds": {
+          "sha256": "da949cd46ebb0a167c150f31cd906286ca9082454955503582b41b842bb5bd0d",
+          "bytes": 8303
+        },
+        "U7.PDS": {
+          "sha256": "605d962b1d448f6ad57c3b2e7ccf6a1aacfb6514fea1ccb1a55ddb597bf7cac6",
+          "bytes": 8494
+        },
+        "U7.MXL": {
+          "sha256": "498ef4f4b0650d20246d173df8565447127aabd52df9313aa8de0bda8f54eca5",
+          "bytes": 1281
+        },
+        "U7.PLA": {
+          "sha256": "3efb0710e16e185345c76fe384224d0c20d377d97689572877054b410355a7d7",
+          "bytes": 6494
+        },
+        "U7.JED": {
+          "sha256": "dee8290e18fd4aa5752e2d0164d0ce02dedc73e01724de8e9a15b564b6aac2e0",
+          "bytes": 11779
+        },
+        "U7.DBG": {
+          "sha256": "28b4ed7669cf8d95231092efda5bb06ab87fe0557a81e9b5046c65fa47190a60",
+          "bytes": 852
+        },
+        "U7.LOG": {
+          "sha256": "7f38a3e286820e16a6c452e2e71417577e641043cdce8c4831438247fbd9dd9a",
+          "bytes": 20423
+        }
+      },
+      "source_pin_package": "TQFP44",
+      "prepared_pin_package": "PLCC44",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "U7.PDS",
+        "RUN_LOG": "U7.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "original_jedec": {
+        "fuses": 7724,
+        "electrical_fuses": 32,
+        "fuse_checksum": 43047,
+        "transmission_checksum": 3914,
+        "transmission_verified": true
+      }
+    },
+    {
+      "name": "U8",
+      "external_source": "logic/U8/U8.pds",
+      "files": {
+        "U8.tqfp.pds": {
+          "sha256": "5ed508cc5aecb401f875d40d4ffaf8ae60af872bf682b00b3d476ea81bd6facb",
+          "bytes": 5829
+        },
+        "U8.PDS": {
+          "sha256": "0048fc9db8d2f4ccbc6676282e0e028c1b31634009cd2f7b5c2510c766b6ba72",
+          "bytes": 5979
+        },
+        "U8.MXL": {
+          "sha256": "4ffc49d1260c2de088c38b05c302557f925988bcc91aa083de014d35cd08d981",
+          "bytes": 1281
+        },
+        "U8.PLA": {
+          "sha256": "7daf7f77ff2a1398a604dfdae4f15701797814c8227dd71701ed10f698354390",
+          "bytes": 5794
+        },
+        "U8.JED": {
+          "sha256": "c07ca0438ad4d5bb95fe3b7884e0138d73e80a874ef8479bcd4780dc8dae41ba",
+          "bytes": 11774
+        },
+        "U8.DBG": {
+          "sha256": "2135dc4ef264aa889de538d6a82ef437008c446c2eade4307262ecc4bcae5f91",
+          "bytes": 852
+        },
+        "U8.LOG": {
+          "sha256": "64e24b74eb198302487d868be479c26dccd0f7a0b1be8dabf04f1cfc8fe6648d",
+          "bytes": 16644
+        }
+      },
+      "source_pin_package": "TQFP44",
+      "prepared_pin_package": "PLCC44",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "U8.PDS",
+        "RUN_LOG": "U8.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "original_jedec": {
+        "fuses": 7724,
+        "electrical_fuses": 32,
+        "fuse_checksum": 58196,
+        "transmission_checksum": 3860,
+        "transmission_verified": true
+      }
+    },
+    {
+      "name": "U9",
+      "external_source": "logic/U9/U9.pds",
+      "files": {
+        "U9.tqfp.pds": {
+          "sha256": "be2ea9915eebce18d30c5fdf83af620c2b06e581ab38972e8993d8dfc3bff690",
+          "bytes": 5901
+        },
+        "U9.PDS": {
+          "sha256": "3fb7963bf5e5cbba1d166d578bafcd7946728fe448aa9db1f869537aa1bc545b",
+          "bytes": 6044
+        },
+        "U9.MXL": {
+          "sha256": "17a84b4cafe68a96b8b807eca0a3c8e8f73795202b854bd51f9398be15a6f0ce",
+          "bytes": 1281
+        },
+        "U9.PLA": {
+          "sha256": "8544505293f4a716735200e24fa78173ebcfd02490572ac0c2d7f30b78c9fceb",
+          "bytes": 4791
+        },
+        "U9.JED": {
+          "sha256": "88780aa41031b1b7276dc5aea55e220366735ba8bc3bd344eba51d4fa2b93f62",
+          "bytes": 11645
+        },
+        "U9.DBG": {
+          "sha256": "ec6f30b9b8074dd3e0021d7dae67a53b57611e37194cf180731e681086a80c2a",
+          "bytes": 852
+        },
+        "U9.LOG": {
+          "sha256": "842a77e567154d53b367fe8408581181fc70ee9fd4cff6e166b89e0658cf9169",
+          "bytes": 15618
+        }
+      },
+      "source_pin_package": "TQFP44",
+      "prepared_pin_package": "PLCC44",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "U9.PDS",
+        "RUN_LOG": "U9.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "original_jedec": {
+        "fuses": 7724,
+        "electrical_fuses": 32,
+        "fuse_checksum": 10632,
+        "transmission_checksum": 60810,
+        "transmission_verified": true
+      }
+    }
+  ]
+}

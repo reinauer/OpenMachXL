@@ -1,0 +1,52 @@
+{
+  "generated_by": "Original MACHXL 2.1 binaries, DOSBox-X 2026.10.01; see tools/dos_oracle.py",
+  "scope": "Original PLA functions and original JEDEC fixtures; native serializer/codec roundtrip is not native fitting",
+  "original_programs": {
+    "MACHP32.EXE": "547817b5a618faeb3ecb0dda387be12d77265a22b159197a447e04f9760f5ac5",
+    "MACHBPP.EXE": "1e7cdbf1010eba3c04ed94010dfc651d0110b75f05cbbbc3f5ac3118c2198779",
+    "MACHMIN.EXE": "b4fc5f44eabbec8f60f17dab8577d746a92fdaafe3b9a649a44f5eb4650784de",
+    "MACHFITR.EXE": "770f34627c654c66dbb2fecaa40946615c51d83dbca87beae0382f9a733d5726"
+  },
+  "cases": [
+    {
+      "name": "3COUNT_D",
+      "source_sha256": "3a49a29b0f110416b71b62fdac661060f7f6f277e12f9188058434663b374d4d",
+      "pla_sha256": "89e09c4e3e1b337fd35599f7c7f0da9f8f91343e6dcad0b676150df5031b1046",
+      "source": "dos/EXAMPLES.ZIP/3COUNT_D.PDS",
+      "reference_manifest": "build/reference/3count_d/result.json",
+      "jedec_sha256": "bbf98ff7c83fe1c123cb35f99d56530cd54eb8b3a1d174be2efc612002b730c1"
+    },
+    {
+      "name": "3COUNT_T",
+      "source_sha256": "4799d63e4a26d808ac74705b8115ba69554daf421409a65e459c1769480979b9",
+      "pla_sha256": "49c948dc8ef75b63c39bc265098b4269dcd20a012340c5db7a66e28155cc82e6",
+      "source": "dos/EXAMPLES.ZIP/3COUNT_T.PDS",
+      "reference_manifest": "build/reference/3count_t/result.json",
+      "jedec_sha256": "3816f66f228bff48e3c585cab8e222b011631d7af85634a564cf508bef351e78"
+    },
+    {
+      "name": "BARREL",
+      "source_sha256": "509490b7d2be6193305c39bd0e87742a67c9872f56a4939f45597ddb0f88c7ee",
+      "pla_sha256": "214581e03a0064cd3c68e91152ebc1a9a45487d9acfbd109c157964dac9368b2",
+      "source": "dos/EXAMPLES.ZIP/BARREL.PDS",
+      "reference_manifest": "build/reference/barrel/result.json",
+      "jedec_sha256": "37c6cc4eb40e790928524de2407dd7bb8c4285dea841cd093b6fda878d8de4d8"
+    },
+    {
+      "name": "DECODE",
+      "source_sha256": "de04b61a380c9290434ea760794106bba0bd67045963e231b445c68211c08ba6",
+      "pla_sha256": "69cd6f5d86c9c94b64f4bd9237b3ad2b9e5ec4208ff337099f54e5a9d95ea3cb",
+      "source": "dos/EXAMPLES.ZIP/DECODE.PDS",
+      "reference_manifest": "build/reference/decode/result.json",
+      "jedec_sha256": "6c206315ab2e00cd093e5b526b9c54d757eaff0b8974e76929a02479e639feee"
+    },
+    {
+      "name": "COUNTER",
+      "source_sha256": "950441a8b085680f95c9cb58946b71778cadedfc5ea5fa55c47068d0ef011977",
+      "pla_sha256": "ae907d49c393fcfb2c5b16a9822b1dd71fafee4110bb5b8008d288c37f8712a9",
+      "source": "dos/EXAMPLES.ZIP/COUNTER.PDS",
+      "reference_manifest": "build/reference/counter/result.json",
+      "jedec_sha256": "661030637a3c7236869df69db03116c19875f865cb9592651c388d3546b20caf"
+    }
+  ]
+}

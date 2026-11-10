@@ -1,0 +1,45 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  SJY2111.PDS
+Title  
+
+
+
+   1-V1 - SETF
+          /A  /B  /CLK  
+   2-V2 - SETF
+          A  
+   6-V3 - CLOCKF
+          CLK  
+   6-V4 - SETF
+          /A  
+  10-V5 - CLOCKF
+          CLK  
+  10-V6 - SETF
+          A  B  
+  14-V7 - CLOCKF
+          CLK  
+  14-V8 - SETF
+          /A  
+  18-V9 - CLOCKF
+          CLK  
+  18-V10 - SETF
+          /B  
+  19-V11 - SETF
+          CLK  
+  20-V12 - SETF
+          A  
+  21-V13 - SETF
+          /CLK  
+  22-V14 - SETF
+          /A  
+
+   END OF SIMULATION
+Simulation results (history) are in ===> SJY2111.HST
+Merged results (JEDEC) are in       ===> SJY2111.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 99801 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: SJY2111.PDS.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0

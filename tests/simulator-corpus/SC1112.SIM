@@ -1,0 +1,38 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Sc1112.pds
+Title  
+
+
+
+   1-V1 - TRACE_ON
+          A  Y  
+   1-V1 - SETF
+          /A  
+   5-V2 - CLOCKF
+   5-V3 - SETF
+          A  
+   9-V4 - CLOCKF
+   9-V4 - CHECK
+          Y  
+%% WARNING  Total number of check clashes   ====>>> 1
+               Clash detected at vector number ====>>> 9
+  10-V5 - SETF
+          /A  
+  14-V6 - CLOCKF
+  14-V6 - CHECK
+          /Y  
+  14-V7 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Sc1112.HST
+Simulation results (trace) are in   ===> Sc1112.TRF
+Merged results (JEDEC) are in       ===> Sc1112.JDC
+|> WARNING D1310
+    %% Total check clashes issued = 1
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 87573 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Sc1112.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 1

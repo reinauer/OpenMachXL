@@ -1,0 +1,123 @@
+;PALASM Design Description
+;---------------------------------- Declaration Segment ------------
+TITLE    BLIZZARD 1260 U1 - ADDRESS DECODE, MAPROM, BOARD STATE
+PATTERN  U1
+REVISION 0.1 (RECONSTRUCTION)
+AUTHOR   RECONSTRUCTED FROM THE PCB, SEE ../ARCHITECTURE.MD
+COMPANY  BLIZZARD 1260 KICAD PROJECT
+DATE     2026-10-26
+CHIP     U1  MACH111
+
+; U1 has no clock pin wired (all four clock pins carry address lines), so
+; it is purely combinatorial. The board state (CONFIG, MAPROM, DISABLE) is
+; kept in latches made from feedback, set by the board-space write strobe
+; LSTB_N from U14 while the address is stable.
+
+;---------------------------------- PIN Declarations ---------------
+PIN  7   R_W                         ; 060 R/W (1 = read)
+PIN  8   MA11        COMBINATORIAL   ; SIMM A11 via RN1
+PIN  9   A29                         ; 060 A29
+PIN  10  A28                         ; 060 A28
+PIN  11  A26                         ; 060 A26
+PIN  13  A25                         ; 060 A25
+PIN  14  AMIGA_N     COMBINATORIAL   ; to U14: A1200 address space
+PIN  15  MA10        COMBINATORIAL   ; SIMM A10 via RN1
+PIN  16  MAPJP_N                     ; Maprom jumper, low = fitted (MAPROM off)
+PIN  17  PWRON_N                     ; Q1 power-on RC, low after power-up
+PIN  18  DISABLE_N   COMBINATORIAL   ; to U8/U14/J3: board disabled
+PIN  19  Z2SEL_N     COMBINATORIAL   ; to U8/J3: Z2 board space
+PIN  20  TBI_N       COMBINATORIAL   ; 060 transfer burst inhibit
+PIN  21  SELRAM3_N   COMBINATORIAL   ; to U7: expansion SIMM side 2
+PIN  24  LSTB_N                      ; from U14: board-space data strobe
+PIN  25  MA8         COMBINATORIAL   ; SIMM A8 via RN1
+PIN  26  MUX                         ; from U7: 0 = row, 1 = column
+PIN  27  TCI_N       COMBINATORIAL   ; 060 transfer cache inhibit
+PIN  28  WE_N        COMBINATORIAL   ; SIMM /WE via R1
+PIN  29  A27                         ; 060 A27
+PIN  30  SELRAM2_N   COMBINATORIAL   ; to U7: expansion SIMM side 1
+PIN  31  A17
+PIN  32  A18
+PIN  33  A19
+PIN  35  A20
+PIN  36  A21
+PIN  37  A22
+PIN  38  A23
+PIN  39  A31
+PIN  40  F0SEL2_N    COMBINATORIAL   ; to U8: diag EPROM window
+PIN  41  A30
+PIN  42  RST_N                       ; A1200 _RST
+PIN  43  SELRAM0_N   COMBINATORIAL   ; to U7: on-board SIMM
+PIN  2   RSTHI       COMBINATORIAL   ; long-reset RC: charges C38 while not in reset
+PIN  3   LONGRST                     ; Q2 collector: high = C38 empty (reset > ~9 s or power-on)
+PIN  4   F0SEL_N     COMBINATORIAL   ; to U14: diag EPROM window
+PIN  5   MA9         COMBINATORIAL   ; SIMM A9 via RN1
+PIN  6   A24
+
+NODE ?   CONFIG      COMBINATORIAL   ; board configured (latch)
+NODE ?   MAPROM      COMBINATORIAL   ; MAPROM active (latch)
+
+;---------------------------------- Boolean Equation Segment ------
+; Address windows (written out, PALASM STRINGs are plain text macros)
+STRING  ZERO24   '(/A31 * /A30 * /A29 * /A28 * /A27 * /A26 * /A25 * /A24)'
+STRING  RAMWIN   '(/A31 * A30)'
+STRING  TOPROM   '(A23 * A22 * A21 * A20 * A19)'
+STRING  F0WIN    '(A23 * A22 * A21 * A20 * /A19)'
+STRING  E8WIN    '(A23 * A22 * A21 * /A20 * A19 * /A18)'
+STRING  REGWIN   '(A31 * /A30 * /A29 * /A28 * /A27 * /A26 * /A25 * /A24 * A23 * A22 * A21 * A20)'
+STRING  WSTB     '(/LSTB_N * /R_W)'
+
+EQUATIONS
+
+; MAPROM read of $F80000-$FFFFFF is served from on-board RAM; with A24/A25
+; forced high it lands at $07F80000 inside the 128 MB window = $4FF80000.
+/SELRAM0_N = RAMWIN * A27
+           + ZERO24 * TOPROM * R_W * MAPROM
+
+/SELRAM2_N = RAMWIN * /A27 * A26
+/SELRAM3_N = RAMWIN * /A27 * /A26
+
+/F0SEL_N   = ZERO24 * F0WIN * DISABLE_N
+/F0SEL2_N  = ZERO24 * F0WIN * DISABLE_N
+
+; Z2 board space: $E80000-$E9FFFF before configuration, $EA0000-$EBFFFF after
+/Z2SEL_N   = ZERO24 * E8WIN * /A17 * /CONFIG * DISABLE_N
+           + ZERO24 * E8WIN *  A17 *  CONFIG * DISABLE_N
+
+; everything else in the low 16 MB goes to the A1200 (built from the
+; decoded outputs: one product term instead of nine)
+/AMIGA_N   = ZERO24 * F0SEL_N * Z2SEL_N * SELRAM0_N
+
+; bursts only from DRAM, caching off for A1200 chip RAM and I/O below $F80000
+/TBI_N     = SELRAM0_N * A31
+           + SELRAM0_N * /A30
+/TCI_N     = ZERO24 * /TOPROM
+
+; DRAM write enable only in the column phase, never during CAS-before-RAS
+/WE_N      = /R_W * MUX * RAMWIN
+           + /R_W * MUX * ZERO24 * TOPROM * MAPROM
+
+; Row/column multiplex of A18..A25 (rows even, columns odd bits)
+MA8        = /MUX * A18 + MUX * A19
+MA9        = /MUX * A20 + MUX * A21
+MA10       = /MUX * A22 + MUX * A23
+MA11       = /MUX * A24 + MUX * A25
+           + /SELRAM0_N * /A30                ; MAPROM read: A24/A25 forced high
+
+; Board state latches -------------------------------------------------
+; CONFIG: set by the ec_BaseAddress write into the unconfigured window,
+; cleared by any A1200 reset.
+CONFIG     = WSTB * ZERO24 * E8WIN * /A17 * DISABLE_N
+           + CONFIG * RST_N
+
+; MAPROM: write to $80FE0000-$80FFFFFF with the jumper open; cleared at
+; power-on or when the jumper is fitted. Survives normal resets.
+MAPROM     = WSTB * REGWIN * A19 * A18 * A17 * MAPJP_N * PWRON_N
+           + MAPROM * MAPJP_N * PWRON_N
+
+; DISABLE: write to the $80F0/$80FA disable region; survives normal resets,
+; cleared at power-on and by a reset held for ~9 s (Q2 off).
+/DISABLE_N = WSTB * REGWIN * /A18 * PWRON_N * /LONGRST
+           + /DISABLE_N * PWRON_N * /LONGRST
+
+; Long-reset timer: keep C38 charged while the A1200 is not in reset.
+RSTHI      = RST_N

@@ -1,0 +1,190 @@
+
+*** Start MACHPAR.E 13:56:11 
+F131.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP PLACEFAIL MACH131
+   2     |PIN 6 I0
+   3     |PIN 7 I1
+   4     |PIN 8 I2
+   5     |PIN 9 I3
+   6     |PIN 10 I4
+   7     |PIN 12 I5
+   8     |PIN 13 I6
+   9     |PIN 14 I7
+  10     |PIN 15 I8
+  11     |PIN 16 I9
+  12     |PIN 17 I10
+  13     |PIN 18 I11
+  14     |PIN 19 I12
+  15     |PIN ? Q0
+  16     |PIN ? Q1
+  17     |PIN ? Q2
+  18     |GROUP MACH_SEG_A Q0 Q1 Q2
+  19     |EQUATIONS
+  20     |Q0=I0*I1*I2*I3*I4*I5*I6*I7*I8*I9*I10*I11*I12
+  21     |Q0.TRST=I0
+  22     |Q1=I0*I1*I2*I3*I4*I5*I6*I7*I8*I9*I10*I11*I12
+  23     |Q1.TRST=I1
+  24     |Q2=I0*I1*I2*I3*I4*I5*I6*I7*I8*I9*I10*I11*I12
+  25     |Q2.TRST=I2
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  F131.pds
+
+*** End MACHPAR.EXE 13:56:11; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 13:56:11 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q0
+Processing equation for ====>Q0.TRST
+Processing equation for ====>Q1
+Processing equation for ====>Q1.TRST
+Processing equation for ====>Q2
+Processing equation for ====>Q2.TRST
+
+ %%  MACHBPP  %% Maximum memory allocated was: 74332 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: F131.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 13:56:11; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 13:56:11 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin Q2...
+====> Q2                 MIN_ON (1 + pt)
+====> Q2.TRST            MIN_ON (1 + pt)
+Processing equation(s) for pin Q1...
+====> Q1                 MIN_ON (1 + pt)
+====> Q1.TRST            MIN_ON (1 + pt)
+Processing equation(s) for pin Q0...
+====> Q0                 MIN_ON (1 + pt)
+====> Q0.TRST            MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 48526 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: F131.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 13:56:11; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 13:56:11 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file f131.tre to PLA file f131.pla...
+
+...
+...
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 46348 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: F131.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 13:56:12; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 13:56:12 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is F131.pds . Device is MACH131 .
+|> INFO z5109 - For this device, all input pairing is ignored since input
+                registers or latches do not exist. All signals must pass
+                through the central switch matrix before being latched or
+                registered.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not assign IO pins to nodes in
+                   block [A]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not assign IO pins to nodes in
+                   block [A]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not assign IO pins to nodes in
+                   block [A]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not assign IO pins to nodes in
+                   block [A]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+|> FATAL z7502 - Placer/Router [ unsuccessful on final iteration ].
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing        0% - Completed
+%%% Fitting process has failed %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File F131.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 12 .
+
+*** End MACHFITR.EX 13:56:51; (MACHFITR.EXE=39 sec.) elapsed time=40 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

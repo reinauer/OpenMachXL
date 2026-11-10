@@ -1,0 +1,85 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file Mux.pds
+; FITTER-generated Placements.
+; DEVICE   MACH465
+; DATE     Mon Nov 09 20:20:07 2026
+
+
+Pin   108  DATA[0]
+Pin   107  DATA[1]
+Pin   103  DATA[2]
+Pin   102  DATA[3]
+Pin   101  DATA[4]
+Pin   100  DATA[5]
+Pin   99  DATA[6]
+Pin   98  DATA[7]
+Pin   97  DATB[0]
+Pin   96  DATB[1]
+Pin   93  DATB[2]
+Pin   92  DATB[3]
+Pin   91  DATB[4]
+Pin   90  DATB[5]
+Pin   89  DATB[6]
+Pin   88  DATB[7]
+Pin   87  DATC[0]
+Pin   86  DATC[1]
+Pin   85  DATC[2]
+Pin   84  DATC[3]
+Pin   73  DATC[4]
+Pin   72  DATC[5]
+Pin   71  DATC[6]
+Pin   70  DATC[7]
+Pin   69  DATD[0]
+Pin   68  DATD[1]
+Pin   67  DATD[2]
+Pin   65  DATD[3]
+Pin   64  DATD[4]
+Pin   61  DATD[5]
+Pin   60  DATD[6]
+Pin   59  DATD[7]
+Pin   58  DATI[0]
+Pin   57  DATI[1]
+Pin   55  DATI[2]
+Pin   54  DATI[3]
+Pin   49  DATI[4]
+Pin   48  DATI[5]
+Pin   46  DATI[6]
+Pin   45  DATI[7]
+Pin   44  DATF[0]
+Pin   43  DATF[1]
+Pin   42  DATF[2]
+Pin   39  DATF[3]
+Pin   38  DATF[4]
+Pin   36  DATF[5]
+Pin   35  DATF[6]
+Pin   34  DATF[7]
+Pin   33  DATG[0]
+Pin   32  DATG[1]
+Pin   31  DATG[2]
+Pin   22  DATG[3]
+Pin   21  DATG[4]
+Pin   20  DATG[5]
+Pin   19  DATG[6]
+Pin   18  DATG[7]
+Pin   17  DATH[0]
+Pin   16  DATH[1]
+Pin   14  DATH[2]
+Pin   13  DATH[3]
+Pin   10  DATH[4]
+Pin   9  DATH[5]
+Pin   8  DATH[6]
+Pin   7  DATH[7]
+Pin   6  SEL1
+Pin   4  SEL2
+Pin   3  SEL3
+Pin   66  MUXOUT[0] Comb ; S6=1  S9=1  Pair 114
+Pin   56  MUXOUT[1] Comb ; S6=1  S9=1  Pair 98
+Pin   47  MUXOUT[2] Comb ; S6=1  S9=1  Pair 82
+Pin   37  MUXOUT[3] Comb ; S6=1  S9=1  Pair 66
+Pin   15  MUXOUT[4] Comb ; S6=1  S9=1  Pair 50
+Pin   5  MUXOUT[5] Comb ; S6=1  S9=1  Pair 34
+Pin   205  MUXOUT[6] Comb ; S6=1  S9=1  Pair 18
+Pin   195  MUXOUT[7] Comb ; S6=1  S9=1  Pair 2
+; Unused Pins & Nodes
+; -> None Found.

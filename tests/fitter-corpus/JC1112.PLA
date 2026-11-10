@@ -1,0 +1,28 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME Jc1112.pds
+#AMD TITLE 
+#AMD PATTERN 
+#AMD REVISION 
+#AMD AUTHOR 
+#AMD COMPANY 
+#AMD DATE 
+#AMD CHIP PAIRING
+#AMD DEVICE MACH111
+#AMD JED_FILE Jc1112.jed
+#AMD SIGNATURE 
+#AMD PIN 11 GND:1 Q:2 R:3 A:4 B:5 GND:12 CLK:13 VCC:22 GND:23 GND:34 VCC:44 
+#AMD NODE 1 N:2/Q 
+.type f
+.i 4
+.o 10
+.ilb A B CLK N
+.ob  Q.REG Q.C Q.PR Q.RE Q.OE R N.REG N.C N.PR N.RE
+.phase 1111111111
+.p 6
+0--1 1~~~~~1~~~
+1--0 1~~~~~1~~~
+--1- ~1~~~~~1~~
+1--- ~~1~~~~~1~
+-1-- ~~~11~~~~1
+---1 ~~~~~1~~~~
+.e

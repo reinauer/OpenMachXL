@@ -1,0 +1,34 @@
+[0  ] pin:81 B[2] bnode:84 RN_B[2] 
+fanin 5: 79 80 84 85 86 
+TYPE 809, SORT1 12551, SORT2 12
+[1  ] pin:82 B[1] bnode:85 RN_B[1] 
+fanin 4: 79 80 85 86 
+TYPE 809, SORT1 12541, SORT2 11
+[2  ] pin:83 B[0] bnode:86 RN_B[0] 
+fanin 3: 79 80 86 
+TYPE 809, SORT1 12531, SORT2 9
+[3  ] pin:78 CLK 
+fanin 0: 
+TYPE 8192, SORT1 0, SORT2 0
+[4  ] pin:79 ENABLE 
+fanin 0: 
+TYPE 8192, SORT1 0, SORT2 0
+[5  ] pin:80 RST 
+fanin 0: 
+TYPE 8192, SORT1 0, SORT2 0
+---------------------------------------------------
+no:1 GND  :0
+no:12 GND  :0
+no:22 VCC  :0
+no:23 GND  :0
+no:34 GND  :0
+no:44 VCC  :0
+no:78 CLK  :0
+no:79 ENABLE  :3
+no:80 RST  :3
+no:81 B[2]  :0
+no:82 B[1]  :0
+no:83 B[0]  :0
+no:84 RN_B[2]  :1
+no:85 RN_B[1]  :2
+no:86 RN_B[0]  :3

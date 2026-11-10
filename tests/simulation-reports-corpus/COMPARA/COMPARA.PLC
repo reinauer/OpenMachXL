@@ -1,0 +1,31 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file Compara.pds
+; FITTER-generated Placements.
+; DEVICE   MACH435
+; DATE     Mon Nov 09 20:19:04 2026
+
+
+Pin   26  INX[0]
+Pin   25  INX[1]
+Pin   24  INX[2]
+Pin   23  INX[3]
+Pin   20  INX[4]
+Pin   19  INX[5]
+Pin   18  INX[6]
+Pin   17  INX[7]
+Pin   16  INX[8]
+Pin   15  INX[9]
+Pin   14  IN[0]
+Pin   13  IN[1]
+Pin   12  IN[2]
+Pin   9  IN[3]
+Pin   8  IN[4]
+Pin   7  IN[5]
+Pin   6  IN[6]
+Pin   5  IN[7]
+Pin   4  IN[8]
+Pin   3  IN[9]
+Pin   10  COMPOUT Comb ; S6=1  S9=1  Pair 6
+; Unused Pins & Nodes
+; -> None Found.

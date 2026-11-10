@@ -1,0 +1,135 @@
+
+*** Start MACHPAR.E 11:43:00 
+Sv06.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP SV06 MACH111
+   2     |PIN 2..3 X[1..0]
+   3     |PIN 4 M
+   4     |PIN 18 Y
+   5     |GROUP AB X[1..0]
+   6     |EQUATIONS
+   7     |Y=M+X[1]*X[0]
+   8     |SIMULATION
+   9     |SETF AB=#B00 /M
+  10     |SETF /M
+  11     |SETF AB=#B01 /M
+  12     |SETF /M
+  13     |SETF AB=#B10 /M
+  14     |SETF M
+  15     |SETF AB=#B11 /M
+  16     |SETF /M
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Sv06.pds
+
+*** End MACHPAR.EXE 11:43:00; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 11:43:00 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Y
+SIMULATION SEGMENT
+........
+ %%  MACHBPP  %% Maximum memory allocated was: 68822 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Sv06.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 11:43:00; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 11:43:00 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin Y...
+====> Y                  MIN_ON (2 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 41410 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Sv06.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 11:43:00; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 11:43:00 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file sv06.tre to PLA file sv06.pla...
+
+.
+.
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 39064 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Sv06.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 11:43:00; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 11:43:00 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Sv06.pds . Device is MACH111 .
+|> INFO z5109 - For this device, all input pairing is ignored since input
+                registers or latches do not exist. All signals must pass
+                through the central switch matrix before being latched or
+                registered.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is Sv06.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File Sv06.pds .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 0 .
+
+*** End MACHFITR.EX 11:43:01; (MACHFITR.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

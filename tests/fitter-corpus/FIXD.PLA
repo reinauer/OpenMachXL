@@ -1,0 +1,33 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME Fixd.pds
+#AMD TITLE 3 Bits D-Counter
+#AMD PATTERN 1
+#AMD REVISION 1
+#AMD AUTHOR J. ENGINEER
+#AMD COMPANY AMD
+#AMD DATE 8/26/94
+#AMD CHIP 3COUNT_D
+#AMD DEVICE MACH111
+#AMD JED_FILE Fixd.jed
+#AMD SIGNATURE 
+#AMD PIN 9 GND:1 B[1]:2 RST:3 ENABLE:4 GND:12 VCC:22 GND:23 GND:34 CLK:35 
+#AMD PIN 3 B[0]:40 B[2]:43 VCC:44 
+.type f
+.i 6
+.o 9
+.ilb B[1] RST ENABLE CLK B[0] B[2]
+.ob  B[1].REG B[1].C B[1].RE B[0].REG B[0].C B[0].RE B[2].REG B[2].C
+     B[2].RE
+.phase 111111111
+.p 10
+1---0- 1~~~~~~~~
+1-0--- 1~~~~~~~~
+0-1-1- 1~~~~~~~~
+---1-- ~1~~1~~1~
+-1---- ~~1~~1~~1
+--1-0- ~~~1~~~~~
+0----1 ~~~~~~1~~
+----01 ~~~~~~1~~
+--0--1 ~~~~~~1~~
+1-1-10 ~~~~~~1~~
+.e

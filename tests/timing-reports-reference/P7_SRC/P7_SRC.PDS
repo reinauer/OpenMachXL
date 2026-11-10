@@ -1,0 +1,110 @@
+;-------------------------------------------------------------------
+; NOTICE: This implementation of PREP Co. Benchmark #7 - 16b Counter
+; is the property of AMD. It has submitted for the PREP benchmarks.
+;
+;       All other uses are expressly forbidden!
+;
+;       AMD Contact: Nick Schmitz (408) 749-4868        Fax:749-8433
+;       M/s 1004, P. O. Box 3453, Sunnyvale Ca 94088
+;-------------------------------------------------------------------
+
+; Corrected preload logic 3/7/93 - NAS
+
+; MACHXL Design description
+; -----------------------Declaration Segment ------------
+   TITLE 16 BIT UP COUNTER - PREP Benchmark #7
+ PATTERN P7.PDS
+REVISION A
+  AUTHOR J. ENGINEER
+ COMPANY ADVANCED MICRO DEVICES, INC.
+    DATE 17 Dec 1992
+
+CHIP   COUNT16      MACH435
+
+pin  ? CLK      PIN  ? CE       PIN  ? LD       PIN  ? RST
+Pin  ? ID[0..15]
+
+;Instance 0
+NODE ? PCAX Reg
+Pin  ? PCA[0..15] REG
+
+;---------------------- Boolean Equation Segment ----------------
+EQUATIONS
+
+;---------------------------------------------------------------
+;Instance 0
+;---------------------------------------------------------------
+; Load Terms
+PCA[0..15].T :=   LD *(PCA[0..15]*/ ID[0..15] + /PCA[0..15]* ID[0..15])
+PCA[0..15].clkf=CLK     PCA[0..15].rstf=RST     PCA[0..15].setf=gnd
+PCAX.CLKF=CLK           PCAX.rstf=RST           PCAX.setf=gnd
+
+;---------------------------------------------------------------
+;Count up terms
+PCA[0].T:={PCA[0].T}+ CE */LD
+PCA[1].T:={PCA[1].T}+ CE */LD*PCA[0]
+PCA[2].T:={PCA[2].T}+ CE */LD*PCA[0]*PCA[1]
+PCA[3].T:={PCA[3].T}+ CE */LD*PCA[0]*PCA[1]*PCA[2]
+PCA[4].T:={PCA[4].T}+ CE */LD*PCA[0]*PCA[1]*PCA[2]*PCA[3]
+PCA[5].T:={PCA[5].T}+ CE */LD*PCA[0]*PCA[1]*PCA[2]*PCA[3]*PCA[4]
+PCA[6].T:={PCA[6].T}+ CE */LD*PCA[0]*PCA[1]*PCA[2]*PCA[3]*PCA[4]*PCA[5]
+PCA[7].T:={PCA[7].T}+ CE */LD*PCA[0]*PCA[1]*PCA[2]*PCA[3]*PCA[4]*PCA[5]*PCA[6]
+
+PCAX :=/PCA[0]*PCA[1]*PCA[2]*PCA[3]*PCA[4]*PCA[5]*PCA[6]*PCA[7]
+     +   ID[0]* ID[1]* ID[2]* ID[3]* ID[4]* ID[5]* ID[6]* ID[7]  * LD
+;     +   ID[0]* ID[1]* ID[2]* ID[3]* ID[4]* ID[5]* ID[6]* ID[7] ; error
+
+;---------------------------------------------------------------
+;Count Up terms
+PCA[ 8].T:={PCA[ 8].T}+ CE */LD*PCAX*PCA[7]
+PCA[ 9].T:={PCA[ 9].T}+ CE */LD*PCAX*PCA[7]*PCA[8]
+PCA[10].T:={PCA[10].T}+ CE */LD*PCAX*PCA[7]*PCA[8]*PCA[9]
+PCA[11].T:={PCA[11].T}+ CE */LD*PCAX*PCA[7]*PCA[8]*PCA[9]*PCA[10]
+PCA[12].T:={PCA[12].T}+ CE */LD*PCAX*PCA[7]*PCA[8]*PCA[9]*PCA[10]*PCA[11]
+PCA[13].T:={PCA[13].T}+ CE */LD*PCAX*PCA[7]*PCA[8]*PCA[9]*PCA[10]*PCA[11]*PCA[12]
+PCA[14].T:={PCA[14].T}+ CE */LD*PCAX*PCA[7]*PCA[8]*PCA[9]*PCA[10]*PCA[11]*PCA[12]*PCA[13]
+PCA[15].T:={PCA[15].T}+ CE */LD*PCAX*PCA[7]*PCA[8]*PCA[9]*PCA[10]*PCA[11]*PCA[12]*PCA[13]*PCA[14]
+
+;---------------------------------------------------------------
+
+;---------------------------------------------------------------
+Simulation
+        Trace_on id[15..0]       ld rst clk ce   PCA[15..0]
+        Setf /ID[0..15] /LD /CE /RST /CLK
+
+        Setf CE
+        FOR X:= 1 TO 4 DO
+        BEGIN
+        CLOCKF CLK     
+        END
+
+        Setf rst        clockf clk      Setf /rst       clockf clk
+        Setf /CE
+        CLOCKF CLK      CLOCKF CLK
+
+        Setf  CE
+        CLOCKF CLK      CLOCKF CLK
+
+        Setf ID[15..0]=#HFFFC  
+        
+        Setf LD         CLOCKF CLK      CLOCKF CLK      
+        
+        Setf /LD
+        FOR X:= 1 TO 4 DO
+        BEGIN
+        CLOCKF CLK     
+        END
+        
+
+        Setf ID[0..15]
+        setf LD         CLOCKF CLK      
+        Setf /LD        
+        FOR X:= 1 TO 4 DO
+        BEGIN
+        CLOCKF CLK     
+        END
+
+        trace_off
+;---------------------------------------------------------------
+
+

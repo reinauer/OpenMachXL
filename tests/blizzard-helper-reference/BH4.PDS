@@ -1,0 +1,87 @@
+;PALASM Design Description
+; pds2v test: MACH111 resource violations (checks 3 and 4).
+; EXPECT-EXIT: 1
+; EXPECT: error: block A needs 28 inputs from the switch matrix, only 26
+; EXPECT: error: XOR5 needs 16 product terms
+; EXPECT: warning: WIDE needs 9 product terms
+; EXPECT: error: EXPL: equation too complex
+; EXPECT: error: T4.TRST must be a single product term
+; EXPECT: error: bank IO8-15 needs 4 output-enable terms, only 2
+; EXPECT: warning: block A has one async reset term shared by all its flip-flops, but R1, R2 use different .RSTF
+; EXPECT: warning: block A: the async reset (.RSTF of R1) also acts on the flip-flops without .RSTF: R3
+; EXPECT: error: R2.SETF must be a single product term
+; EXPECT: warning: POS needs 12 product terms
+
+CHIP     BADRES  MACH111
+
+PIN  11  CLK
+PIN  10  IA
+PIN  13  IB
+PIN  32  IC
+PIN  33  ID
+PIN  35  IE
+PIN  24  B0                     ; block B pins all used as inputs
+PIN  25  B1
+PIN  26  B2
+PIN  27  B3
+PIN  28  B4
+PIN  29  B5
+PIN  30  B6
+PIN  31  B7
+PIN  36  B8
+PIN  37  B9
+PIN  38  B10
+PIN  39  B11
+PIN  40  B12
+PIN  41  B13
+PIN  42  B14
+PIN  43  B15
+PIN  8   A0
+PIN  9   A1
+
+PIN  2   BIG    COMBINATORIAL   ; 27 block inputs
+PIN  3   XOR5   COMBINATORIAL   ; 16 product terms in either polarity
+PIN  4   WIDE   COMBINATORIAL   ; 9 product terms (warning)
+PIN  5   R1     REGISTERED
+PIN  6   R2     REGISTERED
+PIN  7   R3     REGISTERED
+PIN  14  T1     COMBINATORIAL   ; bank IO8-15: too many / bad OE terms
+PIN  15  T2     COMBINATORIAL
+PIN  16  T3     COMBINATORIAL
+PIN  17  T4     COMBINATORIAL
+PIN  18  T5     COMBINATORIAL
+PIN  19  EXPL   COMBINATORIAL   ; too big to expand in either polarity
+PIN  20  POS    COMBINATORIAL   ; f explodes, /f has 12 product terms
+
+EQUATIONS
+BIG  = IA * IB * IC * ID * IE * A0
+     * B0 * B1 * B2 * B3 * B4 * B5 * B6 * B7
+     * B8 * B9 * B10 * B11 * B12 * B13 * B14 * B15
+     * XOR5 * WIDE * R1 * R2 * R3
+XOR5 = IA :+: IB :+: IC :+: ID :+: IE
+WIDE = B0*B1 + B2*B3 + B4*B5 + B6*B7 + B8*B9 + B10*B11 + B12*B13 + B14*B15
+     + A0*A1
+EXPL = B0 :+: B1 :+: B2 :+: B3 :+: B4 :+: B5 :+: B6 :+: B7
+       :+: B8 :+: B9 :+: B10 :+: B11 :+: B12
+POS  = (B0 + B1) * (B2 + B3) * (B4 + B5) * (B6 + B7) * (B8 + B9) * (B10 + B11)
+     * (B12 + B13) * (B14 + B15) * (A0 + A1) * (IA + IB) * (IC + ID) * (IE + A1)
+
+R1 := IA
+R2 := IB
+R3 := IC
+R1.CLKF = CLK
+R2.CLKF = CLK
+R3.CLKF = CLK
+R1.RSTF = IA
+R2.RSTF = IB
+R2.SETF = IA + IB
+
+T1 = IA
+T2 = IA
+T3 = IA
+T4 = IA
+T5 = IA
+T1.TRST = IA
+T2.TRST = IB
+T3.TRST = IC * /ID
+T4.TRST = IA + IB

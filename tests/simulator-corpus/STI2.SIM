@@ -1,0 +1,39 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Sti2.pds
+Title  
+
+|> WARNING D2260
+     The following Pin/Nodes(s) have not been defined in original design
+     file and will be ignored.
+
+      RN_Y            
+
+
+
+   1-V1 - SETF
+          /A  /B  /CLK  
+   2-V1 - CHECK
+          /Y  
+   2-V2 - SETF
+          A  B  
+   3-V2 - CHECK
+          Y  
+%% WARNING  Total number of check clashes   ====>>> 1
+               Clash detected at vector number ====>>> 3
+   4-V3 - SETF
+          /A  /B  
+   8-V4 - CLOCKF
+          CLK  
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Sti2.HST
+Merged results (JEDEC) are in       ===> Sti2.JDC
+|> WARNING D1310
+    %% Total check clashes issued = 1
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 86971 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Sti2.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 2

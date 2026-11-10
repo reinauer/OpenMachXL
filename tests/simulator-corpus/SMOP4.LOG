@@ -1,0 +1,176 @@
+
+*** Start MACHPAR.E 01:43:12 
+Smop4.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP SMOP4 MACH435
+   2     |PIN 3 A
+   3     |PIN 4 B
+   4     |PIN 20 CLK
+   5     |PIN 8 Q REG
+   6     |NODE ? /N REG PAIR Q
+   7     |PIN 9 R
+   8     |EQUATIONS
+   9     |Q:=A
+  10     |N:=A
+  11     |R=N
+  12     |Q.TRST=B
+  13     |Q.CLKF=CLK
+  14     |N.CLKF=CLK
+  15     |Q.RSTF=B
+  16     |N.RSTF=B
+  17     |SIMULATION
+  18     |TRACE_ON A B CLK Q N R
+  19     |SETF /A /B /CLK
+  20     |SETF A
+  21     |CLOCKF CLK
+  22     |SETF /A
+  23     |CLOCKF CLK
+  24     |SETF B
+  25     |SETF A
+  26     |CLOCKF CLK
+  27     |SETF /B
+  28     |CLOCKF CLK
+  29     |SETF /A
+  30     |CLOCKF CLK
+  31     |TRACE_OFF
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Smop4.pds
+
+*** End MACHPAR.EXE 01:43:13; (MACHPAR.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 01:43:13 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q
+Processing equation for ====>N
+Processing equation for ====>R
+Processing equation for ====>Q.TRST
+Processing equation for ====>Q.CLKF
+Processing equation for ====>N.CLKF
+Processing equation for ====>Q.RSTF
+Processing equation for ====>N.RSTF
+SIMULATION SEGMENT
+..............
+ %%  MACHBPP  %% Maximum memory allocated was: 69028 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Smop4.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 01:43:13; (MACHBPP.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 01:43:13 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node N and paired pin Q...
+====> N                  MIN_ON (1 - pt)
+====> N.CLKF             MIN_ON (1 + pt)
+====> N.RSTF             MIN_ON (1 + pt)
+====> Q                  MIN_ON (1 + pt)
+====> Q.CLKF             MIN_ON (1 + pt)
+====> Q.RSTF             MIN_ON (1 + pt)
+====> Q.TRST             MIN_ON (1 + pt)
+Processing equation(s) for pin R...
+====> R                  MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 48552 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Smop4.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 01:43:13; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 01:43:13 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file smop4.tre to PLA file smop4.pla...
+
+...
+...
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 48606 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Smop4.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 01:43:14; (MACHMIN.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 01:43:14 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Smop4.pds . Device is MACH435 .
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of global clocks:
+   CLK:
+...... Is preplaced at a global clock pin.
+
+List of non-global clocks:
+   None.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is Smop4.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File Smop4.pds .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 0 .
+
+*** End MACHFITR.EX 01:43:15; (MACHFITR.EXE= 1 sec.) elapsed time= 3 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

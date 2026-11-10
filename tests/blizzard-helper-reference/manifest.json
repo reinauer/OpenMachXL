@@ -1,0 +1,156 @@
+{
+  "source_project": "Blizzard1260_KiCad",
+  "pin_translation": "PLCC = ((TQFP - 1 + 6) % 44) + 1",
+  "cases": [
+    {
+      "name": "BH0",
+      "success": true,
+      "frontend_success": true,
+      "external_path": "tests/pds2v/alloc.pds",
+      "external_source_sha256": "5697c6e0c9f692b389f0e6be09c6446ca771b301c3b7b1b89701d9631567de84",
+      "files": {
+        "BH0.PDS": "f9b0ea7d44690fa50ad7972d71c3d5dedc429a8d8a5de8eefa04708a55e5133d",
+        "BH0.MXL": "41bdc82a53898e41cb7ff0f5d73b9025a27198af1ea04548d5a0ce5f3797575e",
+        "BH0.LOG": "ada5d33d3a9bcf67128a8cba07ab456e84ec6e36b51ed3309919681181bab629",
+        "BH0.PLA": "abed04a9386755ed3a234ecbe0568ee9cd7dc28f026785a9797aa8ee7001133b",
+        "BH0.JED": "700dc997988d15939ba5716d5f15004c749df9fd5a1660b318ef0eef53afe8fa",
+        "BH0.tqfp.pds": "5697c6e0c9f692b389f0e6be09c6446ca771b301c3b7b1b89701d9631567de84"
+      },
+      "oracle_manifest": "build/blizzard-helpers-original/manifest.json"
+    },
+    {
+      "name": "BH1",
+      "success": false,
+      "frontend_success": true,
+      "external_path": "tests/pds2v/bad_clusters.pds",
+      "external_source_sha256": "db6cd00a05c011b7bae36fef433aba60d636b5b8d968f5bcc7ccc27a6bacac76",
+      "files": {
+        "BH1.PDS": "b40fe291ec666d71cf3392dd825eed9e3538ec193a65a32c25008675cd349e6a",
+        "BH1.MXL": "b73201f9e0bfdf77bf3e33c158baf1a06c5097b111ad6f113d743c19b250a247",
+        "BH1.LOG": "cfb4e996018a4ca1d7f09e229e3a36646122620b0dbaf76295ed6d61688329fb",
+        "BH1.PLA": "cb87e184bb3669c2d95631b152f2f24fd7f0a6c1bc9eaecc4de396461539616d",
+        "BH1.tqfp.pds": "db6cd00a05c011b7bae36fef433aba60d636b5b8d968f5bcc7ccc27a6bacac76"
+      },
+      "oracle_manifest": "build/blizzard-helpers-original/manifest.json"
+    },
+    {
+      "name": "BH2",
+      "success": false,
+      "frontend_success": true,
+      "external_path": "tests/pds2v/bad_nodes.pds",
+      "external_source_sha256": "b22d365564dbb4af63cc9ae52ee115178445fad1d0c36cffe9d4b2796255eebf",
+      "files": {
+        "BH2.PDS": "3adfdb13a791ebec4c98e74dae2e75e630af356b8446163cc09a96b22d7f0d66",
+        "BH2.MXL": "fd90a2deb53fa05c43a0d7c41f35e9b147ef07982f8fe5933b2ba0afbf5fb3d4",
+        "BH2.LOG": "4920333b27813f63e38969e8dee682f8c0e20902132f3930ca035974aa18c691",
+        "BH2.PLA": "d66b3bbebdde000a702489f3f908ea10b6d1ae60e6f97b53a2cb715f65b852be",
+        "BH2.tqfp.pds": "b22d365564dbb4af63cc9ae52ee115178445fad1d0c36cffe9d4b2796255eebf"
+      },
+      "oracle_manifest": "build/blizzard-helpers-original/manifest.json"
+    },
+    {
+      "name": "BH3",
+      "success": false,
+      "frontend_success": false,
+      "external_path": "tests/pds2v/bad_pins.pds",
+      "external_source_sha256": "558d80ca24fe92456633d2921b7e38e9f253a7ac1ef373fee83fdff406018e4a",
+      "files": {
+        "BH3.PDS": "6e437c42f92798a5457b097459614e14ea1f4e20e940b4c6f2b9e789569dc6d2",
+        "BH3.MXL": "c100002d9fd4a76f6b67e4eb347a64bd057f9d60383d458aa123037cbd74456f",
+        "BH3.LOG": "a002e40e58a6e9b63aa11bbf0214af1e34f823dfef1a9e6eb22a650afec795a5",
+        "BH3.tqfp.pds": "558d80ca24fe92456633d2921b7e38e9f253a7ac1ef373fee83fdff406018e4a"
+      },
+      "oracle_manifest": "build/blizzard-helpers-original/manifest.json"
+    },
+    {
+      "name": "BH4",
+      "success": false,
+      "frontend_success": false,
+      "external_path": "tests/pds2v/bad_resources.pds",
+      "external_source_sha256": "b9f0afa524d6b105fe980bf540562ba1c8732e24394c62e21e8b43053940594b",
+      "files": {
+        "BH4.PDS": "21e5c9a931ffe2934c37780162fb3d0ca3f2fbaa154d68cf0b70e7f0b778a570",
+        "BH4.MXL": "c5b54397a252a794cdcec411d5205b5db6d1e1c7fc425618c28d2106bac03b13",
+        "BH4.LOG": "907a2e442f12cb732c1b7fc69b02049123f3eb70aab758befa2dde69cb582531",
+        "BH4.tqfp.pds": "b9f0afa524d6b105fe980bf540562ba1c8732e24394c62e21e8b43053940594b"
+      },
+      "oracle_manifest": "build/blizzard-helper-resources-fast/manifest.json"
+    },
+    {
+      "name": "BH5",
+      "success": false,
+      "frontend_success": false,
+      "external_path": "tests/pds2v/bad_syntax.pds",
+      "external_source_sha256": "8c442e8d488cbc056eed99dae3105b15c8028661493247d22706569e7af239b5",
+      "files": {
+        "BH5.PDS": "c91a0094b01c760998806cb3a0bcfe7067464a4f1b9f7e4fd959746a9df55587",
+        "BH5.MXL": "a590048425e6f13017dcac1f403503e8d9965a7ea4f6de5ec118209c49f9fdc3",
+        "BH5.LOG": "9c2f66c276411342efa3f520b81edc8c219ed419d318051ba01a0a5f2d00e836",
+        "BH5.tqfp.pds": "8c442e8d488cbc056eed99dae3105b15c8028661493247d22706569e7af239b5"
+      },
+      "oracle_manifest": "build/blizzard-helpers-original/manifest.json"
+    },
+    {
+      "name": "BH6",
+      "success": true,
+      "frontend_success": true,
+      "external_path": "tests/pds2v/counter.pds",
+      "external_source_sha256": "d2fa5667c286aa205f57ea0b9943e4fffe627e7c176798ae9a698b6b18c3029d",
+      "files": {
+        "BH6.PDS": "0e3a8f23f03202befd4b781f40d03714f496089ced8c98edeb0ebc4d12d4facd",
+        "BH6.MXL": "9845d236ab73dce42e886802a796431b964e2656eaaad9d774f8cd93baf9a6c4",
+        "BH6.LOG": "98405da2dff38c31b26fe9a8caebeb010ac42f4b8b52278f3b8eca49b2c6cefc",
+        "BH6.PLA": "550ff38d6302769e8f69c1d20746e1a0bed8bbe5bbe4edb8abca1b42a8f00782",
+        "BH6.JED": "a3147b03dd5f1cd029811ac12fb95ce12593e01c31f900480b5569a0bb7cf71f",
+        "BH6.tqfp.pds": "d2fa5667c286aa205f57ea0b9943e4fffe627e7c176798ae9a698b6b18c3029d"
+      },
+      "oracle_manifest": "build/blizzard-helpers-original/manifest.json"
+    },
+    {
+      "name": "BH7",
+      "success": true,
+      "frontend_success": true,
+      "external_path": "tests/pds2v/decoder.pds",
+      "external_source_sha256": "a68159f323c650bb9d091e461c54c6ff30447dbffbf40c40776ba2d3b521b38f",
+      "files": {
+        "BH7.PDS": "a80a262db97b07e9224e5a64f091c99cfcd25d8c74956154b6f3dfbdd9e7ede7",
+        "BH7.MXL": "db7f7acbe839ad25557406560fd68e599ab15e56828f9203208ca78603cb5d73",
+        "BH7.LOG": "09202929c6d0b9b8aa0717c571c231c89800fc8664dc350e57fcd5a8a2fb91bf",
+        "BH7.PLA": "8ce26107a2c42ff23b5010cf27fab66e6a4c76dd0aa525072923b774b6f175f7",
+        "BH7.JED": "b42715d433674e3fe547fb33b508822b099e9e2438e3a5b4c52936102dc444ba",
+        "BH7.tqfp.pds": "a68159f323c650bb9d091e461c54c6ff30447dbffbf40c40776ba2d3b521b38f"
+      },
+      "oracle_manifest": "build/blizzard-helpers-original/manifest.json"
+    },
+    {
+      "name": "BH8",
+      "success": false,
+      "frontend_success": false,
+      "external_path": "tests/pds2v/latch.pds",
+      "external_source_sha256": "916fb6985ae2c28c772c8e5828acf5c63f51b229e4d8167b59af63370cc9e71c",
+      "files": {
+        "BH8.PDS": "462433876e05e8e3fc92d852c93a1e17b214f57fe64456bf9433e93f591d2ba3",
+        "BH8.MXL": "d285fee4118b4b243859e33ba3c440174593a6f559bd4721204febc5c8c00a56",
+        "BH8.LOG": "e7743d5ad40c73c2c974b225a6b02ae25be6b77983c05c0fd1363250c411874f",
+        "BH8.tqfp.pds": "916fb6985ae2c28c772c8e5828acf5c63f51b229e4d8167b59af63370cc9e71c"
+      },
+      "oracle_manifest": "build/blizzard-helpers-original/manifest.json"
+    },
+    {
+      "name": "BH9",
+      "success": true,
+      "frontend_success": true,
+      "external_path": "tests/pds2v/timing.pds",
+      "external_source_sha256": "43f6a3513db6fb8d7347eca7f6245331823f5601e2026342648d7faf8ec4824e",
+      "files": {
+        "BH9.PDS": "fcc7931229fff71110b444c003c7ae98e514d1da2e10fc47d0f3f565af23bc44",
+        "BH9.MXL": "faeccf71f759c05962c8774da8b66af98738703a839f319bce0b6d6eacf307cc",
+        "BH9.LOG": "9596fb47dd2526496b6aaec46d757d3d45a084eaacf76f2ff39d5e2b147ca671",
+        "BH9.PLA": "90bfc103a4813cfa849e69741ea4148dd81b80ae8eb4656573d9658bd59c96f0",
+        "BH9.JED": "0b8ae00f6c4292eb5155389956d391d6feec31959c0b14238de29b08f26d224e",
+        "BH9.tqfp.pds": "43f6a3513db6fb8d7347eca7f6245331823f5601e2026342648d7faf8ec4824e"
+      },
+      "oracle_manifest": "build/blizzard-helpers-original/manifest.json"
+    }
+  ]
+}

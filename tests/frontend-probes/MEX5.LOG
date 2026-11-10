@@ -1,0 +1,127 @@
+
+*** Start MACHPAR.E 08:49:46 
+Mex5.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP MEX5 MACH211
+   2     |PIN ? A
+   3     |PIN ? B
+   4     |PIN 11 CLK
+   5     |PIN ? Q
+   6     |EQUATIONS
+   7     |Q.J=A
+   8     |Q.K=B
+   9     |Q.T=A
+  10     |Q.CLKF=/CLK
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Mex5.pds
+
+*** End MACHPAR.EXE 08:49:47; (MACHPAR.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 08:49:47 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q.J
+Processing equation for ====>Q.K
+Processing equation for ====>Q.T
+Processing equation for ====>Q.CLKF
+
+ %%  MACHBPP  %% Maximum memory allocated was: 59066 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Mex5.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 08:49:47; (MACHBPP.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 08:49:47 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin Q...
+====> Q                  MIN_ON (JK, 2 + pt --> D, 2 + pt)
+====> Q.CLKF             MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 44234 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Mex5.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 08:49:47; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 08:49:47 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file mex5.tre to PLA file mex5.pla...
+
+.
+.
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 40482 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Mex5.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 08:49:47; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 08:49:47 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Mex5.pds . Device is MACH211 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+|> ERROR z5093 - Invalid clock equation for signal Q .
+|> ERROR z5093 - Invalid clock equation for signal RN_Q .
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of global clocks:
+   CLK:
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Mex5.pds .
+%%%% MACHFITR %%%% ERROR count 2 WARNING count 0 .
+
+*** End MACHFITR.EX 08:49:48; (MACHFITR.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

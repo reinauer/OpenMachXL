@@ -1,0 +1,12 @@
+CHIP BORROW MACH110
+PIN ? A
+PIN ? B
+PIN ? C
+PIN ? D
+PIN ? Y
+PIN ? Z
+PIN ? W
+EQUATIONS
+Y=A:+:B:+:C:+:D
+Z=A*B+C*D+/A*/C+/B*/D
+W=/A*B*C*D+A*/B*C*D+A*B*/C*D+A*B*C*/D+/A*/B*/C*D+/A*/B*C*/D+/A*B*/C*/D+A*/B*/C*/D

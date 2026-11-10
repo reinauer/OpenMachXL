@@ -1,0 +1,108 @@
+;-------------------------------------------------------------------
+; NOTICE: This implementation of PREP Co. Benchmark #8 - PS Counter
+; is the property of AMD. It has submitted for the PREP benchmarks.
+;
+;       All other uses are expressly forbidden!
+;
+;       AMD Contact: Nick Schmitz (408) 749-4868        Fax:749-8433
+;       M/s 1004, P. O. Box 3453, Sunnyvale Ca 94088
+;-------------------------------------------------------------------
+; Design optimized for density - 2 clock cycle load
+
+; MACHXL Design description
+; -----------------------Declaration Segment ------------
+   TITLE PRESCALE COUNTER - PREP Benchmark #8
+ PATTERN P8.PDS
+REVISION A
+  AUTHOR J. ENGINEER
+ COMPANY ADVANCED MICRO DEVICES, INC.
+    DATE 30 Jan 1993
+
+CHIP   PS_COUNT16      MACH435
+
+pin  ? CLK      PIN  ? CE       PIN  ? LD       PIN  ? RST
+Pin  ? ID[0..15]
+
+;-------------------------------------------------------------------
+; 0
+Pin  ? PCA[0..15] REG
+NODE ? PCAX Reg NODE ? PCAY Reg NODE ? PCAZ Reg
+
+;Group Mach_seg_A PCA[ 0.. 3] BCA[ 0.. 3] MCA[ 0.. 3] PCAX BCAX MCAX
+;Group Mach_seg_B PCA[ 4.. 7] BCA[ 4.. 7] MCA[ 4.. 7] PCAY BCAY MCAY
+;Group Mach_seg_C PCA[ 8..11] BCA[ 8..11] MCA[ 8..11] PCAZ BCAZ MCAZ
+;Group Mach_seg_D PCA[12..15] BCA[12..15] MCA[12..15]
+
+;---------------------- Boolean Equation Segment ----------------
+EQUATIONS
+
+;-----------------------------------------------------------------
+;Instance 0
+;-----------------------------------------------------------------
+; Load Terms
+PCA[0..15].T :=   LD *(PCA[0..15]*/ ID[0..15] + /PCA[0..15]* ID[0..15])
+PCA[0..15].clkf=CLK     PCA[0..15].rstf=RST     PCA[0..15].setf=gnd
+
+PCAX.clkf=CLK    PCAY.clkf=CLK    PCAZ.clkf=CLK
+PCAX.rstf=RST    PCAY.rstf=RST    PCAZ.rstf=RST
+PCAX.setf=gnd    PCAY.setf=gnd    PCAZ.setf=gnd
+
+;Count up terms
+PCA[0].T:={PCA[0].T}+ CE */LD
+PCA[1].T:={PCA[1].T}+ CE */LD* PCA[0]
+PCA[2].T:={PCA[2].T}+ CE */LD* PCA[0]* PCA[1]
+PCA[3].T:={PCA[3].T}+ CE */LD* PCA[0]* PCA[1]* PCA[2]
+
+PCAX := /PCA[0]* PCA[1]* PCA[2]* PCA[3]
+
+;Count Up terms
+PCA[ 4].T:={PCA[ 4].T}+ CE * /LD*PCAX
+PCA[ 5].T:={PCA[ 5].T}+ CE * /LD*PCAX*PCA[4]
+PCA[ 6].T:={PCA[ 6].T}+ CE * /LD*PCAX*PCA[4]*PCA[5]
+PCA[ 7].T:={PCA[ 7].T}+ CE * /LD*PCAX*PCA[4]*PCA[5]* PCA[6]
+
+PCAY := PCA[4]* PCA[5]* PCA[6]* PCA[7]
+
+;Count Up terms
+PCA[ 8].T:={PCA[ 8].T}+ CE * /LD*PCAX*PCAY
+PCA[ 9].T:={PCA[ 9].T}+ CE * /LD*PCAX*PCAY*PCA[8]
+PCA[10].T:={PCA[10].T}+ CE * /LD*PCAX*PCAY*PCA[8]*PCA[9]
+PCA[11].T:={PCA[11].T}+ CE * /LD*PCAX*PCAY*PCA[8]*PCA[9]*PCA[10]
+
+PCAZ := PCA[8]* PCA[9]* PCA[10]* PCA[11] * PCAY
+
+;Count Up terms
+PCA[12].T:={PCA[12].T}+ CE * /LD*PCAX*PCAZ
+PCA[13].T:={PCA[13].T}+ CE * /LD*PCAX*PCAZ*PCA[12]
+PCA[14].T:={PCA[14].T}+ CE * /LD*PCAX*PCAZ*PCA[12]*PCA[13]
+PCA[15].T:={PCA[15].T}+ CE * /LD*PCAX*PCAZ*PCA[12]*PCA[13]* PCA[14]
+;-----------------------------------------------------------------
+
+;-----------------------------------------------------------------
+Simulation
+        Trace_on id[15..0]       ld rst clk ce   PCA[15..0]
+        Setf /ID[0..15] /LD /CE /RST /CLK
+
+        Setf CE
+        CLOCKF CLK      CLOCKF CLK      CLOCKF CLK      CLOCKF CLK
+
+        Setf rst        clockf clk      Setf /rst       clockf clk
+        Setf /CE
+        CLOCKF CLK      CLOCKF CLK
+
+        Setf  CE
+        CLOCKF CLK      CLOCKF CLK
+
+        Setf ID[15..0]=#hffc   ;  ID[2..15] /ID[0..1]
+        Setf LD         CLOCKF CLK      CLOCKF CLK      Setf /LD
+        CLOCKF CLK      CLOCKF CLK      CLOCKF CLK      CLOCKF CLK
+
+        Setf ID[0..15]
+        setf LD         CLOCKF CLK      Setf /LD        CLOCKF CLK
+        CLOCKF CLK      CLOCKF CLK      CLOCKF CLK
+
+        trace_off
+;---------------------------------------------------------------
+
+
+

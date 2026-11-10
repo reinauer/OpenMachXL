@@ -1,0 +1,29 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME K111s2.pds
+#AMD TITLE 
+#AMD PATTERN 
+#AMD REVISION 
+#AMD AUTHOR 
+#AMD COMPANY 
+#AMD DATE 
+#AMD CHIP K111S2
+#AMD DEVICE MACH111
+#AMD JED_FILE K111s2.jed
+#AMD SIGNATURE 
+#AMD PIN 7 GND:1 CLK:11 GND:12 VCC:22 GND:23 GND:34 VCC:44 
+#AMD PIN 6 A:0 B:0 C:0 Q:0 D:0 T:0 
+.type f
+.i 5
+.o 6
+.ilb CLK A B C Q
+.ob  Q.REG Q.C D.REG D.C T.T T.C
+.phase 111111
+.p 7
+---01 1~~~~~
+-1--0 1~~~~~
+--0-1 1~~~~~
+--1-0 1~~~~~
+1---- ~1~1~1
+-1-1- ~~1~~~
+-11-- ~~~~1~
+.e

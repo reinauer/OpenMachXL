@@ -1,0 +1,9 @@
+CHIP PROBE MACH435
+PIN ? A
+PIN ? B
+PIN ? C
+PIN ? Y[0..2]
+EQUATIONS
+Y[0]=(A :+: B) :+: C
+Y[1]=A :+: (B :+: C)
+Y[2]=A :+: B :+: C

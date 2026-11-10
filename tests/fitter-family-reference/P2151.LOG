@@ -1,0 +1,130 @@
+
+*** Start MACHPAR.E 00:26:13 
+P2151.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP FIXED MACH215
+   2     |PIN 4 A
+   3     |PIN 5 B
+   4     |PIN 6 CLK
+   5     |PIN 2 Y REGISTERED
+   6     |EQUATIONS
+   7     |Y:=A+B
+   8     |Y.CLKF=CLK
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  P2151.pds
+
+*** End MACHPAR.EXE 00:26:14; (MACHPAR.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 00:26:14 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Y
+Processing equation for ====>Y.CLKF
+
+ %%  MACHBPP  %% Maximum memory allocated was: 59020 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: P2151.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 00:26:14; (MACHBPP.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 00:26:14 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin Y...
+====> Y                  MIN_ON (2 + pt)
+====> Y.CLKF             MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 40062 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: P2151.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 00:26:14; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 00:26:14 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file p2151.tre to PLA file p2151.pla...
+
+.
+.
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 40284 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: P2151.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 00:26:14; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 00:26:14 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is P2151.pds . Device is MACH215 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5128 - Any unspecified SET/RESET equation will be defaulted to
+                GND.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of non-global clocks:
+   CLK:
+...... is preplaced on a pin that is not a dedicated clock.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is P2151.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File P2151.pds .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 0 .
+
+*** End MACHFITR.EX 00:26:15; (MACHFITR.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

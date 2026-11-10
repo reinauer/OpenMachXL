@@ -1,0 +1,28 @@
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+
+ %% MACHPAR %%    Processing design file.......Rw32.pds
+
+ %% MACHPAR %%    Listing file.................Rw32.lis
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP MACREF MACH111
+  ERROR --^ (L1/C1)
+|> ERROR P75  Missing device type or illegal syntax on chip statement.
+
+  ERROR --^ (L1/C1)
+|> ERROR P74  Missing or invalid design name in chip statement.
+
+   2     |PIN ? A
+  ERROR --^ (L2/C1)
+|> ERROR P88  Unexpected reserved word or operator PIN
+
+|> ERROR P88  Unexpected reserved word or operator -- ABORTING
+
+
+ %% MACHPAR %%    ERROR count:  4     WARNING count:  1
+
+ %% MACHPAR %%    File processing terminated.     File:  Rw32.pds

@@ -1,0 +1,21 @@
+TITLE A report title longer than twentyfour characters
+AUTHOR Engineer Name Longer Than Limit
+PATTERN 12345678901234567890123456789
+REVISION RevThree
+COMPANY CompanyLongerThanSeventeenChars
+DATE 11/10/2026
+CHIP Reports MACH111
+PIN 3 A
+PIN 4 B
+PIN 35 CLK
+PIN 2 Q REG
+PIN 6 Y
+EQUATIONS
+Q:=A
+Q.CLKF=CLK
+Y=A*B
+SIMULATION
+TRACE_ON /A /Q Y
+SETF /A /B /CLK
+SETF A B
+CLOCKF CLK

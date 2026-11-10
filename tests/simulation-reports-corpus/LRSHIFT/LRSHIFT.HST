@@ -1,0 +1,45 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+MACHXL SIMULATION HISTORY LISTING
+
+Title     : Shift Register           Author   : J. ENGINEER      
+Pattern   : B                        Company  : AMD              
+Revision  : 1.0                      Date     : 6/7/94           
+
+Check clash    1:AB[2]
+Expect  H  Actual  L
+
+Total number of check clashes   ====>>>    1
+Clash detected at vector number ====>>>    25
+
+MACH111        
+Page : 1 
+        ggggc  gc  c  c  gc  c                                      
+ GND    LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ AB[2]  LLLLLLLLLLLLHHHLLLLHHHLL?                                   
+ LR     LLLLLLLLLLLLLLLLLHHHHHHHH                                   
+ RESET  HLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ AB[3]  LLLLLLLLLHHHLLLLLLLLLLHHH                                   
+ LOAD   LLLHHHHLLLLLLLLLLLLLLLLLL                                   
+ I[7]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ AB[4]  LLLLLHHHHLLLLLLLLLLLLLLLL                                   
+ I[6]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ I[5]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ I[4]   LLHHHHHHHHHHHHHHHHHHHHHHH                                   
+ GND    LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ I[3]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ I[2]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ AB[5]  LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ I[1]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ I[0]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ VCC    HHHHHHHHHHHHHHHHHHHHHHHHH                                   
+ GND    LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ AB[7]  LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ GND    LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ CLK    LLLLHHLLHHLHHLHHLLHHLHHLL                                   
+ AB[6]  LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ AB[1]  LLLLLLLLLLLLLLLHHHHLLLLLL                                   
+ AB[0]  LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ VCC    HHHHHHHHHHHHHHHHHHHHHHHHH                                   
+

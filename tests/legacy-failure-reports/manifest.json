@@ -1,0 +1,601 @@
+{
+  "original": "MACHXL 2.1 R11 MACHFITR (3-31-95)",
+  "cases": [
+    {
+      "name": "R110",
+      "stage": "routing",
+      "sha256": {
+        "R110.PDS": "079293534606080c05ee454eed754a9f50d4ff9e8adf23a92c2dcec965beeee9",
+        "R110.MXL": "c121ce09c0353611fa0a8c824455991f183d11dccd3d10b2206957aaa49f23a9",
+        "R110.RPT": "71843457b0d6ec6a8e2e6990fe2754b800097fb879b250a69d2e36024e6613c9",
+        "R110.PRD": "7cc46533f7f46ab3f1f0277389644cad0a5fa247d242ce21b34f7cc9699c8264",
+        "R110.TAL": "0f548f67935c9f2ac1a01118e3d131e3ca16ba8d7c84e0e849ce3343ec118824",
+        "R110.LOG": "6eb27499c1b8ec06eb31c0e341bffe344adbee988c8e1d013a6de77ba63fb018"
+      },
+      "provenance": {
+        "source_sha256": "079293534606080c05ee454eed754a9f50d4ff9e8adf23a92c2dcec965beeee9",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "R110.PDS",
+          "RUN_LOG": "R110.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "c121ce09c0353611fa0a8c824455991f183d11dccd3d10b2206957aaa49f23a9",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "R111",
+      "stage": "routing",
+      "sha256": {
+        "R111.PDS": "4f1747e066b1c67f27b1eaa05be961aa8335a7dedc9ab283c18bc06925bccd06",
+        "R111.MXL": "3c48a37a8b9ab3f7544ef47ebcdab90e85b3583993910f05dfe49d47891f3352",
+        "R111.RPT": "82af48ae559189da211071d6c28dd2ce23aa8654796a4349074fabc697c2b512",
+        "R111.PRD": "20264daf0a6f90c7d332d8ff351d674faf22ee5b16e3c261f66cc60c3f396eac",
+        "R111.TAL": "6f46b0257bacd4b8c96612d7afe83312ea32c056b21124224729990c886e4046",
+        "R111.LOG": "28ada336525aa5db95546406be5e6007d13353822fa983da5e0963f4a1e899c9"
+      },
+      "provenance": {
+        "source_sha256": "4f1747e066b1c67f27b1eaa05be961aa8335a7dedc9ab283c18bc06925bccd06",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "R111.PDS",
+          "RUN_LOG": "R111.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "3c48a37a8b9ab3f7544ef47ebcdab90e85b3583993910f05dfe49d47891f3352",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "R120",
+      "stage": "routing",
+      "sha256": {
+        "R120.PDS": "382609db9e022788f9c4835b3e1791b23e31ecbfad3c2b45b7d561c3826481f0",
+        "R120.MXL": "9efb151fe7d9bab3bd36d89c74907bc54a887c28a0b0b973fe910ed25ce59e0b",
+        "R120.RPT": "535d9a9e78230fd5f4c7681335b01e021eb6fcf49503c8f4911e4815780a5495",
+        "R120.PRD": "32d52689b5e3b3810b5c710f83d1157b3594932130ee7b12dcda35447e957b28",
+        "R120.TAL": "597f56907daac965715fba1be755c62dcd5b1098a4123cd1e8f243aa7ea7ee56",
+        "R120.LOG": "1aad0a083103843a9e6f4964b12cc96f6dd0ddcd95171a29b44222ad1cb2d599"
+      },
+      "provenance": {
+        "source_sha256": "382609db9e022788f9c4835b3e1791b23e31ecbfad3c2b45b7d561c3826481f0",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "R120.PDS",
+          "RUN_LOG": "R120.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "9efb151fe7d9bab3bd36d89c74907bc54a887c28a0b0b973fe910ed25ce59e0b",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "R121",
+      "stage": "routing",
+      "sha256": {
+        "R121.PDS": "161c9cda100dd0ae2aaddd5e99eca5f2dd54b7cce1b5838f6142118438f97fc6",
+        "R121.MXL": "d35cf073f2e8c0df58ea2b81fcff2d636597ef260c95ceb8563bdd591af90efe",
+        "R121.RPT": "5fc1bd9effe390dc80ce0cb5be2b8778967a34355c9e21299ac43abab09e94a2",
+        "R121.PRD": "45da8b8a9d4e3adf4d930345c6256c818b538c9391203ab515ad5749530f0b21",
+        "R121.TAL": "e0ae47bc2d7c5bd67d6afaadcb3f7e25eb0704364f3b23d67edb58c40c57ce95",
+        "R121.LOG": "8c5993cdbd3e2e7929f1d383f2668198078687c481f4492d6dcfd004a68e62ee"
+      },
+      "provenance": {
+        "source_sha256": "161c9cda100dd0ae2aaddd5e99eca5f2dd54b7cce1b5838f6142118438f97fc6",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "R121.PDS",
+          "RUN_LOG": "R121.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "d35cf073f2e8c0df58ea2b81fcff2d636597ef260c95ceb8563bdd591af90efe",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "R130",
+      "stage": "routing",
+      "sha256": {
+        "R130.PDS": "b075b47be706221a4c6d597243b25445493461ef3cbff1d129b4b07c435b9dfc",
+        "R130.MXL": "96ff670ab2cc0d68388355ad7ed8792505bb3e052e32199a46e132d7362d55fc",
+        "R130.RPT": "e18dd544f7a30ea556c366b3f6ece6a2dadd9c23b89440896c442eebfcfc724f",
+        "R130.PRD": "ff69b8cd49fa589829e0510ae7ea614f09028c35036bbf0ed18cf6ea888f4530",
+        "R130.TAL": "febcaf2001fb680406cb3b0c3fe04e6131457efc3bcfa2296819aa6290cc4075",
+        "R130.LOG": "2cff867049dc1fee0d4755d8bcdfff3a81c7a4cae786758495e273bbc9ed3f86"
+      },
+      "provenance": {
+        "source_sha256": "b075b47be706221a4c6d597243b25445493461ef3cbff1d129b4b07c435b9dfc",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "R130.PDS",
+          "RUN_LOG": "R130.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "96ff670ab2cc0d68388355ad7ed8792505bb3e052e32199a46e132d7362d55fc",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "R131",
+      "stage": "routing",
+      "sha256": {
+        "R131.PDS": "4efde7bd03bb67c6fa17a95fedf806d7b5374dfe827388c499811116f34dff74",
+        "R131.MXL": "72e5553de9e047f37aa96e8631eda881f5e69779f3b197c2f9a7e40d33852c81",
+        "R131.RPT": "912ff927f638394e0f2d2b499d2376ec485024e7c78e82d9fb0ad35fd852b389",
+        "R131.PRD": "bdf7545a2ef252bc2cd1e35f66dc1089a95f4783a4dd5815e4ba267d44c6c594",
+        "R131.TAL": "1189614b62ff68530adf9e53bb7ee866d4aa922bf0a3661926c25fe75df780af",
+        "R131.LOG": "ae1c1a8904d718d853d56b75aa224d76a35d1b51a229ee489aa22ff202d9e9db"
+      },
+      "provenance": {
+        "source_sha256": "4efde7bd03bb67c6fa17a95fedf806d7b5374dfe827388c499811116f34dff74",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "R131.PDS",
+          "RUN_LOG": "R131.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "72e5553de9e047f37aa96e8631eda881f5e69779f3b197c2f9a7e40d33852c81",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "R210",
+      "stage": "routing",
+      "sha256": {
+        "R210.PDS": "d2edc0a6ed1cef73577882b2cb46efb6c9f1f4829db83cd81d7fb81f2d674182",
+        "R210.MXL": "55b965393306f6f2e988fc9c75ce68a92f662830c41e400747c2aac9f21cc0ac",
+        "R210.RPT": "23a3873fcbf7796aa7c2d629fe8f183d5dcb461ca0d1440b2637fe964de712bc",
+        "R210.PRD": "6926fb6f90ee5fa106262372caaffb46e7427112d2b5181539bcce2f2e05f764",
+        "R210.TAL": "4009baa451ed36917ef3d87adf1635b8ce3fe29f4e39efb8bf648848111648e6",
+        "R210.LOG": "a1d8d4c07858e1f0f4878099cfdb826788cdb0237090a7460d3b9f47a27c2344"
+      },
+      "provenance": {
+        "source_sha256": "d2edc0a6ed1cef73577882b2cb46efb6c9f1f4829db83cd81d7fb81f2d674182",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "R210.PDS",
+          "RUN_LOG": "R210.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "55b965393306f6f2e988fc9c75ce68a92f662830c41e400747c2aac9f21cc0ac",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "R211",
+      "stage": "routing",
+      "sha256": {
+        "R211.PDS": "43779bd5736880acb813c01dd3d939f845491f62d91d1ee80cad094ae61c4ff8",
+        "R211.MXL": "0ad221e260fb794b69fbef0d2c1dcff7252ffa3b5f75a0f621de044afd490f6e",
+        "R211.RPT": "ad6bbd105093ac74e1da80a928c123d732e6ca3e201b7c1d25b1333008916ced",
+        "R211.PRD": "5593212409bcd3623cb78cfb42257b2c66773fd61312b437e8afa2fff664dd11",
+        "R211.TAL": "d7154d0375ff8b739a109d1c28bc651043a3fb567de554f4d81f730908e6495c",
+        "R211.LOG": "949f03b9585202afc9bf84923729bba68d0da5dc6884455deb4d2850157469c2"
+      },
+      "provenance": {
+        "source_sha256": "43779bd5736880acb813c01dd3d939f845491f62d91d1ee80cad094ae61c4ff8",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "R211.PDS",
+          "RUN_LOG": "R211.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "0ad221e260fb794b69fbef0d2c1dcff7252ffa3b5f75a0f621de044afd490f6e",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "R215",
+      "stage": "routing",
+      "sha256": {
+        "R215.PDS": "d73010f7208aa4025efbf0d294d3f3ad86552012bb5e7569e5516048152de5c9",
+        "R215.MXL": "c0ec895f5d94b489f4ce4f4b57eb943c2eee90348fafbc5865e6a7869eacd685",
+        "R215.RPT": "71d77d74188b0bc8b51f2970998027bc0b5806c6f15f71bc75120bade7e641b7",
+        "R215.PRD": "1aaba8eb78b42075530b136d564179b6ad29181b2eebe48ad97719083b9fbffa",
+        "R215.TAL": "3da027f055736282f9b6cc686664bf6a9f6823aa5118eaa17f2748e59d635df8",
+        "R215.LOG": "accb4f8bdc96ae0d578b4d2b2742ec501e7cdcf97ef04cd65a0fee7f8c5e146a"
+      },
+      "provenance": {
+        "source_sha256": "d73010f7208aa4025efbf0d294d3f3ad86552012bb5e7569e5516048152de5c9",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "R215.PDS",
+          "RUN_LOG": "R215.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "c0ec895f5d94b489f4ce4f4b57eb943c2eee90348fafbc5865e6a7869eacd685",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "R220",
+      "stage": "routing",
+      "sha256": {
+        "R220.PDS": "401341105fc4faf732a660510a8bf5cb6dbb6258c8d65676b383de6d80c62c70",
+        "R220.MXL": "28a203b7074b5b68f4d372ee76315c20a3dc3197fd59fc37e9d207bfd730932f",
+        "R220.RPT": "f67720a9a0575c2b220ded7869ef2cf186681fe2ee0441c5f5a0ec2b88b9f682",
+        "R220.PRD": "ec46f16c11ba69918b2157368f399833ba234dc59b5a4456b4912e70db8933eb",
+        "R220.TAL": "3d41e0ab6c3c848e281105b9432391215b5bfe6d239574ec20636e93b65cdb00",
+        "R220.LOG": "b0b5713db2b4aebf626210d9ce53d6ea893a54ce08fc0d990070697017a62f2f"
+      },
+      "provenance": {
+        "source_sha256": "401341105fc4faf732a660510a8bf5cb6dbb6258c8d65676b383de6d80c62c70",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "R220.PDS",
+          "RUN_LOG": "R220.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "28a203b7074b5b68f4d372ee76315c20a3dc3197fd59fc37e9d207bfd730932f",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "R221",
+      "stage": "routing",
+      "sha256": {
+        "R221.PDS": "a726bd232219e04f270390c4c19b92930900c1a44d9b9ee2790707b0f413656a",
+        "R221.MXL": "bef4dec47ea95cff19997dfebf690c63505afc2ca29b01b9d6f9f4bb1e49f130",
+        "R221.RPT": "52edcc00e4ab23f84723d1a7bf2cec6df3126fe845b68ca9a472b900330ea30d",
+        "R221.PRD": "04013be8eac1a18be9d45ff54f39ffeb1bab046343b926f7d9cddc3dc689dfd7",
+        "R221.TAL": "f431154caab4633fc1b0fe1a8e6af8a9e8d2c6931532fcd40f4790058d01be57",
+        "R221.LOG": "cfed51f561c05b2fe2530816c2271c14bb0becfc52dfc2858d5b1029d808acd8"
+      },
+      "provenance": {
+        "source_sha256": "a726bd232219e04f270390c4c19b92930900c1a44d9b9ee2790707b0f413656a",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "R221.PDS",
+          "RUN_LOG": "R221.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "bef4dec47ea95cff19997dfebf690c63505afc2ca29b01b9d6f9f4bb1e49f130",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "R231",
+      "stage": "routing",
+      "sha256": {
+        "R231.PDS": "aa13164690f944fb3100c7ad8fa729f7c505b8bd26bca1bdc0d03c60678ec0ae",
+        "R231.MXL": "90e1008938e66e3fabe2076f8552852dfdebd2284e730e15a4437227cba4d102",
+        "R231.RPT": "60b905566a818b5fedfa246263d335ceea91089aadc2c4b36e53fecf31c038a1",
+        "R231.PRD": "8961504cbe82d3a1d0a36c6dcad0b53a0b8b44c2996f4ee6f922e3de2cfd1651",
+        "R231.TAL": "80d5275fcb6bd0edab03e942dfebdfb8c6e53ef94ed5828f16b28e0a0ae27061",
+        "R231.LOG": "e21d7c5d8834143c4fecc231758c828ba4b8d6a0e8583d105359f203d64c0379"
+      },
+      "provenance": {
+        "source_sha256": "aa13164690f944fb3100c7ad8fa729f7c505b8bd26bca1bdc0d03c60678ec0ae",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "R231.PDS",
+          "RUN_LOG": "R231.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "90e1008938e66e3fabe2076f8552852dfdebd2284e730e15a4437227cba4d102",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "E111",
+      "stage": "partition",
+      "sha256": {
+        "E111.PDS": "47f626a70f26f05f31e1ac1cfdb50acb24e5b64ccf1ee285777b7d8cc2b71e3c",
+        "E111.MXL": "1cf973fbecafdece071591ef0c671575fd9bd896b2861101782b0608a70c1e3e",
+        "E111.RPT": "f456fa382ac5fa97fdc5fb9d7d3d4fb9bfe1a75600cb96fcf662b79214472e99",
+        "E111.TAL": "731ddf4eb8dee4cb63935ae11156fdef7b78101dd5086d75a0d3674919fcc55c",
+        "E111.LOG": "709583d38568e670cacc0c23d8c46bc8691a1a806d3677f798fc35a02d147b36"
+      },
+      "provenance": {
+        "source_sha256": "47f626a70f26f05f31e1ac1cfdb50acb24e5b64ccf1ee285777b7d8cc2b71e3c",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "E111.PDS",
+          "RUN_LOG": "E111.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "1cf973fbecafdece071591ef0c671575fd9bd896b2861101782b0608a70c1e3e",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "E110",
+      "stage": "partition",
+      "sha256": {
+        "E110.PDS": "77ae673e6a10edbe8d8c349725852e301c16dc62d26d66c48318067c39bab2ea",
+        "E110.MXL": "915ec53fdecf59b55cf2014a91d52ed7e1fdb04325ebb3a316065094bcfa81e8",
+        "E110.RPT": "6a7e0a9c6cac11207ed8dfb240fa0ea134ba7c2a22d4cc4fe66cf3b20f9dd380",
+        "E110.TAL": "df5ba89b79440c5407891f5563a5a011f4c7190edbe7b76c556f47ab47de59bd",
+        "E110.LOG": "b5bb9c1ceec5ea94ee0886ca49d640dc7bdb1d0db98764632ba8a55a4afa9c14"
+      },
+      "provenance": {
+        "source_sha256": "77ae673e6a10edbe8d8c349725852e301c16dc62d26d66c48318067c39bab2ea",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "E110.PDS",
+          "RUN_LOG": "E110.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "915ec53fdecf59b55cf2014a91d52ed7e1fdb04325ebb3a316065094bcfa81e8",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "E120",
+      "stage": "partition",
+      "sha256": {
+        "E120.PDS": "292e6a6f9fb0c98291892a8d08c87b1b982726ec02230ceb6113ff48cde1b8f2",
+        "E120.MXL": "6c2c6fa90eb452b828b7500c5d4269441e8a6c14fec68c7f8f07a2e76abd44da",
+        "E120.RPT": "bd6ed2ac85ca395808fe5b6932811a8940881c4333430b03a5b3374f19b3aa93",
+        "E120.TAL": "f3bb93a451b8623bc192859b10959923749aa51933664976dec1887b512c0b43",
+        "E120.LOG": "dbf9dd1bec2a51375b654f99e280824044f8dd62b5a8357da11b6d3a728f9f7a"
+      },
+      "provenance": {
+        "source_sha256": "292e6a6f9fb0c98291892a8d08c87b1b982726ec02230ceb6113ff48cde1b8f2",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "E120.PDS",
+          "RUN_LOG": "E120.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "6c2c6fa90eb452b828b7500c5d4269441e8a6c14fec68c7f8f07a2e76abd44da",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "E131",
+      "stage": "partition",
+      "sha256": {
+        "E131.PDS": "5e22e2b98f75c442864016105b9c3af68a8710103ed2a9ed119edfef50a2a57e",
+        "E131.MXL": "ca50b3157e608ef92d02564d80a37f9873cd5aa71e152dd1eca017262fc87a9a",
+        "E131.RPT": "298b3ddfb8cd7dc4732a3b30c35d930ed55c5d16367f683a6b0070281ceae876",
+        "E131.TAL": "72fb5bc81a7a7593e52e42224d3165b24d03a6620ed9157f9e21dedf55b56393",
+        "E131.LOG": "711efdc1fff69d5fa3732efda16cbfc5cb0454d31ada00572c9f85105c88b7d9"
+      },
+      "provenance": {
+        "source_sha256": "5e22e2b98f75c442864016105b9c3af68a8710103ed2a9ed119edfef50a2a57e",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "E131.PDS",
+          "RUN_LOG": "E131.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "ca50b3157e608ef92d02564d80a37f9873cd5aa71e152dd1eca017262fc87a9a",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "F111",
+      "stage": "placement",
+      "sha256": {
+        "F111.PDS": "0ee555ded42a0105533db54be7734888f87887753ec9b4cd816b7b03afa2b30f",
+        "F111.MXL": "24d073f2b6083b464c049820f436a739781c675096ff38f175e3394a88f1f35a",
+        "F111.RPT": "15d9eb4c9c62f615e9393eed6b73376f64c36b160bd0389ab45dc681ae85a79d",
+        "F111.PRD": "b513e6d9bcccb84942176927c99d4f1a001f23ca6c6f628a1d00ed556dc8f8f8",
+        "F111.TAL": "86452ac0f6d8fb9788b3ca9c3f66c6450f5a2046e25b511e8fb09ba4fc11902a",
+        "F111.LOG": "462780da4ee07c4ff08cccafe92e0fbbf95dbc168004c437f21414c7d188ba4c"
+      },
+      "provenance": {
+        "source_sha256": "0ee555ded42a0105533db54be7734888f87887753ec9b4cd816b7b03afa2b30f",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "F111.PDS",
+          "RUN_LOG": "F111.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "24d073f2b6083b464c049820f436a739781c675096ff38f175e3394a88f1f35a",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "F110",
+      "stage": "placement",
+      "sha256": {
+        "F110.PDS": "a89732114164ca1fcad23bc5ecaba0dc794b9356c2aedd013ef06b3231fc5989",
+        "F110.MXL": "f7de342f235203a3d6eb35a4ffdd91659729f4db0ad2066165caecc0cb104a22",
+        "F110.RPT": "04684880cd5868d11303f3b17a829d63d1e8fd4a7a3e5cc2f99480220a6034d5",
+        "F110.PRD": "d2cf1bf7eda453b8caa8bd6506510233ec9e3cab390c28d156d6ec60bd24d081",
+        "F110.TAL": "cd0ef5c50b4cbfef352f8c302086dd63a9b718a24f267ac23352bd0545757de2",
+        "F110.LOG": "eb5fd63798482747f4d896add5772c7db8e4977924f6c0bfaf9d2403c2d85316"
+      },
+      "provenance": {
+        "source_sha256": "a89732114164ca1fcad23bc5ecaba0dc794b9356c2aedd013ef06b3231fc5989",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "F110.PDS",
+          "RUN_LOG": "F110.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "f7de342f235203a3d6eb35a4ffdd91659729f4db0ad2066165caecc0cb104a22",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "F120",
+      "stage": "placement",
+      "sha256": {
+        "F120.PDS": "9bcf9611218a1fddb0509246c51ebbbabb479b8a92d1773acaeeb6d6b0a09647",
+        "F120.MXL": "9be0082c65133208f01a92767cf707c3498f632298a73919117dbea5269dcc1b",
+        "F120.RPT": "c2e7642f84c31e39a26fa1ea38ec82b7d0349fdaafdfdfb1096fd01266a990d8",
+        "F120.PRD": "dce60c71731f8d08613f2b9e64f014fbcf2f92463bfeb1a8e4e56ba3fd886692",
+        "F120.TAL": "6646a04b2651970be7cab477040db6c362455fdc926a2b027524c18718a73bdb",
+        "F120.LOG": "337479997cf47c87f3275477444e4e18404247c541862a1baae00639713357c3"
+      },
+      "provenance": {
+        "source_sha256": "9bcf9611218a1fddb0509246c51ebbbabb479b8a92d1773acaeeb6d6b0a09647",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "F120.PDS",
+          "RUN_LOG": "F120.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "9be0082c65133208f01a92767cf707c3498f632298a73919117dbea5269dcc1b",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "F131",
+      "stage": "placement",
+      "sha256": {
+        "F131.PDS": "252df18f5340b1389899341f5ab749af1c36eb6fe2678362d9fe3a41ad3ddb7d",
+        "F131.MXL": "57821d0b07890445804bf8bf22c35a1f9ffc33a12c57dd3120b2f04a8a1744e0",
+        "F131.RPT": "de9faba09c3bcebcf2e44ce8d7cbf91e493f94184df247de902a2f9c9a17b978",
+        "F131.PRD": "fc0efaf619211444d4b332f4f3a893f0745b8cd63e14e025e62e01dc77172c0d",
+        "F131.TAL": "075d5f1f56d5db7427d086e75f9562bb8326ef90fc6dfa2926635cd281471abd",
+        "F131.LOG": "3386602ca715419bb9e15f267749d6d7fb6a55e768824c61fcee388fa7867ca1"
+      },
+      "provenance": {
+        "source_sha256": "252df18f5340b1389899341f5ab749af1c36eb6fe2678362d9fe3a41ad3ddb7d",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "F131.PDS",
+          "RUN_LOG": "F131.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "57821d0b07890445804bf8bf22c35a1f9ffc33a12c57dd3120b2f04a8a1744e0",
+        "dos_batch_completed": true
+      }
+    }
+  ]
+}

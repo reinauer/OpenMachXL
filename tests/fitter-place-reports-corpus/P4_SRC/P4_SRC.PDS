@@ -1,0 +1,390 @@
+;-------------------------------------------------------------------
+; NOTICE: This implementation of PREP Co. Benchmark #3 - Small State
+; is the property of AMD. It has submitted for the PREP benchmarks.
+;
+;       All other uses are expressly forbidden!
+;
+;       AMD Contact: Nick Schmitz (408) 749-4868
+;       M/s 1004, P. O. Box 3453, Sunnyvale Ca 94088
+;-------------------------------------------------------------------
+;---------------------------------- Declaration Segment ------------
+   TITLE LARGE STATE MACHINE
+ PATTERN LSM
+REVISION 2.0
+  AUTHOR J. ENGINEER
+ COMPANY Advanced Micro Devices, Inc.
+    DATE 4/15/93
+
+CHIP  _LSM  MACH435
+
+;---------------------------------- PIN Declarations ---------------
+PIN  ? CLK ; INPUT
+PIN  ? RST ; INPUT
+
+PIN   ? IN1[7..0]; INPUT
+;-------------------------------------------------------------------
+PIN   ? OP1[7..0]
+NODE  ? BN1[4..2] REG;
+NODE  ? /BN1[1,0] REG;
+
+STRING INP1 'IN1[7..0]'
+STRING OUT1 'OP1[7..0]'
+STRING LSM1 'BN1[4..0]'
+;-------------------------------------------------------------------
+
+STRING OUTST0  '#b00000000'
+STRING OUTST1  '#b00000110'
+STRING OUTST2  '#b00011000'
+STRING OUTST3  '#b01100000'
+STRING OUTST4  '#b10'           ;1XXX XXX0 ; Don't cares for reduction
+STRING OUTST5  '#b10'           ;X1XX XX0X
+STRING OUTST6  '#b00011111'
+STRING OUTST7  '#b00111111'
+STRING OUTST8  '#b01111111'
+STRING OUTST9  '#b11111111'
+STRING OUTST10 '#b1111'         ;X1X1 X1X1
+STRING OUTST11 '#b1111'         ;1X1X 1X1X
+STRING OUTST12 '#b11111101'
+STRING OUTST13 '#b11110111'
+STRING OUTST14 '#b11011111'
+STRING OUTST15 '#b01111111'
+
+; MINC State Assignments 4/15/93
+;                      43210
+        STRING  st0 '#b00000' ;-
+        STRING  st1 '#b10000' ;-
+        STRING  st2 '#b01000' ;-
+        STRING  st3 '#b00100' ;-
+        STRING  st4 '#b00010' ;-
+        STRING  st5 '#b10010' ;-
+        STRING  st6 '#b01010' ;-
+        STRING  st7 '#b00110' ;-
+        STRING  st8 '#b00011' ;-
+        STRING  st9 '#b10011' ;-
+        STRING  st10 '#b01011' ;-
+        STRING  st11 '#b00111' ;-
+        STRING  st12 '#b00001' ;-
+        STRING  st13 '#b10001' ;-
+        STRING  st14 '#b01001' ;-
+        STRING  st15 '#b00101' ;-
+
+;-------------------------------------------------------------------
+STRING default  '#b11100'       ; Select Logic Polarity
+STRING default1 '#b10000000'    ;
+;-------------------------------------------------------------------
+
+;----------------------------------- Boolean Equation Segment ------
+EQUATIONS
+
+;-------------------------------------------------------------------
+ IF (RST * /RST) THEN BEGIN ; No logic added
+    LSM1 = default     ; Select Mixed logic Cover for Polarity Control
+    OUT1 = default1
+  END
+
+BN1[4..0].CLKF = CLK    ; Functional Eq for State Reg
+BN1[4..2].SETF = GND    BN1[4..2].RSTF = RST
+BN1[1..0].SETF = RST    BN1[1..0].RSTF = GND
+;-------------------------------------------------------------------
+
+;-------------------------------------------------------------------
+CASE (LSM1)
+BEGIN
+ ST0:  BEGIN OUT1 = OUTST0      ; Moore machine - state -> output
+
+        IF (INP1 = #d00) THEN  BEGIN  LSM1 = ST0 END
+        ELSE
+        BEGIN ;1
+        IF ((IN1[0] + IN1[1]) * (/IN1[7] * /IN1[6] * /IN1[5]
+            * /IN1[4] * /IN1[3] * /IN1[2])) THEN  ; (1-3)
+                BEGIN LSM1 = ST1 END
+        ELSE
+        BEGIN ;2
+          IF ((IN1[2] + IN1[3] + IN1[4]) * (/IN1[7] * /IN1[6] * /IN1[5]))
+            THEN BEGIN  LSM1 = ST2 END  ; (4-31)
+        ELSE
+        BEGIN ;3
+          IF ((IN1[5]) * (/IN1[6] * /IN1[7])) THEN  ; (32-63)
+                BEGIN LSM1 = ST3 END
+        ELSE
+        BEGIN ;4
+          IF (IN1[6] + IN1[7]) THEN BEGIN LSM1 = ST4 END ; (I > 63)
+        END;4
+        END;3
+        END;2
+        END;1
+       END
+
+;-------------------------------------------------------------------
+ ST1:  BEGIN OUT1 = OUTST1
+         IF (IN1[0] * IN1[1]) THEN BEGIN LSM1 = ST0 END
+            ELSE BEGIN LSM1 = ST3 END
+       END
+
+ ST2:  BEGIN LSM1 = ST3 OUT1 = OUTST2 END
+ ST3:  BEGIN LSM1 = ST5 OUT1 = OUTST3 END
+
+ ST4:  BEGIN OP1[7,0] = OUTST4
+         IF (IN1[0] + IN1[2] + IN1[4]) THEN BEGIN LSM1 = ST5 END
+            ELSE BEGIN LSM1 = ST6 END
+       END
+
+;-------------------------------------------------------------------
+ ST5:  BEGIN OP1[6,1] = OUTST5
+         IF (/IN1[0]) THEN BEGIN LSM1 = ST5 END
+               ELSE BEGIN LSM1 = ST7 END
+        END
+
+ ST6:  BEGIN OUT1 = OUTST6
+       IF (IN1[6] * IN1[7])   THEN BEGIN LSM1 = ST1 END
+       IF (IN1[6] * /IN1[7])  THEN BEGIN LSM1 = ST8 END
+       IF (/IN1[6] * IN1[7])  THEN BEGIN LSM1 = ST9 END
+       IF (/IN1[6] * /IN1[7]) THEN BEGIN LSM1 = ST6 END
+     END
+
+;-------------------------------------------------------------------
+ ST7:  BEGIN OUT1 = OUTST7
+       IF (/IN1[6] * /IN1[7]) THEN BEGIN LSM1 = ST3 END
+       ELSE
+       BEGIN IF (IN1[6] * IN1[7]) THEN BEGIN LSM1 = ST4 END
+               ELSE BEGIN LSM1 = ST7 END
+         END;1
+     END
+
+ ST8:  BEGIN OUT1 = OUTST8
+       IF (/(IN1[4] :+: IN1[5]) *  IN1[7]) THEN BEGIN LSM1 = ST1 END
+       IF (/(IN1[4] :+: IN1[5]) * /IN1[7]) THEN BEGIN LSM1 = ST8 END
+       IF (IN1[4] :+: IN1[5]) THEN BEGIN LSM1 = ST11  END
+     END
+
+;-------------------------------------------------------------------
+ ST9:  BEGIN OUT1 = OUTST9
+       IF (/IN1[0]) THEN BEGIN LSM1 = ST9 END
+           ELSE BEGIN LSM1 = ST11 END
+       END
+
+ ST10: BEGIN LSM1 = ST1 OP1[6,4,2,0] = OUTST10 END
+
+ ST11: BEGIN OP1[7,5,3,1] = OUTST11
+       IF (INP1 = #d64) THEN BEGIN  LSM1 = ST15 END
+             ELSE BEGIN LSM1 = ST8 END
+       END
+
+;-------------------------------------------------------------------
+ ST12:  BEGIN OUT1 = OUTST12
+       IF (INP1 = #b11111111) THEN BEGIN LSM1 = ST0 END
+                 ELSE BEGIN LSM1 = ST12 END
+     END
+
+ ST13:  BEGIN OUT1 = OUTST13
+       IF (IN1[1] :+: IN1[3] :+: IN1[5]) THEN BEGIN LSM1 = ST12 END
+                ELSE BEGIN LSM1 = ST14 END
+       END
+
+ ST14:  BEGIN OUT1 = OUTST14
+       IF (INP1 = #d00) THEN BEGIN LSM1 = ST14 END
+        ELSE BEGIN
+         IF (IN1[6] + IN1[7]) THEN BEGIN LSM1 = ST10 END ;(I > 63)
+                  ELSE BEGIN LSM1 = ST12 END
+         END
+      END
+
+;-------------------------------------------------------------------
+ ST15:  BEGIN OUT1 = OUTST15
+        IF (/IN1[7]) THEN BEGIN LSM1 = ST15 END
+        IF (IN1[7] *  IN1[1] *  IN1[0]) THEN BEGIN LSM1 = ST0 END
+        IF (IN1[7] * /IN1[1] *  IN1[0]) THEN BEGIN LSM1 = ST10 END
+        IF (IN1[7] *  IN1[1] * /IN1[0]) THEN BEGIN LSM1 = ST13 END
+        IF (IN1[7] * /IN1[1] * /IN1[0]) THEN BEGIN LSM1 = ST14 END
+       END
+END
+;-------------------------------------------------------------------
+
+;----------------------------------- Simulation Segment ------
+SIMULATION
+
+TRACE_ON CLK RST IN1[7..0] BN1[4..0] OP1[7..0]
+
+SETF /CLK RST /IN1[7..0] ; RESET TO ST0
+SETF  /RST
+     check   /OP1[7..0]
+SETF /RST /IN1[7..0]  ;ST0 -> ST0
+     clockF CLK      check  /OP1[7..0]
+SETF  IN1[7..0]=#H01    ;  ST0 -> ST1
+     clockF CLK      check OP1[7..0]=#H06    
+
+;-------------------------------------------------------------------
+SETF   IN1[7..0]=#H00    ;             ST1->ST3
+     clockF CLK      check OP1[7..0]=#H60    ; 
+SETF  IN1[7..0]=#H00    ;                 ST3->ST5
+     clockF CLK      check  OP1[6] /OP1[1]
+SETF  IN1[7..0]=#H00    ;                 ST5->ST5
+     clockF CLK      check  OP1[6] /OP1[1]
+SETF   IN1[7..0]=#H01    ;                 ST5->ST7
+     clockF CLK      check OP1[7..0]=#H3F    ; 
+SETF   IN1[7..0]=#H00    ;                  ST7->ST3
+     clockF CLK      check OP1[7..0]=#H60    ;
+SETF IN1[7..0]=#H00    ; /in1[7..4] /in1[3..0]  ;ST3 -> ST5
+     clockF CLK      check  OP1[6] /OP1[1]
+SETF IN1[7..0]=#H01      ;ST5 -> ST7
+     clockF CLK       check OP1[7..0]=#H3F    ;
+
+;-------------------------------------------------------------------
+SETF  IN1[7] /IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST7 -> ST7
+     clockF CLK      check /OP1[7] /OP1[6] OP1[5] OP1[4] op1[3..0]
+SETF  IN1[7] IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST7 -> ST4
+     clockF CLK      check OP1[7] /OP1[0]
+SETF  /in1[7..4] /in1[3..0]  ;ST4 -> ST6
+     clockF CLK      check /OP1[7] /OP1[6] /OP1[5] OP1[4] op1[3..0]
+SETF  /IN1[7] IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST6 -> ST8
+     clockF CLK      check /OP1[7] OP1[6] OP1[5] OP1[4] op1[3..0]
+SETF  /IN1[7] /IN1[6] IN1[5] IN1[4] /in1[3..0]  ;ST8 -> ST8
+     clockF CLK      check /OP1[7] OP1[6] OP1[5] OP1[4] op1[3..0]
+SETF  /IN1[7] /IN1[6] /IN1[5] IN1[4] /in1[3..0]  ;ST8 -> ST11
+     clockF CLK      check OP1[7] OP1[5] OP1[3] OP1[1]
+SETF  /in1[7..4] /in1[3..0]  ;ST11 -> ST8
+     clockF CLK 
+;-------------------------------------------------------------------
+     check /OP1[7] OP1[6] OP1[5] OP1[4] op1[3..0]
+SETF  /IN1[7] /IN1[6] /IN1[5] IN1[4] /in1[3..0]  ;ST8 -> ST11
+     clockF CLK      check OP1[7] OP1[5] OP1[3] OP1[1]
+SETF  /IN1[7] IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST11 -> ST15
+     clockF CLK      check /OP1[7] OP1[6] OP1[5] OP1[4] op1[3..0]
+SETF  /in1[7..4] /in1[3..0]  ;ST15 -> ST15
+     clockF CLK      check /OP1[7] OP1[6] OP1[5] OP1[4] op1[3..0]
+SETF  IN1[7] /IN1[6] /IN1[5] /IN1[4] /IN1[3] /IN1[2] IN1[1] /IN1[0]  ;ST15 -> ST13
+     clockF CLK      check op1[7..4] /OP1[3] OP1[2] OP1[1] OP1[0]
+SETF  /in1[7..4] /in1[3..0]  ;ST13 -> ST14
+     clockF CLK      check OP1[7] OP1[6] /OP1[5] OP1[4] op1[3..0]
+SETF  /in1[7..4] /in1[3..0]  ;ST14 -> ST14
+     clockF CLK      check OP1[7] OP1[6] /OP1[5] OP1[4] op1[3..0]
+SETF  /IN1[7] /IN1[6] /IN1[5] IN1[4] in1[3..0]  ;ST14 -> ST12
+     clockF CLK 
+;-------------------------------------------------------------------
+     check op1[7..4] OP1[3] OP1[2] /OP1[1] OP1[0]
+SETF  /in1[7..4] /in1[3..0]  ;ST12 -> ST12
+     clockF CLK      check op1[7..4] OP1[3] OP1[2] /OP1[1] OP1[0]
+SETF  in1[7..4] in1[3..0]  ;ST12 -> ST0
+     clockF CLK      check /op1[7..4] /op1[3..0]
+SETF  /in1[7..4] /IN1[3] IN1[2] IN1[1] IN1[0]  ;ST0 -> ST2
+     clockF CLK      check /OP1[7] /OP1[6] /OP1[5] OP1[4] OP1[3] /OP1[2] /OP1[1] /OP1[0]
+SETF  /in1[7..4] /IN1[3] /IN1[2] IN1[1] IN1[0]  ;ST2 -> ST3
+     clockF CLK      check /OP1[7] OP1[6] OP1[5] /OP1[4] /op1[3..0]
+SETF RST ;LOGIC RESET TO ST0
+SETF  /RST IN1[7] IN1[6] /IN1[5] /IN1[4] /IN1[3] IN1[2] IN1[1] IN1[0]  ;ST0 -> ST4
+     clockF CLK      check OP1[7] /OP1[0]
+SETF  /IN1[7] /IN1[6] /IN1[5] IN1[4] /in1[3..0]  ;ST4 -> ST5
+     clockF CLK      check  OP1[6] /OP1[1]
+
+;-------------------------------------------------------------------
+SETF /in1[7..4] /IN1[3] /IN1[2] /IN1[1] IN1[0]  ;ST5 -> ST7
+     clockF CLK      check /OP1[7] /OP1[6] OP1[5] OP1[4] op1[3..0]
+SETF  IN1[7] IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST7 -> ST4
+     clockF CLK      check OP1[7] /OP1[0]
+SETF  /in1[7..4] /in1[3..0]  ;ST4 -> ST6
+     clockF CLK      check /OP1[7] /OP1[6] /OP1[5] OP1[4] op1[3..0]
+SETF  IN1[7] /IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST6 -> ST9
+     clockF CLK      check op1[7..4] op1[3..0]
+SETF  IN1[7] /IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST9 -> ST9
+     clockF CLK      check op1[7..4] op1[3..0]
+SETF  IN1[7] /IN1[6] /IN1[5] /IN1[4] /IN1[3] /IN1[2] /IN1[1] IN1[0]  ;ST9 -> ST11
+     clockF CLK      check OP1[7] OP1[5] OP1[3] OP1[1]
+SETF  /in1[7..4] /in1[3..0]  ;ST11 -> ST8
+     clockF CLK      check /OP1[7] OP1[6] OP1[5] OP1[4] op1[3..0]
+
+;-------------------------------------------------------------------
+SETF  IN1[7] /IN1[6] IN1[5] IN1[4] /in1[3..0]  ;ST8 -> ST1
+     clockF CLK      check /op1[7..4] /OP1[3] OP1[2] OP1[1] /OP1[0]
+SETF  IN1[7] /IN1[6] IN1[5] IN1[4] /IN1[3] /IN1[2] IN1[1] IN1[0]  ;ST1 -> ST0
+     clockF CLK      check /op1[7..4] /op1[3..0]
+SETF  /IN1[7] /IN1[6] IN1[5] /IN1[4] /IN1[3] /IN1[2] IN1[1] IN1[0]  ;ST0 -> ST3
+     clockF CLK      check /OP1[7] OP1[6] OP1[5] /OP1[4] /op1[3..0]
+SETF /in1[7..4] /in1[3..0]  ;ST3 -> ST5
+     clockF CLK      check  OP1[6] /OP1[1]
+SETF /in1[7..4] /IN1[3] /IN1[2] /IN1[1] IN1[0]  ;ST5 -> ST7
+     clockF CLK      check /OP1[7] /OP1[6] OP1[5] OP1[4] op1[3..0]
+SETF  IN1[7] IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST7 -> ST4
+     clockF CLK      check OP1[7] /OP1[0]
+SETF  /in1[7..4] /in1[3..0]  ;ST4 -> ST6
+     clockF CLK      check /OP1[7] /OP1[6] /OP1[5] OP1[4] op1[3..0]
+
+;-------------------------------------------------------------------
+SETF  /in1[7..4] /in1[3..0]  ;ST6 -> ST6
+     clockF CLK      check /OP1[7] /OP1[6] /OP1[5] OP1[4] op1[3..0]
+SETF  IN1[7] IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST6 -> ST1
+     clockF CLK      check /op1[7..4] /OP1[3] OP1[2] OP1[1] /OP1[0]
+SETF RST ;LOGIC RESET TO ST0
+     check  /OP1[7..0]
+SETF  /RST IN1[7] IN1[6] /IN1[5] /IN1[4] /IN1[3] IN1[2] IN1[1] IN1[0]  ;ST0 -> ST4
+     clockF CLK      check OP1[7] /OP1[0]
+SETF  /in1[7..4] /in1[3..0]  ;ST4 -> ST6
+     clockF CLK      check /OP1[7] /OP1[6] /OP1[5] OP1[4] op1[3..0]
+SETF  /IN1[7] IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST6 -> ST8
+     clockF CLK      check /OP1[7] OP1[6] OP1[5] OP1[4] op1[3..0]
+SETF  /IN1[7] /IN1[6] /IN1[5] IN1[4] /in1[3..0]  ;ST8 -> ST11
+     clockF CLK      check OP1[7] OP1[5] OP1[3] OP1[1]
+
+;-------------------------------------------------------------------
+SETF  /IN1[7] IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST11 -> ST15
+     clockF CLK      check /OP1[7] OP1[6] OP1[5] OP1[4] op1[3..0]
+SETF  IN1[7] IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST15 -> ST14
+     clockF CLK      check OP1[7] OP1[6] /OP1[5] OP1[4] op1[3..0]
+SETF  IN1[7] IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST14 -> ST10
+     clockF CLK      check  OP1[6] OP1[4] OP1[2]  OP1[0]
+SETF  IN1[7] IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST10 -> ST1
+     clockF CLK      check /op1[7..4] /OP1[3] OP1[2] OP1[1] /OP1[0]
+SETF RST ;LOGIC RESET TO ST0
+     check  /OP1[7..0]
+SETF  /RST IN1[7] IN1[6] /IN1[5] /IN1[4] /IN1[3] IN1[2] IN1[1] IN1[0]  ;ST0 -> ST4
+     clockF CLK      check OP1[7] /OP1[0]
+SETF  /in1[7..4] /in1[3..0]  ;ST4 -> ST6
+     clockF CLK      check /OP1[7] /OP1[6] /OP1[5] OP1[4] op1[3..0]
+
+;-------------------------------------------------------------------
+SETF  /IN1[7] IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST6 -> ST8
+     clockF CLK      check /OP1[7] OP1[6] OP1[5] OP1[4] op1[3..0]
+SETF  /IN1[7] /IN1[6] /IN1[5] IN1[4] /in1[3..0]  ;ST8 -> ST11
+     clockF CLK      check OP1[7]  OP1[5]  OP1[3] OP1[1]
+SETF  /IN1[7] IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST11 -> ST15
+     clockF CLK      check /OP1[7] OP1[6] OP1[5] OP1[4] op1[3..0]
+SETF  IN1[7] /IN1[6] /IN1[5] /IN1[4] /IN1[3] /IN1[2] IN1[1] /IN1[0]  ;ST15 -> ST13
+     clockF CLK      check op1[7..4] /OP1[3] OP1[2] OP1[1] OP1[0]
+SETF  /in1[7..4] /IN1[3] /IN1[2] IN1[1] /IN1[0]  ;ST13 -> ST12
+     clockF CLK      check op1[7..4] OP1[3] OP1[2] /OP1[1] OP1[0]
+SETF RST ;LOGIC RESET TO ST0
+     check  /OP1[7..0]
+SETF  /RST IN1[7] IN1[6] /IN1[5] /IN1[4] /IN1[3] IN1[2] IN1[1] IN1[0]  ;ST0 -> ST4
+     clockF CLK      check OP1[7] /OP1[0]
+SETF  /in1[7..4] /in1[3..0]  ;ST4 -> ST6
+     clockF CLK      check /OP1[7] /OP1[6] /OP1[5] OP1[4] op1[3..0]
+
+;-------------------------------------------------------------------
+SETF  /IN1[7] IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST6 -> ST8
+     clockF CLK      check /OP1[7] OP1[6] OP1[5] OP1[4] op1[3..0]
+SETF  /IN1[7] /IN1[6] /IN1[5] IN1[4] /in1[3..0]  ;ST8 -> ST11
+     clockF CLK      check OP1[7] OP1[5]  OP1[3] OP1[1]
+SETF  /IN1[7] IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST11 -> ST15
+     clockF CLK      check /OP1[7] OP1[6] OP1[5] OP1[4] op1[3..0]
+SETF  IN1[7] IN1[6] /IN1[5] /IN1[4] /IN1[3] /IN1[2] /IN1[1] IN1[0]  ;ST15 -> ST10
+     clockF CLK      check  OP1[6] OP1[4] OP1[2] OP1[0]
+SETF RST ;LOGIC RESET TO ST0
+     check  /OP1[7..0]
+SETF  /RST IN1[7] IN1[6] /IN1[5] /IN1[4] /IN1[3] IN1[2] IN1[1] IN1[0]  ;ST0 -> ST4
+     clockF CLK      check OP1[7] /OP1[0]
+SETF  /in1[7..4] /in1[3..0]  ;ST4 -> ST6
+     clockF CLK      check /OP1[7] /OP1[6] /OP1[5] OP1[4] op1[3..0]
+SETF  /IN1[7] IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST6 -> ST8
+     clockF CLK      check /OP1[7] OP1[6] OP1[5] OP1[4] op1[3..0]
+
+;-------------------------------------------------------------------
+SETF  /IN1[7] /IN1[6] /IN1[5] IN1[4] /in1[3..0]  ;ST8 -> ST11
+     clockF CLK      check OP1[7] OP1[5] OP1[3] OP1[1]
+SETF  /IN1[7] IN1[6] /IN1[5] /IN1[4] /in1[3..0]  ;ST11 -> ST15
+     clockF CLK      check /OP1[7] OP1[6] OP1[5] OP1[4] op1[3..0]
+SETF  IN1[7] IN1[6] /IN1[5] /IN1[4] /IN1[3] /IN1[2] IN1[1] IN1[0]  ;ST15 -> ST0
+     clockF CLK
+     check /op1[7..4] /op1[3..0]
+TRACE_OFF
+;-------------------------------------------------------------------
+
+

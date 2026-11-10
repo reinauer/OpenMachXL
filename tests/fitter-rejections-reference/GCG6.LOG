@@ -1,0 +1,153 @@
+Gcg6.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP GROUPCTRL MACH435
+   2     |PIN 3 A
+   3     |PIN 4 B
+   4     |PIN 12 C
+   5     |PIN 13 D
+   6     |PIN 20 CLK
+   7     |PIN 8 Q REG
+   8     |PIN 9 R REG
+   9     |PIN 10 S REG
+  10     |GROUP SYNC_LIST Q
+  11     |EQUATIONS
+  12     |Q=D
+  13     |Q.CLKF=CLK
+  14     |Q.RSTF=A
+  15     |R=D
+  16     |R.CLKF=CLK
+  17     |R.RSTF=B
+  18     |S=D
+  19     |S.CLKF=CLK
+  20     |S.RSTF=C
+  21     |Q.SETF=D
+  22     |R.SETF=D
+  23     |S.SETF=D
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Gcg6.pds
+
+*** Start MACHBPP.E 01:57:03 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q
+Processing equation for ====>Q.CLKF
+Processing equation for ====>Q.RSTF
+Processing equation for ====>R
+Processing equation for ====>R.CLKF
+Processing equation for ====>R.RSTF
+Processing equation for ====>S
+Processing equation for ====>S.CLKF
+Processing equation for ====>S.RSTF
+Processing equation for ====>Q.SETF
+Processing equation for ====>R.SETF
+Processing equation for ====>S.SETF
+
+ %%  MACHBPP  %% Maximum memory allocated was: 79644 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Gcg6.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 01:57:03; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 01:57:03 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin S...
+====> S                  MIN_ON (1 + pt)
+====> S.CLKF             MIN_ON (1 + pt)
+====> S.SETF             MIN_ON (1 + pt)
+====> S.RSTF             MIN_ON (1 + pt)
+Processing equation(s) for pin R...
+====> R                  MIN_ON (1 + pt)
+====> R.CLKF             MIN_ON (1 + pt)
+====> R.SETF             MIN_ON (1 + pt)
+====> R.RSTF             MIN_ON (1 + pt)
+Processing equation(s) for pin Q...
+====> Q                  MIN_ON (1 + pt)
+====> Q.CLKF             MIN_ON (1 + pt)
+====> Q.SETF             MIN_ON (1 + pt)
+====> Q.RSTF             MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 48642 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Gcg6.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 01:57:04; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 01:57:04 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file gcg6.tre to PLA file gcg6.pla...
+
+...
+...
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 49408 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Gcg6.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 01:57:04; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 01:57:04 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Gcg6.pds . Device is MACH435 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of global clocks:
+   CLK:
+...... Is preplaced at a global clock pin.
+...... Controls a signal with both SET & RESET non-GND.
+
+List of non-global clocks:
+   None.
+
+*** End of Normalization.
+|> ERROR z5529 - Block A contains more than 1 distinct pair of
+                 simultaneously non-ground set-resets. At least one signal
+                 having such a pair must be freed from grouping or
+                 preplacement.
+
+*** End of DRC. 
+
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Gcg6.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 0 .
+
+*** End MACHFITR.EX 01:57:04; (MACHFITR.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

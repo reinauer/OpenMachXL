@@ -1,0 +1,160 @@
+Al10.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP XORPRESS MACH435
+   2     |PIN 8 Q
+   3     |PIN 12 A0
+   4     |PIN 13 A1
+   5     |PIN 14 A2
+   6     |PIN 15 A3
+   7     |PIN 16 A4
+   8     |PIN 17 A5
+   9     |PIN 18 X
+  10     |PIN 20 CLK
+  11     |NODE ? N0 REG
+  12     |NODE ? N1 REG
+  13     |NODE ? N2 REG
+  14     |NODE ? N3 REG
+  15     |GROUP MACH_SEG_A Q N0 N1 N2 N3
+  16     |EQUATIONS
+  17     |N0:=X :+: (A0*/A1*/A2*/A3*/A4*A5+/A0*A1*A2*A3*/A4*A5+A0*A1*A2*/A3*/A4*A5+A0*/A1*A2*A3*A4*/A5+A0*/A1*/A2*A3*A4*A5+/A0*A1*A2*/A3*A4*A5+A0*A1*/
+  18     |N0.CLKF=CLK
+  19     |N1:=X :+: (/A0*A1*A2*A3*/A4*A5+A0*A1*A2*/A3*/A4*A5+A0*/A1*A2*A3*A4*/A5+A0*/A1*/A2*A3*A4*A5+/A0*A1*A2*/A3*A4*A5+A0*A1*/A2*/A3*/A4*/A5+/A0*/A1
+  20     |N1.CLKF=CLK
+  21     |N2:=X :+: (A0*A1*A2*/A3*/A4*A5+A0*/A1*A2*A3*A4*/A5+A0*/A1*/A2*A3*A4*A5+/A0*A1*A2*/A3*A4*A5+A0*A1*/A2*/A3*/A4*/A5+/A0*/A1*A2*/A3*/A4*A5+A0*/A
+  22     |N2.CLKF=CLK
+  23     |N3:=A0*/A1*A2*A3*A4*/A5
+  24     |N3.CLKF=A0*A1
+  25     |Q=N0*N1*N2*N3
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Al10.pds
+
+*** Start MACHBPP.E 10:29:06 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>N0
+Processing equation for ====>N0.CLKF
+Processing equation for ====>N1
+Processing equation for ====>N1.CLKF
+Processing equation for ====>N2
+Processing equation for ====>N2.CLKF
+Processing equation for ====>N3
+Processing equation for ====>N3.CLKF
+Processing equation for ====>Q
+
+ %%  MACHBPP  %% Maximum memory allocated was: 97254 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Al10.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 10:29:06; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 10:29:06 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node N3...
+====> N3                 MIN_ON (1 + pt)
+====> N3.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for node N2...
+====> N2                 MIN_ON (21 + pt)
+====> N2.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for node N1...
+====> N1                 MIN_ON (15 + pt)
+====> N1.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for node N0...
+====> N0                 MIN_ON (17 + pt)
+====> N0.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for pin Q...
+====> Q                  MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 63604 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Al10.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 10:29:08; (MACHMIN.EXE= 2 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 10:29:08 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file al10.tre to PLA file al10.pla...
+
+.....
+.....
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 69022 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Al10.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 10:29:09; (MACHMIN.EXE= 1 sec.) elapsed time= 3 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 10:29:09 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Al10.pds . Device is MACH435 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of global clocks:
+   CLK:
+...... Is preplaced at a global clock pin.
+...... Controls a signal that must be synchronous due to PT count.
+
+List of non-global clocks:
+   A0:
+...... is preplaced on a pin that is not a dedicated clock.
+   A1:
+...... is preplaced on a pin that is not a dedicated clock.
+
+*** End of Normalization.
+|> ERROR z5517 - Too many product terms, 21 , in equation for signal N2 :
+                 limit is 20 product terms.
+
+*** End of DRC. 
+
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Al10.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 0 .
+
+*** End MACHFITR.EX 10:29:09; (MACHFITR.EXE= 0 sec.) elapsed time= 3 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

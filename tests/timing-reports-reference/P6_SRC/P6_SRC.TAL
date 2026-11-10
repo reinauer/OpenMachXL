@@ -1,0 +1,85 @@
+
+****************************
+* Design Name = P6_SRC.PDS *
+****************************
+
+
+*******************
+* TIMING ANALYSIS *
+*******************
+
+Timing Analysis KEY:
+One unit of delay time is equivalent to one pass 
+     through the Central Switch Matrix.
+..   Delay ( in this column ) not applicable to the indicated signal.
+TSU, Set-Up Time ( 0 for input-paired signals ),
+     represents the number of switch matrix passes between
+     an input pin and a register setup before clock.
+     TSU is reported on the register.
+TCO, Clocked Output-to-Pin Time ( 0 for output-paired signals ),
+     represents the number of switch matrix passes between
+     a clocked register and an output pin.
+     TCO is reported on the register.
+TPD, Propagation Delay Time ( calculated only for combinatorial eqns.),
+     represents the number of switch matrix passes between
+     an input pin and an output pin.
+     TPD is reported on the output pin.
+TCR, Clocked Output-to-Register Time,
+     represents the number of switch matrix passes between
+     a clocked register and the register it drives ( before clock ).
+     TCR is reported on the driving register.
+
+                    TSU       TCO       TPD       TCR
+                  #passes   #passes   #passes   #passes
+SIGNAL NAME       min  max  min  max  min  max  min  max
+          Q_X[0]   1    1    0    0   ..   ..    1    3   
+       RN_Q_X[0]   1    1    0    0   ..   ..    1    3   
+          Q_X[1]   1    1    0    0   ..   ..    1    3   
+       RN_Q_X[1]   1    1    0    0   ..   ..    1    3   
+          Q_X[2]   1    2    0    0   ..   ..    1    3   
+       RN_Q_X[2]   1    2    0    0   ..   ..    1    3   
+          Q_X[3]   1    2    0    0   ..   ..    1    3   
+       RN_Q_X[3]   1    2    0    0   ..   ..    1    3   
+          Q_X[4]   1    3    0    0   ..   ..    1    3   
+       RN_Q_X[4]   1    3    0    0   ..   ..    1    3   
+          Q_X[5]   1    3    0    0   ..   ..    1    3   
+       RN_Q_X[5]   1    3    0    0   ..   ..    1    3   
+          Q_X[6]   1    3    0    0   ..   ..    1    3   
+       RN_Q_X[6]   1    3    0    0   ..   ..    1    3   
+          Q_X[7]   1    3    0    0   ..   ..    1    3   
+       RN_Q_X[7]   1    3    0    0   ..   ..    1    3   
+          Q_X[8]   1    3    0    0   ..   ..    1    3   
+       RN_Q_X[8]   1    3    0    0   ..   ..    1    3   
+          Q_X[9]   1    3    0    0   ..   ..    1    3   
+       RN_Q_X[9]   1    3    0    0   ..   ..    1    3   
+         Q_X[10]   1    3    0    0   ..   ..    1    3   
+      RN_Q_X[10]   1    3    0    0   ..   ..    1    3   
+         Q_X[11]   1    3    0    0   ..   ..    1    3   
+      RN_Q_X[11]   1    3    0    0   ..   ..    1    3   
+         Q_X[12]   1    3    0    0   ..   ..    1    3   
+      RN_Q_X[12]   1    3    0    0   ..   ..    1    3   
+         Q_X[13]   1    3    0    0   ..   ..    1    3   
+      RN_Q_X[13]   1    3    0    0   ..   ..    1    3   
+         Q_X[14]   1    3    0    0   ..   ..    1    1   
+      RN_Q_X[14]   1    3    0    0   ..   ..    1    1   
+         Q_X[15]   1    3    0    0   ..   ..    1    1   
+      RN_Q_X[15]   1    3    0    0   ..   ..    1    1   
+          C_X[3]  ..   ..   ..   ..    2    2   ..   ..   
+          C_X[5]  ..   ..   ..   ..    2    2   ..   ..   
+          C_X[7]  ..   ..   ..   ..    2    2   ..   ..   
+          C_X[9]  ..   ..   ..   ..    2    2   ..   ..   
+         C_X[11]  ..   ..   ..   ..    2    2   ..   ..   
+         C_X[13]  ..   ..   ..   ..    2    2   ..   ..   
+          P_X[3]  ..   ..   ..   ..    1    1   ..   ..   
+          P_X[5]  ..   ..   ..   ..    1    1   ..   ..   
+          P_X[7]  ..   ..   ..   ..    1    1   ..   ..   
+          P_X[9]  ..   ..   ..   ..    1    1   ..   ..   
+         P_X[11]  ..   ..   ..   ..    1    1   ..   ..   
+         P_X[13]  ..   ..   ..   ..    1    1   ..   ..   
+          G_X[3]  ..   ..   ..   ..    1    1   ..   ..   
+          G_X[5]  ..   ..   ..   ..    1    1   ..   ..   
+          G_X[7]  ..   ..   ..   ..    1    1   ..   ..   
+          G_X[9]  ..   ..   ..   ..    1    1   ..   ..   
+         G_X[11]  ..   ..   ..   ..    1    1   ..   ..   
+         G_X[13]  ..   ..   ..   ..    1    1   ..   ..   
+          C_X[1]  ..   ..   ..   ..    1    1   ..   ..   

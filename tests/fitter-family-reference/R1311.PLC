@@ -1,0 +1,78 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file T1.pds
+; FITTER-generated Placements.
+; DEVICE   MACH131
+; DATE     Tue Nov 10 00:11:13 2026
+
+
+Pin   7  I0
+Pin   57  I1
+Pin   75  I2
+Pin   80  I3
+Pin   54  I4
+Pin   73  I5
+Pin   47  I6
+Pin   71  I7
+Pin   70  I8
+Pin   78  I9
+Pin   41  I10
+Pin   36  I11
+Pin   68  I12
+Pin   35  I13
+Pin   5  I14
+Pin   67  I15
+Pin   33  I16
+Pin   65  I17
+Pin   62  I18
+Pin   60  I19
+Pin   77  I20
+Pin   59  I21
+Pin   31  I22
+Pin   23  I23
+Pin   29  I24
+Pin   28  I25
+Pin   26  I26
+Pin   25  I27
+Pin   20  I28
+Pin   56  I29
+Pin   14  I30
+Pin   18  I31
+Pin   4  I32
+Pin   50  I33
+Pin   17  I34
+Pin   15  I35
+Pin   38  I36
+Pin   12  I37
+Pin   10  I38
+Pin   8  I39
+Pin   3  Q0 Comb ;
+Pin   45  Q1 Comb ;
+Pin   34  Q2 Comb ;
+Pin   24  Q3 Comb ;
+Pin   16  Q4 Comb ;
+Pin   49  Q5 Comb ;
+Pin   52  Q6 Comb ;
+Pin   66  Q7 Comb ;
+Pin   19  Q8 Comb ;
+Pin   39  Q9 Comb ;
+Pin   48  Q10 Comb ;
+Pin   51  Q11 Comb ;
+Pin   6  Q12 Comb ;
+Pin   82  Q13 Comb ;
+Pin   9  Q14 Comb ;
+Pin   40  Q15 Comb ;
+Pin   79  Q16 Comb ;
+Pin   13  Q17 Comb ;
+Pin   55  Q18 Comb ;
+Pin   37  Q19 Comb ;
+Pin   58  Q20 Comb ;
+Pin   61  Q21 Comb ;
+Pin   76  Q22 Comb ;
+Pin   30  Q23 Comb ;
+Pin   72  Q24 Comb ;
+Pin   69  Q25 Comb ;
+Pin   27  Q26 Comb ;
+Pin   46  Q27 Comb ;
+; Unused Pins & Nodes
+; -> None Found.

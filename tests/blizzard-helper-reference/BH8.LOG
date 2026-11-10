@@ -1,0 +1,58 @@
+Bh8.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+   1     |;PALASM Design Description
+   2     |; pds2v test: latches built from combinatorial feedback (allowed, but each
+   3     |; loop is reported), plus a flip-flop with both async reset and preset.
+   4     |; EXPECT-EXIT: 0
+   5     |; EXPECT: warning: combinatorial loop (latch) through Q
+   6     |; EXPECT: warning: combinatorial loop (latch) through QN, SQ
+   7     |; EXPECT: note: FF uses async preset
+   8     |
+   9     |TITLE    pds2v test latches
+|> WARNING P44  Missing date declaration.
+
+|> WARNING P43  Missing company declaration.
+
+|> WARNING P42  Missing author declaration.
+
+|> WARNING P41  Missing revision declaration.
+
+|> WARNING P40  Missing pattern declaration.
+
+  10     |CHIP     LAT  MACH111
+  ERROR -----------^ (L10/C10)
+|> ERROR P88  Unexpected reserved word or operator LAT
+
+  11     |
+  12     |PIN  10  D
+  13     |PIN  32  G                      ; latch gate, transparent when high
+  14     |PIN  8   S_N
+  15     |PIN  9   R_N
+  16     |PIN  35  CLK                    ; CLK3
+  17     |PIN  14  CLR
+  18     |PIN  15  PRE
+  19     |PIN  2   Q      COMBINATORIAL   ; transparent D latch
+  20     |PIN  3   SQ     COMBINATORIAL   ; SR latch from two cross-coupled NANDs
+  21     |NODE ?   QN     COMBINATORIAL
+  22     |PIN  4   FF     REGISTERED
+  23     |
+  24     |EQUATIONS
+  25     |Q   = D * G
+  26     |    + Q * /G
+  27     |    + D * Q                     ; consensus term: no hazard when G falls
+  28     |/SQ = S_N * QN                  ; NAND
+|> ERROR P88  Unexpected reserved word or operator -- ABORTING
+
+
+ %% MACHPAR %%    ERROR count:  2     WARNING count:  5
+
+ %% MACHPAR %%    File processing terminated.     File:  Bh8.pds

@@ -1,0 +1,94 @@
+
+*** Start MACHPAR.E 23:37:42 
+K2204.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP CONST MACH220
+   2     |PIN 2 Y
+   3     |EQUATIONS
+   4     |Y=VCC
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  K2204.pds
+
+*** End MACHPAR.EXE 23:37:42; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 23:37:42 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Y
+
+ %%  MACHBPP  %% Maximum memory allocated was: 62048 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: K2204.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 23:37:42; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 23:37:42 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin Y...
+====> Y                  MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 42418 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: K2204.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 23:37:42; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 23:37:42 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file k2204.tre to PLA file k2204.pla...
+
+.
+.
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 42472 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: K2204.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 23:37:43; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 23:37:43 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+|> WARNING z5009 - line 16 ; Bad parameter or No input signal in PLA file.
+|> ERROR z5017 - Missing '.ilb' section in PLA file.
+Too many errors 1 .
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File K2204.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 1 .
+
+*** End MACHFITR.EX 23:37:43; (MACHFITR.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

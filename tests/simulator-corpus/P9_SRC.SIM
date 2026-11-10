@@ -1,0 +1,84 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  P9_src.pds
+Title  Memory Mapper - PREP Benchmark #9
+
+
+
+   1-V1 - TRACE_ON
+          A_X  B_X  C_X  D_X  E_X  F_X  G_X  H_X  BE_X  
+          ADR[15..0]  
+   1-V1 - SETF
+          /ADR[15]  /ADR[14]  /ADR[13]  /ADR[12]  /ADR[11]  
+          /ADR[10]  /ADR[9]  /ADR[8]  /ADR[7]  /ADR[6]  /ADR[5]  /ADR[4]  
+          /ADR[3]  /ADR[2]  /ADR[1]  /ADR[0]  /AS  /RST  /CLK  
+   2-V2 - SETF
+          RST  
+   3-V3 - SETF
+          /RST  
+   7-V4 - CLOCKF
+          CLK  
+   7-V5 - SETF
+          ADR[15]  ADR[14]  ADR[13]  ADR[12]  ADR[11]  ADR[10]  
+          ADR[9]  ADR[8]  ADR[7]  ADR[6]  ADR[5]  ADR[4]  ADR[3]  
+          ADR[2]  ADR[1]  ADR[0]  AS  
+  11-V6 - CLOCKF
+          CLK  
+  11-V7 - SETF
+          /ADR[12]  AS  
+  15-V8 - CLOCKF
+          CLK  
+  15-V9 - SETF
+          /ADR[12]  /ADR[11]  AS  
+  19-V10 - CLOCKF
+          CLK  
+  19-V11 - SETF
+          /ADR[12]  /ADR[11]  /ADR[10]  AS  
+  23-V12 - CLOCKF
+          CLK  
+  23-V13 - SETF
+          /ADR[12]  /ADR[11]  /ADR[10]  /ADR[8]  AS  
+  27-V14 - CLOCKF
+          CLK  
+  27-V15 - SETF
+          /ADR[12]  /ADR[11]  /ADR[10]  /ADR[8]  /ADR[6]  AS  
+  31-V16 - CLOCKF
+          CLK  
+  31-V17 - SETF
+          /ADR[12]  /ADR[11]  /ADR[10]  /ADR[8]  /ADR[6]  
+          /ADR[4]  AS  
+  35-V18 - CLOCKF
+          CLK  
+  35-V19 - SETF
+          /ADR[12]  /ADR[11]  /ADR[10]  /ADR[8]  /ADR[6]  
+          /ADR[4]  /ADR[2]  AS  
+  39-V20 - CLOCKF
+          CLK  
+  39-V21 - SETF
+          /ADR[12]  /ADR[11]  /ADR[10]  /ADR[8]  /ADR[6]  
+          /ADR[4]  /ADR[2]  /ADR[0]  AS  
+  43-V22 - CLOCKF
+          CLK  
+  43-V23 - SETF
+          /ADR[15]  /ADR[14]  /ADR[13]  /ADR[12]  /ADR[11]  
+          /ADR[10]  /ADR[9]  /ADR[8]  /ADR[7]  /ADR[6]  /ADR[5]  /ADR[4]  
+          /ADR[3]  /ADR[2]  /ADR[1]  /ADR[0]  AS  
+  47-V24 - CLOCKF
+          CLK  
+  47-V25 - SETF
+          RST  
+  48-V26 - SETF
+          /RST  
+  49-V27 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> P9_src.HST
+Simulation results (trace) are in   ===> P9_src.TRF
+Merged results (JEDEC) are in       ===> P9_src.JDC
+Simulation results (trace vectors) are in   ===> P9_src.TRV
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 222816 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: P9_src.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0

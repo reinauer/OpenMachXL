@@ -1,0 +1,37 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  S2310.pds
+Title  
+
+
+
+   1-V1 - TRACE_ON
+          A  B  CLK  Y  
+   1-V1 - SETF
+          /A  /B  /CLK  
+   2-V2 - SETF
+          B  
+   3-V3 - SETF
+          /B  A  
+   7-V4 - CLOCKF
+          CLK  
+   7-V5 - SETF
+          /A  
+  11-V6 - CLOCKF
+          CLK  
+  11-V7 - SETF
+          A  B  
+  15-V8 - CLOCKF
+          CLK  
+  15-V9 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> S2310.HST
+Simulation results (trace) are in   ===> S2310.TRF
+Merged results (JEDEC) are in       ===> S2310.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 141781 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: S2310.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0

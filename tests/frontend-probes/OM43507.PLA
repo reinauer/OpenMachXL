@@ -1,0 +1,43 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME Om43507.pds
+#AMD TITLE 
+#AMD PATTERN 
+#AMD REVISION 
+#AMD AUTHOR 
+#AMD COMPANY 
+#AMD DATE 
+#AMD CHIP MATRIX
+#AMD DEVICE MACH435
+#AMD JED_FILE Om43507.jed
+#AMD SIGNATURE 
+#AMD PIN 13 GND:1 VCC:2 A:3 B:4 C:5 D:6 E:7 Q0:8 Q1:9 Q2:10 GND:11 F:12 Q3:19 
+#AMD PIN 9 CLK:20 VCC:21 GND:22 GND:32 VCC:42 GND:43 VCC:44 GND:53 VCC:63 
+#AMD PIN 3 GND:64 GND:74 VCC:84 
+.type f
+.i 7
+.o 7
+.ilb A B C D E F CLK
+.ob  Q0.REG-% Q0.C Q1.T% Q1.C Q2.REG- Q2.C Q3-%
+.phase 1111111
+.p 20
+----10- 1~~~~~~
+-0---0- 1~~~~~~
+---11-- 1~~~~~~
+0--1-1- 1~~~1~~
+00----- 1~~~~~~
+0-10-0- 1~~~~~~
+------1 ~1~1~1~
+1001-0- ~~1~~~~
+111--1- ~~1~~~~
+1-0111- ~~1~~~~
+000-00- ~~1~~~~
+00---1- ~~~~1~~
+-01--1- ~~~~1~~
+1-0010- ~~~~1~~
+-10010- ~~~~1~~
+0---1-- ~~~~~~1
+0--0--- ~~~~~~1
+-11-1-- ~~~~~~1
+-0-00-- ~~~~~~1
+--01-0- ~~~~~~1
+.e

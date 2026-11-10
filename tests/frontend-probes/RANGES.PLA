@@ -1,0 +1,35 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME Ranges.pds
+#AMD TITLE 
+#AMD PATTERN 
+#AMD REVISION 
+#AMD AUTHOR 
+#AMD COMPANY 
+#AMD DATE 
+#AMD CHIP RANGES
+#AMD DEVICE MACH111
+#AMD JED_FILE Ranges.jed
+#AMD SIGNATURE 
+#AMD PIN 6 GND:1 GND:12 VCC:22 GND:23 GND:34 VCC:44 
+#AMD PIN 9 A[2]:0 A[1]:0 A[0]:0 Y[0]:0 Y[1]:0 Y[2]:0 Y[3]:0 Y[4]:0 Y[5]:0 
+#AMD PIN 3 Y[6]:0 Y[7]:0 Y[8]:0 
+.type f
+.i 3
+.o 9
+.ilb A[2] A[1] A[0]
+.ob  Y[0] Y[1] Y[2] Y[3] Y[4] Y[5] Y[6] Y[7] Y[8]
+.phase 111111111
+.p 12
+01- 11~~~~1~~
+--- ~~1~~~~~~
+10- ~~~1~~1~~
+0-1 ~~~1~~~~~
+-10 ~~~1~~~~~
+--0 ~~~~1~~~~
+0-- ~~~~1~~~~
+-0- ~~~~1~~~~
+--1 ~~~~~1~~~
+-1- ~~~~~1~~~
+1-- ~~~~~1~11
+1-0 ~~~~~~1~~
+.e

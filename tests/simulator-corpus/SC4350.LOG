@@ -1,0 +1,155 @@
+
+*** Start MACHPAR.E 00:27:47 
+Sc4350.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP SC4350 MACH435
+   2     |PIN 3 A
+   3     |PIN 8 Y REGISTERED
+   4     |EQUATIONS
+   5     |Y:=A
+   6     |SIMULATION
+   7     |TRACE_ON A Y
+   8     |SETF /A
+   9     |CLOCKF
+  10     |SETF A
+  11     |CLOCKF
+  12     |CHECK Y
+  13     |SETF /A
+  14     |CLOCKF
+  15     |CHECK /Y
+  16     |TRACE_OFF
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Sc4350.pds
+
+*** End MACHPAR.EXE 00:27:47; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 00:27:47 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Y
+SIMULATION SEGMENT
+..........
+ %%  MACHBPP  %% Maximum memory allocated was: 68816 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Sc4350.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 00:27:48; (MACHBPP.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 00:27:48 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin Y...
+====> Y                  MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 48412 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Sc4350.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 00:27:48; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 00:27:48 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file sc4350.tre to PLA file sc4350.pla...
+
+.
+.
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 48470 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Sc4350.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 00:27:48; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 00:27:48 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Sc4350.pds . Device is MACH435 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+|> INFO z5056 - If a signal is preplaced on the default clock pin or the
+                default clock pin is required for an explicit clock due to
+                clocking requirements, then all clock and latch enable
+                equations must be explicitly defined in the design file.
+                However, if the default clock is not used and a clock
+                equation for a register, or a latch enable equation for a
+                latch, is not written, then a clock or latch enable will be
+                created for the signal and will be assigned to the default
+                CLOCK/LE Pin 20 .
+
+List of global clocks:
+   DEF_GCLOCK:
+...... Is the default clock.
+
+List of non-global clocks:
+   None.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is Sc4350.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File Sc4350.pds .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 0 .
+
+*** End MACHFITR.EX 00:27:49; (MACHFITR.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

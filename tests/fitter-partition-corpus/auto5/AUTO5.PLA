@@ -1,0 +1,27 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME Auto5.pds
+#AMD TITLE 
+#AMD PATTERN 
+#AMD REVISION 
+#AMD AUTHOR 
+#AMD COMPANY 
+#AMD DATE 
+#AMD CHIP PROBE
+#AMD DEVICE MACH111
+#AMD JED_FILE Auto5.jed
+#AMD SIGNATURE 
+#AMD PIN 6 GND:1 GND:12 VCC:22 GND:23 GND:34 VCC:44 
+#AMD PIN 10 A:0 B:0 C:0 D:0 E:0 V:0 W:0 X:0 Y:0 Z:0 
+.type f
+.i 5
+.o 5
+.ilb A B C D E
+.ob  V W X Y Z
+.phase 11111
+.p 5
+11--- 1~~~~
+--11- ~1~~~
+1-1-- ~~1~~
+-1-1- ~~~1~
+----1 ~~~~1
+.e

@@ -1,0 +1,141 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  P8_src.pds
+Title  PRESCALE COUNTER - PREP Benchmark #8
+
+|> WARNING D2260
+     The following Pin/Nodes(s) have not been defined in original design
+     file and will be ignored.
+
+      RN_PCA[14]      RN_PCA[12]      RN_PCA[10]      RN_PCA[9]       
+      RN_PCA[3]       RN_PCA[0]       RN_PCA[5]       RN_PCA[4]       
+      RN_PCA[11]      RN_PCA[8]       RN_PCA[2]       RN_PCA[1]       
+      RN_PCA[15]      RN_PCA[13]      RN_PCA[7]       RN_PCA[6]       
+
+|> WARNING D2130
+     Equation PCAZ.SETF is always low.
+|> WARNING D2130
+     Equation PCA[0].SETF is always low.
+|> WARNING D2130
+     Equation PCA[1].SETF is always low.
+|> WARNING D2130
+     Equation PCA[2].SETF is always low.
+|> WARNING D2130
+     Equation PCA[3].SETF is always low.
+|> WARNING D2130
+     Equation PCA[4].SETF is always low.
+|> WARNING D2130
+     Equation PCA[5].SETF is always low.
+|> WARNING D2130
+     Equation PCA[6].SETF is always low.
+|> WARNING D2130
+     Equation PCA[7].SETF is always low.
+|> WARNING D2130
+     Equation PCA[8].SETF is always low.
+|> WARNING D2130
+     Equation PCA[9].SETF is always low.
+|> WARNING D2130
+     Equation PCA[10].SETF is always low.
+|> WARNING D2130
+     Equation PCA[11].SETF is always low.
+|> WARNING D2130
+     Equation PCA[12].SETF is always low.
+|> WARNING D2130
+     Equation PCA[13].SETF is always low.
+|> WARNING D2130
+     Equation PCA[14].SETF is always low.
+|> WARNING D2130
+     Equation PCA[15].SETF is always low.
+|> WARNING D2130
+     Equation PCAX.SETF is always low.
+|> WARNING D2130
+     Equation PCAY.SETF is always low.
+
+
+   1-V1 - TRACE_ON
+          ID[15..0]  LD  RST  CLK  CE  PCA[15..0]  
+   1-V1 - SETF
+          /ID[0]  /ID[1]  /ID[2]  /ID[3]  /ID[4]  /ID[5]  
+          /ID[6]  /ID[7]  /ID[8]  /ID[9]  /ID[10]  /ID[11]  /ID[12]  
+          /ID[13]  /ID[14]  /ID[15]  /LD  /CE  /RST  /CLK  
+   2-V2 - SETF
+          CE  
+   6-V3 - CLOCKF
+          CLK  
+   9-V4 - CLOCKF
+          CLK  
+  12-V5 - CLOCKF
+          CLK  
+  15-V6 - CLOCKF
+          CLK  
+  15-V7 - SETF
+          RST  
+  19-V8 - CLOCKF
+          CLK  
+  19-V9 - SETF
+          /RST  
+  23-V10 - CLOCKF
+          CLK  
+  23-V11 - SETF
+          /CE  
+  27-V12 - CLOCKF
+          CLK  
+  30-V13 - CLOCKF
+          CLK  
+  30-V14 - SETF
+          CE  
+  34-V15 - CLOCKF
+          CLK  
+  37-V16 - CLOCKF
+          CLK  
+  37-V17 - SETF
+          /ID[15]  /ID[14]  /ID[13]  /ID[12]  ID[11]  ID[10]  
+          ID[9]  ID[8]  ID[7]  ID[6]  ID[5]  ID[4]  ID[3]  ID[2]  
+          /ID[1]  /ID[0]  
+  38-V18 - SETF
+          LD  
+  42-V19 - CLOCKF
+          CLK  
+  45-V20 - CLOCKF
+          CLK  
+  45-V21 - SETF
+          /LD  
+  49-V22 - CLOCKF
+          CLK  
+  52-V23 - CLOCKF
+          CLK  
+  55-V24 - CLOCKF
+          CLK  
+  58-V25 - CLOCKF
+          CLK  
+  58-V26 - SETF
+          ID[0]  ID[1]  ID[2]  ID[3]  ID[4]  ID[5]  ID[6]  
+          ID[7]  ID[8]  ID[9]  ID[10]  ID[11]  ID[12]  ID[13]  ID[14]  
+          ID[15]  
+  59-V27 - SETF
+          LD  
+  63-V28 - CLOCKF
+          CLK  
+  63-V29 - SETF
+          /LD  
+  67-V30 - CLOCKF
+          CLK  
+  70-V31 - CLOCKF
+          CLK  
+  73-V32 - CLOCKF
+          CLK  
+  76-V33 - CLOCKF
+          CLK  
+  76-V34 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> P8_src.HST
+Simulation results (trace) are in   ===> P8_src.TRF
+Merged results (JEDEC) are in       ===> P8_src.JDC
+Simulation results (trace vectors) are in   ===> P8_src.TRV
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 245531 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: P8_src.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 20

@@ -1,0 +1,89 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+MACHXL SIMULATION SELECTIVE TRACE LISTING
+
+Title     : MULTIPLEXER              Author   : J. ENGINEER      
+Pattern   : 1                        Company  : AMD              
+Revision  : 1                        Date     : 8/26/94          
+
+MACH465        
+Page : 1 
+
+            gggggggggggggggg                                            
+ DATA[7]    LLLLLLLLLLLLLLLL                                            
+ DATA[6]    HHHHHHHHHHHHHHHH                                            
+ DATA[5]    LLLLLLLLLLLLLLLL                                            
+ DATA[4]    HHHHHHHHHHHHHHHH                                            
+ DATA[3]    LLLLLLLLLLLLLLLL                                            
+ DATA[2]    HHHHHHHHHHHHHHHH                                            
+ DATA[1]    LLLLLLLLLLLLLLLL                                            
+ DATA[0]    HHHHHHHHHHHHHHHH                                            
+ DATB[7]    LLLLLLLLLLLLLLLL                                            
+ DATB[6]    LHHHHHHHHHHHHHHH                                            
+ DATB[5]    LHHHHHHHHHHHHHHH                                            
+ DATB[4]    LLLLLLLLLLLLLLLL                                            
+ DATB[3]    LLLLLLLLLLLLLLLL                                            
+ DATB[2]    LHHHHHHHHHHHHHHH                                            
+ DATB[1]    LHHHHHHHHHHHHHHH                                            
+ DATB[0]    LLLLLLLLLLLLLLLL                                            
+ DATC[7]    LLLLLLLLLLLLLLLL                                            
+ DATC[6]    LLHHHHHHHHHHHHHH                                            
+ DATC[5]    LLHHHHHHHHHHHHHH                                            
+ DATC[4]    LLHHHHHHHHHHHHHH                                            
+ DATC[3]    LLLLLLLLLLLLLLLL                                            
+ DATC[2]    LLHHHHHHHHHHHHHH                                            
+ DATC[1]    LLHHHHHHHHHHHHHH                                            
+ DATC[0]    LLHHHHHHHHHHHHHH                                            
+ DATD[7]    LLLHHHHHHHHHHHHH                                            
+ DATD[6]    LLLLLLLLLLLLLLLL                                            
+ DATD[5]    LLLLLLLLLLLLLLLL                                            
+ DATD[4]    LLLLLLLLLLLLLLLL                                            
+ DATD[3]    LLLHHHHHHHHHHHHH                                            
+ DATD[2]    LLLLLLLLLLLLLLLL                                            
+ DATD[1]    LLLLLLLLLLLLLLLL                                            
+ DATD[0]    LLLLLLLLLLLLLLLL                                            
+ DATI[7]    LLLLHHHHHHHHHHHH                                            
+ DATI[6]    LLLLLLLLLLLLLLLL                                            
+ DATI[5]    LLLLLLLLLLLLLLLL                                            
+ DATI[4]    LLLLHHHHHHHHHHHH                                            
+ DATI[3]    LLLLHHHHHHHHHHHH                                            
+ DATI[2]    LLLLLLLLLLLLLLLL                                            
+ DATI[1]    LLLLLLLLLLLLLLLL                                            
+ DATI[0]    LLLLHHHHHHHHHHHH                                            
+ DATF[7]    LLLLLHHHHHHHHHHH                                            
+ DATF[6]    LLLLLLLLLLLLLLLL                                            
+ DATF[5]    LLLLLHHHHHHHHHHH                                            
+ DATF[4]    LLLLLLLLLLLLLLLL                                            
+ DATF[3]    LLLLLHHHHHHHHHHH                                            
+ DATF[2]    LLLLLLLLLLLLLLLL                                            
+ DATF[1]    LLLLLHHHHHHHHHHH                                            
+ DATF[0]    LLLLLLLLLLLLLLLL                                            
+ DATG[7]    LLLLLLHHHHHHHHHH                                            
+ DATG[6]    LLLLLLLLLLLLLLLL                                            
+ DATG[5]    LLLLLLHHHHHHHHHH                                            
+ DATG[4]    LLLLLLHHHHHHHHHH                                            
+ DATG[3]    LLLLLLHHHHHHHHHH                                            
+ DATG[2]    LLLLLLLLLLLLLLLL                                            
+ DATG[1]    LLLLLLHHHHHHHHHH                                            
+ DATG[0]    LLLLLLHHHHHHHHHH                                            
+ DATH[7]    LLLLLLLHHHHHHHHH                                            
+ DATH[6]    LLLLLLLHHHHHHHHH                                            
+ DATH[5]    LLLLLLLLLLLLLLLL                                            
+ DATH[4]    LLLLLLLLLLLLLLLL                                            
+ DATH[3]    LLLLLLLHHHHHHHHH                                            
+ DATH[2]    LLLLLLLHHHHHHHHH                                            
+ DATH[1]    LLLLLLLLLLLLLLLL                                            
+ DATH[0]    LLLLLLLLLLLLLLLL                                            
+ MUXOUT[7]  LLLLLLLLLLLHHHHH                                            
+ MUXOUT[6]  HHHHHHHHHHHLLLLH                                            
+ MUXOUT[5]  LLLLLLLLLHHLLHHL                                            
+ MUXOUT[4]  HHHHHHHHHLHLHLHL                                            
+ MUXOUT[3]  LLLLLLLLLLLHHHHH                                            
+ MUXOUT[2]  HHHHHHHHHHHLLLLH                                            
+ MUXOUT[1]  LLLLLLLLLHHLLHHL                                            
+ MUXOUT[0]  HHHHHHHHHLHLHLHL                                            
+ SEL1       LLLLLLLLLLLLHHHH                                            
+ SEL2       LLLLLLLLLLHHLLHH                                            
+ SEL3       LLLLLLLLLHLHLHLH                                            
+

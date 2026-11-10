@@ -1,0 +1,18 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file Fixt.pds
+; FITTER-generated Placements.
+; DEVICE   MACH111
+; DATE     Mon Nov 09 21:31:53 2026
+
+
+Pin   2  B[1] Reg  ;
+Pin   3  RST
+Pin   4  ENABLE
+Pin   35  CLK
+Pin   40  B[0] Reg  ;
+Pin   43  B[2] Reg  ;
+Node  2  RN_B[1] Reg  ;
+Node  21  RN_B[0] Reg  ;
+; Unused Pins & Nodes
+; -> None Found.

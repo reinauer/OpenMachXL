@@ -1,0 +1,1123 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+**********************************************************************
+* Design Name = 16cntmux.pds, Device = MACH435, Nov 09 20:18:21 2026 *
+**********************************************************************
+
+***********************
+* MACH FITTER OPTIONS *
+***********************
+SIGNAL PLACEMENT:
+  Handling of Preplacements                      No Change
+  Use placement data from                        Design file
+
+FITTING OPTIONS:
+  Global clocks routable as PT clocks?           N
+  22V10/MACH1XX/2XX S/R Compatibility?           Y
+  SET/RESET treated as DONT_CARE?                Y
+  Reduce Unforced Global Clocks?                 N 
+  Iterate between partitioning and place/route?  Y
+  Balanced partitioning?                         Y
+  Reduce Routes Per Placement?                   N
+  Maximun Run Time                               run until completion
+
+***************************
+* DEVICE RESOURCE SUMMARY *
+***************************
+                                 Total
+                               Available  Used  Available  Utilization
+Dedicated Pins
+  Input-Only Pins                 2        1      1    -->    50%
+  Clock/Input Pins                4        4      0    -->   100%
+I/O Pins                         64       64      0    -->   100%
+Input Registers                  64        0     64    -->     0%
+Central Switch Matrix Outputs   264      144    120    -->    54%
+Product Term Clusters           128       64     64    -->    50%
+Logical Product Terms           640      190    450    -->    29%
+Logic Macrocells                128       64     64    -->    50%
+  > 1 PT Macrocells              ..       64     64
+  1 PT Macrocells                ..        0      0
+  Unusable Macrocells            ..        0     ..
+
+******************************
+* BLOCK PARTITIONING SUMMARY *
+******************************
+                                                      Macrocells  # of PT  
+                  Logic   I/O    Inp    Macrocells    available   clusters 
+          Fanin    PTs    Pins   Reg   Used Unusable  1PT   >1PT  available
+|---------------------------------------------------------------------------|
+Maximum     33     80      8      8     ..     ..         16        16
+|---------------------------------------------------------------------------|
+Block A     24     24      8      0      8      0      0      8      8
+Block B     24     24      8      0      8      0      0      8      8
+Block C     16     24      8      0      8      0      0      8      8
+Block D     16     24      8      0      8      0      0      8      8
+Block E     12     23      8      0      8      0      0      8      8
+Block F     12     23      8      0      8      0      0      8      8
+Block G     20     24      8      0      8      0      0      8      8
+Block H     20     24      8      0      8      0      0      8      8
+
+> Four rightmost columns above reflect last status of the placement process.
+
+******************
+* SIGNAL SUMMARY *
+******************
+                                 Pin/Node Logic
+       Signals Block Loc PTs XOR   Type   Type    Fanout
+|---------------------------------------------------------------------------|
+         COUNT   A     9  .   .    input   ...   ABCDEFGH
+            I0   H    82  .   .    input   ...   -----F--
+            I1   H    80  .   .    input   ...   -----F--
+           I10   F    61  .   .    input   ...   -------H
+           I11   F    59  .   .    input   ...   -------H
+           I12   F    57  .   .    input   ...   A-------
+           I13   F    55  .   .    input   ...   A-------
+           I14   E    51  .   .    input   ...   A-------
+           I15   E    49  .   .    input   ...   A-------
+           I16   E    47  .   .    input   ...   ----E---
+           I17   E    45  .   .    input   ...   ----E---
+           I19   D    40  .   .    input   ...   ----E---
+            I2   H    78  .   .    input   ...   -----F--
+           I20   D    38  .   .    input   ...   ---D----
+           I21   D    36  .   .    input   ...   ---D----
+           I22   D    34  .   .    input   ...   ---D----
+           I23   C    30  .   .    input   ...   ---D----
+           I24   C    28  .   .    input   ...   ------G-
+           I25   C    26  .   .    input   ...   ------G-
+           I26   C    24  .   .    input   ...   ------G-
+           I28   B    19  .   .    input   ...   -B------
+           I29   B    17  .   .    input   ...   -B------
+            I3   H    76  .   .    input   ...   -----F--
+           I30   B    15  .   .    input   ...   -B------
+           I31   B    13  .   .    input   ...   -B------
+            I4   G    72  .   .    input   ...   --C-----
+            I5   G    70  .   .    input   ...   --C-----
+            I6   G    68  .   .    input   ...   --C-----
+            I7   G    66  .   .    input   ...   --C-----
+          LOAD   A     5  .   .    input   ...   ABCDEFGH
+            O0   F    58  2   .   output   ...   --------
+            O1   F    60  2   .   output   ...   --------
+           O10   H    75  2   .   output   ...   --------
+           O11   H    77  2   .   output   ...   --------
+           O12   A     6  2   .   output   ...   --------
+           O13   A     4  2   .   output   ...   --------
+           O14   A    10  2   .   output   ...   --------
+           O15   A     8  2   .   output   ...   --------
+           O16   E    48  2   .   output   ...   --------
+           O17   E    46  2   .   output   ...   --------
+           O18   E    52  2   .   output   ...   --------
+           O19   E    50  2   .   output   ...   --------
+            O2   F    54  2   .   output   ...   --------
+           O20   D    37  2   .   output   ...   --------
+           O21   D    39  2   .   output   ...   --------
+           O22   D    33  2   .   output   ...   --------
+           O23   D    35  2   .   output   ...   --------
+           O24   G    69  2   .   output   ...   --------
+           O25   G    67  2   .   output   ...   --------
+           O26   G    73  2   .   output   ...   --------
+           O27   G    71  2   .   output   ...   --------
+           O28   B    16  2   .   output   ...   --------
+           O29   B    18  2   .   output   ...   --------
+            O3   F    56  2   .   output   ...   --------
+           O30   B    12  2   .   output   ...   --------
+           O31   B    14  2   .   output   ...   --------
+            O4   C    27  2   .   output   ...   --------
+            O5   C    25  2   .   output   ...   --------
+            O6   C    31  2   .   output   ...   --------
+            O7   C    29  2   .   output   ...   --------
+            O8   H    79  2   .   output   ...   --------
+            O9   H    81  2   .   output   ...   --------
+        SELECT   A     3  .   .    input   ...   ABCDEFGH
+            UP   A     7  .   .    input   ...   ABCDEFGH
+            O0   F   F12  2   G  implied   C/.   --------
+            O1   F    F8  2   G  implied   C/.   --------
+           O10   H    H4  2   G  implied   C/.   --------
+           O11   H    H0  2   G  implied   C/.   --------
+           O12   A   A12  2   G  implied   C/.   --------
+           O13   A    A8  2   G  implied   C/.   --------
+           O14   A    A4  2   G  implied   C/.   --------
+           O15   A    A0  2   G  implied   C/.   --------
+           O16   E   E12  2   G  implied   C/.   --------
+           O17   E    E8  2   G  implied   C/.   --------
+           O18   E    E4  2   G  implied   C/.   --------
+           O19   E    E0  2   G  implied   C/.   --------
+            O2   F    F4  2   G  implied   C/.   --------
+           O20   D   D12  2   G  implied   C/.   --------
+           O21   D    D8  2   G  implied   C/.   --------
+           O22   D    D4  2   G  implied   C/.   --------
+           O23   D    D0  2   G  implied   C/.   --------
+           O24   G   G12  2   G  implied   C/.   --------
+           O25   G    G8  2   G  implied   C/.   --------
+           O26   G    G4  2   G  implied   C/.   --------
+           O27   G    G0  2   G  implied   C/.   --------
+           O28   B   B12  2   G  implied   C/.   --------
+           O29   B    B8  2   G  implied   C/.   --------
+            O3   F    F0  2   G  implied   C/.   --------
+           O30   B    B4  2   G  implied   C/.   --------
+           O31   B    B0  2   G  implied   C/.   --------
+            O4   C   C12  2   G  implied   C/.   --------
+            O5   C    C8  2   G  implied   C/.   --------
+            O6   C    C4  2   G  implied   C/.   --------
+            O7   C    C0  2   G  implied   C/.   --------
+            O8   H   H12  2   G  implied   C/.   --------
+            O9   H    H8  2   G  implied   C/.   --------
+            Q0   F   F13  3   G   buried   T/S   A-C--F-H
+            Q1   F    F9  4   G   buried   T/S   A-C--F-H
+           Q10   H    H5  4   G   buried   T/S   A------H
+           Q11   H    H1  4   G   buried   T/S   A------H
+           Q12   A   A13  4   G   buried   T/S   A-------
+           Q13   A    A9  4   G   buried   T/S   A-------
+           Q14   A    A5  4   G   buried   T/S   A-------
+           Q15   A    A1  4   G   buried   T/S   A-------
+           Q16   E   E13  3   G   buried   T/S   -B-DE-G-
+           Q17   E    E9  4   G   buried   T/S   -B-DE-G-
+           Q18   E    E5  4   G   buried   T/S   -B-DE-G-
+           Q19   E    E1  4   G   buried   T/S   -B-DE-G-
+            Q2   F    F5  4   G   buried   T/S   A-C--F-H
+           Q20   D   D13  4   G   buried   T/S   -B-D--G-
+           Q21   D    D9  4   G   buried   T/S   -B-D--G-
+           Q22   D    D5  4   G   buried   T/S   -B-D--G-
+           Q23   D    D1  4   G   buried   T/S   -B-D--G-
+           Q24   G   G13  4   G   buried   T/S   -B----G-
+           Q25   G    G9  4   G   buried   T/S   -B----G-
+           Q26   G    G5  4   G   buried   T/S   -B----G-
+           Q27   G    G1  4   G   buried   T/S   -B----G-
+           Q28   B   B13  4   G   buried   T/S   -B------
+           Q29   B    B9  4   G   buried   T/S   -B------
+            Q3   F    F1  4   G   buried   T/S   A-C--F-H
+           Q30   B    B5  4   G   buried   T/S   -B------
+           Q31   B    B1  4   G   buried   T/S   -B------
+            Q4   C   C13  4   G   buried   T/S   A-C----H
+            Q5   C    C9  4   G   buried   T/S   A-C----H
+            Q6   C    C5  4   G   buried   T/S   A-C----H
+            Q7   C    C1  4   G   buried   T/S   A-C----H
+            Q8   H   H13  4   G   buried   T/S   A------H
+            Q9   H    H9  4   G   buried   T/S   A------H
+
+***********************
+* TABULAR INFORMATION *
+***********************
+
+DEDICATED PINS
+                                             Logic             Clock
+Pin              Signal        Type          Fanout            Fanout
+|------------------------------------------------------------------------|
+ 20                 CLK     clk/inp          --------          ABCDEFGH
+ 23                 I27       input          ------G-          --------
+ 41                 I18       input          ----E---          --------
+ 62                  I9       input          -------H          --------
+ 65                  I8       input          -------H          --------
+ 83      ..............          ..          ........          ........
+
+**********************************
+* Signals - Equations Where Used *
+**********************************
+Signal Source :    Fanout List
+|---------------------------------------------------------------------------|
+         COUNT:             Q0{F}             Q1{F}             Q2{F}
+              :             Q3{F}             Q4{C}             Q5{C}
+              :             Q6{C}             Q7{C}             Q8{H}
+              :             Q9{H}            Q10{H}            Q11{H}
+              :            Q12{A}            Q13{A}            Q14{A}
+              :            Q15{A}            Q16{E}            Q17{E}
+              :            Q18{E}            Q19{E}            Q20{D}
+              :            Q21{D}            Q22{D}            Q23{D}
+              :            Q24{G}            Q25{G}            Q26{G}
+              :            Q27{G}            Q28{B}            Q29{B}
+              :            Q30{B}            Q31{B}
+              {FFF FCC CCH HHH AAA AEE EED DDD GGG GBB BB}
+            UP:             Q1{F}             Q2{F}             Q3{F}
+              :             Q4{C}             Q5{C}             Q6{C}
+              :             Q7{C}             Q8{H}             Q9{H}
+              :            Q10{H}            Q11{H}            Q12{A}
+              :            Q13{A}            Q14{A}            Q15{A}
+              :            Q17{E}            Q18{E}            Q19{E}
+              :            Q20{D}            Q21{D}            Q22{D}
+              :            Q23{D}            Q24{G}            Q25{G}
+              :            Q26{G}            Q27{G}            Q28{B}
+              :            Q29{B}            Q30{B}            Q31{B}
+              {FFF CCC CHH HHA AAA EEE DDD DGG GGB BBB}
+          LOAD:             Q0{F}             Q1{F}             Q2{F}
+              :             Q3{F}             Q4{C}             Q5{C}
+              :             Q6{C}             Q7{C}             Q8{H}
+              :             Q9{H}            Q10{H}            Q11{H}
+              :            Q12{A}            Q13{A}            Q14{A}
+              :            Q15{A}            Q16{E}            Q17{E}
+              :            Q18{E}            Q19{E}            Q20{D}
+              :            Q21{D}            Q22{D}            Q23{D}
+              :            Q24{G}            Q25{G}            Q26{G}
+              :            Q27{G}            Q28{B}            Q29{B}
+              :            Q30{B}            Q31{B}
+              {FFF FCC CCH HHH AAA AEE EED DDD GGG GBB BB}
+        SELECT:             O0{F}             O1{F}             O2{F}
+              :             O3{F}             O4{C}             O5{C}
+              :             O6{C}             O7{C}             O8{H}
+              :             O9{H}            O10{H}            O11{H}
+              :            O12{A}            O13{A}            O14{A}
+              :            O15{A}            O16{E}            O17{E}
+              :            O18{E}            O19{E}            O20{D}
+              :            O21{D}            O22{D}            O23{D}
+              :            O24{G}            O25{G}            O26{G}
+              :            O27{G}            O28{B}            O29{B}
+              :            O30{B}            O31{B}
+              {FFF FCC CCH HHH AAA AEE EED DDD GGG GBB BB}
+            I0:             O0{F}             Q0{F}
+              {FF}
+            I1:             O1{F}             Q1{F}
+              {FF}
+            I2:             O2{F}             Q2{F}
+              {FF}
+            I3:             O3{F}             Q3{F}
+              {FF}
+            I4:             O4{C}             Q4{C}
+              {CC}
+            I5:             O5{C}             Q5{C}
+              {CC}
+            I6:             O6{C}             Q6{C}
+              {CC}
+            I7:             O7{C}             Q7{C}
+              {CC}
+            I8:             O8{H}             Q8{H}
+              {HH}
+            I9:             O9{H}             Q9{H}
+              {HH}
+           I10:            O10{H}            Q10{H}
+              {HH}
+           I11:            O11{H}            Q11{H}
+              {HH}
+           I12:            O12{A}            Q12{A}
+              {AA}
+           I13:            O13{A}            Q13{A}
+              {AA}
+           I14:            O14{A}            Q14{A}
+              {AA}
+           I15:            O15{A}            Q15{A}
+              {AA}
+           I16:            O16{E}            Q16{E}
+              {EE}
+           I17:            O17{E}            Q17{E}
+              {EE}
+           I18:            O18{E}            Q18{E}
+              {EE}
+           I19:            O19{E}            Q19{E}
+              {EE}
+           I20:            O20{D}            Q20{D}
+              {DD}
+           I21:            O21{D}            Q21{D}
+              {DD}
+           I22:            O22{D}            Q22{D}
+              {DD}
+           I23:            O23{D}            Q23{D}
+              {DD}
+           I24:            O24{G}            Q24{G}
+              {GG}
+           I25:            O25{G}            Q25{G}
+              {GG}
+           I26:            O26{G}            Q26{G}
+              {GG}
+           I27:            O27{G}            Q27{G}
+              {GG}
+           I28:            O28{B}            Q28{B}
+              {BB}
+           I29:            O29{B}            Q29{B}
+              {BB}
+           I30:            O30{B}            Q30{B}
+              {BB}
+           I31:            O31{B}            Q31{B}
+              {BB}
+            Q0:             O0{F}             Q0{F}             Q1{F}
+              :             Q2{F}             Q3{F}             Q4{C}
+              :             Q5{C}             Q6{C}             Q7{C}
+              :             Q8{H}             Q9{H}            Q10{H}
+              :            Q11{H}            Q12{A}            Q13{A}
+              :            Q14{A}            Q15{A}
+              {FFF FFC CCC HHH HAA AA}
+            Q1:             O1{F}             Q1{F}             Q2{F}
+              :             Q3{F}             Q4{C}             Q5{C}
+              :             Q6{C}             Q7{C}             Q8{H}
+              :             Q9{H}            Q10{H}            Q11{H}
+              :            Q12{A}            Q13{A}            Q14{A}
+              :            Q15{A}
+              {FFF FCC CCH HHH AAA A}
+            Q2:             O2{F}             Q2{F}             Q3{F}
+              :             Q4{C}             Q5{C}             Q6{C}
+              :             Q7{C}             Q8{H}             Q9{H}
+              :            Q10{H}            Q11{H}            Q12{A}
+              :            Q13{A}            Q14{A}            Q15{A}
+              {FFF CCC CHH HHA AAA}
+            Q3:             O3{F}             Q3{F}             Q4{C}
+              :             Q5{C}             Q6{C}             Q7{C}
+              :             Q8{H}             Q9{H}            Q10{H}
+              :            Q11{H}            Q12{A}            Q13{A}
+              :            Q14{A}            Q15{A}
+              {FFC CCC HHH HAA AA}
+            Q4:             O4{C}             Q4{C}             Q5{C}
+              :             Q6{C}             Q7{C}             Q8{H}
+              :             Q9{H}            Q10{H}            Q11{H}
+              :            Q12{A}            Q13{A}            Q14{A}
+              :            Q15{A}
+              {CCC CCH HHH AAA A}
+            Q5:             O5{C}             Q5{C}             Q6{C}
+              :             Q7{C}             Q8{H}             Q9{H}
+              :            Q10{H}            Q11{H}            Q12{A}
+              :            Q13{A}            Q14{A}            Q15{A}
+              {CCC CHH HHA AAA}
+            Q6:             O6{C}             Q6{C}             Q7{C}
+              :             Q8{H}             Q9{H}            Q10{H}
+              :            Q11{H}            Q12{A}            Q13{A}
+              :            Q14{A}            Q15{A}
+              {CCC HHH HAA AA}
+            Q7:             O7{C}             Q7{C}             Q8{H}
+              :             Q9{H}            Q10{H}            Q11{H}
+              :            Q12{A}            Q13{A}            Q14{A}
+              :            Q15{A}
+              {CCH HHH AAA A}
+            Q8:             O8{H}             Q8{H}             Q9{H}
+              :            Q10{H}            Q11{H}            Q12{A}
+              :            Q13{A}            Q14{A}            Q15{A}
+              {HHH HHA AAA}
+            Q9:             O9{H}             Q9{H}            Q10{H}
+              :            Q11{H}            Q12{A}            Q13{A}
+              :            Q14{A}            Q15{A}
+              {HHH HAA AA}
+           Q10:            O10{H}            Q10{H}            Q11{H}
+              :            Q12{A}            Q13{A}            Q14{A}
+              :            Q15{A}
+              {HHH AAA A}
+           Q11:            O11{H}            Q11{H}            Q12{A}
+              :            Q13{A}            Q14{A}            Q15{A}
+              {HHA AAA}
+           Q12:            O12{A}            Q12{A}            Q13{A}
+              :            Q14{A}            Q15{A}
+              {AAA AA}
+           Q13:            O13{A}            Q13{A}            Q14{A}
+              :            Q15{A}
+              {AAA A}
+           Q14:            O14{A}            Q14{A}            Q15{A}
+              {AAA}
+           Q15:            O15{A}            Q15{A}
+              {AA}
+           Q16:            O16{E}            Q16{E}            Q17{E}
+              :            Q18{E}            Q19{E}            Q20{D}
+              :            Q21{D}            Q22{D}            Q23{D}
+              :            Q24{G}            Q25{G}            Q26{G}
+              :            Q27{G}            Q28{B}            Q29{B}
+              :            Q30{B}            Q31{B}
+              {EEE EED DDD GGG GBB BB}
+           Q17:            O17{E}            Q17{E}            Q18{E}
+              :            Q19{E}            Q20{D}            Q21{D}
+              :            Q22{D}            Q23{D}            Q24{G}
+              :            Q25{G}            Q26{G}            Q27{G}
+              :            Q28{B}            Q29{B}            Q30{B}
+              :            Q31{B}
+              {EEE EDD DDG GGG BBB B}
+           Q18:            O18{E}            Q18{E}            Q19{E}
+              :            Q20{D}            Q21{D}            Q22{D}
+              :            Q23{D}            Q24{G}            Q25{G}
+              :            Q26{G}            Q27{G}            Q28{B}
+              :            Q29{B}            Q30{B}            Q31{B}
+              {EEE DDD DGG GGB BBB}
+           Q19:            O19{E}            Q19{E}            Q20{D}
+              :            Q21{D}            Q22{D}            Q23{D}
+              :            Q24{G}            Q25{G}            Q26{G}
+              :            Q27{G}            Q28{B}            Q29{B}
+              :            Q30{B}            Q31{B}
+              {EED DDD GGG GBB BB}
+           Q20:            O20{D}            Q20{D}            Q21{D}
+              :            Q22{D}            Q23{D}            Q24{G}
+              :            Q25{G}            Q26{G}            Q27{G}
+              :            Q28{B}            Q29{B}            Q30{B}
+              :            Q31{B}
+              {DDD DDG GGG BBB B}
+           Q21:            O21{D}            Q21{D}            Q22{D}
+              :            Q23{D}            Q24{G}            Q25{G}
+              :            Q26{G}            Q27{G}            Q28{B}
+              :            Q29{B}            Q30{B}            Q31{B}
+              {DDD DGG GGB BBB}
+           Q22:            O22{D}            Q22{D}            Q23{D}
+              :            Q24{G}            Q25{G}            Q26{G}
+              :            Q27{G}            Q28{B}            Q29{B}
+              :            Q30{B}            Q31{B}
+              {DDD GGG GBB BB}
+           Q23:            O23{D}            Q23{D}            Q24{G}
+              :            Q25{G}            Q26{G}            Q27{G}
+              :            Q28{B}            Q29{B}            Q30{B}
+              :            Q31{B}
+              {DDG GGG BBB B}
+           Q24:            O24{G}            Q24{G}            Q25{G}
+              :            Q26{G}            Q27{G}            Q28{B}
+              :            Q29{B}            Q30{B}            Q31{B}
+              {GGG GGB BBB}
+           Q25:            O25{G}            Q25{G}            Q26{G}
+              :            Q27{G}            Q28{B}            Q29{B}
+              :            Q30{B}            Q31{B}
+              {GGG GBB BB}
+           Q26:            O26{G}            Q26{G}            Q27{G}
+              :            Q28{B}            Q29{B}            Q30{B}
+              :            Q31{B}
+              {GGG BBB B}
+           Q27:            O27{G}            Q27{G}            Q28{B}
+              :            Q29{B}            Q30{B}            Q31{B}
+              {GGB BBB}
+           Q28:            O28{B}            Q28{B}            Q29{B}
+              :            Q30{B}            Q31{B}
+              {BBB BB}
+           Q29:            O29{B}            Q29{B}            Q30{B}
+              :            Q31{B}
+              {BBB B}
+           Q30:            O30{B}            Q30{B}            Q31{B}
+              {BBB}
+           Q31:            O31{B}            Q31{B}
+              {BB}
+
+BLOCK A CLOCK MUX 
+Block Clocks     Signal    Pin   Pol
+|-----------------------------------|
+Ck0                 CLK     20    H
+Ck1                 ...     ..    .
+Ck2                 ...     ..    .
+Ck3                 ...     ..    .
+
+
+BLOCK A LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+A0      2              O15  C/.  2   8  G  H   .  .  .   8  --------
+A1      3              Q15  T/S  4  11  G  H  A1  G  G  ..  A-------
+A2      4 ................  ...  .  10  .  .   .  .  .  ..  ........
+A3      5 ................  ...  .  10  .  .   .  .  .  ..  ........
+A4      6              O14  C/.  2  13  G  H   .  .  .  10  --------
+A5      7              Q14  T/S  4  11  G  H  A5  G  G  ..  A-------
+A6      8 ................  ...  .  10  .  .   .  .  .  ..  ........
+A7      9 ................  ...  .  10  .  .   .  .  .  ..  ........
+A8     10              O13  C/.  2  13  G  H   .  .  .   4  --------
+A9     11              Q13  T/S  4  11  G  H  A9  G  G  ..  A-------
+A10    12 ................  ...  .  10  .  .   .  .  .  ..  ........
+A11    13 ................  ...  .  10  .  .   .  .  .  ..  ........
+A12    14              O12  C/.  2  13  G  H   .  .  .   6  --------
+A13    15              Q12  T/S  4  11  G  H A13  G  G  ..  A-------
+A14    16 ................  ...  .  10  .  .   .  .  .  ..  ........
+A15    17 ................  ...  .  10  .  .   .  .  .  ..  ........
+Air-0 130 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-1 131 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-2 132 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-3 133 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-4 134 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-5 135 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-6 136 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-7 137 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+BLOCK A I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+  3  ...   ...            SELECT     input  ABCDEFGH
+  4   10   ...               O13    output  --------
+  5  ...   ...              LOAD     input  ABCDEFGH
+  6   14   ...               O12    output  --------
+  7  ...   ...                UP     input  ABCDEFGH
+  8    2   ...               O15    output  --------
+  9  ...   ...             COUNT     input  ABCDEFGH
+ 10    6   ...               O14    output  --------
+
+
+BLOCK A LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxA0              Q12    mcell A-13     mxA17            LOAD         pin 5
+mxA1               Q7     mcell C-1     mxA18             I15        pin 49
+mxA2              Q13     mcell A-9     mxA19              Q8    mcell H-13
+mxA3              I12        pin 57     mxA20             ...           ...
+mxA4               UP         pin 7     mxA21             ...           ...
+mxA5               Q9     mcell H-9     mxA22              Q0    mcell F-13
+mxA6            COUNT         pin 9     mxA23              Q5     mcell C-9
+mxA7              I13        pin 55     mxA24             ...           ...
+mxA8           SELECT         pin 3     mxA25             ...           ...
+mxA9              I14        pin 51     mxA26             ...           ...
+mxA10             Q11     mcell H-1     mxA27             ...           ...
+mxA11              Q4    mcell C-13     mxA28             Q14     mcell A-5
+mxA12             Q15     mcell A-1     mxA29             ...           ...
+mxA13             Q10     mcell H-5     mxA30              Q3     mcell F-1
+mxA14              Q2     mcell F-5     mxA31             ...           ...
+mxA15              Q6     mcell C-5     mxA32              Q1     mcell F-9
+mxA16             ...           ...
+
+BLOCK B CLOCK MUX 
+Block Clocks     Signal    Pin   Pol
+|-----------------------------------|
+Ck0                 CLK     20    H
+Ck1                 ...     ..    .
+Ck2                 ...     ..    .
+Ck3                 ...     ..    .
+
+
+BLOCK B LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+B0     18              O31  C/.  2   8  G  H   .  .  .  14  --------
+B1     19              Q31  T/S  4  11  G  H  B1  G  G  ..  -B------
+B2     20 ................  ...  .  10  .  .   .  .  .  ..  ........
+B3     21 ................  ...  .  10  .  .   .  .  .  ..  ........
+B4     22              O30  C/.  2  13  G  H   .  .  .  12  --------
+B5     23              Q30  T/S  4  11  G  H  B5  G  G  ..  -B------
+B6     24 ................  ...  .  10  .  .   .  .  .  ..  ........
+B7     25 ................  ...  .  10  .  .   .  .  .  ..  ........
+B8     26              O29  C/.  2  13  G  H   .  .  .  18  --------
+B9     27              Q29  T/S  4  11  G  H  B9  G  G  ..  -B------
+B10    28 ................  ...  .  10  .  .   .  .  .  ..  ........
+B11    29 ................  ...  .  10  .  .   .  .  .  ..  ........
+B12    30              O28  C/.  2  13  G  H   .  .  .  16  --------
+B13    31              Q28  T/S  4  11  G  H B13  G  G  ..  -B------
+B14    32 ................  ...  .  10  .  .   .  .  .  ..  ........
+B15    33 ................  ...  .  10  .  .   .  .  .  ..  ........
+Bir-0 138 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-1 139 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-2 140 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-3 141 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-4 142 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-5 143 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-6 144 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-7 145 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+BLOCK B I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 12   22   ...               O30    output  --------
+ 13  ...   ...               I31     input  -B------
+ 14   18   ...               O31    output  --------
+ 15  ...   ...               I30     input  -B------
+ 16   30   ...               O28    output  --------
+ 17  ...   ...               I29     input  -B------
+ 18   26   ...               O29    output  --------
+ 19  ...   ...               I28     input  -B------
+
+
+BLOCK B LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxB0              Q30     mcell B-5     mxB17             Q23     mcell D-1
+mxB1              Q20    mcell D-13     mxB18             ...           ...
+mxB2              Q16    mcell E-13     mxB19             ...           ...
+mxB3             LOAD         pin 5     mxB20             ...           ...
+mxB4               UP         pin 7     mxB21             Q28    mcell B-13
+mxB5              Q19     mcell E-1     mxB22             Q26     mcell G-5
+mxB6            COUNT         pin 9     mxB23             I29        pin 17
+mxB7              Q22     mcell D-5     mxB24             Q27     mcell G-1
+mxB8           SELECT         pin 3     mxB25             I31        pin 13
+mxB9              Q24    mcell G-13     mxB26             Q18     mcell E-5
+mxB10             Q25     mcell G-9     mxB27             ...           ...
+mxB11             I28        pin 19     mxB28             ...           ...
+mxB12             Q21     mcell D-9     mxB29             ...           ...
+mxB13             I30        pin 15     mxB30             ...           ...
+mxB14             Q17     mcell E-9     mxB31             ...           ...
+mxB15             Q31     mcell B-1     mxB32             ...           ...
+mxB16             Q29     mcell B-9
+
+BLOCK C CLOCK MUX 
+Block Clocks     Signal    Pin   Pol
+|-----------------------------------|
+Ck0                 CLK     20    H
+Ck1                 ...     ..    .
+Ck2                 ...     ..    .
+Ck3                 ...     ..    .
+
+
+BLOCK C LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+C0     34               O7  C/.  2   8  G  H   .  .  .  29  --------
+C1     35               Q7  T/S  4  11  G  H  C1  G  G  ..  A-C----H
+C2     36 ................  ...  .  10  .  .   .  .  .  ..  ........
+C3     37 ................  ...  .  10  .  .   .  .  .  ..  ........
+C4     38               O6  C/.  2  13  G  H   .  .  .  31  --------
+C5     39               Q6  T/S  4  11  G  H  C5  G  G  ..  A-C----H
+C6     40 ................  ...  .  10  .  .   .  .  .  ..  ........
+C7     41 ................  ...  .  10  .  .   .  .  .  ..  ........
+C8     42               O5  C/.  2  13  G  H   .  .  .  25  --------
+C9     43               Q5  T/S  4  11  G  H  C9  G  G  ..  A-C----H
+C10    44 ................  ...  .  10  .  .   .  .  .  ..  ........
+C11    45 ................  ...  .  10  .  .   .  .  .  ..  ........
+C12    46               O4  C/.  2  13  G  H   .  .  .  27  --------
+C13    47               Q4  T/S  4  11  G  H C13  G  G  ..  A-C----H
+C14    48 ................  ...  .  10  .  .   .  .  .  ..  ........
+C15    49 ................  ...  .  10  .  .   .  .  .  ..  ........
+Cir-0 146 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-1 147 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-2 148 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-3 149 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-4 150 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-5 151 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-6 152 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-7 153 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+BLOCK C I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 24  ...   ...               I26     input  ------G-
+ 25   42   ...                O5    output  --------
+ 26  ...   ...               I25     input  ------G-
+ 27   46   ...                O4    output  --------
+ 28  ...   ...               I24     input  ------G-
+ 29   34   ...                O7    output  --------
+ 30  ...   ...               I23     input  ---D----
+ 31   38   ...                O6    output  --------
+
+
+BLOCK C LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxC0               I5        pin 70     mxC17             ...           ...
+mxC1               I7        pin 66     mxC18              Q1     mcell F-9
+mxC2              ...           ...     mxC19             ...           ...
+mxC3             LOAD         pin 5     mxC20             ...           ...
+mxC4               UP         pin 7     mxC21             ...           ...
+mxC5              ...           ...     mxC22              Q7     mcell C-1
+mxC6            COUNT         pin 9     mxC23             ...           ...
+mxC7               Q6     mcell C-5     mxC24             ...           ...
+mxC8               I4        pin 72     mxC25             ...           ...
+mxC9               Q2     mcell F-5     mxC26             ...           ...
+mxC10              Q3     mcell F-1     mxC27             ...           ...
+mxC11          SELECT         pin 3     mxC28             ...           ...
+mxC12             ...           ...     mxC29             ...           ...
+mxC13              Q5     mcell C-9     mxC30              Q4    mcell C-13
+mxC14             ...           ...     mxC31             ...           ...
+mxC15              Q0    mcell F-13     mxC32             ...           ...
+mxC16              I6        pin 68
+
+BLOCK D CLOCK MUX 
+Block Clocks     Signal    Pin   Pol
+|-----------------------------------|
+Ck0                 CLK     20    H
+Ck1                 ...     ..    .
+Ck2                 ...     ..    .
+Ck3                 ...     ..    .
+
+
+BLOCK D LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+D0     50              O23  C/.  2   8  G  H   .  .  .  35  --------
+D1     51              Q23  T/S  4  11  G  H  D1  G  G  ..  -B-D--G-
+D2     52 ................  ...  .  10  .  .   .  .  .  ..  ........
+D3     53 ................  ...  .  10  .  .   .  .  .  ..  ........
+D4     54              O22  C/.  2  13  G  H   .  .  .  33  --------
+D5     55              Q22  T/S  4  11  G  H  D5  G  G  ..  -B-D--G-
+D6     56 ................  ...  .  10  .  .   .  .  .  ..  ........
+D7     57 ................  ...  .  10  .  .   .  .  .  ..  ........
+D8     58              O21  C/.  2  13  G  H   .  .  .  39  --------
+D9     59              Q21  T/S  4  11  G  H  D9  G  G  ..  -B-D--G-
+D10    60 ................  ...  .  10  .  .   .  .  .  ..  ........
+D11    61 ................  ...  .  10  .  .   .  .  .  ..  ........
+D12    62              O20  C/.  2  13  G  H   .  .  .  37  --------
+D13    63              Q20  T/S  4  11  G  H D13  G  G  ..  -B-D--G-
+D14    64 ................  ...  .  10  .  .   .  .  .  ..  ........
+D15    65 ................  ...  .  10  .  .   .  .  .  ..  ........
+Dir-0 154 ................  ...  .   .  .  .   .  .  .  ..  ........
+Dir-1 155 ................  ...  .   .  .  .   .  .  .  ..  ........
+Dir-2 156 ................  ...  .   .  .  .   .  .  .  ..  ........
+Dir-3 157 ................  ...  .   .  .  .   .  .  .  ..  ........
+Dir-4 158 ................  ...  .   .  .  .   .  .  .  ..  ........
+Dir-5 159 ................  ...  .   .  .  .   .  .  .  ..  ........
+Dir-6 160 ................  ...  .   .  .  .   .  .  .  ..  ........
+Dir-7 161 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+BLOCK D I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 33   54   ...               O22    output  --------
+ 34  ...   ...               I22     input  ---D----
+ 35   50   ...               O23    output  --------
+ 36  ...   ...               I21     input  ---D----
+ 37   62   ...               O20    output  --------
+ 38  ...   ...               I20     input  ---D----
+ 39   58   ...               O21    output  --------
+ 40  ...   ...               I19     input  ----E---
+
+
+BLOCK D LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxD0              I20        pin 38     mxD17              UP         pin 7
+mxD1              Q20    mcell D-13     mxD18             ...           ...
+mxD2              Q23     mcell D-1     mxD19             ...           ...
+mxD3             LOAD         pin 5     mxD20             ...           ...
+mxD4              I23        pin 30     mxD21             ...           ...
+mxD5              Q19     mcell E-1     mxD22             ...           ...
+mxD6            COUNT         pin 9     mxD23             ...           ...
+mxD7              Q21     mcell D-9     mxD24             I21        pin 36
+mxD8           SELECT         pin 3     mxD25             ...           ...
+mxD9              ...           ...     mxD26             Q18     mcell E-5
+mxD10             I22        pin 34     mxD27             ...           ...
+mxD11             Q22     mcell D-5     mxD28             ...           ...
+mxD12             ...           ...     mxD29             ...           ...
+mxD13             Q16    mcell E-13     mxD30             ...           ...
+mxD14             Q17     mcell E-9     mxD31             ...           ...
+mxD15             ...           ...     mxD32             ...           ...
+mxD16             ...           ...
+
+BLOCK E CLOCK MUX 
+Block Clocks     Signal    Pin   Pol
+|-----------------------------------|
+Ck0                 CLK     20    H
+Ck1                 ...     ..    .
+Ck2                 ...     ..    .
+Ck3                 ...     ..    .
+
+
+BLOCK E LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+E0     66              O19  C/.  2   8  G  H   .  .  .  50  --------
+E1     67              Q19  T/S  4  11  G  H  E1  G  G  ..  -B-DE-G-
+E2     68 ................  ...  .  10  .  .   .  .  .  ..  ........
+E3     69 ................  ...  .  10  .  .   .  .  .  ..  ........
+E4     70              O18  C/.  2  13  G  H   .  .  .  52  --------
+E5     71              Q18  T/S  4  11  G  H  E5  G  G  ..  -B-DE-G-
+E6     72 ................  ...  .  10  .  .   .  .  .  ..  ........
+E7     73 ................  ...  .  10  .  .   .  .  .  ..  ........
+E8     74              O17  C/.  2  13  G  H   .  .  .  46  --------
+E9     75              Q17  T/S  4  11  G  H  E9  G  G  ..  -B-DE-G-
+E10    76 ................  ...  .  10  .  .   .  .  .  ..  ........
+E11    77 ................  ...  .  10  .  .   .  .  .  ..  ........
+E12    78              O16  C/.  2  13  G  H   .  .  .  48  --------
+E13    79              Q16  T/S  3  12  G  H E13  G  G  ..  -B-DE-G-
+E14    80 ................  ...  .  10  .  .   .  .  .  ..  ........
+E15    81 ................  ...  .  10  .  .   .  .  .  ..  ........
+Eir-0 162 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-1 163 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-2 164 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-3 165 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-4 166 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-5 167 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-6 168 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-7 169 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+BLOCK E I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 45  ...   ...               I17     input  ----E---
+ 46   74   ...               O17    output  --------
+ 47  ...   ...               I16     input  ----E---
+ 48   78   ...               O16    output  --------
+ 49  ...   ...               I15     input  A-------
+ 50   66   ...               O19    output  --------
+ 51  ...   ...               I14     input  A-------
+ 52   70   ...               O18    output  --------
+
+
+BLOCK E LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxE0              ...           ...     mxE17             I17        pin 45
+mxE1              I16        pin 47     mxE18             ...           ...
+mxE2              Q16    mcell E-13     mxE19             ...           ...
+mxE3             LOAD         pin 5     mxE20             ...           ...
+mxE4               UP         pin 7     mxE21             ...           ...
+mxE5              Q19     mcell E-1     mxE22             ...           ...
+mxE6              I19        pin 40     mxE23             ...           ...
+mxE7              ...           ...     mxE24             ...           ...
+mxE8           SELECT         pin 3     mxE25             ...           ...
+mxE9              ...           ...     mxE26             Q18     mcell E-5
+mxE10             I18        pin 41     mxE27             ...           ...
+mxE11             ...           ...     mxE28             ...           ...
+mxE12           COUNT         pin 9     mxE29             ...           ...
+mxE13             ...           ...     mxE30             ...           ...
+mxE14             Q17     mcell E-9     mxE31             ...           ...
+mxE15             ...           ...     mxE32             ...           ...
+mxE16             ...           ...
+
+BLOCK F CLOCK MUX 
+Block Clocks     Signal    Pin   Pol
+|-----------------------------------|
+Ck0                 CLK     20    H
+Ck1                 ...     ..    .
+Ck2                 ...     ..    .
+Ck3                 ...     ..    .
+
+
+BLOCK F LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+F0     82               O3  C/.  2   8  G  H   .  .  .  56  --------
+F1     83               Q3  T/S  4  11  G  H  F1  G  G  ..  A-C--F-H
+F2     84 ................  ...  .  10  .  .   .  .  .  ..  ........
+F3     85 ................  ...  .  10  .  .   .  .  .  ..  ........
+F4     86               O2  C/.  2  13  G  H   .  .  .  54  --------
+F5     87               Q2  T/S  4  11  G  H  F5  G  G  ..  A-C--F-H
+F6     88 ................  ...  .  10  .  .   .  .  .  ..  ........
+F7     89 ................  ...  .  10  .  .   .  .  .  ..  ........
+F8     90               O1  C/.  2  13  G  H   .  .  .  60  --------
+F9     91               Q1  T/S  4  11  G  H  F9  G  G  ..  A-C--F-H
+F10    92 ................  ...  .  10  .  .   .  .  .  ..  ........
+F11    93 ................  ...  .  10  .  .   .  .  .  ..  ........
+F12    94               O0  C/.  2  13  G  H   .  .  .  58  --------
+F13    95               Q0  T/S  3  12  G  H F13  G  G  ..  A-C--F-H
+F14    96 ................  ...  .  10  .  .   .  .  .  ..  ........
+F15    97 ................  ...  .  10  .  .   .  .  .  ..  ........
+Fir-0 170 ................  ...  .   .  .  .   .  .  .  ..  ........
+Fir-1 171 ................  ...  .   .  .  .   .  .  .  ..  ........
+Fir-2 172 ................  ...  .   .  .  .   .  .  .  ..  ........
+Fir-3 173 ................  ...  .   .  .  .   .  .  .  ..  ........
+Fir-4 174 ................  ...  .   .  .  .   .  .  .  ..  ........
+Fir-5 175 ................  ...  .   .  .  .   .  .  .  ..  ........
+Fir-6 176 ................  ...  .   .  .  .   .  .  .  ..  ........
+Fir-7 177 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+BLOCK F I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 54   86   ...                O2    output  --------
+ 55  ...   ...               I13     input  A-------
+ 56   82   ...                O3    output  --------
+ 57  ...   ...               I12     input  A-------
+ 58   94   ...                O0    output  --------
+ 59  ...   ...               I11     input  -------H
+ 60   90   ...                O1    output  --------
+ 61  ...   ...               I10     input  -------H
+
+
+BLOCK F LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxF0              ...           ...     mxF17             ...           ...
+mxF1               Q1     mcell F-9     mxF18             ...           ...
+mxF2               I1        pin 80     mxF19             ...           ...
+mxF3             LOAD         pin 5     mxF20             ...           ...
+mxF4               UP         pin 7     mxF21             ...           ...
+mxF5              ...           ...     mxF22             ...           ...
+mxF6               I3        pin 76     mxF23             ...           ...
+mxF7              ...           ...     mxF24             ...           ...
+mxF8               I0        pin 82     mxF25             ...           ...
+mxF9               Q2     mcell F-5     mxF26             ...           ...
+mxF10              I2        pin 78     mxF27             ...           ...
+mxF11          SELECT         pin 3     mxF28             ...           ...
+mxF12           COUNT         pin 9     mxF29             ...           ...
+mxF13             ...           ...     mxF30              Q3     mcell F-1
+mxF14             ...           ...     mxF31             ...           ...
+mxF15              Q0    mcell F-13     mxF32             ...           ...
+mxF16             ...           ...
+
+BLOCK G CLOCK MUX 
+Block Clocks     Signal    Pin   Pol
+|-----------------------------------|
+Ck0                 CLK     20    H
+Ck1                 ...     ..    .
+Ck2                 ...     ..    .
+Ck3                 ...     ..    .
+
+
+BLOCK G LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+G0     98              O27  C/.  2   8  G  H   .  .  .  71  --------
+G1     99              Q27  T/S  4  11  G  H  G1  G  G  ..  -B----G-
+G2    100 ................  ...  .  10  .  .   .  .  .  ..  ........
+G3    101 ................  ...  .  10  .  .   .  .  .  ..  ........
+G4    102              O26  C/.  2  13  G  H   .  .  .  73  --------
+G5    103              Q26  T/S  4  11  G  H  G5  G  G  ..  -B----G-
+G6    104 ................  ...  .  10  .  .   .  .  .  ..  ........
+G7    105 ................  ...  .  10  .  .   .  .  .  ..  ........
+G8    106              O25  C/.  2  13  G  H   .  .  .  67  --------
+G9    107              Q25  T/S  4  11  G  H  G9  G  G  ..  -B----G-
+G10   108 ................  ...  .  10  .  .   .  .  .  ..  ........
+G11   109 ................  ...  .  10  .  .   .  .  .  ..  ........
+G12   110              O24  C/.  2  13  G  H   .  .  .  69  --------
+G13   111              Q24  T/S  4  11  G  H G13  G  G  ..  -B----G-
+G14   112 ................  ...  .  10  .  .   .  .  .  ..  ........
+G15   113 ................  ...  .  10  .  .   .  .  .  ..  ........
+Gir-0 178 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-1 179 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-2 180 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-3 181 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-4 182 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-5 183 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-6 184 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-7 185 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+BLOCK G I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 66  ...   ...                I7     input  --C-----
+ 67  106   ...               O25    output  --------
+ 68  ...   ...                I6     input  --C-----
+ 69  110   ...               O24    output  --------
+ 70  ...   ...                I5     input  --C-----
+ 71   98   ...               O27    output  --------
+ 72  ...   ...                I4     input  --C-----
+ 73  102   ...               O26    output  --------
+
+
+BLOCK G LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxG0              ...           ...     mxG17             ...           ...
+mxG1              Q20    mcell D-13     mxG18             ...           ...
+mxG2              Q23     mcell D-1     mxG19             ...           ...
+mxG3             LOAD         pin 5     mxG20             ...           ...
+mxG4               UP         pin 7     mxG21             ...           ...
+mxG5              I24        pin 28     mxG22             Q26     mcell G-5
+mxG6            COUNT         pin 9     mxG23             ...           ...
+mxG7              I26        pin 24     mxG24             Q27     mcell G-1
+mxG8           SELECT         pin 3     mxG25             Q21     mcell D-9
+mxG9              I25        pin 26     mxG26             Q18     mcell E-5
+mxG10             Q25     mcell G-9     mxG27             ...           ...
+mxG11             Q22     mcell D-5     mxG28             ...           ...
+mxG12             Q24    mcell G-13     mxG29             Q19     mcell E-1
+mxG13             Q16    mcell E-13     mxG30             ...           ...
+mxG14             Q17     mcell E-9     mxG31             ...           ...
+mxG15             I27        pin 23     mxG32             ...           ...
+mxG16             ...           ...
+
+BLOCK H CLOCK MUX 
+Block Clocks     Signal    Pin   Pol
+|-----------------------------------|
+Ck0                 CLK     20    H
+Ck1                 ...     ..    .
+Ck2                 ...     ..    .
+Ck3                 ...     ..    .
+
+
+BLOCK H LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+H0    114              O11  C/.  2   8  G  H   .  .  .  77  --------
+H1    115              Q11  T/S  4  11  G  H  H1  G  G  ..  A------H
+H2    116 ................  ...  .  10  .  .   .  .  .  ..  ........
+H3    117 ................  ...  .  10  .  .   .  .  .  ..  ........
+H4    118              O10  C/.  2  13  G  H   .  .  .  75  --------
+H5    119              Q10  T/S  4  11  G  H  H5  G  G  ..  A------H
+H6    120 ................  ...  .  10  .  .   .  .  .  ..  ........
+H7    121 ................  ...  .  10  .  .   .  .  .  ..  ........
+H8    122               O9  C/.  2  13  G  H   .  .  .  81  --------
+H9    123               Q9  T/S  4  11  G  H  H9  G  G  ..  A------H
+H10   124 ................  ...  .  10  .  .   .  .  .  ..  ........
+H11   125 ................  ...  .  10  .  .   .  .  .  ..  ........
+H12   126               O8  C/.  2  13  G  H   .  .  .  79  --------
+H13   127               Q8  T/S  4  11  G  H H13  G  G  ..  A------H
+H14   128 ................  ...  .  10  .  .   .  .  .  ..  ........
+H15   129 ................  ...  .  10  .  .   .  .  .  ..  ........
+Hir-0 186 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-1 187 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-2 188 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-3 189 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-4 190 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-5 191 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-6 192 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-7 193 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+BLOCK H I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 75  118   ...               O10    output  --------
+ 76  ...   ...                I3     input  -----F--
+ 77  114   ...               O11    output  --------
+ 78  ...   ...                I2     input  -----F--
+ 79  126   ...                O8    output  --------
+ 80  ...   ...                I1     input  -----F--
+ 81  122   ...                O9    output  --------
+ 82  ...   ...                I0     input  -----F--
+
+
+BLOCK H LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxH0               Q4    mcell C-13     mxH17              UP         pin 7
+mxH1              I11        pin 59     mxH18              Q1     mcell F-9
+mxH2              ...           ...     mxH19             ...           ...
+mxH3              I10        pin 61     mxH20             ...           ...
+mxH4               I8        pin 65     mxH21              I9        pin 62
+mxH5               Q9     mcell H-9     mxH22              Q7     mcell C-1
+mxH6               Q0    mcell F-13     mxH23              Q5     mcell C-9
+mxH7               Q8    mcell H-13     mxH24             ...           ...
+mxH8           SELECT         pin 3     mxH25             ...           ...
+mxH9               Q2     mcell F-5     mxH26             ...           ...
+mxH10             Q11     mcell H-1     mxH27             ...           ...
+mxH11             ...           ...     mxH28             ...           ...
+mxH12           COUNT         pin 9     mxH29            LOAD         pin 5
+mxH13             Q10     mcell H-5     mxH30              Q3     mcell F-1
+mxH14             ...           ...     mxH31             ...           ...
+mxH15              Q6     mcell C-5     mxH32             ...           ...
+mxH16             ...           ...
+
+
+MACH435 report file key:
+
+A             - Asynchronous mode
+AVAL          - Additional product terms available within the current
+                steering allocation, plus those potentially available
+                through resteering of free clusters.
+B0            - Block Asynchronous Reset/Preset product term 0
+B1            - Block Asynchronous Reset/Preset product term 1
+C             - Combinatorial
+Ck0           - Block clock generated from pin 20 or pin 23
+Ck1           - Block clock generated from pin 20 or pin 23
+Ck2           - Block clock generated from pin 62 or pin 65
+Ck3           - Block clock generated from pin 62 or pin 65
+clk           - Clock
+CSM           - Central Switch Matrix
+D             - D-type flip flop
+G             - Ground
+H             - High
+implied       - Node occupying the macrocell drives the output pin
+                but not defined in the design file.
+inode         - Input node
+Inp           - Input
+ipair         - Input paired node
+I/O           - Input or Output
+L             - Low
+L             - Latch
+LOC           - Location
+mcell <X>     - Source is macrocell from block <X>
+Mux           - Multiplexer
+mx            - Block Array input multiplexer
+onode         - Output node
+opair         - Output paired node
+P             - Product Term
+Pol           - Polarity
+PT(s)         - Product term(s)
+Reg           - Register
+Res           - Reset control
+RN_<pin_name> - Output node paired with <pin_name> created by Fitter.
+S             - Synchronous mode
+Set           - Preset control
+T             - T-type flip flop
+XOR           - Exclusive OR gate
+<X>ir         - Input register in block <X>
+.             - Not available or Not applicable
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%

@@ -1,0 +1,158 @@
+Nx43511.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP MATRIX MACH435
+   2     |PIN 3 A
+   3     |PIN 4 B
+   4     |PIN 5 C
+   5     |PIN 6 D
+   6     |PIN 7 E
+   7     |PIN 12 F
+   8     |PIN 20 CLK
+   9     |PIN 8 Q0 REG
+  10     |PIN 9 Q1 REG
+  11     |PIN 10 Q2 REG
+  12     |PIN 19 Q3 
+  13     |EQUATIONS
+  14     |Q0=D*E+A*B*/C*/E+/C*F+B*C*/F+C*/F+B*C*/D*E+A*/B*/C*/F
+  15     |Q0.CLKF=CLK
+  16     |Q1.T=/A*/B*D*/F+/A*C*D+B*C*E*/F+A*/C*D*/F+B*C*/F+/C*D+/E*/F
+  17     |Q1.CLKF=CLK
+  18     |Q2=(C*D*E*/F+/A*C*/D+/C*/D*F+/C*E+C*D*E+B*F+/A*B*E*/F) :+: F
+  19     |Q2.CLKF=CLK
+  20     |Q3=B*C*D+/A*/B*E*F+A*/C*D*E+/B*D*E*/F+/C*/D+/B*C*/D+B*D*/E*F
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Nx43511.pds
+
+*** Start MACHBPP.E 10:16:10 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q0
+Processing equation for ====>Q0.CLKF
+Processing equation for ====>Q1.T
+Processing equation for ====>Q1.CLKF
+Processing equation for ====>Q2
+Processing equation for ====>Q2.CLKF
+Processing equation for ====>Q3
+
+ %%  MACHBPP  %% Maximum memory allocated was: 70460 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Nx43511.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 10:16:10; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 10:16:10 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin Q3...
+====> Q3                 MIN_ON (7 + pt --> 5 + pt)
+Processing equation(s) for pin Q2...
+====> Q2                 MIN_ON (D+XOR, 7 + pt --> D, 5 + pt)
+====> Q2.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for pin Q1...
+====> Q1.T               MIN_ON (4 + pt)
+====> Q1.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for pin Q0...
+====> Q0                 MIN_ON (6 + pt --> 5 + pt)
+====> Q0.CLKF            MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 53918 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Nx43511.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 10:16:11; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 10:16:11 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file nx43511.tre to PLA file nx43511.pla...
+
+....
+....
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 51616 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Nx43511.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 10:16:11; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 10:16:11 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Nx43511.pds . Device is MACH435 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of global clocks:
+   CLK:
+...... Is preplaced at a global clock pin.
+
+List of non-global clocks:
+   None.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is Nx43511.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File Nx43511.pds .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 0 .
+
+*** End MACHFITR.EX 10:16:12; (MACHFITR.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

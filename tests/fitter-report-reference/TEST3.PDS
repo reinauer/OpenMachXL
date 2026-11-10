@@ -1,0 +1,475 @@
+;===================================================================
+; Date: January 21, 1987
+; Multibus II arbiter controller. This design makes efficient
+; use of the AmPAL23S8. All the I/O pins and 5 of the 6
+; internal registers are used.
+;
+;===================================================================
+; 12/09/92: Changed to MACH210 in MachXL format.
+;
+; This design also shows how to declare multiple state machines
+; using the CASE statement. This MultiBus II bus arbiter has 4
+; state machines to monitor the various steps involved in the
+; MultiBus II bus protocol.
+;
+;===================================================================
+; 11/11/93: To properly process this file, the 22V10/MACH1xx/2xx
+; SET/RESET Compatibility option in the compilation menu must be
+; set to N. This means that a reset equation for a registered
+; signal will reset the register (i.e., set the register to 0)
+; independent of the equation polarity selected by the minimizer.
+;
+; For example: The SIGNAL equation is written as active HIGH, but
+; the active LOW form is more minimal.
+;
+; SIGNAL = A + B;    <- needs 2 PTs
+; SIGNAL.RSTF = rst_pin;
+;
+; The minimizer will generate the following equivalent equation
+;
+; /SIGNAL = /A*/B;   <- needs only 1 PT
+;  SIGNAL.RSTF = rst_pin;
+;
+; Note that in the 22V10 and MACH1xx/2xx parts, if a signal is
+; defined as active LOW, the reset product term will set the
+; register to 0, but because polarity control is done between the
+; register and the IO pin, a HIGH level is seen at the pin.
+;
+; The MACH4xx parts allow you to emulate this behavior, or to
+; specify that a reset means a 0 at the IO pin independent of
+; the polarity selected.
+;===================================================================
+TITLE            multibus2_module
+REVISION         1.0
+PATTERN          bus_arbiter
+AUTHOR           J. ENGINEER
+COMPANY          AMD
+DATE             12/09/92
+
+CHIP     multbus2    MACH435
+
+PIN       ?      bclk          ; (clock)
+
+PIN       ?     /bus_req       ; (INPUT combinatorial)  "from parallel bus"
+PIN       ?     /sc0           ; (INPUT combinatorial)
+PIN       ?     /sc1           ; (INPUT combinatorial)
+PIN       ?     /sc2           ; (INPUT combinatorial)
+PIN       ?     /sc4           ; (INPUT combinatorial)
+                               ; active LOW inputs
+
+PIN       ?      breq          ; (INPUT combinatorial)
+                               ; bus request line
+
+PIN       ?      clear         ; (INPUT combinatorial)
+                               ; Assert CLEAR to synchronously reset the
+                               ; transfer monitor (TRANS_MON) state machine.
+
+PIN       ?      sysclear      ; (INPUT combinatorial)
+                               ; Asynchronous system clear will reset all
+                               ; the registers in the design.
+
+PIN       ?      arb_id_match  ; (INPUT combinatorial)
+PIN       ?      req_ready     ; (INPUT combinatorial)
+PIN       ?      ownrdy        ; (INPUT combinatorial)
+PIN       ?      hi_pri        ; (INPUT combinatorial)
+
+PIN       ?      agent_err     ; (INPUT combinatorial)
+                               ; agent status error bit
+
+PIN       ?      put_bus_req         REGISTERED
+                               ; (OUTPUT active_high registered)
+
+PIN       ?      put_arb_id          COMBINATORIAL
+                               ; (OUTPUT active_high combinatorial)
+
+;===================================================================
+; 3 State bits for the transfer state machine.
+;===================================================================
+PIN       ?      trans_st[2..0]      REGISTERED  ; 3-bit state machine
+                               ; (OUTPUT active_high registered)
+;===================================================================
+; 5 registers used as state indicators/bits for 3 state machines.
+; To save IO pins, these can also be assigned to NODEs.
+;
+; TRANS_MON      = 1-bit transfer monitor state machine
+; ARB_MON[1..0]  = 2-bit arbitration monitoring state machine
+; ARB_OPER[1..0] = 2-bit arbitration operation state machine
+;===================================================================
+PIN       ?      trans_mon           REGISTERED  ; 1-bit state machine
+PIN       ?      arb_mon[1..0]       REGISTERED  ; 2-bit state machine
+PIN       ?      arb_oper[1..0]      REGISTERED  ; 2-bit state machine
+;===================================================================
+; Manual state assignments.
+;===================================================================
+
+;==! states for TRANS_MON state machine
+STRING   NO_TRANSFER       '0'
+STRING   DO_TRANSFER       '1'
+
+;==! states for ARB_MON[1..0] state machine
+STRING   NO_REQ            '0'
+STRING   RESOLUTION2       '1'
+STRING   RESOLUTION3       '2'
+
+;==! states for ARB_OPER[1..0] state machine
+STRING   NO_ARB            '0'
+STRING   RESOLUTION_STATE  '1'
+STRING   ACQUISITION_STATE '2'
+
+;==! 5 state assignments for TRANSFER STATE machine
+STRING   NO_OP_IN_PROGRESS '0'
+STRING   REQ_PHASE         '4'
+STRING   OWN_HDSHK         '1'
+STRING   OWN_HDSHK_WAIT    '2'
+STRING   ERROR_EOT         '3'
+
+;==========================================================================
+;==! EXCHANGE is condition where exchange of bus ownership is possible:
+; ((arb_mon[1:0] = RESOLUTION3)*/sc1) *
+;     (  ((trans_mon = NO_TRANSFER)*/sc0) +
+;        ((trans_mon = DO_TRANSFER)* sc2*sc4)
+;     )
+;==========================================================================
+STRING   EXCHANGE    '((arb_mon[1]*/arb_mon[0]*/sc1)*
+                       (/trans_mon*/sc0 + trans_mon*sc2*sc4))'
+
+;==========================================================================
+;==! OWN_NXT_CLK is condition where Multibus II board (a.k.a. agent) will
+;==! be the bus owner in the next clock cycle:
+;==!    = /EXCHANGE*(arb_oper[1:0] = ACQUISITION state) +
+;==!       EXCHANGE*ARB_ID_MATCH*(arb_oper[1:0] = RESOLUTION state)
+;==========================================================================
+STRING   OWN_NXT_CLK '(/EXCHANGE*arb_oper[1]*/arb_oper[0] +
+                        EXCHANGE*arb_id_match*/arb_oper[1]*arb_oper[0])'
+
+;==========================================================================
+;                   Logic Equation Section
+;==========================================================================
+EQUATIONS
+
+trans_st[2..0].rstf    = sysclear;
+trans_mon.rstf         = sysclear;
+arb_mon[1..0].rstf     = sysclear;
+arb_oper[1..0].rstf    = sysclear;
+put_bus_req.rstf       = sysclear;
+
+trans_st[2..0].clkf    = bclk;
+trans_mon.clkf         = bclk;
+arb_mon[1..0].clkf     = bclk;
+arb_oper[1..0].clkf    = bclk;
+put_bus_req.clkf       = bclk;
+
+;== State Machine 1 ================================================
+; trans_mon: 1-bit state machine present in all requesting
+; agents to monitor the transfer operations on the bus.
+;===================================================================
+case (trans_mon)
+  begin
+  NO_TRANSFER: begin
+               if (clear) then
+                  begin
+                  trans_mon = NO_TRANSFER;
+                  end
+               else
+                 begin
+                 if (sc0) then     ;==! If request phase indicator activated,
+                                   ;==! track transfer operation by moving
+                                   ;==! to the DO_TRANSFER state.
+                    begin
+                    trans_mon = DO_TRANSFER;
+                    end
+                 else
+                    begin
+                    trans_mon = NO_TRANSFER;
+                    end
+                 end
+               end;
+  DO_TRANSFER: begin
+               if (sc2*sc4) then ;==! end of transfer
+                  begin
+                  trans_mon = NO_TRANSFER;
+                  end
+               else              ;==! transfer not complete yet
+                  begin
+                  trans_mon = DO_TRANSFER;
+                  end
+               end;
+  end;         ;==! end of trans_mon state machine
+
+;== State Machine 2 ================================================
+; arb_mon: 2-bit state machine in all agents
+; monitoring arbitration operations.
+;===================================================================
+case (arb_mon[1..0])
+  begin
+  NO_REQ:
+    begin      ;==! an agent somewhere has signalled a bus request
+    if (bus_req) then
+      begin
+      arb_mon[1..0] = RESOLUTION2;
+      end
+    else
+      begin
+      arb_mon[1..0] = NO_REQ;
+      end
+    end;
+  RESOLUTION2: ;==! always go to the next state
+    begin
+    arb_mon[1..0] = RESOLUTION3;
+    end
+  RESOLUTION3: ;==! arbitration IDs have settled with the
+               ;==! ID of the highest priority agent
+    begin
+    if (EXCHANGE) then
+      begin
+      arb_mon[1..0] = NO_REQ;
+      end
+    else       ;==! stay in this state until bus exchange possible
+      begin
+      arb_mon[1..0] = RESOLUTION3;
+      end
+    end;
+
+;==! OTHERWISE case will handle all undefined states; this is not necessary
+;==! if all the state combinations have been specified as was done in the
+;==! 1-bit TRANSFER MONITOR state machine TRANS_MON.
+  OTHERWISE:
+    begin
+    arb_mon[1..0] = NO_REQ;   ;==! return to NO_REQ state
+    end
+  end;         ;==! end of ARBITRATION MONITOR state machine
+
+;== State Machine 3 ================================================
+; ARB_OPER: 2-bit state machine in all requesting agents
+; monitoring the arbitration operation.
+;===================================================================
+case (arb_oper[1..0])
+  begin
+  NO_ARB:
+    begin
+    if (breq*       ;==! agent wants bus
+        (/bus_req + ;==! no current bus requests on parallel bus
+          EXCHANGE*hi_pri
+        )
+       ) then
+      begin
+      put_bus_req = 1;      ;==! assert bus request
+      arb_oper[1..0] = RESOLUTION_STATE;
+      end;
+    else
+      begin
+      arb_oper[1..0] = NO_ARB;
+      end
+    end;
+  RESOLUTION_STATE:
+    begin
+    put_arb_id = 1;             ;==! put arbitration ID on ARB lines
+    if (EXCHANGE*arb_id_match) then
+      begin
+      arb_oper[1..0] = ACQUISITION_STATE;
+      end
+    else
+      begin
+      arb_oper[1..0] = RESOLUTION_STATE;
+      put_bus_req = 1;          ;==! continue asserting bus request
+      end;
+    end;
+  ACQUISITION_STATE:
+    begin
+    if (EXCHANGE) then
+      begin
+      arb_oper[1..0] = NO_ARB;
+      end
+    else
+      begin
+      arb_oper[1..0] = ACQUISITION_STATE;
+      end
+    end;    
+  OTHERWISE:
+    begin
+    arb_oper[1..0] = NO_ARB;   ;==! return to NO_ARB state
+    end
+  end;         ;==! end of ARBITRATION OPERATION state machine
+
+;== State Machine 4 ================================================
+; trans_st[2:0]: 3-bit state machine to track state-flow
+; sequence for bus owners performing a transfer operation. The
+; state machine is assigned to these outputs because they will
+; now be accessible to the rest of system which will take care
+; of generating other output signals.
+;===================================================================
+case (trans_st[2..0])
+  begin
+  NO_OP_IN_PROGRESS:
+    begin
+    if (req_ready*OWN_NXT_CLK) then
+      begin
+      trans_st[2..0] = REQ_PHASE;
+      end
+    else
+      begin
+      trans_st[2..0] = NO_OP_IN_PROGRESS;
+      end
+    end;
+  REQ_PHASE:
+    begin
+    if (ownrdy) then
+      begin
+      trans_st[2..0] = OWN_HDSHK;
+      end
+    else
+      begin
+      trans_st[2..0] = OWN_HDSHK_WAIT;
+      end
+    end;
+  OWN_HDSHK:
+    begin
+    if (sc4*/sc2*/ownrdy*/agent_err) then
+      begin
+      trans_st[2..0] = OWN_HDSHK_WAIT;
+      end
+    else
+      begin
+      if (sc2*sc4) then
+        begin
+        trans_st[2..0] = NO_OP_IN_PROGRESS;
+        end
+      else
+        begin                ;==! terminate block transfer due to error
+        if (/sc2*agent_err) then
+          begin
+          trans_st[2..0] = ERROR_EOT;
+          end
+        else
+          begin
+          if (sc4*ownrdy*/agent_err*/sc2 + /sc4) then
+             begin
+             trans_st[2..0] = OWN_HDSHK;
+             end
+          else
+            begin
+            trans_st[2..0] = NO_OP_IN_PROGRESS;
+            end
+          end
+        end
+      end
+    end
+  OWN_HDSHK_WAIT:
+    begin
+    if (ownrdy) then
+      begin
+      trans_st[2..0] = OWN_HDSHK;
+      end
+    else
+      begin
+      trans_st[2..0] = OWN_HDSHK_WAIT;
+      end
+    end;
+  ERROR_EOT:
+    begin
+    trans_st[2..0] = NO_OP_IN_PROGRESS;
+    end;
+  OTHERWISE:   ;==! return to NO_OP_IN_PROGRESS state
+    begin
+    trans_st[2..0] = NO_OP_IN_PROGRESS;
+    end
+  end;         ;==! end of TRANSFER_STATE machine
+
+;== END of equations section =======================================
+
+SIMULATION
+
+TRACE_ON  bclk  /bus_req  /sc0 /sc1 /sc2 /sc4 breq   ;==! inputs
+          clear sysclear arb_id_match req_ready      ;==! inputs
+          ownrdy hi_pri agent_err                    ;==! inputs
+
+          put_bus_req put_arb_id trans_st[2..0]      ;==! outputs
+          trans_mon                                  ;==! outputs
+          arb_mon[1..0]                              ;==! outputs
+          arb_oper[1..0]                             ;==! outputs
+
+;==! Use SYSCLEAR to initialize the state registers
+SETF     /bclk   /bus_req  /sc0 /sc1 /sc2 /sc4 /breq
+         /clear   sysclear /arb_id_match /req_ready
+         /ownrdy /hi_pri   /agent_err
+CHECK    /put_bus_req
+         /put_arb_id
+         /trans_st[2] /trans_st[1] /trans_st[0]
+         /trans_mon
+         /arb_mon[1]  /arb_mon[0]
+         /arb_oper[1] /arb_oper[0]
+
+SETF             /bus_req  /sc0 /sc1 /sc2 /sc4 /breq
+         /clear  /sysclear /arb_id_match /req_ready
+         /ownrdy /hi_pri   /agent_err
+CLOCKF    bclk
+CHECK    /put_bus_req
+         /put_arb_id
+         /trans_st[2] /trans_st[1] /trans_st[0]
+         /trans_mon
+         /arb_mon[1]  /arb_mon[0]
+         /arb_oper[1] /arb_oper[0]
+
+;==! Activate SC0(L) to initiate transfer operations
+SETF             /bus_req   sc0 /sc1 /sc2 /sc4 /breq
+         /clear  /sysclear /arb_id_match /req_ready
+         /ownrdy /hi_pri   /agent_err
+CLOCKF    bclk
+CHECK    /put_bus_req
+         /put_arb_id
+         /trans_st[2] /trans_st[1] /trans_st[0]
+          trans_mon
+         /arb_mon[1]  /arb_mon[0]
+         /arb_oper[1] /arb_oper[0]
+
+;==! Issue a BUS_REQ
+SETF              bus_req  /sc0 /sc1 /sc2 /sc4  breq
+         /clear  /sysclear /arb_id_match /req_ready
+         /ownrdy /hi_pri   /agent_err
+CLOCKF    bclk
+CHECK    /put_bus_req
+         /put_arb_id
+         /trans_st[2] /trans_st[1] /trans_st[0]
+          trans_mon
+         /arb_mon[1]   arb_mon[0]
+         /arb_oper[1] /arb_oper[0]
+
+;==! Continue issuing the BUS_REQ
+SETF              bus_req  /sc0 /sc1 /sc2 /sc4  breq
+         /clear  /sysclear /arb_id_match /req_ready
+         /ownrdy /hi_pri   /agent_err
+CLOCKF    bclk
+CHECK    /put_bus_req
+         /put_arb_id
+         /trans_st[2] /trans_st[1] /trans_st[0]
+          trans_mon
+          arb_mon[1]  /arb_mon[0]
+         /arb_oper[1] /arb_oper[0]
+
+;==! Wait until SC2(L) and SC4(L) become active before ARB_OPER[1..0]
+;==! begins the RESOLUTION state.
+SETF              bus_req  /sc0 /sc1 /sc2 /sc4  breq
+         /clear  /sysclear /arb_id_match /req_ready
+         /ownrdy /hi_pri   /agent_err
+CLOCKF    bclk
+CHECK    /put_bus_req
+         /put_arb_id
+         /trans_st[2] /trans_st[1] /trans_st[0]
+          trans_mon
+          arb_mon[1]  /arb_mon[0]
+         /arb_oper[1] /arb_oper[0]
+
+;==! ARB_OPER[1..0] goes to the RESOLUTION state.
+SETF             /bus_req  /sc0 /sc1  sc2  sc4  breq
+         /clear  /sysclear /arb_id_match /req_ready
+         /ownrdy /hi_pri   /agent_err
+CLOCKF    bclk
+CHECK     put_bus_req
+          put_arb_id
+         /trans_st[2] /trans_st[1] /trans_st[0]
+         /trans_mon
+         /arb_mon[1]  /arb_mon[0]
+         /arb_oper[1]  arb_oper[0]
+
+TRACE_OFF
+

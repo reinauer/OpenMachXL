@@ -1,0 +1,80 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Latch.pds
+Title  Latch Design File
+
+|> WARNING D2300
+     Clock signal also drives other logic data functions.
+
+      LE              
+
+   1-V1 - TRACE_ON
+          RST  SET  Q1  Q2  D  LE  
+   1-V1 - SETF
+          /RST  /SET  /LE  /D  
+   2-V2 - SETF
+          /RST  SET  /LE  /D  
+   3-V3 - SETF
+          /RST  /SET  /LE  /D  
+   4-V4 - SETF
+          RST  /SET  /LE  /D  
+   5-V5 - SETF
+          /RST  /SET  /LE  /D  
+   6-V6 - SETF
+          /RST  /SET  LE  /D  
+   7-V7 - SETF
+          /RST  /SET  LE  D  
+   8-V8 - SETF
+          /RST  /SET  /LE  D  
+   9-V9 - SETF
+          RST  SET  /LE  /D  
+  10-V10 - SETF
+          /RST  /SET  /LE  /D  
+  11-V11 - SETF
+          /RST  SET  /LE  /D  
+  12-V12 - SETF
+          /RST  /SET  /LE  /D  
+  13-V13 - SETF
+          /RST  SET  LE  /D  
+  14-V14 - SETF
+          /RST  SET  /LE  /D  
+  15-V15 - SETF
+          /RST  /SET  /LE  /D  
+  16-V16 - SETF
+          RST  /SET  /LE  /D  
+  17-V17 - SETF
+          /RST  /SET  /LE  /D  
+  18-V18 - SETF
+          RST  /SET  LE  D  
+  19-V19 - SETF
+          RST  /SET  /LE  D  
+  20-V20 - SETF
+          /RST  /SET  /LE  /D  
+  21-V21 - SETF
+          /RST  SET  /LE  /D  
+  22-V22 - SETF
+          /RST  /SET  /LE  /D  
+  23-V23 - SETF
+          RST  SET  LE  /D  
+  24-V24 - SETF
+          RST  SET  LE  D  
+  25-V25 - SETF
+          /RST  SET  /LE  D  
+  26-V26 - SETF
+          /RST  /SET  /LE  /D  
+  27-V27 - SETF
+          /RST  /SET  LE  /D  
+  28-V28 - SETF
+          /RST  /SET  /LE  /D  
+  29-V29 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Latch.HST
+Simulation results (trace) are in   ===> Latch.TRF
+Merged results (JEDEC) are in       ===> Latch.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 178443 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Latch.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 1

@@ -1,0 +1,17 @@
+CHIP XORPROBE MACH435
+PIN ? A
+PIN ? B
+PIN ? C
+PIN ? D
+PIN ? Y[0..9]
+EQUATIONS
+Y[0]=A :+: B
+Y[1]=A :+: B :+: C
+Y[2]=A*B :+: C
+Y[3]=(A+B) :+: C
+Y[4]=(A*B) :+: (C*D)
+Y[5]=A :*: B
+Y[6]=(A*B) :*: C
+Y[7]=(A :+: B)*C
+Y[8]=(A :+: B) :+: (C :+: D)
+Y[9]=/((A*B) :+: C)

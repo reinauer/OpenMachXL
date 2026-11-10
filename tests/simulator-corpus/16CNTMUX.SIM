@@ -1,0 +1,473 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  16cntmux.pds
+Title  TWO 16-COUNTER FOLLOWED BY MULTIPLEXER
+
+|> WARNING D2130
+     Equation Q31.SETF is always low.
+|> WARNING D2130
+     Equation Q0.SETF is always low.
+|> WARNING D2130
+     Equation Q1.SETF is always low.
+|> WARNING D2130
+     Equation Q2.SETF is always low.
+|> WARNING D2130
+     Equation Q3.SETF is always low.
+|> WARNING D2130
+     Equation Q4.SETF is always low.
+|> WARNING D2130
+     Equation Q5.SETF is always low.
+|> WARNING D2130
+     Equation Q6.SETF is always low.
+|> WARNING D2130
+     Equation Q7.SETF is always low.
+|> WARNING D2130
+     Equation Q8.SETF is always low.
+|> WARNING D2130
+     Equation Q9.SETF is always low.
+|> WARNING D2130
+     Equation Q10.SETF is always low.
+|> WARNING D2130
+     Equation Q11.SETF is always low.
+|> WARNING D2130
+     Equation Q12.SETF is always low.
+|> WARNING D2130
+     Equation Q13.SETF is always low.
+|> WARNING D2130
+     Equation Q14.SETF is always low.
+|> WARNING D2130
+     Equation Q15.SETF is always low.
+|> WARNING D2130
+     Equation Q16.SETF is always low.
+|> WARNING D2130
+     Equation Q17.SETF is always low.
+|> WARNING D2130
+     Equation Q18.SETF is always low.
+|> WARNING D2130
+     Equation Q19.SETF is always low.
+|> WARNING D2130
+     Equation Q20.SETF is always low.
+|> WARNING D2130
+     Equation Q21.SETF is always low.
+|> WARNING D2130
+     Equation Q22.SETF is always low.
+|> WARNING D2130
+     Equation Q23.SETF is always low.
+|> WARNING D2130
+     Equation Q24.SETF is always low.
+|> WARNING D2130
+     Equation Q25.SETF is always low.
+|> WARNING D2130
+     Equation Q26.SETF is always low.
+|> WARNING D2130
+     Equation Q27.SETF is always low.
+|> WARNING D2130
+     Equation Q28.SETF is always low.
+|> WARNING D2130
+     Equation Q29.SETF is always low.
+|> WARNING D2130
+     Equation Q30.SETF is always low.
+|> WARNING D2130
+     Equation Q31.RSTF is always low.
+|> WARNING D2130
+     Equation Q0.RSTF is always low.
+|> WARNING D2130
+     Equation Q1.RSTF is always low.
+|> WARNING D2130
+     Equation Q2.RSTF is always low.
+|> WARNING D2130
+     Equation Q3.RSTF is always low.
+|> WARNING D2130
+     Equation Q4.RSTF is always low.
+|> WARNING D2130
+     Equation Q5.RSTF is always low.
+|> WARNING D2130
+     Equation Q6.RSTF is always low.
+|> WARNING D2130
+     Equation Q7.RSTF is always low.
+|> WARNING D2130
+     Equation Q8.RSTF is always low.
+|> WARNING D2130
+     Equation Q9.RSTF is always low.
+|> WARNING D2130
+     Equation Q10.RSTF is always low.
+|> WARNING D2130
+     Equation Q11.RSTF is always low.
+|> WARNING D2130
+     Equation Q12.RSTF is always low.
+|> WARNING D2130
+     Equation Q13.RSTF is always low.
+|> WARNING D2130
+     Equation Q14.RSTF is always low.
+|> WARNING D2130
+     Equation Q15.RSTF is always low.
+|> WARNING D2130
+     Equation Q16.RSTF is always low.
+|> WARNING D2130
+     Equation Q17.RSTF is always low.
+|> WARNING D2130
+     Equation Q18.RSTF is always low.
+|> WARNING D2130
+     Equation Q19.RSTF is always low.
+|> WARNING D2130
+     Equation Q20.RSTF is always low.
+|> WARNING D2130
+     Equation Q21.RSTF is always low.
+|> WARNING D2130
+     Equation Q22.RSTF is always low.
+|> WARNING D2130
+     Equation Q23.RSTF is always low.
+|> WARNING D2130
+     Equation Q24.RSTF is always low.
+|> WARNING D2130
+     Equation Q25.RSTF is always low.
+|> WARNING D2130
+     Equation Q26.RSTF is always low.
+|> WARNING D2130
+     Equation Q27.RSTF is always low.
+|> WARNING D2130
+     Equation Q28.RSTF is always low.
+|> WARNING D2130
+     Equation Q29.RSTF is always low.
+|> WARNING D2130
+     Equation Q30.RSTF is always low.
+
+
+   1-V1 - TRACE_ON
+          CLK  COUNT  UP  LOAD  SELECT  Q0  O0  Q1  O1  Q2  O2  
+          Q3  O3  Q4  Q5  Q6  Q7  Q8  Q9  Q10  Q11  Q12  Q13  Q14  
+          Q15  Q16  Q17  Q18  Q19  Q20  Q21  Q22  Q23  Q24  Q25  
+          Q26  Q27  Q28  Q29  Q30  Q31  
+   1-V1 - SETF
+          /LOAD  /CLK  /UP  /COUNT  /SELECT  
+   2-V2 - SETF
+          /I0  /I1  /I2  /I3  /I4  /I5  /I6  /I7  /I8  /I9  
+          /I10  /I11  /I12  /I13  /I14  /I15  /I16  /I17  /I18  /I19  
+          /I20  /I21  /I22  /I23  /I24  /I25  /I26  /I27  /I28  /I29  
+          /I30  /I31  
+   3-V3 - SETF
+          LOAD  
+   7-V4 - CLOCKF
+          CLK  
+   7-V4 - CHECK
+          /Q0  /Q1  /Q2  /Q3  /Q4  /Q5  /Q6  /Q7  /Q8  /Q9  
+          /Q10  /Q11  /Q12  /Q13  /Q14  /Q15  /Q16  /Q17  /Q18  /Q19  
+          /Q20  /Q21  /Q22  /Q23  /Q24  /Q25  /Q26  /Q27  /Q28  /Q29  
+          /Q30  /Q31  
+   7-V5 - SETF
+          /LOAD  
+  11-V6 - CLOCKF
+          CLK  
+  11-V7 - SETF
+          I0  /I1  I2  /I3  I4  /I5  I6  /I7  I8  /I9  I10  
+          /I11  I12  /I13  I14  /I15  I16  /I17  I18  /I19  I20  
+          /I21  I22  /I23  I24  /I25  I26  /I27  I28  /I29  I30  
+          /I31  
+  12-V8 - SETF
+          LOAD  
+  16-V9 - CLOCKF
+          CLK  
+  16-V9 - CHECK
+          Q0  /Q1  Q2  /Q3  Q4  /Q5  Q6  /Q7  Q8  /Q9  Q10  
+          /Q11  Q12  /Q13  Q14  /Q15  Q16  /Q17  Q18  /Q19  Q20  
+          /Q21  Q22  /Q23  Q24  /Q25  Q26  /Q27  Q28  /Q29  Q30  
+          /Q31  
+  16-V10 - SETF
+          /LOAD  
+  20-V11 - CLOCKF
+          CLK  
+  20-V12 - SETF
+          /I0  I1  /I2  I3  /I4  I5  /I6  I7  /I8  I9  /I10  
+          I11  /I12  I13  /I14  I15  /I16  I17  /I18  I19  /I20  
+          I21  /I22  I23  /I24  I25  /I26  I27  /I28  I29  /I30  
+          I31  
+  21-V13 - SETF
+          LOAD  
+  25-V14 - CLOCKF
+          CLK  
+  25-V14 - CHECK
+          /Q0  Q1  /Q2  Q3  /Q4  Q5  /Q6  Q7  /Q8  Q9  /Q10  
+          Q11  /Q12  Q13  /Q14  Q15  /Q16  Q17  /Q18  Q19  /Q20  
+          Q21  /Q22  Q23  /Q24  Q25  /Q26  Q27  /Q28  Q29  /Q30  
+          Q31  
+  25-V15 - SETF
+          /LOAD  
+  29-V16 - CLOCKF
+          CLK  
+  29-V17 - SETF
+          I0  I1  I2  I3  I4  I5  I6  I7  I8  I9  I10  I11  
+          I12  I13  I14  I15  I16  I17  I18  I19  I20  I21  I22  
+          I23  I24  I25  I26  I27  I28  I29  I30  I31  
+  30-V18 - SETF
+          LOAD  
+  34-V19 - CLOCKF
+          CLK  
+  34-V19 - CHECK
+          Q0  Q1  Q2  Q3  Q4  Q5  Q6  Q7  Q8  Q9  Q10  Q11  
+          Q12  Q13  Q14  Q15  Q16  Q17  Q18  Q19  Q20  Q21  Q22  
+          Q23  Q24  Q25  Q26  Q27  Q28  Q29  Q30  Q31  
+  34-V20 - SETF
+          /LOAD  
+  38-V21 - CLOCKF
+          CLK  
+  38-V22 - SETF
+          /I0  /I1  /I2  /I3  /I4  /I5  /I6  /I7  /I8  /I9  
+          /I10  /I11  /I12  /I13  /I14  /I15  /I16  /I17  /I18  /I19  
+          /I20  /I21  /I22  /I23  /I24  /I25  /I26  /I27  /I28  /I29  
+          /I30  /I31  
+  39-V23 - SETF
+          LOAD  
+  43-V24 - CLOCKF
+          CLK  
+  43-V24 - CHECK
+          /Q0  /Q1  /Q2  /Q3  /Q4  /Q5  /Q6  /Q7  /Q8  /Q9  
+          /Q10  /Q11  /Q12  /Q13  /Q14  /Q15  /Q16  /Q17  /Q18  /Q19  
+          /Q20  /Q21  /Q22  /Q23  /Q24  /Q25  /Q26  /Q27  /Q28  /Q29  
+          /Q30  /Q31  
+  43-V25 - SETF
+          /LOAD  
+  44-V26 - SETF
+          COUNT  UP  
+  48-V27 - CLOCKF
+          CLK  
+  48-V27 - CHECK
+          Q0  /Q1  /Q2  /Q3  /Q4  /Q5  /Q6  /Q7  /Q8  /Q9  
+          /Q10  /Q11  /Q12  /Q13  /Q14  
+  51-V28 - CLOCKF
+          CLK  
+  51-V28 - CHECK
+          /Q0  Q1  /Q2  /Q3  /Q4  /Q5  /Q6  /Q7  /Q8  /Q9  
+          /Q10  /Q11  /Q12  /Q13  /Q14  
+  54-V29 - CLOCKF
+          CLK  
+  54-V29 - CHECK
+          Q0  Q1  /Q2  /Q3  /Q4  /Q5  /Q6  /Q7  /Q8  /Q9  /Q10  
+          /Q11  /Q12  /Q13  /Q14  
+  57-V30 - CLOCKF
+          CLK  
+  57-V30 - CHECK
+          /Q0  /Q1  Q2  /Q3  /Q4  /Q5  /Q6  /Q7  /Q8  /Q9  
+          /Q10  /Q11  /Q12  /Q13  /Q14  
+  60-V31 - CLOCKF
+          CLK  
+  60-V31 - CHECK
+          Q0  /Q1  Q2  /Q3  /Q4  /Q5  /Q6  /Q7  /Q8  /Q9  /Q10  
+          /Q11  /Q12  /Q13  /Q14  
+  63-V32 - CLOCKF
+          CLK  
+  63-V32 - CHECK
+          /Q0  Q1  Q2  /Q3  /Q4  /Q5  /Q6  /Q7  /Q8  /Q9  /Q10  
+          /Q11  /Q12  /Q13  /Q14  
+  63-V33 - FOR
+  66-V33 - CLOCKF
+          CLK  
+  69-V34 - CLOCKF
+          CLK  
+  72-V35 - CLOCKF
+          CLK  
+  75-V36 - CLOCKF
+          CLK  
+  78-V37 - CLOCKF
+          CLK  
+  81-V38 - CLOCKF
+          CLK  
+  84-V39 - CLOCKF
+          CLK  
+  87-V40 - CLOCKF
+          CLK  
+  90-V41 - CLOCKF
+          CLK  
+  93-V42 - CLOCKF
+          CLK  
+  96-V43 - CLOCKF
+          CLK  
+  99-V44 - CLOCKF
+          CLK  
+ 102-V45 - CLOCKF
+          CLK  
+ 105-V46 - CLOCKF
+          CLK  
+ 108-V47 - CLOCKF
+          CLK  
+ 111-V48 - CLOCKF
+          CLK  
+ 114-V49 - CLOCKF
+          CLK  
+ 117-V50 - CLOCKF
+          CLK  
+ 120-V51 - CLOCKF
+          CLK  
+ 123-V52 - CLOCKF
+          CLK  
+ 126-V53 - CLOCKF
+          CLK  
+ 129-V54 - CLOCKF
+          CLK  
+ 132-V55 - CLOCKF
+          CLK  
+ 135-V56 - CLOCKF
+          CLK  
+ 138-V57 - CLOCKF
+          CLK  
+ 141-V58 - CLOCKF
+          CLK  
+ 144-V59 - CLOCKF
+          CLK  
+ 147-V60 - CLOCKF
+          CLK  
+ 150-V61 - CLOCKF
+          CLK  
+ 153-V62 - CLOCKF
+          CLK  
+ 156-V63 - CLOCKF
+          CLK  
+ 159-V64 - CLOCKF
+          CLK  
+ 162-V65 - CLOCKF
+          CLK  
+ 165-V66 - CLOCKF
+          CLK  
+ 168-V67 - CLOCKF
+          CLK  
+ 171-V68 - CLOCKF
+          CLK  
+ 174-V69 - CLOCKF
+          CLK  
+ 177-V70 - CLOCKF
+          CLK  
+ 180-V71 - CLOCKF
+          CLK  
+ 183-V72 - CLOCKF
+          CLK  
+ 186-V73 - CLOCKF
+          CLK  
+ 189-V74 - CLOCKF
+          CLK  
+ 192-V75 - CLOCKF
+          CLK  
+ 195-V76 - CLOCKF
+          CLK  
+ 198-V77 - CLOCKF
+          CLK  
+ 201-V78 - CLOCKF
+          CLK  
+ 204-V79 - CLOCKF
+          CLK  
+ 207-V80 - CLOCKF
+          CLK  
+ 210-V81 - CLOCKF
+          CLK  
+ 213-V82 - CLOCKF
+          CLK  
+ 216-V83 - CLOCKF
+          CLK  
+ 219-V84 - CLOCKF
+          CLK  
+ 222-V85 - CLOCKF
+          CLK  
+ 225-V86 - CLOCKF
+          CLK  
+ 228-V87 - CLOCKF
+          CLK  
+ 231-V88 - CLOCKF
+          CLK  
+ 234-V89 - CLOCKF
+          CLK  
+ 237-V90 - CLOCKF
+          CLK  
+ 240-V91 - CLOCKF
+          CLK  
+ 243-V92 - CLOCKF
+          CLK  
+ 246-V93 - CLOCKF
+          CLK  
+ 249-V94 - CLOCKF
+          CLK  
+ 252-V95 - CLOCKF
+          CLK  
+ 255-V96 - CLOCKF
+          CLK  
+ 258-V97 - CLOCKF
+          CLK  
+ 261-V98 - CLOCKF
+          CLK  
+ 264-V99 - CLOCKF
+          CLK  
+ 267-V100 - CLOCKF
+          CLK  
+ 270-V101 - CLOCKF
+          CLK  
+ 273-V102 - CLOCKF
+          CLK  
+ 276-V103 - CLOCKF
+          CLK  
+ 279-V104 - CLOCKF
+          CLK  
+ 282-V105 - CLOCKF
+          CLK  
+ 285-V106 - CLOCKF
+          CLK  
+ 288-V107 - CLOCKF
+          CLK  
+ 291-V108 - CLOCKF
+          CLK  
+ 294-V109 - CLOCKF
+          CLK  
+ 297-V110 - CLOCKF
+          CLK  
+ 300-V111 - CLOCKF
+          CLK  
+ 303-V112 - CLOCKF
+          CLK  
+ 306-V113 - CLOCKF
+          CLK  
+ 309-V114 - CLOCKF
+          CLK  
+ 312-V115 - CLOCKF
+          CLK  
+ 315-V116 - CLOCKF
+          CLK  
+ 318-V117 - CLOCKF
+          CLK  
+ 321-V118 - CLOCKF
+          CLK  
+ 324-V119 - CLOCKF
+          CLK  
+ 327-V120 - CLOCKF
+          CLK  
+ 330-V121 - CLOCKF
+          CLK  
+ 333-V122 - CLOCKF
+          CLK  
+ 336-V123 - CLOCKF
+          CLK  
+ 339-V124 - CLOCKF
+          CLK  
+ 342-V125 - CLOCKF
+          CLK  
+ 345-V126 - CLOCKF
+          CLK  
+ 348-V127 - CLOCKF
+          CLK  
+ 351-V128 - CLOCKF
+          CLK  
+ 354-V129 - CLOCKF
+          CLK  
+ 357-V130 - CLOCKF
+          CLK  
+ 360-V131 - CLOCKF
+          CLK  
+ 363-V132 - CLOCKF
+          CLK  
+ 363-V133 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> 16cntmux.HST
+Simulation results (trace) are in   ===> 16cntmux.TRF
+Merged results (JEDEC) are in       ===> 16cntmux.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 423052 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: 16cntmux.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 64

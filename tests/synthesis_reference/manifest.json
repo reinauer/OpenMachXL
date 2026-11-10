@@ -1,0 +1,287 @@
+{
+  "generator": "research/manual/probe_settings.py",
+  "scope": "Exact PLA label, phase and ordered matrix comparison for selected synthesis options; no native fitting assertion",
+  "original_programs": {
+    "MACHP32.EXE": "547817b5a618faeb3ecb0dda387be12d77265a22b159197a447e04f9760f5ac5",
+    "MACHBPP.EXE": "1e7cdbf1010eba3c04ed94010dfc651d0110b75f05cbbbc3f5ac3118c2198779",
+    "MACHMIN.EXE": "b4fc5f44eabbec8f60f17dab8577d746a92fdaafe3b9a649a44f5eb4650784de",
+    "MACHFITR.EXE": "770f34627c654c66dbb2fecaa40946615c51d83dbca87beae0382f9a733d5726"
+  },
+  "cases": [
+    {
+      "name": "BASE",
+      "option_changes": {},
+      "stages": [
+        "C:\\EXE\\MACHP32.EXE  BASE.PDS -tre BASE.TRE -lis sp.log -log sp.@@1",
+        "C:\\EXE\\MACHBPP.EXE  BASE.TRE -PAIR -1eqn -tre BASE.TRE -dc0 -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE   -CON -N -ID  -tre BASE.TRE -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE -tre2pla -tre BASE.TRE -pla BASE.pla -log sp.log",
+        "C:\\EXE\\MACHFITR.EXE  BASE.pla +r +s l=0 +G +C x=526336 -log sp.log"
+      ],
+      "files": {
+        "BASE.PDS": "1bab528994f7e1ac3b8588cd2196617f4c50a8b5681ad464e03250a8bd87d110",
+        "BASE.MXL": "4e5efd01679ab1c5ecf23b93a0aa1d5b555babfaab4268bb07dc8fa5b11d00e0",
+        "BASE.PLA": "67143f836ac8ec53ffb1f5d4b31ef43c1b6bdddb5e0286fd3ee3f625f7a74aec"
+      }
+    },
+    {
+      "name": "FAST",
+      "option_changes": {
+        "FAST_MIN": "Y"
+      },
+      "stages": [
+        "C:\\EXE\\MACHP32.EXE  FAST.PDS -tre FAST.TRE -lis sp.log -log sp.@@1",
+        "C:\\EXE\\MACHBPP.EXE  FAST.TRE -PAIR -1eqn -tre FAST.TRE -dc0 -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE   -CON -N -ID  -tre FAST.TRE -efast -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE -tre2pla -tre FAST.TRE -pla FAST.pla -log sp.log",
+        "C:\\EXE\\MACHFITR.EXE  FAST.pla +r +s l=0 +G +C x=526336 -log sp.log"
+      ],
+      "files": {
+        "FAST.PDS": "d10d1f4071ab863cacea7fa87df9652bc66ff044328624918bf10097e9d7ec19",
+        "FAST.MXL": "cc92f69bb54ad07dfa5c3bd65a4ed53d85b77ab78ff546856412fa09feddaf3d",
+        "FAST.PLA": "a8bc71a15d4d2646c4450916d8cfc722d383a4fe547de6ff655e34a2815b3cea"
+      }
+    },
+    {
+      "name": "DCARE",
+      "option_changes": {
+        "BPP_SIGNAL": "Don't Care"
+      },
+      "stages": [
+        "C:\\EXE\\MACHP32.EXE  DCARE.PDS -tre DCARE.TRE -lis sp.log -log sp.@@1",
+        "C:\\EXE\\MACHBPP.EXE  DCARE.TRE -PAIR -1eqn -tre DCARE.TRE -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE   -CON -N -ID  -tre DCARE.TRE -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE -tre2pla -tre DCARE.TRE -pla DCARE.pla -log sp.log",
+        "C:\\EXE\\MACHFITR.EXE  DCARE.pla +r +s l=0 +G +C x=526336 -log sp.log"
+      ],
+      "files": {
+        "DCARE.PDS": "9afdbee6736fb546c6a385d1efe6184266db7f6336a7aacba10a3e7095ac7f22",
+        "DCARE.MXL": "ac7a483cd3fc4d0d2f26c2b107bd7695d95a432bd39dd07f0e06fcd4fef96a8a",
+        "DCARE.PLA": "3c205cee9d928d06272814c1346d6398bf29c62fd1d23f086a79ba7b454f39f5"
+      }
+    },
+    {
+      "name": "POLHIGH",
+      "option_changes": {
+        "M_POLAR": "High, active high"
+      },
+      "stages": [
+        "C:\\EXE\\MACHP32.EXE  POLHIGH.PDS -tre POLHIGH.TRE -lis sp.log -log sp.@@1",
+        "C:\\EXE\\MACHBPP.EXE  POLHIGH.TRE -PAIR -1eqn -tre POLHIGH.TRE -dc0 -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE   -AH -CON -N -ID  -tre POLHIGH.TRE -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE -tre2pla -tre POLHIGH.TRE -pla POLHIGH.pla -log sp.log",
+        "C:\\EXE\\MACHFITR.EXE  POLHIGH.pla +r +s l=0 +G +C x=526336 -log sp.log"
+      ],
+      "files": {
+        "POLHIGH.PDS": "3425f5cd774db2e7582693fdb1b3ec89586328a28e9b30979d9444100d78d469",
+        "POLHIGH.MXL": "08a6fb0cd8d8a8b9ba2ae07a6fe4af75f427d0064a6ea9c637c55e09d54a8f33",
+        "POLHIGH.PLA": "afcd722f55830a79eb4d7686d2b4b22ea51e2acfb5bb1272e3ac555f776ce5bf"
+      }
+    },
+    {
+      "name": "POLLOW",
+      "option_changes": {
+        "M_POLAR": "Low, active low"
+      },
+      "stages": [
+        "C:\\EXE\\MACHP32.EXE  POLLOW.PDS -tre POLLOW.TRE -lis sp.log -log sp.@@1",
+        "C:\\EXE\\MACHBPP.EXE  POLLOW.TRE -PAIR -1eqn -tre POLLOW.TRE -dc0 -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE   -AL -CON -N -ID  -tre POLLOW.TRE -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE -tre2pla -tre POLLOW.TRE -pla POLLOW.pla -log sp.log",
+        "C:\\EXE\\MACHFITR.EXE  POLLOW.pla +r +s l=0 +G +C x=526336 -log sp.log"
+      ],
+      "files": {
+        "POLLOW.PDS": "4336f6422e26e5434b538a5a705d7eb38fbe35510135b3ff43796342236feaa6",
+        "POLLOW.MXL": "c573d500908fdc3a646bc1991d740b7cc32996eda81271f459a724ff7eada8b1",
+        "POLLOW.PLA": "50f4dea79f95be6072a0dd76f8c71f6d6033495950df6f63bdf211a2223c6930"
+      }
+    },
+    {
+      "name": "REGD",
+      "option_changes": {
+        "D_T_REG_OPTM": "Change all to D-type"
+      },
+      "stages": [
+        "C:\\EXE\\MACHP32.EXE  REGD.PDS -tre REGD.TRE -lis sp.log -log sp.@@1",
+        "C:\\EXE\\MACHBPP.EXE  REGD.TRE -PAIR -1eqn -tre REGD.TRE -dc0 -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE   -CON -N -D  -tre REGD.TRE -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE -tre2pla -tre REGD.TRE -pla REGD.pla -log sp.log",
+        "C:\\EXE\\MACHFITR.EXE  REGD.pla +r +s l=0 +G +C x=526336 -log sp.log"
+      ],
+      "files": {
+        "REGD.PDS": "20177ffa1bca3e97710161fe1e657a969126eda7e2c95856fd17f20fa2d97eb4",
+        "REGD.MXL": "4c197da4215a5ee0a890bca1d047a6e88014af73dd1f64767aac6e4e21e4bd81",
+        "REGD.PLA": "fb2e21499c73e3b8ff57f8080d49100fd703294b86fec136634699b571085b9c"
+      }
+    },
+    {
+      "name": "REGT",
+      "option_changes": {
+        "D_T_REG_OPTM": "Change all to T-type"
+      },
+      "stages": [
+        "C:\\EXE\\MACHP32.EXE  REGT.PDS -tre REGT.TRE -lis sp.log -log sp.@@1",
+        "C:\\EXE\\MACHBPP.EXE  REGT.TRE -PAIR -1eqn -tre REGT.TRE -dc0 -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE   -CON -N -T  -tre REGT.TRE -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE -tre2pla -tre REGT.TRE -pla REGT.pla -log sp.log",
+        "C:\\EXE\\MACHFITR.EXE  REGT.pla +r +s l=0 +G +C x=526336 -log sp.log"
+      ],
+      "files": {
+        "REGT.PDS": "7ea610a75dab2784c42044e67fd738f48cd1e130efa19f6b674de2ccc30453f4",
+        "REGT.MXL": "525a860505ee878164516d5c73f704d84bccd44eb15ad5217c05ee55a6453a35",
+        "REGT.PLA": "9140bb3fc9facd1d3a05357600c65ea791b4c14411866d9df5d95c3eff313449"
+      }
+    },
+    {
+      "name": "TCONVD",
+      "option_changes": {
+        "D_T_REG_OPTM": "Change all to D-type"
+      },
+      "stages": [
+        "C:\\EXE\\MACHP32.EXE  TCONVD.PDS -tre TCONVD.TRE -lis sp.log -log sp.@@1",
+        "C:\\EXE\\MACHBPP.EXE  TCONVD.TRE -PAIR -1eqn -tre TCONVD.TRE -dc0 -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE   -CON -N -D  -tre TCONVD.TRE -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE -tre2pla -tre TCONVD.TRE -pla TCONVD.pla -log sp.log",
+        "C:\\EXE\\MACHFITR.EXE  TCONVD.pla +r +s l=0 +G +C x=526336 -log sp.log"
+      ],
+      "files": {
+        "TCONVD.PDS": "5f49fd5137e6f4dc1e662776c2503e5b8e535ebf1d299070fb6050698cdce571",
+        "TCONVD.MXL": "a2dd7523be6415578a94394d430ef3922c1cb6cc50ddcf06362bd19aaa56040d",
+        "TCONVD.PLA": "43a7bc59a66c94ab0248008b0e6d636b26cf0bff18dbc7c016bf8b69d7939007"
+      }
+    },
+    {
+      "name": "TLOW",
+      "option_changes": {
+        "M_POLAR": "Low, active low"
+      },
+      "stages": [
+        "C:\\EXE\\MACHP32.EXE  TLOW.PDS -tre TLOW.TRE -lis sp.log -log sp.@@1",
+        "C:\\EXE\\MACHBPP.EXE  TLOW.TRE -PAIR -1eqn -tre TLOW.TRE -dc0 -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE   -AL -CON -N -ID  -tre TLOW.TRE -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE -tre2pla -tre TLOW.TRE -pla TLOW.pla -log sp.log",
+        "C:\\EXE\\MACHFITR.EXE  TLOW.pla +r +s l=0 +G +C x=526336 -log sp.log"
+      ],
+      "files": {
+        "TLOW.PDS": "bcfe9176bd6d4af74cf792c8076f9bc811ca176dc660f4c22f865bbabbf11be9",
+        "TLOW.MXL": "385ff0deb3049bad1cc5b0840677a107ffb6c85e25f453505d52b22648e0caaa",
+        "TLOW.PLA": "b942b96bc4bb619a21c72ccfd6618fcbae877d939a5e643b2d82d59b7e5cb59e"
+      }
+    },
+    {
+      "name": "IFOFF",
+      "option_changes": {
+        "BPP_SIGNAL": "Off"
+      },
+      "stages": [
+        "C:\\EXE\\MACHP32.EXE  IFOFF.PDS -tre IFOFF.TRE -lis sp.log -log sp.@@1",
+        "C:\\EXE\\MACHBPP.EXE  IFOFF.TRE -PAIR -1eqn -tre IFOFF.TRE -dc0 -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE   -CON -N -ID  -tre IFOFF.TRE -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE -tre2pla -tre IFOFF.TRE -pla IFOFF.pla -log sp.log",
+        "C:\\EXE\\MACHFITR.EXE  IFOFF.pla +r +s l=0 +G +C x=526336 -log sp.log"
+      ],
+      "files": {
+        "IFOFF.PDS": "178ca5b5754283bc2fb14a0684609a3b8b920b6de657db9c6cf4a1ce28087ad4",
+        "IFOFF.MXL": "7505f9fdcf7c40b974efb1b505b0792aeb016f4d1a09856f9d279001634f27a3",
+        "IFOFF.PLA": "2094d166b9bae0ec18e9418347ecde3eab725438bad7e4e5b8d7a09fbfc5b059"
+      }
+    },
+    {
+      "name": "IFDC",
+      "option_changes": {
+        "BPP_SIGNAL": "Don't Care"
+      },
+      "stages": [
+        "C:\\EXE\\MACHP32.EXE  IFDC.PDS -tre IFDC.TRE -lis sp.log -log sp.@@1",
+        "C:\\EXE\\MACHBPP.EXE  IFDC.TRE -PAIR -1eqn -tre IFDC.TRE -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE   -CON -N -ID  -tre IFDC.TRE -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE -tre2pla -tre IFDC.TRE -pla IFDC.pla -log sp.log",
+        "C:\\EXE\\MACHFITR.EXE  IFDC.pla +r +s l=0 +G +C x=526336 -log sp.log"
+      ],
+      "files": {
+        "IFDC.PDS": "dc7f922f38ad65d01946f1c84db7f20f2583c347679378153e91212351a155e0",
+        "IFDC.MXL": "9b14594ccd40da3870fc60c18a4880bdee32c1e771b723127821ae629b054a18",
+        "IFDC.PLA": "12f049678269d6440809b73a814e2cff9de0e3a1a25c8aac2bf3f88b76bba778"
+      }
+    },
+    {
+      "name": "PHBEST1",
+      "option_changes": {
+        "M_POLAR": "Best for device"
+      },
+      "stages": [
+        "C:\\EXE\\MACHP32.EXE  PHBEST1.PDS -tre PHBEST1.TRE -lis sp.log -log sp.@@1",
+        "C:\\EXE\\MACHBPP.EXE  PHBEST1.TRE -PAIR -1eqn -tre PHBEST1.TRE -dc0 -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE   -AO -CON -N -ID  -tre PHBEST1.TRE -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE -tre2pla -tre PHBEST1.TRE -pla PHBEST1.pla -log sp.log",
+        "C:\\EXE\\MACHFITR.EXE  PHBEST1.pla +r +s l=0 +G +C x=526336 -log sp.log"
+      ],
+      "files": {
+        "PHBEST1.PDS": "36c25b6420260afa059ae1e1dc5e89ee8532a50802fde9760879ea4fa601e4f3",
+        "PHBEST1.MXL": "bc031abb5f0695303de652bd6fdcbe36fd61f004db44c1f98e80f47d32673328",
+        "PHBEST1.PLA": "74d40566731473b395fc86ddf6cb853d01be51f02b363bfd23503ec6106ecec7"
+      }
+    },
+    {
+      "name": "PHBEST4",
+      "option_changes": {
+        "M_POLAR": "Best for device"
+      },
+      "stages": [
+        "C:\\EXE\\MACHP32.EXE  PHBEST4.PDS -tre PHBEST4.TRE -lis sp.log -log sp.@@1",
+        "C:\\EXE\\MACHBPP.EXE  PHBEST4.TRE -PAIR -1eqn -tre PHBEST4.TRE -dc0 -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE   -AO -CON -N -ID  -tre PHBEST4.TRE -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE -tre2pla -tre PHBEST4.TRE -pla PHBEST4.pla -log sp.log",
+        "C:\\EXE\\MACHFITR.EXE  PHBEST4.pla +r +s l=0 +G +C x=526336 -t -log sp.log"
+      ],
+      "files": {
+        "PHBEST4.PDS": "aa73f44430c4099ab2f2cf0e5a152c7a78e670aa4535fa58458e9e024742e6bb",
+        "PHBEST4.MXL": "78811706e60c571f6b56261dc72c642473460515411f3445cffa263df3038675",
+        "PHBEST4.PLA": "0c87db3c403f4160128329f5962c49b01b3351bac84aa46e1597daf81fe21629"
+      }
+    },
+    {
+      "name": "REGCOST",
+      "option_changes": {
+        "D_T_REG_OPTM": "Best type for device"
+      },
+      "evidence": "research/optimizer/reference/candidates.json",
+      "files": {
+        "REGCOST.PDS": "5118a375e8c8a5ca652b2f7a2051f70071367cca3d8e3cc6cb3dd0b18bb38422",
+        "REGCOST.MXL": "92d758f6e214ae8ea0b20cfb0784cad1f615c4da5e375df5971c5135068c6c40",
+        "REGCOST.PLA": "68a86ef6431089ad1811d48eeec9e46f199455a2599547c7a6dff20eb0685a59"
+      }
+    },
+    {
+      "name": "PHASE",
+      "option_changes": {
+        "M_POLAR": "Best for device"
+      },
+      "evidence": "research/optimizer/reference/candidates.json",
+      "files": {
+        "PHASE.PDS": "3df832d29a1d4b5f9741a056eccd0ff3fb4dce85b08c750385cf23910cf30d02",
+        "PHASE.MXL": "12d191aa6dd5941c421d24d36a1d857f11c82f4368719c0a8007e9fa76f29c98",
+        "PHASE.PLA": "35766672ac71108e57d23aeaf064c9b1857721daa68496c8e545e32da0ea8e50"
+      }
+    },
+    {
+      "name": "PH4NCON",
+      "option_changes": {
+        "M_POLAR": "Best for device",
+        "EQN_22V10": "N"
+      },
+      "stages": [
+        "C:\\EXE\\MACHP32.EXE  PH4NCON.PDS -tre PH4NCON.TRE -lis sp.log -log sp.@@1",
+        "C:\\EXE\\MACHBPP.EXE  PH4NCON.TRE -PAIR -1eqn -tre PH4NCON.TRE -dc0 -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE   -AO -N -ID  -tre PH4NCON.TRE -log sp.log",
+        "C:\\EXE\\MACHMIN.EXE -tre2pla -tre PH4NCON.TRE -pla PH4NCON.pla -log sp.log",
+        "C:\\EXE\\MACHFITR.EXE  PH4NCON.pla +r +s l=0 +G x=526336 -t -log sp.log"
+      ],
+      "files": {
+        "PH4NCON.PDS": "047df48aa93728ed33206767f6039f03c195ff4e982315d70054fecad177c35c",
+        "PH4NCON.MXL": "a60e987dc08bb54cb88b38c828de4ca016517ffe2633bd2b542e08a940e69c93",
+        "PH4NCON.PLA": "1c849f924e80863f095ebf0d32792015311686e3a7e84483749318a17c653161"
+      }
+    }
+  ]
+}

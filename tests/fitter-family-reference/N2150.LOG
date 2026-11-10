@@ -1,0 +1,117 @@
+
+*** Start MACHPAR.E 23:48:56 
+N2150.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP NODES MACH215
+   2     |PIN 4 A
+   3     |PIN 5 B
+   4     |PIN 2 Y
+   5     |NODE 3 N
+   6     |EQUATIONS
+   7     |N=A*B
+   8     |Y=N:+:B
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  N2150.pds
+
+*** End MACHPAR.EXE 23:48:56; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 23:48:56 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>N
+Processing equation for ====>Y
+
+ %%  MACHBPP  %% Maximum memory allocated was: 58984 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: N2150.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 23:48:56; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 23:48:56 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node N...
+====> N                  MIN_ON (1 + pt)
+Processing equation(s) for pin Y...
+====> Y                  MIN_ON (2 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 42492 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: N2150.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 23:48:57; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 23:48:57 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file n2150.tre to PLA file n2150.pla...
+
+..
+..
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 40168 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: N2150.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 23:48:57; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 23:48:57 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is N2150.pds . Device is MACH215 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of non-global clocks:
+   None.
+
+*** End of Normalization.
+|> ERROR z5547 - Illegal placement: signal N is a buried node that is
+                 preplaced at input node 3 which is invalid as a buried
+                 node location for this device.
+
+*** End of DRC. 
+
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File N2150.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 0 .
+
+*** End MACHFITR.EX 23:48:57; (MACHFITR.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

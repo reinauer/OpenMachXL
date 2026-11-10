@@ -1,0 +1,29 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Sci4.pds
+Title  
+
+
+
+   1-V1 - SETF
+          /A  /B  /CLK  
+   2-V1 - CHECK
+          /Y  
+   2-V2 - SETF
+          A  B  
+   3-V2 - CHECK
+          /Y  
+   3-V3 - SETF
+          /A  /B  
+   7-V4 - CLOCKF
+          CLK  
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Sci4.HST
+Merged results (JEDEC) are in       ===> Sci4.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 86062 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Sci4.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0

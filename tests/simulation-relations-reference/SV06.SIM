@@ -1,0 +1,37 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Sv06.pds
+Title  
+
+
+
+   1-V1 - SETF
+          /X[1]  /X[0]  /M  
+   2-V2 - IF
+   2-V2 - SETF
+          /M  
+   3-V3 - SETF
+          /X[1]  X[0]  /M  
+   4-V4 - IF
+   4-V4 - SETF
+          /M  
+   5-V5 - SETF
+          X[1]  /X[0]  /M  
+   6-V6 - IF
+   6-V6 - SETF
+          M  
+   7-V7 - SETF
+          X[1]  X[0]  /M  
+   8-V8 - IF
+   8-V8 - SETF
+          /M  
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Sv06.HST
+Merged results (JEDEC) are in       ===> Sv06.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 87173 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Sv06.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0

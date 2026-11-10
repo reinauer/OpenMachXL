@@ -1,0 +1,38 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+MACHXL SIMULATION SELECTIVE TRACE LISTING
+
+Title     : multibus2_module         Author   : J. ENGINEER      
+Pattern   : bus_arbiter              Company  : AMD              
+Revision  : 1.0                      Date     : 12/09/92         
+
+MACH435        
+Page : 1 
+
+               ggc  gc  gc  gc  gc  gc                                     
+ BCLK          LLHHLLHHLLHHLLHHLLHHLLHHL                                   
+/BUS_REQ       HHHHHHHHHLLLLLLLLLLLLHHHH                                   
+/SC0           HHHHHLLLLHHHHHHHHHHHHHHHH                                   
+/SC1           HHHHHHHHHHHHHHHHHHHHHHHHH                                   
+/SC2           HHHHHHHHHHHHHHHHHHHHHLLLL                                   
+/SC4           HHHHHHHHHHHHHHHHHHHHHLLLL                                   
+ BREQ          LLLLLLLLLHHHHHHHHHHHHHHHH                                   
+ CLEAR         LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ SYSCLEAR      HLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ ARB_ID_MATCH  LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ REQ_READY     LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ OWNRDY        LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ HI_PRI        LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ AGENT_ERR     LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ PUT_BUS_REQ   LLLLLLLLLLLLLLLLLLLLLLLHH                                   
+ PUT_ARB_ID    LLLLLLLLLLLLLLLLLLLLLLLHH                                   
+ TRANS_ST[2]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ TRANS_ST[1]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ TRANS_ST[0]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ TRANS_MON     LLLLLLLHHHHHHHHHHHHHHHHLL                                   
+ ARB_MON[1]    LLLLLLLLLLLLLLLHHHHHHHHLL                                   
+ ARB_MON[0]    LLLLLLLLLLLHHHHLLLLLLLLLL                                   
+ ARB_OPER[1]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ ARB_OPER[0]   LLLLLLLLLLLLLLLLLLLLLLLHH                                   
+

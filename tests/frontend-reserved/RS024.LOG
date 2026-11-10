@@ -1,0 +1,23 @@
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+
+ %% MACHPAR %%    Processing design file.......Rs024.pds
+
+ %% MACHPAR %%    Listing file.................Rs024.lis
+|> WARNING P45  Missing design file header.
+
+   4     |STRING  GROUP 'A'
+  ERROR ----------------^ (L4/C15)
+|> ERROR P88  Unexpected reserved word or operator '
+
+   5     |EQUATIONS
+  ERROR --^ (L5/C1)
+|> ERROR P136  Duplicate logic segment found for the defined chip/macro.
+
+
+ %% MACHPAR %%    ERROR count:  2     WARNING count:  1
+
+ %% MACHPAR %%    File processing terminated.     File:  Rs024.pds

@@ -1,0 +1,191 @@
+Bh1.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |;PALASM Design Description
+   2     |; pds2v test: logic allocator.  M1 needs 12 product terms = 3 clusters, which
+   3     |; must be C0..C2; M0 can only use C0 or C1, so block A is one cluster short.
+   4     |; EXPECT-EXIT: 1
+   5     |; EXPECT: warning: BIG12 needs 12 product terms
+   6     |; EXPECT: error: block A: the logic allocator is 1 cluster(s) short
+   7     |; EXPECT: clusters needed: M0(SMALL)=1 M1(BIG12)=3
+   8     |
+   9     |CHIP     BADCL  MACH111
+  10     |PIN  10  A
+  11     |PIN  11  B
+  12     |PIN  13  C
+  13     |PIN  32  D
+  14     |PIN  33  E
+  15     |PIN  35  F
+  16     |PIN  24  G
+  17     |PIN  25  H
+  18     |PIN  26  I
+  19     |PIN  27  J
+  20     |PIN  28  K
+  21     |PIN  29  L
+  22     |PIN  2   SMALL  COMBINATORIAL   ; M0 of block A
+  23     |PIN  3   BIG12  COMBINATORIAL   ; M1 of block A
+  24     |
+  25     |EQUATIONS
+  26     |SMALL = A * B
+  27     |BIG12 = (A :+: B :+: C :+: D)   ; 8 product terms
+  28     |      + E * F + G * H + I * J + K * L
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Bh1.pds
+
+*** Start MACHBPP.E 10:16:44 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>SMALL
+Processing equation for ====>BIG12
+
+ %%  MACHBPP  %% Maximum memory allocated was: 57104 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Bh1.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 10:16:44; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 10:16:44 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin BIG12...
+====> BIG12              MIN_ON (12 + pt)
+Processing equation(s) for pin SMALL...
+====> SMALL              MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 43950 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Bh1.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 10:16:44; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 10:16:44 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file bh1.tre to PLA file bh1.pla...
+
+..
+..
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 44492 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Bh1.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 10:16:45; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 10:16:45 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Bh1.pds . Device is MACH111 .
+|> INFO z5109 - For this device, all input pairing is ignored since input
+                registers or latches do not exist. All signals must pass
+                through the central switch matrix before being latched or
+                registered.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not place Sig [ SMALL] with [ 1]
+                   PTs in blk [A]. ].
+|> WARNING z7501 - Placer/Router [ Not enough PTs in block [A] for sig
+                   [SMALL]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not place Sig [ SMALL] with [ 1]
+                   PTs in blk [A]. ].
+|> WARNING z7501 - Placer/Router [ Not enough PTs in block [A] for sig
+                   [SMALL]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not place Sig [ SMALL] with [ 1]
+                   PTs in blk [A]. ].
+|> WARNING z7501 - Placer/Router [ Not enough PTs in block [A] for sig
+                   [SMALL]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not place Sig [ SMALL] with [ 1]
+                   PTs in blk [A]. ].
+|> WARNING z7501 - Placer/Router [ Not enough PTs in block [A] for sig
+                   [SMALL]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+|> FATAL z7502 - Placer/Router [ unsuccessful on final iteration ].
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement     92% - Completed
+Routing        0% - Completed
+%%% Fitting process has failed %%%
+*** Report Generator end.
+
+|> INFO z5122 - MACH111 fitting errors may result when preplaced and paired
+                nodes in block B of a MACH110 design have not been
+                translated to their MACH111 counterparts -- prior to
+                fitting.
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Bh1.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 16 .
+
+*** End MACHFITR.EX 10:16:45; (MACHFITR.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

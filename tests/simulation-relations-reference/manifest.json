@@ -1,0 +1,1346 @@
+{
+  "scope": "Original simulation comparisons, plus unmodified-DOS explicit SETF controls for corrected behavior",
+  "cases": [
+    {
+      "name": "SR00",
+      "condition": "I < 3",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR00.PDS": "1f085dbb7948d5c37766855204fd42e3a7a6b1115ae82885dc4e83562c0fab19",
+        "SR00.MXL": "c4147d825f6701aafcee1d1b091166d5fa1d51bd6e4d955fd131d9e0f60fda9b",
+        "SR00.LOG": "8938d7226552cd570964cdeda3fd351c8429036fc38ce4b2fa2663cca093aba3",
+        "SR00.SIM": "d57156da63a160c00978ce32a8d755388bc283ebc35daecdc8036a4ecfdcf21d",
+        "SR00.PLC": "3701efa45eb7d89120415660c4810fb052341fbeafb0664adc04977184df6dcf",
+        "SR00.JDC": "55a1a2a14c5a1af0dea38d5db49b422f4ac42a8fe71b9372370175a2283d7aba",
+        "SR00.default.PDS": "95d393babff8997b0c9456ba4343263c181cfb15682917019a486461e5c7c749",
+        "SR00.default.JDC": "a888fc148b13e23689dcdb238309cc399edc3ebbbc6f97d6305fbe4ad91feade",
+        "SR00.default.SIM": "30393df72c2c870a9fdf65cf9f104c223cbb90dd676424e49b2ed5430fb9b0ba",
+        "SR00.default.LOG": "8c9f71a5c5de9fcba3f3c4dcd947380881fb978b41eb9e20168f3e148006f74c"
+      }
+    },
+    {
+      "name": "SR01",
+      "condition": "(I <= 3)",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR01.PDS": "afff5c6cb167711250f0f0d156c399bdebce2866faa811eeb96d91b81ea9bc5c",
+        "SR01.MXL": "e1662869d970d18bd414fe21dd778efa63b98d302112caddc705e65c7f76ce50",
+        "SR01.LOG": "2f89f26499f226cd502c43202264a21a395b6210aa6a1e4a7bb20f6721f8f342",
+        "SR01.SIM": "8f55d51e17484cc104ef7dc7b1753a3523e934bd4ec02f961b194d9a76ca54b9",
+        "SR01.PLC": "923c4a30277085c234e92702b0b16a968861aec8109f12bbf6290278b5d1e4b4",
+        "SR01.JDC": "e9c68da3b93236afb462b1385ceb0a4221b7277493a9739985e572de7dbef7f9",
+        "SR01.default.PDS": "9032fd9a599db22f9321cab1255c124e5a77b6ccb5b87ee0abccd6c25f3b5618",
+        "SR01.default.JDC": "bb4b4f5cc05ba4ce0ac3428c31c11ef4f3d93542fb78df35467d870d67bd0357",
+        "SR01.default.SIM": "e166cecc88939cc018cd08df72a9cdb5fc4765ecb5c6f436c36753da641424ee",
+        "SR01.default.LOG": "240efa168eabf9ca1d9f064367b6cf4a6ec7178e3bed1a3e6ed5884b7e5839c4"
+      }
+    },
+    {
+      "name": "SR02",
+      "condition": "(I > 2)",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR02.PDS": "e49435aa5fc7d50c413a7d2317c8b657b57e880aedfeea00f213cbe78463ed44",
+        "SR02.MXL": "4b16d47f806ce3fb2bccfa0f8d6d187f0d3b0b32cb30b0c23540b8c006584e11",
+        "SR02.LOG": "6715a59ca5bf523018d0666470a96a2d7d6b739c68b9dd6ec5fb1b96e485efb7",
+        "SR02.SIM": "1b136251c1b175481bbd38c9deffbae6c4aa932abd62a7f6f98f63f150435186",
+        "SR02.PLC": "8a97321616069f8b8799125135ae69200091f00b39402c81f2aaed457c5c1ad3",
+        "SR02.JDC": "69a11a54719cacbb7a61b6150a7a014751c8f6776211417f5d4e8455e79caa73",
+        "SR02.default.PDS": "5fb5caf864e0fe99b0525326121ac646e91306baa97b063e2a33c0acc5cb626d",
+        "SR02.default.JDC": "c2b03973b453da245c48da73631dea21d90bf0cf91635a585ff82c4db1c04dd3",
+        "SR02.default.SIM": "a5fc8e958cdc8d63fdd2f0e8621542b54d446e7086f5c734ce9a0b11c8b58e8e",
+        "SR02.default.LOG": "f02cba4d6c2aa636f969543b28f7549c624aed029ea122b2a0cc6f1fa4445a55"
+      }
+    },
+    {
+      "name": "SR03",
+      "condition": "(I >= 2)",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR03.PDS": "1856a0733f99d2a13da75a30e19eb7a6617f510d0d3d9ce40886e194c2ad380a",
+        "SR03.MXL": "f3a1033537fd034e2a4bd5674053ccbf142d6ce88603fcfd3f293c6efb2c4087",
+        "SR03.LOG": "2fa00df25fa6c9acc7b9c87d960fbf28d9050cc932d5599be54888d114822823",
+        "SR03.SIM": "3dc85e996472d5ae2b5d068a6bcbd7755a0fb77fcf302f8c38c18f78d823ac11",
+        "SR03.PLC": "35a4ce1fcea15ae19d6cc1602a8b8c1e38defca2fcfb18f2a6cb53cb3e3483c2",
+        "SR03.JDC": "6be1d797e0be280110791d28dd3d8d951143c2c7bbfd55b827deabc6d60d1c02",
+        "SR03.default.PDS": "8f8871c8108d1ef87ba98e8d017dc81f9a6f44e9e1d5e01a4fd4dab5b7105d86",
+        "SR03.default.JDC": "01facad163b71fe6f0c849c40a4426538899d6ea08ea5847f936d4f68bea2972",
+        "SR03.default.SIM": "2365456d5b83c441ba4a9b62cefcdf2e3267f8dbb9b0721ee1e34e8bfc26bc28",
+        "SR03.default.LOG": "23b14b898e4e6e29179ace83dfea7447b9d02074c80c3e19021d42ab4d8270e4"
+      }
+    },
+    {
+      "name": "SR04",
+      "condition": "(I = 2)",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR04.PDS": "5671ad4d930f8d1be933ddaa6d6c6c4f31666fe70724b0bb62ce415a9ff00cdf",
+        "SR04.MXL": "c3d1d85d3810d6d8aa6ce1fc0d1db031858c8f826b65a86a32604c0f438ea9bf",
+        "SR04.LOG": "dd6afed24b6f507a08373abd6e2f2e5fddb64be96a24d3a9f7c88bd1c05ba2da",
+        "SR04.SIM": "25c4fea95fb8c2e87623c1f8ea478ba6a7ccd59541608f3ff4c87e7694627514",
+        "SR04.PLC": "f26dbaf5247630fb0375e179c31628ca49ae8823bb16e27c17addbea2efd1a76",
+        "SR04.JDC": "f8cdffc16fd72787fa1f44bc84a6efa13f3cb8e5235c42e9a8ff76f9f5999b48",
+        "SR04.default.PDS": "cdde4e407ff1af8170ca6fe9a9e1ffa6c080441a03cd828f3a143e2d3091d1b5",
+        "SR04.default.JDC": "d92839420dc73eab86d0c1b29ab67e7d893a46699dc02010eebfce4edddeaaf8",
+        "SR04.default.SIM": "aab5f166e68c375fdd85b088d9f64d554aa58767688eba91bf39f821cf4a3d35",
+        "SR04.default.LOG": "fe423947186f8e9187450b0a007da7fd094517f8b5cb17bb9e40ce59b6c9d66e"
+      }
+    },
+    {
+      "name": "SR05",
+      "condition": "(I <> 2)",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR05.PDS": "a5aef07ef2cf390936a078413329a82c2e0b82e0aa784ca14036ad2eb4b5bbb8",
+        "SR05.MXL": "ab1933882d31d067463192b6684450788d993fca3f0469402aa50fc489b783da",
+        "SR05.LOG": "50f96c6895f637495cbe09e3d2bee1c0c02f5366f735396eee1aff9ac5148088",
+        "SR05.SIM": "80a74f5f867bb03cec20c411b46db9dd0d18a3735a006adbc4ae7f497f2276c6",
+        "SR05.PLC": "eb646c53f5705ddfb198c50293db35a24ddba6f02b057114adfdc2e0fa857ea6",
+        "SR05.JDC": "d9e369d2a041766bbe2bb6b1b7e3370caf56c2db95a72c4ae1c0c67295a795eb",
+        "SR05.default.PDS": "16334cd9d924ca5e84d097b9bd08a6bff98ccd36254217fae05072a9d5263819",
+        "SR05.default.JDC": "714a510d843ef2a40cad3968c1b4a61974dc21d4bb71a206ff15a137a7641ebd",
+        "SR05.default.SIM": "47fa5f0aac283316daa92571d08dcd422d405fb525a866595f033a27588a54d3",
+        "SR05.default.LOG": "24ba3c5a8db596cec942df1d2921a625cac9c28751f396fb6397f23444fb5d9c"
+      }
+    },
+    {
+      "name": "SR06",
+      "condition": "(I != 2)",
+      "original_success": false,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR06.PDS": "770ebf14adf19adea1bbe6238f4efb04f97150c3b7e2bdb0a3db627ad5803a82",
+        "SR06.MXL": "20c5b6f8cef0ce878d29faabc2230c77dba1024a740e712c42e06f1f08d3249c",
+        "SR06.LOG": "f32d69f9da804187575993f5b68ab3c3d8eac7e2496a7eb90a14210b6508be75",
+        "SR06.SIM": "7c2834fbc419452935468bfb96847014a3723a6e35a621b4a46bfdab687a2ce5"
+      }
+    },
+    {
+      "name": "SR07",
+      "condition": "(I == 2)",
+      "original_success": false,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR07.PDS": "c7be8784ada0fdd07be396c838b8190339accb0383ec20dfdc8cea8fe0cec073",
+        "SR07.MXL": "2b8b911892b991677908130a25eff3c75b2d6fda3dfac866cebf2b8d7fa51a79",
+        "SR07.LOG": "737a8adca1dc3ed2a84e8b639b4c7dd5115a7a0e9ec02a66cc8d8ccfbf32a04d",
+        "SR07.SIM": "7c2834fbc419452935468bfb96847014a3723a6e35a621b4a46bfdab687a2ce5"
+      }
+    },
+    {
+      "name": "SR08",
+      "condition": "((I <= #H2))",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR08.PDS": "89dee06a96b002e13ddac9a7f67494ba7689bdd4ffbf00972e3e6be2a5a2759d",
+        "SR08.MXL": "2f8b8fde946ccb67c89fc678a7fe4b23d3c05915c21c6d4c5a7dea152b075fce",
+        "SR08.LOG": "1c277b73d3a1069c0da1416fea34d5dcebee522e9dff329cf9dfd27934e59981",
+        "SR08.SIM": "a7410be6e3d2106e19b2fbba1cf6a52503599415c21641032d9768d1b7fb9244",
+        "SR08.PLC": "bfa3a3322aced4747c4a90c375496f795a9b8a718d217b4e61afdbb27fbc77f5",
+        "SR08.JDC": "ee225dce61fda31d5c50b484bd670588e61aafce80818123acd7e54c9223aa27",
+        "SR08.default.PDS": "4f21eea75a387a016c3f2bbee929e8d27f89cedc368db4acf34b7040675e641b",
+        "SR08.default.JDC": "528c17225b4079ed1d04ccf6c8813bed948bbad7bde26b554819d1ed2087968f",
+        "SR08.default.SIM": "9d62ee33939d67d6da2f33f1f43e17b726798c5719060e3d99131bc039a40114",
+        "SR08.default.LOG": "959a4458ca1ba55fa03b4da0c890eb5b1a9832000f1503e0c9cfacfef907ddb4"
+      }
+    },
+    {
+      "name": "SR09",
+      "condition": "2 < I",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR09.PDS": "957ee683a06a95a009854282d061af70130fc152e62d482ce952731fdcb5b4b9",
+        "SR09.MXL": "eed656c34a3cc7c9f7e3207acc661ba2693edef843e3a0e4965ccf99b0058d10",
+        "SR09.LOG": "a70074851a14ceca75947ef694762c669b59c35aaff6149807bc3e2f3fe2e1f4",
+        "SR09.SIM": "afa7f67d5f6c56d1549eb767f00282359c40b18397da3bb9c92a9e26045d9a6d",
+        "SR09.PLC": "bef2f4f63937f994647efad9eb08926dfdee1934a6dcecf8e4c73b49660dd849",
+        "SR09.JDC": "8e90732a0d99bee043ed51dc99db91d3cdbe9f78f3348cb68d41323a2fc7e8c5",
+        "SR09.default.PDS": "eec9bd5e85946860514e821046d3868fb9e5b9fd87b41df3b3093515841129d1",
+        "SR09.default.JDC": "4f57375961641f038a98253852ed952cbd5723716e9bed33423a4e137efbb191",
+        "SR09.default.SIM": "cc3cf7d7c0f69afee9ed17f0ea735e0982ea56c536ca40aa2fdcc6fee9b1aa1b",
+        "SR09.default.LOG": "0a63d2e2547bc997e21f4665da3845ac7ae100efc27ea16f1c6d4e7e1c72c934"
+      }
+    },
+    {
+      "name": "SR10",
+      "condition": "2 >= I",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR10.PDS": "5d54248be309811e3ca196be6d78edbb005efb5c8d2d6392b18c3c2b38c28d04",
+        "SR10.MXL": "9ded1e650749f337cd61e8e9380990b3bc00072abddcc7f26d8783a0f93b44cb",
+        "SR10.LOG": "cfd385250558147f962640ab2f230ac1685e4103cbdc518674e38754e270f085",
+        "SR10.SIM": "2674a4d47af6e41c8a35903aaf1d95530f044bfdf6acdaa1964d08bb29d588af",
+        "SR10.PLC": "82ec2bea25e315411c0d9f576f0f632d26645e3a720de41bb92134845f5694cd",
+        "SR10.JDC": "64ad8ad6d1876d91bf2bd6f5077c2d95596eec2375ae5e1c5b48db5f1cfed67c",
+        "SR10.default.PDS": "5ce4c720d34250a243e9c40d0ba1d01822f76e2523947a39f4163a7486e0a11b",
+        "SR10.default.JDC": "415b42d25e6c30bcf8663005ceccfa38adcbe4410affccedc82b93b4690bc0d5",
+        "SR10.default.SIM": "26d681c2f7695ea7d53f33c3f37be3f79fbcb9aed6730015a415694890eb8e3f",
+        "SR10.default.LOG": "abbe910b6848e6c924c2506816326ba6441b2127504b0e2f55f126227105a9f2"
+      }
+    },
+    {
+      "name": "SR11",
+      "condition": "I < J",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR11.PDS": "165fa203e3fddf2e63e27cae8ffb47de83c668cd6fdabef5cbbae20780a6aa0f",
+        "SR11.MXL": "f292233a832da776b8f03d475ef01614190f39f7e19e684740d10cbb13fbea69",
+        "SR11.LOG": "a81ebcd8570a6b84f58e7c5a50acc8f60f7b1bf0307edf37b95f6e3567c3d787",
+        "SR11.SIM": "1322654cfe8d508b36dcd72b6cd3b06db9a5b57c3bd4506c5e46b2d72153a829",
+        "SR11.PLC": "99286a1640b2f62edb4cd4db22904e829b6b671fea079e2dc693c562eb6229b7",
+        "SR11.JDC": "457bf42b56be5b62fd7ec1f7076214119b5af4e0de4f34d94c2a74c394d6708d",
+        "SR11.default.PDS": "0f6c1011224d14cb818f1d5d6d6e83d50f72918106b07c62ee7c7298f46a9d0c",
+        "SR11.default.JDC": "b93cfc4e3c131e55efa87878376006b5e4007a7e28ce55d1cce7634b85b386f0",
+        "SR11.default.SIM": "4cab910daf4438e2ad854495380318d9895f819ae1307b4b83592c8d25a966d7",
+        "SR11.default.LOG": "1b5e8a9ee70cdf622a464fe9342831e06102edf2286cf89b8b13365f45a66bd4"
+      }
+    },
+    {
+      "name": "SR12",
+      "condition": "(I < 3) * (I > 1)",
+      "original_success": false,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR12.PDS": "70c8e46d15ed1f6a489964a5e6da4fcc9f963e910a54dab39be90b72622bfd1b",
+        "SR12.MXL": "65ce555f55741b3cb86022061e6a57231d646669988362c49aef6b64e76120b4",
+        "SR12.LOG": "3e4194c11900ca52496d00aabaae5a18f22d568a4a7f8b4e693d7de789bb8186",
+        "SR12.SIM": "7c2834fbc419452935468bfb96847014a3723a6e35a621b4a46bfdab687a2ce5"
+      }
+    },
+    {
+      "name": "SR13",
+      "condition": "(I = 1) + (I = 4)",
+      "original_success": false,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR13.PDS": "accc30ffed813bb2ee3fe73c601c7b80c7137dbcf28a89707570e399c1ae84b0",
+        "SR13.MXL": "380e300bfbe9a916c318d3864a3c350f2ab15e1e2272477af9d5eeb4ff5d4d38",
+        "SR13.LOG": "20a7799d56ce9267dd8329e6d422c903692cac8b7f3f91759076f53796ac187b",
+        "SR13.SIM": "7c2834fbc419452935468bfb96847014a3723a6e35a621b4a46bfdab687a2ce5"
+      }
+    },
+    {
+      "name": "SR14",
+      "condition": "/(I = 2)",
+      "original_success": false,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR14.PDS": "12676a87ae5729ac51b45b287385e535dee92343fa62d4e565e569b814b91b4a",
+        "SR14.MXL": "63943aa6f76de21fdb2a6be49def72f17fd0a010e4accf77aaa5c4cb44410108",
+        "SR14.LOG": "043fa4d671bf3cd5c863f80eed1d83763f24de69ed814e62305e65f31cbdfc01",
+        "SR14.SIM": "7c2834fbc419452935468bfb96847014a3723a6e35a621b4a46bfdab687a2ce5"
+      }
+    },
+    {
+      "name": "SR15",
+      "condition": "I < -1",
+      "original_success": false,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR15.PDS": "81c28c0d29270d32b4d2ea50f83b822bc0d68fac8c11001f1967f45a2c62af39",
+        "SR15.MXL": "b4da702d90a018ac7c2934ce6af55bf4f7ed20f55c2eba35eb4cb5c5ad5b8a62",
+        "SR15.LOG": "c28821c12963aa2d5d7a41cf90d5b419008e3775514eb347052e619d84da08f8",
+        "SR15.SIM": "7c2834fbc419452935468bfb96847014a3723a6e35a621b4a46bfdab687a2ce5"
+      }
+    },
+    {
+      "name": "SR16",
+      "condition": "I < 65536",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR16.PDS": "273f0e36dfdd242ab8366d3fe30164b8e92747dd5e1178f7bf2221e10cadcc4f",
+        "SR16.MXL": "359f64bc37e7e3dd12eff300b236c943cf0aee852132e3e20d417e1658ed1040",
+        "SR16.LOG": "0aba7a0e4365d19a0ca132c4c2eb11ffcc078d25e25eb2b6485f53f1fb87893a",
+        "SR16.SIM": "2345e217404f205fe3c627a52add2c2443b5375239494b0abb8c52a1df916004",
+        "SR16.PLC": "e6a390681e0b7a548db0ab088270d8a3810b25190a36faab399a280d0c30de24",
+        "SR16.JDC": "f0eaa453b7503ce47642b4622afac5e4126c56ca53b5d248a8ade47a1345bfa4",
+        "SR16.default.PDS": "09c9804f924b5c34ee8fe341640c2683a0702e8945ce68bd8a5953bec854ffd7",
+        "SR16.default.JDC": "fd90826dfaf27fec4228e256f3390a8f794cfcc2095d8d922cc4e3cc76431f0f",
+        "SR16.default.SIM": "428ff0b2149a7f8c79102ddb6bd2f56d4ec521b096518bf3c0421fcce014d957",
+        "SR16.default.LOG": "4876b411658256e502cf7c3c2b50864ee9a0c67595379e26735cc9e443b9ace5"
+      }
+    },
+    {
+      "name": "SR17",
+      "condition": "I < #HFFFFFFFF",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR17.PDS": "5aca098e66333df82f90c1b5a00ea8e5180ef4c356538c8b2a72786903aa02dc",
+        "SR17.MXL": "4f774a1ca5c13eea743b271e2436dd78a9fbf96bc2b1571787bccec3cd84a74c",
+        "SR17.LOG": "694dfaebe09f40e1697d02de0154e982a3b577759a753f6197e7b92955dba6e1",
+        "SR17.SIM": "21f6e3607b721c2b30ed0a4d0eea4f0611d517e88fc2a890284b449a5f93a0d7",
+        "SR17.PLC": "381cc791b153fd169e9f1c52b3592a9a9bd263bf2da1fe24251f7625ed5d2e60",
+        "SR17.JDC": "1d74c7b2b0dd7ad4dbf0804f9bd389fff2d0608e40fee087c79e2a248168a823",
+        "SR17.default.PDS": "918f5c2e0c6db14637d9f3cca3c1d7cc0cd0debe934fb93bd7cb68ecd12b3a83",
+        "SR17.default.JDC": "263987b6101cab91e3f86918198e47c4f8f7fbdb24deb2c9408e81b69a836248",
+        "SR17.default.SIM": "0d835db1018ca13905ec736ddeb6605162faaebb5f526d7db69ca24ab85624df",
+        "SR17.default.LOG": "31d5e857cdd7ad35209550e445b868e70ea089e636953699a41531816106bfb4"
+      }
+    },
+    {
+      "name": "SR18",
+      "condition": "A = 1",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR18.PDS": "50f8ef9e27418c81a11719506cd03f5760b233dc313c20939bf72db8927782aa",
+        "SR18.MXL": "f582d6a9a314a01cceb3aeb4fde636dd7d39fdaa53152e6e092b637a767efeb9",
+        "SR18.LOG": "3f8b3f0438446e7e6fc7f924b4cba6b6ae1d8a4d5e6cf7f13b0b4584173fc41e",
+        "SR18.SIM": "f1eb2238723d6aeafc79ab9fdd26076a23c1661d3d07a31a762c565bd465b466",
+        "SR18.PLC": "b591fa77f960065712d4f8b30cd973e76997462386816ac1bfde5642162e8553",
+        "SR18.JDC": "63be883ead817f6309197a871280339f5a99963547d0e06e47b99267bfe18a4d",
+        "SR18.default.PDS": "edc91ec0d56aa14e141a95520d593c017ee5bc3a09109cf45bf834aa4b6c642f",
+        "SR18.default.JDC": "eb61e57f1edf071518395df71491df59ac3e778303692989e73221d8ad2b1ffd",
+        "SR18.default.SIM": "681313903c8b6d33cb1643156a429ec114379a2508c10c431a9a9b598560dea5",
+        "SR18.default.LOG": "98233bf8613c19cee9e8159fdb9370e688cb46e055d17765dde823cbc6b19fcd"
+      }
+    },
+    {
+      "name": "SR19",
+      "condition": "(A = 1)",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR19.PDS": "b37c58c5188d565af8d66f6eaf5b1a8bfb48fdf5b79ed4d905890adbc55f8cd6",
+        "SR19.MXL": "5f1a077a375ec93f319249ecfedc504ccd1cb6b986f41ab90411bf37dc6a73d1",
+        "SR19.LOG": "8f2edefb6db99553a60859d56e3ef847b71f4c8d68b9a19742b21f94fb8ee9da",
+        "SR19.SIM": "dc4edf382c52d0106c79da57b27123ba32d9a472607e7a5b7d9ad813f41f59d4",
+        "SR19.PLC": "e777f50eb7ac9e0ffd68ba17a18b5d5d250d7d882cd919e05fc6464697d7588b",
+        "SR19.JDC": "0f2168e07d731c81ab58e88ee957c9ac41ef81d743f63c539de3dc248f369e62",
+        "SR19.default.PDS": "c5ad0da3fb990fbd995559beaf9d02d62030427360555fb924cbc60e00fa272d",
+        "SR19.default.JDC": "055ee153d9dce7b9afb9c26306f9ed3eb80971a6391a12e42abf3dd07f1fa0c8",
+        "SR19.default.SIM": "3a2525363370e13bf48bbb49589f0a246c4072210070937ae53766a0a25ecc26",
+        "SR19.default.LOG": "ac8faa284f81bcc7d435db896fa99154c6772e123b7a439989191cd4c4c1a57a"
+      }
+    },
+    {
+      "name": "SR20",
+      "condition": "A < 1",
+      "original_success": false,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR20.PDS": "89ffa5ebbcdfd05af4a1f34c298e44c50dc305fd6551ed1c7af427ce1079d8c0",
+        "SR20.MXL": "8b262c28bf8ee93998d78154c759aed2275f6bc521775f3aef36e268b11f39e9",
+        "SR20.LOG": "16556b47e70aed2a30c2f5ee880cefd43ae44f64f52ed0317fc909e1e022ccd7",
+        "SR20.SIM": "7c2834fbc419452935468bfb96847014a3723a6e35a621b4a46bfdab687a2ce5"
+      }
+    },
+    {
+      "name": "SR21",
+      "condition": "(A,B) = #B01",
+      "original_success": false,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR21.PDS": "fdc2799c9c201868ce634de16dcc672442ddef86c3f54c77a903efc09bd587e0",
+        "SR21.MXL": "68aa2f829f8666e6c90cb36ce291928068f92b8a8c49812ced3a53a56d44dc9d",
+        "SR21.LOG": "8fa881cc4b3560013a80fc9f553f013ba43f92e8634994fb7010a27b3b3e7425",
+        "SR21.SIM": "7c2834fbc419452935468bfb96847014a3723a6e35a621b4a46bfdab687a2ce5"
+      }
+    },
+    {
+      "name": "SR22",
+      "condition": "AB = #B01",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR22.PDS": "6654be1d881eddfedd4c85f64459c7002afb00eadcb5a1058f4c50636e4afae0",
+        "SR22.MXL": "0e85288147df78eda49b36c003c2142ce802843c2f55ae4b732a17d8ffbded16",
+        "SR22.LOG": "2c6d42933edf85dc81603d9590742bec731e5ca089b977333df58d3291b7eeca",
+        "SR22.SIM": "67d940b23cd3ec284eacb4b294777106cf0bbd000e73f85f288150ce241e692d",
+        "SR22.PLC": "ff4b8b7e09c1b063ab4bd37099de032a7b3b24c855c4f92ac397d561c3d7e50f",
+        "SR22.JDC": "edd2773d4a44d7ff9115190e8e64da7485bdb377384fe3828470f91f22c8f24c",
+        "SR22.default.PDS": "ca392499d3c7398e8aa0616461b6ab26ab6330d1ccad61a57aeede9753956450",
+        "SR22.default.JDC": "4da03b7bbac550cf5aee105303dc27969f7ec1f8621f8ab6984a5920cbbefc36",
+        "SR22.default.SIM": "f343eb90436a1e7523907e7cf8269ed99fd4bb1823ecc13df7a49788d6c8391c",
+        "SR22.default.LOG": "780ec3569cc733eacbe5ecd02e47dc5d5da769e6bc889c12aabc3d2b18b081e0"
+      }
+    },
+    {
+      "name": "SR23",
+      "condition": "I <= 0",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR23.PDS": "69a6c2bf7319dc9062751334f3da4a4de2d211784dfa0b2ac521b09e851f0ad8",
+        "SR23.MXL": "098967c6ddc7116d27bc0e5ab8f351d461e3891b434e6a6a1b340812db81a6b5",
+        "SR23.LOG": "4de4db0b02361924cbce73f03f5e2103e00078b5e5cefcc5ee2de3b579153513",
+        "SR23.SIM": "4fd4a2b28870d7f82b316b7825d2bf08f288766561fa95cb363d8134f987d066",
+        "SR23.PLC": "7147e59808679150d4b6af4113dee612aa167a6e1aead7efe4dc68efaf903ecb",
+        "SR23.JDC": "550c7a4f6236d4bc9d0058e4417e63d76c13883d8a03ba034c7dd5cbb6749854",
+        "SR23.default.PDS": "ce721153b9e5b7e87702c6bead28b930b4e4bfea3a36d64f748c4e0449344ec7",
+        "SR23.default.JDC": "0a3b1b2b44ab77f3da831e124ede9ec14d8718b921b9f2da99566ab071a7ceba",
+        "SR23.default.SIM": "e9870b5527a2ee1b325f26eef7d2e50b7f6660cc48bebc9a7718e0a422581050",
+        "SR23.default.LOG": "bb1aba0eba06972818ee97bec448e62e66bd6a866a805e0279a3b54a4b7a2ec8"
+      }
+    },
+    {
+      "name": "SR24",
+      "condition": "I >= 65535",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SR24.PDS": "764ef6ef3c46ef0f86ec8b98d3411232aa85c93fa1acb46aee791e9946d60aca",
+        "SR24.MXL": "62073dfeb3a4e979742c372d74e2d281674b2d40965924630a88b2d4376c7bc4",
+        "SR24.LOG": "b17506a9a2388a14da72380dffab195484540415e0177d9197a50e94d1a5c117",
+        "SR24.SIM": "d00b4450014fc31119f4c51f9b8d8c5507bf3f582caed27e4ab9b2d033d7d7ef",
+        "SR24.PLC": "4fbbe883a73fe9e97662851f6d9a9c5e43ed357e9101a5e604dfb1e267b12a42",
+        "SR24.JDC": "123acf266ba3d7c02789283bb6ba3ec4bf2ea37fc5a1f63d6545086a42982e26",
+        "SR24.default.PDS": "cfb5c861b00b129dac12807ad8eed03597999471e56a7e02c7b7ec6ac8e94f8a",
+        "SR24.default.JDC": "3e83529bcb7cddd8e782bd056c9f2c50bc104e62b12ffc4467de40dc4a1e4a72",
+        "SR24.default.SIM": "4efa0dd0a523e89f4ff3cb746e88e75210e8f961cb75d7953e3bd09773931efe",
+        "SR24.default.LOG": "00243948905195ce34680a6d15d239a0692141ccbae3636af418dfa957bb387a"
+      }
+    },
+    {
+      "name": "SC00",
+      "condition": "((I <= 2))",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SC00.PDS": "5ddb04062fc7148765ab8fe37429dfad1da6aa10d8570ed66befabc8f034da35",
+        "SC00.MXL": "06e7efa2119ccdb0b1870480989b89ab35ee794caaf7f41bb6707b3da36879fa",
+        "SC00.LOG": "6d2e0a17daf1ce0702b601c9c0fb90882b61d239fee84bb23c51beb10b8624e6",
+        "SC00.SIM": "7445d76b084eefc53898818f603e3c158f2ecabbbf7d5603f400cc3fd440b647",
+        "SC00.PLC": "bf7079add491e550e7d51390f9917867e10536ac38495a975602836e0351ec60",
+        "SC00.JDC": "c16ffed325cef3ba07b99290ff4a2f6f7c0fbadeb1f9b7ab6734fea62bf7a0fd",
+        "SC00.default.PDS": "898af16010d2a8c30d31eec4e70274834d4557a003be6a55aa1cb193dbcfbdcf",
+        "SC00.default.JDC": "75cc9e1c3d1089e056bfd05a6543a72c98861252901086188ad67f51f2af9c79",
+        "SC00.default.SIM": "c868a6217adadea8360f404f29eb7b17f747669a91402d98e6102cf562d16cb1",
+        "SC00.default.LOG": "4045cb3045e12a32b3cf1a5defdc6a01ea7881fe5848ff0251f96aae8b147905"
+      }
+    },
+    {
+      "name": "SC01",
+      "condition": "(I <= #H2)",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SC01.PDS": "9e2a67756968ed852467c5818c9e01ef6b76b53c2d01498caec133b586734c55",
+        "SC01.MXL": "620d4f18a6490e5c8204a7451ee6ffeae4fcaf2cb57ccaccebf7dcebbe01c783",
+        "SC01.LOG": "fa7dd7bb891f1ae0b3f0a2d5bffc58beab03a43d131ed0e6332392d95dee72af",
+        "SC01.SIM": "d069c8079ed126e077485c9ee496c511fbc7f00cbe91babf9d0d637982be45d7",
+        "SC01.PLC": "94fb9df7d6e913b8aba70846890181936b9ab5d490b970b657e216136da734b1",
+        "SC01.JDC": "859e5750ca919f0909d330d8129aeab90fdda1e126dfaa14ca81be1f2117c013",
+        "SC01.default.PDS": "40807d7cd6082b5740e51f7029c2f3f399940f8f495869320bdbed5197a75865",
+        "SC01.default.JDC": "9092ba350ecc07801ab6632d483419f85d24f2b5811b6c2925a63222d25db8f2",
+        "SC01.default.SIM": "da482338426c1291c682db0b5b5730846867d412f3d8cbda7cfa641e6156171c",
+        "SC01.default.LOG": "0daf53d91dd72ac60d7b1afe7ec50f1b35e2b9d98df284b3585eabd40f3bef2b"
+      }
+    },
+    {
+      "name": "SC02",
+      "condition": "I <= #D2",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SC02.PDS": "89643a9bd4b3e2b3111b6b66d811692c267ecce3faf99659c1fbe4449f6e6beb",
+        "SC02.MXL": "747648eb7a8d5e6686e5d1f84ba1debdf6a477b984de6e2de12178e9e7cb1f2b",
+        "SC02.LOG": "81d0f8b3b2c635ce4be3298e785b66cad51bfae63de1c6b50a6d754557003505",
+        "SC02.SIM": "ca627eabf7b30612302e763965cd2e8f9836d2d58de39957dc58e2c9976a0c4a",
+        "SC02.PLC": "c3b450b5b737815d1319097d28e48b7ff8fd845b75da4f29fd54b58bf9b89b4d",
+        "SC02.JDC": "66a18f4e5c2638b66f5d3aa27b59dd74065865d71aad570618f63e73cbe3d4b4",
+        "SC02.default.PDS": "0310c234fee60f4caa9e28285ac4340639cc995e6c947083accbc2e5e0c4821b",
+        "SC02.default.JDC": "dfbea09ccbdceb178adc4eee356e371f6f72422b8b327df4c0aee9bced83397c",
+        "SC02.default.SIM": "6e1810d4ab1478e9fbaeeb7adaf9971a316cd51fae301b7f6f314cff72908c62",
+        "SC02.default.LOG": "e234bdd7fd656691d64c7e30425c5218e14524e82d5ab7678c8111a0ec4c677d"
+      }
+    },
+    {
+      "name": "SC03",
+      "condition": "I <= #B10",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SC03.PDS": "cc3a236c705c55834ba290fee9404bbc29be86d00d7eded3be2af8d0c2215524",
+        "SC03.MXL": "13dedc7af850c102b8e6def809220c7f31bf0f81a3e6057a89134ce696dfe9c2",
+        "SC03.LOG": "95093e641cd909c5c7742a870356b1cb6917ae9a04d85c5d7344311a420f17de",
+        "SC03.SIM": "2751b06fc9e4f8445b3b979b813286428523a04218c83bf83e60931024faa0de",
+        "SC03.PLC": "06258e3e9a56d3042e57713704f56ae7a9add5c0582564ca39c74a736af23e7a",
+        "SC03.JDC": "8ae7c3bf33759f51f56feef8d47bfd5d24f7faaa012485e8028c28c32295ec8b",
+        "SC03.default.PDS": "57052ed17fa4dac708372fd7cd5fcb89c2d6f16f39e5a77447d1ef6139d7a911",
+        "SC03.default.JDC": "c39ff0e8e1c64d07c7fb428d52625bfaa281fc97f6a2f3933eff306032f9b246",
+        "SC03.default.SIM": "f16ea1f80fdc65f6a5a0362340aa2e425f4d7c103195419f2eb882677606ad6f",
+        "SC03.default.LOG": "64d422aaf2b15b9c3c23603d957deeb55f687a2ccd2c05245ba223d125be5e91"
+      }
+    },
+    {
+      "name": "SC04",
+      "condition": "I <= #O2",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SC04.PDS": "bc72bb25a5eb9c380eb6bdabeac9a977558afd5b8f7d276660d1f494603953cd",
+        "SC04.MXL": "c7846f3e2a09c5aba593bd0b71e91ef6e6083db933ea7dbafce9368182c5c107",
+        "SC04.LOG": "9d5ffbf1cd035da67719612f206f5c60d77ee05699daadc618aca5d32fe07222",
+        "SC04.SIM": "e02ba8213fa424a6477debc60c96c469f30431a85620674705d61324c32f57f0",
+        "SC04.PLC": "3d2a3509ea18ae9a34dc612b05279fc8f58b742e0e018ba5c04b088992951292",
+        "SC04.JDC": "93fb9ad70758e6576242a0cc3fe4d424c5a6eb4f6e7b99d76cfecd57cc4463da",
+        "SC04.default.PDS": "5970fb14c60c349f0f9a9d72fffc50d06d5891a58d68a2ab99f3d85108b4e339",
+        "SC04.default.JDC": "de9a1182353688da29ca1c38dd9c6ec0beb09ae2c3f43f81a9aea7bb2e7bc922",
+        "SC04.default.SIM": "22a3f7a3a9af8925c9c9be8e0cd503ec9d229dcb71800e8f432dba4c57bd605e",
+        "SC04.default.LOG": "b60487c352264c5ae3b2576d9cd69473dbcb18a1e46fbe53442f9d8e4a26d38d"
+      }
+    },
+    {
+      "name": "SC05",
+      "condition": "I < 32767",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SC05.PDS": "5f506cd24fe54695f0cabbdc0a8fa6d2af68e4f981e9b7970bbc98919516bc48",
+        "SC05.MXL": "8cc041b5763cbbfa493648210452856f9194c4f633693981273b511af347a8db",
+        "SC05.LOG": "f1cb501ae28f0ea63f2fdc8438ed99987f1b597e2d1c997a96a273cd76bf57e2",
+        "SC05.SIM": "c917d7c3342a6ed5b5e31de12fdd82e5083b8f708976ad66f78d69a7a0770c7e",
+        "SC05.PLC": "7491fe82381e7dd399d1df9a89ab385912c2ffb326e53789ebac069857df7e38",
+        "SC05.JDC": "2ee5ec34ad6f1d653045a1a10a29a594b81c677c9a3955e4482bcd3af5f083e1",
+        "SC05.default.PDS": "4ee12b92ea7c92d7d3279cd0b4329313e25ff0f295e732113a5a9eb03b98b182",
+        "SC05.default.JDC": "85322cf0b356f6880ca79a79e32f9fe2f560982f974153ef23c0c98e6526e318",
+        "SC05.default.SIM": "81038d454f730e4490a70022d79835d6e1d89bab7a7b9b67d57bdf2d0240dc70",
+        "SC05.default.LOG": "dca2220aed025b2be3cdf3480f334a96649ba59e0032f7c543d6b90622aa40e0"
+      }
+    },
+    {
+      "name": "SC06",
+      "condition": "I < 32768",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SC06.PDS": "04cee668df175f9a610202604bddace7af3c7f093c2848eb8175e8ce51db5aec",
+        "SC06.MXL": "b4f4d2de0141d505f163da90e1ebea6b2ee605cbb976a3e83082a93d14094c8a",
+        "SC06.LOG": "01961414921b6068ccfc565be54b83ac94060b20fceb854d99c4536a3909cf98",
+        "SC06.SIM": "722a4dec2d310134210c2d5753db7bc391673ddfedf13317910f676942e93db2",
+        "SC06.PLC": "42c1e9ea52e8e7f709d671f5ebf6bf277fea878fb34ba8e6ad6645a126b351c1",
+        "SC06.JDC": "e3af583bfc55b93013b1ed6c6e8309321cb79828eae279bdfc4edd77d724aec8",
+        "SC06.default.PDS": "e029eb47ad46f540767f22bfbeec520c8a01a22e56b9f706b01c00c8a630c6f7",
+        "SC06.default.JDC": "b98f6a4a07d1a893d520986428c00dd0b42384a29cc6e5503b9919f5cdf635a5",
+        "SC06.default.SIM": "1b4c2f5bd19f0ef1e17a5c8dba36753f8cc4cd647ef416d5eb558275a209781f",
+        "SC06.default.LOG": "1c5d7459da787f2eed91f66b8b983e6a616487f5b81625e9a60f61b7a63b48e0"
+      }
+    },
+    {
+      "name": "SC07",
+      "condition": "I < 65534",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SC07.PDS": "3a15d081e4403d0aeee57cb42f89bcdfd649726f273d5382aa4fdbeed808a329",
+        "SC07.MXL": "8385ddf54198eb93ad2a76a96ad7bc5a1e095eeae6804de0eb1fab0c1e3e0bfc",
+        "SC07.LOG": "9226f20d4d32cbaf1713b309a9cc7d54dce8918ba068ca4a33fa84de8d6994e2",
+        "SC07.SIM": "e73180c0b472b1863c6987db283bf74f1e6b0b6d391be430b6f04ea85783d724",
+        "SC07.PLC": "88b7677fb11c13695ff903fe12df03c11ce585b750fc19f8c90f60995744fd01",
+        "SC07.JDC": "bad7c8ea99e22e0d2fe939eda8c399015b07de2559aa24e5b7c94e472f87c895",
+        "SC07.default.PDS": "caa790f9f2abf2a82f8531f267b7e689753fd168b3f3b8cc99ff2b089043bbc2",
+        "SC07.default.JDC": "c974bc33f3d23cfe8f51e6315725db6c040c8e9fab9ea6ea9ab4a9727defd640",
+        "SC07.default.SIM": "ca5e70fa12b38e4530174c2c7f86a0586c680ab20a2096fc0bac5f0168342845",
+        "SC07.default.LOG": "16d43c38b48d466effb93e17914d90bd60e97810b069360e3f800de35f0b2b74"
+      }
+    },
+    {
+      "name": "SC08",
+      "condition": "I < 65537",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SC08.PDS": "f8aa32a588e245939e57520bf002d8b2e2b336d560f0f17fad11ac0b577a025e",
+        "SC08.MXL": "df3be3baf4e4ee08635ef03c339bee13b814b717fe0bf05e95b5e192e4086d1c",
+        "SC08.LOG": "d5a2e1bf237a1aa5a0118d396bc963e18f628acad9a12153e966bc0d5a5f25a9",
+        "SC08.SIM": "7e54756ae79bd21305eaa26e54bf62a845be43acb97d42ba6ae1ae55d5de933d",
+        "SC08.PLC": "76f4bd71f4e051857205fd0a396158a5b58913ce47e99e7561e1c1c3011fd9d2",
+        "SC08.JDC": "5e384cb25e4f832975fe0f03fb55d40c3c84069a4d954b05ca09c4e6664d017b",
+        "SC08.default.PDS": "17a5d4e0e0395832e1a64bf6e351de69e6bfcfdcbd262893db07bd405e663dd0",
+        "SC08.default.JDC": "a756deeafe1e7f4e4d8ab40959e5ec84cf5c6c0b59635a96337b72f2eb9fc0e7",
+        "SC08.default.SIM": "dcc1288e621485f05779715d438a3f7beb2a379831c6e37cd798cbf63d5a99d1",
+        "SC08.default.LOG": "f957e9f7468929f713e05978f4d6e27d5cc42af9aa9ff14faeb0d790f19115c2"
+      }
+    },
+    {
+      "name": "SC09",
+      "condition": "I < 65539",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SC09.PDS": "0e4ddf8aed1e500e3084d4032fb9a122ddcc6c8757260d6f6403b70ebdb10d96",
+        "SC09.MXL": "6792f0ba0f78ea7aabcc3a1d29ebbf1a2a099ca16fae7d3b36c73252eee0bafe",
+        "SC09.LOG": "1a6dd7b43e0ea407b65fbf31c4deeb95ef7e22073d9686c0f63651e6871b50e8",
+        "SC09.SIM": "1b8b275c32bc75a8f0ed81f92a5df1df60720c568a0a7034e1624df7a21d2415",
+        "SC09.PLC": "aed2872b33fc251e13dcfff11b2bb1b7b83ffa5eda973e158257f3362a0b06e2",
+        "SC09.JDC": "c3ced95ea9e72759445128b49c2eb36f248f5b60333c3e05d69292e6e156bb17",
+        "SC09.default.PDS": "ad0f70f8a23b1e8b6cdde339673a4cba64873b43233e3b7916d683a0e473856f",
+        "SC09.default.JDC": "b9b76555c3acee6b72c9ebdd59b17ec33c5108d650a92c30909f8bfd756435d1",
+        "SC09.default.SIM": "8deff9ce67486d85857c4083688a111bd1a3bbd78f089cb98403a527310aae5f",
+        "SC09.default.LOG": "c6f982f0513aeb901518ba61ff588b3a0d39e77019fd4b88dae7e4ca31e899b0"
+      }
+    },
+    {
+      "name": "SC10",
+      "condition": "I < #HFFFF",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SC10.PDS": "425e7e3974df97c6f2711164bc86834d94bd65c615810b85ebb9f345054f8c51",
+        "SC10.MXL": "363f699401d5a426422d7668f1f27f6452501c5b820c17c7823fe8fca29b8948",
+        "SC10.LOG": "7f00602e7cb03bb1c59a6a0383a4cb10fa9b629c08a1f22493a1edb2ece06362",
+        "SC10.SIM": "430117dba46d75d4cd54556cf967d0244c05202207221eae060411d195d83b58",
+        "SC10.PLC": "516aaae42143fce78b8d8f3d9a7af69699f9639fe32133f01be7ced215bdc8a0",
+        "SC10.JDC": "bbed494b1292a4fdccaaec238e77c26a93fece294c6b39f624ba23055f84a824",
+        "SC10.default.PDS": "4ad08c744af4ac5bddaf91aecdecfba7d3c04f146843aaf56759bd922098b751",
+        "SC10.default.JDC": "70a02a043dd0eb6b94ec1f4fb1fb65526d69247baa272eafb3f3fa93b42ca852",
+        "SC10.default.SIM": "42e12c027856423cf6b041b1216c025777f4cfd09c1f1dce01157aef15c002a5",
+        "SC10.default.LOG": "ffabfce9fde5bc321363665134194fa4ca1c45e98e36cb0dfa364340edbd1842"
+      }
+    },
+    {
+      "name": "SC11",
+      "condition": "(I) < 3",
+      "original_success": false,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SC11.PDS": "83341ef31c1f7371ab3a972251d8501000198e497d38d51e918385a9774134f2",
+        "SC11.MXL": "6ae2180ff6c343afbfc59dba80e9823449818ab51e4f63c4bb513d48ae647c6b",
+        "SC11.LOG": "cff51e26cc6cc5bc3f8b0a589929ae4c6ce57f548bb0950a4b269dedf793c9ac",
+        "SC11.SIM": "7c2834fbc419452935468bfb96847014a3723a6e35a621b4a46bfdab687a2ce5"
+      }
+    },
+    {
+      "name": "SC12",
+      "condition": "I < (3)",
+      "original_success": false,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SC12.PDS": "e43d978d339ff85691cea46ba58b873531ebeb7aa0564462bdb00291669ed45e",
+        "SC12.MXL": "06265953e40fc7ce493a629bfe52ab6b5bece58f99e887a9879bf11861c4bb83",
+        "SC12.LOG": "cf28261072230dc5fe59eabadb6fe6db96c27d7fb1aff694c0f1167c8c1e5599",
+        "SC12.SIM": "7c2834fbc419452935468bfb96847014a3723a6e35a621b4a46bfdab687a2ce5"
+      }
+    },
+    {
+      "name": "SC13",
+      "condition": "((I)) < ((3))",
+      "original_success": false,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SC13.PDS": "cc273a8fcd1b5d1320c4b00b11dd2da3291b47571a7c3bf3f9507af6663b3471",
+        "SC13.MXL": "bfe90452ae1fe433a5a8dfd635cee961764ba0b2a7b40f11da0a933d6524fa14",
+        "SC13.LOG": "aa831344e73e1a76c4e5c0c50d4d4d2e3c4b39fe65598f0d51a8e86029a75428",
+        "SC13.SIM": "7c2834fbc419452935468bfb96847014a3723a6e35a621b4a46bfdab687a2ce5"
+      }
+    },
+    {
+      "name": "SC14",
+      "condition": "I = J",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SC14.PDS": "a5b76efcdc04c275b999412cdd935f04c0781efae8473cd98ea89fcb9255018c",
+        "SC14.MXL": "ae777a9d15912941e6d9f319ff93bc19a4e8016c643b65b607349d60ea6bef06",
+        "SC14.LOG": "ef3151d8bd2b4bdd59672b241ab6554e487b95765abb2ae51df8347c1925ebc7",
+        "SC14.SIM": "226d4779cead9810f93a45d246768951e60627c0652f43315298f3d6f9e4532b",
+        "SC14.PLC": "b5115dae02343d1dc20c3ad0d191aa8d6ae67f8416001d31466bfe849cff0dc0",
+        "SC14.JDC": "5ebc596c414fd5e103aad944f0f7938e6d7e6e3909aaf851d22fd62a3dce1090",
+        "SC14.default.PDS": "8a76222ac25ef79138854bf5da085f7c79becab846deb26caf25fc7feae99791",
+        "SC14.default.JDC": "a9ff62b194fd0eb116197a107c2886fba261a2e7554c88d61d988fe46febb2d6",
+        "SC14.default.SIM": "26e525b9704f6ef00b191df7bed3859f8f863ce1566cf5051c6b332a0f57c0a8",
+        "SC14.default.LOG": "4a1cb2e858b6390031eeed719d24bb7578d9579ced7435167aa48d167d28bf39"
+      }
+    },
+    {
+      "name": "SC15",
+      "condition": "I <> J",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SC15.PDS": "14c1908db300bda6668f69839384d0c41e3f1f67915f11f844c00fcad559fc9f",
+        "SC15.MXL": "3f2c04f3b0ebf4f63a447ffe8742134bb15acf3fab306c502c4fb1cb946ef90e",
+        "SC15.LOG": "9ea40a3384e145fd45a1c97fb932ab39a63995ba8e1706d073c29a3627352370",
+        "SC15.SIM": "8d5e4e0d982602f67d54bda6601532fff436583f0df4ad7654ffe1268e17a504",
+        "SC15.PLC": "0490e7de2003dddac50ecc65ab4b7667f03821ed9f0117f3aae9145b515ee52c",
+        "SC15.JDC": "9e7f50fefce6e3feccec36bf0d989ef7524dbb2f2c986404b939dc93329b26bf",
+        "SC15.default.PDS": "3641e9b0d2d10f7a3c29f3cdfe2457304e5dfb279f137b9e96cfe5026cfd69ec",
+        "SC15.default.JDC": "f06a0043703a7b95e1836473effe6e02386e8ae8c9cb6dc4dbce06b291423f97",
+        "SC15.default.SIM": "072bfbcc4cfd9afb27b853caef0fee993164ae46871817863dae31eef510735a",
+        "SC15.default.LOG": "2beb87a80561805c651d47019a9b36cd1bb2d853c6c35d6675261c7b9f80274d"
+      }
+    },
+    {
+      "name": "SE00",
+      "condition": "I = #H2",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SE00.PDS": "559f388114fbc7bb5367e7f8e5894474e216d85dd100bcce32faf8ad8aa0a8d6",
+        "SE00.MXL": "d9ac4312ee5d999c68e8f9f3daf84efe1af72646ff145cf2a8156d9b8d80d6d2",
+        "SE00.LOG": "664b60948eac760b4aa1f9aefcfc7969b1f8adc31adb2b7d181977b55fc0fc6c",
+        "SE00.SIM": "ec36714480d17ab193aaf2664e3eb51fe104a62d5a5043613a350e77cb1e4c5e",
+        "SE00.PLC": "f081c579e8a17892b770e86f0a2769bdcb2d70fac77ce4e5b447ef0bbfbc3a19",
+        "SE00.JDC": "b2113828c4160776cd6f83cf0bf0cb9a9deeefcc4e7b9f2dafd48a6ee91616c3",
+        "SE00.default.PDS": "7ec1489c6acf089a431d20c1c707a81eb7f833c43c90caaa872346f95b67987d",
+        "SE00.default.JDC": "2a262ff3dc2b89f66a9c767f3452c0a8c07b52e888c94beb16c86dc9089875bf",
+        "SE00.default.SIM": "ec92c08ea1cbffe72f97154a3ca55a9717c3b5216d5444944a3000c78a9ad3fe",
+        "SE00.default.LOG": "657d7a18d668d9e5ac2a448886fbf5dca20b5061e16a8168055899a07e489c40"
+      }
+    },
+    {
+      "name": "SE01",
+      "condition": "I = #B10",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SE01.PDS": "ff11c5f3adb80b5b4b03af66d4b01ed31e834ba34719d3daadfbafb9e3ed362b",
+        "SE01.MXL": "6abd2656092e2bcbb41acdbed9aadf03fb9f717ccbb321c8b14e78bac9012420",
+        "SE01.LOG": "9ca7f71862236670eb34cb6555bee7e349e04042d54b87b932cfbe06efb57185",
+        "SE01.SIM": "c69142264c4296aeeac7e9952cb5610bb56f6205e6a0ec4b047cf5afd1e4b02c",
+        "SE01.PLC": "b53fe9b7cf8c977a34a2bccc4e6fe38bfdec3c879aa5ebb11672945df2790d94",
+        "SE01.JDC": "79e40db3a42a8cf997a5c460ca6b8c54396bfc67a7afc11823cbd914f3d24b31",
+        "SE01.default.PDS": "e2d83f9089254b9bf3b24957dea27170bc257657259ee2e2570a2c4f1a2331c1",
+        "SE01.default.JDC": "4499ded49ea655ca243dd9523e6942dbcdb93d509e2376f23076b4b2ebaaef03",
+        "SE01.default.SIM": "859fff9676897316ef1b7ba1b0e416a4ac45f7a9fd435b200c940526eb443c66",
+        "SE01.default.LOG": "8be6221364b897d9d210410930dbe3c1a60078590f03a0c835ade57a1024f13b"
+      }
+    },
+    {
+      "name": "SE02",
+      "condition": "I = #D2",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SE02.PDS": "5030831daac8514cc07e107637d956c7640692be01f3e6edb09059d3700fae94",
+        "SE02.MXL": "4a05767cdc4735a994e9e226242bc11905990263aa0dd80801c80efff33f37b1",
+        "SE02.LOG": "467e9e6834cd825ae460b1ffe7d761a01674f3d96e0b3344c6ee09c3a49ab34d",
+        "SE02.SIM": "794d2f48c48011c03125dcbf91373b15136f2f60ec7a64642018a9a29f35fe84",
+        "SE02.PLC": "7baa25e7f8c3525da71b43a993deb494c7f37eb0d1de1a66cd536bea14e24414",
+        "SE02.JDC": "643eebef55bb5d7f9cdb00693d31514f5387c20cf9969987067af4ee1f2df119",
+        "SE02.default.PDS": "8a3fcea4d205dcd5ab923a9e3e91c00746e883d72d8a13312525b0bc0dbc83b6",
+        "SE02.default.JDC": "5e9f90f12f7a24fb75b22ccc8f6c003afe12edc7f645c1dfe0d4b912d0ae0af6",
+        "SE02.default.SIM": "47a069b7da53bd71bb6347efc2bbe70cafc96b43f5c7565062fb73630525be30",
+        "SE02.default.LOG": "f0c89ee743393582e0dfec2d840cdd0c60b2d9a7851babb88c127f3dca3015c2"
+      }
+    },
+    {
+      "name": "SE03",
+      "condition": "I = 65538",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SE03.PDS": "e5e095c005cd331c56eaa3cef1ab1b0bada277f7c01aeeb430001f6acef936f5",
+        "SE03.MXL": "8bfb8e02bd4593fd18073c4ec617671cd23b4edd8374e2427c1a459c6b1f30a8",
+        "SE03.LOG": "f0e47827870e4622b032b48b6a9d7cae01cb004c0ca8d90aacb4c984c050fc21",
+        "SE03.SIM": "c6b407d3d8fabd1fba57dd466acb2003e9fbfff9fe0c8a9f7d12adb669a5e533",
+        "SE03.PLC": "521d598d7bf81f22fd62a98b5a2c1b642829afa86ffbbde826fc355aba40a4af",
+        "SE03.JDC": "398d4adf5c1f4fab2af4d4f50316bfb7e2a3de6e7a4ad9193160bb3d03c392b6",
+        "SE03.default.PDS": "e3fcf1ead68d6c1737710aa5ca7ee4f8095eb3a4a8745118dc33a5bb6228aaf4",
+        "SE03.default.JDC": "e0cdaaa17969213f2cbe166d9e8a7bd63db7859d171904fe7e700c3b0936622e",
+        "SE03.default.SIM": "f87154a0a5ac7b5eebef95cc98bc0fb341d38677842e7c5102ae86225053a744",
+        "SE03.default.LOG": "13094c40b00cb5d1d4364fe76afa914edd02e4abf77c1cc84cc879d7ef46aa6a"
+      }
+    },
+    {
+      "name": "SE04",
+      "condition": "I = 32770",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SE04.PDS": "29708b6164aae8f8fe68fb21e7edffb3759dc9c564ba3edca4cd179e9d7e26f6",
+        "SE04.MXL": "b5a9c46158202a447d6fe9388336c78f321c16b72a0d4a4d54c92cb6de20fde8",
+        "SE04.LOG": "427f7e382e3b77c0659c8065b6bb7dd64bb7479e663261e3b46e4e25517a0562",
+        "SE04.SIM": "da21896ea94ee160242ea6370f1e1738d730a8c2beabdcd541bedb8123b11b8a",
+        "SE04.PLC": "81b5d4e9c62568053347c2ab8ddab8c42045990b9a02fc0b84c193d8d0212da7",
+        "SE04.JDC": "ea3a577e9dcab8df188e11931b2cd7378952f4cf8993978d47eb4ac64ac21912",
+        "SE04.default.PDS": "6896fb65d98b9e954cd18d981f68769ed0371dff1f14fd84892e1fca147d0da3",
+        "SE04.default.JDC": "feb416005601a058b71bc4c78eeb494879c3713dc93a301c5ecb1717aba21a73",
+        "SE04.default.SIM": "37a0ad29a43ec229d6fe4c603f96e43a4539367ab4d03a4fc612980487578957",
+        "SE04.default.LOG": "8a71eadc494bd70b600fad7521b2672a0cf2d83a21c22f8f3f5106dc777ebf45"
+      }
+    },
+    {
+      "name": "SE05",
+      "condition": "I = I",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SE05.PDS": "8052db23dc6e8ff5430ff9804605c79073cb5143e32b47031fc2cbc227717931",
+        "SE05.MXL": "144a56a4c5d7c98dcc3312adf3387f8a22ecb234c238edad33ef45312d20a991",
+        "SE05.LOG": "3d885b8be2bbb4ed4da1db6535c6d90d9910454ef697fc14e52829294c08251c",
+        "SE05.SIM": "9211ab0ba295397f9ed80bf5c9b59f0eef774519188846192a32ba1f437e1bfe",
+        "SE05.PLC": "eb04e30d5d6607118199dcac2c58b602c416a4304eb3151c22a8a774971aa10f",
+        "SE05.JDC": "80bd4ac2c242ec3b500713d348bc908fcf30c83f2e4285836f2b936d347934ff",
+        "SE05.default.PDS": "12b7b2723fd88b4db3271d500dce883d353a6884eb862f31206ec53abd67fc5a",
+        "SE05.default.JDC": "328b23993f538b98f705dcdad2f92a9901f20c7a05e3303d983bb699c44a1aea",
+        "SE05.default.SIM": "ee1795299ef67c7440ce722952668a7b272dea8dc8822ffa98450a8d9168f99e",
+        "SE05.default.LOG": "60f1ed231ac892cac6af240b8fff1f7c9ad174c83850945009c78eb5b82e5a19"
+      }
+    },
+    {
+      "name": "SE06",
+      "condition": "J = I",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SE06.PDS": "0344922c0c30edaf5dfa202e481b0a92ff6e21bc8459b462bf9bb2c5004b1f0c",
+        "SE06.MXL": "b776cfa2854a79e801478722e4b0a9d19bdedb3237beb979a214d30c732dc7e0",
+        "SE06.LOG": "ee842ad0e1678bcf073cc784c18edb4bfd6dff3ba93537ca440e933ba5297de0",
+        "SE06.SIM": "fcc145431eb6f7c60d3613b8349b811f11f23aa42b40f97fe2097ceea8a59384",
+        "SE06.PLC": "d587fb84a639df24a606f7165560c7a8dae27d0a9f59debbd95d3dca09c49da3",
+        "SE06.JDC": "3b4e13704eab9608226d2d50cf87d48070948bee42de95024319d704d2311c16",
+        "SE06.default.PDS": "1da40fc4b12836b9bfbdb9e766323f3c290550be06bc1df36a4c7cc2fcb4ce49",
+        "SE06.default.JDC": "c04e117cf8cdb201ce2620ff18106edf293d9b27cff917d09495a149d3ab879a",
+        "SE06.default.SIM": "ab3305d9224f4b1ccf4f18e69026ed7b608154d633b060a7ad085eeb6a327f58",
+        "SE06.default.LOG": "016b466f4a7dad9e9740c52d73e58d373c65e297d1d3047142d94c2ec539dd34"
+      }
+    },
+    {
+      "name": "SE07",
+      "condition": "2 = I",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SE07.PDS": "c50b19294ab3b39df7c247e02d690d683a2076b5660412e6331fb892b7bf8964",
+        "SE07.MXL": "8617f267430fb99bbc78058db797fc687d50b9b3b869e653089c0ea63f2deec9",
+        "SE07.LOG": "b7b1a0af94e2cbf1bbc5c735392b784a36ba844aae8eee32b65372412b4d4278",
+        "SE07.SIM": "eaf17508eea79c0ba8aa7d5fbaae4831b1ad67b0deb727a98a86b1d72eff8bfe",
+        "SE07.PLC": "b9fc9028ed2b7f24050b83229c7ef756eb045a6ee8c00dacb02dc7328c35c3a9",
+        "SE07.JDC": "29eec0150a14361d9e0ef46918eda17f110ce1647f4134945fc6755e231af293",
+        "SE07.default.PDS": "dea5f7054112586cc76d45db5031b4205df7a2af057ba5a461878e2904d2b12b",
+        "SE07.default.JDC": "16dd915d9bdaa25d0ba302c2a32d5cce1f0f31c74f77cfb2945700d597be6b7a",
+        "SE07.default.SIM": "5d2d349db7eb15c851054f3d046e20c18735f372e6ec78ead1c4fee164b63413",
+        "SE07.default.LOG": "5d4c27ecf73e8907e4d6845279156c130cbfb67001a3d96e07bb866bd1063ba8"
+      }
+    },
+    {
+      "name": "SE08",
+      "condition": "2 = 2",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SE08.PDS": "6672a95bf5e90c4744fe18b0d2dc92932e12a356f2fd408758a552b9d2cdd344",
+        "SE08.MXL": "c21c04a457bd392e666e4df5b83282f87a0f10f8c6e1508448d7df81f6af0f85",
+        "SE08.LOG": "d0295ca88c7d6feae43c2474f74a01241e85c53c6998a566f57ff8d8fc20ef6f",
+        "SE08.SIM": "97e225b7446b92c8560bc20b2767d2492bae820ac1d87d384f82a15ee46e13eb",
+        "SE08.PLC": "ff2f4f4f067bd810cecaa60a9c89d6414934d41468ad68651c2b7633dcf5c952",
+        "SE08.JDC": "11e4eaad8fc96bc8231c78878a57a4c09e10d6293ef254ef35c54b6169cc2401",
+        "SE08.default.PDS": "e21f97501c2b71eabaa5f06f12c8480043f8f2c4677a732386769113d2942397",
+        "SE08.default.JDC": "0330b2d7073432e366375658274a7b52e4e7f587f0a4dcaa2efe28b70d610e94",
+        "SE08.default.SIM": "542c230e26ddba52b6f9c848c5a66e8c0fbbbc0f0a0ff9908a9f91b2e6db7b1f",
+        "SE08.default.LOG": "7202cfe26569496160ef5169ebaeeed0aaca6df0e417d2fb56aedf6aedde0ea5"
+      }
+    },
+    {
+      "name": "SE09",
+      "condition": "J = J",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SE09.PDS": "e7a1534a225800dc5ec44311e04cef6a0e1fa44ec88881dae4f4d1dd806a89b8",
+        "SE09.MXL": "6347ceac7edec62a56e9b4738af4b47d8d465da2b59c4ec73cfaefc13d43dafe",
+        "SE09.LOG": "adb8872ab935a3cfefae61df5b43d36e485761fae720deaa83ca01aa9c2618df",
+        "SE09.SIM": "62fd23926254461a0c8ea554d71dda59521cff635c5bf973b824346645687e3e",
+        "SE09.PLC": "440164a2c4379db13e954dbc77f1ef26cc6b225eab1160a13ab85b41e5e16956",
+        "SE09.JDC": "4e3e7bc967c155efe36150cb873c96f955cf76b4697ca61737bab9fb3876fe66",
+        "SE09.default.PDS": "0baf3a0d2bfef1c564938b64f23ce53cfdb278c3bef4a64d18a94c360f6f9c2c",
+        "SE09.default.JDC": "d4c5ad24192fe0b670e4327b4fa253f6f39949b93e7fcc5fb60dc86cf948251b",
+        "SE09.default.SIM": "af2e26116441a4e1ddf24102ae2d7dcc47a974fc9e3560ed8261557f24a737eb",
+        "SE09.default.LOG": "a870dbbe888189ba0815ba811cbf862ae3f3c33e925cefd7cfed5bddc160f5d3"
+      }
+    },
+    {
+      "name": "SE10",
+      "condition": "I <> #H2",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SE10.PDS": "9e93baa088710a7c01fae64710289f2bd70eee229b6aca8f4e5cc502bafaae66",
+        "SE10.MXL": "15dcf8cbc2e0b35ae908703edbca29001616c66025f2c5f4a8eb56ae0631aa90",
+        "SE10.LOG": "4e7752de5964baebdcb97ee871f7da8b5215bb63e04124267ae07347eb495af1",
+        "SE10.SIM": "8ec950cc98fc8eda49c3ec98866858cad0c56281434b5a12164f6d2ad9ef2512",
+        "SE10.PLC": "1fb51d85d4e3140585dac91fd6aa012ef98cbe078c3e4fa9ad6cd46a85ecd23d",
+        "SE10.JDC": "1c7125fab8bb7de92820bbe0efaeda5e2d37d4ca7504469a5a721e3b8c6c55c5",
+        "SE10.default.PDS": "b16c3f0851bbeeb4fe31c8dab734833629dff8d205cb2037053a71c10be8e3a5",
+        "SE10.default.JDC": "a032a1c255bb788bb385f0f9d2c192877cfeb45080894eba62b7ce2ee5411984",
+        "SE10.default.SIM": "4c5baa61d58d970ff795bbab82d11109365d6555b2ea3f9a97bc0564acd7a9b3",
+        "SE10.default.LOG": "aa771087359001cf5d04d23604a9d7ba57f5090140418188873b429c0669449b"
+      }
+    },
+    {
+      "name": "SE11",
+      "condition": "I <> 65538",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SE11.PDS": "12acef92dcca577abc05032532e952fc09730799431810d833e2035822a50419",
+        "SE11.MXL": "4d4aa4b8488b495a16c9df52964f778e5dc2f9ee203daac72e841f743da5a422",
+        "SE11.LOG": "dfd4f57e39e032954304e0062b6adbcd3ab166371ce121578ae07430531c4450",
+        "SE11.SIM": "3bddc4515f146087d36f6f631315498242179a4b603783a121f34a46e45e435b",
+        "SE11.PLC": "4f1105526f117f98967aca58d393af8c811c10ff8e7b242cae5cc0845e1c01ef",
+        "SE11.JDC": "cdb7890e29eeb49b91c969325e70dff3b1ac04a9316c2103022885e5a77d167c",
+        "SE11.default.PDS": "bcb2fd691c87c1f3b62f5ed36d1f0329b90f1bfd9929df1bc96d8e61688b283b",
+        "SE11.default.JDC": "7bddb7603239d3629fb3ff6abb440e7d16e1b56b0a73337d8bc2ff251f2626c0",
+        "SE11.default.SIM": "f58e9062a8e6dcfe240404cdb6c358f889825b19354bd6975418e024ede67054",
+        "SE11.default.LOG": "d26b61fe295844d75a054dd32b0a85140f966d668fbf47b736316943a42a3575"
+      }
+    },
+    {
+      "name": "SZ00",
+      "condition": "I = I",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SZ00.PDS": "193d2bf7b34267b30b1a9145308f19f0d213f4664ba9fb6ed71a079dc5cd7130",
+        "SZ00.MXL": "2f86ce63a74ee0b7371a94ad6143590256b8fc3b3b71c6c3801a95f350b395f2",
+        "SZ00.LOG": "fc70e978ac96fe59a939dcd0f39adb4c616da052cb6c02120875e0b4606f1416",
+        "SZ00.SIM": "b07dab0a27565b4f4ebdaeaccb6ef811a80cab3cdb3ed65bebe8ca6ea776616b",
+        "SZ00.PLC": "08d6decf789acaa38cfaf996c967c5c32be7410777ade00ba2cca37a0adfbf6e",
+        "SZ00.JDC": "5c7113796e2d03da75e5f86b200a7be0225b5d0e41de2dcb7b9fd26ea51aeb33",
+        "SZ00.default.PDS": "38e5bd75bfea4efb62e637122cdbb74378976148ad5db13d6eb7754961c7c9ee",
+        "SZ00.default.JDC": "75e1c0d41757f7b69fe16ee9874ef39252e7016231db269f543a58cc1b2e2d04",
+        "SZ00.default.SIM": "d11349c1d5eca17be52afab6e344b20fd7c0b5d18d812f268399466f35512d7b",
+        "SZ00.default.LOG": "4264293572328cf33547a0772d9b92eda362fa7706acb66de317c7289ea4fa52"
+      }
+    },
+    {
+      "name": "SZ01",
+      "condition": "I = J",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SZ01.PDS": "fed46895598bcf9aa662ce9681f8ede5b874b51e401e4c69076611d9e5922940",
+        "SZ01.MXL": "1da19f7b642e135d5b83a553cf44fe560693d567245f56d2b5df3e6060f7a662",
+        "SZ01.LOG": "300fa10f53ac419907b047de3b9d1245e53ebe5867ea7ddcabac7bca7e483a9c",
+        "SZ01.SIM": "1cc392645330f5dac3cba09c98098304841940977f3b20565bc5453e88bd6886",
+        "SZ01.PLC": "241b54a15cbb72c9cba7ee0e7424749f4e9ac8353487ce0e421c026176c15e78",
+        "SZ01.JDC": "7f3219b4b1311438dfe5592308fd2cff4a8f8aab8d855b29d8acff9c9dd28195",
+        "SZ01.default.PDS": "7d6259cb01a491be82df8669c65d3df3e86f05b8a2ad9185af3b8d32ffed5c5c",
+        "SZ01.default.JDC": "4ba6fa81121367cd4d215e9dc1b87b048ab3ee9696254be6e90aa46147e141cd",
+        "SZ01.default.SIM": "dd81992a6c09cf43a57fa9ef24d6abcd2bec17513568389fdd4d5f0fe326eb78",
+        "SZ01.default.LOG": "430c1f3ac48a5e6d6bb597cb0224beb8edfd2e02a0a55282e21a36c06bb8a6f9"
+      }
+    },
+    {
+      "name": "SZ02",
+      "condition": "J = I",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SZ02.PDS": "0f2f829b46181bb0a421f9fd4b6fff008c08e23a15710f61fa674b9ed70a4283",
+        "SZ02.MXL": "89c57bee77a765e5b9c8e2e38bb53b1da599543ff4c5e892cfd56489cdb451c6",
+        "SZ02.LOG": "788734642389f75899193fe9e7981dd8949e5b5bab418623f9952d334fb335e1",
+        "SZ02.SIM": "51387fcda004e02395d18697e78618c4c3e7cb81ac9878e7ce4e369692c6feeb",
+        "SZ02.PLC": "e70242df86902a40c9f5131e7edc76c98bcd32cfa0637187450412be887de802",
+        "SZ02.JDC": "86b6eb0a6ca73bce070f40127cfe59d9412286c4d15293b75a2ef052b6ee1b97",
+        "SZ02.default.PDS": "1939eb7c6a9aa0f49dc4ae47c950700dc51a9506b245266ada1d4409a9d226c4",
+        "SZ02.default.JDC": "91d01b9f5edd63bb913156961776553bbf66dc27574089fe806e1a9a9375b5b6",
+        "SZ02.default.SIM": "fa7056dd1dc08e0e366ec1c65c17cc405feedd2b424e032192eeec483c568a6e",
+        "SZ02.default.LOG": "56748dd1d0c3a6450e60fa1cb737f975da4e3c42eb80fb0fa70dde15e7fcb047"
+      }
+    },
+    {
+      "name": "SZ03",
+      "condition": "I <> J",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SZ03.PDS": "d530c30282c596df2a51fdb7336941e9785e20b612259ea93948a59e89f319a6",
+        "SZ03.MXL": "e74e09ac501ba51e93fda90fc6a1f0e381e50bd959d7fa373922dd2be0fcaf72",
+        "SZ03.LOG": "2eead02d970b292d57a96d3ca8c8f0901b5f4abe32f1ed305d6b3a60ac0f39e5",
+        "SZ03.SIM": "b8ecd8090cbf83ea3631cdba28082537115fae156d986b23d1131e392771f3e2",
+        "SZ03.PLC": "5a4a67be2ff8d259682b4c0acfcd3c6f789d0b5670f08137b3686306485c596b",
+        "SZ03.JDC": "9120f061110274daa1d02569ee4f31bf583c98a88766ffe17e4875426ef08888",
+        "SZ03.default.PDS": "e20497f88b1a60dbbdc4d5adf506062576763eaff62c3e04f2503e4cf6d6ea66",
+        "SZ03.default.JDC": "698c1a4668f7814ac7a295d87dda11075f374a5a4ef4081ff6616b3dcf7ee737",
+        "SZ03.default.SIM": "028c724b5979435c5120d5f151b464e7cabbb295fc0d6e8a18728d97f42f759c",
+        "SZ03.default.LOG": "4fcadada79915babb83c01c9a4da6c3d97145fa5f24e05a11fbf6fb9bf068440"
+      }
+    },
+    {
+      "name": "SZ04",
+      "condition": "I = 0",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SZ04.PDS": "419ec3b59952e2579692d1456b70a48b71534460d3e7d8c012e249f21d54df01",
+        "SZ04.MXL": "19ec7ce1547cdcef8e79ec5c9a55b17fee02b34b3be553b0da167f5b46451578",
+        "SZ04.LOG": "9ec468701395b7a390dba2589bf4a51aff0b2e1ed991ed8068e47a04a4dd46a5",
+        "SZ04.SIM": "2708924b8b6dad5b339de44d7754ab1d0b9f2f85f146353d8434e4f721e63d27",
+        "SZ04.PLC": "6df0d1e31ad329e499dc7415d82f24a83934fbad5e5a025f4eb64de181ee1a29",
+        "SZ04.JDC": "32afc7065dc185f5b621a03980e0e4de883c350a5e2591efe9d7a32dfb84df70",
+        "SZ04.default.PDS": "006ddd75396dca755c2738d322354f096986eac9cc569429ec1f38797b3d4e5f",
+        "SZ04.default.JDC": "c3f54f01b52dd860630d58a0c0959731090f65bc64a404434407954d1caa1c44",
+        "SZ04.default.SIM": "eafdea4024504bcbcd7270e094d84446af4b3139b40ec67bbd5be43b64f85634",
+        "SZ04.default.LOG": "aced43de682732c34a18f16f2d5bd1afcff4f9f12805148d4b3b8751236fe3f6"
+      }
+    },
+    {
+      "name": "SZ05",
+      "condition": "0 = I",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SZ05.PDS": "e7c6373876bda7ca4280b5b8691906376ca48b49a991375b507365d995383278",
+        "SZ05.MXL": "b8fecdd1ef537dd1ea9cd0cd285f609e1ea3af549ec573e9f43254a144cd96cd",
+        "SZ05.LOG": "8b198c341aa34869734f8094428bca3fc512ec23c5ab876c3598cfd220b98d8c",
+        "SZ05.SIM": "3982821a7f14119e27c7e3c96364abd7caac212bddcd671f63d3d4f3e6feeb9a",
+        "SZ05.PLC": "cb18cebf92ad7a5179d71421d51bb0d8e2887c3267b6dcefbde63291f8501dee",
+        "SZ05.JDC": "d00dbea9630dec356b42ac98edd2f82b20f96c3dec71c201fdb8aff26d9bf039",
+        "SZ05.default.PDS": "bf6b92ddbb23790f76d33b0459ae86c9b0291a8e760fba47e5459b16189c27d2",
+        "SZ05.default.JDC": "b576c0191c8a17a88a8248b34ba561a55d1b18332045489116627faecc0de44f",
+        "SZ05.default.SIM": "4534ee278106585d70455a50869423866eb64eed5c3b94abfd9519a4c2f72ed9",
+        "SZ05.default.LOG": "9f6ca1b1b12ef1cf0b65a8a0e95ba8e12783988d92ec46af3f2ccaa13638793d"
+      }
+    },
+    {
+      "name": "SV00",
+      "condition": "AB = #B00",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SV00.PDS": "1d2ccf38139d0b6f17e4adcde5352ffcbff8302f96129898a8d58a0f8875cdaa",
+        "SV00.MXL": "ca04998aaeef64d8aa03ad2875b4b0fa35695cf519d76d68fca6a68e6d068f84",
+        "SV00.LOG": "236eac3e297436df5d7597bbcbff043efa28858e9d596327dabaee6246e7ff46",
+        "SV00.SIM": "2cbd4e72502968d98d92744737376b68ca3a628f87375ed4e201abc7ebb603d4",
+        "SV00.PLC": "62cb0cf7c03484b4bf6dd108e742fe61f56eb0372d1b23502d4e67356a3c3b76",
+        "SV00.JDC": "a579e63e5805d264c018d62ccdf958e9926ab5f0284eecd06e4c8eb12537a4a6",
+        "SV00.default.PDS": "5015a81b795985539a9302ddb481b4e9b496382d7e6453e76da3227e6878ec08",
+        "SV00.default.JDC": "b89ee7efcab8cce21b306c65a8bbc0e2f0ce14dacd7addbe1832cd966d1bc06b",
+        "SV00.default.SIM": "4db3052e1052611f8e38c2fb01ebcf0691235f77becedb63d5759043b10186de",
+        "SV00.default.LOG": "031079d19ccf35390c0c66e4297e0f1f345b29b14ce4dbf45c788e7e19f89dfb"
+      }
+    },
+    {
+      "name": "SV01",
+      "condition": "AB = #B01",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SV01.PDS": "13d7e107f1072b3bdfb4f1f51ca69cc0a8e318003f2d4051103d278f99a0a1b8",
+        "SV01.MXL": "0a64003203bc14dae1ee2563a22170f0721618cda02e2900260a2f3425c3a6c9",
+        "SV01.LOG": "b25039eb43278127c535a79e392642a27868f2226fc87872037c98d28c779676",
+        "SV01.SIM": "54d281ded69ce2bfda44d58e3fa14a61e1324fb8a2f923961e6106a3ffe13f9c",
+        "SV01.PLC": "08719f0ad9cb591b3f6dc022a49d8fdee59d7513508fa0e7da296db5367041c6",
+        "SV01.JDC": "ff7fe2b18da163634898b9cb9be3a237fdedd7956da247d6b3885eb9a78615f9",
+        "SV01.default.PDS": "6ad0b3439bc160913732aa69bd64354fb399e7b5982f1998659fdf1abfd429ed",
+        "SV01.default.JDC": "6ca1f92d4e2813bb3e41f040314211401ff1df0194c05b5795f92c049e3773f5",
+        "SV01.default.SIM": "02cf2e09a8e54f70886529ff06789804c22b0eeaa0707d6ee6b8aa364821e966",
+        "SV01.default.LOG": "b4221fb7b77c2de57b316ed538eb6d0b2d0bb2bb5909df2483fbaab880617d85"
+      }
+    },
+    {
+      "name": "SV02",
+      "condition": "AB = #B10",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SV02.PDS": "2f400314b5866b3c50cec5baa4b7d4ab9aab5cd2dad92d60771020187be23e61",
+        "SV02.MXL": "c867684788f93ee3eceed728cf081615436789621df3a89b711294e427178233",
+        "SV02.LOG": "f10e0292ed4767a054dd9119720a8567d8aa345eaba394a3f27bbbc66c07d938",
+        "SV02.SIM": "fda8a52aead2c1a674558ec431fd6b61b3d9f01f102d9bf2d99af40f9e69da8d",
+        "SV02.PLC": "2680f5324435d631acbf18f3cd429d52eed57580385925c5bf1ac0a92c6e1671",
+        "SV02.JDC": "f47bb99526522820b90f98770a147b040cba6cc9cf81b3bf547047c0d374fb3f",
+        "SV02.default.PDS": "bee2c74ca97eb935cf93f3fb0d3abb4019cf80e7b6857beedf2709ac515e4a3f",
+        "SV02.default.JDC": "67ae42c63869431a283bb44afdba972dbe3a5e7b9683e33cd0a858604e2f8659",
+        "SV02.default.SIM": "35517095598bbfe4726e6b869fb171f0fc17cbf7d991b8dec7f07d7b5fbb9afe",
+        "SV02.default.LOG": "1ec916b2dc61442fa2fcd619c89799940ac292f90829bf1400fb4fcb603e65b7"
+      }
+    },
+    {
+      "name": "SV03",
+      "condition": "AB = #B11",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SV03.PDS": "90816d2e235a7ef5790778c86eafb7182cf969cbb7b05a0ff384a84a0f9e0794",
+        "SV03.MXL": "e43c96fcf62d8d1988e3084c065a13dbeadb7306ad4af3a449c2fc2068db137d",
+        "SV03.LOG": "26884b3ef7fdb5988eb858a359df94650288f2e463b82163e1ab29f6517c2294",
+        "SV03.SIM": "6266ae500d02f104abb4578e44ed6322aa7d15154a72c008015c8993f5b509ea",
+        "SV03.PLC": "c39bff3633a796b5b86a07628ffdeee99410e55a5511ea70f45dd49d9d456911",
+        "SV03.JDC": "b768adc2f6bd6e0e8c9c30ad6f3b8088e88991603fdbdcd850f8c7750b50572c",
+        "SV03.default.PDS": "222579345b361ad1464498376796dfdbd640d059992e24ea2c8cb4083aa8c7ac",
+        "SV03.default.JDC": "dbc2d9ec19bd99eb5b80810ffc59179d8a363b221754a8cd81477f813c6b5213",
+        "SV03.default.SIM": "caae4b781e706195da177985746cdfac3cc120ae99be680b8e75cf850e8438dd",
+        "SV03.default.LOG": "463fc71ac7ea5006012cd7f93c1d384802d693a92f2524626179cd30a7cc07c3"
+      }
+    },
+    {
+      "name": "SV04",
+      "condition": "X[1..0] = #B00",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SV04.PDS": "9bce396d5aaf29d447fb918a69452362ffccb92c312c094bce26dcb260772912",
+        "SV04.MXL": "6b6ccfdaba59305f1897b2626db2b123a2edaa6542a40b83a6589745252cb423",
+        "SV04.LOG": "f4f05439b31c16a7d702227fd5acdd008d39492be6955c50b4c92fbcff534f81",
+        "SV04.SIM": "cce8de19d05f9fe657fbd5874a1a89d0d382104853e656b50dfca4f5184d46a4",
+        "SV04.PLC": "37d49a00d4fa4698dec32b5a7b20615f98992661c3fa80eb6b80c0ffbf845d81",
+        "SV04.JDC": "efda086f65e0a0995fe4ebbb2e962a4488a65751becc5ee9b0800e675eb6f07b",
+        "SV04.default.PDS": "a1dfeb3adb9b5bf498d8d40d0afdf87f942089f7ba89b818ebcaccca83d5d479",
+        "SV04.default.JDC": "1cdb49c35e1d059bd51cb52c2fd59d15d183fea5386d77a266bbeae012b43324",
+        "SV04.default.SIM": "8ff788360bc3e8a6d92a35edbd06153ce5518b9660fbc4ca76f92cf763aa82af",
+        "SV04.default.LOG": "7ab8ec89a768832b8c137220c81ec4714f503bfb21ac5e811128b753927299ca"
+      }
+    },
+    {
+      "name": "SV05",
+      "condition": "X[1..0] = #B01",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SV05.PDS": "fd06ac3fdd79638559b2fc78d3a2e36fc071c7b4b850f86c6910c4eff06d02ea",
+        "SV05.MXL": "3c8b3a04cbb4501afdee921d4d2a9b27bf2c66d76743d1330fdaf687d94a04da",
+        "SV05.LOG": "e20b45156a9c3a68d3f5ff47f206dc0464ccf1c9d51f58f7238ca2f0c9cf36a0",
+        "SV05.SIM": "bf57e35fc58f3d13f23ce51386179413629faade9d8bdda1bb872d897cf90760",
+        "SV05.PLC": "381b78343d298deac5c1bd70a768d14b494c1c2e9a958c992460c238a9055f63",
+        "SV05.JDC": "c0f5e0c2ab78a3f700884a8ad495bc6b1bd899f653b59149de75571dac54b8b2",
+        "SV05.default.PDS": "01b61d33c2f426df1672b8cd184dc6a2d6e7e6249776d80f0f223eb4bdacac8e",
+        "SV05.default.JDC": "05f911e44fe8042ee76c065ab8c95cc98f5db4e73886d4f7fce804776277e08d",
+        "SV05.default.SIM": "6a17e591f4357205ef2e2641054d4593174578eb5acc40d32cf74bad1393f515",
+        "SV05.default.LOG": "9ef99510da3ecbb082a4521397592ec20fd027911374737ca11f004778227332"
+      }
+    },
+    {
+      "name": "SV06",
+      "condition": "X[1..0] = #B10",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SV06.PDS": "a2b4af261d76512857c138c418f60846843ba1b5e61165b4bb0ffc78d0d26671",
+        "SV06.MXL": "5999606583226434a3bcfa4243837446e90a5b52b4d6323bd00ea1f4686b6e2c",
+        "SV06.LOG": "891b247f994cc2464a6b46148c3c4d69bf29443f7bd6ae4841bc2a5c1f76efe2",
+        "SV06.SIM": "e9af75fb4227af863e1c6ec4db01c2709d0f8b91df8589ca2716c65c0969396a",
+        "SV06.PLC": "1b7f032f18199fdd7de248b80368c0d4cd6624667e2b373960db764e9d369ece",
+        "SV06.JDC": "ea9c897bc8e95f1260ecd1214206250c5895bb82eaeb49b8071a3c187bccca08",
+        "SV06.default.PDS": "855e51499505a585ed21f53bc5c49fa5b29dbf69758083b1ee668a01df3f4433",
+        "SV06.default.JDC": "de3bfdc4b36d7d1fedfea82ee9ff3b35b3233fffe1ad0bda0c5970b6922b4e23",
+        "SV06.default.SIM": "2e0b589d9b52d86a3e218c0b139137dc2286b48c86acda40ea3506ec0334939d",
+        "SV06.default.LOG": "a4a6763a5efef5324631b72bfa1205080dffbab5916afb51a8f67f9a5be1a38d"
+      }
+    },
+    {
+      "name": "SV07",
+      "condition": "X[1..0] = #B11",
+      "original_success": true,
+      "executables": {
+        "MACHPAR.EXE": "0d27f048d23f1f22b67a875b34bf923a4a4cb1118d8e034d2f9ebfe6f2381c16",
+        "MACHSIMU.EXE": "a3d7854ea3e6849a81cbb8eef6ff641858b309c958c618c530c072f529fc5ac8"
+      },
+      "files": {
+        "SV07.PDS": "5a33acfa6f5263b1d6500f7540ef1a46266d287fb8d173b0185cb86ca59877a0",
+        "SV07.MXL": "8ad7f53fb551b16dc2b659c9f0d32c93216fe95c602f4c2646c7128e032ec961",
+        "SV07.LOG": "873d526808dd879d9998d6ac27d1f96986922cb50102df135318bda97682cf7f",
+        "SV07.SIM": "8197c668ef2b3565ad77583786f25a6c0aeb3fbb508fc2cd2c95895c88276869",
+        "SV07.PLC": "e53111a16eb21f3d59d4d486e4d07fa614d42fc327ada68e931c1d5b49619c5b",
+        "SV07.JDC": "d817182072a69bc4ac6ae10796cc20dd41cbecc42032e0f2e24a8b1396519021",
+        "SV07.default.PDS": "fd5b66fc12175e5c9316d5d32d29811d6cbd73cdf0e1dbb535bbedc9887346a8",
+        "SV07.default.JDC": "40f75526408b2ec19a2bff72cbece7a440fe22c49a462e6bbdbdce186ceb3ceb",
+        "SV07.default.SIM": "566ca62ae77ab1bade60f160f093013b0b02f1e7c6bf291e69ffc6b11db72868",
+        "SV07.default.LOG": "3c5653cd0460b58acb207628d50b0232e17d5559c18280c2b2e16826a9e47077"
+      }
+    }
+  ]
+}

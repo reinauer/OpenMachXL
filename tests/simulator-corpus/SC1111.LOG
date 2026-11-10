@@ -1,0 +1,151 @@
+
+*** Start MACHPAR.E 00:27:41 
+Sc1111.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP SC1111 MACH111
+   2     |PIN 2 A
+   3     |PIN 18 Y REGISTERED
+   4     |PIN 35 CLK
+   5     |EQUATIONS
+   6     |Y:=A
+   7     |SIMULATION
+   8     |TRACE_ON A Y
+   9     |SETF /A
+  10     |CLOCKF
+  11     |SETF A
+  12     |CLOCKF
+  13     |CHECK Y
+  14     |SETF /A
+  15     |CLOCKF
+  16     |CHECK /Y
+  17     |TRACE_OFF
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Sc1111.pds
+
+*** End MACHPAR.EXE 00:27:41; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 00:27:41 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Y
+SIMULATION SEGMENT
+..........
+ %%  MACHBPP  %% Maximum memory allocated was: 56840 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Sc1111.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 00:27:41; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 00:27:41 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin Y...
+====> Y                  MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 38314 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Sc1111.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 00:27:41; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 00:27:41 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file sc1111.tre to PLA file sc1111.pla...
+
+.
+.
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 38316 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Sc1111.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 00:27:42; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 00:27:42 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Sc1111.pds . Device is MACH111 .
+|> INFO z5109 - For this device, all input pairing is ignored since input
+                registers or latches do not exist. All signals must pass
+                through the central switch matrix before being latched or
+                registered.
+|> WARNING z5119 - Signal CLK is preplaced at default clock pin. It will be
+                   merged with implied default clock.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+|> INFO z5121 - Implicit clock or latch enable will be assigned to the
+                default Clock/LE Pin 35 .
+
+List of global clocks:
+   CLK:
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is Sc1111.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File Sc1111.pds .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 1 .
+
+*** End MACHFITR.EX 00:27:42; (MACHFITR.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

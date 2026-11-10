@@ -1,0 +1,56 @@
+Sz6.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP SZ6 MACH435
+   2     |PIN ? A
+   3     |PIN ? Q
+   4     |EQUATIONS
+   5     |Q=A
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Sz6.pds
+
+*** Start MACHBPP.E 11:34:20 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q
+
+ %%  MACHBPP  %% Maximum memory allocated was: 72696 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Sz6.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 11:34:20; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 11:34:20 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+|> ERROR L108 -th parameter argument "-p" is not a number.
+|> ERROR L122 The options -th and -p must both exist if you specify
+              one of them.
+
+ %%  MACHMIN  %% Maximum memory allocated was: 240 bytes.
+
+ %%  MACHMIN  %% File Processing Terminated.  File: Sz6.pds.
+ %%  MACHMIN  %% ERROR count: 2  WARNING count: 0
+
+
+*** End MACHMIN.EXE 11:34:20; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

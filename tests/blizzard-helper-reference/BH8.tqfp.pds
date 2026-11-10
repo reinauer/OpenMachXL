@@ -1,0 +1,34 @@
+;PALASM Design Description
+; pds2v test: latches built from combinatorial feedback (allowed, but each
+; loop is reported), plus a flip-flop with both async reset and preset.
+; EXPECT-EXIT: 0
+; EXPECT: warning: combinatorial loop (latch) through Q
+; EXPECT: warning: combinatorial loop (latch) through QN, SQ
+; EXPECT: note: FF uses async preset
+
+TITLE    pds2v test latches
+CHIP     LAT  MACH111
+
+PIN  4   D
+PIN  26  G                      ; latch gate, transparent when high
+PIN  2   S_N
+PIN  3   R_N
+PIN  29  CLK                    ; CLK3
+PIN  8   CLR
+PIN  9   PRE
+PIN  40  Q      COMBINATORIAL   ; transparent D latch
+PIN  41  SQ     COMBINATORIAL   ; SR latch from two cross-coupled NANDs
+NODE ?   QN     COMBINATORIAL
+PIN  42  FF     REGISTERED
+
+EQUATIONS
+Q   = D * G
+    + Q * /G
+    + D * Q                     ; consensus term: no hazard when G falls
+/SQ = S_N * QN                  ; NAND
+/QN = R_N * SQ                  ; NAND
+
+FF     := D
+FF.CLKF = CLK
+FF.RSTF = CLR
+FF.SETF = PRE * /CLR

@@ -1,0 +1,33 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Atf0.pds
+Title  
+
+
+
+   1-V1 - SETF
+          /A  /B  /CLK  
+   2-V1 - CHECK
+          /QB  
+   2-V2 - SETF
+          A  
+   6-V3 - CLOCKF
+          CLK  
+   6-V3 - CHECK
+          QB  
+   6-V4 - SETF
+          /A  B  
+  10-V5 - CLOCKF
+          CLK  
+  10-V5 - CHECK
+          /QB  
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Atf0.HST
+Merged results (JEDEC) are in       ===> Atf0.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 85303 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Atf0.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0

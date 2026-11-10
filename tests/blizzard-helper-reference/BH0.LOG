@@ -1,0 +1,276 @@
+Bh0.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |;PALASM Design Description
+   2     |; pds2v test: the NODE must be placed where the logic allocator can feed it.
+   3     |; Block B is full.  In block A, M0..M7 are all driven except M3 (pin 43,
+   4     |; unused): C0..C7 cannot give 7 + 2 clusters.  M8..M15 have M12 and M15 on
+   5     |; input-only pins, and the 2-cluster NODE fits there.
+   6     |; EXPECT-EXIT: 0
+   7     |; EXPECT: node PAR4 -> block A (macrocell IO15, pin 15 is an input)
+   8     |
+   9     |CHIP     ALLOC  MACH111
+  10     |PIN  10  IN0
+  11     |PIN  32  IN1
+  12     |PIN  13  IN2
+  13     |PIN  33  IN3
+  14     |PIN  18  IN4                    ; M12: input only
+  15     |PIN  21  IN5                    ; M15: input only
+  16     |PIN  2   A0   COMBINATORIAL
+  17     |PIN  3   A1   COMBINATORIAL
+  18     |PIN  4   A2   COMBINATORIAL
+  19     |PIN  6   A3   COMBINATORIAL
+  20     |PIN  7   A4   COMBINATORIAL
+  21     |PIN  8   A5   COMBINATORIAL
+  22     |PIN  9   A6   COMBINATORIAL
+  23     |PIN  14  A7   COMBINATORIAL
+  24     |PIN  15  A8   COMBINATORIAL
+  25     |PIN  16  A9   COMBINATORIAL
+  26     |PIN  17  A10  COMBINATORIAL
+  27     |PIN  19  A11  COMBINATORIAL
+  28     |PIN  20  A12  COMBINATORIAL
+  29     |PIN  24  B0   COMBINATORIAL
+  30     |PIN  25  B1   COMBINATORIAL
+  31     |PIN  26  B2   COMBINATORIAL
+  32     |PIN  27  B3   COMBINATORIAL
+  33     |PIN  28  B4   COMBINATORIAL
+  34     |PIN  29  B5   COMBINATORIAL
+  35     |PIN  30  B6   COMBINATORIAL
+  36     |PIN  31  B7   COMBINATORIAL
+  37     |PIN  36  B8   COMBINATORIAL
+  38     |PIN  37  B9   COMBINATORIAL
+  39     |PIN  38  B10  COMBINATORIAL
+  40     |PIN  39  B11  COMBINATORIAL
+  41     |PIN  40  B12  COMBINATORIAL
+  42     |PIN  41  B13  COMBINATORIAL
+  43     |PIN  42  B14  COMBINATORIAL
+  44     |PIN  43  B15  COMBINATORIAL
+  45     |NODE ?   PAR4  COMBINATORIAL   ; 8 product terms = 2 clusters
+  46     |
+  47     |EQUATIONS
+  48     |PAR4 = IN0 :+: IN1 :+: IN2 :+: IN3
+  49     |A0 = PAR4 * IN4
+  50     |A1 = IN0 * IN5
+  51     |A2 = IN0 * IN5
+  52     |A3 = IN0 * IN5
+  53     |A4 = IN0 * IN5
+  54     |A5 = IN0 * IN5
+  55     |A6 = IN0 * IN5
+  56     |A7 = IN0 * IN5
+  57     |A8 = IN0 * IN5
+  58     |A9 = IN0 * IN5
+  59     |A10 = IN0 * IN5
+  60     |A11 = IN0 * IN5
+  61     |A12 = IN0 * IN5
+  62     |B0 = IN1
+  63     |B1 = IN1
+  64     |B2 = IN1
+  65     |B3 = IN1
+  66     |B4 = IN1
+  67     |B5 = IN1
+  68     |B6 = IN1
+  69     |B7 = IN1
+  70     |B8 = IN1
+  71     |B9 = IN1
+  72     |B10 = IN1
+  73     |B11 = IN1
+  74     |B12 = IN1
+  75     |B13 = IN1
+  76     |B14 = IN1
+  77     |B15 = IN1
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Bh0.pds
+
+*** Start MACHBPP.E 10:16:44 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>PAR4
+Processing equation for ====>A0
+Processing equation for ====>A1
+Processing equation for ====>A2
+Processing equation for ====>A3
+Processing equation for ====>A4
+Processing equation for ====>A5
+Processing equation for ====>A6
+Processing equation for ====>A7
+Processing equation for ====>A8
+Processing equation for ====>A9
+Processing equation for ====>A10
+Processing equation for ====>A11
+Processing equation for ====>A12
+Processing equation for ====>B0
+Processing equation for ====>B1
+Processing equation for ====>B2
+Processing equation for ====>B3
+Processing equation for ====>B4
+Processing equation for ====>B5
+Processing equation for ====>B6
+Processing equation for ====>B7
+Processing equation for ====>B8
+Processing equation for ====>B9
+Processing equation for ====>B10
+Processing equation for ====>B11
+Processing equation for ====>B12
+Processing equation for ====>B13
+Processing equation for ====>B14
+Processing equation for ====>B15
+
+ %%  MACHBPP  %% Maximum memory allocated was: 64338 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Bh0.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 10:16:44; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 10:16:44 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node PAR4...
+====> PAR4               MIN_ON (8 + pt)
+Processing equation(s) for pin B15...
+====> B15                MIN_ON (1 + pt)
+Processing equation(s) for pin B14...
+====> B14                MIN_ON (1 + pt)
+Processing equation(s) for pin B13...
+====> B13                MIN_ON (1 + pt)
+Processing equation(s) for pin B12...
+====> B12                MIN_ON (1 + pt)
+Processing equation(s) for pin B11...
+====> B11                MIN_ON (1 + pt)
+Processing equation(s) for pin B10...
+====> B10                MIN_ON (1 + pt)
+Processing equation(s) for pin B9...
+====> B9                 MIN_ON (1 + pt)
+Processing equation(s) for pin B8...
+====> B8                 MIN_ON (1 + pt)
+Processing equation(s) for pin B7...
+====> B7                 MIN_ON (1 + pt)
+Processing equation(s) for pin B6...
+====> B6                 MIN_ON (1 + pt)
+Processing equation(s) for pin B5...
+====> B5                 MIN_ON (1 + pt)
+Processing equation(s) for pin B4...
+====> B4                 MIN_ON (1 + pt)
+Processing equation(s) for pin B3...
+====> B3                 MIN_ON (1 + pt)
+Processing equation(s) for pin B2...
+====> B2                 MIN_ON (1 + pt)
+Processing equation(s) for pin B1...
+====> B1                 MIN_ON (1 + pt)
+Processing equation(s) for pin B0...
+====> B0                 MIN_ON (1 + pt)
+Processing equation(s) for pin A12...
+====> A12                MIN_ON (1 + pt)
+Processing equation(s) for pin A11...
+====> A11                MIN_ON (1 + pt)
+Processing equation(s) for pin A10...
+====> A10                MIN_ON (1 + pt)
+Processing equation(s) for pin A9...
+====> A9                 MIN_ON (1 + pt)
+Processing equation(s) for pin A8...
+====> A8                 MIN_ON (1 + pt)
+Processing equation(s) for pin A7...
+====> A7                 MIN_ON (1 + pt)
+Processing equation(s) for pin A6...
+====> A6                 MIN_ON (1 + pt)
+Processing equation(s) for pin A5...
+====> A5                 MIN_ON (1 + pt)
+Processing equation(s) for pin A4...
+====> A4                 MIN_ON (1 + pt)
+Processing equation(s) for pin A3...
+====> A3                 MIN_ON (1 + pt)
+Processing equation(s) for pin A2...
+====> A2                 MIN_ON (1 + pt)
+Processing equation(s) for pin A1...
+====> A1                 MIN_ON (1 + pt)
+Processing equation(s) for pin A0...
+====> A0                 MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 46240 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Bh0.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 10:16:45; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 10:16:45 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file bh0.tre to PLA file bh0.pla...
+
+..............................
+..............................
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 48912 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Bh0.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 10:16:45; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 10:16:45 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Bh0.pds . Device is MACH111 .
+|> INFO z5109 - For this device, all input pairing is ignored since input
+                registers or latches do not exist. All signals must pass
+                through the central switch matrix before being latched or
+                registered.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is Bh0.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File Bh0.pds .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 0 .
+
+*** End MACHFITR.EX 10:16:46; (MACHFITR.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

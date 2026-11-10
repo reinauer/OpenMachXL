@@ -1,0 +1,19 @@
+
+*** Start MACHSIMU. 11:41:22 
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Sm007.pds
+Title  
+
+|> ERROR D3450
+     Corrupt PLC file SM007.PDS. Please run the Assembler again.
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 9821 bytes.
+
+ %%  MACHSIMU  %% File Processing Terminated.  File: Sm007.pds.
+ %%  MACHSIMU  %% ERROR count: 1  WARNING count: 0
+
+*** End MACHSIMU.EX 11:41:23; (MACHSIMU.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

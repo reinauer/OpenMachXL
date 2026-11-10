@@ -1,0 +1,16 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file B2311.pds
+; FITTER-generated Placements.
+; DEVICE   MACH231
+; DATE     Mon Nov 09 23:59:44 2026
+
+
+Pin   3  Y Comb ;
+Pin   4  Z Comb ;
+Pin   5  A
+Pin   6  B
+Pin   7  C
+Pin   8  D
+; Unused Pins & Nodes
+; -> None Found.

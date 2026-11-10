@@ -1,0 +1,26 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME Fbtwo.pds
+#AMD TITLE 
+#AMD PATTERN 
+#AMD REVISION 
+#AMD AUTHOR 
+#AMD COMPANY 
+#AMD DATE 
+#AMD CHIP PROBE
+#AMD DEVICE MACH111
+#AMD JED_FILE Fbtwo.jed
+#AMD SIGNATURE 
+#AMD PIN 11 GND:1 A:3 Q:5 CLK:11 GND:12 B:20 VCC:22 GND:23 GND:34 R:43 VCC:44 
+.type f
+.i 5
+.o 4
+.ilb A Q CLK B R
+.ob  Q.REG Q.C R.REG R.C
+.phase 1111
+.p 5
+0---1 1~~~
+1---0 1~~~
+--1-- ~1~1
+-1-0- ~~1~
+-0-1- ~~1~
+.e

@@ -1,0 +1,39 @@
+
+*** Start MACHSIMU. 11:42:28 
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Sm028.pds
+Title  
+
+
+
+   1-V0 - TRACE_ON
+          A  Q  
+   1-V0 - SETF
+          /A  
+   2-V/ - CHECK
+          /Q  
+   2-V0 - SETF
+          A  
+   3-V/ - CHECK
+          Q  
+   3-V0 - TRACE_OFF
+|> WARNING D2290
+     Cannot generate test vectors for this device without a
+     fitter-generated placement file. The placement file contains
+     additional functional information. Simulation test vectors
+     are not merged.
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Sm028.HST
+Simulation results (trace) are in   ===> Sm028.TRF
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 156845 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Sm028.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 1
+
+*** End MACHSIMU.EX 11:42:30; (MACHSIMU.EXE= 2 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

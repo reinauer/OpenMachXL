@@ -1,0 +1,29 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME Sti2.pds
+#AMD TITLE 
+#AMD PATTERN 
+#AMD REVISION 
+#AMD AUTHOR 
+#AMD COMPANY 
+#AMD DATE 
+#AMD CHIP STI2
+#AMD DEVICE MACH111
+#AMD JED_FILE Sti2.jed
+#AMD SIGNATURE 
+#AMD PIN 10 GND:1 A:2 B:3 CLK:11 GND:12 Y:18 VCC:22 GND:23 GND:34 VCC:44 
+#AMD NODE 1 _ST0:0 
+.type f
+.i 5
+.o 4
+.ilb A B CLK Y _ST0
+.ob  Y.T Y.C _ST0.T _ST0.C
+.phase 1111
+.p 7
+0--10 1~~~
+-0-11 1~~~
+1--00 1~~~
+-1-01 1~~~
+--1-- ~1~1
+1---0 ~~1~
+-1--1 ~~1~
+.e

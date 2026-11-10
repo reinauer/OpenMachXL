@@ -1,0 +1,34 @@
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+
+ %% MACHPAR %%    Processing design file.......Rw39.pds
+
+ %% MACHPAR %%    Listing file.................Rw39.lis
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP NC MACH111
+  ERROR -------^ (L1/C6)
+|> ERROR P56  Illegal character > detected.
+
+  ERROR -------^ (L1/C6)
+|> ERROR P56  Illegal character > detected.
+
+  ERROR -------^ (L1/C6)
+|> ERROR P56  Illegal character > detected.
+
+  ERROR -------^ (L1/C6)
+|> ERROR P56  Illegal character < detected.
+
+  ERROR -------^ (L1/C6)
+|> ERROR P56  Illegal character < detected.
+
+  ERROR -------^ (L1/C6)
+|> ERROR P56  Illegal character < detected.
+
+
+ %% MACHPAR %%    ERROR count:  6     WARNING count:  1
+
+ %% MACHPAR %%    File processing terminated.     File:  Rw39.pds

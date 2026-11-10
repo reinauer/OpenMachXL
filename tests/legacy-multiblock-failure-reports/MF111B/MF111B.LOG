@@ -1,0 +1,200 @@
+
+*** Start MACHPAR.E 14:27:36 
+Mf111b.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP PLACEFAIL MACH111
+   2     |PIN 27 I0
+   3     |PIN 28 I1
+   4     |PIN 29 I2
+   5     |PIN 30 I3
+   6     |PIN 31 I4
+   7     |PIN 36 I5
+   8     |PIN 37 I6
+   9     |PIN 38 I7
+  10     |PIN 39 I8
+  11     |PIN 40 I9
+  12     |PIN 41 I10
+  13     |PIN 42 I11
+  14     |PIN 43 I12
+  15     |PIN ? Q0
+  16     |PIN ? Q1
+  17     |PIN ? Q2
+  18     |GROUP MACH_SEG_B Q0 Q1 Q2
+  19     |PIN 2 Y
+  20     |EQUATIONS
+  21     |Q0=I0*I1*I2*I3*I4*I5*I6*I7*I8*I9*I10*I11*I12
+  22     |Q0.TRST=I0
+  23     |Q1=I0*I1*I2*I3*I4*I5*I6*I7*I8*I9*I10*I11*I12
+  24     |Q1.TRST=I1
+  25     |Q2=I0*I1*I2*I3*I4*I5*I6*I7*I8*I9*I10*I11*I12
+  26     |Q2.TRST=I2
+  27     |Y=I0*I1
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Mf111b.pds
+
+*** End MACHPAR.EXE 14:27:36; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 14:27:36 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q0
+Processing equation for ====>Q0.TRST
+Processing equation for ====>Q1
+Processing equation for ====>Q1.TRST
+Processing equation for ====>Q2
+Processing equation for ====>Q2.TRST
+Processing equation for ====>Y
+
+ %%  MACHBPP  %% Maximum memory allocated was: 70742 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Mf111b.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 14:27:36; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 14:27:36 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin Q2...
+====> Q2                 MIN_ON (1 + pt)
+====> Q2.TRST            MIN_ON (1 + pt)
+Processing equation(s) for pin Q1...
+====> Q1                 MIN_ON (1 + pt)
+====> Q1.TRST            MIN_ON (1 + pt)
+Processing equation(s) for pin Q0...
+====> Q0                 MIN_ON (1 + pt)
+====> Q0.TRST            MIN_ON (1 + pt)
+Processing equation(s) for pin Y...
+====> Y                  MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 45316 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Mf111b.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 14:27:36; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 14:27:36 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file mf111b.tre to PLA file mf111b.pla...
+
+....
+....
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 43174 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Mf111b.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 14:27:37; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 14:27:37 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Mf111b.pds . Device is MACH111 .
+|> INFO z5109 - For this device, all input pairing is ignored since input
+                registers or latches do not exist. All signals must pass
+                through the central switch matrix before being latched or
+                registered.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not assign IO pins to nodes in
+                   block [B]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not assign IO pins to nodes in
+                   block [B]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not assign IO pins to nodes in
+                   block [B]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not assign IO pins to nodes in
+                   block [B]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+|> FATAL z7502 - Placer/Router [ unsuccessful on final iteration ].
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing        0% - Completed
+%%% Fitting process has failed %%%
+*** Report Generator end.
+
+|> INFO z5122 - MACH111 fitting errors may result when preplaced and paired
+                nodes in block B of a MACH110 design have not been
+                translated to their MACH111 counterparts -- prior to
+                fitting.
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Mf111b.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 12 .
+
+*** End MACHFITR.EX 14:28:11; (MACHFITR.EXE=34 sec.) elapsed time=35 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

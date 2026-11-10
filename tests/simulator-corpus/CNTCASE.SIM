@@ -1,0 +1,68 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Cntcase.pds
+Title  8-BIT COUNTER with Parallel Load
+
+|> WARNING D2260
+     The following Pin/Nodes(s) have not been defined in original design
+     file and will be ignored.
+
+      RN_TC[3]        RN_TC[5]        RN_TC[1]        RN_TC[6]        
+      RN_TC[2]        RN_TC[4]        RN_TC[0]        RN_TC[7]        
+
+
+
+   1-V1 - TRACE_ON
+          RST  TC[7..0]  CLK  COUNT  DATA[7..0]  
+   1-V1 - SETF
+          RST  OE  /DATA[7]  /DATA[6]  DATA[5]  DATA[4]  
+          DATA[3]  DATA[2]  DATA[1]  /DATA[0]  
+   2-V2 - SETF
+          /RST  
+   3-V2 - CHECKQ
+          /TC[7]  /TC[6]  /TC[5]  /TC[4]  /TC[3]  /TC[2]  
+          /TC[1]  /TC[0]  
+   3-V3 - SETF
+          COUNT  /LOAD  
+   4-V4 - FOR
+   7-V4 - CLOCKF
+          CLK  
+  10-V5 - CLOCKF
+          CLK  
+  13-V6 - CLOCKF
+          CLK  
+  13-V6 - CHECKQ
+          /TC[7]  /TC[6]  /TC[5]  /TC[4]  /TC[3]  /TC[2]  
+          TC[1]  TC[0]  
+  13-V7 - SETF
+          /COUNT  LOAD  
+  17-V8 - CLOCKF
+          CLK  
+  17-V8 - CHECKQ
+          /TC[7]  /TC[6]  TC[5]  TC[4]  TC[3]  TC[2]  TC[1]  
+          /TC[0]  
+  17-V9 - SETF
+          COUNT  /LOAD  
+  18-V10 - FOR
+  21-V10 - CLOCKF
+          CLK  
+  24-V11 - CLOCKF
+          CLK  
+  27-V12 - CLOCKF
+          CLK  
+  27-V12 - CHECKQ
+          /TC[7]  TC[6]  /TC[5]  /TC[4]  /TC[3]  /TC[2]  
+          /TC[1]  TC[0]  
+  27-V13 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Cntcase.HST
+Simulation results (trace) are in   ===> Cntcase.TRF
+Merged results (JEDEC) are in       ===> Cntcase.JDC
+Simulation results (trace vectors) are in   ===> Cntcase.TRV
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 161942 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Cntcase.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 1

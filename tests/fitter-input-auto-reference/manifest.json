@@ -1,0 +1,604 @@
+{
+  "provenance": [
+    {
+      "capture": "build/family-input-defaults",
+      "script": "research/reports/capture_input_pair_defaults.py",
+      "details": {
+        "source_sha256": "27cb99bef8b041cdf5473498f40e677269b1827760327a2a685e69ad46d3207f",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "AP2110.PDS",
+          "RUN_LOG": "AP2110.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "90142b86e1a87a47c46fe9809cc5d91e9430c529692d9354aef4bec2677c3024"
+      }
+    },
+    {
+      "capture": "build/family-input-auto-controls",
+      "script": "research/reports/capture_input_pair_controls.py",
+      "details": {
+        "source_sha256": "32ff777e99f21c3aca56bf64fdef11008e1db12cc848cb67fdd4fad160fea387",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "AC2110.PDS",
+          "RUN_LOG": "AC2110.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "1a355397ce06404b5a45d357f5ff1531931389f21ff72a98dfb3c4b06ace218c"
+      }
+    }
+  ],
+  "cases": [
+    {
+      "name": "AP2110",
+      "device": 211,
+      "P_N": "N",
+      "PAIR": "N",
+      "sha256": {
+        "PDS": "27cb99bef8b041cdf5473498f40e677269b1827760327a2a685e69ad46d3207f",
+        "MXL": "89bb1260fca8b9522dfddfe2f6772223604bb7d0e037907cc82584c047a5c5af",
+        "PLA": "89e6675cb7e92eba405a84c61f48025b68686cde1d132139ae07393c70ac3f0e",
+        "JED": "865af33d6ac854e1bb9b60fb0d15e9967da6497b4c9684215ff9a1fc97f11d50",
+        "LOG": "7f2eba6438ab91ec0ff9b000d358b193ffab77b18a62b5ad54f075ab02453202",
+        "DBG": "6a995643d3d10cb97fc6415592d10cdd6f67848e6592917c054be5082597ee70",
+        "RPT": "d630ba473ec823109a388000830e6cd5b9847cc41ebc8288594671b2342912cc"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AP2111",
+      "device": 211,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "a69237bbee8101a21252d0cd783c04f716fff9d8c2638b1126f3c4d4833785c3",
+        "MXL": "0d794a98f7ff1900308b5e7bb9930e01d862017ed3f2c78fc8fbf4388ee7650e",
+        "PLA": "9c052bc786102b752598a457b0322e07c91704bad27494c103469658d6893ae9",
+        "JED": "dad1370f94bb8b5bc26ce3a97d2b45194a258c13f3421ad96eb4a5f37784df1d",
+        "LOG": "55772e489a0f5c6762ccac4a80dd3273eb2f25f1a50d26dba3c071c98525a6c5",
+        "DBG": "e1340456fede15741e701ebe3512ba0b1d45d70b353c347346fafac009b46c86",
+        "RPT": "42cbfc14f483aba4fb22fa9ba73d1b41440d725c7177525bedd033af4a8d8b9e"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AP2112",
+      "device": 211,
+      "P_N": "Y",
+      "PAIR": "N",
+      "sha256": {
+        "PDS": "7b711a090745f79f5365f0c027c40cdca468acca1a17937fed371f1efea3db67",
+        "MXL": "653671863cfcc61a1167c20a8185f1b738adb0e961b32341c064c2f68f201a06",
+        "PLA": "d3f86bc7f6502731de81850de8d32604581e02ccc7e3ac628f6518bfcef18d4b",
+        "JED": "5a36f9bc347d10061a43eb775577e253b2b4b9087976343cd053b4ea470bbc87",
+        "LOG": "1a7db6c31527bdaf4ea2f4f021c57ad98ddc663631e8f64e2f7c320efb06ef92",
+        "DBG": "6e8a1bb3205ec09784e88b640aab71e2ea47e3422d3968e11bfc01d86cd29019",
+        "RPT": "1dfb553be001da0f47a6a9b97c6e642bf6152f127463eddc81d5f84a6fec0f64"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AP2113",
+      "device": 211,
+      "P_N": "Y",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "cff2a05e2564a7328ab9e2d80768724cd5ba8e80f36ff5288f6bb4f8a7dd5089",
+        "MXL": "fbb095f6d3682e60053e7f6481115ad5ba35e372f2ff3875c353290eeddb531c",
+        "PLA": "a3d1b87264f93e779daccebf06fef85270e3a9225cff3d4a0661a38d485df952",
+        "JED": "0c2aab29cd2ef089743ce9fdc796d175375002861ea3132ffb349abaf907ecda",
+        "LOG": "187aa41d813f3bee196b257910bdf9e4df7f80cd06a8bf2559816e38acf81d62",
+        "DBG": "efe4117b17dbfb18d4b804df3d7996a542cdc3cbe8dd97f2ed2f10cde3da17e3",
+        "RPT": "7ae61724365e21f7e5a343913fdeea997e1a7f24dd645e7a4ff51ab69787bd24"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AP2150",
+      "device": 215,
+      "P_N": "N",
+      "PAIR": "N",
+      "sha256": {
+        "PDS": "5fb54255f5a7e237a09c2ea22224e60be3aaba2070d07718b1f5be02598d1b8b",
+        "MXL": "6c9b352314302623ff01dab3fd20e8ecf74ed1ef723ae2f8084b52f254897bfe",
+        "PLA": "e55a2081d4dc25d50c685d5f1871bfa965af39ffef6570b10ddfd2e848369027",
+        "JED": "b435b696a0f37c35ce5ca70dcab7720e5e33927faa0c54ccde7b17fe8a831d03",
+        "LOG": "e0c6892c50a6752c903d6d289eb8f99d54f4a31e84036d5fb3584bfc31ea8bea",
+        "DBG": "bd32c3687d002202e57c8e879d1bb4d0d66ef69d65dca65f99ade651734fad83",
+        "RPT": "c66047bf6e355e7c4d14a6ec56b5617d568f2c3e363e2b96c0b06625837b4b77"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AP2151",
+      "device": 215,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "42a1e5dd9950c682d833d2750a3ef5c5e8ff5c29923d2d9f75f7276f3e46f93a",
+        "MXL": "608b1726de2deda4079a50054bb24002b2786ea6f4402e4a5a6655a47313d3a7",
+        "PLA": "11d8f6fd7a41d2332845dfc521a23a5a8a10761303aac90414d20fd2e2c86c75",
+        "JED": "ffe48a78214f8f13888f67627773f663d9b0a1de6bd4a5dc0afac90cad725229",
+        "LOG": "a8be53c22218ce38ded8bc471813ca3e7b6e46b52e711d009d5c52b6809c7339",
+        "DBG": "eda2f19a37df2d756e753dc12c8d9bb9aa2b1cebcad669ec0d8e7da360239dd5",
+        "RPT": "145f4f53783869a5ae364bc1e29aa8b1f645e943f604d3fc24a6daf0fcbc1fb4"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AP2152",
+      "device": 215,
+      "P_N": "Y",
+      "PAIR": "N",
+      "sha256": {
+        "PDS": "7b4115eb5037abf553330da6f2663fcc868e5daef47f56c978da4c9378c7ff85",
+        "MXL": "c87145bd62928c9ba1e05763a7d50ba95c038a873d28c4aae3bd98e0a87e9717",
+        "PLA": "74881ebc7665f66810101520e464bcb05921ba140aa7549df34392b5d6268eb5",
+        "JED": "657185aa464c3e7e2bdba22d84a8d5f8b0e2339f100bb307c71d13e65cf12f6e",
+        "LOG": "c2d3c7d845c254f09929c456278afcf60d984c1b0e775cfb1723395165eb9451",
+        "DBG": "7b2dd3f643e2b4e0bded782c4b671c91776699d9bf7bd355307ae7e3495c9725",
+        "RPT": "f0dbd5d684079b4a83385ba65117adff5eecd8a5f425f737a68ee40a855bd41a"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AP2153",
+      "device": 215,
+      "P_N": "Y",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "7a59d2d14ccf7de456db1b275ce08e4b25cc31197ce6de5cb2fcda3a10d08430",
+        "MXL": "bdc963c8e134b1cba7f16972120d06a6ea43c00366f711545a122061727327f3",
+        "PLA": "dd4174c53d5274fc5a1aa92da4e9c1a6440cab34642388085cbce303c0a95d66",
+        "JED": "2310e76b1a69e351319768e7c2a760ce99773f00c55ed336b48470633647831e",
+        "LOG": "81f8727f43390d747bdf88a9175f50b3927bc0b6706bb66a1b26d640bf2dfa8b",
+        "DBG": "3865916acd92ec8d792e1893cefc462e673279509764d8993469d2b49c4d0980",
+        "RPT": "d52d38d3df63481220ae1db01959817e9c7ac0ce757527aa94a20d11b85c05c6"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AP2310",
+      "device": 231,
+      "P_N": "N",
+      "PAIR": "N",
+      "sha256": {
+        "PDS": "2c3776029c1e070f4181bd742c9c103afb9943004337baacb70b366ba7362fe7",
+        "MXL": "70343b2cf2d7aedec96a0c626270b1004598e5d928b3c4d08a683dc44b5e7b3e",
+        "PLA": "a6987316830d031b5f11716707ea2891dbfcf20caafc96426853830e180ae393",
+        "JED": "cd1b35de3641e4f31930343875b9a39355a6b852e8181e4868bfe1f089da3a02",
+        "LOG": "435c135c2ce123c237f25267e0c602a44cfdfa5167f51e838b1c30ab39e5bbfa",
+        "DBG": "023bf341404a0999e4db03a741a7d0b6a97bf4d02456fc22838dcae6eef40961",
+        "RPT": "edff389c5e0278dd0a4d6e9e89212be7264108fff2318daa5f324c3f16239a48"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AP2311",
+      "device": 231,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "55771bc3dd9f810d333f8e60c22885f9869f3224bcb15e120265fe312bc9384e",
+        "MXL": "8d90b4e8ba2668a5be5fc46285f4b2b4f9fb8d9658fb17301afab99293bbba84",
+        "PLA": "bd8dcb7c4e7e86a17ae07fcd4d910683a846862ac838c4bb12a43535be8721fb",
+        "JED": "7014f9b710d668213821e2451eeaa32babee04f04ac7e7a4ddbfc8c5ce2b6093",
+        "LOG": "36444b79a7fb0cd5219a718ca28017645b1d0e0c0049f702e24470c4e9018bf6",
+        "DBG": "6f3b8aaf78555eb2e81138ae874fc90475146be77794aa7c3bce8701bce2cf3c",
+        "RPT": "e8407584268a4aa657931479f426452be5310bd22e0f7359db41713004a7ba71"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AP2312",
+      "device": 231,
+      "P_N": "Y",
+      "PAIR": "N",
+      "sha256": {
+        "PDS": "f3bd535db461c15140c78c0aca5875ad3bcb6b75edefa15bb8a098add219f2d3",
+        "MXL": "6f01e839b87e10d9706d039646d8ad748fbf0eb51c32b1ffebc08338c1121c13",
+        "PLA": "e9137d1e65a93d7fa201b442ccf9c5f7ab7e953171e5d388fc707f9fc573d76f",
+        "JED": "0635f46211dc65efc546b7e5fa63b002503854de02e14f780bfcae0eb1732603",
+        "LOG": "15d465e9ab461c0e823b16681a1035c3f0d19447f011e692ee74cd2b783206c1",
+        "DBG": "c9852e9df60f5cd5983364ddb23f5e1e746f3ea2b28c8821a2334e8483ae417f",
+        "RPT": "a1dc283915b6ea9d7dce4f8c59dce83d301d48e6f6af98eb5094c0948d0439a1"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AP2313",
+      "device": 231,
+      "P_N": "Y",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "47beeddb9efc0c2dfd0aadd94c4f3d254dc9e196b27bf8e232ea58c3705ddbf3",
+        "MXL": "fc5d5a89c51e9bd4372f5396783ee71f37a3231f6e785a33a1700047cc0137bc",
+        "PLA": "596f62eb189774598ce3d9cb26892d08f1ea6fd7e011452bd35ec3ad973d19d2",
+        "JED": "138db406a22df71460e0dfb193ea764897289e71bc4bbd5e461368b002f48ca8",
+        "LOG": "d5170e29dfd550522b81ab0d61f50f93353fe3c3705f626d81addc763adfb5b1",
+        "DBG": "120224a5567de0b05c7df57f83666f60d6544ddd1210975eb54bac889c889b26",
+        "RPT": "9d287e82e5deb43b2ff5b2d2ae7f3a0a9ffebc12b8d52303db509a9151f3b7c1"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AP4350",
+      "device": 435,
+      "P_N": "N",
+      "PAIR": "N",
+      "sha256": {
+        "PDS": "6b412402a57630947948017290ddb9b2a8c97c376b9b3916430e68fab9ed8853",
+        "MXL": "53ac19c874d4d563addb90089302cc82966db91a6a55278ed1712e43251eca67",
+        "PLA": "5458f969bf083e14c41c343b514fb17e187960ff0f306365a976c406016f3f0a",
+        "JED": "4480c95d0e478ae69e40f177c307777af8dd0fe1888dd7dfd4a841b1eeb93ab8",
+        "LOG": "d91506741578c2c1531620580e76d8b4a6c12063dab9c864f9c94eba802db064",
+        "DBG": "77c144b7f6dcaaada175a7a5b69e23b3c6705c167b43a092d69b44024cd4d1f4",
+        "RPT": "052c5af573a9d023792cc89a39263a4ab0fc180ebdd5043d10b44a3a8acdf17a"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AP4351",
+      "device": 435,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "bf33e0c319f72425501228e74fd9e3ae25875f51eb4f916cdd9dc1878d860198",
+        "MXL": "6458c65ea4d515be9793c6d6b2b8498da1ff788024a318093f5342df31a61eca",
+        "PLA": "9f857d6d37fe7effa98b3bca13fd2525901e72179f1199a7f2be390540fa5f1e",
+        "JED": "71cdf6c938400ba3720b26e7ce93a1e227ea63f3c3bdf11745c290e746b0d306",
+        "LOG": "44a20a3bdc9ea035ce645fc68ba01f390cfa3921370efd2b0617dfbd4cb187dd",
+        "DBG": "90c8c4bba3757891304e93429fbe00b2bcf5352e2e0ed21a80dd5f53303cb9c2",
+        "RPT": "42eb7509b56de6a465b489045baf4626ddd301948c2854a645586bb0f97565c8"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AP4352",
+      "device": 435,
+      "P_N": "Y",
+      "PAIR": "N",
+      "sha256": {
+        "PDS": "af82207a5ff3522543c865885b27209c46aa4df9a4458c77fb256c2d82a28775",
+        "MXL": "f9713de78cf30ec9c68aa5072718576f94ad49751d34809f0833efa80a8ab00c",
+        "PLA": "e4135ddbf8c37ce2b4e198865d0e9c993b334be9cd176a1e9e7996c5bc371ecd",
+        "JED": "bcd6c73452042f6e286ee75b8df5645743a53341cd276c8115b53d48a195dc36",
+        "LOG": "858a4765eefe00832123a8be226de0122e26c815890f00b6c4905d059a19255f",
+        "DBG": "8e2c119baa8dfdf857237d3eeda15d0cd0938c6389711408b7dc90415d2f1cb0",
+        "RPT": "cd409c00f78b4c01a118c8be360f3185a18b0d7a293a8d550983c3ded2a60cd9"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AP4353",
+      "device": 435,
+      "P_N": "Y",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "6676cc6dc13c4541f2f10fc9313b2ac17ecd6f3bd6b2cb32acf70db1793ccd0a",
+        "MXL": "48e969bfe4f1a50096cb229e8c0de255462329010c4a87c8955bc79726d5dba9",
+        "PLA": "c3a6781e40333d82f04b667edda63cb06268e11116b6935bf3797d713306cc72",
+        "JED": "5e4a30a3235fa95ee4ac95c7329a4ebe9a0a73e9585cdc7a124bb8f0c7e6a9eb",
+        "LOG": "6617d3239701f84a1ee6223ef0955562680a455b8b9f2414e63e6bbfe889a0c2",
+        "DBG": "3cf03d966d09f37f062637aefe662122efbd6a1979f83e10ed234ed3639f2fd6",
+        "RPT": "8c31c52d231aeaf5ab77ec7e0353c807b88875e3a6cc3fc72371a745bf478984"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AC2110",
+      "device": 211,
+      "variant": 0,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "32ff777e99f21c3aca56bf64fdef11008e1db12cc848cb67fdd4fad160fea387",
+        "MXL": "18a9fb336368bf7c81056dfed36b2c1166aef8107a09599e567af0c89b4d88ac",
+        "PLA": "aeed37ddabeee58002598fabd8a60a88914512dabfe4dbb4760b32403ca3874f",
+        "JED": "ad4c6f6c20687b31ed821bfd50410ebdb57ccb66141be5774b44171665834fc4",
+        "LOG": "2c3c0ea9d89bb6de7117b02f9ed16134f613d4349bd19b61babfc5499344699a",
+        "DBG": "291a04f3e4ba5595506ac95c3e6034851c9fda251ad147e1c781c9146ce1c8a2",
+        "RPT": "4a6b768dbecf5eacefe36658125e228b7fa809fe88e8de4a2de3a1e9f16d4cc2"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AC2111",
+      "device": 211,
+      "variant": 1,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "32080e2d91057c5b7d97278e597288998ad546c4ee13b0ead11519dd2a1a624c",
+        "MXL": "72c2aa3ca7be7c3a253b3c74b4c09d5d7a63575ad231922c1c18080f58788208",
+        "PLA": "65791b26d0571c2950615179ce1d373f757f24b70bb72df24b175f1cdf3015e9",
+        "JED": "c86c8b337a146e9b52fbbd890ded06b3b9ae35165e45ff8ceecacfea9ba00662",
+        "LOG": "d5da09f2a2228ae37b9eac6afe473f1f3e0ad7c97bfe1862498bfe761b05de6f",
+        "DBG": "797b45f1e9cf5e973f3284cf9d7c85461f0208377016e301324d40371ef698b6",
+        "RPT": "4faf994d22028b386087910c785e9ca67c4fd1079c48b142fa2e73c6a3ef0ddf"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AC2112",
+      "device": 211,
+      "variant": 2,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "5084a6606e883c0f8e740255525a0df8d198244ff65d1045d88cc0ee6a900f3c",
+        "MXL": "cb30cf6834d78e87b09fbe58957a1b6ffa3e5b42c3cce2bba123bd21e100fb7e",
+        "PLA": "a870c0747e57e14a8af48d7c0f2e274876f646edd11c0154b021337e2348c8ba",
+        "JED": "9f22189d39e7acde7e78f5b81010c94b6767da0cba5ba9105fd0791406ea238c",
+        "LOG": "fb81de6ece92ef37202f15b78510181af306eaea0e55a0893a40aae805f6f97a",
+        "DBG": "50b4bd36197f1f5dc436f2fad495e8756e8ce4476d4275b10aaaac5aa3293db7",
+        "RPT": "ab56865b5d21727ef5c2621ee3c2befaff3515566954b134c9bb5323c182ec38"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AC2113",
+      "device": 211,
+      "variant": 3,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "559abe1f4c6bbba00c258373863b646041bfe25e38bffcf4f525120c9c165b7f",
+        "MXL": "d0f64a12b854893d73b5ffde92a42c35bd916265bfa0f0eb8ab9255d24033dbf",
+        "PLA": "7d75fc1a778d782cd08570af0f40d33839471c37bb7acf57cc7a13af7c120758",
+        "LOG": "8b05bccf0896a0ccb5d25d98fb909fda96fe336149aff9abf8e1e9b7c0961f7b",
+        "DBG": "bcb07d5ed49f47791fd3d46b4e1d92a616fbceed891f4b7a1377ddb5260ab96d"
+      },
+      "original_fit_success": false
+    },
+    {
+      "name": "AC2114",
+      "device": 211,
+      "variant": 4,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "b3fc79d9f62ac8ebdb80f82bdfa5d9e6078bce4fc9d38c3870df6c44ae374827",
+        "MXL": "7e9c3ff6ea922b3503576afa4daabb61111e97ffaa18e761cb667003c6e109e6",
+        "PLA": "4d96485707f20a553753924025af271a3fd4556d0182f27ebcab993debf60f8c",
+        "JED": "1567b30959942d5703b7db9ce75ed1e7439e0d6c84b9ccf576659f22bf619a78",
+        "LOG": "07a50a6256eb832de378bb114b357d793f80ac0baadcdfa634b62d058c372950",
+        "DBG": "6e924581ab7043ced6e39812aa1eb7a19e21b1da6d4c514b11154e08988566b1",
+        "RPT": "40eb32de1b9a53b661ab19e416d2d845b3cf976ddaa45016527789486640a652"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AC2115",
+      "device": 211,
+      "variant": 5,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "ec3fc76f67b9b419fef04be693d181405aff16ba73fb883837d86c5f804ac55e",
+        "MXL": "79bda59b9dbbb526eca3bd70da851b98906cf11b02c6fa64e31b8792354e8371",
+        "PLA": "841161b870856ccaef9d432bd15dbf9859bc2d52939d1aa1ce10cec85b42f8e7",
+        "JED": "12414c27acf76374260d16a4bd7c3345e9a76ee2eb542fc027dd6db33711fd37",
+        "LOG": "f94ba26a4a7d5059f30f1fc29bc6d07ffed0529201ddfa7b7d612e809306a62f",
+        "DBG": "d2160f609756f4ba5ab566dd29fea271385ce697cb44a752202679dabf9cb95f",
+        "RPT": "afa55fb3af871ec447a77613975f6b30f570ad3c7c3746f52ae8a3f83995d778"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AC2116",
+      "device": 211,
+      "variant": 6,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "4287b170bd04cdfd99e45c345218b0c9fb90c7d46174a1154baff99d099d463d",
+        "MXL": "b56ddf62d118a6521854bd1cc2de0c682d1972057217f493dc3b9a8b3c67b3a2",
+        "PLA": "c555665ae1604451d1ba1c14b5b652a1123e928c1c692a2b34882dfb40a98a36",
+        "JED": "e1f35a0329367ac534de0c0cdd4e10a8cdcb869090c7aca9d2cec0589da8e036",
+        "LOG": "bbfa715624b9e157c5a76d909278839cb37d252d6e7a62212c68fefe8428272d",
+        "DBG": "eb77ec0db9b1f69c0b0062a58a9d28aaf2bfb931e16f8387eaa91425ba38f840",
+        "RPT": "2fd9c2dd49e1e0448954b71e771fcf29ae0347e5e3748594adbe4e5f724699b4"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AC2117",
+      "device": 211,
+      "variant": 7,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "739d4f426494cf8f77bcd04053a27efe4cb2804a2b5f54bbce5769522705297b",
+        "MXL": "83fbbe5bc661d1f6103d960eabd39fcf08fecee7ad9728e6bec6b727c9c2b455",
+        "PLA": "4ec5953774b59858815012a9c135e1528caad5af37e0ded22d5c3bf4644831b5",
+        "LOG": "7864f009a4b754c55a22e3364fe72cc7610dd33da06f0f1ba7856763d31b735f",
+        "DBG": "d5a887fbd1a6c9f6e2870a0edb24fcfef0543b7b3bb125e1b27cd605d8dfa386"
+      },
+      "original_fit_success": false
+    },
+    {
+      "name": "AC2118",
+      "device": 211,
+      "variant": 8,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "01daaf731a34d5582f4b5d6ee4e95c848246e2623e6a2ed1d0eb98953ce5d233",
+        "MXL": "ea901d82116cdefe5a213147ac600a57c5c4443c00f6966fcb6b185f840a4497",
+        "PLA": "6bd5eaa8f9a2c62db7ff8416b19b4ae1d9e76f046063dddd0f60df8386488639",
+        "JED": "9190cfb5ccfa42f825dfdf414f04ed7ea6374b2420c18419099fae3a13da90b2",
+        "LOG": "03f3bb1b6b24fd870ee1cec6fcec475e62f03da39fdf7705c3c5d3d8f2abe8ea",
+        "DBG": "fbd64d1821cd46ab32bf52ea4744991c6554053c2f4abd7df042e29040e4b6e4",
+        "RPT": "7260614a7b9eec2a6050ead1c730eb0c4b3cf736cd8ed733cb8ff55e7f13d27e"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AC2150",
+      "device": 215,
+      "variant": 0,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "c1e91bc2a3fa99a745706dcd3471f3838f50218968d87df46c5fa8b03e95c154",
+        "MXL": "9b4594da9159684d524f3a0cbfb67934f89024e5e27912d773fa7c08e8958b94",
+        "PLA": "52373a6bb7cd0e0aa4a711e463cd0caa24f6defc07bcbe7f084f980e694a46e6",
+        "JED": "60a483e09c9ef666af7a97ad76835d9ec0e1236ddb26e6fdbaee184dc482587c",
+        "LOG": "a586b5a7f8a946779a7e74d316b75d9c330fb346e19f58866dfca198a8543b53",
+        "DBG": "8930ce33ebbce6f37451823911a258bdd510f0dcb85469ecc967335e15346a10",
+        "RPT": "c441e4bc529751f77a6fbc6bea5d041207c5b345443536df3d1ec4e3cac2ab35"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AC2151",
+      "device": 215,
+      "variant": 1,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "f1e14bd75b3ccbda01b8bd199c5d292ce9e1dffb824656c947dbc1d5c83dfbf6",
+        "MXL": "d065391c38a4afb7b4b36c531f4ce8a79baae6e77964c6162202cab1d2f6551e",
+        "PLA": "d095394128e5e863181b3e472979a6798bb0109b19be83741b3f5a1dbb9954f6",
+        "JED": "622f976373169f53cb731105c491405744c3bd76119fd8e6b20214ad88f92fa2",
+        "LOG": "9b099bc80e54c197ebde5eea5e5fffd5cf9aeab90e7440cf05dd3f0ca7c50753",
+        "DBG": "2873c3dc1f14403bedc44bc4ab392bd2360c9be3aab7786db3d9027e7d8d65dc",
+        "RPT": "1c30e683d28173a9c103a35c9d4e93a85efa877c3465fcbfabda040459f09e26"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AC2152",
+      "device": 215,
+      "variant": 2,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "7d2f5dacdb16278bd03e9efa58199cd9a139cb543c14518d0074613d685c6d63",
+        "MXL": "ab346c1b23f8850f05d3050cc901d2af0409f75db6dd8a4cc7d9ea5a0c0520db",
+        "PLA": "1b9f36ed45e4d03c108d432ce86ad8298378a099c456189b86da60b9b5cd2f29",
+        "LOG": "5b11aad9f25627ef38708773c79ef260500f65333482f7d4826da2f008845346",
+        "DBG": "af40fe8c11eb57d60db498db9522ce3255a128c4f993c7efba2682f5fd033986"
+      },
+      "original_fit_success": false
+    },
+    {
+      "name": "AC2153",
+      "device": 215,
+      "variant": 3,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "d58cfc43fcfbe3d37d78e63468151a0880addebe585b935add097e1aabec0938",
+        "MXL": "c93ccd5ca89d63d171cab6a6a31f117b5c0896c1c6365bb19c09323cab3d4e56",
+        "PLA": "21ac33ed1a3cc22ba2945a741ba035d4c0f70bd9a777dfddd8f7465330aa5d36",
+        "JED": "b6ddcf11ee26b540d9befd61b220aa2ff91938dc546fc6cf56d66cf06acfb53b",
+        "LOG": "1eeff753fcd9f129f80b979c5a17e58ed5245a303838d1d331b6df5393694247",
+        "DBG": "3b83e8881f53263764eddcaf2077a44e668b2f57111ac28cd7d2175ab45dd84e",
+        "RPT": "ed25821d7e137a9edd17d00d3d9d41d7f07782bd16d3357c90e45e7418db9738"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AC2154",
+      "device": 215,
+      "variant": 4,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "035dba3e376f148c587dadcd5a0de660af4c0e7a8b72915b0e5d13fd63804e85",
+        "MXL": "69dacab1b5830556cba888e70fd292baf48802d08515a823ceaaf6e787968661",
+        "PLA": "aee91d1a01a2b93b6afd849fb8ec6150e1cfb7fc99ab60c98b7359a05bd136b5",
+        "JED": "5428dced12794afcecf50d0eaaaedc37cb6c5de48a73a59adc0ba364f62ba30e",
+        "LOG": "49f4fcdc7ef617c3c94d0199cdc171c010ba0f1abf45ebb33093c89606936e59",
+        "DBG": "aceb5c3650d69bd8cc8d6ce7abb04c33c67493c45d7df455f6c9cca3df340c71",
+        "RPT": "9f44f4f03f7829bf2b2b80fbf5c2b0cea1d2f9680a3d7b71e8af334a4d77f85b"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AC2155",
+      "device": 215,
+      "variant": 5,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "895be3430c6175740e2a83dbfcec21eb820611db7ecdfc55e83a1a4c9934f31a",
+        "MXL": "3ae8959e8c1c13799262de0d1f7dd9be6b7c235f3245eb87e4b7d23396b091e4",
+        "PLA": "a9730f895f7d1b931053587aa09fc45d1aa9d13270eda39f3b6a0f2c25a80c7a",
+        "JED": "d318905ec420e2a9daf374a8c41f3b23b60db1883817851786ecc9626717a710",
+        "LOG": "278f58afbfc2f1a3a0718c56023b70fccaf0e53a870b5b3ee5a8df8e95405541",
+        "DBG": "b0ca5f1bfe4deaeb4a5f19702d98b18236e2200f171cb374f2ad6bb568867d1c",
+        "RPT": "ff249a06ac4be4904c9c846637433f0fe5ed379617add20553984aa30693eba4"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AC2156",
+      "device": 215,
+      "variant": 6,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "bff7854b0e949dcfa499323f4cf9364cabe1d42221efd86e5fbe27afdb448649",
+        "MXL": "b5870619b0a1a502796bfa09da1fe56061e7194de68ee2c5dcdbf3fc3e547269",
+        "PLA": "8f82f09ffe14a0e67a06b2fcfdd30b3f98b7c4f0b13443071adff05f04c1675c",
+        "JED": "1d12723100759d3bfcf37481065bdf914b1409fbaf714e5a9a768be64064a92d",
+        "LOG": "fc1697e82dfd19f4bcbceef40d3ba8a92bbe1cdfd0c1acad61b55e10081d0800",
+        "DBG": "6964528fabc75e012aa7a1d7076b099f7f19e7005b88d1e11c569c8b8b84d218",
+        "RPT": "d7f28f0df5509db3527a0357c4bf2e1e1a187053c4bcf8790ff0ef60905ba182"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AC2157",
+      "device": 215,
+      "variant": 7,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "7def40f0f5c6088442364941dcee76c1145ee38eac10ab47034738cc1e7c5a5b",
+        "MXL": "18479f748ddb60d3ebad6ee4a3c3d9d2040d89962728027591f0a4d221659d8b",
+        "PLA": "6200282c17752ab50eae7ff379898e7a6288be124cf7e9b6afc453e5c2e48453",
+        "JED": "92a2990a2ce4d2f8c534f0bc2e1cae75d024e955c0f7d853e19971012ea6267d",
+        "LOG": "45472d6cf94646e7c5fa4c0b21ea92c1ea40ea3d4dac7aa831dbad90e4c496e9",
+        "DBG": "20cf0978640bfd958775201395f51045cf86adca54a8e3802904b2fae02d4324",
+        "RPT": "7f51c8097788cfc8a30c84e611d4be70c2e07853bb6deef68ec85f904ffc35bb"
+      },
+      "original_fit_success": true
+    },
+    {
+      "name": "AC2158",
+      "device": 215,
+      "variant": 8,
+      "P_N": "N",
+      "PAIR": "Y",
+      "sha256": {
+        "PDS": "40384dac7a6e1473180cb33ad5fed3d9187ddd7454f91fe7384ddf5c88633797",
+        "MXL": "b3e91d8565f89a8e9f8e537fc68b67cfc441b9f32dc28e3febcd304580af9fba",
+        "PLA": "67c6c16b855d9be92060389ea5eb04a160a2350baccf2deb81e6bf41cd6d6517",
+        "JED": "579a7b2652b2819d9083ff35df1ab0bb2a9e66f738b9207db204228eca8ef750",
+        "LOG": "0eb98ee00e059255f535c13e87307fbfe0097767b42234a02e70fcf642b89389",
+        "DBG": "bb9a32926b9c0b652607ff5a8eee3761f601c9daff48643e0f7b473225d98c8a",
+        "RPT": "e591d4fd33dad5d47fc928318989f774688a17f00eab4554809836e7bed8a942"
+      },
+      "original_fit_success": true
+    }
+  ]
+}

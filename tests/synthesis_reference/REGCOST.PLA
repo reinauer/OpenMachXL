@@ -1,0 +1,31 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME Regcost.pds
+#AMD TITLE 
+#AMD PATTERN 
+#AMD REVISION 
+#AMD AUTHOR 
+#AMD COMPANY 
+#AMD DATE 
+#AMD CHIP REGCOST
+#AMD DEVICE MACH111
+#AMD JED_FILE Regcost.jed
+#AMD SIGNATURE 
+#AMD PIN 6 GND:1 GND:12 VCC:22 GND:23 GND:34 VCC:44 
+#AMD PIN 7 A:0 B:0 C:0 D:0 CLK:0 Q3:0 Q4:0 
+.type f
+.i 6
+.o 4
+.ilb A B C D CLK Q3
+.ob  Q3.REG Q3.C Q4.T Q4.C
+.phase 1111
+.p 9
+--1--0 1~~~
+-1---0 1~~~
+1----0 1~~~
+000--1 1~~~
+----1- ~1~1
+---1-- ~~1~
+--1--- ~~1~
+-1---- ~~1~
+1----- ~~1~
+.e

@@ -1,0 +1,400 @@
+U8.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+   1     |;PALASM Design Description
+   2     |;---------------------------------- Declaration Segment ------------
+   3     |TITLE    BLIZZARD 1260 U8 - RESET, INTERRUPTS, ARBITRATION, REFRESH TIMER
+   4     |PATTERN  U8
+   5     |REVISION 0.1 (RECONSTRUCTION)
+   6     |AUTHOR   RECONSTRUCTED FROM THE PCB, SEE ../ARCHITECTURE.MD
+   7     |COMPANY  BLIZZARD 1260 KICAD PROJECT
+   8     |DATE     2026-10-26
+   9     |CHIP     U8  MACH111
+  10     |
+  11     |; - A1200 _RST in (pin 26) and out (pin 19): the 060's RESET instruction
+  12     |;   (RSTO, relayed by U14 as RSTOUT_N) resets the A1200 through pin 19,
+  13     |;   and the self-reset latch SELF keeps that reset from also resetting the
+  14     |;   060 via RSTI. An A1200 reset (power-on, Ctrl-Amiga-Amiga) does.
+  15     |; - Board disabled (U1): 060 held in reset, _BOSS/_BR released so the
+  16     |;   68EC020 runs, no grant for the expansion.
+  17     |; - IPL from Paula: double-synchronised, a new level is passed on only
+  18     |;   after two equal samples; all negated while RSTI is asserted, so the 060
+  19     |;   samples no special modes at reset (68040-style termination).
+  20     |; - Expansion bus request/grant: the 060 loses BG, the expansion gets EXTBG
+  21     |;   once BB is free and no cycle runs.
+  22     |; - DRAM refresh request: one BCLK pulse every 8 E clocks (~11.3 us).
+  23     |; - EPROM /OE and the SIMM address bits MA2 (A15/A6) and MA6 (A16/A7).
+  24     |
+  25     |;---------------------------------- PIN Declarations ---------------
+  26     |PIN  7   RSTOUT_N                    ; from U14: 060 RSTO
+  27     |PIN  8   BOSS_N      COMBINATORIAL   ; A1200 _BR + _BOSS (open drain)
+  28     |PIN  9   A16
+  29     |PIN  10  A3                          ; unused here
+  30     |PIN  11  A1                          ; unused here
+  31     |PIN  13  A4                          ; unused here
+  32     |PIN  14  ROMOE_N     COMBINATORIAL   ; EPROM /OE
+  33     |PIN  15  A5                          ; unused here
+  34     |PIN  16  A15
+  35     |PIN  17  MA6         COMBINATORIAL   ; SIMM A6 via RN4
+  36     |PIN  18  Z2SEL_N                     ; from U1
+  37     |PIN  19  R_W
+  38     |PIN  20  IPL2O_N     REGISTERED      ; 060 /IPL2
+  39     |PIN  21  EXTBG_N     REGISTERED      ; J3.90: expansion bus grant
+  40     |PIN  25  RSTDRV      COMBINATORIAL   ; A1200 _RST, driven low on RSTOUT
+  41     |PIN  26  F0SEL2_N                    ; from U1
+  42     |PIN  27  BG_N        REGISTERED      ; 060 /BG
+  43     |PIN  28  MUX                         ; from U7
+  44     |PIN  29  A6
+  45     |PIN  30  MA2         COMBINATORIAL   ; SIMM A2 via RN4
+  46     |PIN  31  RSTI_N      REGISTERED      ; 060 /RSTI (also to U7/U9)
+  47     |PIN  32  RST_N                       ; A1200 _RST
+  48     |PIN  33  BCLK                        ; board clock
+  49     |PIN  35  ECLK                        ; A1200 E clock (used as data)
+  50     |PIN  36  KACK_N                      ; J3.87, unused here
+  51     |PIN  37  REFREQ_N    REGISTERED      ; to U7
+  52     |PIN  38  TAX_N                       ; from U7, unused here
+  53     |PIN  39  CYC_N                       ; from U7
+  54     |PIN  40  IPL2_N                      ; A1200 _IPL2
+  55     |PIN  41  IPL1_N                      ; A1200 _IPL1
+  56     |PIN  42  IPL0_N                      ; A1200 _IPL0
+  57     |PIN  43  EXTBR_N                     ; J3.89: expansion bus request (pull-up)
+  58     |PIN  2   IPL1O_N     REGISTERED      ; 060 /IPL1
+  59     |PIN  3   BB_N                        ; 060 /BB (pull-up)
+  60     |PIN  4   DISABLE_N                   ; from U1
+  61     |PIN  5   IPL0O_N     REGISTERED      ; 060 /IPL0
+  62     |PIN  6   A7
+  63     |
+  64     |NODE ?   SELF        REGISTERED      ; A1200 reset caused by our RESET instruction
+  65     |NODE ?   P2A         REGISTERED      ; IPL synchronisers
+  66     |NODE ?   P2B         REGISTERED
+  67     |NODE ?   P1A         REGISTERED
+  68     |NODE ?   P1B         REGISTERED
+  69     |NODE ?   P0A         REGISTERED
+  70     |NODE ?   P0B         REGISTERED
+  71     |NODE ?   E1          REGISTERED      ; E clock synchroniser
+  72     |NODE ?   E2          REGISTERED
+  73     |NODE ?   EC2         REGISTERED      ; E clock divider
+  74     |NODE ?   EC1         REGISTERED
+  75     |NODE ?   EC0         REGISTERED
+  76     |NODE ?   KR          REGISTERED      ; expansion request, synchronised
+  77     |
+  78     |;---------------------------------- Boolean Equation Segment ------
+  79     |STRING  ERISE    '(E1 * /E2)'
+  80     |
+  81     |EQUATIONS
+  82     |
+  83     |; ---- SIMM address bits -----------------------------------------------------
+  84     |MA2        = /MUX * A15 + MUX * A6
+  85     |MA6        = /MUX * A16 + MUX * A7
+  86     |
+  87     |; ---- EPROM: diag window, and the lower 32 K of the Z2 board space ---------
+  88     |; only inside a cycle (MUX is high from E3 to the end of every cycle), so the
+  89     |; EPROM never drives lane 0 on a stray address between cycles
+  90     |/ROMOE_N   = R_W * /F0SEL2_N * MUX
+  91     |           + R_W * /Z2SEL_N * /A16 * /A15 * MUX
+  92     |
+  93     |; ---- reset -----------------------------------------------------------------
+  94     |RSTDRV      = GND
+  95     |RSTDRV.TRST = /RSTOUT_N
+  96     |
+  97     |SELF       := /RSTOUT_N
+  98     |            + SELF * /RST_N
+  99     |SELF.CLKF   = BCLK
+ 100     |
+ 101     |/RSTI_N    := /RST_N * /SELF * RSTOUT_N
+ 102     |            + /DISABLE_N
+ 103     |RSTI_N.CLKF = BCLK
+ 104     |
+ 105     |; ---- A1200 bus ownership: hold _BR/_BOSS low unless disabled -------------------
+ 106     |BOSS_N      = GND
+ 107     |BOSS_N.TRST = DISABLE_N
+ 108     |
+ 109     |; ---- interrupts --------------------------------------------------------------
+ 110     |P2A        := IPL2_N
+ 111     |P2A.CLKF    = BCLK
+ 112     |P2B        := P2A
+ 113     |P2B.CLKF    = BCLK
+ 114     |P1A        := IPL1_N
+ 115     |P1A.CLKF    = BCLK
+ 116     |P1B        := P1A
+ 117     |P1B.CLKF    = BCLK
+ 118     |P0A        := IPL0_N
+ 119     |P0A.CLKF    = BCLK
+ 120     |P0B        := P0A
+ 121     |P0B.CLKF    = BCLK
+ 122     |
+ 123     |IPL2O_N    := /RSTI_N + P2A * P2B + IPL2O_N * (P2A :+: P2B)
+ 124     |IPL2O_N.CLKF = BCLK
+ 125     |IPL1O_N    := /RSTI_N + P1A * P1B + IPL1O_N * (P1A :+: P1B)
+ 126     |IPL1O_N.CLKF = BCLK
+ 127     |IPL0O_N    := /RSTI_N + P0A * P0B + IPL0O_N * (P0A :+: P0B)
+ 128     |IPL0O_N.CLKF = BCLK
+ 129     |
+ 130     |; ---- expansion bus request / grant ----------------------------------------------
+ 131     |KR         := /EXTBR_N * DISABLE_N
+ 132     |KR.CLKF     = BCLK
+ 133     |BG_N       := KR + /EXTBG_N
+ 134     |BG_N.CLKF   = BCLK
+ 135     |/EXTBG_N   := KR * BG_N * BB_N * CYC_N
+ 136     |EXTBG_N.CLKF = BCLK
+ 137     |
+ 138     |; ---- refresh timer from the E clock (not gated by reset) ------------------------
+ 139     |E1         := ECLK
+ 140     |E1.CLKF     = BCLK
+ 141     |E2         := E1
+ 142     |E2.CLKF     = BCLK
+ 143     |EC0        := EC0 :+:  
+ 143  s1 |(E1 * /E2)
+ 143     |
+ 144     |EC0.CLKF    = BCLK
+ 145     |EC1        := EC1 :+: (EC0 *  
+ 145  s1 |(E1 * /E2)
+ 145     |                                   )
+ 146     |EC1.CLKF    = BCLK
+ 147     |EC2        := EC2 :+: (EC1 * EC0 *  
+ 147  s1 |(E1 * /E2)
+ 147     |                                         )
+ 148     |EC2.CLKF    = BCLK
+ 149     |/REFREQ_N  :=  
+ 149  s1 |(E1 * /E2)
+ 149     |                     * EC2 * EC1 * EC0
+ 150     |REFREQ_N.CLKF = BCLK
+
+ %% MACHPAR %%    ERROR count:  0      WARNING count:  0
+
+ %% MACHPAR %%    File processed successfully.    File:  U8.pds
+
+*** Start MACHBPP.E 22:31:37 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>MA2
+Processing equation for ====>MA6
+Processing equation for ====>/ROMOE_N
+Processing equation for ====>RSTDRV
+Processing equation for ====>RSTDRV.TRST
+Processing equation for ====>SELF
+Processing equation for ====>SELF.CLKF
+Processing equation for ====>/RSTI_N
+Processing equation for ====>RSTI_N.CLKF
+Processing equation for ====>BOSS_N
+Processing equation for ====>BOSS_N.TRST
+Processing equation for ====>P2A
+Processing equation for ====>P2A.CLKF
+Processing equation for ====>P2B
+Processing equation for ====>P2B.CLKF
+Processing equation for ====>P1A
+Processing equation for ====>P1A.CLKF
+Processing equation for ====>P1B
+Processing equation for ====>P1B.CLKF
+Processing equation for ====>P0A
+Processing equation for ====>P0A.CLKF
+Processing equation for ====>P0B
+Processing equation for ====>P0B.CLKF
+Processing equation for ====>IPL2O_N
+Processing equation for ====>IPL2O_N.CLKF
+Processing equation for ====>IPL1O_N
+Processing equation for ====>IPL1O_N.CLKF
+Processing equation for ====>IPL0O_N
+Processing equation for ====>IPL0O_N.CLKF
+Processing equation for ====>KR
+Processing equation for ====>KR.CLKF
+Processing equation for ====>BG_N
+Processing equation for ====>BG_N.CLKF
+Processing equation for ====>/EXTBG_N
+Processing equation for ====>EXTBG_N.CLKF
+Processing equation for ====>E1
+Processing equation for ====>E1.CLKF
+Processing equation for ====>E2
+Processing equation for ====>E2.CLKF
+Processing equation for ====>EC0
+Processing equation for ====>EC0.CLKF
+Processing equation for ====>EC1
+Processing equation for ====>EC1.CLKF
+Processing equation for ====>EC2
+Processing equation for ====>EC2.CLKF
+Processing equation for ====>/REFREQ_N
+Processing equation for ====>REFREQ_N.CLKF
+
+ %%  MACHBPP  %% Maximum memory allocated was: 64014 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: U8.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 22:31:37; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 22:31:37 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node KR...
+====> KR                 MIN_ON (1 + pt)
+====> KR.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for node EC0...
+====> EC0                MIN_ON (3 + pt)
+====> EC0.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node EC1...
+====> EC1                MIN_ON (4 + pt)
+====> EC1.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node EC2...
+====> EC2                MIN_ON (5 + pt)
+====> EC2.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node E2...
+====> E2                 MIN_ON (1 + pt)
+====> E2.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for node E1...
+====> E1                 MIN_ON (1 + pt)
+====> E1.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for node P0B...
+====> P0B                MIN_ON (1 + pt)
+====> P0B.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node P0A...
+====> P0A                MIN_ON (1 + pt)
+====> P0A.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node P1B...
+====> P1B                MIN_ON (1 + pt)
+====> P1B.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node P1A...
+====> P1A                MIN_ON (1 + pt)
+====> P1A.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node P2B...
+====> P2B                MIN_ON (1 + pt)
+====> P2B.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node P2A...
+====> P2A                MIN_ON (1 + pt)
+====> P2A.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node SELF...
+====> SELF               MIN_ON (2 + pt)
+====> SELF.CLKF          MIN_ON (1 + pt)
+Processing equation(s) for pin REFREQ_N...
+====> /REFREQ_N          MIN_ON (1 - pt)
+====> REFREQ_N.CLKF      MIN_ON (1 + pt)
+Processing equation(s) for pin RSTI_N...
+====> /RSTI_N            MIN_ON (2 - pt)
+====> RSTI_N.CLKF        MIN_ON (1 + pt)
+Processing equation(s) for pin MA2...
+====> MA2                MIN_ON (2 + pt)
+Processing equation(s) for pin BG_N...
+====> BG_N               MIN_ON (2 + pt)
+====> BG_N.CLKF          MIN_ON (1 + pt)
+Processing equation(s) for pin RSTDRV...
+====> RSTDRV             MIN_ON (1 + pt)
+====> RSTDRV.TRST        MIN_ON (1 + pt)
+Processing equation(s) for pin EXTBG_N...
+====> /EXTBG_N           MIN_ON (1 - pt)
+====> EXTBG_N.CLKF       MIN_ON (1 + pt)
+Processing equation(s) for pin IPL2O_N...
+====> IPL2O_N            MIN_ON (4 + pt)
+====> IPL2O_N.CLKF       MIN_ON (1 + pt)
+Processing equation(s) for pin MA6...
+====> MA6                MIN_ON (2 + pt)
+Processing equation(s) for pin ROMOE_N...
+====> /ROMOE_N           MIN_ON (2 - pt)
+Processing equation(s) for pin BOSS_N...
+====> BOSS_N             MIN_ON (1 + pt)
+====> BOSS_N.TRST        MIN_ON (1 + pt)
+Processing equation(s) for pin IPL0O_N...
+====> IPL0O_N            MIN_ON (4 + pt)
+====> IPL0O_N.CLKF       MIN_ON (1 + pt)
+Processing equation(s) for pin IPL1O_N...
+====> IPL1O_N            MIN_ON (4 + pt)
+====> IPL1O_N.CLKF       MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 50342 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: U8.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 22:31:38; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 22:31:38 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file u8.tre to PLA file u8.pla...
+
+.........................
+.........................
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 55238 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: U8.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 22:31:39; (MACHMIN.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 22:31:39 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is U8.pds . Device is MACH111 .
+|> INFO z5109 - For this device, all input pairing is ignored since input
+                registers or latches do not exist. All signals must pass
+                through the central switch matrix before being latched or
+                registered.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+|> WARNING z5073 - If a declared input signal is not used in any equation,
+                   then that signal may be discarded in order to reduce the
+                   number of pins required to fit the design. Input Pins
+                   not referenced - discarded :
+A3 A1 A4 A5 KACK_N TAX_N 
+Check clock rules
+
+List of global clocks:
+   BCLK:
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is U8.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File U8.pds .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 1 .
+
+*** End MACHFITR.EX 22:31:40; (MACHFITR.EXE= 1 sec.) elapsed time= 3 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

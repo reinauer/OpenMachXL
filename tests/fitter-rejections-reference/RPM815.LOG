@@ -1,0 +1,244 @@
+Rpm815.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP RAWMOVE MACH435
+   2     |PIN 4 B
+   3     |PIN 5 C
+   4     |PIN 8 A IPAIR N
+   5     |NODE ? N REG
+   6     |PIN 20 CLK
+   7     |PIN 9 Q
+   8     |NODE ? X0
+   9     |NODE ? X1
+  10     |NODE ? X2
+  11     |NODE ? X3
+  12     |NODE ? X4
+  13     |NODE ? X5
+  14     |NODE ? X6
+  15     |NODE ? X7
+  16     |NODE ? X8
+  17     |NODE ? X9
+  18     |NODE ? X10
+  19     |NODE ? X11
+  20     |NODE ? X12
+  21     |NODE ? X13
+  22     |NODE ? X14
+  23     |GROUP MACH_SEG_A X0 X1 X2 X3 X4 X5 X6 X7 X8 X9 X10 X11 X12 X13 X14
+  24     |EQUATIONS
+  25     |N=A
+  26     |N.CLKF=CLK
+  27     |Q=N*A+X0+X1+X2+X3+X4+X5+X6+X7+X8+X9+X10+X11+X12+X13+X14
+  28     |X0=B+C
+  29     |X1=B*C
+  30     |X2=B+C
+  31     |X3=B*C
+  32     |X4=B+C
+  33     |X5=B*C
+  34     |X6=B+C
+  35     |X7=B*C
+  36     |X8=B+C
+  37     |X9=B*C
+  38     |X10=B+C
+  39     |X11=B*C
+  40     |X12=B+C
+  41     |X13=B*C
+  42     |X14=B+C
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Rpm815.pds
+
+*** Start MACHBPP.E 01:56:08 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>N
+Processing equation for ====>N.CLKF
+Processing equation for ====>Q
+Processing equation for ====>X0
+Processing equation for ====>X1
+Processing equation for ====>X2
+Processing equation for ====>X3
+Processing equation for ====>X4
+Processing equation for ====>X5
+Processing equation for ====>X6
+Processing equation for ====>X7
+Processing equation for ====>X8
+Processing equation for ====>X9
+Processing equation for ====>X10
+Processing equation for ====>X11
+Processing equation for ====>X12
+Processing equation for ====>X13
+Processing equation for ====>X14
+
+ %%  MACHBPP  %% Maximum memory allocated was: 84366 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Rpm815.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 01:56:08; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 01:56:08 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node X14...
+====> X14                MIN_ON (2 + pt --> 1 + pt)
+Processing equation(s) for node X13...
+====> X13                MIN_ON (1 + pt)
+Processing equation(s) for node X12...
+====> X12                MIN_ON (2 + pt --> 1 + pt)
+Processing equation(s) for node X11...
+====> X11                MIN_ON (1 + pt)
+Processing equation(s) for node X10...
+====> X10                MIN_ON (2 + pt --> 1 + pt)
+Processing equation(s) for node X9...
+====> X9                 MIN_ON (1 + pt)
+Processing equation(s) for node X8...
+====> X8                 MIN_ON (2 + pt --> 1 + pt)
+Processing equation(s) for node X7...
+====> X7                 MIN_ON (1 + pt)
+Processing equation(s) for node X6...
+====> X6                 MIN_ON (2 + pt --> 1 + pt)
+Processing equation(s) for node X5...
+====> X5                 MIN_ON (1 + pt)
+Processing equation(s) for node X4...
+====> X4                 MIN_ON (2 + pt --> 1 + pt)
+Processing equation(s) for node X3...
+====> X3                 MIN_ON (1 + pt)
+Processing equation(s) for node X2...
+====> X2                 MIN_ON (2 + pt --> 1 + pt)
+Processing equation(s) for node X1...
+====> X1                 MIN_ON (1 + pt)
+Processing equation(s) for node X0...
+====> X0                 MIN_ON (2 + pt --> 1 + pt)
+Processing equation(s) for node N...
+====> N                  MIN_ON (1 + pt)
+====> N.CLKF             MIN_ON (1 + pt)
+Processing equation(s) for pin Q...
+====> Q                  MIN_ON (16 + pt --> 2 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 55124 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Rpm815.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 01:56:09; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 01:56:09 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file rpm815.tre to PLA file rpm815.pla...
+
+.................
+.................
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 55170 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Rpm815.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 01:56:09; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 01:56:09 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Rpm815.pds . Device is MACH435 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of global clocks:
+   CLK:
+...... Controls a preplaced input register/latch.
+...... Is preplaced at a global clock pin.
+
+List of non-global clocks:
+   None.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Unroutable Design ].
+|> WARNING z7501 - Placer/Router [ Block [A] has Input Multiplexer
+                   congestion. ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Unroutable Design ].
+|> WARNING z7501 - Placer/Router [ Block [A] has Input Multiplexer
+                   congestion. ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Unroutable Design ].
+|> WARNING z7501 - Placer/Router [ Block [A] has Input Multiplexer
+                   congestion. ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Unroutable Design ].
+|> WARNING z7501 - Placer/Router [ Block [A] has Input Multiplexer
+                   congestion. ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+|> FATAL z7502 - Placer/Router [ unsuccessful on final iteration ].
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing        0% - Completed
+%%% Fitting process has failed %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Rpm815.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 12 .
+
+*** End MACHFITR.EX 01:56:12; (MACHFITR.EXE= 3 sec.) elapsed time= 4 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

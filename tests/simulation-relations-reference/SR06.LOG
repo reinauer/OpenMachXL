@@ -1,0 +1,40 @@
+
+*** Start MACHPAR.E 11:33:37 
+Sr06.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP SR06 MACH111
+   2     |PIN 2 A
+   3     |PIN 3 B
+   4     |PIN 18 Y
+   5     |GROUP AB A B
+   6     |EQUATIONS
+   7     |Y=A+B
+   8     |SIMULATION
+   9     |SETF /A B
+  10     |FOR J:=2 TO 2 DO BEGIN
+  11     |FOR I:=1 TO 4 DO BEGIN
+  12     |IF (I != 2) THEN BEGIN SETF A END ELSE BEGIN SETF /A END
+  ERROR --------^ (L12/C7)
+|> ERROR P56  Illegal character ! detected.
+
+  13     |END
+  14     |END
+
+ %% MACHPAR %%    ERROR count:  1     WARNING count:  1
+
+ %% MACHPAR %%    File processing terminated.     File:  Sr06.pds
+
+*** End MACHPAR.EXE 11:33:38; (MACHPAR.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

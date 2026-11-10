@@ -1,0 +1,29 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file Decode.pds
+; FITTER-generated Placements.
+; DEVICE   MACH111
+; DATE     Mon Nov 09 20:19:40 2026
+
+
+Pin   17  DATA[0]
+Pin   16  DATA[1]
+Pin   14  DATA[2]
+Pin   13  DATA[3]
+Pin   11  DATA[4]
+Pin   10  DATA[5]
+Pin   9  DATA[6]
+Pin   7  DATA[7]
+Pin   6  SEL1
+Pin   4  SEL2
+Pin   3  SEL3
+Pin   43  OUT[0] Comb ;
+Pin   40  OUT[1] Comb ;
+Pin   2  OUT[2] Comb ;
+Pin   37  OUT[3] Comb ;
+Pin   30  OUT[4] Comb ;
+Pin   5  OUT[5] Comb ;
+Pin   8  OUT[6] Comb ;
+Pin   15  OUT[7] Comb ;
+; Unused Pins & Nodes
+; -> None Found.

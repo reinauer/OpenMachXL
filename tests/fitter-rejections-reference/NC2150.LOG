@@ -1,0 +1,125 @@
+
+*** Start MACHPAR.E 10:28:39 
+Nc2150.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP NODECTL MACH215
+   2     |PIN 4 A
+   3     |PIN 5 B
+   4     |PIN 6 C
+   5     |PIN 13 CLK
+   6     |PIN 2 Q
+   7     |NODE 12 NN
+   8     |EQUATIONS
+   9     |Q=NN+C
+  10     |NN=A
+  11     |NN.TRST=A*B
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Nc2150.pds
+
+*** End MACHPAR.EXE 10:28:39; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 10:28:39 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q
+Processing equation for ====>NN
+Processing equation for ====>NN.TRST
+
+ %%  MACHBPP  %% Maximum memory allocated was: 59032 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Nc2150.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 10:28:39; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 10:28:39 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node NN...
+====> NN                 MIN_ON (1 + pt)
+====> NN.TRST            MIN_ON (1 + pt)
+Processing equation(s) for pin Q...
+====> Q                  MIN_ON (2 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 42646 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Nc2150.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 10:28:39; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 10:28:39 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file nc2150.tre to PLA file nc2150.pla...
+
+..
+..
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 40674 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Nc2150.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 10:28:40; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 10:28:40 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Nc2150.pds . Device is MACH215 .
+|> ERROR z5045 - Node NN cannot have an output enable equation.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+|> WARNING z5073 - If a declared input signal is not used in any equation,
+                   then that signal may be discarded in order to reduce the
+                   number of pins required to fit the design. Input Pins
+                   not referenced - discarded :
+CLK 
+Check clock rules
+
+List of non-global clocks:
+   None.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Nc2150.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 1 .
+
+*** End MACHFITR.EX 10:28:40; (MACHFITR.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

@@ -1,0 +1,38 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file P9_src.pds
+; FITTER-generated Placements.
+; DEVICE   MACH435
+; DATE     Mon Nov 09 20:21:57 2026
+
+
+Pin   20  CLK
+Pin   10  AS
+Pin   9  RST
+Pin   26  ADR[0]
+Pin   25  ADR[1]
+Pin   24  ADR[2]
+Pin   23  ADR[3]
+Pin   19  ADR[4]
+Pin   18  ADR[5]
+Pin   17  ADR[6]
+Pin   16  ADR[7]
+Pin   15  ADR[8]
+Pin   13  ADR[9]
+Pin   12  ADR[10]
+Pin   7  ADR[11]
+Pin   6  ADR[12]
+Pin   5  ADR[13]
+Pin   4  ADR[14]
+Pin   3  ADR[15]
+Pin   75  A_X Reg  ; S6=1  S9=1  Pair 118
+Pin   8  B_X Reg  ; S6=1  S9=1  Pair 2
+Pin   14  C_X Reg  ; S6=1  S9=1  Pair 18
+Pin   29  D_X Reg  ; S6=1  S9=1  Pair 34
+Pin   35  E_X Reg  ; S6=1  S9=1  Pair 50
+Pin   50  F_X Reg  ; S6=1  S9=1  Pair 66
+Pin   56  G_X Reg  ; S6=1  S9=1  Pair 82
+Pin   71  H_X Reg  ; S6=1  S9=1  Pair 98
+Pin   77  BE_X Reg  ; S6=1  S9=1  Pair 114
+; Unused Pins & Nodes
+; -> None Found.

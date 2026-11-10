@@ -1,0 +1,155 @@
+;-------------------------------------------------------------------
+; NOTICE: This implementation of PREP Co. Benchmark #2 - Timer Counter
+; is the property of AMD. It has submitted for the PREP benchmarks.
+;
+;       All other uses are expressly forbidden!
+;
+;       AMD Contact: Nick Schmitz (408) 749-4868        Fax:749-8433
+;       M/s 1004, P. O. Box 3453, Sunnyvale Ca 94088
+;-------------------------------------------------------------------
+
+TITLE    Benchmark #2
+PATTERN  8 Bit Timer/Counter
+REVISION C
+AUTHOR   J. ENGINEER
+COMPANY  AMD
+DATE     1/20/93
+;Orginal 07/13/92
+
+CHIP  _Bench2  MACH435
+
+PIN  ?   Data1[7..0]
+PIN  ?   Data2[7..0]
+PIN  ?   Ld_Pre
+PIN  ?   Pre_Sel
+PIN  ?   Ld_Comp
+PIN  ?   CLK
+PIN  ?   RST
+
+;-------------------------------------------------------------------
+PIN  ?    D_x[7..0]  REGISTERED
+NODE ?   R1_x[7..0]  REGISTERED
+NODE ?   R2_x[7..0]  REGISTERED
+NODE ?   CL_x        COMBINATORIAL
+NODE ?   CH_x        COMBINATORIAL
+NODE ?   CY_x        REGISTERED
+;-------------------------------------------------------------------
+
+EQUATIONS
+
+;-------------------------------------------------------------------
+; instance 0
+;-------------------------------------------------------------------
+; Section for preload register.
+; Reset is asynchronous, Ld_Pre = H signifies load, L signifies hold.
+
+ R1_x[7..0] :=  Data2[7..0] *  Ld_Pre
+             +  R1_x[7..0]  * /Ld_Pre
+
+
+; Section for Compare register.
+; Reset is asynchronous, Ld_Comp = H signifies load, L signifies hold.
+
+ R2_x[7..0] :=  Data2[7..0] *  Ld_Comp
+             +  R2_x[7..0]  * /Ld_Comp
+
+;-------------------------------------------------------------------
+; Section for up counter.
+; Reset is asynchronous, counter counts when CMP_x is L
+; Counter loaded when CMP_x is H.
+; Multiplexer merged into counter logic
+; Pre_Sel = H selects R1_x output, L selects Data1 input.
+
+;Load Terms
+ D_x[7..0].T := CH_x*CL_X*
+   (    Pre_Sel*( R1_x[7..0] :+: D_x[7..0])
+     + /Pre_Sel*(Data1[7..0] :+: D_x[7..0]) )
+
+;Count Terms
+
+ D_x[0].T:={D_x[0].T} + /(CH_x * CL_x)
+ D_x[1].T:={D_x[1].T} + /(CH_x * CL_x)  * D_x[0]
+ D_x[2].T:={D_x[2].T} + /(CH_x * CL_x)  * D_x[0] * D_x[1]
+ D_x[3].T:={D_x[3].T} + /(CH_x * CL_x)  * D_x[0] * D_x[1] * D_x[2]
+
+ CY_x := / D_x[0] *   D_x[1] *   D_x[2] *   D_x[3] * /(CH_x * CL_x)
+       +  R1_x[0] *  R1_x[1] *  R1_x[2] *  R1_x[3] * CH_x * CL_x *  Pre_Sel
+       + Data1[0] * Data1[1] * Data1[2] * Data1[3] * CH_x * CL_x * /Pre_Sel
+
+ D_x[4].T:={D_x[4].T} + CY_x  * /(CH_x * CL_x)
+ D_x[5].T:={D_x[5].T} + CY_x  * /(CH_x * CL_x)  * D_x[4]
+ D_x[6].T:={D_x[6].T} + CY_x  * /(CH_x * CL_x)  * D_x[4] * D_x[5]
+ D_x[7].T:={D_x[7].T} + CY_x  * /(CH_x * CL_x)  * D_x[4] * D_x[5] * D_x[6]
+
+;-------------------------------------------------------------------
+; Section for Compare block
+; When counter out equals register out, CMP_x = H.
+
+  /CH_x  =  D_x[7] * /R2_x[7]           + /D_x[7] *  R2_x[7]
+         +  D_x[6] * /R2_x[6]           + /D_x[6] *  R2_x[6]
+         +  D_x[5] * /R2_x[5]           + /D_x[5] *  R2_x[5]
+         +  D_x[4] * /R2_x[4]           + /D_x[4] *  R2_x[4]
+
+  /CL_x  =  D_x[3] * /R2_x[3]           + /D_x[3] *  R2_x[3]
+         +  D_x[2] * /R2_x[2]           + /D_x[2] *  R2_x[2]
+         +  D_x[1] * /R2_x[1]           + /D_x[1] *  R2_x[1]
+         +  D_x[0] * /R2_x[0]           + /D_x[0] *  R2_x[0]
+
+;-------------------------------------------------------------------
+  R1_x[7..0].clkf =  CLK   R1_x[7..0].rstf = RST   R1_x[7..0].setf = GND
+  R2_x[7..0].clkf =  CLK   R2_x[7..0].rstf = RST   R2_x[7..0].setf = GND
+   D_x[7..0].clkf =  CLK    D_x[7..0].rstf = RST    D_x[7..0].setf = GND
+        CY_x.clkf =  CLK         CY_x.rstf = RST         CY_x.setf = GND
+;-------------------------------------------------------------------
+
+
+;-------------------------------------------------------------------
+SIMULATION
+
+TRACE_ON  Data2[7..0] CH_x CL_x CY_x clk ld_pre Pre_Sel ld_comp rst
+        D_x[7..0] R1_x[7..0] R2_x[7..0] Data1[7..0]
+
+SETF /clk               ; initialize clock
+     /ld_pre            ; disable preset load
+     /ld_comp           ; disable comparator load
+     /Pre_Sel           ; mux select
+     /rst               ; reset Deassert
+     /data2[7..0] /data1[7..0]
+
+Setf   rst               ; reset asserted
+Setf  /rst               ; out of reset
+Check /D_X[7..0]         ; Zeros
+
+;-------------------------------------------------------------------
+Setf Pre_Sel
+
+Setf data2[7..0]=#b11011010     ;Load Reg1
+     
+Setf  ld_pre       Clockf CLK           Setf /ld_pre
+
+Setf  data2[7..0]=#b11100001   ;Load Reg2 Reg1-> Cntr
+    
+Setf  ld_comp      Clockf CLK           Setf /ld_comp  /Pre_Sel
+
+;-------------------------------------------------------------------
+Check D_X[7..0]=#b11011010           ; Loaded Value
+Setf Data1[6,4,3..0]                    ; Pending data
+
+FOR I:=1 TO 7 DO BEGIN CLOCKF clk END   ; Cycle to match
+Check D_X[7..0]=#b11100001            ; Check it
+
+CLOCKF clk
+Check D_X[7..0]=#b01011111           ; Loaded Value
+
+FOR I:=1 TO 4 DO BEGIN CLOCKF clk END   ; Count
+Check D_X[7..0]=#b01100011      ; Check it
+
+Setf   rst               ; reset asserted
+CLOCKF clk
+Setf  /rst               ; out of reset
+Check /D_X[7..0]         ; Zeros
+
+TRACE_OFF
+;-------------------------------------------------------------------
+
+

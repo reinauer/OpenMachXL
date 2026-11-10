@@ -1,0 +1,71 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Lrshift.pds
+Title  Shift Register
+
+|> WARNING D2260
+     The following Pin/Nodes(s) have not been defined in original design
+     file and will be ignored.
+
+      RN_AB[2]        RN_AB[3]        RN_AB[4]        RN_AB[5]        
+      RN_AB[0]        RN_AB[1]        RN_AB[6]        RN_AB[7]        
+
+
+
+   1-V1 - TRACE_ON
+          I[7..0]  AB[7..0]  CLK  LOAD  LR  
+   1-V1 - SETF
+          RESET  
+   2-V2 - SETF
+          /RESET  
+   3-V3 - SETF
+          /I[7]  /I[6]  /I[5]  I[4]  /I[3]  /I[2]  /I[1]  
+          /I[0]  
+   4-V4 - SETF
+          /LR  LOAD  
+   8-V5 - CLOCKF
+          CLK  
+   8-V5 - CHECKQ
+          /AB[7]  /AB[6]  /AB[5]  AB[4]  /AB[3]  /AB[2]  
+          /AB[1]  /AB[0]  
+   8-V6 - SETF
+          /LR  /LOAD  
+   9-V7 - FOR
+  12-V7 - CLOCKF
+          CLK  
+  15-V8 - CLOCKF
+          CLK  
+  18-V9 - CLOCKF
+          CLK  
+  18-V9 - CHECK
+          /AB[7]  /AB[6]  /AB[5]  /AB[4]  /AB[3]  /AB[2]  
+          AB[1]  /AB[0]  
+  18-V10 - SETF
+          LR  /LOAD  
+  19-V11 - FOR
+  22-V11 - CLOCKF
+          CLK  
+  25-V12 - CLOCKF
+          CLK  
+  25-V12 - CHECK
+          /AB[7]  /AB[6]  /AB[5]  /AB[4]  AB[3]  /AB[2]  
+          /AB[1]  /AB[0]  
+  25-V12 - CHECK
+          AB[2]  
+%% WARNING  Total number of check clashes   ====>>> 1
+               Clash detected at vector number ====>>> 25
+  26-V13 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Lrshift.HST
+Simulation results (trace) are in   ===> Lrshift.TRF
+Merged results (JEDEC) are in       ===> Lrshift.JDC
+|> WARNING D1310
+    %% Total check clashes issued = 1
+Simulation results (trace vectors) are in   ===> Lrshift.TRV
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 127104 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Lrshift.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 2

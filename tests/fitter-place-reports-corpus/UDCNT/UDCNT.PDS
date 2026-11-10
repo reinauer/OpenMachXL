@@ -1,0 +1,121 @@
+;Up-Down Counter
+;This is a Synchronous 8-bit Up-Down Counter with Parallel Load.
+;Any 8-bit binary number can be loaded and then count up or down any
+;number of clock cycles. 
+
+;---------------------------------- Declaration Segment ------------
+TITLE    Up-Down Counter
+PATTERN  B
+REVISION 1.0
+AUTHOR   J. ENGINEER
+COMPANY  AMD
+DATE     10/09/92
+
+CHIP  CNTMUX  MACH111
+
+;---------------------------------- PIN Declarations ---------------
+
+pin ?  CLK 
+PIN ?  COUNT 
+PIN ?  UP 
+pin ?  I0     
+pin ?  I1 
+pin ?  I2 
+pin ?  I3 
+pin ?  I4 
+pin ?  I5 
+pin ?  I6 
+pin ?  I7 
+PIN ?  AB0 REGISTERED 
+PIN ?  AB1 REGISTERED 
+PIN ?  AB2 REGISTERED 
+PIN ?  AB3 REGISTERED 
+PIN ?  AB4 REGISTERED 
+PIN ?  AB5 REGISTERED 
+PIN ?  AB6 REGISTERED 
+PIN ?  AB7 REGISTERED 
+PIN ? RST
+
+group ABreg AB0 AB1 AB2 AB3 AB4 AB5 AB6 AB7 
+string load '(/count)'
+
+;----------------------------------- Boolean Equation Segment ------
+EQUATIONS
+
+ABREG.CLKF = CLK
+ABREG.RSTF = RST
+
+AB0.T := COUNT
+      + LOAD * I0 * /AB0
+      + LOAD * /I0 * AB0
+
+AB1.T := COUNT * UP * AB0
+      + COUNT * /UP * /AB0
+      + LOAD * I1 * /AB1
+      + LOAD * /I1 * AB1
+
+AB2.T := COUNT * UP * AB0 * AB1
+      + COUNT * /UP * /AB0 * /AB1
+      + LOAD * I2 * /AB2
+      + LOAD * /I2 * AB2
+
+AB3.T := COUNT * UP * AB0 * AB1 * AB2
+      + COUNT * /UP * /AB0 * /AB1 * /AB2
+      + LOAD * I3 * /AB3
+      + LOAD * /I3 * AB3
+
+AB4.T := COUNT * UP * AB0 * AB1 * AB2 * AB3
+      + COUNT * /UP * /AB0 * /AB1 * /AB2 * /AB3
+      + LOAD * I4 * /AB4
+      + LOAD * /I4 * AB4
+
+AB5.T := COUNT * UP * AB0 * AB1 * AB2 * AB3 * AB4
+      + COUNT * /UP * /AB0 * /AB1 * /AB2 * /AB3 * /AB4
+      + LOAD * I5 * /AB5
+      + LOAD * /I5 * AB5
+
+AB6.T := COUNT * UP * AB0 * AB1 * AB2 * AB3 * AB4 * AB5
+      + COUNT * /UP * /AB0 * /AB1 * /AB2 * /AB3 * /AB4 * /AB5
+      + LOAD * I6 * /AB6
+      + LOAD * /I6 * AB6
+
+AB7.T := COUNT * UP * AB0 * AB1 * AB2 * AB3 * AB4 * AB5 *AB6
+      + COUNT * /UP * /AB0 * /AB1 * /AB2 * /AB3 * /AB4 * /AB5 * /AB6
+      + LOAD * I7 * /AB7
+      + LOAD * /I7 * AB7 
+SIMULATION
+
+TRACE_ON   AB0 AB1 AB2 AB3 AB4 AB5 CLK COUNT I0 I1 I2 I3 I4 I5
+          
+SETF RST 
+SETF /RST 
+
+;loading
+
+SETF /I0 /I1 /I2 /I3 I4 I5 I6 I7 
+SETF /COUNT 
+FOR X:= 1 TO 2 DO
+        BEGIN
+             CLOCKF CLK
+        END
+
+;counting up
+
+SETF COUNT  UP
+FOR X:= 1 TO 10 DO
+        BEGIN
+             CLOCKF CLK
+        END
+
+;counting down
+
+SETF /UP
+FOR X:= 1 TO 10 DO
+        BEGIN
+             CLOCKF CLK
+        END
+
+TRACE_OFF
+      
+
+

@@ -1,0 +1,33 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+MACHXL SIMULATION SELECTIVE TRACE LISTING
+
+Title     : Shift Register           Author   : J. ENGINEER      
+Pattern   : B                        Company  : AMD              
+Revision  : 1.0                      Date     : 6/7/94           
+
+MACH111        
+Page : 1 
+
+        ggggc  gc  c  c  gc  c                                      
+ I[7]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ I[6]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ I[5]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ I[4]   LLHHHHHHHHHHHHHHHHHHHHHHH                                   
+ I[3]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ I[2]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ I[1]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ I[0]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ AB[7]  LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ AB[6]  LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ AB[5]  LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ AB[4]  LLLLLHHHHLLLLLLLLLLLLLLLL                                   
+ AB[3]  LLLLLLLLLHHHLLLLLLLLLLHHH                                   
+ AB[2]  LLLLLLLLLLLLHHHLLLLHHHLL?                                   
+ AB[1]  LLLLLLLLLLLLLLLHHHHLLLLLL                                   
+ AB[0]  LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ CLK    LLLLHHLLHHLHHLHHLLHHLHHLL                                   
+ LOAD   LLLHHHHLLLLLLLLLLLLLLLLLL                                   
+ LR     LLLLLLLLLLLLLLLLLHHHHHHHH                                   
+

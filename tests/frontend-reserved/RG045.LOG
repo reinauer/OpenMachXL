@@ -1,0 +1,21 @@
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+
+ %% MACHPAR %%    Processing design file.......Rg045.pds
+
+ %% MACHPAR %%    Listing file.................Rg045.lis
+|> WARNING P45  Missing design file header.
+
+   4     |GROUP  OUTPUT_ENABLE Q
+  ERROR ---------^ (L4/C8)
+|> ERROR P88  Unexpected reserved word or operator OUTPUT_ENABLE
+
+|> ERROR P88  Unexpected reserved word or operator -- ABORTING
+
+
+ %% MACHPAR %%    ERROR count:  2     WARNING count:  1
+
+ %% MACHPAR %%    File processing terminated.     File:  Rg045.pds

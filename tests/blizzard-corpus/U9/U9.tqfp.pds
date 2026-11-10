@@ -1,0 +1,143 @@
+;PALASM Design Description
+;---------------------------------- Declaration Segment ------------
+TITLE    BLIZZARD 1260 U9 - BYTE LANES, CAS, BURST COLUMN, A1200 SIZING
+PATTERN  U9
+REVISION 0.1 (RECONSTRUCTION)
+AUTHOR   RECONSTRUCTED FROM THE PCB, SEE ../ARCHITECTURE.MD
+COMPANY  BLIZZARD 1260 KICAD PROJECT
+DATE     2026-10-26
+CHIP     U9  MACH111
+
+; Byte lanes (060 SIZ, A1, A0), lane 0 = D31-D24:
+;   CAS0/U4 = lane 0, CAS2/U5 = lane 1, CAS1/U6 = lane 2, CAS3/U3 = lane 3
+; DRAM: CAS follows U7's MUX one BCLK later and drops while TA is out
+;       (not in A1200/board-space cycles, where AREQ is active),
+;       all lanes for reads, the addressed lanes for writes; CAS-before-RAS
+;       refresh on CASEN from U7.
+; Burst: the 060 keeps A3:A2 constant during a line transfer; the column
+;       counter C1:C0 starts at A3:A2 and advances on every TA (MA0/MA1).
+; A1200: offset O1:O0 (slot A1/A0) starts at the 060 address (0 for long
+;       and line) and advances on every NEXT pulse from U14; slot SIZ1/SIZ0
+;       give the bytes still to go, like a 68020 after dynamic bus sizing.
+;       Slot A0/A1/SIZ are only driven while AREQ is active (the 68EC020
+;       drives them when the board is disabled).
+
+;---------------------------------- PIN Declarations ---------------
+PIN  1   MA1         COMBINATORIAL   ; SIMM A1 via RN4
+PIN  2   NEXT_N                      ; from U14: advance the A1200 offset
+PIN  3   LONG_N      COMBINATORIAL   ; to U14: 060 transfer is long/line
+PIN  4   CA1                         ; 060 A1
+PIN  5   CA0                         ; 060 A0
+PIN  7   BCLK                        ; board clock
+PIN  8   SIZ1                        ; 060 SIZ1
+PIN  9   CAS2_N      REGISTERED      ; SIMM /CAS2 (lane 1) via RN8
+PIN  10  SIZ0                        ; 060 SIZ0
+PIN  11  MA0         COMBINATORIAL   ; SIMM A0 via RN4
+PIN  12  CAS1_N      REGISTERED      ; SIMM /CAS1 (lane 2) via RN8
+PIN  15  CAS3_N      REGISTERED      ; SIMM /CAS3 (lane 3) via RN8
+PIN  18  ASIZ1       COMBINATORIAL   ; A1200 slot SIZ1
+PIN  19  OEAB1_N     COMBINATORIAL   ; U5 OEAB (lane 1)
+PIN  21  AA0         COMBINATORIAL   ; A1200 slot A0
+PIN  22  OEAB0_N     COMBINATORIAL   ; U4 OEAB (lane 0)
+PIN  23  R_W                         ; 060 R/W
+PIN  24  AA1         COMBINATORIAL   ; A1200 slot A1
+PIN  25  MUX                         ; from U7
+PIN  26  CASEN_N                     ; from U7: refresh CAS
+PIN  27  CYC_N                       ; from U7: cycle in progress
+PIN  29  A5
+PIN  30  A4
+PIN  31  ASIZ0       COMBINATORIAL   ; A1200 slot SIZ0
+PIN  32  AREQ_N                      ; from U7: A1200/board-space cycle
+PIN  33  A3
+PIN  34  OEAB3_N     COMBINATORIAL   ; U3 OEAB (lane 3)
+PIN  35  A2
+PIN  36  TAX_N                       ; from U7: TA
+PIN  37  OEAB2_N     COMBINATORIAL   ; U6 OEAB (lane 2)
+PIN  40  CAS0_N      REGISTERED      ; SIMM /CAS0 (lane 0) via RN8
+PIN  41  RSTI_N                      ; 060 /RSTI
+PIN  43  RDOE_N                      ; from U7: read data phase
+
+NODE ?   LN0         COMBINATORIAL   ; lane 0..3 addressed by the 060
+NODE ?   LN1         COMBINATORIAL
+NODE ?   LN2         COMBINATORIAL
+NODE ?   LN3         COMBINATORIAL
+NODE ?   C1          REGISTERED      ; burst column counter (A3:A2)
+NODE ?   C0          REGISTERED
+NODE ?   NX1         REGISTERED      ; NEXT synchroniser / edge detect
+NODE ?   NX2         REGISTERED
+NODE ?   OF1         REGISTERED      ; A1200 sub-cycle offset (slot A1:A0); kept in
+NODE ?   OF0         REGISTERED      ; nodes: the slot pins are three-state and MACHXL
+                                     ; feeds an enabled output back from the pin
+
+;---------------------------------- Boolean Equation Segment ------
+; SIZ1:SIZ0 = 00 long, 01 byte, 10 word, 11 line
+STRING  NEXTE    '(NX1 * /NX2)'
+
+EQUATIONS
+
+LONG_N     = /(SIZ1 * SIZ0) * /(/SIZ1 * /SIZ0)
+
+LN0        = /LONG_N + SIZ1 * /CA1 + /CA1 * /CA0
+LN1        = /LONG_N + SIZ1 * /CA1 + /SIZ1 * /CA1 * CA0
+LN2        = /LONG_N + SIZ1 *  CA1 + /SIZ1 * CA1 * /CA0
+LN3        = /LONG_N + SIZ1 *  CA1 + CA1 * CA0
+
+; ---- DRAM CAS -------------------------------------------------------------
+/CAS0_N    := RSTI_N * MUX * TAX_N * AREQ_N * R_W
+            + RSTI_N * MUX * TAX_N * AREQ_N * LN0
+            + /CASEN_N
+CAS0_N.CLKF = BCLK
+/CAS2_N    := RSTI_N * MUX * TAX_N * AREQ_N * R_W
+            + RSTI_N * MUX * TAX_N * AREQ_N * LN1
+            + /CASEN_N
+CAS2_N.CLKF = BCLK
+/CAS1_N    := RSTI_N * MUX * TAX_N * AREQ_N * R_W
+            + RSTI_N * MUX * TAX_N * AREQ_N * LN2
+            + /CASEN_N
+CAS1_N.CLKF = BCLK
+/CAS3_N    := RSTI_N * MUX * TAX_N * AREQ_N * R_W
+            + RSTI_N * MUX * TAX_N * AREQ_N * LN3
+            + /CASEN_N
+CAS3_N.CLKF = BCLK
+
+; ---- burst column ----------------------------------------------------------
+C0         := CYC_N * A2
+            + /CYC_N * (C0 :+: /TAX_N)
+C0.CLKF     = BCLK
+C1         := CYC_N * A3
+            + /CYC_N * (C1 :+: (C0 * /TAX_N))
+C1.CLKF     = BCLK
+
+MA0        = MUX * C0 + /MUX * A4
+MA1        = MUX * C1 + /MUX * A5
+
+; ---- '543 A->B enables: addressed lanes in the read data phase ------------
+/OEAB0_N   = /RDOE_N * LN0
+/OEAB1_N   = /RDOE_N * LN1
+/OEAB2_N   = /RDOE_N * LN2
+/OEAB3_N   = /RDOE_N * LN3
+
+; ---- A1200 sizing ------------------------------------------------------------
+NX1        := /NEXT_N
+NX1.CLKF    = BCLK
+NX2        := NX1
+NX2.CLKF    = BCLK
+
+OF0        := AREQ_N * LONG_N * CA0
+            + /AREQ_N * (OF0 :+: NEXTE)
+OF0.CLKF    = BCLK
+OF1        := AREQ_N * LONG_N * CA1
+            + /AREQ_N * (OF1 :+: (OF0 * NEXTE))
+OF1.CLKF    = BCLK
+AA0         = OF0
+AA0.TRST    = /AREQ_N
+AA1         = OF1
+AA1.TRST    = /AREQ_N
+
+; bytes still to go: long 4/3/2/1 at offset 0/1/2/3, word 2/1, byte 1
+ASIZ0      = OF0 * SIZ1 + OF0 * /SIZ0 + /SIZ1 * SIZ0
+ASIZ0.TRST = /AREQ_N
+ASIZ1      = /LONG_N * OF1 * /OF0
+           + /LONG_N * /OF1 * OF0
+           + SIZ1 * /SIZ0 * /OF0
+ASIZ1.TRST = /AREQ_N

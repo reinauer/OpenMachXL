@@ -1,0 +1,76 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Moore_c.pds
+Title  State Machine using CASE statements
+
+|> WARNING D2260
+     The following Pin/Nodes(s) have not been defined in original design
+     file and will be ignored.
+
+      RN_BIT[0]       RN_BIT[1]       RN_BIT[2]       
+
+
+
+   1-V1 - TRACE_ON
+          RESET  OUT[2..0]  BIT[2..0]  INA  INB  CLOCK  
+   1-V1 - SETF
+          RESET  
+   2-V2 - SETF
+          /RESET  
+   3-V3 - SETF
+          INB  INA  
+   4-V3 - CHECK
+          /OUT[2]  /OUT[1]  /OUT[0]  
+   4-V4 - FOR
+   7-V4 - CLOCKF
+          CLOCK  
+  10-V5 - CLOCKF
+          CLOCK  
+  13-V6 - CLOCKF
+          CLOCK  
+  16-V7 - CLOCKF
+          CLOCK  
+  16-V7 - CHECK
+          /OUT[2]  OUT[1]  OUT[0]  
+  16-V8 - SETF
+          /INB  INA  
+  17-V9 - FOR
+  20-V9 - CLOCKF
+          CLOCK  
+  23-V10 - CLOCKF
+          CLOCK  
+  26-V11 - CLOCKF
+          CLOCK  
+  26-V11 - CHECK
+          /OUT[2]  OUT[1]  /OUT[0]  
+  26-V12 - SETF
+          INB  /INA  
+  27-V13 - FOR
+  30-V13 - CLOCKF
+          CLOCK  
+  33-V14 - CLOCKF
+          CLOCK  
+  36-V15 - CLOCKF
+          CLOCK  
+  36-V15 - CHECK
+          OUT[2]  /OUT[1]  OUT[0]  
+  36-V16 - SETF
+          /INA  /INB  
+  37-V17 - FOR
+  40-V17 - CLOCKF
+          CLOCK  
+  43-V18 - CLOCKF
+          CLOCK  
+  43-V19 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Moore_c.HST
+Simulation results (trace) are in   ===> Moore_c.TRF
+Merged results (JEDEC) are in       ===> Moore_c.JDC
+Simulation results (trace vectors) are in   ===> Moore_c.TRV
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 191145 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Moore_c.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 1

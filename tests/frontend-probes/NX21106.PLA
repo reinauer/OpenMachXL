@@ -1,0 +1,44 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME Nx21106.pds
+#AMD TITLE 
+#AMD PATTERN 
+#AMD REVISION 
+#AMD AUTHOR 
+#AMD COMPANY 
+#AMD DATE 
+#AMD CHIP MATRIX
+#AMD DEVICE MACH211
+#AMD JED_FILE Nx21106.jed
+#AMD SIGNATURE 
+#AMD PIN 12 GND:1 Q0:2 Q1:3 Q2:4 Q3:5 A:10 CLK:11 GND:12 C:14 D:15 E:16 F:17 
+#AMD PIN 5 VCC:22 GND:23 B:32 GND:34 VCC:44 
+.type f
+.i 7
+.o 7
+.ilb A CLK C D E F B
+.ob  Q0.REG Q0.C Q1.T Q1.C Q2.REG Q2.C Q3
+.phase 1111111
+.p 22
+--1---- 1~~~~~~
+1-----1 1~~~~~~
+1---0-- 1~~~~~~
+---000- 1~~~~~~
+1--1--- 1~~~~~~
+----100 1~~~~~~
+-1----- ~1~1~1~
+0----0- ~~1~~~~
+--0--0- ~~1~1~~
+0---1-1 ~~1~~~~
+---10-1 ~~1~~~~
+---01-0 ~~1~~~~
+1-000-- ~~1~~~~
+---01-- ~~~~1~~
+---1-0- ~~~~1~~
+-----01 ~~~~1~1
+--10-10 ~~~~1~1
+--01--- ~~~~~~1
+0-0--0- ~~~~~~1
+--0-010 ~~~~~~1
+0--000- ~~~~~~1
+1--01-0 ~~~~~~1
+.e

@@ -1,0 +1,336 @@
+U1.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+   1     |;PALASM Design Description
+   2     |;---------------------------------- Declaration Segment ------------
+   3     |TITLE    BLIZZARD 1260 U1 - ADDRESS DECODE, MAPROM, BOARD STATE
+   4     |PATTERN  U1
+   5     |REVISION 0.1 (RECONSTRUCTION)
+   6     |AUTHOR   RECONSTRUCTED FROM THE PCB, SEE ../ARCHITECTURE.MD
+   7     |COMPANY  BLIZZARD 1260 KICAD PROJECT
+   8     |DATE     2026-10-26
+   9     |CHIP     U1  MACH111
+  10     |
+  11     |; U1 has no clock pin wired (all four clock pins carry address lines), so
+  12     |; it is purely combinatorial. The board state (CONFIG, MAPROM, DISABLE) is
+  13     |; kept in latches made from feedback, set by the board-space write strobe
+  14     |; LSTB_N from U14 while the address is stable.
+  15     |
+  16     |;---------------------------------- PIN Declarations ---------------
+  17     |PIN  7   R_W                         ; 060 R/W (1 = read)
+  18     |PIN  8   MA11        COMBINATORIAL   ; SIMM A11 via RN1
+  19     |PIN  9   A29                         ; 060 A29
+  20     |PIN  10  A28                         ; 060 A28
+  21     |PIN  11  A26                         ; 060 A26
+  22     |PIN  13  A25                         ; 060 A25
+  23     |PIN  14  AMIGA_N     COMBINATORIAL   ; to U14: A1200 address space
+  24     |PIN  15  MA10        COMBINATORIAL   ; SIMM A10 via RN1
+  25     |PIN  16  MAPJP_N                     ; Maprom jumper, low = fitted (MAPROM off)
+  26     |PIN  17  PWRON_N                     ; Q1 power-on RC, low after power-up
+  27     |PIN  18  DISABLE_N   COMBINATORIAL   ; to U8/U14/J3: board disabled
+  28     |PIN  19  Z2SEL_N     COMBINATORIAL   ; to U8/J3: Z2 board space
+  29     |PIN  20  TBI_N       COMBINATORIAL   ; 060 transfer burst inhibit
+  30     |PIN  21  SELRAM3_N   COMBINATORIAL   ; to U7: expansion SIMM side 2
+  31     |PIN  24  LSTB_N                      ; from U14: board-space data strobe
+  32     |PIN  25  MA8         COMBINATORIAL   ; SIMM A8 via RN1
+  33     |PIN  26  MUX                         ; from U7: 0 = row, 1 = column
+  34     |PIN  27  TCI_N       COMBINATORIAL   ; 060 transfer cache inhibit
+  35     |PIN  28  WE_N        COMBINATORIAL   ; SIMM /WE via R1
+  36     |PIN  29  A27                         ; 060 A27
+  37     |PIN  30  SELRAM2_N   COMBINATORIAL   ; to U7: expansion SIMM side 1
+  38     |PIN  31  A17
+  39     |PIN  32  A18
+  40     |PIN  33  A19
+  41     |PIN  35  A20
+  42     |PIN  36  A21
+  43     |PIN  37  A22
+  44     |PIN  38  A23
+  45     |PIN  39  A31
+  46     |PIN  40  F0SEL2_N    COMBINATORIAL   ; to U8: diag EPROM window
+  47     |PIN  41  A30
+  48     |PIN  42  RST_N                       ; A1200 _RST
+  49     |PIN  43  SELRAM0_N   COMBINATORIAL   ; to U7: on-board SIMM
+  50     |PIN  2   RSTHI       COMBINATORIAL   ; long-reset RC: charges C38 while not in reset
+  51     |PIN  3   LONGRST                     ; Q2 collector: high = C38 empty (reset > ~9 s or power-on)
+  52     |PIN  4   F0SEL_N     COMBINATORIAL   ; to U14: diag EPROM window
+  53     |PIN  5   MA9         COMBINATORIAL   ; SIMM A9 via RN1
+  54     |PIN  6   A24
+  55     |
+  56     |NODE ?   CONFIG      COMBINATORIAL   ; board configured (latch)
+  57     |NODE ?   MAPROM      COMBINATORIAL   ; MAPROM active (latch)
+  58     |
+  59     |;---------------------------------- Boolean Equation Segment ------
+  60     |; Address windows (written out, PALASM STRINGs are plain text macros)
+  61     |STRING  ZERO24   '(/A31 * /A30 * /A29 * /A28 * /A27 * /A26 * /A25 * /A24)'
+  62     |STRING  RAMWIN   '(/A31 * A30)'
+  63     |STRING  TOPROM   '(A23 * A22 * A21 * A20 * A19)'
+  64     |STRING  F0WIN    '(A23 * A22 * A21 * A20 * /A19)'
+  65     |STRING  E8WIN    '(A23 * A22 * A21 * /A20 * A19 * /A18)'
+  66     |STRING  REGWIN   '(A31 * /A30 * /A29 * /A28 * /A27 * /A26 * /A25 * /A24 * A23 * A22 * A21 * A20)'
+  67     |STRING  WSTB     '(/LSTB_N * /R_W)'
+  68     |
+  69     |EQUATIONS
+  70     |
+  71     |; MAPROM read of $F80000-$FFFFFF is served from on-board RAM; with A24/A25
+  72     |; forced high it lands at $07F80000 inside the 128 MB window = $4FF80000.
+  73     |/SELRAM0_N =  
+  73  s1 |(/A31 * A30)
+  73     |                     * A27
+  74     |           +  
+  74  s1 |(/A31 * /A30 * /A29 * /A28 * /A27 * /A26 * /A25 * /A24)
+  74     |                     *  
+  74  s1 |(A23 * A22 * A21 * A20 * A19)
+  74     |                               * R_W * MAPROM
+  75     |
+  76     |/SELRAM2_N =  
+  76  s1 |(/A31 * A30)
+  76     |                     * /A27 * A26
+  77     |/SELRAM3_N =  
+  77  s1 |(/A31 * A30)
+  77     |                     * /A27 * /A26
+  78     |
+  79     |/F0SEL_N   =  
+  79  s1 |(/A31 * /A30 * /A29 * /A28 * /A27 * /A26 * /A25 * /A24)
+  79     |                     *  
+  79  s1 |(A23 * A22 * A21 * A20 * /A19)
+  79     |                              * DISABLE_N
+  80     |/F0SEL2_N  =  
+  80  s1 |(/A31 * /A30 * /A29 * /A28 * /A27 * /A26 * /A25 * /A24)
+  80     |                     *  
+  80  s1 |(A23 * A22 * A21 * A20 * /A19)
+  80     |                              * DISABLE_N
+  81     |
+  82     |; Z2 board space: $E80000-$E9FFFF before configuration, $EA0000-$EBFFFF after
+  83     |/Z2SEL_N   =  
+  83  s1 |(/A31 * /A30 * /A29 * /A28 * /A27 * /A26 * /A25 * /A24)
+  83     |                     *  
+  83  s1 |(A23 * A22 * A21 * /A20 * A19 * /A18)
+  83     |                              * /A17 * /CONFIG * DISABLE_N
+  84     |           +  
+  84  s1 |(/A31 * /A30 * /A29 * /A28 * /A27 * /A26 * /A25 * /A24)
+  84     |                     *  
+  84  s1 |(A23 * A22 * A21 * /A20 * A19 * /A18)
+  84     |                              *  A17 *  CONFIG * DISABLE_N
+  85     |
+  86     |; everything else in the low 16 MB goes to the A1200 (built from the
+  87     |; decoded outputs: one product term instead of nine)
+  88     |/AMIGA_N   =  
+  88  s1 |(/A31 * /A30 * /A29 * /A28 * /A27 * /A26 * /A25 * /A24)
+  88     |                     * F0SEL_N * Z2SEL_N * SELRAM0_N
+  89     |
+  90     |; bursts only from DRAM, caching off for A1200 chip RAM and I/O below $F80000
+  91     |/TBI_N     = SELRAM0_N * A31
+  92     |           + SELRAM0_N * /A30
+  93     |/TCI_N     =  
+  93  s1 |(/A31 * /A30 * /A29 * /A28 * /A27 * /A26 * /A25 * /A24)
+  93     |                     * / 
+  93  s1 |(A23 * A22 * A21 * A20 * A19)
+  93     |
+  94     |
+  95     |; DRAM write enable only in the column phase, never during CAS-before-RAS
+  96     |/WE_N      = /R_W * MUX *  
+  96  s1 |(/A31 * A30)
+  96     |
+  97     |           + /R_W * MUX *  
+  97  s1 |(/A31 * /A30 * /A29 * /A28 * /A27 * /A26 * /A25 * /A24)
+  97     |                                  *  
+  97  s1 |(A23 * A22 * A21 * A20 * A19)
+  97     |                                            * MAPROM
+  98     |
+  99     |; Row/column multiplex of A18..A25 (rows even, columns odd bits)
+ 100     |MA8        = /MUX * A18 + MUX * A19
+ 101     |MA9        = /MUX * A20 + MUX * A21
+ 102     |MA10       = /MUX * A22 + MUX * A23
+ 103     |MA11       = /MUX * A24 + MUX * A25
+ 104     |           + /SELRAM0_N * /A30                ; MAPROM read: A24/A25 forced high
+ 105     |
+ 106     |; Board state latches -------------------------------------------------
+ 107     |; CONFIG: set by the ec_BaseAddress write into the unconfigured window,
+ 108     |; cleared by any A1200 reset.
+ 109     |CONFIG     =  
+ 109  s1 |(/LSTB_N * /R_W)
+ 109     |                   *  
+ 109  s1 |(/A31 * /A30 * /A29 * /A28 * /A27 * /A26 * /A25 * /A24)
+ 109     |                             *  
+ 109  s1 |(A23 * A22 * A21 * /A20 * A19 * /A18)
+ 109     |                                      * /A17 * DISABLE_N
+ 110     |           + CONFIG * RST_N
+ 111     |
+ 112     |; MAPROM: write to $80FE0000-$80FFFFFF with the jumper open; cleared at
+ 113     |; power-on or when the jumper is fitted. Survives normal resets.
+ 114     |MAPROM     =  
+ 114  s1 |(/LSTB_N * /R_W)
+ 114     |                   *  
+ 114  s1 |(A31 * /A30 * /A29 * /A28 * /A27 * /A26 * /A25 * /A24 * A23 * A22 * A21 * A20)
+ 114     |                             * A19 * A18 * A17 * MAPJP_N * PWRON_N
+ 115     |           + MAPROM * MAPJP_N * PWRON_N
+ 116     |
+ 117     |; DISABLE: write to the $80F0/$80FA disable region; survives normal resets,
+ 118     |; cleared at power-on and by a reset held for ~9 s (Q2 off).
+ 119     |/DISABLE_N =  
+ 119  s1 |(/LSTB_N * /R_W)
+ 119     |                   *  
+ 119  s1 |(A31 * /A30 * /A29 * /A28 * /A27 * /A26 * /A25 * /A24 * A23 * A22 * A21 * A20)
+ 119     |                             * /A18 * PWRON_N * /LONGRST
+ 120     |           + /DISABLE_N * PWRON_N * /LONGRST
+ 121     |
+ 122     |; Long-reset timer: keep C38 charged while the A1200 is not in reset.
+ 123     |RSTHI      = RST_N
+
+ %% MACHPAR %%    ERROR count:  0      WARNING count:  0
+
+ %% MACHPAR %%    File processed successfully.    File:  U1.pds
+
+*** Start MACHBPP.E 22:31:28 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>/SELRAM0_N
+Processing equation for ====>/SELRAM2_N
+Processing equation for ====>/SELRAM3_N
+Processing equation for ====>/F0SEL_N
+Processing equation for ====>/F0SEL2_N
+Processing equation for ====>/Z2SEL_N
+Processing equation for ====>/AMIGA_N
+Processing equation for ====>/TBI_N
+Processing equation for ====>/TCI_N
+Processing equation for ====>/WE_N
+Processing equation for ====>MA8
+Processing equation for ====>MA9
+Processing equation for ====>MA10
+Processing equation for ====>MA11
+Processing equation for ====>CONFIG
+Processing equation for ====>MAPROM
+Processing equation for ====>/DISABLE_N
+Processing equation for ====>RSTHI
+
+ %%  MACHBPP  %% Maximum memory allocated was: 67494 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: U1.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 22:31:28; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 22:31:28 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node MAPROM...
+====> MAPROM             MIN_ON (2 + pt)
+Processing equation(s) for node CONFIG...
+====> CONFIG             MIN_ON (2 + pt)
+Processing equation(s) for pin SELRAM0_N...
+====> /SELRAM0_N         MIN_ON (2 - pt)
+Processing equation(s) for pin F0SEL2_N...
+====> /F0SEL2_N          MIN_ON (1 - pt)
+Processing equation(s) for pin SELRAM2_N...
+====> /SELRAM2_N         MIN_ON (1 - pt)
+Processing equation(s) for pin WE_N...
+====> /WE_N              MIN_ON (2 - pt)
+Processing equation(s) for pin TCI_N...
+====> /TCI_N             MIN_ON (5 - pt)
+Processing equation(s) for pin MA8...
+====> MA8                MIN_ON (2 + pt)
+Processing equation(s) for pin SELRAM3_N...
+====> /SELRAM3_N         MIN_ON (1 - pt)
+Processing equation(s) for pin TBI_N...
+====> /TBI_N             MIN_ON (2 - pt)
+Processing equation(s) for pin Z2SEL_N...
+====> /Z2SEL_N           MIN_ON (2 - pt)
+Processing equation(s) for pin DISABLE_N...
+====> /DISABLE_N         MIN_ON (2 - pt)
+Processing equation(s) for pin MA10...
+====> MA10               MIN_ON (2 + pt)
+Processing equation(s) for pin AMIGA_N...
+====> /AMIGA_N           MIN_ON (1 - pt)
+Processing equation(s) for pin MA11...
+====> MA11               MIN_ON (3 + pt)
+Processing equation(s) for pin MA9...
+====> MA9                MIN_ON (2 + pt)
+Processing equation(s) for pin F0SEL_N...
+====> /F0SEL_N           MIN_ON (1 - pt)
+Processing equation(s) for pin RSTHI...
+====> RSTHI              MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 50992 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: U1.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 22:31:29; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 22:31:29 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file u1.tre to PLA file u1.pla...
+
+..................
+..................
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 54810 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: U1.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 22:31:30; (MACHMIN.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 22:31:30 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is U1.pds . Device is MACH111 .
+|> INFO z5109 - For this device, all input pairing is ignored since input
+                registers or latches do not exist. All signals must pass
+                through the central switch matrix before being latched or
+                registered.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is U1.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File U1.pds .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 0 .
+
+*** End MACHFITR.EX 22:31:30; (MACHFITR.EXE= 0 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

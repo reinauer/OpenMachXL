@@ -1,0 +1,23 @@
+[0  ] pin:80 Q 
+fanin 1: 78 
+TYPE 36, SORT1 2511, SORT2 1
+[1  ] pin:81 R 
+fanin 1: 79 
+TYPE 36, SORT1 2511, SORT2 1
+[2  ] pin:78 A 
+fanin 0: 
+TYPE 8192, SORT1 0, SORT2 0
+[3  ] pin:79 B 
+fanin 0: 
+TYPE 8192, SORT1 0, SORT2 0
+---------------------------------------------------
+no:1 GND  :0
+no:12 GND  :0
+no:22 VCC  :0
+no:23 GND  :0
+no:34 GND  :0
+no:44 VCC  :0
+no:78 A  :1
+no:79 B  :1
+no:80 Q  :0
+no:81 R  :0

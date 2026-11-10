@@ -1,0 +1,207 @@
+Mrw4.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP RAWPAIR MACH435
+   2     |PIN 3 B
+   3     |PIN 4 C
+   4     |PIN 8 A IPAIR N
+   5     |NODE ? N REG
+   6     |PIN 20 CLK
+   7     |PIN 9 Q
+   8     |NODE 12 X
+   9     |NODE 13 Y
+  10     |PIN 7 R
+  11     |EQUATIONS
+  12     |N=A
+  13     |N.CLKF=CLK
+  14     |Q=N*A
+  15     |X=B*C
+  16     |Y=B+C
+  17     |R=Y+X
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Mrw4.pds
+
+*** Start MACHBPP.E 01:25:55 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>N
+Processing equation for ====>N.CLKF
+Processing equation for ====>Q
+Processing equation for ====>X
+Processing equation for ====>Y
+Processing equation for ====>R
+
+ %%  MACHBPP  %% Maximum memory allocated was: 69044 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Mrw4.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 01:25:55; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 01:25:55 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node N...
+====> N                  MIN_ON (1 + pt)
+====> N.CLKF             MIN_ON (1 + pt)
+Processing equation(s) for node Y...
+====> Y                  MIN_ON (2 + pt --> 1 + pt)
+Processing equation(s) for node X...
+====> X                  MIN_ON (1 + pt)
+Processing equation(s) for pin Q...
+====> Q                  MIN_ON (1 + pt)
+Processing equation(s) for pin R...
+====> R                  MIN_ON (2 + pt --> 1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 49384 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Mrw4.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 01:25:56; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 01:25:56 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file mrw4.tre to PLA file mrw4.pla...
+
+.....
+.....
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 48572 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Mrw4.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 01:25:56; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 01:25:56 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Mrw4.pds . Device is MACH435 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of global clocks:
+   CLK:
+...... Controls a preplaced input register/latch.
+...... Is preplaced at a global clock pin.
+
+List of non-global clocks:
+   None.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Preassigned Signal [A] unroutable in
+                   block [A]. ].
+|> WARNING z7501 - Placer/Router [ Preassigned Node Signal [X] unroutable
+                   in block [A]. ].
+|> WARNING z7501 - Placer/Router [ Preassigned Node Signal [Y] unroutable
+                   in block [A]. ].
+|> WARNING z7501 - Placer/Router [ Unroutable Design ].
+|> WARNING z7501 - Placer/Router [ Block [A] has Input Multiplexer
+                   congestion. ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Preassigned Signal [A] unroutable in
+                   block [A]. ].
+|> WARNING z7501 - Placer/Router [ Preassigned Node Signal [X] unroutable
+                   in block [A]. ].
+|> WARNING z7501 - Placer/Router [ Preassigned Node Signal [Y] unroutable
+                   in block [A]. ].
+|> WARNING z7501 - Placer/Router [ Unroutable Design ].
+|> WARNING z7501 - Placer/Router [ Block [A] has Input Multiplexer
+                   congestion. ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Preassigned Signal [A] unroutable in
+                   block [A]. ].
+|> WARNING z7501 - Placer/Router [ Preassigned Node Signal [X] unroutable
+                   in block [A]. ].
+|> WARNING z7501 - Placer/Router [ Preassigned Node Signal [Y] unroutable
+                   in block [A]. ].
+|> WARNING z7501 - Placer/Router [ Unroutable Design ].
+|> WARNING z7501 - Placer/Router [ Block [A] has Input Multiplexer
+                   congestion. ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Preassigned Signal [A] unroutable in
+                   block [A]. ].
+|> WARNING z7501 - Placer/Router [ Preassigned Node Signal [X] unroutable
+                   in block [A]. ].
+|> WARNING z7501 - Placer/Router [ Preassigned Node Signal [Y] unroutable
+                   in block [A]. ].
+|> WARNING z7501 - Placer/Router [ Unroutable Design ].
+|> WARNING z7501 - Placer/Router [ Block [A] has Input Multiplexer
+                   congestion. ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+|> FATAL z7502 - Placer/Router [ unsuccessful on final iteration ].
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing        0% - Completed
+%%% Fitting process has failed %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Mrw4.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 24 .
+
+*** End MACHFITR.EX 01:25:57; (MACHFITR.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

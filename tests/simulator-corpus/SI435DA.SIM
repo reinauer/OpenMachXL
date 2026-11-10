@@ -1,0 +1,39 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Si435da.pds
+Title  
+
+
+
+   1-V1 - TRACE_ON
+          A  N  CLK  Q  
+   1-V1 - SETF
+          /A  /CLK  
+   2-V2 - SETF
+          A  
+   6-V3 - CLOCKF
+          CLK  
+   6-V4 - SETF
+          /A  
+  10-V5 - CLOCKF
+          CLK  
+  10-V6 - SETF
+          CLK  
+  11-V7 - SETF
+          A  
+  12-V8 - SETF
+          /CLK  
+  13-V9 - SETF
+          /A  
+  14-V10 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Si435da.HST
+Simulation results (trace) are in   ===> Si435da.TRF
+Merged results (JEDEC) are in       ===> Si435da.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 166660 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Si435da.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0

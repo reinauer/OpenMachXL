@@ -1,0 +1,150 @@
+
+*** Start MACHPAR.E 13:48:35 
+E110.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP ENABLEFAIL MACH110
+   2     |PIN 3 A
+   3     |PIN 4 B
+   4     |PIN 5 Q
+   5     |PIN 6 R
+   6     |PIN 7 S
+   7     |EQUATIONS
+   8     |Q=A
+   9     |R=B
+  10     |S=A*B
+  11     |Q.TRST=A
+  12     |R.TRST=B
+  13     |S.TRST=A*B
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  E110.pds
+
+*** End MACHPAR.EXE 13:48:35; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 13:48:35 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q
+Processing equation for ====>R
+Processing equation for ====>S
+Processing equation for ====>Q.TRST
+Processing equation for ====>R.TRST
+Processing equation for ====>S.TRST
+
+ %%  MACHBPP  %% Maximum memory allocated was: 56816 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: E110.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 13:48:35; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 13:48:35 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin S...
+====> S                  MIN_ON (1 + pt)
+====> S.TRST             MIN_ON (1 + pt)
+Processing equation(s) for pin R...
+====> R                  MIN_ON (1 + pt)
+====> R.TRST             MIN_ON (1 + pt)
+Processing equation(s) for pin Q...
+====> Q                  MIN_ON (1 + pt)
+====> Q.TRST             MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 41294 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: E110.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 13:48:35; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 13:48:35 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file e110.tre to PLA file e110.pla...
+
+...
+...
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 39566 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: E110.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 13:48:35; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 13:48:35 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is E110.pds . Device is MACH110 .
+|> INFO z5109 - For this device, all input pairing is ignored since input
+                registers or latches do not exist. All signals must pass
+                through the central switch matrix before being latched or
+                registered.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+. . . . . . . . . . . . . . 
+Reshuffle Equations
+. . . . . . . 
+Shift to FANIN_PHASE.
+.  
+. . . . . . 
+Shift to FANIN_PHASE2.
+. . . . . . . 
+Shift to BUR_NOD_PHASE.
+. . . . . . .  
+|> ERROR z8007 - *** Cannot find a Partition.
+..... Only 40 percent of all signals are partitioned.
+
+*** Report Generator invoked.
+
+Partitioning  40% - Completed
+Placement      0% - Completed
+Routing        0% - Completed
+%%% Fitting process has failed %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File E110.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 0 .
+
+*** End MACHFITR.EX 13:48:36; (MACHFITR.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

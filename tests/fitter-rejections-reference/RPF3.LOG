@@ -1,0 +1,235 @@
+Rpf3.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP RAWPAIR MACH435
+   2     |PIN 3 B
+   3     |PIN 4 C
+   4     |PIN 8 A IPAIR N
+   5     |NODE ? N REG
+   6     |PIN 20 CLK
+   7     |PIN 9 Q
+   8     |PIN ? X REG
+   9     |NODE 12 NX REG PAIR X
+  10     |PIN ? Y REG
+  11     |NODE 13 NY REG PAIR Y
+  12     |PIN ? R
+  13     |EQUATIONS
+  14     |N=A
+  15     |N.CLKF=CLK
+  16     |Q=N*A
+  17     |X:=B*C
+  18     |NX:=B*C
+  19     |Y:=B+C
+  20     |NY:=B+C
+  21     |X.CLKF=CLK
+  22     |NX.CLKF=CLK
+  23     |Y.CLKF=CLK
+  24     |NY.CLKF=CLK
+  25     |R=NX+NY
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Rpf3.pds
+
+*** Start MACHBPP.E 01:52:20 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>N
+Processing equation for ====>N.CLKF
+Processing equation for ====>Q
+Processing equation for ====>X
+Processing equation for ====>NX
+Processing equation for ====>Y
+Processing equation for ====>NY
+Processing equation for ====>X.CLKF
+Processing equation for ====>NX.CLKF
+Processing equation for ====>Y.CLKF
+Processing equation for ====>NY.CLKF
+Processing equation for ====>R
+
+ %%  MACHBPP  %% Maximum memory allocated was: 69448 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Rpf3.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 01:52:20; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 01:52:20 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node N...
+====> N                  MIN_ON (1 + pt)
+====> N.CLKF             MIN_ON (1 + pt)
+Processing equation(s) for node NY and paired pin Y...
+====> NY                 MIN_ON (2 + pt --> 1 + pt)
+====> NY.CLKF            MIN_ON (1 + pt)
+====> Y                  MIN_ON (2 + pt --> 1 + pt)
+====> Y.CLKF             MIN_ON (1 + pt)
+Processing equation(s) for node NX and paired pin X...
+====> NX                 MIN_ON (1 + pt)
+====> NX.CLKF            MIN_ON (1 + pt)
+====> X                  MIN_ON (1 + pt)
+====> X.CLKF             MIN_ON (1 + pt)
+Processing equation(s) for pin R...
+====> R                  MIN_ON (2 + pt --> 1 + pt)
+Processing equation(s) for pin Q...
+====> Q                  MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 50458 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Rpf3.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 01:52:21; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 01:52:21 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file rpf3.tre to PLA file rpf3.pla...
+
+.......
+.......
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 49548 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Rpf3.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 01:52:21; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 01:52:21 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Rpf3.pds . Device is MACH435 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of global clocks:
+   CLK:
+...... Controls a preplaced input register/latch.
+...... Is preplaced at a global clock pin.
+
+List of non-global clocks:
+   None.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Preassigned Signal [A] unroutable in
+                   block [A]. ].
+|> WARNING z7501 - Placer/Router [ Preassigned Node Signal [X] unroutable
+                   in block [A]. ].
+|> WARNING z7501 - Placer/Router [ Preassigned Node Signal [Y] unroutable
+                   in block [A]. ].
+|> WARNING z7501 - Placer/Router [ Unroutable Design ].
+|> WARNING z7501 - Placer/Router [ Block [A] has Input Multiplexer
+                   congestion. ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Preassigned Signal [A] unroutable in
+                   block [A]. ].
+|> WARNING z7501 - Placer/Router [ Preassigned Node Signal [X] unroutable
+                   in block [A]. ].
+|> WARNING z7501 - Placer/Router [ Preassigned Node Signal [Y] unroutable
+                   in block [A]. ].
+|> WARNING z7501 - Placer/Router [ Unroutable Design ].
+|> WARNING z7501 - Placer/Router [ Block [A] has Input Multiplexer
+                   congestion. ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Preassigned Signal [A] unroutable in
+                   block [A]. ].
+|> WARNING z7501 - Placer/Router [ Preassigned Node Signal [X] unroutable
+                   in block [A]. ].
+|> WARNING z7501 - Placer/Router [ Preassigned Node Signal [Y] unroutable
+                   in block [A]. ].
+|> WARNING z7501 - Placer/Router [ Unroutable Design ].
+|> WARNING z7501 - Placer/Router [ Block [A] has Input Multiplexer
+                   congestion. ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Preassigned Signal [A] unroutable in
+                   block [A]. ].
+|> WARNING z7501 - Placer/Router [ Preassigned Node Signal [X] unroutable
+                   in block [A]. ].
+|> WARNING z7501 - Placer/Router [ Preassigned Node Signal [Y] unroutable
+                   in block [A]. ].
+|> WARNING z7501 - Placer/Router [ Unroutable Design ].
+|> WARNING z7501 - Placer/Router [ Block [A] has Input Multiplexer
+                   congestion. ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+|> FATAL z7502 - Placer/Router [ unsuccessful on final iteration ].
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing        0% - Completed
+%%% Fitting process has failed %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Rpf3.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 24 .
+
+*** End MACHFITR.EX 01:52:22; (MACHFITR.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

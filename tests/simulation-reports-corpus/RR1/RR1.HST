@@ -1,0 +1,43 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+MACHXL SIMULATION HISTORY LISTING
+
+Title     :                          Author   :                  
+Pattern   :                          Company  :                  
+Revision  :                          Date     :                  
+
+Check clash    1:/N
+Expect  H  Actual  L
+
+Total number of check clashes   ====>>>    1
+Clash detected at vector number ====>>>    5
+
+Check clash    2:/N
+Expect  L  Actual  H
+
+Total number of check clashes   ====>>>    2
+Clash detected at vector number ====>>>    10
+
+MACH435        
+Page : 1 
+      gc   gc                                                     
+ GND  LLLLLLLLLL                                                  
+ VCC  HHHHHHHHHH                                                  
+ A    LLLLLHHHHH                                                  
+ Q    HHHHHHHLLL                                                  
+ GND  LLLLLLLLLL                                                  
+ CLK  LHHLLLHHLL                                                  
+ VCC  HHHHHHHHHH                                                  
+ GND  LLLLLLLLLL                                                  
+ GND  LLLLLLLLLL                                                  
+ VCC  HHHHHHHHHH                                                  
+ GND  LLLLLLLLLL                                                  
+ VCC  HHHHHHHHHH                                                  
+ GND  LLLLLLLLLL                                                  
+ VCC  HHHHHHHHHH                                                  
+ GND  LLLLLLLLLL                                                  
+ GND  LLLLLLLLLL                                                  
+ VCC  HHHHHHHHHH                                                  
+/N    LLLL?LLHH?                                                  
+

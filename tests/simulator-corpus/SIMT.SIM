@@ -1,0 +1,41 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Simt.pds
+Title  Native simulation reference
+
+
+
+   2-V1 - TRACE_ON
+          A  B  CLK  RST  Q  Y  
+   2-V1 - SETF
+          /A  /B  /CLK  RST  
+   3-V1 - CHECK
+          /Q  /Y  
+   3-V2 - SETF
+          /RST  A  
+   8-V3 - CLOCKF
+          CLK  
+   8-V3 - CHECK
+          Q  /Y  
+   8-V4 - SETF
+          B  
+  10-V4 - CHECK
+          Y  
+  10-V5 - SETF
+          /A  
+  15-V6 - CLOCKF
+          CLK  
+  15-V6 - CHECK
+          Q  /Y  
+  15-V7 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Simt.HST
+Simulation results (trace) are in   ===> Simt.TRF
+Merged results (JEDEC) are in       ===> Simt.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 90258 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Simt.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0

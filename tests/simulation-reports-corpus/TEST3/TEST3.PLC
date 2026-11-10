@@ -1,0 +1,42 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file Test3.pds
+; FITTER-generated Placements.
+; DEVICE   MACH435
+; DATE     Mon Nov 09 20:22:19 2026
+
+
+Pin   20  BCLK
+Pin   17  /BUS_REQ
+Pin   6  /SC0
+Pin   7  /SC1
+Pin   5  /SC2
+Pin   4  /SC4
+Pin   16  BREQ
+Pin   19  CLEAR
+Pin   3  SYSCLEAR
+Pin   9  ARB_ID_MATCH
+Pin   18  REQ_READY
+Pin   15  OWNRDY
+Pin   13  HI_PRI
+Pin   10  AGENT_ERR
+Pin   35  PUT_BUS_REQ Reg  ; S6=1  S9=1  Pair 50
+Pin   56  PUT_ARB_ID Comb ; S6=1  S9=1  Pair 82
+Pin   77  TRANS_ST[2] Reg  ; S6=1  S9=1  Pair 114
+Pin   71  TRANS_ST[1] Reg  ; S6=1  S9=1  Pair 98
+Pin   29  TRANS_ST[0] Reg  ; S6=1  S9=1  Pair 34
+Pin   8  TRANS_MON Reg  ; S6=1  S9=1  Pair 2
+Pin   50  ARB_MON[1] Reg  ; S6=1  S9=1  Pair 66
+Pin   33  ARB_MON[0] Reg  ; S6=1  S9=1  Pair 54
+Pin   12  ARB_OPER[1] Reg  ; S6=1  S9=1  Pair 22
+Pin   14  ARB_OPER[0] Reg  ; S6=1  S9=1  Pair 18
+Node  114  RN_TRANS_ST[2] Reg  ; S6=1  S9=1 
+Node  98  RN_TRANS_ST[1] Reg  ; S6=1  S9=1 
+Node  34  RN_TRANS_ST[0] Reg  ; S6=1  S9=1 
+Node  2  RN_TRANS_MON Reg  ; S6=1  S9=1 
+Node  66  RN_ARB_MON[1] Reg  ; S6=1  S9=1 
+Node  54  RN_ARB_MON[0] Reg  ; S6=1  S9=1 
+Node  22  RN_ARB_OPER[1] Reg  ; S6=1  S9=1 
+Node  18  RN_ARB_OPER[0] Reg  ; S6=1  S9=1 
+; Unused Pins & Nodes
+; -> None Found.

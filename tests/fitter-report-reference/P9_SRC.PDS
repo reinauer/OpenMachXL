@@ -1,0 +1,110 @@
+;-------------------------------------------------------------------
+; NOTICE: This implementation of PREP Co. Benchmark #1 - Datapath
+; is the property of AMD. It has submitted for the PREP benchmarks.
+;
+;       All other uses are expressly forbidden!
+;
+;       AMD Contact: Nick Schmitz (408) 749-4868        Fax:749-8433
+;       M/s 1002, P. O. Box 3453, Sunnyvale Ca 94088
+;-------------------------------------------------------------------
+
+; MACHXL Design description
+; -----------------------Declaration Segment ------------
+   TITLE Memory Mapper - PREP Benchmark #9
+ PATTERN P9.PDS
+REVISION A
+  AUTHOR J. ENGINEER
+ COMPANY ADVANCED MICRO DEVICES, INC.
+    DATE 9 Jan 1993
+
+CHIP   MAPPER      MACH435
+
+pin  ? CLK      PIN  ? AS       PIN  ? RST
+Pin  ? ADR[0..15]
+
+;-------------------------------------------------------------------
+pin ? A_x Reg   Pin? B_x Reg    Pin ? C_x Reg   Pin ? D_x Reg
+pin ? E_x Reg   Pin? F_x Reg    Pin ? G_x Reg   Pin ? H_x Reg
+
+Pin ? BE_x Reg
+
+group X_x  a_x b_x c_x d_x e_x f_x g_x h_x be_x 
+;-------------------------------------------------------------------
+
+;---------------------- Boolean Equation Segment ----------------
+EQUATIONS
+
+;-----------------------------------------------------------------
+;instance 0
+;-----------------------------------------------------------------
+A_x.rstf=RST     B_x.rstf=RST     C_x.rstf=RST     D_x.rstf=RST
+E_x.rstf=RST     F_x.rstf=RST     G_x.rstf=RST     H_x.rstf=RST
+BE_x.rstf=RST
+
+A_x.clkf=clk     B_x.clkf=clk     C_x.clkf=clk     D_x.clkf=clk
+E_x.clkf=clk     F_x.clkf=clk     G_x.clkf=clk     H_x.clkf=clk
+BE_x.clkf=clk
+
+;-----------------------------------------------------------------
+;-----------------------------------------------------------------
+; Make Sure all are Active High
+if (RST*/RST) then
+        begin   A_x=1    B_x=1    C_x=1    D_x=1
+                E_x=1    F_x=1    G_x=1    H_x=1    BE_x=1  end
+
+if (AS) then begin Case (ADR[15..0]) Begin
+  #hFFFF..#hF000:
+        begin   A_x=1    B_x=0    C_x=0    D_x=0
+                E_x=0    F_x=0    G_x=0    H_x=0    BE_x=0  end
+  #hEFFF..#hE800:
+        begin   A_x=0    B_x=1    C_x=0    D_x=0
+                E_x=0    F_x=0    G_x=0    H_x=0    BE_x=0  end
+  #hE7FF..#hE400:
+        begin   A_x=0    B_x=0    C_x=1    D_x=0
+                E_x=0    F_x=0    G_x=0    H_x=0    BE_x=0  end
+  #hE3FF..#hE300:
+        begin   A_x=0    B_x=0    C_x=0    D_x=1
+                E_x=0    F_x=0    G_x=0    H_x=0    BE_x=0  end
+  #hE2FF..#hE2C0:
+        begin   A_x=0    B_x=0    C_x=0    D_x=0
+                E_x=1    F_x=0    G_x=0    H_x=0    BE_x=0  end
+  #hE2BF..#hE2B0:
+        begin   A_x=0    B_x=0    C_x=0    D_x=0
+                E_x=0    F_x=1    G_x=0    H_x=0    BE_x=0  end
+  #hE2AF..#hE2AC:
+        begin   A_x=0    B_x=0    C_x=0    D_x=0
+                E_x=0    F_x=0    G_x=1    H_x=0    BE_x=0  end
+  #hE2AB:
+        begin   A_x=0    B_x=0    C_x=0    D_x=0
+                E_x=0    F_x=0    G_x=0    H_x=1    BE_x=0  end
+  #hE2AA..#h0000:
+        begin   A_x=0    B_x=0    C_x=0    D_x=0
+                E_x=0    F_x=0    G_x=0    H_x=0     BE_x=1  end
+  end
+end
+;-------------------------------------------------------------------
+
+;-----------------------------------------------------------------
+Simulation
+trace_on  X_x  ADR[15..0]
+
+Setf /ADR[15..0] /AS /RST /CLK
+Setf RST  Setf /RST
+
+CLOCKF CLK
+Setf ADR[15..0]             AS  Clockf clk   ; FFFF
+Setf /ADR[12]               AS  Clockf clk   ; EFFF
+Setf /ADR[12,11]            AS  Clockf clk   ; E7FF
+Setf /ADR[12..10]           AS  Clockf clk   ; E3FF
+Setf /ADR[12..10,8]         AS  Clockf clk   ; E2FF
+Setf /ADR[12..10,8,6]       AS  Clockf clk   ; E2BF
+Setf /ADR[12..10,8,6,4]     AS  Clockf clk   ; E2AF
+Setf /ADR[12..10,8,6,4,2]   AS  Clockf clk   ; E2AB
+Setf /ADR[12..10,8,6,4,2,0] AS  Clockf clk   ; E2AA
+Setf /ADR[15..0]            AS  Clockf clk   ; 0000
+
+Setf RST  Setf /RST
+
+trace_off
+
+

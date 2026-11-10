@@ -1,0 +1,55 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Sir0.pds
+Title  
+
+
+
+   1-V1 - TRACE_ON
+          A  N  CLK  Q  
+   1-V1 - SETF
+          /A  /CLK  /B  
+|> WARNING D2100
+     SETF of signal B does not affect any equations.
+   2-V2 - SETF
+          A  
+   6-V3 - CLOCKF
+          CLK  
+   6-V4 - SETF
+          /A  
+  10-V5 - CLOCKF
+          CLK  
+  10-V6 - SETF
+          A  B  
+|> WARNING D2100
+     SETF of signal B does not affect any equations.
+  14-V7 - CLOCKF
+          CLK  
+  14-V8 - SETF
+          /A  
+  18-V9 - CLOCKF
+          CLK  
+  18-V10 - SETF
+          /B  
+|> WARNING D2100
+     SETF of signal B does not affect any equations.
+  19-V11 - SETF
+          CLK  
+  20-V12 - SETF
+          A  
+  21-V13 - SETF
+          /CLK  
+  22-V14 - SETF
+          /A  
+  23-V15 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Sir0.HST
+Simulation results (trace) are in   ===> Sir0.TRF
+Merged results (JEDEC) are in       ===> Sir0.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 166783 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Sir0.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 3

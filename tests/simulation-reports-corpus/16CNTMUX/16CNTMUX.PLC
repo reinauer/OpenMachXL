@@ -1,0 +1,111 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file 16cntmux.pds
+; FITTER-generated Placements.
+; DEVICE   MACH435
+; DATE     Mon Nov 09 20:18:20 2026
+
+
+Pin   20  CLK
+Pin   9  COUNT
+Pin   7  UP
+Pin   5  LOAD
+Pin   3  SELECT
+Pin   82  I0
+Pin   80  I1
+Pin   78  I2
+Pin   76  I3
+Pin   72  I4
+Pin   70  I5
+Pin   68  I6
+Pin   66  I7
+Pin   65  I8
+Pin   62  I9
+Pin   61  I10
+Pin   59  I11
+Pin   57  I12
+Pin   55  I13
+Pin   51  I14
+Pin   49  I15
+Pin   47  I16
+Pin   45  I17
+Pin   41  I18
+Pin   40  I19
+Pin   38  I20
+Pin   36  I21
+Pin   34  I22
+Pin   30  I23
+Pin   28  I24
+Pin   26  I25
+Pin   24  I26
+Pin   23  I27
+Pin   19  I28
+Pin   17  I29
+Pin   15  I30
+Pin   13  I31
+Pin   58  O0 Comb ; S6=1  S9=1  Pair 94
+Pin   60  O1 Comb ; S6=1  S9=1  Pair 90
+Pin   54  O2 Comb ; S6=1  S9=1  Pair 86
+Pin   56  O3 Comb ; S6=1  S9=1  Pair 82
+Pin   27  O4 Comb ; S6=1  S9=1  Pair 46
+Pin   25  O5 Comb ; S6=1  S9=1  Pair 42
+Pin   31  O6 Comb ; S6=1  S9=1  Pair 38
+Pin   29  O7 Comb ; S6=1  S9=1  Pair 34
+Pin   79  O8 Comb ; S6=1  S9=1  Pair 126
+Pin   81  O9 Comb ; S6=1  S9=1  Pair 122
+Pin   75  O10 Comb ; S6=1  S9=1  Pair 118
+Pin   77  O11 Comb ; S6=1  S9=1  Pair 114
+Pin   6  O12 Comb ; S6=1  S9=1  Pair 14
+Pin   4  O13 Comb ; S6=1  S9=1  Pair 10
+Pin   10  O14 Comb ; S6=1  S9=1  Pair 6
+Pin   8  O15 Comb ; S6=1  S9=1  Pair 2
+Pin   48  O16 Comb ; S6=1  S9=1  Pair 78
+Pin   46  O17 Comb ; S6=1  S9=1  Pair 74
+Pin   52  O18 Comb ; S6=1  S9=1  Pair 70
+Pin   50  O19 Comb ; S6=1  S9=1  Pair 66
+Pin   37  O20 Comb ; S6=1  S9=1  Pair 62
+Pin   39  O21 Comb ; S6=1  S9=1  Pair 58
+Pin   33  O22 Comb ; S6=1  S9=1  Pair 54
+Pin   35  O23 Comb ; S6=1  S9=1  Pair 50
+Pin   69  O24 Comb ; S6=1  S9=1  Pair 110
+Pin   67  O25 Comb ; S6=1  S9=1  Pair 106
+Pin   73  O26 Comb ; S6=1  S9=1  Pair 102
+Pin   71  O27 Comb ; S6=1  S9=1  Pair 98
+Pin   16  O28 Comb ; S6=1  S9=1  Pair 30
+Pin   18  O29 Comb ; S6=1  S9=1  Pair 26
+Pin   12  O30 Comb ; S6=1  S9=1  Pair 22
+Pin   14  O31 Comb ; S6=1  S9=1  Pair 18
+Node  95  Q0 Reg  ; S6=1  S9=1 
+Node  91  Q1 Reg  ; S6=1  S9=1 
+Node  87  Q2 Reg  ; S6=1  S9=1 
+Node  83  Q3 Reg  ; S6=1  S9=1 
+Node  47  Q4 Reg  ; S6=1  S9=1 
+Node  43  Q5 Reg  ; S6=1  S9=1 
+Node  39  Q6 Reg  ; S6=1  S9=1 
+Node  35  Q7 Reg  ; S6=1  S9=1 
+Node  127  Q8 Reg  ; S6=1  S9=1 
+Node  123  Q9 Reg  ; S6=1  S9=1 
+Node  119  Q10 Reg  ; S6=1  S9=1 
+Node  115  Q11 Reg  ; S6=1  S9=1 
+Node  15  Q12 Reg  ; S6=1  S9=1 
+Node  11  Q13 Reg  ; S6=1  S9=1 
+Node  7  Q14 Reg  ; S6=1  S9=1 
+Node  3  Q15 Reg  ; S6=1  S9=1 
+Node  79  Q16 Reg  ; S6=1  S9=1 
+Node  75  Q17 Reg  ; S6=1  S9=1 
+Node  71  Q18 Reg  ; S6=1  S9=1 
+Node  67  Q19 Reg  ; S6=1  S9=1 
+Node  63  Q20 Reg  ; S6=1  S9=1 
+Node  59  Q21 Reg  ; S6=1  S9=1 
+Node  55  Q22 Reg  ; S6=1  S9=1 
+Node  51  Q23 Reg  ; S6=1  S9=1 
+Node  111  Q24 Reg  ; S6=1  S9=1 
+Node  107  Q25 Reg  ; S6=1  S9=1 
+Node  103  Q26 Reg  ; S6=1  S9=1 
+Node  99  Q27 Reg  ; S6=1  S9=1 
+Node  31  Q28 Reg  ; S6=1  S9=1 
+Node  27  Q29 Reg  ; S6=1  S9=1 
+Node  23  Q30 Reg  ; S6=1  S9=1 
+Node  19  Q31 Reg  ; S6=1  S9=1 
+; Unused Pins & Nodes
+; -> None Found.

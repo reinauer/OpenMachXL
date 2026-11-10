@@ -1,0 +1,137 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Data_aq.pds
+Title  Large Example
+
+|> WARNING D2300
+     Clock signal also drives other logic data functions.
+
+      CLK             CE0             
+
+   1-V1 - TRACE_ON
+          CLK  Q[7..0]  CE1  LOAD  DATABUS[7..0]  
+          RAM_DATA[7..0]  SEL2  OE0  CE0  CLK_IREG  MUXED_002[7..0]  
+          A_DATA[7..0]  B_DATA[7..0]  ADD[7..0]  BUSADDR[7..0]  
+          RAM_AD001[7..0]  SEL0  SEL1  
+   1-V1 - SETF
+          CE1  SEL2  /LOAD  RST  
+   2-V2 - SETF
+          /RST  
+   3-V3 - FOR
+   6-V3 - CLOCKF
+          CLK  
+   9-V4 - CLOCKF
+          CLK  
+  12-V5 - CLOCKF
+          CLK  
+  12-V6 - SETF
+          LOAD  OE0  /RAM_DATA[7]  /RAM_DATA[6]  RAM_DATA[5]  
+          RAM_DATA[4]  /RAM_DATA[3]  /RAM_DATA[2]  RAM_DATA[1]  
+          /RAM_DATA[0]  
+  16-V7 - CLOCKF
+          CLK  
+  16-V7 - CHECK
+          /Q[7]  /Q[6]  Q[5]  Q[4]  /Q[3]  /Q[2]  Q[1]  /Q[0]  
+  16-V8 - SETF
+          /LOAD  
+  17-V9 - FOR
+  20-V9 - CLOCKF
+          CLK  
+  23-V10 - CLOCKF
+          CLK  
+  26-V11 - CLOCKF
+          CLK  
+  26-V12 - SETF
+          /CE1  
+  30-V13 - CLOCKF
+          CLK  
+  30-V14 - SETF
+          /OE0  SEL2  DATABUS[7]  DATABUS[6]  /DATABUS[5]  
+          /DATABUS[4]  DATABUS[3]  DATABUS[2]  /DATABUS[1]  /DATABUS[0]  
+  34-V15 - CLOCKF
+          CLK  
+  34-V15 - CHECK
+          RAM_DATA[7]  RAM_DATA[6]  /RAM_DATA[5]  /RAM_DATA[4]  
+          RAM_DATA[3]  RAM_DATA[2]  /RAM_DATA[1]  /RAM_DATA[0]  
+  34-V16 - SETF
+          /SEL2  
+  38-V17 - CLOCKF
+          CLK  
+  38-V17 - CHECK
+          /RAM_DATA[7]  /RAM_DATA[6]  RAM_DATA[5]  RAM_DATA[4]  
+          /RAM_DATA[3]  RAM_DATA[2]  /RAM_DATA[1]  RAM_DATA[0]  
+  38-V18 - SETF
+          OE0  CE1  LOAD  RAM_DATA[7]  RAM_DATA[6]  
+          /RAM_DATA[5]  RAM_DATA[4]  RAM_DATA[3]  RAM_DATA[2]  /RAM_DATA[1]  
+          RAM_DATA[0]  
+  42-V19 - CLOCKF
+          CLK  
+  42-V19 - CHECK
+          Q[7]  Q[6]  /Q[5]  Q[4]  Q[3]  Q[2]  /Q[1]  Q[0]  
+  42-V19 - CHECK
+          RAM_DATA[7]  RAM_DATA[6]  /RAM_DATA[5]  RAM_DATA[4]  
+          RAM_DATA[3]  RAM_DATA[2]  /RAM_DATA[1]  RAM_DATA[0]  
+  42-V20 - SETF
+          /CE1  CE0  /MUXED_002[7]  /MUXED_002[6]  
+          MUXED_002[5]  MUXED_002[4]  /MUXED_002[3]  /MUXED_002[2]  
+          MUXED_002[1]  MUXED_002[0]  
+  46-V21 - CLOCKF
+          CLK  
+  46-V21 - CHECK
+          /A_DATA[7]  /A_DATA[6]  A_DATA[5]  A_DATA[4]  
+          /A_DATA[3]  /A_DATA[2]  A_DATA[1]  A_DATA[0]  
+  46-V22 - SETF
+          /MUXED_002[7]  MUXED_002[6]  /MUXED_002[5]  
+          /MUXED_002[4]  /MUXED_002[3]  MUXED_002[2]  /MUXED_002[1]  
+          /MUXED_002[0]  /CE0  
+  50-V23 - CLOCKF
+          CLK_IREG  
+  50-V23 - CHECK
+          /B_DATA[7]  B_DATA[6]  /B_DATA[5]  /B_DATA[4]  
+          /B_DATA[3]  B_DATA[2]  /B_DATA[1]  /B_DATA[0]  
+  50-V24 - SETF
+          /BUSADDR[7]  BUSADDR[6]  /BUSADDR[5]  BUSADDR[4]  
+          /BUSADDR[3]  BUSADDR[2]  /BUSADDR[1]  BUSADDR[0]  /SEL0  /SEL1  
+  54-V25 - CLOCKF
+          CLK  
+  54-V25 - CHECK
+          /RAM_AD001[7]  /RAM_AD001[6]  RAM_AD001[5]  
+          RAM_AD001[4]  /RAM_AD001[3]  /RAM_AD001[2]  RAM_AD001[1]  
+          RAM_AD001[0]  
+  54-V26 - SETF
+          /SEL0  SEL1  
+  58-V27 - CLOCKF
+          CLK  
+  58-V27 - CHECK
+          /RAM_AD001[7]  RAM_AD001[6]  /RAM_AD001[5]  
+          /RAM_AD001[4]  /RAM_AD001[3]  RAM_AD001[2]  /RAM_AD001[1]  
+          /RAM_AD001[0]  
+  58-V28 - SETF
+          SEL0  /SEL1  
+  62-V29 - CLOCKF
+          CLK  
+  62-V29 - CHECK
+          /RAM_AD001[7]  RAM_AD001[6]  RAM_AD001[5]  
+          RAM_AD001[4]  /RAM_AD001[3]  RAM_AD001[2]  RAM_AD001[1]  
+          RAM_AD001[0]  
+  62-V30 - SETF
+          SEL0  SEL1  
+  66-V31 - CLOCKF
+          CLK  
+  66-V31 - CHECK
+          /RAM_AD001[7]  RAM_AD001[6]  /RAM_AD001[5]  
+          RAM_AD001[4]  /RAM_AD001[3]  RAM_AD001[2]  /RAM_AD001[1]  
+          RAM_AD001[0]  
+  66-V32 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Data_aq.HST
+Simulation results (trace) are in   ===> Data_aq.TRF
+Merged results (JEDEC) are in       ===> Data_aq.JDC
+Simulation results (trace vectors) are in   ===> Data_aq.TRV
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 474245 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Data_aq.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 1

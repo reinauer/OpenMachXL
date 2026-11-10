@@ -1,0 +1,50 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+
+  release:
+    name: Publish tagged binaries
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: Download binary archives
+        uses: actions/download-artifact@v8
+        with:
+          pattern: machxl-*
+          path: dist
+          merge-multiple: true
+
+      - name: Publish release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          archives=(dist/machxl-*.tar.gz)
+          if [[ ${#archives[@]} -ne 3 ]]; then
+            echo "Expected Linux and both macOS archives" >&2
+            exit 1
+          fi
+          (cd dist && sha256sum machxl-*.tar.gz > SHA256SUMS)
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" "${archives[@]}" dist/SHA256SUMS --clobber
+          else
+            flags=(--draft --verify-tag --generate-notes)
+            if [[ "$GITHUB_REF_NAME" == *-* ]]; then
+              flags+=(--prerelease)
+            fi
+            gh release create "$GITHUB_REF_NAME" "${archives[@]}" dist/SHA256SUMS "${flags[@]}"
+          fi
+          gh release edit "$GITHUB_REF_NAME" --draft=false

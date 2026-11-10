@@ -1,0 +1,215 @@
+
+*** Start MACHPAR.E 14:25:59 
+Fr111.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP PLACEFAIL MACH111
+   2     |PIN 5 I0
+   3     |PIN 6 I1
+   4     |PIN 7 I2
+   5     |PIN 8 I3
+   6     |PIN 9 I4
+   7     |PIN 14 I5
+   8     |PIN 15 I6
+   9     |PIN 16 I7
+  10     |PIN 17 I8
+  11     |PIN 18 I9
+  12     |PIN 19 I10
+  13     |PIN 20 I11
+  14     |PIN 21 I12
+  15     |PIN ? Q0 REG
+  16     |PIN ? Q1 REG
+  17     |PIN ? Q2 REG
+  18     |GROUP MACH_SEG_A Q0 Q1 Q2
+  19     |PIN 13 CLK
+  20     |EQUATIONS
+  21     |Q0=I0*I1*I2*I3*I4*I5*I6*I7*I8*I9*I10*I11*I12
+  22     |Q0.TRST=I0
+  23     |Q1=I0*I1*I2*I3*I4*I5*I6*I7*I8*I9*I10*I11*I12
+  24     |Q1.TRST=I1
+  25     |Q2=I0*I1*I2*I3*I4*I5*I6*I7*I8*I9*I10*I11*I12
+  26     |Q2.TRST=I2
+  27     |Q0.CLKF=CLK
+  28     |Q1.CLKF=CLK
+  29     |Q2.CLKF=CLK
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Fr111.pds
+
+*** End MACHPAR.EXE 14:25:59; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 14:25:59 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q0
+Processing equation for ====>Q0.TRST
+Processing equation for ====>Q1
+Processing equation for ====>Q1.TRST
+Processing equation for ====>Q2
+Processing equation for ====>Q2.TRST
+Processing equation for ====>Q0.CLKF
+Processing equation for ====>Q1.CLKF
+Processing equation for ====>Q2.CLKF
+
+ %%  MACHBPP  %% Maximum memory allocated was: 70912 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Fr111.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 14:25:59; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 14:25:59 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin Q2...
+====> Q2                 MIN_ON (1 + pt)
+====> Q2.CLKF            MIN_ON (1 + pt)
+====> Q2.TRST            MIN_ON (1 + pt)
+Processing equation(s) for pin Q1...
+====> Q1                 MIN_ON (1 + pt)
+====> Q1.CLKF            MIN_ON (1 + pt)
+====> Q1.TRST            MIN_ON (1 + pt)
+Processing equation(s) for pin Q0...
+====> Q0                 MIN_ON (1 + pt)
+====> Q0.CLKF            MIN_ON (1 + pt)
+====> Q0.TRST            MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 45480 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Fr111.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 14:25:59; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 14:25:59 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file fr111.tre to PLA file fr111.pla...
+
+...
+...
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 43412 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Fr111.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 14:26:00; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 14:26:00 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Fr111.pds . Device is MACH111 .
+|> INFO z5109 - For this device, all input pairing is ignored since input
+                registers or latches do not exist. All signals must pass
+                through the central switch matrix before being latched or
+                registered.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of global clocks:
+   CLK:
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not assign IO pins to nodes in
+                   block [A]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not assign IO pins to nodes in
+                   block [A]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not assign IO pins to nodes in
+                   block [A]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not assign IO pins to nodes in
+                   block [A]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+|> FATAL z7502 - Placer/Router [ unsuccessful on final iteration ].
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing        0% - Completed
+%%% Fitting process has failed %%%
+*** Report Generator end.
+
+|> INFO z5122 - MACH111 fitting errors may result when preplaced and paired
+                nodes in block B of a MACH110 design have not been
+                translated to their MACH111 counterparts -- prior to
+                fitting.
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Fr111.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 12 .
+
+*** End MACHFITR.EX 14:26:33; (MACHFITR.EXE=33 sec.) elapsed time=34 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

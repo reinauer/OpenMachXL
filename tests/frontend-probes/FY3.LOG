@@ -1,0 +1,134 @@
+
+*** Start MACHPAR.E 02:59:30 
+Fy3.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP FY3 MACH435
+   2     |PIN ? A
+   3     |PIN ? B
+   4     |PIN ? Q
+   5     |NODE 18 N PAIR Q
+   6     |PIN ? R
+   7     |EQUATIONS
+   8     |Q=A*B
+   9     |N=A*B
+  10     |R=A*B
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Fy3.pds
+
+*** End MACHPAR.EXE 02:59:31; (MACHPAR.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 02:59:31 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q
+Processing equation for ====>N
+Processing equation for ====>R
+
+ %%  MACHBPP  %% Maximum memory allocated was: 69010 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Fy3.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 02:59:31; (MACHBPP.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 02:59:31 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node N and paired pin Q...
+====> N                  MIN_ON (1 + pt)
+====> Q                  MIN_ON (1 + pt)
+Processing equation(s) for pin R...
+====> R                  MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 48994 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: FY3.PDS.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 02:59:31; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 02:59:31 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file fy3.tre to PLA file fy3.pla...
+
+...
+...
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 48498 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: FY3.PDS.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 02:59:32; (MACHMIN.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 02:59:32 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is FY3.PDS . Device is MACH435 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+|> WARNING z5071 - Nodes not referenced
+N 
+Check clock rules
+
+List of non-global clocks:
+   None.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is FY3.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File FY3.PDS .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 1 .
+
+*** End MACHFITR.EX 02:59:33; (MACHFITR.EXE= 1 sec.) elapsed time= 3 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

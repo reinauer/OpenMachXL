@@ -1,0 +1,96 @@
+Sx145.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP SX145 MACH435
+   2     |PIN ? A
+   3     |PIN ? B
+   4     |PIN 20 CLK
+   5     |PIN ? Q REG
+   6     |EQUATIONS
+   7     |Q=A+B
+   8     |Q.CLKF=CLK
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Sx145.pds
+
+*** Start MACHBPP.E 11:36:47 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q
+Processing equation for ====>Q.CLKF
+
+ %%  MACHBPP  %% Maximum memory allocated was: 68892 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Sx145.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 11:36:47; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 11:36:47 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin Q...
+====> Q                  MIN_ON (2 + pt --> 1 + pt)
+====> Q.CLKF             MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 48372 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Sx145.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 11:36:47; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 11:36:47 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file sx145.tre to PLA file sx145.pla...
+
+.
+.
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 48426 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Sx145.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 11:36:48; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 11:36:48 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+|> ERROR z5048 - INTERNAL ERROR: Please, refer to the file
+                 MACHXL\README.BUG or to Appendix C in the MACHXL Software
+                 User's Guide for reporting internal errors to AMD. Invalid
+                 Index 1234 is out of range.
+Too many errors 1 .
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Sx145.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 0 .
+
+*** End MACHFITR.EX 11:36:48; (MACHFITR.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

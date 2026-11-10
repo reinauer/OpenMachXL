@@ -1,0 +1,222 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  P1_srn.pds
+Title  Cascaded Data Path Benchmark for PREP #1
+
+|> WARNING D2130
+     Equation Q_X[0].SETF is always low.
+|> WARNING D2130
+     Equation M_X[7].SETF is always low.
+|> WARNING D2130
+     Equation M_X[6].SETF is always low.
+|> WARNING D2130
+     Equation M_X[5].SETF is always low.
+|> WARNING D2130
+     Equation M_X[4].SETF is always low.
+|> WARNING D2130
+     Equation M_X[3].SETF is always low.
+|> WARNING D2130
+     Equation M_X[2].SETF is always low.
+|> WARNING D2130
+     Equation M_X[1].SETF is always low.
+|> WARNING D2130
+     Equation M_X[0].SETF is always low.
+|> WARNING D2130
+     Equation P_X[7].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[7].SETF is always low.
+|> WARNING D2130
+     Equation P_X[6].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[6].SETF is always low.
+|> WARNING D2130
+     Equation P_X[5].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[5].SETF is always low.
+|> WARNING D2130
+     Equation P_X[4].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[4].SETF is always low.
+|> WARNING D2130
+     Equation P_X[3].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[3].SETF is always low.
+|> WARNING D2130
+     Equation P_X[2].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[2].SETF is always low.
+|> WARNING D2130
+     Equation P_X[1].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[1].SETF is always low.
+|> WARNING D2130
+     Equation P_X[0].SETF is always low.
+
+
+   1-V1 - TRACE_ON
+          Q_X[7..0]  SEL[1..0]  CLK  RST  S_L  OE  
+          ID[15,11,4,0]  IPD[7,1..0]  
+   1-V1 - SETF
+          /IPD[7]  /IPD[6]  /IPD[5]  /IPD[4]  /IPD[3]  /IPD[2]  
+          /IPD[1]  IPD[0]  /ID[15]  /ID[14]  /ID[13]  /ID[12]  ID[11]  
+          /ID[10]  /ID[9]  /ID[8]  /ID[7]  /ID[6]  /ID[5]  ID[4]  
+          /ID[3]  /ID[2]  /ID[1]  /ID[0]  /S_L  /CLK  /SEL[1]  /SEL[0]  
+          /RST  /OE  
+   2-V2 - SETF
+          RST  OE  
+   6-V3 - CLOCKF
+          CLK  
+   6-V4 - SETF
+          /RST  
+   7-V4 - CHECK
+          /Q_X[7]  /Q_X[6]  /Q_X[5]  /Q_X[4]  /Q_X[3]  /Q_X[2]  
+          /Q_X[1]  /Q_X[0]  
+   7-V5 - FOR
+  10-V5 - CLOCKF
+          CLK  
+  13-V6 - CLOCKF
+          CLK  
+  16-V7 - CLOCKF
+          CLK  
+  19-V8 - CLOCKF
+          CLK  
+  19-V9 - SETF
+          S_L  
+  20-V9 - CHECK
+          /Q_X[7]  /Q_X[6]  /Q_X[5]  /Q_X[4]  /Q_X[3]  /Q_X[2]  
+          /Q_X[1]  Q_X[0]  
+  20-V10 - FOR
+  23-V10 - CLOCKF
+          CLK  
+  26-V11 - CLOCKF
+          CLK  
+  29-V12 - CLOCKF
+          CLK  
+  32-V13 - CLOCKF
+          CLK  
+  35-V14 - CLOCKF
+          CLK  
+  38-V15 - CLOCKF
+          CLK  
+  41-V16 - CLOCKF
+          CLK  
+  41-V16 - CHECK
+          /Q_X[6]  /Q_X[5]  /Q_X[4]  /Q_X[3]  /Q_X[2]  /Q_X[1]  
+          /Q_X[0]  Q_X[7]  
+  41-V17 - SETF
+          SEL[1]  /SEL[0]  
+  45-V18 - CLOCKF
+          CLK  
+  45-V19 - SETF
+          /S_L  
+  49-V20 - CLOCKF
+          CLK  
+  49-V21 - SETF
+          S_L  
+  50-V21 - CHECK
+          /Q_X[7]  /Q_X[6]  /Q_X[5]  /Q_X[4]  /Q_X[2]  /Q_X[1]  
+          /Q_X[0]  Q_X[3]  
+  50-V22 - FOR
+  53-V22 - CLOCKF
+          CLK  
+  56-V23 - CLOCKF
+          CLK  
+  59-V24 - CLOCKF
+          CLK  
+  62-V25 - CLOCKF
+          CLK  
+  65-V26 - CLOCKF
+          CLK  
+  68-V27 - CLOCKF
+          CLK  
+  71-V28 - CLOCKF
+          CLK  
+  71-V28 - CHECK
+          /Q_X[7]  /Q_X[6]  /Q_X[5]  /Q_X[4]  /Q_X[3]  /Q_X[1]  
+          /Q_X[0]  Q_X[2]  
+  71-V29 - SETF
+          /OE  
+  72-V30 - SETF
+          P_X[7]  /P_X[6]  /P_X[5]  /P_X[4]  /P_X[3]  /P_X[2]  
+          /P_X[1]  /P_X[0]  
+  73-V31 - SETF
+          SEL[1]  SEL[0]  
+  77-V32 - CLOCKF
+          CLK  
+  77-V33 - SETF
+          OE  
+  78-V34 - SETF
+          /S_L  
+  82-V35 - CLOCKF
+          CLK  
+  82-V36 - SETF
+          S_L  
+  83-V36 - CHECK
+          /Q_X[6]  /Q_X[5]  /Q_X[4]  /Q_X[3]  /Q_X[2]  /Q_X[1]  
+          /Q_X[0]  Q_X[7]  
+  83-V37 - FOR
+  86-V37 - CLOCKF
+          CLK  
+  89-V38 - CLOCKF
+          CLK  
+  92-V39 - CLOCKF
+          CLK  
+  95-V40 - CLOCKF
+          CLK  
+  98-V41 - CLOCKF
+          CLK  
+ 101-V42 - CLOCKF
+          CLK  
+ 104-V43 - CLOCKF
+          CLK  
+ 104-V43 - CHECK
+          /Q_X[7]  /Q_X[5]  /Q_X[4]  /Q_X[3]  /Q_X[2]  /Q_X[1]  
+          /Q_X[0]  Q_X[6]  
+ 104-V44 - SETF
+          /SEL[1]  SEL[0]  
+ 108-V45 - CLOCKF
+          CLK  
+ 108-V46 - SETF
+          /S_L  
+ 112-V47 - CLOCKF
+          CLK  
+ 112-V48 - SETF
+          S_L  
+ 113-V48 - CHECK
+          /Q_X[7]  /Q_X[6]  /Q_X[5]  /Q_X[3]  /Q_X[2]  /Q_X[1]  
+          /Q_X[0]  Q_X[4]  
+ 113-V49 - FOR
+ 116-V49 - CLOCKF
+          CLK  
+ 119-V50 - CLOCKF
+          CLK  
+ 122-V51 - CLOCKF
+          CLK  
+ 125-V52 - CLOCKF
+          CLK  
+ 128-V53 - CLOCKF
+          CLK  
+ 131-V54 - CLOCKF
+          CLK  
+ 134-V55 - CLOCKF
+          CLK  
+ 134-V55 - CHECK
+          /Q_X[7]  /Q_X[6]  /Q_X[5]  /Q_X[4]  /Q_X[2]  /Q_X[1]  
+          /Q_X[0]  Q_X[3]  
+ 134-V56 - SETF
+          /SEL[1]  /SEL[0]  
+ 138-V57 - CLOCKF
+          CLK  
+ 138-V58 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> P1_srn.HST
+Simulation results (trace) are in   ===> P1_srn.TRF
+Merged results (JEDEC) are in       ===> P1_srn.JDC
+Simulation results (trace vectors) are in   ===> P1_srn.TRV
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 272832 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: P1_srn.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 24

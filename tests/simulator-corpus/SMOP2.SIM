@@ -1,0 +1,45 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Smop2.pds
+Title  
+
+
+
+   1-V1 - TRACE_ON
+          A  B  CLK  Q  N  R  
+   1-V1 - SETF
+          /A  /B  /CLK  
+   2-V2 - SETF
+          A  
+   6-V3 - CLOCKF
+          CLK  
+   6-V4 - SETF
+          /A  
+  10-V5 - CLOCKF
+          CLK  
+  10-V6 - SETF
+          B  
+  11-V7 - SETF
+          A  
+  15-V8 - CLOCKF
+          CLK  
+  15-V9 - SETF
+          /B  
+  19-V10 - CLOCKF
+          CLK  
+  19-V11 - SETF
+          /A  
+  23-V12 - CLOCKF
+          CLK  
+  23-V13 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Smop2.HST
+Simulation results (trace) are in   ===> Smop2.TRF
+Merged results (JEDEC) are in       ===> Smop2.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 167842 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Smop2.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0

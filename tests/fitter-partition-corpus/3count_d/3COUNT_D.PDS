@@ -1,0 +1,46 @@
+TITLE    FILE 3 Bits D-Counter
+PATTERN  1
+AUTHOR   J. ENGINEER
+REVISION Created from PLA file 
+COMPANY  AMD
+DATE     Mon Nov 09 21:45:48 2026
+
+CHIP     3COUNT_D MACH111
+PIN    1            GND 
+PIN   12            GND 
+PIN   22            VCC 
+PIN   23            GND 
+PIN   34            GND 
+PIN   44            VCC 
+PIN    ?            CLK 
+PIN    ?         ENABLE 
+PIN    ?            RST 
+PIN    ?           B[2]  REG ;
+PIN    ?           B[1]  REG ;
+PIN    ?           B[0]  REG ;
+
+EQUATIONS
+
+B[2]          := B[2] * /B[1]
+               + B[2] * /B[0]
+               + /ENABLE * B[2]
+               + ENABLE * /B[2] * B[1] * B[0]
+
+B[2].RSTF      = RST
+
+B[2].CLKF      = CLK
+
+B[1]          := B[1] * /B[0]
+               + /ENABLE * B[1]
+               + ENABLE * /B[1] * B[0]
+
+B[1].RSTF      = RST
+
+B[1].CLKF      = CLK
+
+B[0]          := ENABLE * /B[0]
+
+B[0].RSTF      = RST
+
+B[0].CLKF      = CLK
+

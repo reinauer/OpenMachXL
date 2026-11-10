@@ -1,0 +1,616 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  P4_src.pds
+Title  LARGE STATE MACHINE
+
+|> WARNING D2130
+     Equation BN1[4].SETF is always low.
+|> WARNING D2130
+     Equation BN1[3].SETF is always low.
+|> WARNING D2130
+     Equation BN1[2].SETF is always low.
+|> WARNING D2130
+     Equation BN1[0].RSTF is always low.
+|> WARNING D2130
+     Equation BN1[1].RSTF is always low.
+
+
+   1-V1 - TRACE_ON
+          CLK  RST  IN1[7..0]  BN1[4..0]  OP1[7..0]  
+   1-V1 - SETF
+          /CLK  RST  /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  
+          /IN1[3]  /IN1[2]  /IN1[1]  /IN1[0]  
+   2-V2 - SETF
+          /RST  
+   3-V2 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  /OP1[4]  /OP1[3]  /OP1[2]  
+          /OP1[1]  /OP1[0]  
+   3-V3 - SETF
+          /RST  /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  
+          /IN1[2]  /IN1[1]  /IN1[0]  
+   7-V4 - CLOCKF
+          CLK  
+   7-V4 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  /OP1[4]  /OP1[3]  /OP1[2]  
+          /OP1[1]  /OP1[0]  
+   7-V5 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  IN1[0]  
+  11-V6 - CLOCKF
+          CLK  
+  11-V6 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  /OP1[4]  /OP1[3]  OP1[2]  
+          OP1[1]  /OP1[0]  
+  11-V7 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+  15-V8 - CLOCKF
+          CLK  
+  15-V8 - CHECK
+          /OP1[7]  OP1[6]  OP1[5]  /OP1[4]  /OP1[3]  /OP1[2]  
+          /OP1[1]  /OP1[0]  
+  15-V9 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+  19-V10 - CLOCKF
+          CLK  
+  19-V10 - CHECK
+          OP1[6]  /OP1[1]  
+  19-V11 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+  23-V12 - CLOCKF
+          CLK  
+  23-V12 - CHECK
+          OP1[6]  /OP1[1]  
+  23-V13 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  IN1[0]  
+  27-V14 - CLOCKF
+          CLK  
+  27-V14 - CHECK
+          /OP1[7]  /OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+  27-V15 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+  31-V16 - CLOCKF
+          CLK  
+  31-V16 - CHECK
+          /OP1[7]  OP1[6]  OP1[5]  /OP1[4]  /OP1[3]  /OP1[2]  
+          /OP1[1]  /OP1[0]  
+  31-V17 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+  35-V18 - CLOCKF
+          CLK  
+  35-V18 - CHECK
+          OP1[6]  /OP1[1]  
+  35-V19 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  IN1[0]  
+  39-V20 - CLOCKF
+          CLK  
+  39-V20 - CHECK
+          /OP1[7]  /OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+  39-V21 - SETF
+          IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+  43-V22 - CLOCKF
+          CLK  
+  43-V22 - CHECK
+          /OP1[7]  /OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+  43-V23 - SETF
+          IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+  47-V24 - CLOCKF
+          CLK  
+  47-V24 - CHECK
+          OP1[7]  /OP1[0]  
+  47-V25 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+  51-V26 - CLOCKF
+          CLK  
+  51-V26 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+  51-V27 - SETF
+          /IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+  55-V28 - CLOCKF
+          CLK  
+  55-V28 - CHECK
+          /OP1[7]  OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+  55-V29 - SETF
+          /IN1[7]  /IN1[6]  IN1[5]  IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+  59-V30 - CLOCKF
+          CLK  
+  59-V30 - CHECK
+          /OP1[7]  OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+  59-V31 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+  63-V32 - CLOCKF
+          CLK  
+  63-V32 - CHECK
+          OP1[7]  OP1[5]  OP1[3]  OP1[1]  
+  63-V33 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+  67-V34 - CLOCKF
+          CLK  
+  67-V34 - CHECK
+          /OP1[7]  OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+  67-V35 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+  71-V36 - CLOCKF
+          CLK  
+  71-V36 - CHECK
+          OP1[7]  OP1[5]  OP1[3]  OP1[1]  
+  71-V37 - SETF
+          /IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+  75-V38 - CLOCKF
+          CLK  
+  75-V38 - CHECK
+          /OP1[7]  OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+  75-V39 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+  79-V40 - CLOCKF
+          CLK  
+  79-V40 - CHECK
+          /OP1[7]  OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+  79-V41 - SETF
+          IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          IN1[1]  /IN1[0]  
+  83-V42 - CLOCKF
+          CLK  
+  83-V42 - CHECK
+          OP1[7]  OP1[6]  OP1[5]  OP1[4]  /OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+  83-V43 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+  87-V44 - CLOCKF
+          CLK  
+  87-V44 - CHECK
+          OP1[7]  OP1[6]  /OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+  87-V45 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+  91-V46 - CLOCKF
+          CLK  
+  91-V46 - CHECK
+          OP1[7]  OP1[6]  /OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+  91-V47 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  IN1[4]  IN1[3]  IN1[2]  
+          IN1[1]  IN1[0]  
+  95-V48 - CLOCKF
+          CLK  
+  95-V48 - CHECK
+          OP1[7]  OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          /OP1[1]  OP1[0]  
+  95-V49 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+  99-V50 - CLOCKF
+          CLK  
+  99-V50 - CHECK
+          OP1[7]  OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          /OP1[1]  OP1[0]  
+  99-V51 - SETF
+          IN1[7]  IN1[6]  IN1[5]  IN1[4]  IN1[3]  IN1[2]  
+          IN1[1]  IN1[0]  
+ 103-V52 - CLOCKF
+          CLK  
+ 103-V52 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  /OP1[4]  /OP1[3]  /OP1[2]  
+          /OP1[1]  /OP1[0]  
+ 103-V53 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  IN1[2]  
+          IN1[1]  IN1[0]  
+ 107-V54 - CLOCKF
+          CLK  
+ 107-V54 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  OP1[4]  OP1[3]  /OP1[2]  
+          /OP1[1]  /OP1[0]  
+ 107-V55 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          IN1[1]  IN1[0]  
+ 111-V56 - CLOCKF
+          CLK  
+ 111-V56 - CHECK
+          /OP1[7]  OP1[6]  OP1[5]  /OP1[4]  /OP1[3]  /OP1[2]  
+          /OP1[1]  /OP1[0]  
+ 111-V57 - SETF
+          RST  
+ 112-V58 - SETF
+          /RST  IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  
+          IN1[2]  IN1[1]  IN1[0]  
+ 116-V59 - CLOCKF
+          CLK  
+ 116-V59 - CHECK
+          OP1[7]  /OP1[0]  
+ 116-V60 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 120-V61 - CLOCKF
+          CLK  
+ 120-V61 - CHECK
+          OP1[6]  /OP1[1]  
+ 120-V62 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  IN1[0]  
+ 124-V63 - CLOCKF
+          CLK  
+ 124-V63 - CHECK
+          /OP1[7]  /OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 124-V64 - SETF
+          IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 128-V65 - CLOCKF
+          CLK  
+ 128-V65 - CHECK
+          OP1[7]  /OP1[0]  
+ 128-V66 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 132-V67 - CLOCKF
+          CLK  
+ 132-V67 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 132-V68 - SETF
+          IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 136-V69 - CLOCKF
+          CLK  
+ 136-V69 - CHECK
+          OP1[7]  OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 136-V70 - SETF
+          IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 140-V71 - CLOCKF
+          CLK  
+ 140-V71 - CHECK
+          OP1[7]  OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 140-V72 - SETF
+          IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  IN1[0]  
+ 144-V73 - CLOCKF
+          CLK  
+ 144-V73 - CHECK
+          OP1[7]  OP1[5]  OP1[3]  OP1[1]  
+ 144-V74 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 148-V75 - CLOCKF
+          CLK  
+ 148-V75 - CHECK
+          /OP1[7]  OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 148-V76 - SETF
+          IN1[7]  /IN1[6]  IN1[5]  IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 152-V77 - CLOCKF
+          CLK  
+ 152-V77 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  /OP1[4]  /OP1[3]  OP1[2]  
+          OP1[1]  /OP1[0]  
+ 152-V78 - SETF
+          IN1[7]  /IN1[6]  IN1[5]  IN1[4]  /IN1[3]  /IN1[2]  
+          IN1[1]  IN1[0]  
+ 156-V79 - CLOCKF
+          CLK  
+ 156-V79 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  /OP1[4]  /OP1[3]  /OP1[2]  
+          /OP1[1]  /OP1[0]  
+ 156-V80 - SETF
+          /IN1[7]  /IN1[6]  IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          IN1[1]  IN1[0]  
+ 160-V81 - CLOCKF
+          CLK  
+ 160-V81 - CHECK
+          /OP1[7]  OP1[6]  OP1[5]  /OP1[4]  /OP1[3]  /OP1[2]  
+          /OP1[1]  /OP1[0]  
+ 160-V82 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 164-V83 - CLOCKF
+          CLK  
+ 164-V83 - CHECK
+          OP1[6]  /OP1[1]  
+ 164-V84 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  IN1[0]  
+ 168-V85 - CLOCKF
+          CLK  
+ 168-V85 - CHECK
+          /OP1[7]  /OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 168-V86 - SETF
+          IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 172-V87 - CLOCKF
+          CLK  
+ 172-V87 - CHECK
+          OP1[7]  /OP1[0]  
+ 172-V88 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 176-V89 - CLOCKF
+          CLK  
+ 176-V89 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 176-V90 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 180-V91 - CLOCKF
+          CLK  
+ 180-V91 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 180-V92 - SETF
+          IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 184-V93 - CLOCKF
+          CLK  
+ 184-V93 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  /OP1[4]  /OP1[3]  OP1[2]  
+          OP1[1]  /OP1[0]  
+ 184-V94 - SETF
+          RST  
+ 185-V94 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  /OP1[4]  /OP1[3]  /OP1[2]  
+          /OP1[1]  /OP1[0]  
+ 185-V95 - SETF
+          /RST  IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  
+          IN1[2]  IN1[1]  IN1[0]  
+ 189-V96 - CLOCKF
+          CLK  
+ 189-V96 - CHECK
+          OP1[7]  /OP1[0]  
+ 189-V97 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 193-V98 - CLOCKF
+          CLK  
+ 193-V98 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 193-V99 - SETF
+          /IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 197-V100 - CLOCKF
+          CLK  
+ 197-V100 - CHECK
+          /OP1[7]  OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 197-V101 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 201-V102 - CLOCKF
+          CLK  
+ 201-V102 - CHECK
+          OP1[7]  OP1[5]  OP1[3]  OP1[1]  
+ 201-V103 - SETF
+          /IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 205-V104 - CLOCKF
+          CLK  
+ 205-V104 - CHECK
+          /OP1[7]  OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 205-V105 - SETF
+          IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 209-V106 - CLOCKF
+          CLK  
+ 209-V106 - CHECK
+          OP1[7]  OP1[6]  /OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 209-V107 - SETF
+          IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 213-V108 - CLOCKF
+          CLK  
+ 213-V108 - CHECK
+          OP1[6]  OP1[4]  OP1[2]  OP1[0]  
+ 213-V109 - SETF
+          IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 217-V110 - CLOCKF
+          CLK  
+ 217-V110 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  /OP1[4]  /OP1[3]  OP1[2]  
+          OP1[1]  /OP1[0]  
+ 217-V111 - SETF
+          RST  
+ 218-V111 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  /OP1[4]  /OP1[3]  /OP1[2]  
+          /OP1[1]  /OP1[0]  
+ 218-V112 - SETF
+          /RST  IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  
+          IN1[2]  IN1[1]  IN1[0]  
+ 222-V113 - CLOCKF
+          CLK  
+ 222-V113 - CHECK
+          OP1[7]  /OP1[0]  
+ 222-V114 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 226-V115 - CLOCKF
+          CLK  
+ 226-V115 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 226-V116 - SETF
+          /IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 230-V117 - CLOCKF
+          CLK  
+ 230-V117 - CHECK
+          /OP1[7]  OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 230-V118 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 234-V119 - CLOCKF
+          CLK  
+ 234-V119 - CHECK
+          OP1[7]  OP1[5]  OP1[3]  OP1[1]  
+ 234-V120 - SETF
+          /IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 238-V121 - CLOCKF
+          CLK  
+ 238-V121 - CHECK
+          /OP1[7]  OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 238-V122 - SETF
+          IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          IN1[1]  /IN1[0]  
+ 242-V123 - CLOCKF
+          CLK  
+ 242-V123 - CHECK
+          OP1[7]  OP1[6]  OP1[5]  OP1[4]  /OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 242-V124 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          IN1[1]  /IN1[0]  
+ 246-V125 - CLOCKF
+          CLK  
+ 246-V125 - CHECK
+          OP1[7]  OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          /OP1[1]  OP1[0]  
+ 246-V126 - SETF
+          RST  
+ 247-V126 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  /OP1[4]  /OP1[3]  /OP1[2]  
+          /OP1[1]  /OP1[0]  
+ 247-V127 - SETF
+          /RST  IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  
+          IN1[2]  IN1[1]  IN1[0]  
+ 251-V128 - CLOCKF
+          CLK  
+ 251-V128 - CHECK
+          OP1[7]  /OP1[0]  
+ 251-V129 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 255-V130 - CLOCKF
+          CLK  
+ 255-V130 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 255-V131 - SETF
+          /IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 259-V132 - CLOCKF
+          CLK  
+ 259-V132 - CHECK
+          /OP1[7]  OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 259-V133 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 263-V134 - CLOCKF
+          CLK  
+ 263-V134 - CHECK
+          OP1[7]  OP1[5]  OP1[3]  OP1[1]  
+ 263-V135 - SETF
+          /IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 267-V136 - CLOCKF
+          CLK  
+ 267-V136 - CHECK
+          /OP1[7]  OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 267-V137 - SETF
+          IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  IN1[0]  
+ 271-V138 - CLOCKF
+          CLK  
+ 271-V138 - CHECK
+          OP1[6]  OP1[4]  OP1[2]  OP1[0]  
+ 271-V139 - SETF
+          RST  
+ 272-V139 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  /OP1[4]  /OP1[3]  /OP1[2]  
+          /OP1[1]  /OP1[0]  
+ 272-V140 - SETF
+          /RST  IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  
+          IN1[2]  IN1[1]  IN1[0]  
+ 276-V141 - CLOCKF
+          CLK  
+ 276-V141 - CHECK
+          OP1[7]  /OP1[0]  
+ 276-V142 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 280-V143 - CLOCKF
+          CLK  
+ 280-V143 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 280-V144 - SETF
+          /IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 284-V145 - CLOCKF
+          CLK  
+ 284-V145 - CHECK
+          /OP1[7]  OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 284-V146 - SETF
+          /IN1[7]  /IN1[6]  /IN1[5]  IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 288-V147 - CLOCKF
+          CLK  
+ 288-V147 - CHECK
+          OP1[7]  OP1[5]  OP1[3]  OP1[1]  
+ 288-V148 - SETF
+          /IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          /IN1[1]  /IN1[0]  
+ 292-V149 - CLOCKF
+          CLK  
+ 292-V149 - CHECK
+          /OP1[7]  OP1[6]  OP1[5]  OP1[4]  OP1[3]  OP1[2]  
+          OP1[1]  OP1[0]  
+ 292-V150 - SETF
+          IN1[7]  IN1[6]  /IN1[5]  /IN1[4]  /IN1[3]  /IN1[2]  
+          IN1[1]  IN1[0]  
+ 296-V151 - CLOCKF
+          CLK  
+ 296-V151 - CHECK
+          /OP1[7]  /OP1[6]  /OP1[5]  /OP1[4]  /OP1[3]  /OP1[2]  
+          /OP1[1]  /OP1[0]  
+ 296-V152 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> P4_src.HST
+Simulation results (trace) are in   ===> P4_src.TRF
+Merged results (JEDEC) are in       ===> P4_src.JDC
+Simulation results (trace vectors) are in   ===> P4_src.TRV
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 395306 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: P4_src.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 5

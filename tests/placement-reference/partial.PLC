@@ -1,0 +1,9 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file Plc4350.pds
+; FITTER-generated Placements.
+; DEVICE   MACH435
+; DATE     Tue Nov 10 01:55:07 2026
+
+
+Pin 8 Q Reg

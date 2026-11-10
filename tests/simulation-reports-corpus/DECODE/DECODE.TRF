@@ -1,0 +1,33 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+MACHXL SIMULATION SELECTIVE TRACE LISTING
+
+Title     : 1 of 8 DECODER           Author   : J. ENGINEER      
+Pattern   : 1                        Company  : AMD              
+Revision  : 1                        Date     : 8/26/94          
+
+MACH111        
+Page : 1 
+
+          ggggggggggggggggggg                                         
+ DATA[7]  HHHHHHHHHHHHHHHHHHH                                         
+ DATA[6]  HHHHHHHHHHHHHHHHHHH                                         
+ DATA[5]  HHHHHHHHHHHHHHHHHHH                                         
+ DATA[4]  HHHHHHHHHHHHHHHHHHH                                         
+ DATA[3]  HHHHHHHHHHHHHHHHHHH                                         
+ DATA[2]  HHHHHHHHHHHHHHHHHHH                                         
+ DATA[1]  HHHHHHHHHHHHHHHHHHH                                         
+ DATA[0]  HHHHHHHHHHHHHHHHHHH                                         
+ OUT[7]   LLLLLLLLLLLLLLLLLLL                                         
+ OUT[6]   LLLLLLLLLLLLLLLLLLL                                         
+ OUT[5]   LLLLLLLLLLLLLLLLHHH                                         
+ OUT[4]   LLLLLLLLLLLLLHHHLLL                                         
+ OUT[3]   LLLLLLLLLLHHHLLLLLL                                         
+ OUT[2]   LLLLLLLHHHLLLLLLLLL                                         
+ OUT[1]   LLLLHHHLLLLLLLLLLLL                                         
+ OUT[0]   HHHHLLLLLLLLLLLLLLL                                         
+ SEL1     LLLLLLLLLLLLLHHHHHH                                         
+ SEL2     LLLLLLLHHHHHHLLLLLL                                         
+ SEL3     LLLLHHHLLLHHHLLLHHH                                         
+

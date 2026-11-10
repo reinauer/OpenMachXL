@@ -1,0 +1,154 @@
+
+*****************************
+* Design Name = Not2big.pds *
+*****************************
+
+
+*******************
+* TIMING ANALYSIS *
+*******************
+
+Timing Analysis KEY:
+One unit of delay time is equivalent to one pass 
+     through the Central Switch Matrix.
+..   Delay ( in this column ) not applicable to the indicated signal.
+TSU, Set-Up Time ( 0 for input-paired signals ),
+     represents the number of switch matrix passes between
+     an input pin and a register setup before clock.
+     TSU is reported on the register.
+TCO, Clocked Output-to-Pin Time ( 0 for output-paired signals ),
+     represents the number of switch matrix passes between
+     a clocked register and an output pin.
+     TCO is reported on the register.
+TPD, Propagation Delay Time ( calculated only for combinatorial eqns.),
+     represents the number of switch matrix passes between
+     an input pin and an output pin.
+     TPD is reported on the output pin.
+TCR, Clocked Output-to-Register Time,
+     represents the number of switch matrix passes between
+     a clocked register and the register it drives ( before clock ).
+     TCR is reported on the driving register.
+
+                    TSU       TCO       TPD       TCR
+                  #passes   #passes   #passes   #passes
+SIGNAL NAME       min  max  min  max  min  max  min  max
+         CNTZERO  ..   ..    0    0   ..   ..    1    1   
+      RN_CNTZERO  ..   ..    0    0   ..   ..    1    1   
+          CNTONE  ..   ..    0    0   ..   ..    1    1   
+       RN_CNTONE  ..   ..    0    0   ..   ..    1    1   
+          CNTTWO  ..   ..    0    0   ..   ..    1    1   
+       RN_CNTTWO  ..   ..    0    0   ..   ..    1    1   
+        CNTTHREE  ..   ..    0    0   ..   ..    1    1   
+     RN_CNTTHREE  ..   ..    0    0   ..   ..    1    1   
+         CNTFOUR  ..   ..    0    0   ..   ..    1    1   
+      RN_CNTFOUR  ..   ..    0    0   ..   ..    1    1   
+            SIGI  ..   ..   ..   ..    1    1   ..   ..   
+           SIGBD  ..   ..    0    1   ..   ..   ..   ..   
+        RN_SIGBD  ..   ..    0    1   ..   ..   ..   ..   
+           SIGBG  ..   ..    0    1   ..   ..   ..   ..   
+        RN_SIGBG  ..   ..    0    1   ..   ..   ..   ..   
+           SIGBJ  ..   ..    0    1   ..   ..   ..   ..   
+        RN_SIGBJ  ..   ..    0    1   ..   ..   ..   ..   
+           SIGBM  ..   ..    0    1   ..   ..   ..   ..   
+        RN_SIGBM  ..   ..    0    1   ..   ..   ..   ..   
+           SIGBP  ..   ..    0    1   ..   ..   ..   ..   
+        RN_SIGBP  ..   ..    0    1   ..   ..   ..   ..   
+           SIGBS  ..   ..    0    1   ..   ..   ..   ..   
+        RN_SIGBS  ..   ..    0    1   ..   ..   ..   ..   
+            SIGL   1    1    0    0   ..   ..    1    1   
+         RN_SIGL   1    1    0    0   ..   ..    1    1   
+            SIGM   1    1    0    0   ..   ..    1    1   
+         RN_SIGM   1    1    0    0   ..   ..    1    1   
+            SIGN   1    1    0    0   ..   ..    1    1   
+         RN_SIGN   1    1    0    0   ..   ..    1    1   
+            SIGO   1    1    0    0   ..   ..    1    1   
+         RN_SIGO   1    1    0    0   ..   ..    1    1   
+            SIGP   1    1    0    0   ..   ..    1    1   
+         RN_SIGP   1    1    0    0   ..   ..    1    1   
+            SIGQ   1    1    0    0   ..   ..    1    1   
+         RN_SIGQ   1    1    0    0   ..   ..    1    1   
+            SIGR   1    1    0    0   ..   ..    1    1   
+         RN_SIGR   1    1    0    0   ..   ..    1    1   
+            SIGS   1    1    0    0   ..   ..    1    1   
+         RN_SIGS   1    1    0    0   ..   ..    1    1   
+            SIGT   1    1    0    0   ..   ..    1    1   
+         RN_SIGT   1    1    0    0   ..   ..    1    1   
+            SIGU   1    1    0    0   ..   ..    1    1   
+         RN_SIGU   1    1    0    0   ..   ..    1    1   
+           SIGAA   1    1    0    0   ..   ..    1    1   
+        RN_SIGAA   1    1    0    0   ..   ..    1    1   
+           SIGAB   1    1    0    0   ..   ..    1    1   
+        RN_SIGAB   1    1    0    0   ..   ..    1    1   
+           SIGAC   1    1    0    0   ..   ..    1    1   
+        RN_SIGAC   1    1    0    0   ..   ..    1    1   
+           SIGAD   1    1    0    0   ..   ..    1    1   
+        RN_SIGAD   1    1    0    0   ..   ..    1    1   
+           SIGAE   1    1    0    0   ..   ..    1    1   
+        RN_SIGAE   1    1    0    0   ..   ..    1    1   
+           SIGAF   1    1    0    0   ..   ..    1    1   
+        RN_SIGAF   1    1    0    0   ..   ..    1    1   
+           SIGBV  ..   ..    0    1   ..   ..   ..   ..   
+        RN_SIGBV  ..   ..    0    1   ..   ..   ..   ..   
+           SIGCA  ..   ..    0    1   ..   ..   ..   ..   
+        RN_SIGCA  ..   ..    0    1   ..   ..   ..   ..   
+           SIGCD  ..   ..    0    1   ..   ..   ..   ..   
+        RN_SIGCD  ..   ..    0    1   ..   ..   ..   ..   
+           SIGAG   1    1    0    0   ..   ..    1    1   
+        RN_SIGAG   1    1    0    0   ..   ..    1    1   
+           SIGAH   1    1    0    0   ..   ..    1    1   
+        RN_SIGAH   1    1    0    0   ..   ..    1    1   
+           SIGAI   1    1    0    0   ..   ..    1    1   
+        RN_SIGAI   1    1    0    0   ..   ..    1    1   
+           SIGAJ   1    1    0    0   ..   ..    1    1   
+        RN_SIGAJ   1    1    0    0   ..   ..    1    1   
+           SIGAK   1    1    0    0   ..   ..    1    1   
+        RN_SIGAK   1    1    0    0   ..   ..    1    1   
+           SIGAL   1    1    0    0   ..   ..    1    1   
+        RN_SIGAL   1    1    0    0   ..   ..    1    1   
+           SIGAM   1    1    0    0   ..   ..    1    1   
+        RN_SIGAM   1    1    0    0   ..   ..    1    1   
+           SIGAN   1    1    0    0   ..   ..    1    1   
+        RN_SIGAN   1    1    0    0   ..   ..    1    1   
+           SIGAO   1    1    0    0   ..   ..    1    1   
+        RN_SIGAO   1    1    0    0   ..   ..    1    1   
+           SIGAP   1    1    0    0   ..   ..    1    1   
+        RN_SIGAP   1    1    0    0   ..   ..    1    1   
+           SIGAQ   1    1    0    0   ..   ..    1    1   
+        RN_SIGAQ   1    1    0    0   ..   ..    1    1   
+           SIGAR   1    1    0    0   ..   ..    1    1   
+        RN_SIGAR   1    1    0    0   ..   ..    1    1   
+           SIGAS   1    1    0    0   ..   ..    1    1   
+        RN_SIGAS   1    1    0    0   ..   ..    1    1   
+           SIGAT   1    1    0    0   ..   ..    1    1   
+        RN_SIGAT   1    1    0    0   ..   ..    1    1   
+           SIGAU   1    1    0    0   ..   ..    1    1   
+        RN_SIGAU   1    1    0    0   ..   ..    1    1   
+           SIGAV   1    1    0    0   ..   ..    1    1   
+        RN_SIGAV   1    1    0    0   ..   ..    1    1   
+           SIGBA  ..   ..    0    1   ..   ..   ..   ..   
+        RN_SIGBA  ..   ..    0    1   ..   ..   ..   ..   
+        CLOCKOUT  ..   ..   ..   ..    1    1   ..   ..   
+            SIGH  ..   ..   ..   ..    1    1   ..   ..   
+      RESESIGJNT  ..   ..   ..   ..    1    1   ..   ..   
+            SIGJ  ..   ..    1    1   ..   ..    1    1   
+            SIGK  ..   ..   ..   ..   ..   ..    1    1   
+           SIGBB   1    1   ..   ..   ..   ..    1    1   
+           SIGBC  ..   ..   ..   ..   ..   ..    1    1   
+           SIGBE  ..   ..   ..   ..   ..   ..    1    1   
+           SIGBF  ..   ..   ..   ..   ..   ..    1    1   
+           SIGBH  ..   ..   ..   ..   ..   ..    1    1   
+           SIGBI  ..   ..   ..   ..   ..   ..    1    1   
+           SIGBK  ..   ..   ..   ..   ..   ..    1    1   
+           SIGBL  ..   ..   ..   ..   ..   ..    1    1   
+           SIGBN  ..   ..   ..   ..   ..   ..    1    1   
+           SIGBO  ..   ..   ..   ..   ..   ..    1    1   
+           SIGBQ  ..   ..   ..   ..   ..   ..    1    1   
+           SIGBR  ..   ..   ..   ..   ..   ..    1    1   
+           SIGBT  ..   ..   ..   ..   ..   ..    1    1   
+           SIGBU  ..   ..   ..   ..   ..   ..    1    1   
+           SIGBW   1    1   ..   ..   ..   ..    1    1   
+           SIGBX  ..   ..   ..   ..   ..   ..    1    1   
+           SIGCB   1    1   ..   ..   ..   ..    1    1   
+           SIGCC  ..   ..   ..   ..   ..   ..    1    1   
+           SIGCE   1    1   ..   ..   ..   ..    1    1   
+           SIGCF  ..   ..   ..   ..   ..   ..    1    1   

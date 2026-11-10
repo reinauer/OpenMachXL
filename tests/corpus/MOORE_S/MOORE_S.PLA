@@ -1,0 +1,45 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME Moore_s.pds
+#AMD TITLE MOORE MACHINE
+#AMD PATTERN A
+#AMD REVISION 1.0
+#AMD AUTHOR J. ENGINEER
+#AMD COMPANY AMD
+#AMD DATE 6/7/94
+#AMD CHIP REG_MOORE
+#AMD DEVICE MACH231
+#AMD JED_FILE Moore_s.jed
+#AMD SIGNATURE 
+#AMD PIN 9 GND:1 VCC:2 GND:11 VCC:21 GND:22 GND:32 VCC:42 GND:43 VCC:44 
+#AMD PIN 5 GND:53 VCC:63 GND:64 GND:74 VCC:84 
+#AMD PIN 8 CLOCK:0 INA:0 INB:0 OUT[2]:0 OUT[1]:0 OUT[0]:0 BIT[2]:0 BIT[1]:0 
+#AMD PIN 2 BIT[0]:0 RESET:0 
+.type f
+.i 7
+.o 18
+.ilb CLOCK INA INB BIT[2] BIT[1] BIT[0] RESET
+.ob  OUT[2].REG OUT[2].C OUT[2].RE OUT[1].REG OUT[1].C OUT[1].RE OUT[0].REG
+     OUT[0].C OUT[0].RE BIT[2].REG BIT[2].C BIT[2].RE BIT[1].REG BIT[1].C
+     BIT[1].RE BIT[0].REG BIT[0].C BIT[0].RE
+.phase 111111111111111111
+.p 19
+---1-0- 1~~~~~~~~~~~~~~~~~
+1------ ~1~~1~~1~~1~~1~~1~
+------1 ~~1~~1~~1~~1~~1~~1
+----11- ~~~1~~~~~~~~~~~~~~
+---111- ~~~~~~1~~~~~~~~~~~
+---001- ~~~~~~1~~~~~~~~~~~
+---100- ~~~~~~1~~~~~~~~~~~
+-1--11- ~~~~~~~~~1~~~~~~~~
+--1110- ~~~~~~~~~1~~~~~~~~
+-01-00- ~~~~~~~~~1~~~~~~~~
+-100-1- ~~~~~~~~~1~~~~~~~~
+-1-0-1- ~~~~~~~~~~~~1~~~~~
+--1111- ~~~~~~~~~~~~1~~~~~
+-011-0- ~~~~~~~~~~~~1~~~~~
+-10-00- ~~~~~~~~~~~~1~~~~~
+-1--00- ~~~~~~~~~~~~~~~1~~
+--1011- ~~~~~~~~~~~~~~~1~~
+-1-00-- ~~~~~~~~~~~~~~~1~~
+-0111-- ~~~~~~~~~~~~~~~1~~
+.e

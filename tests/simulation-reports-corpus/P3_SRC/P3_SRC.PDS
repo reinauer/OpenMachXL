@@ -1,0 +1,200 @@
+;-------------------------------------------------------------------
+; NOTICE: This implementation of PREP Co. Benchmark #3 - Small State
+; is the property of AMD. It has submitted for the PREP benchmarks.
+;
+;       All other uses are expressly forbidden!
+;
+;       AMD Contact: Nick Schmitz (408) 749-4868
+;       M/s 1004, P. O. Box 3453, Sunnyvale Ca 94088
+;-------------------------------------------------------------------
+;MACHXL Design Description
+
+;---------------------------------- Declaration Segment ------------
+TITLE    Small State Machine (PREP suite 1: benchmark #3)
+PATTERN  A
+REVISION 1.0
+AUTHOR   J. ENGINEER
+COMPANY  AMD
+DATE     12/30/92
+
+CHIP  _prep1_3  MACH435
+
+;---------------------------------- PIN Declarations ---------------
+PIN  ?   CLK                                            ; INPUT
+PIN  ?   RST                                            ; INPUT
+PIN  ?   I_x[7..0]                                      ; INPUT
+
+;-------------------------------------------------------------------
+PIN  ?   O_x[7..0]                          REGISTERED  ; OUTPUT
+NODE ?   Q_x[2..0]                          REGISTERED  ; OUTPUT
+;-------------------------------------------------------------------
+
+;----------------------------------- Boolean Equation Segment ------
+EQUATIONS
+
+Q_x[2..0].RSTF = RST      Q_x[2..0].SETF = GND
+O_x[7..0].RSTF = RST      O_x[7..0].SETF = GND
+
+;-------------------------------------------------------------------
+STATE
+MEALY_MACHINE
+
+CLKF = CLK
+
+;********* transitition equations *********
+
+START := ONE   -> SA
+      +  TWO   -> START
+
+SA    := FOUR  -> SB
+      +  THREE -> SC
+      +  FIVE  -> SA
+
+SB    := SIX   -> SE
+      +  SEVEN -> SF
+
+SC    := EIGHT -> SD
+SD    := EIGHT -> SG
+SE    := EIGHT -> START
+SF    := EIGHT -> SG
+SG    := EIGHT -> START
+
+;************ state assignment ************
+
+START      = /Q_x[2]*/Q_x[1]*/Q_x[0]  ;0h
+SA         = /Q_x[2]* Q_x[1]*/Q_x[0]  ;2h
+SB         =  Q_x[2]* Q_x[1]*/Q_x[0]  ;6h
+SC         = /Q_x[2]* Q_x[1]* Q_x[0]  ;3h
+SD         = /Q_x[2]*/Q_x[1]* Q_x[0]  ;1h
+SE         =  Q_x[2]* Q_x[1]* Q_x[0]  ;7h
+SF         =  Q_x[2]*/Q_x[1]*/Q_x[0]  ;4h
+SG         =  Q_x[2]*/Q_x[1]* Q_x[0]  ;5h
+
+;************ output equations ************
+
+
+START.OUTF =  ONE    ->  O_x[7]*/O_x[6]*/O_x[5]*/O_x[4]*/O_x[3]*/O_x[2]* O_x[1]*/O_x[0]  ;82h
+           +  TWO    -> /O_x[7]*/O_x[6]*/O_x[5]*/O_x[4]*/O_x[3]*/O_x[2]*/O_x[1]*/O_x[0]  ;00h
+
+SA.OUTF    =  THREE  -> /O_x[7]* O_x[6]*/O_x[5]*/O_x[4]*/O_x[3]*/O_x[2]*/O_x[1]*/O_x[0]  ;40h
+           +  FOUR   -> /O_x[7]*/O_x[6]* O_x[5]*/O_x[4]*/O_x[3]*/O_x[2]*/O_x[1]*/O_x[0]  ;20h
+           +  FIVE   -> /O_x[7]*/O_x[6]*/O_x[5]*/O_x[4]*/O_x[3]* O_x[2]*/O_x[1]*/O_x[0]  ;04h
+
+SB.OUTF    =  SIX    -> /O_x[7]*/O_x[6]*/O_x[5]* O_x[4]*/O_x[3]*/O_x[2]*/O_x[1]* O_x[0]  ;11h
+           +  SEVEN  -> /O_x[7]*/O_x[6]* O_x[5]* O_x[4]*/O_x[3]*/O_x[2]*/O_x[1]*/O_x[0]  ;30h
+
+SC.OUTF    =  EIGHT  -> /O_x[7]*/O_x[6]*/O_x[5]*/O_x[4]* O_x[3]*/O_x[2]*/O_x[1]*/O_x[0]  ;08h
+
+SD.OUTF    =  EIGHT  ->  O_x[7]*/O_x[6]*/O_x[5]*/O_x[4]*/O_x[3]*/O_x[2]*/O_x[1]*/O_x[0]  ;80h
+
+SE.OUTF    =  EIGHT  -> /O_x[7]* O_x[6]*/O_x[5]*/O_x[4]*/O_x[3]*/O_x[2]*/O_x[1]*/O_x[0]  ;40h
+
+SF.OUTF    =  EIGHT  -> /O_x[7]*/O_x[6]*/O_x[5]*/O_x[4]*/O_x[3]*/O_x[2]* O_x[1]*/O_x[0]  ;02h
+
+SG.OUTF    =  EIGHT  -> /O_x[7]*/O_x[6]*/O_x[5]*/O_x[4]*/O_x[3]*/O_x[2]*/O_x[1]* O_x[0]  ;01h
+
+;*************** conditions ***************
+CONDITIONS
+
+ONE   =  (/I_x[7]*/I_x[6]* I_x[5]* I_x[4]* I_x[3]* I_x[2]*/I_x[1]*/I_x[0]) ; 3Ch
+TWO   = /(/I_x[7]*/I_x[6]* I_x[5]* I_x[4]* I_x[3]* I_x[2]*/I_x[1]*/I_x[0]) ;/3Ch
+THREE =  (/I_x[7]*/I_x[6]* I_x[5]*/I_x[4]* I_x[3]*/I_x[2]* I_x[1]*/I_x[0]) ; 2Ah
+FOUR  =  (/I_x[7]*/I_x[6]*/I_x[5]* I_x[4]* I_x[3]* I_x[2]* I_x[1]* I_x[0]) ; 1Fh
+FIVE  = /(/I_x[7]*/I_x[6]*/I_x[5]* I_x[4]* I_x[3]* I_x[2]* I_x[1]* I_x[0]) ;/1Fh*/2Ah
+      * /(/I_x[7]*/I_x[6]* I_x[5]*/I_x[4]* I_x[3]*/I_x[2]* I_x[1]*/I_x[0])
+SIX   =  ( I_x[7]*/I_x[6]* I_x[5]*/I_x[4]* I_x[3]*/I_x[2]* I_x[1]*/I_x[0]) ; AAh
+SEVEN = /( I_x[7]*/I_x[6]* I_x[5]*/I_x[4]* I_x[3]*/I_x[2]* I_x[1]*/I_x[0]) ;/AAh
+EIGHT =  VCC                                               ; don't care
+
+;----------------------------------- Simulation Segment ------------
+SIMULATION
+
+TRACE_ON CLK  O_x[7..0]
+SETF     /CLK RST
+SETF     /I_x[7..0]
+FOR I:=1 TO 2  DO BEGIN CLOCKF CLK END
+SETF /RST
+CLOCKF CLK
+CLOCKF CLK
+
+;-------------------------------------------------------------------
+SETF  I_x[7..0] =#h3c 
+CLOCKF CLK
+CHECK     O_x[7..0]=#h82
+
+SETF   I_x[7..0] =#hff
+CLOCKF CLK
+CHECK    O_x[7..0]=#h04
+
+SETF  I_x[7..0]=#h82  ;FF
+CLOCKF CLK
+CHECK    O_x[7..0]=#h04
+
+SETF     I_x[7..0] =#h2A
+CLOCKF CLK
+CHECK    O_x[7..0]=#h40
+
+SETF     I_x[7..0] =#h00
+CLOCKF CLK
+CHECK    O_x[7..0]=#h08
+
+SETF     I_x[7..0] =#h00
+CLOCKF CLK
+CHECK     O_x[7..0]=#h80
+
+SETF     I_x[7..0] =#h00
+CLOCKF CLK
+CHECK    O_x[7..0]=#h01
+
+SETF    I_x[7..0] =#h00
+CLOCKF CLK
+CHECK    O_x[7..0]=#h00
+
+SETF     I_x[7..0] =#h3C
+CLOCKF CLK
+CHECK     O_x[7..0]=#h82
+
+SETF     I_x[7..0] =#h1F
+CLOCKF CLK
+CHECK    O_x[7..0]=#h20
+
+SETF      I_x[7..0] =#hFF
+CLOCKF CLK
+CHECK    O_x[7..0]=#h30
+
+SETF     I_x[7..0] =#h00
+CLOCKF CLK
+CHECK    O_x[7..0]=#h02
+
+SETF     I_x[7..0] =#h00
+CLOCKF CLK
+CHECK    O_x[7..0]=#h01
+
+SETF     I_x[7..0] =#h00
+CLOCKF CLK
+CHECK    O_x[7..0]=#h00
+
+SETF     I_x[7..0] =#h3C
+CLOCKF CLK
+CHECK     O_x[7..0]=#h82
+
+SETF   I_x[7..0] =#h1F
+CLOCKF CLK
+CHECK    O_x[7..0]=#h20
+
+SETF    I_x[7..0] =#hAA
+CLOCKF CLK
+CHECK    O_x[7..0]=#h11
+
+SETF   I_x[7..0] =#h00
+CLOCKF CLK
+CHECK    O_x[7..0]=#h40
+
+SETF     I_x[7..0] =#h00
+CLOCKF CLK
+CHECK    O_x[7..0]=#h00
+
+
+TRACE_OFF
+;-------------------------------------------------------------------
+

@@ -1,0 +1,45 @@
+;PALASM Design Description
+; pds2v test: the --timing model (grade 7) and the output polarity after the
+; flip-flop.  tb_timing.v checks the delays, a clean phase without TIMING
+; messages, then setup violations (one direct, one through a NODE) and a
+; short clock pulse; it is run with and without +notimingx.
+; PDS2V-ARGS: --timing 7 --init0
+; EXPECT-EXIT: 0
+; SIM-EXPECT: TIMING TIM.Q setup violation at 500.000 ns: data changed 3.000 ns before clock
+; SIM-EXPECT: TIMING TIM.NQ setup violation at 500.000 ns: data changed 3.000 ns before clock
+; SIM-EXPECT: TIMING TIM.R setup violation at 600.000 ns: data changed 2.500 ns before clock
+; SIM-EXPECT: TIMING TIM.CLK clock HIGH width violation at 702.000 ns: 2.000 ns < 3.000 ns
+; SIM-COUNT: TIMING 4
+; SIM-ALSO: +notimingx
+
+TITLE    pds2v timing test
+CHIP     TIM  MACH111
+
+PIN  11  CLK
+PIN  10  D
+PIN  32  OE_N
+PIN  13  RST
+PIN  2   Q      REGISTERED      ; Q := D, three-state
+PIN  6   NQ     REGISTERED      ; /NQ := D: pin HIGH at power-up and reset
+PIN  3   Y      COMBINATORIAL   ; two levels: D -> N1 -> Y
+PIN  4   Z      COMBINATORIAL   ; one level
+PIN  5   RO     COMBINATORIAL   ; buried register R -> pin
+NODE ?   N1     COMBINATORIAL
+NODE ?   R      REGISTERED      ; D input through N1: tPD + tS
+
+EQUATIONS
+Q   := D
+/NQ := D
+N1  = /D
+Y   = /N1
+Z   = D
+R   := N1
+RO  = R
+
+Q.CLKF  = CLK
+NQ.CLKF = CLK
+R.CLKF  = CLK
+Q.RSTF  = RST
+NQ.RSTF = RST
+R.RSTF  = RST
+Q.TRST  = /OE_N

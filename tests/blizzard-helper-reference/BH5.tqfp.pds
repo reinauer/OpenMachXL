@@ -1,0 +1,55 @@
+;PALASM Design Description
+; pds2v test: structural errors.  Nothing may be written.
+; EXPECT-EXIT: 1
+; EXPECT: error: polarity in the declaration (/NEG) is not supported
+; EXPECT: error: unsupported storage type 'LATCHED'
+; EXPECT: error: STRING must be
+; EXPECT: error: unexpected character '['
+; EXPECT: error: Y: expression ends unexpectedly
+; EXPECT: error: UNDECL is not declared as PIN or NODE
+; EXPECT: error: Z: undeclared signal NOPE
+; EXPECT: error: Z is driven twice
+; EXPECT: error: R is declared REGISTERED; use ':='
+; EXPECT: error: registered R2 has no .CLKF
+; EXPECT: error: R3.CLKF must be a single clock pin name
+; EXPECT: error: Z.FOO: extension .FOO not supported
+; EXPECT: error: NODE N cannot have .TRST
+; EXPECT: error: C.CLKF on a combinatorial signal
+; EXPECT: error: W.RSTF given but W has no equation
+; EXPECT: error: V: 'IF': IF/CASE syntax is not supported
+; EXPECT: pds2v: 16 error(s), nothing written
+
+CHIP     BADSYN  MACH111
+PIN  5   CLK
+PIN  4   A
+PIN  26  B
+PIN  2   /NEG
+PIN  3   L     LATCHED
+STRING   BROKEN   no quotes
+PIN  40  Y
+PIN  41  Z
+PIN  42  R     REGISTERED
+PIN  43  R2    REGISTERED
+PIN  44  R3    REGISTERED
+PIN  1   C     COMBINATORIAL
+PIN  8   W
+PIN  9   V
+NODE ?   N     COMBINATORIAL
+
+EQUATIONS
+Y = A *
+Z = A * NOPE
+Z = B
+UNDECL = A
+R = A
+R2 := A
+R3 := B
+R3.CLKF = CLK * A
+Z.FOO = A
+N = A
+N.TRST = B
+C = A
+C.CLKF = CLK
+W.RSTF = A
+V = IF A
+V[0] = B

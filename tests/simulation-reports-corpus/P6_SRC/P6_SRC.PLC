@@ -1,0 +1,79 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file P6_src.pds
+; FITTER-generated Placements.
+; DEVICE   MACH435
+; DATE     Mon Nov 09 20:21:37 2026
+
+
+Pin   20  CLK
+Pin   3  RST
+Pin   24  D_X[0]
+Pin   30  D_X[1]
+Pin   6  D_X[2]
+Pin   23  D_X[3]
+Pin   5  D_X[4]
+Pin   19  D_X[5]
+Pin   17  D_X[6]
+Pin   16  D_X[7]
+Pin   15  D_X[8]
+Pin   13  D_X[9]
+Pin   28  D_X[10]
+Pin   27  D_X[11]
+Pin   9  D_X[12]
+Pin   7  D_X[13]
+Pin   26  D_X[14]
+Pin   25  D_X[15]
+Pin   33  Q_X[0] Reg  ; S6=1  S9=1  Pair 54
+Pin   29  Q_X[1] Reg  ; S6=1  S9=1  Pair 34
+Pin   4  Q_X[2] Reg  ; S6=1  S9=1  Pair 10
+Pin   54  Q_X[3] Reg  ; S6=1  S9=1  Pair 86
+Pin   75  Q_X[4] Reg  ; S6=1  S9=1  Pair 118
+Pin   12  Q_X[5] Reg  ; S6=1  S9=1  Pair 22
+Pin   18  Q_X[6] Reg  ; S6=1  S9=1  Pair 26
+Pin   14  Q_X[7] Reg  ; S6=1  S9=1  Pair 18
+Pin   77  Q_X[8] Reg  ; S6=1  S9=1  Pair 114
+Pin   35  Q_X[9] Reg  ; S6=1  S9=1  Pair 50
+Pin   52  Q_X[10] Reg  ; S6=1  S9=1  Pair 70
+Pin   50  Q_X[11] Reg  ; S6=1  S9=1  Pair 66
+Pin   60  Q_X[12] Reg  ; S6=1  S9=1  Pair 90
+Pin   56  Q_X[13] Reg  ; S6=1  S9=1  Pair 82
+Pin   10  Q_X[14] Reg  ; S6=1  S9=1  Pair 6
+Pin   8  Q_X[15] Reg  ; S6=1  S9=1  Pair 2
+Node  54  RN_Q_X[0] Reg  ; S6=1  S9=1 
+Node  34  RN_Q_X[1] Reg  ; S6=1  S9=1 
+Node  10  RN_Q_X[2] Reg  ; S6=1  S9=1 
+Node  86  RN_Q_X[3] Reg  ; S6=1  S9=1 
+Node  118  RN_Q_X[4] Reg  ; S6=1  S9=1 
+Node  22  RN_Q_X[5] Reg  ; S6=1  S9=1 
+Node  26  RN_Q_X[6] Reg  ; S6=1  S9=1 
+Node  18  RN_Q_X[7] Reg  ; S6=1  S9=1 
+Node  114  RN_Q_X[8] Reg  ; S6=1  S9=1 
+Node  50  RN_Q_X[9] Reg  ; S6=1  S9=1 
+Node  70  RN_Q_X[10] Reg  ; S6=1  S9=1 
+Node  66  RN_Q_X[11] Reg  ; S6=1  S9=1 
+Node  90  RN_Q_X[12] Reg  ; S6=1  S9=1 
+Node  82  RN_Q_X[13] Reg  ; S6=1  S9=1 
+Node  6  RN_Q_X[14] Reg  ; S6=1  S9=1 
+Node  2  RN_Q_X[15] Reg  ; S6=1  S9=1 
+Node  58  P_X[3] Comb ; S6=1  S9=1 
+Node  14  P_X[5] Comb ; S6=1  S9=1 
+Node  46  P_X[7] Comb ; S6=1  S9=1 
+Node  62  P_X[9] Comb ; S6=1  S9=1 
+Node  67  P_X[11] Comb ; S6=1  S9=1 
+Node  35  P_X[13] Comb ; S6=1  S9=1 
+Node  94  G_X[3] Comb ; S6=1  S9=1 
+Node  30  G_X[5] Comb ; S6=1  S9=1 
+Node  42  G_X[7] Comb ; S6=1  S9=1 
+Node  122  G_X[9] Comb ; S6=1  S9=1 
+Node  78  G_X[11] Comb ; S6=1  S9=1 
+Node  83  G_X[13] Comb ; S6=1  S9=1 
+Node  38  C_X[1] Comb ; S6=1  S9=1 
+Node  126  C_X[3] Comb ; S6=1  S9=1 
+Node  110  C_X[5] Comb ; S6=1  S9=1 
+Node  98  C_X[7] Comb ; S6=1  S9=1 
+Node  74  C_X[9] Comb ; S6=1  S9=1 
+Node  106  C_X[11] Comb ; S6=1  S9=1 
+Node  102  C_X[13] Comb ; S6=1  S9=1 
+; Unused Pins & Nodes
+; -> None Found.

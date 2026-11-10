@@ -1,0 +1,23 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file Moore_s.pds
+; FITTER-generated Placements.
+; DEVICE   MACH231
+; DATE     Mon Nov 09 20:20:00 2026
+
+
+Pin   65  CLOCK
+Pin   6  INA
+Pin   5  INB
+Pin   19  OUT[2] Reg  ;
+Pin   3  OUT[1] Reg  ;
+Pin   24  OUT[0] Reg  ;
+Pin   61  BIT[2] Reg  ;
+Pin   45  BIT[1] Reg  ;
+Pin   40  BIT[0] Reg  ;
+Pin   4  RESET
+Node  82  RN_BIT[2] Reg  ;
+Node  66  RN_BIT[1] Reg  ;
+Node  50  RN_BIT[0] Reg  ;
+; Unused Pins & Nodes
+; -> None Found.

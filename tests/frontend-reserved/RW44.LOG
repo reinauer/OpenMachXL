@@ -1,0 +1,19 @@
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+
+ %% MACHPAR %%    Processing design file.......Rw44.pds
+
+ %% MACHPAR %%    Listing file.................Rw44.lis
+   1     |CHIP OTHERWISE MACH111
+  ERROR -------^ (L1/C6)
+|> ERROR P88  Unexpected reserved word or operator OTHERWISE
+
+|> ERROR P88  Unexpected reserved word or operator -- ABORTING
+
+
+ %% MACHPAR %%    ERROR count:  2     WARNING count:  0
+
+ %% MACHPAR %%    File processing terminated.     File:  Rw44.pds

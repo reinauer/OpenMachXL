@@ -1,0 +1,100 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Test3.pds
+Title  multibus2_module
+
+|> WARNING D2260
+     The following Pin/Nodes(s) have not been defined in original design
+     file and will be ignored.
+
+      RN_TRANS_MON    RN_ARB_OPER[0]  RN_ARB_OPER[1]  RN_TRANS_ST[0]  
+      RN_ARB_MON[0]   RN_ARB_MON[1]   RN_TRANS_ST[1]  RN_TRANS_ST[2]  
+
+
+
+   1-V1 - TRACE_ON
+          BCLK  /BUS_REQ  /SC0  /SC1  /SC2  /SC4  BREQ  CLEAR  
+          SYSCLEAR  ARB_ID_MATCH  REQ_READY  OWNRDY  HI_PRI  AGENT_ERR  
+          PUT_BUS_REQ  PUT_ARB_ID  TRANS_ST[2..0]  TRANS_MON  ARB_MON[1..0]  
+          ARB_OPER[1..0]  
+   1-V1 - SETF
+          /BCLK  /BUS_REQ  /SC0  /SC1  /SC2  /SC4  /BREQ  
+          /CLEAR  SYSCLEAR  /ARB_ID_MATCH  /REQ_READY  /OWNRDY  
+          /HI_PRI  /AGENT_ERR  
+   2-V1 - CHECK
+          /PUT_BUS_REQ  /PUT_ARB_ID  /TRANS_ST[2]  
+          /TRANS_ST[1]  /TRANS_ST[0]  /TRANS_MON  /ARB_MON[1]  /ARB_MON[0]  
+          /ARB_OPER[1]  /ARB_OPER[0]  
+   2-V2 - SETF
+          /BUS_REQ  /SC0  /SC1  /SC2  /SC4  /BREQ  /CLEAR  
+          /SYSCLEAR  /ARB_ID_MATCH  /REQ_READY  /OWNRDY  /HI_PRI  
+          /AGENT_ERR  
+   6-V3 - CLOCKF
+          BCLK  
+   6-V3 - CHECK
+          /PUT_BUS_REQ  /PUT_ARB_ID  /TRANS_ST[2]  
+          /TRANS_ST[1]  /TRANS_ST[0]  /TRANS_MON  /ARB_MON[1]  /ARB_MON[0]  
+          /ARB_OPER[1]  /ARB_OPER[0]  
+   6-V4 - SETF
+          /BUS_REQ  SC0  /SC1  /SC2  /SC4  /BREQ  /CLEAR  
+          /SYSCLEAR  /ARB_ID_MATCH  /REQ_READY  /OWNRDY  /HI_PRI  
+          /AGENT_ERR  
+  10-V5 - CLOCKF
+          BCLK  
+  10-V5 - CHECK
+          /PUT_BUS_REQ  /PUT_ARB_ID  /TRANS_ST[2]  
+          /TRANS_ST[1]  /TRANS_ST[0]  TRANS_MON  /ARB_MON[1]  /ARB_MON[0]  
+          /ARB_OPER[1]  /ARB_OPER[0]  
+  10-V6 - SETF
+          BUS_REQ  /SC0  /SC1  /SC2  /SC4  BREQ  /CLEAR  
+          /SYSCLEAR  /ARB_ID_MATCH  /REQ_READY  /OWNRDY  /HI_PRI  
+          /AGENT_ERR  
+  14-V7 - CLOCKF
+          BCLK  
+  14-V7 - CHECK
+          /PUT_BUS_REQ  /PUT_ARB_ID  /TRANS_ST[2]  
+          /TRANS_ST[1]  /TRANS_ST[0]  TRANS_MON  /ARB_MON[1]  ARB_MON[0]  
+          /ARB_OPER[1]  /ARB_OPER[0]  
+  14-V8 - SETF
+          BUS_REQ  /SC0  /SC1  /SC2  /SC4  BREQ  /CLEAR  
+          /SYSCLEAR  /ARB_ID_MATCH  /REQ_READY  /OWNRDY  /HI_PRI  
+          /AGENT_ERR  
+  18-V9 - CLOCKF
+          BCLK  
+  18-V9 - CHECK
+          /PUT_BUS_REQ  /PUT_ARB_ID  /TRANS_ST[2]  
+          /TRANS_ST[1]  /TRANS_ST[0]  TRANS_MON  ARB_MON[1]  /ARB_MON[0]  
+          /ARB_OPER[1]  /ARB_OPER[0]  
+  18-V10 - SETF
+          BUS_REQ  /SC0  /SC1  /SC2  /SC4  BREQ  /CLEAR  
+          /SYSCLEAR  /ARB_ID_MATCH  /REQ_READY  /OWNRDY  /HI_PRI  
+          /AGENT_ERR  
+  22-V11 - CLOCKF
+          BCLK  
+  22-V11 - CHECK
+          /PUT_BUS_REQ  /PUT_ARB_ID  /TRANS_ST[2]  
+          /TRANS_ST[1]  /TRANS_ST[0]  TRANS_MON  ARB_MON[1]  /ARB_MON[0]  
+          /ARB_OPER[1]  /ARB_OPER[0]  
+  22-V12 - SETF
+          /BUS_REQ  /SC0  /SC1  SC2  SC4  BREQ  /CLEAR  
+          /SYSCLEAR  /ARB_ID_MATCH  /REQ_READY  /OWNRDY  /HI_PRI  
+          /AGENT_ERR  
+  26-V13 - CLOCKF
+          BCLK  
+  26-V13 - CHECK
+          PUT_BUS_REQ  PUT_ARB_ID  /TRANS_ST[2]  /TRANS_ST[1]  
+          /TRANS_ST[0]  /TRANS_MON  /ARB_MON[1]  /ARB_MON[0]  /ARB_OPER[1]  
+          ARB_OPER[0]  
+  26-V14 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Test3.HST
+Simulation results (trace) are in   ===> Test3.TRF
+Merged results (JEDEC) are in       ===> Test3.JDC
+Simulation results (trace vectors) are in   ===> Test3.TRV
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 259997 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Test3.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 1

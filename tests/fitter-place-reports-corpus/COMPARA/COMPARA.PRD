@@ -1,0 +1,535 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+Start: Mon Nov 09 20:19:04 2026
+End  : Mon Nov 09 20:19:04 2026    $$$ Elapsed time: 00:00:00
+===========================================================================
+C:\DAT\MACH435 Design [Compara.pds]
+
+* Place/Route options (keycode = 526336)
+	= Spread Placement:	      ON
+
+* Placement Completion
+
+ +- Block                       +------- IO Pins Available
+ |    +- Macrocells Available   |    +-- IO Pins Used
+ |    |    +- Signals to Place  |    |             +----- Logic Array Inputs
+ |    |    |    +- Placed       |    |             |   +- Array Inputs Used
+_|____|____|____|_______________|____|_____________|___|________________
+ A | 16 |  1 |  1 => 100% |     8 |  8 => 100% |  33 | 20 =>  60%
+ B | 16 |  0 |  0 =>  n/a |     8 |  8 => 100% |  33 |  0 =>   0%
+ C | 16 |  0 |  0 =>  n/a |     8 |  3 =>  37% |  33 |  0 =>   0%
+ D | 16 |  0 |  0 =>  n/a |     8 |  0 =>   0% |  33 |  0 =>   0%
+ E | 16 |  0 |  0 =>  n/a |     8 |  0 =>   0% |  33 |  0 =>   0%
+ F | 16 |  0 |  0 =>  n/a |     8 |  0 =>   0% |  33 |  0 =>   0%
+ G | 16 |  0 |  0 =>  n/a |     8 |  0 =>   0% |  33 |  0 =>   0%
+ H | 16 |  0 |  0 =>  n/a |     8 |  0 =>   0% |  33 |  0 =>   0%
+---|----|----|------------|-------|------------|-----|------------------
+
+* Input/Clock Signal count:  20 -> placed:  20 = 100%
+
+                              Available   Used
+-----------------------------------------------------------------
+	Input Pins            :   2        0    =>   0%
+	Clock, Clk/Input Pins :   4        2    =>  50%
+
+* Routing Completion: 100%
+* Attempts: Place [      21] Route [       0]
+===========================================================================
+	Signal Fanout Table
+===========================================================================
+  +- Signal Number
+  |                +- Block Location ('+' for dedicated inputs)
+  |                |  +- Sig Type
+  |                |  |    +- Signal-to-Pin Assignment
+  |  Signal Name   |  |    |           Fanout to Logic Blocks
+__|________________|__|____|_______________________________________________
+  1|COMPOUT       |A|OUT|  10|=> . . . . . . . .
+  2|INX[0]        |C|INP|  26|=> A . . . . . . .
+  3|INX[1]        |C|INP|  25|=> A . . . . . . .
+  4|INX[2]        |C|INP|  24|=> A . . . . . . .
+  5|INX[3]        |+|INP|  23|=> A . . . . . . .
+  6|INX[4]        |+|INP|  20|=> A . . . . . . .
+  7|INX[5]        |B|INP|  19|=> A . . . . . . .
+  8|INX[6]        |B|INP|  18|=> A . . . . . . .
+  9|INX[7]        |B|INP|  17|=> A . . . . . . .
+ 10|INX[8]        |B|INP|  16|=> A . . . . . . .
+ 11|INX[9]        |B|INP|  15|=> A . . . . . . .
+ 12|IN[0]         |B|INP|  14|=> A . . . . . . .
+ 13|IN[1]         |B|INP|  13|=> A . . . . . . .
+ 14|IN[2]         |B|INP|  12|=> A . . . . . . .
+ 15|IN[3]         |A|INP|   9|=> A . . . . . . .
+ 16|IN[4]         |A|INP|   8|=> A . . . . . . .
+ 17|IN[5]         |A|INP|   7|=> A . . . . . . .
+ 18|IN[6]         |A|INP|   6|=> A . . . . . . .
+ 19|IN[7]         |A|INP|   5|=> A . . . . . . .
+ 20|IN[8]         |A|INP|   4|=> A . . . . . . .
+ 21|IN[9]         |A|INP|   3|=> A . . . . . . .
+---------------------------------------------------------------------------
+===========================================================================
+	< C:\DAT\MACH435 Device Pin Assignments >
+===========================================================================
+    +- Device Pin No
+    |     +- Pin Type
+    |     |          Signal Fixed (*)-+
+    |     |           Signal Name     |
+____|_____|___________________________|____________________________________
+    1 |  GND |   |       (pwr/test)  | |
+    2 |  Vcc |   |       (pwr/test)  | |
+    3 |  I_O |A00|             IN[9] | |
+    4 |  I_O |A01|             IN[8] | |
+    5 |  I_O |A02|             IN[7] | |
+    6 |  I_O |A03|             IN[6] | |
+    7 |  I_O |A04|             IN[5] | |
+    8 |  I_O |A05|             IN[4] | |
+    9 |  I_O |A06|             IN[3] | |
+   10 |  I_O |A07|           COMPOUT | |
+   11 |  GND |   |       (pwr/test)  | |
+   12 |  I_O |B07|             IN[2] | |
+   13 |  I_O |B06|             IN[1] | |
+   14 |  I_O |B05|             IN[0] | |
+   15 |  I_O |B04|            INX[9] | |
+   16 |  I_O |B03|            INX[8] | |
+   17 |  I_O |B02|            INX[7] | |
+   18 |  I_O |B01|            INX[6] | |
+   19 |  I_O |B00|            INX[5] | |
+   20 | CkIn |   |            INX[4] | |
+   21 |  Vcc |   |       (pwr/test)  | |
+   22 |  GND |   |       (pwr/test)  | |
+   23 | CkIn |   |            INX[3] | |
+   24 |  I_O |C00|            INX[2] | |
+   25 |  I_O |C01|            INX[1] | |
+   26 |  I_O |C02|            INX[0] | |
+   27 |  I_O |C03|                -  | |
+   28 |  I_O |C04|                -  | |
+   29 |  I_O |C05|                -  | |
+   30 |  I_O |C06|                -  | |
+   31 |  I_O |C07|                -  | |
+   32 |  GND |   |       (pwr/test)  | |
+   33 |  I_O |D07|                -  | |
+   34 |  I_O |D06|                -  | |
+   35 |  I_O |D05|                -  | |
+   36 |  I_O |D04|                -  | |
+   37 |  I_O |D03|                -  | |
+   38 |  I_O |D02|                -  | |
+   39 |  I_O |D01|                -  | |
+   40 |  I_O |D00|                -  | |
+   41 |  Inp |   |                -  | |
+   42 |  Vcc |   |       (pwr/test)  | |
+   43 |  GND |   |       (pwr/test)  | |
+   44 |  Vcc |   |       (pwr/test)  | |
+   45 |  I_O |E00|                -  | |
+   46 |  I_O |E01|                -  | |
+   47 |  I_O |E02|                -  | |
+   48 |  I_O |E03|                -  | |
+   49 |  I_O |E04|                -  | |
+   50 |  I_O |E05|                -  | |
+   51 |  I_O |E06|                -  | |
+   52 |  I_O |E07|                -  | |
+   53 |  GND |   |       (pwr/test)  | |
+   54 |  I_O |F07|                -  | |
+   55 |  I_O |F06|                -  | |
+   56 |  I_O |F05|                -  | |
+   57 |  I_O |F04|                -  | |
+   58 |  I_O |F03|                -  | |
+   59 |  I_O |F02|                -  | |
+   60 |  I_O |F01|                -  | |
+   61 |  I_O |F00|                -  | |
+   62 | CkIn |   |                -  | |
+   63 |  Vcc |   |       (pwr/test)  | |
+   64 |  GND |   |       (pwr/test)  | |
+   65 | CkIn |   |                -  | |
+   66 |  I_O |G00|                -  | |
+   67 |  I_O |G01|                -  | |
+   68 |  I_O |G02|                -  | |
+   69 |  I_O |G03|                -  | |
+   70 |  I_O |G04|                -  | |
+   71 |  I_O |G05|                -  | |
+   72 |  I_O |G06|                -  | |
+   73 |  I_O |G07|                -  | |
+   74 |  GND |   |       (pwr/test)  | |
+   75 |  I_O |H07|                -  | |
+   76 |  I_O |H06|                -  | |
+   77 |  I_O |H05|                -  | |
+   78 |  I_O |H04|                -  | |
+   79 |  I_O |H03|                -  | |
+   80 |  I_O |H02|                -  | |
+   81 |  I_O |H01|                -  | |
+   82 |  I_O |H00|                -  | |
+   83 |  Inp |   |                -  | |
+   84 |  Vcc |   |       (pwr/test)  | |
+---------------------------------------------------------------------------
+===========================================================================
+	< Block [A] >	Macrocell (MCell) Cluster Assignments
+===========================================================================
+ + Macrocell Number
+ | PT Requirements------ Logic  XOR+  +--- Macrocell PT Cluster Size
+ |      Sync/Async-------+   |     |  |    Cluster to Mcell Assignment
+ |   Node Fixed(*)----+  |   |     |  |      |   +- XOR PT Size
+ |        Sig Type-+  |  |   |     |  |      |   |  XOR to Mcell Assignment
+ |  Signal Name    |  |  |   |     |  |      |   |          |
+_|_________________|__|__|___|_____|__|______|___|__________|______________
+ 0|              | ? | | S |        | 4 free   | 1 XOR free
+ 1|              | ? | | S |        | 4 free   | 1 XOR free
+ 2|              | ? | | S |        | 4 free   | 1 XOR free
+ 3|              | ? | | S |        | 4 to [ 4]| 1 XOR to [ 4] as logic PT
+ 4|       COMPOUT|OUT| | S |20      | 4 to [ 4]| 1 XOR to [ 4] as logic PT
+ 5|              | ? | | S |        | 4 to [ 4]| 1 XOR to [ 4] as logic PT
+ 6|              | ? | | S |        | 4 to [ 4]| 1 XOR to [ 4] as logic PT
+ 7|              | ? | | S |        | 4 free   | 1 XOR free
+ 8|              | ? | | S |        | 4 free   | 1 XOR free
+ 9|              | ? | | S |        | 4 free   | 1 XOR free
+10|              | ? | | S |        | 4 free   | 1 XOR free
+11|              | ? | | S |        | 4 free   | 1 XOR free
+12|              | ? | | S |        | 4 free   | 1 XOR free
+13|              | ? | | S |        | 4 free   | 1 XOR free
+14|              | ? | | S |        | 4 free   | 1 XOR free
+15|              | ? | | S |        | 4 free   | 1 XOR free
+---------------------------------------------------------------------------
+===========================================================================
+	< Block [A] >	Maximum PT Capacity
+===========================================================================
+ + Macrocell Number
+ | PT Requirements------ Logic  XOR+
+ |      Sync/Async-------+   |     |
+ |   Node Fixed(*)----+  |   |     |
+ |        Sig Type-+  |  |   |     |
+ |  Signal Name    |  |  |   |     |     Maximum PT Capacity
+_|_________________|__|__|___|_____|_______________________________________
+ 0|              | ? | | S |        |=> can support up to [ 15] logic PT(s)
+ 1|              | ? | | S |        |=> can support up to [ 15] logic PT(s)
+ 2|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
+ 3|              | ? | | S |        |=> can support up to [  5] logic PT(s)
+ 4|       COMPOUT|OUT| | S |20      |=> can support up to [ 20] logic PT(s)
+ 5|              | ? | | S |        |=> can support up to [  5] logic PT(s)
+ 6|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
+ 7|              | ? | | S |        |=> can support up to [ 15] logic PT(s)
+ 8|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
+ 9|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
+10|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
+11|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
+12|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
+13|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
+14|              | ? | | S |        |=> can support up to [ 15] logic PT(s)
+15|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
+---------------------------------------------------------------------------
+===========================================================================
+	< Block [A] >	Node-Pin Assignments
+===========================================================================
+ + Macrocell Number
+ | Node Fixed(*)------+
+ |      Sig Type---+  |  to |  Block [A] IO Pin  |   Device Pin
+ |  Signal Name    |  | pin |      Numbers       |     Numbers
+_|_________________|__|_____|____________________|________________________
+ 0|              | ? | | => |   5    6    7    0 |   8    9   10    3 
+ 1|              | ? | | => |   5    6    7    0 |   8    9   10    3 
+ 2|              | ? | | => |   6    7    0    1 |   9   10    3    4 
+ 3|              | ? | | => |   6    7    0    1 |   9   10    3    4 
+ 4|       COMPOUT|OUT| | => |(  7)   0    1    2 |( 10)   3    4    5 
+ 5|              | ? | | => |   7    0    1    2 |  10    3    4    5 
+ 6|              | ? | | => |   0    1    2    3 |   3    4    5    6 
+ 7|              | ? | | => |   0    1    2    3 |   3    4    5    6 
+ 8|              | ? | | => |   1    2    3    4 |   4    5    6    7 
+ 9|              | ? | | => |   1    2    3    4 |   4    5    6    7 
+10|              | ? | | => |   2    3    4    5 |   5    6    7    8 
+11|              | ? | | => |   2    3    4    5 |   5    6    7    8 
+12|              | ? | | => |   3    4    5    6 |   6    7    8    9 
+13|              | ? | | => |   3    4    5    6 |   6    7    8    9 
+14|              | ? | | => |   4    5    6    7 |   7    8    9   10 
+15|              | ? | | => |   4    5    6    7 |   7    8    9   10 
+---------------------------------------------------------------------------
+===========================================================================
+	< Block [A] >	IO-to-Node Pin Mapping
+===========================================================================
+ +- Block IO Pin
+ |  Device Pin No.--------+
+ |    Pin Fixed(*)----+   |
+ |       Sig Type--+  |   |     |
+ |     Signal Name |  |   |     |  Node Destinations Via Output Matrix
+_|_________________|__|___|_____|___________________________________________
+ 0|         IN[9]|INP| |  3| => |   0    1    2    3    4    5    6    7 
+ 1|         IN[8]|INP| |  4| => |   2    3    4    5    6    7    8    9 
+ 2|         IN[7]|INP| |  5| => |   4    5    6    7    8    9   10   11 
+ 3|         IN[6]|INP| |  6| => |   6    7    8    9   10   11   12   13 
+ 4|         IN[5]|INP| |  7| => |   8    9   10   11   12   13   14   15 
+ 5|         IN[4]|INP| |  8| => |  10   11   12   13   14   15    0    1 
+ 6|         IN[3]|INP| |  9| => |  12   13   14   15    0    1    2    3 
+ 7|       COMPOUT|OUT| | 10| => |  14   15    0    1    2    3  ( 4)   5 
+---------------------------------------------------------------------------
+===========================================================================
+	< Block [A] >	IO/Node and IO/Input Macrocell Pairing Table
+===========================================================================
+ +- Block IO Pin
+ |  Device Pin No.--------+
+ |    Pin Fixed(*)----+   |
+ |       Sig Type--+  |   |     |
+ |     Signal Name |  |   |     |  Input Macrocell and Node Pairs
+_|_________________|__|___|_____|__________________________________________
+ 0|         IN[9]|INP| |  3| => | Input macrocell   [             -]
+ 1|         IN[8]|INP| |  4| => | Input macrocell   [             -]
+ 2|         IN[7]|INP| |  5| => | Input macrocell   [             -]
+ 3|         IN[6]|INP| |  6| => | Input macrocell   [             -]
+ 4|         IN[5]|INP| |  7| => | Input macrocell   [             -]
+ 5|         IN[4]|INP| |  8| => | Input macrocell   [             -]
+ 6|         IN[3]|INP| |  9| => | Input macrocell   [             -]
+ 7|       COMPOUT|OUT| | 10| => | Input macrocell   [             -]
+---------------------------------------------------------------------------
+===========================================================================
+	< Block [A] >	Input Multiplexer (IMX) Assignments
+===========================================================================
+           +----- IO pin/Input Register, or Macrocell
+IMX No.    |    +---- Block IO Pin or Macrocell Number
+   |       |    |  MACHXL Node/    +-- Signal using the Pin or Macrocell
+   |       |    |  Pin Number      |      +- Signal Fixed (*) to Pin/Mcell
+   |       |    |   |  Sig Type    |      | +- Feedback Required
+---|-------|----|---|---|----------|------|-|------------------------------
+IMX  0	[IOpin  0 |  3|INP          IN[9]| |*]
+	[RegIn  0 |130|                 -| | ]
+	[MCell  0 |  2|                 -| | ]
+	[MCell  1 |  3|                 -| | ]
+
+IMX  1	[IOpin  1 |  4|INP          IN[8]| |*]
+	[RegIn  1 |131|                 -| | ]
+	[MCell  2 |  4|                 -| | ]
+	[MCell  3 |  5|                 -| | ]
+
+IMX  2	[IOpin  2 |  5|INP          IN[7]| |*]
+	[RegIn  2 |132|                 -| | ]
+	[MCell  4 |  6|OUT        COMPOUT| | ]
+	[MCell  5 |  7|                 -| | ]
+
+IMX  3	[IOpin  3 |  6|INP          IN[6]| |*]
+	[RegIn  3 |133|                 -| | ]
+	[MCell  6 |  8|                 -| | ]
+	[MCell  7 |  9|                 -| | ]
+
+IMX  4	[IOpin  4 |  7|INP          IN[5]| |*]
+	[RegIn  4 |134|                 -| | ]
+	[MCell  8 | 10|                 -| | ]
+	[MCell  9 | 11|                 -| | ]
+
+IMX  5	[IOpin  5 |  8|INP          IN[4]| |*]
+	[RegIn  5 |135|                 -| | ]
+	[MCell 10 | 12|                 -| | ]
+	[MCell 11 | 13|                 -| | ]
+
+IMX  6	[IOpin  6 |  9|INP          IN[3]| |*]
+	[RegIn  6 |136|                 -| | ]
+	[MCell 12 | 14|                 -| | ]
+	[MCell 13 | 15|                 -| | ]
+
+IMX  7	[IOpin  7 | 10|OUT        COMPOUT| | ]
+	[RegIn  7 |137|                 -| | ]
+	[MCell 14 | 16|                 -| | ]
+	[MCell 15 | 17|                 -| | ]
+---------------------------------------------------------------------------
+===========================================================================
+	< Block [A] >	Logic Array Fan-in
+===========================================================================
+
+  +- Central Switch Matrix No.
+  |          Signal       Source     MACHXL Node/Pin Numbers
+--|--|-----------------------------|---------------------------------------
+Mux00|            ...         ...  |
+Mux01|         INX[7]  IO Pin B  2 |   17
+Mux02|          IN[2]  IO Pin B  7 |   12
+Mux03|         INX[1]  IO Pin C  1 |   25
+Mux04|         INX[5]  IO Pin B  0 |   19
+Mux05|         INX[3]   Input Pin  |   23
+Mux06|          IN[3]  IO Pin A  6 |    9
+Mux07|         INX[2]  IO Pin C  0 |   24
+Mux08|          IN[9]  IO Pin A  0 |    3
+Mux09|         INX[0]  IO Pin C  2 |   26
+Mux10|         INX[8]  IO Pin B  3 |   16
+Mux11|          IN[1]  IO Pin B  6 |   13
+Mux12|            ...         ...  |
+Mux13|         INX[9]  IO Pin B  4 |   15
+Mux14|         INX[4]   Input Pin  |   20
+Mux15|          IN[6]  IO Pin A  3 |    6
+Mux16|         INX[6]  IO Pin B  1 |   18
+Mux17|          IN[5]  IO Pin A  4 |    7
+Mux18|            ...         ...  |
+Mux19|          IN[0]  IO Pin B  5 |   14
+Mux20|            ...         ...  |
+Mux21|            ...         ...  |
+Mux22|            ...         ...  |
+Mux23|            ...         ...  |
+Mux24|            ...         ...  |
+Mux25|            ...         ...  |
+Mux26|          IN[4]  IO Pin A  5 |    8
+Mux27|            ...         ...  |
+Mux28|            ...         ...  |
+Mux29|          IN[7]  IO Pin A  2 |    5
+Mux30|          IN[8]  IO Pin A  1 |    4
+Mux31|            ...         ...  |
+Mux32|            ...         ...  |
+---------------------------------------------------------------------------
+===========================================================================
+	< Block [B] >	IO-to-Node Pin Mapping
+===========================================================================
+ +- Block IO Pin
+ |  Device Pin No.--------+
+ |    Pin Fixed(*)----+   |
+ |       Sig Type--+  |   |     |
+ |     Signal Name |  |   |     |  Node Destinations Via Output Matrix
+_|_________________|__|___|_____|___________________________________________
+ 0|        INX[5]|INP| | 19| => |   0    1    2    3    4    5    6    7 
+ 1|        INX[6]|INP| | 18| => |   2    3    4    5    6    7    8    9 
+ 2|        INX[7]|INP| | 17| => |   4    5    6    7    8    9   10   11 
+ 3|        INX[8]|INP| | 16| => |   6    7    8    9   10   11   12   13 
+ 4|        INX[9]|INP| | 15| => |   8    9   10   11   12   13   14   15 
+ 5|         IN[0]|INP| | 14| => |  10   11   12   13   14   15    0    1 
+ 6|         IN[1]|INP| | 13| => |  12   13   14   15    0    1    2    3 
+ 7|         IN[2]|INP| | 12| => |  14   15    0    1    2    3    4    5 
+---------------------------------------------------------------------------
+===========================================================================
+	< Block [B] >	IO/Node and IO/Input Macrocell Pairing Table
+===========================================================================
+ +- Block IO Pin
+ |  Device Pin No.--------+
+ |    Pin Fixed(*)----+   |
+ |       Sig Type--+  |   |     |
+ |     Signal Name |  |   |     |  Input Macrocell and Node Pairs
+_|_________________|__|___|_____|__________________________________________
+ 0|        INX[5]|INP| | 19| => | Input macrocell   [             -]
+ 1|        INX[6]|INP| | 18| => | Input macrocell   [             -]
+ 2|        INX[7]|INP| | 17| => | Input macrocell   [             -]
+ 3|        INX[8]|INP| | 16| => | Input macrocell   [             -]
+ 4|        INX[9]|INP| | 15| => | Input macrocell   [             -]
+ 5|         IN[0]|INP| | 14| => | Input macrocell   [             -]
+ 6|         IN[1]|INP| | 13| => | Input macrocell   [             -]
+ 7|         IN[2]|INP| | 12| => | Input macrocell   [             -]
+---------------------------------------------------------------------------
+===========================================================================
+	< Block [B] >	Input Multiplexer (IMX) Assignments
+===========================================================================
+           +----- IO pin/Input Register, or Macrocell
+IMX No.    |    +---- Block IO Pin or Macrocell Number
+   |       |    |  MACHXL Node/    +-- Signal using the Pin or Macrocell
+   |       |    |  Pin Number      |      +- Signal Fixed (*) to Pin/Mcell
+   |       |    |   |  Sig Type    |      | +- Feedback Required
+---|-------|----|---|---|----------|------|-|------------------------------
+IMX  0	[IOpin  0 | 19|INP         INX[5]| |*]
+	[RegIn  0 |138|                 -| | ]
+	[MCell  0 | 18|                 -| | ]
+	[MCell  1 | 19|                 -| | ]
+
+IMX  1	[IOpin  1 | 18|INP         INX[6]| |*]
+	[RegIn  1 |139|                 -| | ]
+	[MCell  2 | 20|                 -| | ]
+	[MCell  3 | 21|                 -| | ]
+
+IMX  2	[IOpin  2 | 17|INP         INX[7]| |*]
+	[RegIn  2 |140|                 -| | ]
+	[MCell  4 | 22|                 -| | ]
+	[MCell  5 | 23|                 -| | ]
+
+IMX  3	[IOpin  3 | 16|INP         INX[8]| |*]
+	[RegIn  3 |141|                 -| | ]
+	[MCell  6 | 24|                 -| | ]
+	[MCell  7 | 25|                 -| | ]
+
+IMX  4	[IOpin  4 | 15|INP         INX[9]| |*]
+	[RegIn  4 |142|                 -| | ]
+	[MCell  8 | 26|                 -| | ]
+	[MCell  9 | 27|                 -| | ]
+
+IMX  5	[IOpin  5 | 14|INP          IN[0]| |*]
+	[RegIn  5 |143|                 -| | ]
+	[MCell 10 | 28|                 -| | ]
+	[MCell 11 | 29|                 -| | ]
+
+IMX  6	[IOpin  6 | 13|INP          IN[1]| |*]
+	[RegIn  6 |144|                 -| | ]
+	[MCell 12 | 30|                 -| | ]
+	[MCell 13 | 31|                 -| | ]
+
+IMX  7	[IOpin  7 | 12|INP          IN[2]| |*]
+	[RegIn  7 |145|                 -| | ]
+	[MCell 14 | 32|                 -| | ]
+	[MCell 15 | 33|                 -| | ]
+---------------------------------------------------------------------------
+===========================================================================
+	< Block [C] >	IO-to-Node Pin Mapping
+===========================================================================
+ +- Block IO Pin
+ |  Device Pin No.--------+
+ |    Pin Fixed(*)----+   |
+ |       Sig Type--+  |   |     |
+ |     Signal Name |  |   |     |  Node Destinations Via Output Matrix
+_|_________________|__|___|_____|___________________________________________
+ 0|        INX[2]|INP| | 24| => |   0    1    2    3    4    5    6    7 
+ 1|        INX[1]|INP| | 25| => |   2    3    4    5    6    7    8    9 
+ 2|        INX[0]|INP| | 26| => |   4    5    6    7    8    9   10   11 
+ 3|              | ? | | 27| => |   6    7    8    9   10   11   12   13 
+ 4|              | ? | | 28| => |   8    9   10   11   12   13   14   15 
+ 5|              | ? | | 29| => |  10   11   12   13   14   15    0    1 
+ 6|              | ? | | 30| => |  12   13   14   15    0    1    2    3 
+ 7|              | ? | | 31| => |  14   15    0    1    2    3    4    5 
+---------------------------------------------------------------------------
+===========================================================================
+	< Block [C] >	IO/Node and IO/Input Macrocell Pairing Table
+===========================================================================
+ +- Block IO Pin
+ |  Device Pin No.--------+
+ |    Pin Fixed(*)----+   |
+ |       Sig Type--+  |   |     |
+ |     Signal Name |  |   |     |  Input Macrocell and Node Pairs
+_|_________________|__|___|_____|__________________________________________
+ 0|        INX[2]|INP| | 24| => | Input macrocell   [             -]
+ 1|        INX[1]|INP| | 25| => | Input macrocell   [             -]
+ 2|        INX[0]|INP| | 26| => | Input macrocell   [             -]
+ 3|              | ? | | 27| => | Input macrocell   [             -]
+ 4|              | ? | | 28| => | Input macrocell   [             -]
+ 5|              | ? | | 29| => | Input macrocell   [             -]
+ 6|              | ? | | 30| => | Input macrocell   [             -]
+ 7|              | ? | | 31| => | Input macrocell   [             -]
+---------------------------------------------------------------------------
+===========================================================================
+	< Block [C] >	Input Multiplexer (IMX) Assignments
+===========================================================================
+           +----- IO pin/Input Register, or Macrocell
+IMX No.    |    +---- Block IO Pin or Macrocell Number
+   |       |    |  MACHXL Node/    +-- Signal using the Pin or Macrocell
+   |       |    |  Pin Number      |      +- Signal Fixed (*) to Pin/Mcell
+   |       |    |   |  Sig Type    |      | +- Feedback Required
+---|-------|----|---|---|----------|------|-|------------------------------
+IMX  0	[IOpin  0 | 24|INP         INX[2]| |*]
+	[RegIn  0 |146|                 -| | ]
+	[MCell  0 | 34|                 -| | ]
+	[MCell  1 | 35|                 -| | ]
+
+IMX  1	[IOpin  1 | 25|INP         INX[1]| |*]
+	[RegIn  1 |147|                 -| | ]
+	[MCell  2 | 36|                 -| | ]
+	[MCell  3 | 37|                 -| | ]
+
+IMX  2	[IOpin  2 | 26|INP         INX[0]| |*]
+	[RegIn  2 |148|                 -| | ]
+	[MCell  4 | 38|                 -| | ]
+	[MCell  5 | 39|                 -| | ]
+
+IMX  3	[IOpin  3 | 27|                 -| | ]
+	[RegIn  3 |149|                 -| | ]
+	[MCell  6 | 40|                 -| | ]
+	[MCell  7 | 41|                 -| | ]
+
+IMX  4	[IOpin  4 | 28|                 -| | ]
+	[RegIn  4 |150|                 -| | ]
+	[MCell  8 | 42|                 -| | ]
+	[MCell  9 | 43|                 -| | ]
+
+IMX  5	[IOpin  5 | 29|                 -| | ]
+	[RegIn  5 |151|                 -| | ]
+	[MCell 10 | 44|                 -| | ]
+	[MCell 11 | 45|                 -| | ]
+
+IMX  6	[IOpin  6 | 30|                 -| | ]
+	[RegIn  6 |152|                 -| | ]
+	[MCell 12 | 46|                 -| | ]
+	[MCell 13 | 47|                 -| | ]
+
+IMX  7	[IOpin  7 | 31|                 -| | ]
+	[RegIn  7 |153|                 -| | ]
+	[MCell 14 | 48|                 -| | ]
+	[MCell 15 | 49|                 -| | ]
+---------------------------------------------------------------------------

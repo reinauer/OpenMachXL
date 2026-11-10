@@ -1,0 +1,28 @@
+;PALASM Design Description
+; pds2v test: logic allocator.  M1 needs 12 product terms = 3 clusters, which
+; must be C0..C2; M0 can only use C0 or C1, so block A is one cluster short.
+; EXPECT-EXIT: 1
+; EXPECT: warning: BIG12 needs 12 product terms
+; EXPECT: error: block A: the logic allocator is 1 cluster(s) short
+; EXPECT: clusters needed: M0(SMALL)=1 M1(BIG12)=3
+
+CHIP     BADCL  MACH111
+PIN  10  A
+PIN  11  B
+PIN  13  C
+PIN  32  D
+PIN  33  E
+PIN  35  F
+PIN  24  G
+PIN  25  H
+PIN  26  I
+PIN  27  J
+PIN  28  K
+PIN  29  L
+PIN  2   SMALL  COMBINATORIAL   ; M0 of block A
+PIN  3   BIG12  COMBINATORIAL   ; M1 of block A
+
+EQUATIONS
+SMALL = A * B
+BIG12 = (A :+: B :+: C :+: D)   ; 8 product terms
+      + E * F + G * H + I * J + K * L

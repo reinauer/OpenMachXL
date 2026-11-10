@@ -1,0 +1,38 @@
+
+*** Start MACHSIMU. 11:41:35 
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Sm013.pds
+Title  
+
+
+
+   1-V0 - TRACE_ON
+          A  Q  
+   1-V0 - SETF
+          /A  
+   2-V0 - CHECK
+          /Q  
+   2-V0 - SETF
+          A  
+   3-V0 - CHECK
+          Q  
+   3-V0 - TRACE_OFF
+|> WARNING D2200
+     Floating pin declaration has been used.
+     Simulation results may not be true to device behavior.
+     No JEDEC test vectors generated.
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Sm013.HST
+Simulation results (trace) are in   ===> Sm013.TRF
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 85520 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Sm013.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 1
+
+*** End MACHSIMU.EX 11:41:36; (MACHSIMU.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

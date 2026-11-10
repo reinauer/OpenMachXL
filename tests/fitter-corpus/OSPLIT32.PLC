@@ -1,0 +1,30 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file Osplit32.pds
+; FITTER-generated Placements.
+; DEVICE   MACH111
+; DATE     Mon Nov 09 23:33:44 2026
+
+
+Pin   10  A
+Pin   11  E
+Pin   13  F
+Pin   32  B
+Pin   33  G
+Pin   2  P0 Comb ;
+Pin   5  P1 Comb ;
+Pin   8  P2 Comb ;
+Pin   15  P3 Comb ;
+Pin   18  P4 Comb ;
+Pin   21  P5 Comb ;
+Pin   3  P6 Comb ;
+Pin   6  P7 Comb ;
+Pin   16  P8 Comb ;
+Pin   9  P9 Comb ;
+Pin   4  P10 Comb ;
+Pin   7  P11 Comb ;
+Pin   14  P12 Comb ;
+Pin   17  P13 Comb ;
+Pin   19  P14 Comb ;
+; Unused Pins & Nodes
+; H 

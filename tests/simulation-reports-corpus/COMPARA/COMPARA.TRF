@@ -1,0 +1,35 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+MACHXL SIMULATION SELECTIVE TRACE LISTING
+
+Title     : Fast Comparator-- Compar Author   : J. ENGINEER      
+Pattern   : 1                        Company  : AMD              
+Revision  : 1                        Date     : 4/26/94          
+
+MACH435        
+Page : 1 
+
+          gggggg g g g g                                              
+ INX[0]   HHHHHLLLLLLLLLL                                             
+ INX[1]   HHHHHLLLLLLLLLL                                             
+ INX[2]   HHHHHLLLLLLLLLL                                             
+ INX[3]   HHHHHLLLLLLLLLL                                             
+ INX[4]   HHHHHLLLLLLLLLL                                             
+ INX[5]   HHHHHLLLLLLLLLL                                             
+ INX[6]   HHHHHHHHHHHHHHH                                             
+ INX[7]   HHHHHLLLLLLLLLL                                             
+ INX[8]   HHHHHHHHHHHHHHH                                             
+ INX[9]   HHHHHLLLLLLLLLL                                             
+ IN[0]    HHHHHLLLLLLLLLL                                             
+ IN[1]    HHHHHLLLLLLLLLL                                             
+ IN[2]    HHHHHLLLLLLLLLL                                             
+ IN[3]    HHHHHLLLLLLLLLL                                             
+ IN[4]    HHHHHLLLLLLLLLL                                             
+ IN[5]    HHHHHLLLLLLLLLL                                             
+ IN[6]    HHHHHHHHHHHHHHH                                             
+ IN[7]    HHHHHLLLLLLLLLL                                             
+ IN[8]    HHHHHLLLLLLLLLL                                             
+ IN[9]    HHHHHHHHHHHHHHH                                             
+ COMPOUT  LLLLLH?H?H?H?H?                                             
+

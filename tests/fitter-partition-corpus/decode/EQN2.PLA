@@ -1,0 +1,83 @@
+[0  ] pin:89 OUT[0] 
+fanin 4: 78 86 87 88 
+TYPE 36, SORT1 2541, SORT2 25
+[1  ] pin:90 OUT[1] 
+fanin 4: 79 86 87 88 
+TYPE 36, SORT1 2541, SORT2 25
+[2  ] pin:91 OUT[2] 
+fanin 4: 80 86 87 88 
+TYPE 36, SORT1 2541, SORT2 25
+[3  ] pin:92 OUT[3] 
+fanin 4: 81 86 87 88 
+TYPE 36, SORT1 2541, SORT2 25
+[4  ] pin:93 OUT[4] 
+fanin 4: 82 86 87 88 
+TYPE 36, SORT1 2541, SORT2 25
+[5  ] pin:94 OUT[5] 
+fanin 4: 83 86 87 88 
+TYPE 36, SORT1 2541, SORT2 25
+[6  ] pin:95 OUT[6] 
+fanin 4: 84 86 87 88 
+TYPE 36, SORT1 2541, SORT2 25
+[7  ] pin:96 OUT[7] 
+fanin 4: 85 86 87 88 
+TYPE 36, SORT1 2541, SORT2 25
+[8  ] pin:78 DATA[0] 
+fanin 0: 
+TYPE 8192, SORT1 0, SORT2 0
+[9  ] pin:79 DATA[1] 
+fanin 0: 
+TYPE 8192, SORT1 0, SORT2 0
+[10 ] pin:80 DATA[2] 
+fanin 0: 
+TYPE 8192, SORT1 0, SORT2 0
+[11 ] pin:81 DATA[3] 
+fanin 0: 
+TYPE 8192, SORT1 0, SORT2 0
+[12 ] pin:82 DATA[4] 
+fanin 0: 
+TYPE 8192, SORT1 0, SORT2 0
+[13 ] pin:83 DATA[5] 
+fanin 0: 
+TYPE 8192, SORT1 0, SORT2 0
+[14 ] pin:84 DATA[6] 
+fanin 0: 
+TYPE 8192, SORT1 0, SORT2 0
+[15 ] pin:85 DATA[7] 
+fanin 0: 
+TYPE 8192, SORT1 0, SORT2 0
+[16 ] pin:86 SEL1 
+fanin 0: 
+TYPE 8192, SORT1 0, SORT2 0
+[17 ] pin:87 SEL2 
+fanin 0: 
+TYPE 8192, SORT1 0, SORT2 0
+[18 ] pin:88 SEL3 
+fanin 0: 
+TYPE 8192, SORT1 0, SORT2 0
+---------------------------------------------------
+no:1 GND  :0
+no:12 GND  :0
+no:22 VCC  :0
+no:23 GND  :0
+no:34 GND  :0
+no:44 VCC  :0
+no:78 DATA[0]  :1
+no:79 DATA[1]  :1
+no:80 DATA[2]  :1
+no:81 DATA[3]  :1
+no:82 DATA[4]  :1
+no:83 DATA[5]  :1
+no:84 DATA[6]  :1
+no:85 DATA[7]  :1
+no:86 SEL1  :8
+no:87 SEL2  :8
+no:88 SEL3  :8
+no:89 OUT[0]  :0
+no:90 OUT[1]  :0
+no:91 OUT[2]  :0
+no:92 OUT[3]  :0
+no:93 OUT[4]  :0
+no:94 OUT[5]  :0
+no:95 OUT[6]  :0
+no:96 OUT[7]  :0

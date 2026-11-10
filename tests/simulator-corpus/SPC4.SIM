@@ -1,0 +1,42 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Spc4.pds
+Title  
+
+|> WARNING D2260
+     The following Pin/Nodes(s) have not been defined in original design
+     file and will be ignored.
+
+      DEF_GCLOCK      
+
+
+
+   1-V1 - TRACE_ON
+          A  B  Y  
+   1-V1 - SETF
+          /A  /B  
+   5-V2 - CLOCKF
+   5-V3 - SETF
+          A  
+   9-V4 - CLOCKF
+   9-V5 - SETF
+          B  
+  13-V6 - CLOCKF
+  13-V7 - SETF
+          /A  
+  17-V8 - CLOCKF
+  17-V9 - SETF
+          /B  
+  21-V10 - CLOCKF
+  21-V11 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Spc4.HST
+Simulation results (trace) are in   ===> Spc4.TRF
+Merged results (JEDEC) are in       ===> Spc4.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 99551 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Spc4.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 1

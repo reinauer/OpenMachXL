@@ -1,0 +1,1516 @@
+{
+  "scope": "Original DOS outputs only; native full compatibility is not established",
+  "generator": "tools/dos_oracle.py",
+  "dosbox_version": "DOSBox-X version 2026.10.01 SDL2, copyright 2011-2026 The DOSBox-X Team.\nDOSBox-X project maintainer: joncampbell123 (The Great Codeholio)\n\nDOSBox-X comes with ABSOLUTELY NO WARRANTY.  This is free software,\nand you are welcome to redistribute it under certain conditions;\nplease read the COPYING file thoroughly before doing so.",
+  "archives": {
+    "EXAMPLES.ZIP": "6381d09ec30cb1412e9a497c110ace112857731941510573667eea086a521383",
+    "DAT.ZIP": "e142c7e385492f89240efba3cba46d2bdc97d1f410825a8444ceae1ea89e2af3",
+    "EXE-0.ZIP": "5c365d6578ec3d0f1b6c5d8b8dad19db086f0924f68f3e20a9fa0aca2fcab404",
+    "EXE-1.ZIP": "25180232178a5e0ad502874553a7bcec98ea0b8a6770167507d5c983a51b673a",
+    "EXE-2.ZIP": "ef15cb45ba642a103e6db15e6014f9a52d7772c6958fc8e938098c422639051e"
+  },
+  "original_programs": {
+    "MACHP32.EXE": "547817b5a618faeb3ecb0dda387be12d77265a22b159197a447e04f9760f5ac5",
+    "MACHBPP.EXE": "1e7cdbf1010eba3c04ed94010dfc651d0110b75f05cbbbc3f5ac3118c2198779",
+    "MACHMIN.EXE": "b4fc5f44eabbec8f60f17dab8577d746a92fdaafe3b9a649a44f5eb4650784de",
+    "MACHFITR.EXE": "770f34627c654c66dbb2fecaa40946615c51d83dbca87beae0382f9a733d5726"
+  },
+  "repeated_run": {
+    "cases": 33,
+    "same_outcomes": 33,
+    "same_successful_fuse_maps": 32,
+    "comparison_sha256": "1e7b9b91148f95932264de7a8a507f77d5274f4a7e91a4e6a0dcf1eecbb732af"
+  },
+  "cases": [
+    {
+      "source_sha256": "13585df765e22d4c034338146d3c2c5f0be1995365ea9317eec996c548acff1c",
+      "original_settings_sha256": "31c20da9088987abaf71887d3282966d8c955680d26b6789c7c21247cf5f7cfb",
+      "settings_source": "EXAMPLES.ZIP/16CNTMUX.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "16CNTMUX.PDS",
+        "RUN_LOG": "16CNTMUX.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "a7915f0dac26c1175faddb476e41beeacd34df2d1858f7d662c13c8b365a11ab",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "16CNTMUX",
+      "source": "dos/EXAMPLES.ZIP/16CNTMUX.PDS",
+      "files": {
+        "16CNTMUX.PLA": {
+          "sha256": "041438f0fd67f6aa7f8d32b0580d8688d3da4e22f7063ef87d38c218b8b7221e",
+          "bytes": 47197
+        },
+        "16CNTMUX.JED": {
+          "sha256": "e5074c0dd11ae240bbddcf20b9afddc80c19a9ded5a5d93b4f7bbb8191234076",
+          "bytes": 65953
+        },
+        "16CNTMUX.PLC": {
+          "sha256": "02fa07d8d4c8d05086449806ed6e19b6f276da8014f28d4577ad4fa290c38f9d",
+          "bytes": 3226
+        },
+        "16CNTMUX.DBG": {
+          "sha256": "07a6bcb4623d5b61a5a4f17da84b0968c57d29e4144390b7b4be66ec5518f7c7",
+          "bytes": 913
+        }
+      }
+    },
+    {
+      "source_sha256": "3a49a29b0f110416b71b62fdac661060f7f6f277e12f9188058434663b374d4d",
+      "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+      "settings_source": "EXAMPLES.ZIP/3COUNT_D.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "3COUNT_D.PDS",
+        "RUN_LOG": "3COUNT_D.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "40a455bbcc90d321d62c66c658b89bb7920120dfbe87ce087316905a3434c852",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "3COUNT_D",
+      "source": "dos/EXAMPLES.ZIP/3COUNT_D.PDS",
+      "files": {
+        "3COUNT_D.PLA": {
+          "sha256": "89e09c4e3e1b337fd35599f7c7f0da9f8f91343e6dcad0b676150df5031b1046",
+          "bytes": 714
+        },
+        "3COUNT_D.JED": {
+          "sha256": "bbf98ff7c83fe1c123cb35f99d56530cd54eb8b3a1d174be2efc612002b730c1",
+          "bytes": 11174
+        },
+        "3COUNT_D.PLC": {
+          "sha256": "4db49ee8262d1984e0d496d183292e80ddec75aea98ee345e57e0744221137c6",
+          "bytes": 452
+        },
+        "3COUNT_D.DBG": {
+          "sha256": "3459e6a0a8d2e7b0237422f91590f7df779b984482eb46cdf801f22fc7bf1037",
+          "bytes": 906
+        }
+      }
+    },
+    {
+      "source_sha256": "4799d63e4a26d808ac74705b8115ba69554daf421409a65e459c1769480979b9",
+      "original_settings_sha256": "5d476e735916cceffe27254fe263ccc388e37ee30e50f4e23e8691140023872e",
+      "settings_source": "EXAMPLES.ZIP/3COUNT_T.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "3COUNT_T.PDS",
+        "RUN_LOG": "3COUNT_T.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "0733c4ea3ae97ce89cb754b2af9c62c591bf18bc84a445ac57ccb950d2136130",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "3COUNT_T",
+      "source": "dos/EXAMPLES.ZIP/3COUNT_T.PDS",
+      "files": {
+        "3COUNT_T.PLA": {
+          "sha256": "49c948dc8ef75b63c39bc265098b4269dcd20a012340c5db7a66e28155cc82e6",
+          "bytes": 600
+        },
+        "3COUNT_T.JED": {
+          "sha256": "3816f66f228bff48e3c585cab8e222b011631d7af85634a564cf508bef351e78",
+          "bytes": 11163
+        },
+        "3COUNT_T.PLC": {
+          "sha256": "7b206fff60d65928239dbe9e07cc292bf2e4973d55796c55784dcfe3641416f1",
+          "bytes": 426
+        },
+        "3COUNT_T.DBG": {
+          "sha256": "f4197b535df6cfb39218115d1e0f14f583310715f783c2bbd60b477a3cadbf66",
+          "bytes": 906
+        }
+      }
+    },
+    {
+      "source_sha256": "509490b7d2be6193305c39bd0e87742a67c9872f56a4939f45597ddb0f88c7ee",
+      "original_settings_sha256": "21d679c976129402d5f47d2ae9bbc56577a695cfdb3e9fbcd58ba0239a3e4c53",
+      "settings_source": "EXAMPLES.ZIP/BARREL.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "BARREL.PDS",
+        "RUN_LOG": "BARREL.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "358ff484b10c04700d77d926d486a86a3b992095a542fd1a7f742415c225371a",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "BARREL",
+      "source": "dos/EXAMPLES.ZIP/BARREL.PDS",
+      "files": {
+        "BARREL.PLA": {
+          "sha256": "214581e03a0064cd3c68e91152ebc1a9a45487d9acfbd109c157964dac9368b2",
+          "bytes": 1324
+        },
+        "BARREL.JED": {
+          "sha256": "37c6cc4eb40e790928524de2407dd7bb8c4285dea841cd093b6fda878d8de4d8",
+          "bytes": 11266
+        },
+        "BARREL.PLC": {
+          "sha256": "545c8774c7cad2bdce837e7b440727751795dc56dbfc1b446f92f866ec201a90",
+          "bytes": 600
+        },
+        "BARREL.DBG": {
+          "sha256": "cccd9cab66dddeefda009adfd38db4acc48d6f00dffe5db25075fe79d8feb049",
+          "bytes": 888
+        }
+      }
+    },
+    {
+      "source_sha256": "e44bbe00753bb92e92ec8b64a6e71bacceebe1dc9b09db491c5eb03ca65c13d1",
+      "original_settings_sha256": "124dc7d4d08fcd6ab7e89c2774848fab48227666d7e380ba1f4ff2c394ed7e5c",
+      "settings_source": "EXAMPLES.ZIP/CNTCASE.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "CNTCASE.PDS",
+        "RUN_LOG": "CNTCASE.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "23dee1580478fba31db3d872ff94433a7a3aeac1c38bd13127065ac5024dfb41",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "CNTCASE",
+      "source": "dos/EXAMPLES.ZIP/CNTCASE.PDS",
+      "files": {
+        "CNTCASE.PLA": {
+          "sha256": "44ecf6708ccbffab902efe6907ca17c348695e7653110c112476d3ab563a8fde",
+          "bytes": 2634
+        },
+        "CNTCASE.JED": {
+          "sha256": "e8dfbbdc1d255f25dc5f222aad9278907b46bc3c23aafc9e0862941c44f790e8",
+          "bytes": 21861
+        },
+        "CNTCASE.PLC": {
+          "sha256": "8f1b6cbd9e4b84372a2e6f77340a6c0e308fa2009e7f832a627222447f6dfef9",
+          "bytes": 888
+        },
+        "CNTCASE.DBG": {
+          "sha256": "8811ea478573fa27ff579300a4b628ca35d6040ead6df3fde139df36f2fd92d4",
+          "bytes": 897
+        }
+      }
+    },
+    {
+      "source_sha256": "f50f2748e2aa10d3e40c59dc4aa0524dddeea2200d576ebc9a08666d2ad5c6fa",
+      "original_settings_sha256": "3b7aa342b820722c9b23d768f5c6885a60cd624fe59a4ac57796e550bbd43f57",
+      "settings_source": "EXAMPLES.ZIP/CNTIF.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "CNTIF.PDS",
+        "RUN_LOG": "CNTIF.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "71e5318f72f648dbcf43aac57b215fd5ce8a39c01bbe5bb85bb66eb5e2ac9e7a",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "CNTIF",
+      "source": "dos/EXAMPLES.ZIP/CNTIF.PDS",
+      "files": {
+        "CNTIF.PLA": {
+          "sha256": "e62775aaa056e9b9cd5348a18bb2076028f418f3e2b56feaae70622051b2434e",
+          "bytes": 2559
+        },
+        "CNTIF.JED": {
+          "sha256": "02f8d3195df5837d9d8e0a0f9f9a0c1de0a3d2fe4895caf03faee53f47306c2f",
+          "bytes": 11434
+        },
+        "CNTIF.PLC": {
+          "sha256": "ff96733457efaedb303ad17cb028e15f169670d35974114db718d60125093a06",
+          "bytes": 873
+        },
+        "CNTIF.DBG": {
+          "sha256": "81b0d4b161460330ca260d1544447aded165a7707f6c6b7e2c6ce1ff8fa2677d",
+          "bytes": 879
+        }
+      }
+    },
+    {
+      "source_sha256": "d3dff735194176eb930f669b6448db4f6ccdf824df6651ea910129b179857579",
+      "original_settings_sha256": "4223b4649c42883f0ffe2baff91fcbace0ebf5f7e6b6b49a1cc03563057ce987",
+      "settings_source": "EXAMPLES.ZIP/COMPARA.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "COMPARA.PDS",
+        "RUN_LOG": "COMPARA.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "b6e65f124d4502e655624eaf1d8205d7aa26772f22b4acd729615c07f29b4b57",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "COMPARA",
+      "source": "dos/EXAMPLES.ZIP/COMPARA.PDS",
+      "files": {
+        "COMPARA.PLA": {
+          "sha256": "ebe9c2ca74f4471721f016802d6462dcda07ce9af709878fa72fae1c4810df06",
+          "bytes": 1302
+        },
+        "COMPARA.JED": {
+          "sha256": "cd860b91a6b4541a1c36e9384668de1f210181938e059d55c7482f93d0b5f869",
+          "bytes": 65209
+        },
+        "COMPARA.PLC": {
+          "sha256": "f2ab01e78b5424079875e306159acc6e77b1c594c49475f74c70dc3b91ff4d52",
+          "bytes": 648
+        },
+        "COMPARA.DBG": {
+          "sha256": "6473b8fb17010b10fde4a4a4533a4dcdd55842a8dcc917fbcecee6ad53760cc6",
+          "bytes": 900
+        }
+      }
+    },
+    {
+      "source_sha256": "950441a8b085680f95c9cb58946b71778cadedfc5ea5fa55c47068d0ef011977",
+      "original_settings_sha256": "d5f58780db582ba12046cde18d8fdf12728b754e322181ac95447cd264ceb3e2",
+      "settings_source": "EXAMPLES.ZIP/COUNTER.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "COUNTER.PDS",
+        "RUN_LOG": "COUNTER.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "dfcbcb8d3652b7933a00a1fe53323b07743df0a6a5da9c62216026d737cd6089",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "COUNTER",
+      "source": "dos/EXAMPLES.ZIP/COUNTER.PDS",
+      "files": {
+        "COUNTER.PLA": {
+          "sha256": "ae907d49c393fcfb2c5b16a9822b1dd71fafee4110bb5b8008d288c37f8712a9",
+          "bytes": 2553
+        },
+        "COUNTER.JED": {
+          "sha256": "661030637a3c7236869df69db03116c19875f865cb9592651c388d3546b20caf",
+          "bytes": 11462
+        },
+        "COUNTER.PLC": {
+          "sha256": "cea8be5f4db478acdfac4536c81ae08bc63bd9c00dfcf982576865e3957a406a",
+          "bytes": 870
+        },
+        "COUNTER.DBG": {
+          "sha256": "49d483195381436a07c96e9992ae9bc0ce5e1f04425232c0e13ad7c1d706e66a",
+          "bytes": 897
+        }
+      }
+    },
+    {
+      "source_sha256": "9e2e5e60bd6594e2409a7094535f04b1fae2c3eb3543df32ba84b2a6838e8900",
+      "original_settings_sha256": "1b82757250f4b9389f5749799baa26703833ac80be9bd1bb9ff7e793b7f1dd24",
+      "settings_source": "EXAMPLES.ZIP/DATA_AQ.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "DATA_AQ.PDS",
+        "RUN_LOG": "DATA_AQ.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "b7be480a5139af8e8457c7ac2b2bafd8cfbfe0754eb9e7a3580dc82c4841cc1c",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "DATA_AQ",
+      "source": "dos/EXAMPLES.ZIP/DATA_AQ.PDS",
+      "files": {
+        "DATA_AQ.PLA": {
+          "sha256": "1b52a77f2663f1d326a26d161bc669fc7091bbb7012aa3b5924ebc0b3a1b131e",
+          "bytes": 37874
+        },
+        "DATA_AQ.JED": {
+          "sha256": "8e604109bcdeb5009a438ae4ebb8727ce61b955227c0132e38de82f8b8e38a12",
+          "bytes": 145911
+        },
+        "DATA_AQ.PLC": {
+          "sha256": "96eda051f284b81ed675de6efb1d273f9be16e8e68ef1011619a3d95c769df52",
+          "bytes": 3574
+        },
+        "DATA_AQ.DBG": {
+          "sha256": "0594b7f5861de816aa3eb9a4e76a424d3c08bca4b2ac2a12745b6208dcb66551",
+          "bytes": 904
+        }
+      }
+    },
+    {
+      "source_sha256": "079c34d591f55141b60b35e5ad1bf787a7731cdd75cb2a8542acf9f1724d100b",
+      "original_settings_sha256": "32cc7878f86e4278f634bddfd73c4858203f01cc90bb240a09ddbc77be3337a0",
+      "settings_source": "EXAMPLES.ZIP/DB.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "DB.PDS",
+        "RUN_LOG": "DB.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "76a252a7a43dc2eac32784ae82bb3d7d3e3c356096dbc2c4e26a10b613291c65",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "DB",
+      "source": "dos/EXAMPLES.ZIP/DB.PDS",
+      "files": {
+        "DB.PLA": {
+          "sha256": "2f19f4e4e95d3d5a526e1aa4bc1d1ef871b2ba39869ffb2f5a8e6a43f6cf4ad4",
+          "bytes": 21281
+        },
+        "DB.JED": {
+          "sha256": "65360f27642671dab56f330065d476cf5a7669168c96c8cbc6aa32ebfc98a3fd",
+          "bytes": 66222
+        },
+        "DB.PLC": {
+          "sha256": "8a5c3200e88fd0f0b69ac17bc6d1f72fec03759d11c8b513a80e1e6eee0fecdc",
+          "bytes": 3216
+        },
+        "DB.DBG": {
+          "sha256": "6f970c8e15f41c9a0348c19b66c4e6918bfc73fd19f8a6b2c244bdebd2a242d4",
+          "bytes": 855
+        }
+      }
+    },
+    {
+      "source_sha256": "de04b61a380c9290434ea760794106bba0bd67045963e231b445c68211c08ba6",
+      "original_settings_sha256": "412dff4084bbf0d5b01e0d61ddd0daeebcbc14e3511d807b167f3b3d122ebafa",
+      "settings_source": "EXAMPLES.ZIP/DECODE.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "DECODE.PDS",
+        "RUN_LOG": "DECODE.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "b01b419099f13f368b62533b8c7051b52ed486356d2b771c3d877a6baa0710e7",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "DECODE",
+      "source": "dos/EXAMPLES.ZIP/DECODE.PDS",
+      "files": {
+        "DECODE.PLA": {
+          "sha256": "69cd6f5d86c9c94b64f4bd9237b3ad2b9e5ec4208ff337099f54e5a9d95ea3cb",
+          "bytes": 892
+        },
+        "DECODE.JED": {
+          "sha256": "6c206315ab2e00cd093e5b526b9c54d757eaff0b8974e76929a02479e639feee",
+          "bytes": 11300
+        },
+        "DECODE.PLC": {
+          "sha256": "2daa5c20239bf8e2e377a24c6269267c679f0a0762365e751601300b8ba26861",
+          "bytes": 651
+        },
+        "DECODE.DBG": {
+          "sha256": "787c73e2af0e24129d2bd885aee7bd3508befbba37abcf6d9512ea1f9e87e80f",
+          "bytes": 888
+        }
+      }
+    },
+    {
+      "source_sha256": "d5105871b6644b53c5a060c54a969c4813220bb3b759921e6ba5068acd974041",
+      "original_settings_sha256": "5ebfe00a6644a47df82e46a2f49a985fcf3f5749a1fc67cc793b91a9b5926ab7",
+      "settings_source": "EXAMPLES.ZIP/LATCH.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "LATCH.PDS",
+        "RUN_LOG": "LATCH.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "a01523b7c17ccc075bae97e99c54e79254c15f20980ff68ff15702d40984182e",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "LATCH",
+      "source": "dos/EXAMPLES.ZIP/LATCH.PDS",
+      "files": {
+        "LATCH.PLA": {
+          "sha256": "09319b7a98e78bb77f3b7a47396ef9705057f7e96608c9bbffb6c600c78a2491",
+          "bytes": 642
+        },
+        "LATCH.JED": {
+          "sha256": "0cd270b20c72a91cdc5ad5d5d5bac1fc83280701f91d29faf8079baffe15ffb8",
+          "bytes": 65021
+        },
+        "LATCH.PLC": {
+          "sha256": "bf5a3c4bdec1f75f28e8055731e0250ed0e17aca7438a31fb5c3c266ce0e3f5b",
+          "bytes": 391
+        },
+        "LATCH.DBG": {
+          "sha256": "5a78ceee7d75c0c0078d457e7aec4957aa4a05e20f87fe25684cbe6dca71680e",
+          "bytes": 878
+        }
+      }
+    },
+    {
+      "source_sha256": "0a2fcdf515ac76cd5aeac5b12cb961f96f9e05e1ac5415415b14a848bae1e42e",
+      "original_settings_sha256": "428f1d791ddd35f639deb4f17ba3c719ae79f6d5cb4be8fb1cfe72927af5d453",
+      "settings_source": "EXAMPLES.ZIP/LRSHIFT.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "LRSHIFT.PDS",
+        "RUN_LOG": "LRSHIFT.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "49cec6b44500a6e4aef5fe4435c9d828aac71099c7423c9090f941d818959c03",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "LRSHIFT",
+      "source": "dos/EXAMPLES.ZIP/LRSHIFT.PDS",
+      "files": {
+        "LRSHIFT.PLA": {
+          "sha256": "bc997d83367d46b36b66a910cf1cc80ecd487586f3a68f4c2ee6eceafc0ab031",
+          "bytes": 2513
+        },
+        "LRSHIFT.JED": {
+          "sha256": "cbc4b230bfd1858586c951feec3b755857e3b0734f8d8b56d89988673ce6a99c",
+          "bytes": 11397
+        },
+        "LRSHIFT.PLC": {
+          "sha256": "6b64262f931b61fdee2f6d23b8b9a5ad285d12f2896b41137b3d24cb3883da8b",
+          "bytes": 847
+        },
+        "LRSHIFT.DBG": {
+          "sha256": "2374f0fb85c8561c32a8d111cc0812a6c5f9b52e064a8dd78bffb9c68648d03e",
+          "bytes": 897
+        }
+      }
+    },
+    {
+      "source_sha256": "704c0e577f461f83a52717c867fff2cd1ce4e1aa2c49e74d875aeaff108940f1",
+      "original_settings_sha256": "4cb8c06ce5ded4a7cfa664c4ea2c91866c0632f57f0540bde4133836603429e7",
+      "settings_source": "EXAMPLES.ZIP/MOORE_B.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "MOORE_B.PDS",
+        "RUN_LOG": "MOORE_B.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "769cac3fa5ba6f9f2c771fbaa8176be3d6f10c32310f69cc22fe84f176656190",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "MOORE_B",
+      "source": "dos/EXAMPLES.ZIP/MOORE_B.PDS",
+      "files": {
+        "MOORE_B.PLA": {
+          "sha256": "f5f918dc3ed4bc6f0e4fba91d69498d7e11bd14e890b1c71ef43db6674ce59bb",
+          "bytes": 1333
+        },
+        "MOORE_B.JED": {
+          "sha256": "35cbf6e7abb6efe7491d598f9342c7357ac2cf6d2c631c9fb6eb291e8512e5f1",
+          "bytes": 65131
+        },
+        "MOORE_B.PLC": {
+          "sha256": "41be27fca6cd3777789e49f54476a2ec5394eeb8ca9549bb14a3a2d8be6efe39",
+          "bytes": 709
+        },
+        "MOORE_B.DBG": {
+          "sha256": "d6e80e0180a6e270fdfae2dd37e18647e7cb7283202d5333c2ce3662b4c5be38",
+          "bytes": 900
+        }
+      }
+    },
+    {
+      "source_sha256": "e77a0b52a287a0b651dae2796dbbbdb878090add4f11537774e8d4e8f42c9615",
+      "original_settings_sha256": "3bfca1f40cfeae778ddbfc3b411b759f15244f50d152a50c03ffa91077858247",
+      "settings_source": "EXAMPLES.ZIP/MOORE_C.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "MOORE_C.PDS",
+        "RUN_LOG": "MOORE_C.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "fdc1588251f3404386a47cce8610201ac31e68b3c34727d5298630906b72c965",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "MOORE_C",
+      "source": "dos/EXAMPLES.ZIP/MOORE_C.PDS",
+      "files": {
+        "MOORE_C.PLA": {
+          "sha256": "456cdbdba22d5e7c62c8f345d31e6b77f54754e90c916bc8d6904f17077ed887",
+          "bytes": 1453
+        },
+        "MOORE_C.JED": {
+          "sha256": "f9b437b5ba27a65d84082dc6e251bde04fb08f5025ff5f0c89bc431e7a9b2d8f",
+          "bytes": 65139
+        },
+        "MOORE_C.PLC": {
+          "sha256": "7d6e91411809c0bd63b0e917d63d93ff49cfbb5ef298640ac707ed4ddcaae2e5",
+          "bytes": 709
+        },
+        "MOORE_C.DBG": {
+          "sha256": "817a5b59f7dbea3849ea6767559964cc097921a839d7849bcaf84508e317eb6b",
+          "bytes": 900
+        }
+      }
+    },
+    {
+      "source_sha256": "af1cfbee26758677ba22c9fd14ddb0e08d7a4b3928869bcaba2aedbc2ef21a48",
+      "original_settings_sha256": "525389b17bf547d741a20d513e25396ca80a1e0df08c066c5f446dbf8fb659f1",
+      "settings_source": "EXAMPLES.ZIP/MOORE_S.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "MOORE_S.PDS",
+        "RUN_LOG": "MOORE_S.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "359225045161059357db6b3f8d40fa503a676252e931ee5a6d3ff06bcf47228e",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "MOORE_S",
+      "source": "dos/EXAMPLES.ZIP/MOORE_S.PDS",
+      "files": {
+        "MOORE_S.PLA": {
+          "sha256": "74fd0bfd164b97f8490db14cfbd79614210d8a830f7d306a9ce86b267d21f746",
+          "bytes": 1319
+        },
+        "MOORE_S.JED": {
+          "sha256": "b40bc46fffca2d8a2c1c27691f1f7a649719c660a08f2e1831a531a5eaab7349",
+          "bytes": 47975
+        },
+        "MOORE_S.PLC": {
+          "sha256": "538a2136429f488ad19d724023e622815bb0f91f67178a26de7e97bd318a332e",
+          "bytes": 554
+        },
+        "MOORE_S.DBG": {
+          "sha256": "e861262644564da07932016f710f9bd284a36797ccf0645e3556580606ac23bd",
+          "bytes": 1099
+        }
+      }
+    },
+    {
+      "source_sha256": "548b9a1592ec270c21c4da751427f08f3c38f304b3316289fc3d71100161571f",
+      "original_settings_sha256": "f06b9f4ba0798fb0c7aa8f436909c3959f8500cf7693c4e033120ba6215493ae",
+      "settings_source": "EXAMPLES.ZIP/MUX.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "MUX.PDS",
+        "RUN_LOG": "MUX.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "f04afdd3826d973b7fbc07e03c641c8bec58fc7d691bb8491c4d8fb2a48c9d37",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "MUX",
+      "source": "dos/EXAMPLES.ZIP/MUX.PDS",
+      "files": {
+        "MUX.PLA": {
+          "sha256": "c2e69af50c6e51ac6eb19909645cf4885eee41c0b82cae3c09153b050920e21e",
+          "bytes": 7387
+        },
+        "MUX.JED": {
+          "sha256": "52b4e7444b2d9e747725fc3265833d86c09ced877fef9368deeb6b3604ccbd8a",
+          "bytes": 145394
+        },
+        "MUX.PLC": {
+          "sha256": "b342d599a521121b91ae6b73376aab0bf2ededfdc115f19653e2724513b9daf9",
+          "bytes": 1905
+        },
+        "MUX.DBG": {
+          "sha256": "3a71592481dbd19fdad342fb15828aca2e24fe979fc3c2d5b47a0a50e6471d5d",
+          "bytes": 868
+        }
+      }
+    },
+    {
+      "source_sha256": "e2335d5ee7200bddae4b63933913c46b27c4f17cfc02208cd4482c9ce50dac00",
+      "original_settings_sha256": "ea1fd80d5dba5d03791de557870b969eff876da8e7152d8ab678e9911afb6457",
+      "settings_source": "EXAMPLES.ZIP/NOT2BIG.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "NOT2BIG.PDS",
+        "RUN_LOG": "NOT2BIG.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "178a36b2b6c695dbeb003578c0e14ec55551f1d95ef807facfde5d81193854ee",
+      "success": false,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "NOT2BIG",
+      "source": "dos/EXAMPLES.ZIP/NOT2BIG.PDS",
+      "files": {
+        "NOT2BIG.PLA": {
+          "sha256": "ce4062a6f78c9f6c5c98141c9110ca2c24678a0fbca9e8cb32d3612e6e3cfa1f",
+          "bytes": 34889
+        },
+        "NOT2BIG.DBG": {
+          "sha256": "041dfabd3b8a233925d0d1ed06b25beae5fdb290445743cf63547f70299faaf1",
+          "bytes": 907
+        },
+        "NOT2BIG.LOG": {
+          "sha256": "28b95c363d2cf43d08a9021ac58d360d82ebdc8dcf1324984173cdd657209479",
+          "bytes": 35218
+        }
+      },
+      "failure": {
+        "code": "z8007",
+        "stage": "partition",
+        "partitioned_percent": 95
+      }
+    },
+    {
+      "source_sha256": "ff978a9ba330eafc31ea4e21989cc398a775ca0e7c820ba8977b70f39f914b2c",
+      "original_settings_sha256": "35a6c12895e61afcaf79ea26d4a12a38487a492f47b41bc91ae946cb41ab71fc",
+      "settings_source": "EXAMPLES.ZIP/P1_SRC.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "P1_SRC.PDS",
+        "RUN_LOG": "P1_SRC.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "c4cfe31fd311d477920d44074b335f03feb57efedb59472f0525ee00ae8d55c4",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "P1_SRC",
+      "source": "dos/EXAMPLES.ZIP/P1_SRC.PDS",
+      "files": {
+        "P1_SRC.PLA": {
+          "sha256": "54541a0c37593e2484e290edeb7f94d29527ce87e7af6279780ecc307267a697",
+          "bytes": 8166
+        },
+        "P1_SRC.JED": {
+          "sha256": "d82e68ae12bf736f47fce8e5b6bb0536a4088d15c650bed9fdf392443acffc8a",
+          "bytes": 65754
+        },
+        "P1_SRC.PLC": {
+          "sha256": "25f180f04cbe6f7f27ed0834ce9479d30ccd1af810485569c121337d8fbe722f",
+          "bytes": 1876
+        },
+        "P1_SRC.DBG": {
+          "sha256": "f1462cea1b9efb0bc9b21cd854778496e7e6797f013d1566e6bbb2839ed60362",
+          "bytes": 895
+        }
+      }
+    },
+    {
+      "source_sha256": "dce60e44349b9ab788eacc0b0bafd4eeeef29d5ba6d94d06933031b75f8a1ba0",
+      "original_settings_sha256": "ab3484b3dfae093a8bd72a2ad474455e80133332e82be5c9248b2cbf09a8c05b",
+      "settings_source": "EXAMPLES.ZIP/P1_SRN.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "P1_SRN.PDS",
+        "RUN_LOG": "P1_SRN.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "34beee8ab1a9bca6478ddc209a658142070379035ebe6291d66b3c03a8bae5c2",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "P1_SRN",
+      "source": "dos/EXAMPLES.ZIP/P1_SRN.PDS",
+      "files": {
+        "P1_SRN.PLA": {
+          "sha256": "f2839ce58956de59a6f48ea22815c63dd8a3c655c4008d58684426576f7efe11",
+          "bytes": 10940
+        },
+        "P1_SRN.JED": {
+          "sha256": "95faff4bf6870b663286088387ae81c6bc641201479ba7b5be0ba16d4f20c408",
+          "bytes": 65658
+        },
+        "P1_SRN.PLC": {
+          "sha256": "14e430f83f0fe7490f652da6a84dbffb29346dc9079f6875857eee0d0d710f8b",
+          "bytes": 1723
+        },
+        "P1_SRN.DBG": {
+          "sha256": "932546b4ccfdb4cb9dba8d872782bd7f782da953711923f76678bc148c1cea28",
+          "bytes": 895
+        }
+      }
+    },
+    {
+      "source_sha256": "02fe764f00f8b3d3ae8a454c8de76aa85846002eb6636ad176fbf2b68ce47ede",
+      "original_settings_sha256": "dc3069e69c23013a68bd64b5c2466e0bc8d5e68a6c3652cfb4a847eab11c28c7",
+      "settings_source": "EXAMPLES.ZIP/P2_SRC.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "P2_SRC.PDS",
+        "RUN_LOG": "P2_SRC.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "5e96e7464bced3e7ea2f749e571f97b451f362bbd693517d314d05c1620dd795",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "P2_SRC",
+      "source": "dos/EXAMPLES.ZIP/P2_SRC.PDS",
+      "files": {
+        "P2_SRC.PLA": {
+          "sha256": "17d7a2d5a56daa34b62877df20ec04e4f30c0f6d6d3d97ba3b3cf3985027c73b",
+          "bytes": 17969
+        },
+        "P2_SRC.JED": {
+          "sha256": "07f4c41009732b1cc9853d29121df5e99da45b1f1e36b2434ce0d7f0f704808f",
+          "bytes": 65773
+        },
+        "P2_SRC.PLC": {
+          "sha256": "d2b0b22b7bc4975fb3ccf8ccbc7b6193d80e707e6c8d1dae05a5b31fd16d5383",
+          "bytes": 2052
+        },
+        "P2_SRC.DBG": {
+          "sha256": "8d3aebd316e31981161d4d6f0b1684fb2d5abb15ac4d759c3ba976abe595987d",
+          "bytes": 895
+        }
+      }
+    },
+    {
+      "source_sha256": "e15adcf2d0d81cc5d72442b307b8c84d26af18b60cf3f324ea7b84b99941b1c7",
+      "original_settings_sha256": "394a72bcb0b3a880db78e82956e7b565c52ccc5335442fc395b31abcf1b15078",
+      "settings_source": "EXAMPLES.ZIP/P3_SRC.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "P3_SRC.PDS",
+        "RUN_LOG": "P3_SRC.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "c77fa3c0c41f4fedec050a6ec47ca6644f283b3c67aa25cc21b797f5a6883ca2",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "P3_SRC",
+      "source": "dos/EXAMPLES.ZIP/P3_SRC.PDS",
+      "files": {
+        "P3_SRC.PLA": {
+          "sha256": "f6908bc1d9cc85feae6920e3f6f702731bf81c1dceba02a376bf475dce8d6f71",
+          "bytes": 3291
+        },
+        "P3_SRC.JED": {
+          "sha256": "224690d26e066db284e984d2076e38df5b020ac079515e1acae0a375563ba1bf",
+          "bytes": 65252
+        },
+        "P3_SRC.PLC": {
+          "sha256": "061d0e906fb141f47fb96b494731e93b9c2ea099abdb39af07b7993d71d272cd",
+          "bytes": 896
+        },
+        "P3_SRC.DBG": {
+          "sha256": "2ef47b365b434614d85ae6272517214de72a6d0dc13873c41fff3ab214ab4f7a",
+          "bytes": 1100
+        }
+      }
+    },
+    {
+      "source_sha256": "9b0221a73b64638cd892e1645dc88c2bb1598e1d75599870f365e446dd2973f8",
+      "original_settings_sha256": "2e987e44f87dce115019124682f40c5a806fb09c2d9bac42d174f12a8da2bc58",
+      "settings_source": "EXAMPLES.ZIP/P4_SRC.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "P4_SRC.PDS",
+        "RUN_LOG": "P4_SRC.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "28ed61b80c591e2e21f4aa6b4ef29016a701fc2322d5f09a3433fabb2875bc13",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "P4_SRC",
+      "source": "dos/EXAMPLES.ZIP/P4_SRC.PDS",
+      "files": {
+        "P4_SRC.PLA": {
+          "sha256": "cdd86637e9ca2808f66d3c420f0b4e02617cf6ebc1f5ac04856c6f79b40bdd93",
+          "bytes": 4348
+        },
+        "P4_SRC.JED": {
+          "sha256": "49a412e120ca9ccddcb773f480f069312abfa10fe17bfcf9c4612508d554be6d",
+          "bytes": 65279
+        },
+        "P4_SRC.PLC": {
+          "sha256": "df8b90cf34dc8cc39a61fa720630625fcf029639209f2fcf96279859b20d5804",
+          "bytes": 974
+        },
+        "P4_SRC.DBG": {
+          "sha256": "583fac17e276cbe2dd074e2a24efebc2b0542d971d24e418ceb5f74684e0b3af",
+          "bytes": 895
+        }
+      }
+    },
+    {
+      "source_sha256": "6455fee24ee0326e760a03245b233b37524e94a1a4a90aed68e80753ad0b4096",
+      "original_settings_sha256": "0f967964b8d097449d777d0a89652b0f920db807bad200324450f39dde86e4ba",
+      "settings_source": "EXAMPLES.ZIP/P5_SRC.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "P5_SRC.PDS",
+        "RUN_LOG": "P5_SRC.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "c22aa00f4275fd1193a5ff38c4a496b3c6698022e9f055047b46207d290b74d7",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "P5_SRC",
+      "source": "dos/EXAMPLES.ZIP/P5_SRC.PDS",
+      "files": {
+        "P5_SRC.PLA": {
+          "sha256": "cf89aebec7ea19579ea12c4c6a0268b15aded71238d1b07ab8a7a26972e8d48f",
+          "bytes": 22392
+        },
+        "P5_SRC.JED": {
+          "sha256": "e26ddc4ae9b7b5e764ac6e71ac98a0bf69c92d93f77f9c9537d3c9ef5488f490",
+          "bytes": 65713
+        },
+        "P5_SRC.PLC": {
+          "sha256": "0875519630840be59a6e0cbd7b95323b16c66a1c37ff44a06b3fa526c1fcaaad",
+          "bytes": 2092
+        },
+        "P5_SRC.DBG": {
+          "sha256": "370a1b2d6cf4e3896ca47ae8adfc9cf49e5fccffc3adf09012428afde8aaaed0",
+          "bytes": 895
+        }
+      }
+    },
+    {
+      "source_sha256": "9f58c41e36796986ec63c16b7608ab4232ad4475e6acdbf130710d66f08080d7",
+      "original_settings_sha256": "3270fe7c795d9edda6bfe351027aedf7797bfcfc3a6261999b8e0d6a9bdf81d1",
+      "settings_source": "EXAMPLES.ZIP/P6_SRC.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "P6_SRC.PDS",
+        "RUN_LOG": "P6_SRC.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "a441b60d669d06ef22ce88c72ae308751a6a6e8d4780d1f6ebe1b70e1070af5a",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "P6_SRC",
+      "source": "dos/EXAMPLES.ZIP/P6_SRC.PDS",
+      "files": {
+        "P6_SRC.PLA": {
+          "sha256": "fd5d56e94eec509867e81522150108bd62c14d51e8ba39f89618f8574e2ce366",
+          "bytes": 24226
+        },
+        "P6_SRC.JED": {
+          "sha256": "13229beb9198fefe90049edd352df81149099cb6a623f8a9cab66779138ca8bb",
+          "bytes": 66013
+        },
+        "P6_SRC.PLC": {
+          "sha256": "4bb0c489e1b8507f6049c3c14521403cf459ce435926bf7adc6ea92b34257e38",
+          "bytes": 2662
+        },
+        "P6_SRC.DBG": {
+          "sha256": "2f37f82cc721c6dab876dbafb54f7266cb0d250a293d76f8881787a206f7783c",
+          "bytes": 895
+        }
+      }
+    },
+    {
+      "source_sha256": "5aa7d731a240471db7fb564188829a26c40fa536a10f57d166ad8113af3ef6f0",
+      "original_settings_sha256": "a4381faff5764075b0e1caf1a167b0261bb34316533b5e1a684083bff0063a40",
+      "settings_source": "EXAMPLES.ZIP/P7_SRC.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "P7_SRC.PDS",
+        "RUN_LOG": "P7_SRC.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "acaf46345c972061f9967bbebec1e471dbf54fd28a073582a5a1923c92862971",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "P7_SRC",
+      "source": "dos/EXAMPLES.ZIP/P7_SRC.PDS",
+      "files": {
+        "P7_SRC.PLA": {
+          "sha256": "0f87a564fba510a76e97dc1b2a608db879ea6fadf3a63d816ddd341957f69c06",
+          "bytes": 7539
+        },
+        "P7_SRC.JED": {
+          "sha256": "55a029ee05739c5310693fb4cd861d89705688224d739f51acf400c6a0642109",
+          "bytes": 65759
+        },
+        "P7_SRC.PLC": {
+          "sha256": "3c854068f0de3827e543baf4b859c9377c49e6f693b4d69c145a6c34432f47e4",
+          "bytes": 1997
+        },
+        "P7_SRC.DBG": {
+          "sha256": "03d892e33ecb2f8fa8a1aba377da5fab8a93734211ccd60a939356313aae7fcd",
+          "bytes": 895
+        }
+      }
+    },
+    {
+      "source_sha256": "af3acc400a0a9bfe0399a8c750a62843d6d5c578970481f943161d26c30f437b",
+      "original_settings_sha256": "32977833387af8cdb944f7b75994b6268c00f32881617d4b2c20fb13e269e49d",
+      "settings_source": "EXAMPLES.ZIP/P8_SRC.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "P8_SRC.PDS",
+        "RUN_LOG": "P8_SRC.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "59463d7093c2ffb6d05eb6f4b402151dfe5a8df371f57e2956a4a48c39230b23",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "P8_SRC",
+      "source": "dos/EXAMPLES.ZIP/P8_SRC.PDS",
+      "files": {
+        "P8_SRC.PLA": {
+          "sha256": "cccd45c4965344ab729c269ab4ca6214ab26cba7855504cb1df358e9e612056f",
+          "bytes": 8281
+        },
+        "P8_SRC.JED": {
+          "sha256": "8ed30e9ea22244318aeca4902a4bf284a4ca01cf32461c0eefe840432c3ed047",
+          "bytes": 65777
+        },
+        "P8_SRC.PLC": {
+          "sha256": "e5dd101bc8dd677aabf84fb699e81f2e4904c4d05cbc6e067587750dd4bdbe1d",
+          "bytes": 2067
+        },
+        "P8_SRC.DBG": {
+          "sha256": "f6a64506917fb784ccd0b75435a5ec8c6e89a64d4d32067a009e904b11be3d2a",
+          "bytes": 895
+        }
+      }
+    },
+    {
+      "source_sha256": "8d70e36e7cee763b46fad648aa14c606b393df9c07dff64c59f53d05b5d7b23d",
+      "original_settings_sha256": "9d357236377e62d8a1f1ec9915a5ed9ccaaa74854d0ee0317b00c09e54431554",
+      "settings_source": "EXAMPLES.ZIP/P9_SRC.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "P9_SRC.PDS",
+        "RUN_LOG": "P9_SRC.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "397ddff4317f3adedb8e478e418c26e1d34548e7a6782925a111e8a0f0738b44",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "P9_SRC",
+      "source": "dos/EXAMPLES.ZIP/P9_SRC.PDS",
+      "files": {
+        "P9_SRC.PLA": {
+          "sha256": "762ad369104a33a42e8d391f1aeb8b9b3af251e5ccfa9b7dcb3a1c272779fd9e",
+          "bytes": 2104
+        },
+        "P9_SRC.JED": {
+          "sha256": "e32d8df43a181fffe181b99f1da9806554308556e5f1f45f19a92543ac8f9819",
+          "bytes": 65324
+        },
+        "P9_SRC.PLC": {
+          "sha256": "2f12c18813bc0d33d08acfedae0f6d90afdd6856cb1b9221c7a01ffc517e64af",
+          "bytes": 970
+        },
+        "P9_SRC.DBG": {
+          "sha256": "24869b8c568b7cfad8fe88d74cbf4db3a699970ca6685da5653f20a73ad4961a",
+          "bytes": 895
+        }
+      }
+    },
+    {
+      "source_sha256": "49ac552beb9a03d6add6a14ba43e23879c023c62dbf8813a79af92a871b19993",
+      "original_settings_sha256": "03237472c6915904feb621742e4885cd7407ceddcb5107d9655dee97025dfb8a",
+      "settings_source": "EXAMPLES.ZIP/PF_SRC.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "PF_SRC.PDS",
+        "RUN_LOG": "PF_SRC.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "fc3ed635cd0a0a87ff64c8128b2356db1794414a23900b4e4675e43574c1aceb",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "PF_SRC",
+      "source": "dos/EXAMPLES.ZIP/PF_SRC.PDS",
+      "files": {
+        "PF_SRC.PLA": {
+          "sha256": "6eb10f4750a7058fbd478037f785d0ce67053e62b5231e8b66c6e7e290e60b74",
+          "bytes": 4259
+        },
+        "PF_SRC.JED": {
+          "sha256": "7e7ea3fa2104e7dec1659b635d514c2314dda6b0e83ed16c8d3e585ece99732a",
+          "bytes": 65307
+        },
+        "PF_SRC.PLC": {
+          "sha256": "9ca05189ea4cd4b4cfd55236233f1a11fef80959ebf689eaa2e3a49e130c2b7d",
+          "bytes": 1079
+        },
+        "PF_SRC.DBG": {
+          "sha256": "9288e656a2ad9e81d947c57cb300a05a94cbb51225466e4f353d4adda5667e65",
+          "bytes": 895
+        }
+      }
+    },
+    {
+      "source_sha256": "7f2f124e95381f8959c10ec51e037c5efd69dcbe768962f7c709a67a0e1be8b3",
+      "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+      "settings_source": "DAT.ZIP/SETUP.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "TEST.PDS",
+        "RUN_LOG": "TEST.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "8edae3ee61102ec5ad276a07ae5cc99d94ebab9098f7ce690f4a0af971d95755",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "TEST",
+      "source": "dos/EXAMPLES.ZIP/TEST.PDS",
+      "files": {
+        "TEST.PLA": {
+          "sha256": "35ae050ea65c2cc41c6a40f7302e124b6dc9dd33744b4338aa0208c495dce7c4",
+          "bytes": 454
+        },
+        "TEST.JED": {
+          "sha256": "2642f616b398ec0bc460e77265d2b9cd5b1ca56588511c1198d3b662a1c26131",
+          "bytes": 64957
+        },
+        "TEST.PLC": {
+          "sha256": "d5c2362fa93add763f06bedcb87b8915e21d1e6251734bc4650ff181c85ba38a",
+          "bytes": 309
+        },
+        "TEST.DBG": {
+          "sha256": "5b5c053d1bc4d700180a073ae3d9b8cb445e3381672d2217993274cda808515b",
+          "bytes": 880
+        }
+      }
+    },
+    {
+      "source_sha256": "c437bab3fdd472813dff6c35db269068f8862ce4eea376bf32167daae5583f05",
+      "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+      "settings_source": "DAT.ZIP/SETUP.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "TEST2.PDS",
+        "RUN_LOG": "TEST2.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "4a665dccc3391c7a0a5edb97fd80759e3ed88e0407c59144a3e2ba79f70340d2",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "TEST2",
+      "source": "dos/EXAMPLES.ZIP/TEST2.PDS",
+      "files": {
+        "TEST2.PLA": {
+          "sha256": "d000f71f8c03b98b5f891603137b69b48e106493d60fa1a07df1f603f2eacbed",
+          "bytes": 2182
+        },
+        "TEST2.JED": {
+          "sha256": "d9358a346750566b3f9c8f2a9d4cf9686b206893a36474dad6c3086e1fd89666",
+          "bytes": 65376
+        },
+        "TEST2.PLC": {
+          "sha256": "e7ca3f0a7d77536700e9725b3107506d2bd61ee8fa15418b95d8f260a184deb4",
+          "bytes": 1171
+        },
+        "TEST2.DBG": {
+          "sha256": "f62a99e5c4b0911605ef083e38f442e157fb88609289ee169647072f0c4d556e",
+          "bytes": 889
+        }
+      }
+    },
+    {
+      "source_sha256": "5467fdc5ff462a2b88b0d68297fe587ef34f9186a2c1adee79ced589f1b82085",
+      "original_settings_sha256": "e5cbe1579e78c61336e3cfca4401a087980103382da95873c173f82777942bef",
+      "settings_source": "EXAMPLES.ZIP/TEST3.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "TEST3.PDS",
+        "RUN_LOG": "TEST3.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "3c3052d155a673bc05b35bada328d739a849f0af903eda8e4eac517d02e99161",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "TEST3",
+      "source": "dos/EXAMPLES.ZIP/TEST3.PDS",
+      "files": {
+        "TEST3.PLA": {
+          "sha256": "026c465be8766ce4a3bf77fd99384baad75171336b693e310e35f882fd9e2c58",
+          "bytes": 3829
+        },
+        "TEST3.JED": {
+          "sha256": "aa3bc8477470574e7c1de2d7d3c6208cf492c284ccab83697fd83621f18cfe12",
+          "bytes": 65517
+        },
+        "TEST3.PLC": {
+          "sha256": "bae112f9ce87dac71a2a98d0c5b940fad9d2906f56fa2a3c819eb9303ac68935",
+          "bytes": 1357
+        },
+        "TEST3.DBG": {
+          "sha256": "59922dfc5d8fbcef528f5bdca77a7ef2b22e57e8b00df24064f206f41e4fb26e",
+          "bytes": 878
+        }
+      }
+    },
+    {
+      "source_sha256": "4d86671c78b794e4af75f8ee74af3ad86541f0405cc6d7f40eb0b7b4201179eb",
+      "original_settings_sha256": "d0a8c9276f805b028da4e1b9adae3c5b623223af1e3f92635d86afee6dea8e62",
+      "settings_source": "EXAMPLES.ZIP/UDCNT.MXL",
+      "settings_overrides": {
+        "EXE_DIR": "C:\\EXE",
+        "WORK_DIR": "C:\\WORK",
+        "DESIGN_FILE": "UDCNT.PDS",
+        "RUN_LOG": "UDCNT.LOG",
+        "COMP_OPT": "N",
+        "SIM_OPT": "N",
+        "DESIGN_OPT": "N",
+        "BELL_OPT": "N",
+        "SILENT_OPT": "Y"
+      },
+      "effective_settings_sha256": "46b1a5345edb64bff849ef8894dda0ad6d120056c1830406bf6772946d1d25b9",
+      "success": true,
+      "error_counts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "UDCNT",
+      "source": "dos/EXAMPLES.ZIP/UDCNT.PDS",
+      "files": {
+        "UDCNT.PLA": {
+          "sha256": "590336da86c1da1f3e6aec49fb885aff68332eee1816200091b406f0236a116d",
+          "bytes": 2369
+        },
+        "UDCNT.JED": {
+          "sha256": "c9a8b655d3d140fbeeb969602bdc1d9e6df0a0da32933d862d39660419755743",
+          "bytes": 11336
+        },
+        "UDCNT.PLC": {
+          "sha256": "8c39fea7434eccb5c04bf78d30fda12a19bc58a39358116efa0fa7fcc9f72496",
+          "bytes": 796
+        },
+        "UDCNT.DBG": {
+          "sha256": "7c12f875fba16fe1b4e034e50151d540c922463d914517b764ff680c7f210777",
+          "bytes": 879
+        }
+      }
+    }
+  ]
+}

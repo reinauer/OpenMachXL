@@ -1,0 +1,94 @@
+;Barrel Shifter
+;Shift Registers shift bits only one position to the left or
+;to the right.  Barrel Shifters can shift data a selectable number of positions
+;in one direction.
+
+
+
+;---------------------------------- Declaration Segment ------------
+TITLE    Barrel Shifter
+PATTERN  1
+REVISION 1
+AUTHOR   J. ENGINEER
+COMPANY  AMD
+DATE    9/10/94
+
+CHIP  Barrel  MACH111
+
+;---------------------------------- PIN Declarations --------------
+
+PIN  ?          DATA[0..3] 
+PIN  ?          Q[0..3]                              REGISTERED ;
+PIN  ?          SEL1                            
+pin  ?          SEL2
+pin  ?          RESET
+pin  ?          CLK
+PIN  ?          ENA
+
+EQUATIONS
+
+Q[0..3].RSTF=RESET
+Q[0..3].CLKF=CLK
+Q[0..3].TRST=ENA
+
+Q[0]:= /SEL1*/SEL2*DATA[0] 
+     +/SEL1* SEL2*Q[1]
+     + SEL1*/SEL2*Q[2]
+     + SEL1* SEL2*Q[3]
+
+Q[1]:= /SEL1*/SEL2*DATA[1] 
+     +/SEL1* SEL2*Q[2] 
+     + SEL1*/SEL2*Q[3]
+     + SEL1* SEL2*Q[0]
+
+Q[2]:= /SEL1*/SEL2*DATA[2] 
+     +/SEL1* SEL2*Q[3]
+     + SEL1*/SEL2*Q[0]
+     + SEL1* SEL2*Q[1]
+
+Q[3]:= /SEL1*/SEL2*DATA[3] 
+     +/SEL1* SEL2*Q[0]
+     + SEL1*/SEL2*Q[1]
+     + SEL1* SEL2*Q[2] 
+
+
+SIMULATION
+
+TRACE_ON   data[3..0] q[3..0] sel1 sel2 clk 
+          
+SETF RESET  ena
+SETF DATA[3..0]= #H8
+SETF /RESET ena
+
+;---LOADING DATA
+SETF /SEL1 /SEL2
+CLOCKF CLK
+CHECKQ Q[3..0]= #H8 
+
+;---    Shifting one position to the right, three times
+SETF /sel1 sel2 
+FOR X:= 1 TO 3 DO
+        BEGIN
+             CLOCKF CLK
+        END
+CHECKQ Q[3..0]= #H1 
+
+;---    Shifting two positions to the right, four times             
+SETF  sel1 /sel2
+FOR X:= 1 TO 4 DO
+        BEGIN
+             CLOCKF CLK
+        END
+CHECKQ Q[3..0]= #H1  
+
+;---    Shifting three positions to the right (same as one to the left), 4 times             
+SETF  sel1 sel2
+FOR X:= 1 TO 4 DO
+        BEGIN
+             CLOCKF CLK
+        END
+CHECKQ Q[3..0]= #H1 
+
+TRACE_OFF
+
+

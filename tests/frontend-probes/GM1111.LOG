@@ -1,0 +1,155 @@
+
+*** Start MACHPAR.E 03:22:50 
+Gm1111.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP GM1111 MACH111
+   2     |PIN ? A[5..0]
+   3     |PIN 11 CLK
+   4     |PIN ? Q REG
+   5     |NODE ? NN  PAIR Q
+   6     |EQUATIONS
+   7     |Q=/A[5]*/A[4]*/A[3]*/A[2]*/A[1]*A[0]+/A[5]*/A[4]*/A[3]*/A[2]*A[1]*/A[0]+/A[5]*/A[4]*/A[3]*A[2]*/A[1]*/A[0]+/A[5]*/A[4]*/A[3]*A[2]*A[1]*A[0]+
+   8     |Q.CLKF=CLK
+   9     |NN=A[0]
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Gm1111.pds
+
+*** End MACHPAR.EXE 03:22:51; (MACHPAR.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 03:22:51 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q
+Processing equation for ====>Q.CLKF
+Processing equation for ====>NN
+|> WARNING B619
+     Node NN paired with pin Q does not have the same
+     equation type attribute. Hence, PAIR declaration deleted.
+|> WARNING B604
+     Node equation NN and paired pin equation Q
+     are not identical.  Hence, PAIR declaration deleted.
+
+ %%  MACHBPP  %% Maximum memory allocated was: 91752 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Gm1111.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 2
+
+*** End MACHBPP.EXE 03:22:51; (MACHBPP.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 03:22:51 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node NN...
+====> NN                 MIN_ON (1 + pt)
+Processing equation(s) for pin Q...
+Gate splitting (PIN ? Q) to (NODE ? _N_O_D_E_0).
+Gate splitting (PIN ? Q) to (NODE ? _N_O_D_E_1).
+====> Q                  MIN_ON (32 + pt --> 10 + pt)
+====> Q.CLKF             MIN_ON (1 + pt)
+====> _N_O_D_E_0         MIN_ON (12 + pt)
+====> _N_O_D_E_1         MIN_ON (12 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 57488 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: GM1111.PDS.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 03:22:52; (MACHMIN.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 03:22:52 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file gm1111.tre to PLA file gm1111.pla...
+
+....
+....
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 51918 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: GM1111.PDS.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 03:22:52; (MACHMIN.EXE= 0 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 03:22:52 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is GM1111.PDS . Device is MACH111 .
+|> INFO z5109 - For this device, all input pairing is ignored since input
+                registers or latches do not exist. All signals must pass
+                through the central switch matrix before being latched or
+                registered.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+|> WARNING z5071 - Nodes not referenced - discarded :
+NN 
+Check clock rules
+
+List of global clocks:
+   CLK:
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is GM1111.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File GM1111.PDS .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 1 .
+
+*** End MACHFITR.EX 03:22:53; (MACHFITR.EXE= 1 sec.) elapsed time= 3 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

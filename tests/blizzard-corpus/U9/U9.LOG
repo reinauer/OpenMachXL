@@ -1,0 +1,368 @@
+U9.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+   1     |;PALASM Design Description
+   2     |;---------------------------------- Declaration Segment ------------
+   3     |TITLE    BLIZZARD 1260 U9 - BYTE LANES, CAS, BURST COLUMN, A1200 SIZING
+   4     |PATTERN  U9
+   5     |REVISION 0.1 (RECONSTRUCTION)
+   6     |AUTHOR   RECONSTRUCTED FROM THE PCB, SEE ../ARCHITECTURE.MD
+   7     |COMPANY  BLIZZARD 1260 KICAD PROJECT
+   8     |DATE     2026-10-26
+   9     |CHIP     U9  MACH111
+  10     |
+  11     |; Byte lanes (060 SIZ, A1, A0), lane 0 = D31-D24:
+  12     |;   CAS0/U4 = lane 0, CAS2/U5 = lane 1, CAS1/U6 = lane 2, CAS3/U3 = lane 3
+  13     |; DRAM: CAS follows U7's MUX one BCLK later and drops while TA is out
+  14     |;       (not in A1200/board-space cycles, where AREQ is active),
+  15     |;       all lanes for reads, the addressed lanes for writes; CAS-before-RAS
+  16     |;       refresh on CASEN from U7.
+  17     |; Burst: the 060 keeps A3:A2 constant during a line transfer; the column
+  18     |;       counter C1:C0 starts at A3:A2 and advances on every TA (MA0/MA1).
+  19     |; A1200: offset O1:O0 (slot A1/A0) starts at the 060 address (0 for long
+  20     |;       and line) and advances on every NEXT pulse from U14; slot SIZ1/SIZ0
+  21     |;       give the bytes still to go, like a 68020 after dynamic bus sizing.
+  22     |;       Slot A0/A1/SIZ are only driven while AREQ is active (the 68EC020
+  23     |;       drives them when the board is disabled).
+  24     |
+  25     |;---------------------------------- PIN Declarations ---------------
+  26     |PIN  7   MA1         COMBINATORIAL   ; SIMM A1 via RN4
+  27     |PIN  8   NEXT_N                      ; from U14: advance the A1200 offset
+  28     |PIN  9   LONG_N      COMBINATORIAL   ; to U14: 060 transfer is long/line
+  29     |PIN  10  CA1                         ; 060 A1
+  30     |PIN  11  CA0                         ; 060 A0
+  31     |PIN  13  BCLK                        ; board clock
+  32     |PIN  14  SIZ1                        ; 060 SIZ1
+  33     |PIN  15  CAS2_N      REGISTERED      ; SIMM /CAS2 (lane 1) via RN8
+  34     |PIN  16  SIZ0                        ; 060 SIZ0
+  35     |PIN  17  MA0         COMBINATORIAL   ; SIMM A0 via RN4
+  36     |PIN  18  CAS1_N      REGISTERED      ; SIMM /CAS1 (lane 2) via RN8
+  37     |PIN  21  CAS3_N      REGISTERED      ; SIMM /CAS3 (lane 3) via RN8
+  38     |PIN  24  ASIZ1       COMBINATORIAL   ; A1200 slot SIZ1
+  39     |PIN  25  OEAB1_N     COMBINATORIAL   ; U5 OEAB (lane 1)
+  40     |PIN  27  AA0         COMBINATORIAL   ; A1200 slot A0
+  41     |PIN  28  OEAB0_N     COMBINATORIAL   ; U4 OEAB (lane 0)
+  42     |PIN  29  R_W                         ; 060 R/W
+  43     |PIN  30  AA1         COMBINATORIAL   ; A1200 slot A1
+  44     |PIN  31  MUX                         ; from U7
+  45     |PIN  32  CASEN_N                     ; from U7: refresh CAS
+  46     |PIN  33  CYC_N                       ; from U7: cycle in progress
+  47     |PIN  35  A5
+  48     |PIN  36  A4
+  49     |PIN  37  ASIZ0       COMBINATORIAL   ; A1200 slot SIZ0
+  50     |PIN  38  AREQ_N                      ; from U7: A1200/board-space cycle
+  51     |PIN  39  A3
+  52     |PIN  40  OEAB3_N     COMBINATORIAL   ; U3 OEAB (lane 3)
+  53     |PIN  41  A2
+  54     |PIN  42  TAX_N                       ; from U7: TA
+  55     |PIN  43  OEAB2_N     COMBINATORIAL   ; U6 OEAB (lane 2)
+  56     |PIN  2   CAS0_N      REGISTERED      ; SIMM /CAS0 (lane 0) via RN8
+  57     |PIN  3   RSTI_N                      ; 060 /RSTI
+  58     |PIN  5   RDOE_N                      ; from U7: read data phase
+  59     |
+  60     |NODE ?   LN0         COMBINATORIAL   ; lane 0..3 addressed by the 060
+  61     |NODE ?   LN1         COMBINATORIAL
+  62     |NODE ?   LN2         COMBINATORIAL
+  63     |NODE ?   LN3         COMBINATORIAL
+  64     |NODE ?   C1          REGISTERED      ; burst column counter (A3:A2)
+  65     |NODE ?   C0          REGISTERED
+  66     |NODE ?   NX1         REGISTERED      ; NEXT synchroniser / edge detect
+  67     |NODE ?   NX2         REGISTERED
+  68     |NODE ?   OF1         REGISTERED      ; A1200 sub-cycle offset (slot A1:A0); kept in
+  69     |NODE ?   OF0         REGISTERED      ; nodes: the slot pins are three-state and MACHXL
+  70     |                                     ; feeds an enabled output back from the pin
+  71     |
+  72     |;---------------------------------- Boolean Equation Segment ------
+  73     |; SIZ1:SIZ0 = 00 long, 01 byte, 10 word, 11 line
+  74     |STRING  NEXTE    '(NX1 * /NX2)'
+  75     |
+  76     |EQUATIONS
+  77     |
+  78     |LONG_N     = /(SIZ1 * SIZ0) * /(/SIZ1 * /SIZ0)
+  79     |
+  80     |LN0        = /LONG_N + SIZ1 * /CA1 + /CA1 * /CA0
+  81     |LN1        = /LONG_N + SIZ1 * /CA1 + /SIZ1 * /CA1 * CA0
+  82     |LN2        = /LONG_N + SIZ1 *  CA1 + /SIZ1 * CA1 * /CA0
+  83     |LN3        = /LONG_N + SIZ1 *  CA1 + CA1 * CA0
+  84     |
+  85     |; ---- DRAM CAS -------------------------------------------------------------
+  86     |/CAS0_N    := RSTI_N * MUX * TAX_N * AREQ_N * R_W
+  87     |            + RSTI_N * MUX * TAX_N * AREQ_N * LN0
+  88     |            + /CASEN_N
+  89     |CAS0_N.CLKF = BCLK
+  90     |/CAS2_N    := RSTI_N * MUX * TAX_N * AREQ_N * R_W
+  91     |            + RSTI_N * MUX * TAX_N * AREQ_N * LN1
+  92     |            + /CASEN_N
+  93     |CAS2_N.CLKF = BCLK
+  94     |/CAS1_N    := RSTI_N * MUX * TAX_N * AREQ_N * R_W
+  95     |            + RSTI_N * MUX * TAX_N * AREQ_N * LN2
+  96     |            + /CASEN_N
+  97     |CAS1_N.CLKF = BCLK
+  98     |/CAS3_N    := RSTI_N * MUX * TAX_N * AREQ_N * R_W
+  99     |            + RSTI_N * MUX * TAX_N * AREQ_N * LN3
+ 100     |            + /CASEN_N
+ 101     |CAS3_N.CLKF = BCLK
+ 102     |
+ 103     |; ---- burst column ----------------------------------------------------------
+ 104     |C0         := CYC_N * A2
+ 105     |            + /CYC_N * (C0 :+: /TAX_N)
+ 106     |C0.CLKF     = BCLK
+ 107     |C1         := CYC_N * A3
+ 108     |            + /CYC_N * (C1 :+: (C0 * /TAX_N))
+ 109     |C1.CLKF     = BCLK
+ 110     |
+ 111     |MA0        = MUX * C0 + /MUX * A4
+ 112     |MA1        = MUX * C1 + /MUX * A5
+ 113     |
+ 114     |; ---- '543 A->B enables: addressed lanes in the read data phase ------------
+ 115     |/OEAB0_N   = /RDOE_N * LN0
+ 116     |/OEAB1_N   = /RDOE_N * LN1
+ 117     |/OEAB2_N   = /RDOE_N * LN2
+ 118     |/OEAB3_N   = /RDOE_N * LN3
+ 119     |
+ 120     |; ---- A1200 sizing ------------------------------------------------------------
+ 121     |NX1        := /NEXT_N
+ 122     |NX1.CLKF    = BCLK
+ 123     |NX2        := NX1
+ 124     |NX2.CLKF    = BCLK
+ 125     |
+ 126     |OF0        := AREQ_N * LONG_N * CA0
+ 127     |            + /AREQ_N * (OF0 :+:  
+ 127  s1 |(NX1 * /NX2)
+ 127     |                                       )
+ 128     |OF0.CLKF    = BCLK
+ 129     |OF1        := AREQ_N * LONG_N * CA1
+ 130     |            + /AREQ_N * (OF1 :+: (OF0 *  
+ 130  s1 |(NX1 * /NX2)
+ 130     |                                              ))
+ 131     |OF1.CLKF    = BCLK
+ 132     |AA0         = OF0
+ 133     |AA0.TRST    = /AREQ_N
+ 134     |AA1         = OF1
+ 135     |AA1.TRST    = /AREQ_N
+ 136     |
+ 137     |; bytes still to go: long 4/3/2/1 at offset 0/1/2/3, word 2/1, byte 1
+ 138     |ASIZ0      = OF0 * SIZ1 + OF0 * /SIZ0 + /SIZ1 * SIZ0
+ 139     |ASIZ0.TRST = /AREQ_N
+ 140     |ASIZ1      = /LONG_N * OF1 * /OF0
+ 141     |           + /LONG_N * /OF1 * OF0
+ 142     |           + SIZ1 * /SIZ0 * /OF0
+ 143     |ASIZ1.TRST = /AREQ_N
+
+ %% MACHPAR %%    ERROR count:  0      WARNING count:  0
+
+ %% MACHPAR %%    File processed successfully.    File:  U9.pds
+
+*** Start MACHBPP.E 22:31:40 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>LONG_N
+Processing equation for ====>LN0
+Processing equation for ====>LN1
+Processing equation for ====>LN2
+Processing equation for ====>LN3
+Processing equation for ====>/CAS0_N
+Processing equation for ====>CAS0_N.CLKF
+Processing equation for ====>/CAS2_N
+Processing equation for ====>CAS2_N.CLKF
+Processing equation for ====>/CAS1_N
+Processing equation for ====>CAS1_N.CLKF
+Processing equation for ====>/CAS3_N
+Processing equation for ====>CAS3_N.CLKF
+Processing equation for ====>C0
+Processing equation for ====>C0.CLKF
+Processing equation for ====>C1
+Processing equation for ====>C1.CLKF
+Processing equation for ====>MA0
+Processing equation for ====>MA1
+Processing equation for ====>/OEAB0_N
+Processing equation for ====>/OEAB1_N
+Processing equation for ====>/OEAB2_N
+Processing equation for ====>/OEAB3_N
+Processing equation for ====>NX1
+Processing equation for ====>NX1.CLKF
+Processing equation for ====>NX2
+Processing equation for ====>NX2.CLKF
+Processing equation for ====>OF0
+Processing equation for ====>OF0.CLKF
+Processing equation for ====>OF1
+Processing equation for ====>OF1.CLKF
+Processing equation for ====>AA0
+Processing equation for ====>AA0.TRST
+Processing equation for ====>AA1
+Processing equation for ====>AA1.TRST
+Processing equation for ====>ASIZ0
+Processing equation for ====>ASIZ0.TRST
+Processing equation for ====>ASIZ1
+Processing equation for ====>ASIZ1.TRST
+
+ %%  MACHBPP  %% Maximum memory allocated was: 65274 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: U9.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 22:31:40; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 22:31:40 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node OF0...
+====> OF0                MIN_ON (4 + pt)
+====> OF0.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node OF1...
+====> OF1                MIN_ON (5 + pt)
+====> OF1.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node NX2...
+====> NX2                MIN_ON (1 + pt)
+====> NX2.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node NX1...
+====> NX1                MIN_ON (1 + pt)
+====> NX1.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node C0...
+====> C0                 MIN_ON (3 + pt)
+====> C0.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for node C1...
+====> C1                 MIN_ON (4 + pt)
+====> C1.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for node LN3...
+====> LN3                MIN_ON (3 + pt)
+Processing equation(s) for node LN2...
+====> LN2                MIN_ON (3 + pt)
+Processing equation(s) for node LN1...
+====> LN1                MIN_ON (3 + pt)
+Processing equation(s) for node LN0...
+====> LN0                MIN_ON (3 + pt)
+Processing equation(s) for pin OEAB2_N...
+====> /OEAB2_N           MIN_ON (1 - pt)
+Processing equation(s) for pin OEAB3_N...
+====> /OEAB3_N           MIN_ON (1 - pt)
+Processing equation(s) for pin ASIZ0...
+====> ASIZ0              MIN_ON (3 + pt --> 2 + pt)
+====> ASIZ0.TRST         MIN_ON (1 + pt)
+Processing equation(s) for pin AA1...
+====> AA1                MIN_ON (1 + pt)
+====> AA1.TRST           MIN_ON (1 + pt)
+Processing equation(s) for pin OEAB0_N...
+====> /OEAB0_N           MIN_ON (1 - pt)
+Processing equation(s) for pin AA0...
+====> AA0                MIN_ON (1 + pt)
+====> AA0.TRST           MIN_ON (1 + pt)
+Processing equation(s) for pin OEAB1_N...
+====> /OEAB1_N           MIN_ON (1 - pt)
+Processing equation(s) for pin ASIZ1...
+====> ASIZ1              MIN_ON (3 + pt)
+====> ASIZ1.TRST         MIN_ON (1 + pt)
+Processing equation(s) for pin CAS3_N...
+====> /CAS3_N            MIN_ON (3 - pt)
+====> CAS3_N.CLKF        MIN_ON (1 + pt)
+Processing equation(s) for pin CAS1_N...
+====> /CAS1_N            MIN_ON (3 - pt)
+====> CAS1_N.CLKF        MIN_ON (1 + pt)
+Processing equation(s) for pin MA0...
+====> MA0                MIN_ON (2 + pt)
+Processing equation(s) for pin CAS2_N...
+====> /CAS2_N            MIN_ON (3 - pt)
+====> CAS2_N.CLKF        MIN_ON (1 + pt)
+Processing equation(s) for pin LONG_N...
+====> LONG_N             MIN_ON (2 + pt)
+Processing equation(s) for pin MA1...
+====> MA1                MIN_ON (2 + pt)
+Processing equation(s) for pin CAS0_N...
+====> /CAS0_N            MIN_ON (3 - pt)
+====> CAS0_N.CLKF        MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 50310 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: U9.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 22:31:41; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 22:31:41 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file u9.tre to PLA file u9.pla...
+
+.........................
+.........................
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 54092 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: U9.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 22:31:42; (MACHMIN.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 22:31:42 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is U9.pds . Device is MACH111 .
+|> INFO z5109 - For this device, all input pairing is ignored since input
+                registers or latches do not exist. All signals must pass
+                through the central switch matrix before being latched or
+                registered.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of global clocks:
+   BCLK:
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is U9.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File U9.pds .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 0 .
+
+*** End MACHFITR.EX 22:31:43; (MACHFITR.EXE= 1 sec.) elapsed time= 3 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

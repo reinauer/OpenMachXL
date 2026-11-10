@@ -1,0 +1,223 @@
+{
+  "original": "MACHXL 2.1 R11 MACHFITR (3-31-95)",
+  "scope": "Seven completed original failures, full RPT/PRD/TAL comparison without report-content exceptions. IA211/IA215 original internal errors suppress reports and are documented separately.",
+  "cases": [
+    {
+      "name": "FR111",
+      "stage": "placement",
+      "original_directory": "build/legacy-registered-failure-original/fr111/WORK",
+      "sha256": {
+        "FR111.PDS": "3919ce260c087bb6d86ede742342ca282b755145f4873e45d4d14b92d71b5d60",
+        "FR111.MXL": "b88ff2281c9dc7c85bc62865052a3cac9b612e2610495e5b96d7a82c2b6e28be",
+        "FR111.RPT": "bc1bba9bd439edbe7deaa053e17ccade89250fd8918035bf104a94f59b1074f5",
+        "FR111.PRD": "f8a44b639162c8d5c7f3db5d4fa4c2787f032418b5f4a15b2f13d566642766c3",
+        "FR111.TAL": "d51131419c39f5bd61bb1fa8b43130da799bd65780793426f239c1536e87d11e",
+        "FR111.LOG": "e4ce568f764be50d2002db5a6f12db6ad9d0a2ffb67a6aec6d36ada76e618d6b"
+      },
+      "provenance": {
+        "source_sha256": "3919ce260c087bb6d86ede742342ca282b755145f4873e45d4d14b92d71b5d60",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "FR111.PDS",
+          "RUN_LOG": "FR111.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "b88ff2281c9dc7c85bc62865052a3cac9b612e2610495e5b96d7a82c2b6e28be",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "FR120",
+      "stage": "placement",
+      "original_directory": "build/legacy-registered-failure-original/fr120/WORK",
+      "sha256": {
+        "FR120.PDS": "817a063fdc58a2dac4669777b43dcf1c02815deb7b2b097b241ad62cff15f24c",
+        "FR120.MXL": "f48ac456b10cfe17d8531f710f3f5aaa4d07eea15574c68b6f247b42add5faba",
+        "FR120.RPT": "22ea40a9a3fdad424591e6cb30033c3820afa33144c406bd1848f12e7f071cff",
+        "FR120.PRD": "b5cc51d4db8dc971e3b2f66f7d5ad1d4b2c8fc664dff52079ddc4f1db45c49a2",
+        "FR120.TAL": "308736892fa9c9ccddaa2a23a247393c024ed848e1f9a2af746cfcc570239f88",
+        "FR120.LOG": "4d5741a9e382eb7187da9634c7e130bb16ad2e4e26aaee22e7ae27330c76d6df"
+      },
+      "provenance": {
+        "source_sha256": "817a063fdc58a2dac4669777b43dcf1c02815deb7b2b097b241ad62cff15f24c",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "FR120.PDS",
+          "RUN_LOG": "FR120.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "f48ac456b10cfe17d8531f710f3f5aaa4d07eea15574c68b6f247b42add5faba",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "RR111",
+      "stage": "routing",
+      "original_directory": "build/legacy-registered-failure-original/rr111/WORK",
+      "sha256": {
+        "RR111.PDS": "b9f0375aed989c1687b89c96ceec7d9dc93c1c4cac99c6fec1c925b588786cf6",
+        "RR111.MXL": "6376b6d82b0f5f4124b911ffdf5ef43367fc5aa48a1111e2abe27de8efe090e9",
+        "RR111.RPT": "5ba3b2f901096fc6106a5bb66d9d429cafe66d73920b64fc1a22b69d955ce905",
+        "RR111.PRD": "593ecfd96cf2346b0137c0d2b7aa6bcd8e6ee16b3efe4fc154d6debb1ee99262",
+        "RR111.TAL": "4d3133e81028dea32fe3dc898093b960cc7d4bab312255206ac123cd5a73d500",
+        "RR111.LOG": "4e28d51b5c577642866d449f42bea596fc6c199f4f025084e4bccc8e9bcfc115"
+      },
+      "provenance": {
+        "source_sha256": "b9f0375aed989c1687b89c96ceec7d9dc93c1c4cac99c6fec1c925b588786cf6",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "RR111.PDS",
+          "RUN_LOG": "RR111.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "6376b6d82b0f5f4124b911ffdf5ef43367fc5aa48a1111e2abe27de8efe090e9",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "RR211",
+      "stage": "routing",
+      "original_directory": "build/legacy-registered-failure-original/rr211/WORK",
+      "sha256": {
+        "RR211.PDS": "f61d9a506c3ea5d19732daebc53421a5369a16f4308e50d5d93af6dfbb17ff3e",
+        "RR211.MXL": "dcfd9c43224927578616d190a77f5969e9c397b859a38a75d79a0e970b31c1dc",
+        "RR211.RPT": "ecb8608672225657342da11072f5f1476fef8c9bfdf8cf93f32ae734b65348ac",
+        "RR211.PRD": "c55313f77e1030dad1d7d55e52cf2fdef643e6b77cabee9d7ba36ac3bb9fd944",
+        "RR211.TAL": "a24b3558c8221b2f50f194c321d60a5efa2c9279487bc8403a38511de20d9ccc",
+        "RR211.LOG": "0ddd53a8466cf9c6e66719a72b515088369b1d81090758a2c5ed323ee724c52e"
+      },
+      "provenance": {
+        "source_sha256": "f61d9a506c3ea5d19732daebc53421a5369a16f4308e50d5d93af6dfbb17ff3e",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "RR211.PDS",
+          "RUN_LOG": "RR211.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "dcfd9c43224927578616d190a77f5969e9c397b859a38a75d79a0e970b31c1dc",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "RR215",
+      "stage": "routing",
+      "original_directory": "build/legacy-registered-failure-original/rr215/WORK",
+      "sha256": {
+        "RR215.PDS": "818fe6178db45ad810473f1b1153ab7e00b0444da7bab2f61c15b0ad567e1879",
+        "RR215.MXL": "948a67c77305fe8392920d42abf39fb7eb9b29a1fd1244f0e4d4a4bcfd2eb7ab",
+        "RR215.RPT": "af7f5644df68101d13fa9e4a5bea9ef7325ac581663249769d8ecbb24d8bd038",
+        "RR215.PRD": "a6f2e74936c2fe82902e0fa3abf83245f7be956d6f39b48ab0189384ed35a0af",
+        "RR215.TAL": "8492353c612b32228a5e4aace3f372842cc4586c9680c7d9c8f8c1d76f6e6203",
+        "RR215.LOG": "e6c09c0e362abc853dcce27af3461cdcb0d339e555ecf25ef3519720a48f3169"
+      },
+      "provenance": {
+        "source_sha256": "818fe6178db45ad810473f1b1153ab7e00b0444da7bab2f61c15b0ad567e1879",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "RR215.PDS",
+          "RUN_LOG": "RR215.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "948a67c77305fe8392920d42abf39fb7eb9b29a1fd1244f0e4d4a4bcfd2eb7ab",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "IR211",
+      "stage": "routing",
+      "original_directory": "build/legacy-registered-failure-original/ir211/WORK",
+      "sha256": {
+        "IR211.PDS": "b2db9a1d00aefd1d8747c763604607627c3515d525064cf932a377f3e77f658a",
+        "IR211.MXL": "17092a8520110e7e10b5d7b16800f72ac668153fec470746d0689ed0c4c7497b",
+        "IR211.RPT": "ef93c3c0d8b413da99cf589b312c185eb4574d539d23dd969cd04a2699195202",
+        "IR211.PRD": "61fb8f76f801913aacf6b00744331881fe566925e2ad2408c574b2ed65d85b13",
+        "IR211.TAL": "1ef69f2e921b39f14af342d9b8c647dc0d6d2cf4f246d7f85ccd27fbb71a92d4",
+        "IR211.LOG": "7396fc728667fa1b8a70e7ef93a21433acea0282c1639e9f28a495cd12c5f6fd"
+      },
+      "provenance": {
+        "source_sha256": "b2db9a1d00aefd1d8747c763604607627c3515d525064cf932a377f3e77f658a",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "IR211.PDS",
+          "RUN_LOG": "IR211.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "17092a8520110e7e10b5d7b16800f72ac668153fec470746d0689ed0c4c7497b",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "IR215",
+      "stage": "routing",
+      "original_directory": "build/legacy-registered-failure-original/ir215/WORK",
+      "sha256": {
+        "IR215.PDS": "5196082cc8c4b4a01d01b839d7fa5f1f82a2b17e5be4df46629c9c39e828b5b2",
+        "IR215.MXL": "7eafde4cf1d15603687d1c9eeb3e7ec97c9a98505537892306f5b4362145f72d",
+        "IR215.RPT": "757d10b7943090a98c42b3ea4c96629bdb56cd2eb3175c77cd11430deeac252b",
+        "IR215.PRD": "a2be101ac8296005d6c45cd9f4cff612d073baee45b5db228b9deb64a3c0e357",
+        "IR215.TAL": "09fc3589dfb07334b67dd5531577d098468de4e3ea1e6e084f5a2deac8ae22bc",
+        "IR215.LOG": "8bc32cc2b8f5b4523b711bd2c313c43970304f0b9877646f79f29c531e47a528"
+      },
+      "provenance": {
+        "source_sha256": "5196082cc8c4b4a01d01b839d7fa5f1f82a2b17e5be4df46629c9c39e828b5b2",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "IR215.PDS",
+          "RUN_LOG": "IR215.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "7eafde4cf1d15603687d1c9eeb3e7ec97c9a98505537892306f5b4362145f72d",
+        "dos_batch_completed": true
+      }
+    }
+  ]
+}

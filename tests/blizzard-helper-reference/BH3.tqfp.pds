@@ -1,0 +1,29 @@
+;PALASM Design Description
+; pds2v test: pin assignment errors (check 1) and a register clocked from a
+; pin that is not a clock pin.
+; EXPECT-EXIT: 1
+; EXPECT: error: GNDPIN: pin 6 is a GND pin
+; EXPECT: error: VCCPIN: pin 38 is a VCC pin
+; EXPECT: error: NOPIN: pin 45 does not exist
+; EXPECT: error: pin 2 used twice (A and B)
+; EXPECT: error: IN3: pin 26 (I3) is a dedicated input and cannot be driven
+; EXPECT: error: X.CLKF = NOTCLK: registers can only be clocked by pins 5, 7, 27, 29
+; EXPECT: warning: OK_UNUSED (pin 13) is never used
+
+CHIP     BADPINS  MACH111
+PIN  6   GNDPIN
+PIN  38  VCCPIN
+PIN  45  NOPIN
+PIN  2   A
+PIN  2   B
+PIN  26  IN3   COMBINATORIAL
+PIN  40  X     REGISTERED
+PIN  4   NOTCLK
+PIN  13  OK_UNUSED
+PIN  41  USEPINS
+
+EQUATIONS
+IN3 = A
+X := A * B
+X.CLKF = NOTCLK
+USEPINS = GNDPIN * VCCPIN * NOPIN

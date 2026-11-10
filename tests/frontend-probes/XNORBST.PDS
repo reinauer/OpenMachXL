@@ -1,0 +1,9 @@
+CHIP XNORBST MACH435
+PIN ? A
+PIN ? B
+PIN ? C
+PIN ? Y
+PIN ? Z
+EQUATIONS
+Y=A :*: B
+Z=A*B :*: C

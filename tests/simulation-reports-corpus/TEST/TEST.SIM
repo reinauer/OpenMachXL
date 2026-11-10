@@ -1,0 +1,25 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Test.pds
+Title  SUPER_PAL
+
+
+
+   1-V1 - SETF
+          Q0  
+   2-V1 - CHECK
+          Q1  
+   2-V2 - SETF
+          /Q0  
+   3-V2 - CHECK
+          /Q1  
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Test.HST
+Merged results (JEDEC) are in       ===> Test.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 159062 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Test.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0

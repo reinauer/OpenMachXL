@@ -1,0 +1,839 @@
+Not2big.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+   1     |
+   2     |;---------------------------------- Declaration Segment -----------
+   3     |TITLE    NOT TOO BIG TO FIT A MACH435
+   4     |PATTERN  A
+   5     |REVISION 1
+   6     |AUTHOR   J. ENGINEER
+   7     |COMPANY  AMD
+   8     |DATE     10/03/94
+   9     |
+  10     |CHIP  _not2bi  MACH435
+  11     |
+  12     |;---------------------------------- PIN Declarations --------------
+  13     |PIN  19         siga                                      ; INPUT 
+  14     |PIN  33         sigb                                      ; INPUT 
+  15     |PIN  20         sigc                                      ; INPUT 
+  16     |PIN  23         clk1                                      ; INPUT 
+  17     |PIN  41         clk2                                      ; INPUT 
+  18     |PIN  54         sigd                                      ; INPUT 
+  19     |PIN  62         clockin                                   ; INPUT 
+  20     |PIN  65         sige                                      ; INPUT 
+  21     |PIN  66         sigf                                      ; INPUT 
+  22     |PIN  67         sigg                                      ; INPUT 
+  23     |PIN  81         clockout                    COMBINATORIAL ; OUTPUT
+  24     |PIN  82         sigh                        COMBINATORIAL ; OUTPUT
+  25     |PIN  10         sigi                        COMBINATORIAL ; OUTPUT
+  26     |NODE ?          resesigjnt                  COMBINATORIAL ; OUTPUT
+  27     |PIN  3          cntzero                     REGISTERED    ; OUTPUT
+  28     |PIN  5          cntone                      REGISTERED    ; OUTPUT
+  29     |PIN  6          cnttwo                      REGISTERED    ; OUTPUT
+  30     |PIN  7          cntthree                    REGISTERED    ; OUTPUT
+  31     |PIN  8          cntfour                     REGISTERED    ; OUTPUT
+  32     |NODE ?          sigj                        REGISTERED    ; OUTPUT
+  33     |NODE ?          sigk                        REGISTERED    ; OUTPUT
+  34     |PIN  24         sigl                        REGISTERED    ; OUTPUT
+  35     |PIN  26         sigm                        REGISTERED    ; OUTPUT
+  36     |PIN  28         sign                        REGISTERED    ; OUTPUT
+  37     |PIN  29         sigo                        REGISTERED    ; OUTPUT
+  38     |PIN  30         sigp                        REGISTERED    ; OUTPUT
+  39     |PIN  31         sigq                        REGISTERED    ; OUTPUT
+  40     |PIN  35         sigr                        REGISTERED    ; OUTPUT
+  41     |PIN  36         sigs                        REGISTERED    ; OUTPUT
+  42     |PIN  37         sigt                        REGISTERED    ; OUTPUT
+  43     |PIN  38         sigu                        REGISTERED    ; OUTPUT
+  44     |PIN  39         sigaa                       REGISTERED    ; OUTPUT
+  45     |PIN  40         sigab                       REGISTERED    ; OUTPUT
+  46     |PIN  45         sigac                       REGISTERED    ; OUTPUT
+  47     |PIN  46         sigad                       REGISTERED    ; OUTPUT
+  48     |PIN  47         sigae                       REGISTERED    ; OUTPUT
+  49     |PIN  48         sigaf                       REGISTERED    ; OUTPUT
+  50     |PIN  55         sigag                       REGISTERED    ; OUTPUT
+  51     |PIN  57         sigah                       REGISTERED    ; OUTPUT
+  52     |PIN  58         sigai                       REGISTERED    ; OUTPUT
+  53     |PIN  59         sigaj                       REGISTERED    ; OUTPUT
+  54     |PIN  60         sigak                       REGISTERED    ; OUTPUT
+  55     |PIN  61         sigal                       REGISTERED    ; OUTPUT
+  56     |PIN  68         sigam                       REGISTERED    ; OUTPUT
+  57     |PIN  69         sigan                       REGISTERED    ; OUTPUT
+  58     |PIN  70         sigao                       REGISTERED    ; OUTPUT
+  59     |PIN  71         sigap                       REGISTERED    ; OUTPUT
+  60     |PIN  72         sigaq                       REGISTERED    ; OUTPUT
+  61     |PIN  73         sigar                       REGISTERED    ; OUTPUT
+  62     |PIN  75         sigas                       REGISTERED    ; OUTPUT
+  63     |PIN  76         sigat                       REGISTERED    ; OUTPUT
+  64     |PIN  78         sigau                       REGISTERED    ; OUTPUT
+  65     |PIN  79         sigav                       REGISTERED    ; OUTPUT
+  66     |PIN  80         sigba                       REGISTERED    ; OUTPUT
+  67     |NODE  ?         sigbb                       REGISTERED    ; OUTPUT
+  68     |NODE  ?         sigbc                       REGISTERED    ; OUTPUT
+  69     |PIN  12         sigbd                       REGISTERED    ; OUTPUT
+  70     |NODE  ?         sigbe                       REGISTERED    ; OUTPUT
+  71     |NODE  ?         sigbf                       REGISTERED    ; OUTPUT
+  72     |PIN  14         sigbg                       REGISTERED    ; OUTPUT
+  73     |NODE  ?         sigbh                       REGISTERED    ; OUTPUT
+  74     |NODE  ?         sigbi                       REGISTERED    ; OUTPUT
+  75     |PIN  15         sigbj                       REGISTERED    ; OUTPUT
+  76     |NODE  ?         sigbk                       REGISTERED    ; OUTPUT
+  77     |NODE  ?         sigbl                       REGISTERED    ; OUTPUT
+  78     |PIN  16         sigbm                       REGISTERED    ; OUTPUT
+  79     |NODE  ?         sigbn                       REGISTERED    ; OUTPUT
+  80     |NODE  ?         sigbo                       REGISTERED    ; OUTPUT
+  81     |PIN  17         sigbp                       REGISTERED    ; OUTPUT
+  82     |NODE  ?         sigbq                       REGISTERED    ; OUTPUT
+  83     |NODE  ?         sigbr                       REGISTERED    ; OUTPUT
+  84     |PIN  18         sigbs                       REGISTERED    ; OUTPUT
+  85     |NODE  ?         sigbt                       REGISTERED    ; OUTPUT
+  86     |NODE  ?         sigbu                       REGISTERED    ; OUTPUT
+  87     |PIN  49         sigbv                       REGISTERED    ; OUTPUT
+  88     |NODE  ?         sigbw                       REGISTERED    ; OUTPUT
+  89     |NODE  ?         sigbx                       REGISTERED    ; OUTPUT
+  90     |PIN  51         sigca                       REGISTERED    ; OUTPUT
+  91     |NODE  ?         sigcb                       REGISTERED    ; OUTPUT
+  92     |NODE  ?         sigcc                       REGISTERED    ; OUTPUT
+  93     |PIN  52         sigcd                       REGISTERED    ; OUTPUT
+  94     |NODE  ?         sigce                       REGISTERED    ; OUTPUT
+  95     |NODE  ?         sigcf                       REGISTERED    ; OUTPUT
+  96     |
+  97     |;----------------------------------- String Definitions ------------
+  98     |;STRING RESESIGJNT '/(sigf * sigc * sige)'
+  99     |STRING  SHIFT_EN  '(sige)'
+ 100     |
+ 101     |;----------------------------------- Boolean Equation Segment ------
+ 102     |EQUATIONS
+ 103     |/sigi    = /clk1 *              (sigbd + sigbg + sigbm + sigbj +
+ 104     |                                 sigbp + sigbs + sigbv + sigca +
+ 105     |                                 sigcd + sigba);
+ 106     |/sigh  = /clk2 * sigj
+ 107     |clockout   = clk2;
+ 108     |resesigjnt = /sigf + /sigc + /sige;
+ 109     |
+ 110     |; Define event FF control inputs
+ 111     |sigbd.CLKF  = clk1;
+ 112     |sigbe.CLKF  = sige;
+ 113     |sigbf.CLKF  = clk1;
+ 114     |sigbe.RSTF  = sigbd;
+ 115     |sigbf.RSTF  = sigbd;
+ 116     |sigbg.CLKF  = clk1;
+ 117     |sigbh.CLKF  = /sige;
+ 118     |sigbi.CLKF  = clk1;
+ 119     |sigbh.RSTF  = sigbg;
+ 120     |sigbi.RSTF  = sigbg;
+ 121     |sigbj.CLKF  = clk1;
+ 122     |sigbk.CLKF  = /sigc;
+ 123     |sigbl.CLKF  = clk1;
+ 124     |sigbk.RSTF  = sigbj;
+ 125     |sigbl.RSTF  = sigbj;
+ 126     |sigbm.CLKF  = clk1;
+ 127     |sigbn.CLKF  = sigc;
+ 128     |sigbo.CLKF  = clk1;
+ 129     |sigbn.RSTF  = sigbm;
+ 130     |sigbo.RSTF  = sigbm;
+ 131     |sigbp.CLKF  = clk1;
+ 132     |sigbq.CLKF  = /sigf;
+ 133     |sigbr.CLKF  = clk1;
+ 134     |sigbq.RSTF  = sigbp;
+ 135     |sigbr.RSTF  = sigbp;
+ 136     |sigbs.CLKF  = clk1;
+ 137     |sigbt.CLKF  = sigf;
+ 138     |sigbu.CLKF  = clk1;
+ 139     |sigbt.RSTF  = sigbs;
+ 140     |sigbu.RSTF  = sigbs;
+ 141     |sigbv.CLKF  = clk1;
+ 142     |sigbw.CLKF  = /siga;
+ 143     |sigbx.CLKF  = clk1;
+ 144     |sigbw.RSTF  = sigbv;
+ 145     |sigbx.RSTF  = sigbv;
+ 146     |sigca.CLKF  = clk1;
+ 147     |sigcb.CLKF  = /sigd;
+ 148     |sigcc.CLKF  = clk1;
+ 149     |sigcb.RSTF  = sigca;
+ 150     |sigcc.RSTF  = sigca;
+ 151     |sigcd.CLKF  = clk1;
+ 152     |sigce.CLKF  = /sigb;
+ 153     |sigcf.CLKF  = clk1;
+ 154     |sigce.RSTF  = sigcd;
+ 155     |sigcf.RSTF  = sigcd;
+ 156     |sigba.CLKF  = clk1;
+ 157     |sigbb.CLKF  = /clk2;
+ 158     |sigbc.CLKF  = clk1;
+ 159     |sigbb.RSTF  = sigba;
+ 160     |sigbc.RSTF  = sigba;
+ 161     |
+ 162     |; Define event FF data inputs
+ 163     |sigbd  := sigbf;
+ 164     |sigbe  := VCC;
+ 165     |sigbf  := sigbe;
+ 166     |sigbg  := sigbi;
+ 167     |sigbh  := VCC;
+ 168     |sigbi  := sigbh;
+ 169     |sigbj  := sigbl;
+ 170     |sigbk  := VCC;
+ 171     |sigbl  := sigbk;
+ 172     |sigbm  := sigbo;
+ 173     |sigbn  := VCC;
+ 174     |sigbo  := sigbn;
+ 175     |sigbp  := sigbr;
+ 176     |sigbq  := VCC;
+ 177     |sigbr  := sigbq;
+ 178     |sigbs  := sigbu;
+ 179     |sigbt  := VCC;
+ 180     |sigbu  := sigbt;
+ 181     |sigbv  := sigbx;
+ 182     |sigbw  := sigk * sige;
+ 183     |sigbx  := sigbw;
+ 184     |sigca  := sigcc;
+ 185     |sigcb  := sige;
+ 186     |sigcc  := sigcb;
+ 187     |sigcd  := sigcf;
+ 188     |sigce  := sige;
+ 189     |sigcf  := sigce;
+ 190     |sigba  := sigbc;
+ 191     |sigbb  := /sige;
+ 192     |sigbc  := sigbb;
+ 193     |
+ 194     |; Define counter FF control inputs
+ 195     |cntzero.CLKF  = clockin;
+ 196     |cntone.CLKF   = clockin;
+ 197     |cnttwo.CLKF   = clockin;
+ 198     |cntthree.CLKF = clockin;
+ 199     |cntfour.CLKF  = clockin;
+ 200     |sigj.CLKF     = clockin;
+ 201     |sigk.CLKF     = clockin;
+ 202     |cntzero.RSTF  = resesigjnt;
+ 203     |cntone.RSTF   = resesigjnt;
+ 204     |cnttwo.RSTF   = resesigjnt;
+ 205     |cntthree.RSTF = resesigjnt;
+ 206     |cntfour.RSTF  = resesigjnt;
+ 207     |sigj.RSTF     = resesigjnt;
+ 208     |sigk.RSTF     = resesigjnt;
+ 209     |
+ 210     |; Define counter FF data inputs
+ 211     |cntzero.T  := /sigj + (sigj * cntzero);
+ 212     |cntone.T   := (/sigj * cntzero) + (sigj * cntone);
+ 213     |cnttwo.T   := (/sigj * cntone * cntzero) + (sigj * cnttwo);
+ 214     |cntthree.T := (/sigj * cnttwo * cntone * cntzero) + (sigj * cntthree);
+ 215     |cntfour.T  := (/sigj * cntthree * cnttwo * cntone * cntzero) + (sigj * 
+ 216     |cntfour);
+ 217     |sigj       := cntzero * cntone * cnttwo * cntthree;
+ 218     |sigk       := sigj;
+ 219     |
+ 220     |; Define command shift register FF control inputs
+ 221     |sigl.CLKF    = clockin;
+ 222     |sigm.CLKF    = clockin;
+ 223     |sign.CLKF    = clockin;
+ 224     |sigo.CLKF    = clockin;
+ 225     |sigp.CLKF    = clockin;
+ 226     |sigq.CLKF    = clockin;
+ 227     |sigr.CLKF    = clockin;
+ 228     |sigs.CLKF    = clockin;
+ 229     |sigt.CLKF    = clockin;
+ 230     |sigu.CLKF    = clockin;
+ 231     |sigaa.CLKF   = clockin;
+ 232     |sigab.CLKF   = clockin;
+ 233     |sigac.CLKF   = clockin;
+ 234     |sigad.CLKF   = clockin;
+ 235     |sigae.CLKF   = clockin;
+ 236     |sigaf.CLKF   = clockin;
+ 237     |
+ 238     |; Define command shift register FF data inputs
+ 239     |sigl         := sige * sigg + /sige * sigl;
+ 240     |sigm         := sige * sigl + /sige * sigm;
+ 241     |sign         := sige * sigm + /sige * sign;
+ 242     |sigo         := sige * sign + /sige * sigo;
+ 243     |sigp         := sige * sigo + /sige * sigp;
+ 244     |sigq         := sige * sigp + /sige * sigq;
+ 245     |sigr         := sige * sigq + /sige * sigr;
+ 246     |sigs         := sige * sigr + /sige * sigs;
+ 247     |sigt         := sige * sigs + /sige * sigt;
+ 248     |sigu         := sige * sigt + /sige * sigu;
+ 249     |sigaa        := sige * sigu + /sige * sigaa;
+ 250     |sigab        := sige * sigaa + /sige * sigab;
+ 251     |sigac        := sige * sigab + /sige * sigac;
+ 252     |sigad        := sige * sigac + /sige * sigad;
+ 253     |sigae        := sige * sigad + /sige * sigae;
+ 254     |sigaf        := sige * sigae + /sige * sigaf;
+ 255     |
+ 256     |; Define response shift register FF control inputs
+ 257     |sigag.CLKF  = clockin;
+ 258     |sigah.CLKF  = clockin;
+ 259     |sigai.CLKF  = clockin;
+ 260     |sigaj.CLKF  = clockin;
+ 261     |sigak.CLKF  = clockin;
+ 262     |sigal.CLKF  = clockin;
+ 263     |sigam.CLKF  = clockin;
+ 264     |sigan.CLKF  = clockin;
+ 265     |sigao.CLKF  = clockin;
+ 266     |sigap.CLKF  = clockin;
+ 267     |sigaq.CLKF  = clockin;
+ 268     |sigar.CLKF  = clockin;
+ 269     |sigas.CLKF  = clockin;
+ 270     |sigat.CLKF  = clockin;
+ 271     |sigau.CLKF  = clockin;
+ 272     |sigav.CLKF  = clockin;
+ 273     |
+ 274     |; Define response shift register FF data inputs
+ 275     |sigag       := sige * siga + /sige * sigag;
+ 276     |sigah       := sige * sigag + /sige * sigah;
+ 277     |sigai       := sige * sigah + /sige * sigai;
+ 278     |sigaj       := sige * sigai + /sige * sigaj;
+ 279     |sigak       := sige * sigaj + /sige * sigak;
+ 280     |sigal       := sige * sigak + /sige * sigal;
+ 281     |sigam       := sige * sigal + /sige * sigam;
+ 282     |sigan       := sige * sigam + /sige * sigan;
+ 283     |sigao       := sige * sigan + /sige * sigao;
+ 284     |sigap       := sige * sigao + /sige * sigap;
+ 285     |sigaq       := sige * sigap + /sige * sigaq;
+ 286     |sigar       := sige * sigaq + /sige * sigar;
+ 287     |sigas       := sige * sigar + /sige * sigas;
+ 288     |sigat       := sige * sigas + /sige * sigat;
+ 289     |sigau       := sige * sigat + /sige * sigau;
+ 290     |sigav       := sige * sigau + /sige * sigav;
+
+ %% MACHPAR %%    ERROR count:  0      WARNING count:  0
+
+ %% MACHPAR %%    File processed successfully.    File:  Not2big.pds
+
+*** Start MACHBPP.E 12:59:02 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>/SIGI
+Processing equation for ====>/SIGH
+Processing equation for ====>CLOCKOUT
+Processing equation for ====>RESESIGJNT
+Processing equation for ====>SIGBD.CLKF
+Processing equation for ====>SIGBE.CLKF
+Processing equation for ====>SIGBF.CLKF
+Processing equation for ====>SIGBE.RSTF
+Processing equation for ====>SIGBF.RSTF
+Processing equation for ====>SIGBG.CLKF
+Processing equation for ====>SIGBH.CLKF
+Processing equation for ====>SIGBI.CLKF
+Processing equation for ====>SIGBH.RSTF
+Processing equation for ====>SIGBI.RSTF
+Processing equation for ====>SIGBJ.CLKF
+Processing equation for ====>SIGBK.CLKF
+Processing equation for ====>SIGBL.CLKF
+Processing equation for ====>SIGBK.RSTF
+Processing equation for ====>SIGBL.RSTF
+Processing equation for ====>SIGBM.CLKF
+Processing equation for ====>SIGBN.CLKF
+Processing equation for ====>SIGBO.CLKF
+Processing equation for ====>SIGBN.RSTF
+Processing equation for ====>SIGBO.RSTF
+Processing equation for ====>SIGBP.CLKF
+Processing equation for ====>SIGBQ.CLKF
+Processing equation for ====>SIGBR.CLKF
+Processing equation for ====>SIGBQ.RSTF
+Processing equation for ====>SIGBR.RSTF
+Processing equation for ====>SIGBS.CLKF
+Processing equation for ====>SIGBT.CLKF
+Processing equation for ====>SIGBU.CLKF
+Processing equation for ====>SIGBT.RSTF
+Processing equation for ====>SIGBU.RSTF
+Processing equation for ====>SIGBV.CLKF
+Processing equation for ====>SIGBW.CLKF
+Processing equation for ====>SIGBX.CLKF
+Processing equation for ====>SIGBW.RSTF
+Processing equation for ====>SIGBX.RSTF
+Processing equation for ====>SIGCA.CLKF
+Processing equation for ====>SIGCB.CLKF
+Processing equation for ====>SIGCC.CLKF
+Processing equation for ====>SIGCB.RSTF
+Processing equation for ====>SIGCC.RSTF
+Processing equation for ====>SIGCD.CLKF
+Processing equation for ====>SIGCE.CLKF
+Processing equation for ====>SIGCF.CLKF
+Processing equation for ====>SIGCE.RSTF
+Processing equation for ====>SIGCF.RSTF
+Processing equation for ====>SIGBA.CLKF
+Processing equation for ====>SIGBB.CLKF
+Processing equation for ====>SIGBC.CLKF
+Processing equation for ====>SIGBB.RSTF
+Processing equation for ====>SIGBC.RSTF
+Processing equation for ====>SIGBD
+Processing equation for ====>SIGBE
+Processing equation for ====>SIGBF
+Processing equation for ====>SIGBG
+Processing equation for ====>SIGBH
+Processing equation for ====>SIGBI
+Processing equation for ====>SIGBJ
+Processing equation for ====>SIGBK
+Processing equation for ====>SIGBL
+Processing equation for ====>SIGBM
+Processing equation for ====>SIGBN
+Processing equation for ====>SIGBO
+Processing equation for ====>SIGBP
+Processing equation for ====>SIGBQ
+Processing equation for ====>SIGBR
+Processing equation for ====>SIGBS
+Processing equation for ====>SIGBT
+Processing equation for ====>SIGBU
+Processing equation for ====>SIGBV
+Processing equation for ====>SIGBW
+Processing equation for ====>SIGBX
+Processing equation for ====>SIGCA
+Processing equation for ====>SIGCB
+Processing equation for ====>SIGCC
+Processing equation for ====>SIGCD
+Processing equation for ====>SIGCE
+Processing equation for ====>SIGCF
+Processing equation for ====>SIGBA
+Processing equation for ====>SIGBB
+Processing equation for ====>SIGBC
+Processing equation for ====>CNTZERO.CLKF
+Processing equation for ====>CNTONE.CLKF
+Processing equation for ====>CNTTWO.CLKF
+Processing equation for ====>CNTTHREE.CLKF
+Processing equation for ====>CNTFOUR.CLKF
+Processing equation for ====>SIGJ.CLKF
+Processing equation for ====>SIGK.CLKF
+Processing equation for ====>CNTZERO.RSTF
+Processing equation for ====>CNTONE.RSTF
+Processing equation for ====>CNTTWO.RSTF
+Processing equation for ====>CNTTHREE.RSTF
+Processing equation for ====>CNTFOUR.RSTF
+Processing equation for ====>SIGJ.RSTF
+Processing equation for ====>SIGK.RSTF
+Processing equation for ====>CNTZERO.T
+Processing equation for ====>CNTONE.T
+Processing equation for ====>CNTTWO.T
+Processing equation for ====>CNTTHREE.T
+Processing equation for ====>CNTFOUR.T
+Processing equation for ====>SIGJ
+Processing equation for ====>SIGK
+Processing equation for ====>SIGL.CLKF
+Processing equation for ====>SIGM.CLKF
+Processing equation for ====>SIGN.CLKF
+Processing equation for ====>SIGO.CLKF
+Processing equation for ====>SIGP.CLKF
+Processing equation for ====>SIGQ.CLKF
+Processing equation for ====>SIGR.CLKF
+Processing equation for ====>SIGS.CLKF
+Processing equation for ====>SIGT.CLKF
+Processing equation for ====>SIGU.CLKF
+Processing equation for ====>SIGAA.CLKF
+Processing equation for ====>SIGAB.CLKF
+Processing equation for ====>SIGAC.CLKF
+Processing equation for ====>SIGAD.CLKF
+Processing equation for ====>SIGAE.CLKF
+Processing equation for ====>SIGAF.CLKF
+Processing equation for ====>SIGL
+Processing equation for ====>SIGM
+Processing equation for ====>SIGN
+Processing equation for ====>SIGO
+Processing equation for ====>SIGP
+Processing equation for ====>SIGQ
+Processing equation for ====>SIGR
+Processing equation for ====>SIGS
+Processing equation for ====>SIGT
+Processing equation for ====>SIGU
+Processing equation for ====>SIGAA
+Processing equation for ====>SIGAB
+Processing equation for ====>SIGAC
+Processing equation for ====>SIGAD
+Processing equation for ====>SIGAE
+Processing equation for ====>SIGAF
+Processing equation for ====>SIGAG.CLKF
+Processing equation for ====>SIGAH.CLKF
+Processing equation for ====>SIGAI.CLKF
+Processing equation for ====>SIGAJ.CLKF
+Processing equation for ====>SIGAK.CLKF
+Processing equation for ====>SIGAL.CLKF
+Processing equation for ====>SIGAM.CLKF
+Processing equation for ====>SIGAN.CLKF
+Processing equation for ====>SIGAO.CLKF
+Processing equation for ====>SIGAP.CLKF
+Processing equation for ====>SIGAQ.CLKF
+Processing equation for ====>SIGAR.CLKF
+Processing equation for ====>SIGAS.CLKF
+Processing equation for ====>SIGAT.CLKF
+Processing equation for ====>SIGAU.CLKF
+Processing equation for ====>SIGAV.CLKF
+Processing equation for ====>SIGAG
+Processing equation for ====>SIGAH
+Processing equation for ====>SIGAI
+Processing equation for ====>SIGAJ
+Processing equation for ====>SIGAK
+Processing equation for ====>SIGAL
+Processing equation for ====>SIGAM
+Processing equation for ====>SIGAN
+Processing equation for ====>SIGAO
+Processing equation for ====>SIGAP
+Processing equation for ====>SIGAQ
+Processing equation for ====>SIGAR
+Processing equation for ====>SIGAS
+Processing equation for ====>SIGAT
+Processing equation for ====>SIGAU
+Processing equation for ====>SIGAV
+
+ %%  MACHBPP  %% Maximum memory allocated was: 91378 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Not2big.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 12:59:04; (MACHBPP.EXE= 2 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 12:59:04 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node SIGCF...
+====> SIGCF              MIN_ON (1 + pt)
+====> SIGCF.CLKF         MIN_ON (1 + pt)
+====> SIGCF.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGCE...
+====> SIGCE              MIN_ON (1 + pt)
+====> SIGCE.CLKF         MIN_ON (1 + pt)
+====> SIGCE.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGCC...
+====> SIGCC              MIN_ON (1 + pt)
+====> SIGCC.CLKF         MIN_ON (1 + pt)
+====> SIGCC.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGCB...
+====> SIGCB              MIN_ON (1 + pt)
+====> SIGCB.CLKF         MIN_ON (1 + pt)
+====> SIGCB.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGBX...
+====> SIGBX              MIN_ON (1 + pt)
+====> SIGBX.CLKF         MIN_ON (1 + pt)
+====> SIGBX.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGBW...
+====> SIGBW              MIN_ON (1 + pt)
+====> SIGBW.CLKF         MIN_ON (1 + pt)
+====> SIGBW.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGBU...
+====> SIGBU              MIN_ON (1 + pt)
+====> SIGBU.CLKF         MIN_ON (1 + pt)
+====> SIGBU.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGBT...
+====> SIGBT              MIN_ON (1 + pt)
+====> SIGBT.CLKF         MIN_ON (1 + pt)
+====> SIGBT.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGBR...
+====> SIGBR              MIN_ON (1 + pt)
+====> SIGBR.CLKF         MIN_ON (1 + pt)
+====> SIGBR.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGBQ...
+====> SIGBQ              MIN_ON (1 + pt)
+====> SIGBQ.CLKF         MIN_ON (1 + pt)
+====> SIGBQ.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGBO...
+====> SIGBO              MIN_ON (1 + pt)
+====> SIGBO.CLKF         MIN_ON (1 + pt)
+====> SIGBO.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGBN...
+====> SIGBN              MIN_ON (1 + pt)
+====> SIGBN.CLKF         MIN_ON (1 + pt)
+====> SIGBN.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGBL...
+====> SIGBL              MIN_ON (1 + pt)
+====> SIGBL.CLKF         MIN_ON (1 + pt)
+====> SIGBL.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGBK...
+====> SIGBK              MIN_ON (1 + pt)
+====> SIGBK.CLKF         MIN_ON (1 + pt)
+====> SIGBK.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGBI...
+====> SIGBI              MIN_ON (1 + pt)
+====> SIGBI.CLKF         MIN_ON (1 + pt)
+====> SIGBI.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGBH...
+====> SIGBH              MIN_ON (1 + pt)
+====> SIGBH.CLKF         MIN_ON (1 + pt)
+====> SIGBH.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGBF...
+====> SIGBF              MIN_ON (1 + pt)
+====> SIGBF.CLKF         MIN_ON (1 + pt)
+====> SIGBF.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGBE...
+====> SIGBE              MIN_ON (1 + pt)
+====> SIGBE.CLKF         MIN_ON (1 + pt)
+====> SIGBE.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGBC...
+====> SIGBC              MIN_ON (1 + pt)
+====> SIGBC.CLKF         MIN_ON (1 + pt)
+====> SIGBC.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGBB...
+====> SIGBB              MIN_ON (1 + pt)
+====> SIGBB.CLKF         MIN_ON (1 + pt)
+====> SIGBB.RSTF         MIN_ON (1 + pt)
+Processing equation(s) for node SIGK...
+====> SIGK               MIN_ON (1 + pt)
+====> SIGK.CLKF          MIN_ON (1 + pt)
+====> SIGK.RSTF          MIN_ON (1 + pt)
+Processing equation(s) for node SIGJ...
+====> SIGJ               MIN_ON (1 + pt)
+====> SIGJ.CLKF          MIN_ON (1 + pt)
+====> SIGJ.RSTF          MIN_ON (1 + pt)
+Processing equation(s) for node RESESIGJNT...
+====> RESESIGJNT         MIN_ON (3 + pt --> 1 + pt)
+Processing equation(s) for pin SIGH...
+====> /SIGH              MIN_ON (1 - pt)
+Processing equation(s) for pin CLOCKOUT...
+====> CLOCKOUT           MIN_ON (1 + pt)
+Processing equation(s) for pin SIGBA...
+====> SIGBA              MIN_ON (1 + pt)
+====> SIGBA.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAV...
+====> SIGAV              MIN_ON (2 + pt)
+====> SIGAV.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAU...
+====> SIGAU              MIN_ON (2 + pt)
+====> SIGAU.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAT...
+====> SIGAT              MIN_ON (2 + pt)
+====> SIGAT.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAS...
+====> SIGAS              MIN_ON (2 + pt)
+====> SIGAS.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAR...
+====> SIGAR              MIN_ON (2 + pt)
+====> SIGAR.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAQ...
+====> SIGAQ              MIN_ON (2 + pt)
+====> SIGAQ.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAP...
+====> SIGAP              MIN_ON (2 + pt)
+====> SIGAP.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAO...
+====> SIGAO              MIN_ON (2 + pt)
+====> SIGAO.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAN...
+====> SIGAN              MIN_ON (2 + pt)
+====> SIGAN.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAM...
+====> SIGAM              MIN_ON (2 + pt)
+====> SIGAM.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAL...
+====> SIGAL              MIN_ON (2 + pt)
+====> SIGAL.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAK...
+====> SIGAK              MIN_ON (2 + pt)
+====> SIGAK.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAJ...
+====> SIGAJ              MIN_ON (2 + pt)
+====> SIGAJ.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAI...
+====> SIGAI              MIN_ON (2 + pt)
+====> SIGAI.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAH...
+====> SIGAH              MIN_ON (2 + pt)
+====> SIGAH.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAG...
+====> SIGAG              MIN_ON (2 + pt)
+====> SIGAG.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGCD...
+====> SIGCD              MIN_ON (1 + pt)
+====> SIGCD.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGCA...
+====> SIGCA              MIN_ON (1 + pt)
+====> SIGCA.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGBV...
+====> SIGBV              MIN_ON (1 + pt)
+====> SIGBV.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAF...
+====> SIGAF              MIN_ON (2 + pt)
+====> SIGAF.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAE...
+====> SIGAE              MIN_ON (2 + pt)
+====> SIGAE.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAD...
+====> SIGAD              MIN_ON (2 + pt)
+====> SIGAD.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAC...
+====> SIGAC              MIN_ON (2 + pt)
+====> SIGAC.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAB...
+====> SIGAB              MIN_ON (2 + pt)
+====> SIGAB.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGAA...
+====> SIGAA              MIN_ON (2 + pt)
+====> SIGAA.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGU...
+====> SIGU               MIN_ON (2 + pt)
+====> SIGU.CLKF          MIN_ON (1 + pt)
+Processing equation(s) for pin SIGT...
+====> SIGT               MIN_ON (2 + pt)
+====> SIGT.CLKF          MIN_ON (1 + pt)
+Processing equation(s) for pin SIGS...
+====> SIGS               MIN_ON (2 + pt)
+====> SIGS.CLKF          MIN_ON (1 + pt)
+Processing equation(s) for pin SIGR...
+====> SIGR               MIN_ON (2 + pt)
+====> SIGR.CLKF          MIN_ON (1 + pt)
+Processing equation(s) for pin SIGQ...
+====> SIGQ               MIN_ON (2 + pt)
+====> SIGQ.CLKF          MIN_ON (1 + pt)
+Processing equation(s) for pin SIGP...
+====> SIGP               MIN_ON (2 + pt)
+====> SIGP.CLKF          MIN_ON (1 + pt)
+Processing equation(s) for pin SIGO...
+====> SIGO               MIN_ON (2 + pt)
+====> SIGO.CLKF          MIN_ON (1 + pt)
+Processing equation(s) for pin SIGN...
+====> SIGN               MIN_ON (2 + pt)
+====> SIGN.CLKF          MIN_ON (1 + pt)
+Processing equation(s) for pin SIGM...
+====> SIGM               MIN_ON (2 + pt)
+====> SIGM.CLKF          MIN_ON (1 + pt)
+Processing equation(s) for pin SIGL...
+====> SIGL               MIN_ON (2 + pt)
+====> SIGL.CLKF          MIN_ON (1 + pt)
+Processing equation(s) for pin SIGBS...
+====> SIGBS              MIN_ON (1 + pt)
+====> SIGBS.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGBP...
+====> SIGBP              MIN_ON (1 + pt)
+====> SIGBP.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGBM...
+====> SIGBM              MIN_ON (1 + pt)
+====> SIGBM.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGBJ...
+====> SIGBJ              MIN_ON (1 + pt)
+====> SIGBJ.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGBG...
+====> SIGBG              MIN_ON (1 + pt)
+====> SIGBG.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGBD...
+====> SIGBD              MIN_ON (1 + pt)
+====> SIGBD.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin SIGI...
+====> /SIGI              MIN_ON (10 - pt --> 2 - pt)
+Processing equation(s) for pin CNTFOUR...
+====> CNTFOUR.T          MIN_ON (2 + pt)
+====> CNTFOUR.CLKF       MIN_ON (1 + pt)
+====> CNTFOUR.RSTF       MIN_ON (1 + pt)
+Processing equation(s) for pin CNTTHREE...
+====> CNTTHREE.T         MIN_ON (2 + pt)
+====> CNTTHREE.CLKF      MIN_ON (1 + pt)
+====> CNTTHREE.RSTF      MIN_ON (1 + pt)
+Processing equation(s) for pin CNTTWO...
+====> CNTTWO.T           MIN_ON (2 + pt)
+====> CNTTWO.CLKF        MIN_ON (1 + pt)
+====> CNTTWO.RSTF        MIN_ON (1 + pt)
+Processing equation(s) for pin CNTONE...
+====> CNTONE.T           MIN_ON (2 + pt)
+====> CNTONE.CLKF        MIN_ON (1 + pt)
+====> CNTONE.RSTF        MIN_ON (1 + pt)
+Processing equation(s) for pin CNTZERO...
+====> CNTZERO.T          MIN_ON (2 + pt --> 1 + pt)
+====> CNTZERO.CLKF       MIN_ON (1 + pt)
+====> CNTZERO.RSTF       MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 74540 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Not2big.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 12:59:07; (MACHMIN.EXE= 3 sec.) elapsed time= 5 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 12:59:07 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file not2big.tre to PLA file not2big.pla...
+
+.......................................................................
+..
+.......................................................................
+..
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 96596 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Not2big.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 12:59:08; (MACHMIN.EXE= 1 sec.) elapsed time= 6 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 12:59:08 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Not2big.pds . Device is MACH435 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5068 - Since unspecified SET/RESET is NOT to be treated as DON'T
+                CARE, any unspecified SET/RESET will be defaulted to GND.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of global clocks:
+   SIGC:
+...... Is preplaced at a global clock pin.
+   CLK1:
+...... Is preplaced at a global clock pin.
+   CLOCKIN:
+...... Is preplaced at a global clock pin.
+   SIGE:
+...... Is preplaced at a global clock pin.
+
+List of non-global clocks:
+   SIGA:
+...... is preplaced on a pin that is not a dedicated clock.
+   SIGB:
+...... is preplaced on a pin that is not a dedicated clock.
+   CLK2:
+...... is preplaced on a pin that is not a dedicated clock.
+   SIGD:
+...... is preplaced on a pin that is not a dedicated clock.
+   SIGF:
+...... is preplaced on a pin that is not a dedicated clock.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+. . . . . . . . . . . . . . . . . . . . 
+Reshuffle Equations
+ 
+. . . . . . . . . . . 
+Shift to FANIN_PHASE.
+. . . . . . . . . . 
+Shift to FANIN_PHASE2.
+ 
+. . . . . . . . . . 
+Shift to BUR_NOD_PHASE.
+. . . . . . . . . .  
+|> ERROR z8007 - *** Cannot find a Partition.
+..... Only 95 percent of all signals are partitioned.
+
+*** Report Generator invoked.
+
+Partitioning  95% - Completed
+Placement      0% - Completed
+Routing        0% - Completed
+%%% Fitting process has failed %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Not2big.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 0 .
+
+*** End MACHFITR.EX 12:59:17; (MACHFITR.EXE= 9 sec.) elapsed time=15 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

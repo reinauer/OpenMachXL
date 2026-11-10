@@ -1,0 +1,49 @@
+;Fast 10-bit Comparator                                             
+;This Comparator will compare two 10-bit words, and set pin 'compout'
+;high if they are different and low if they are equal.  Comparing more
+;than 10 bits will require an extra layer of logic, which
+;will generate an extra delay.
+
+;---------------------------------- Declaration Segment ------------
+TITLE    Fast Comparator-- Compares two ten bit busses.
+PATTERN  1
+REVISION 1
+AUTHOR   J. ENGINEER
+COMPANY  AMD
+DATE    4/26/94
+
+CHIP  Compare  MACH435
+
+;---------------------------------- PIN Declarations --------------
+pin  ?          inx[0..9]
+pin  ?          in[0..9]
+pin  ?          compout
+
+
+EQUATIONS
+
+compout = (inx[0] :+: IN[0]) + (inx[1] :+: IN[1]) + (inx[2] :+: IN[2])  
+         +(inx[3] :+: IN[3]) + (inx[4] :+: IN[4]) + (inx[5] :+: IN[5]) 
+         +(inx[6] :+: IN[6]) + (inx[7] :+: IN[7]) + (inx[8] :+: IN[8])
+         +(inx[9] :+: IN[9])  
+
+SIMULATION
+
+trace_on inx[0..9] in[0..9] compout
+
+for x:= 1 to 5 do
+  begin
+     setf in[0..9] inx[0..9] 
+     check /compout
+   end
+
+for x:= 1 to 5 do
+  begin
+    setf in[0..9]=#h9 inx[0..9]=#ha 
+    check /compout                 ;incorrect check a "?" will appear in the
+  end                              ; wave viewer
+
+trace_off
+
+
+

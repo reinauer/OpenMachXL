@@ -1,0 +1,191 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Db.pds
+Title  MACH 445/465 Demo Board
+
+|> WARNING D2260
+     The following Pin/Nodes(s) have not been defined in original design
+     file and will be ignored.
+
+      RN_HDR[7]       RN_HDR[5]       RN_HDR[0]       RN_HDR[2]       
+      RN_HDR[1]       RN_HDR[4]       RN_HDR[3]       RN_HDR[6]       
+      RN_LED[7]       RN_LED[5]       RN_LED[1]       RN_LED[0]       
+      RN_LED[2]       RN_LED[4]       RN_LED[3]       RN_LED[6]       
+
+|> WARNING D2130
+     Equation LED[0].SETF is always low.
+|> WARNING D2130
+     Equation BREG[1].SETF is always low.
+|> WARNING D2130
+     Equation BREG[15].SETF is always low.
+|> WARNING D2130
+     Equation BREG[0].SETF is always low.
+|> WARNING D2130
+     Equation BRG2[4].SETF is always low.
+|> WARNING D2130
+     Equation BRG2[3].SETF is always low.
+|> WARNING D2130
+     Equation BRG2[0].SETF is always low.
+|> WARNING D2130
+     Equation BRG2[2].SETF is always low.
+|> WARNING D2130
+     Equation BRG2[1].RSTF is always low.
+|> WARNING D2130
+     Equation LED[1].RSTF is always low.
+|> WARNING D2130
+     Equation LED[2].RSTF is always low.
+|> WARNING D2130
+     Equation LED[3].RSTF is always low.
+|> WARNING D2130
+     Equation LED[4].RSTF is always low.
+|> WARNING D2130
+     Equation LED[5].RSTF is always low.
+|> WARNING D2130
+     Equation LED[6].RSTF is always low.
+|> WARNING D2130
+     Equation LED[7].RSTF is always low.
+|> WARNING D2130
+     Equation BREG[14].RSTF is always low.
+|> WARNING D2130
+     Equation BREG[13].RSTF is always low.
+|> WARNING D2130
+     Equation BREG[12].RSTF is always low.
+|> WARNING D2130
+     Equation BREG[11].RSTF is always low.
+|> WARNING D2130
+     Equation BREG[10].RSTF is always low.
+|> WARNING D2130
+     Equation BREG[9].RSTF is always low.
+|> WARNING D2130
+     Equation BREG[8].RSTF is always low.
+|> WARNING D2130
+     Equation BREG[7].RSTF is always low.
+|> WARNING D2130
+     Equation BREG[6].RSTF is always low.
+|> WARNING D2130
+     Equation BREG[5].RSTF is always low.
+|> WARNING D2130
+     Equation BREG[4].RSTF is always low.
+|> WARNING D2130
+     Equation BREG[3].RSTF is always low.
+|> WARNING D2130
+     Equation BREG[2].RSTF is always low.
+|> WARNING D2130
+     Equation BRG2[4].RSTF is always low.
+|> WARNING D2130
+     Equation BRG2[3].RSTF is always low.
+|> WARNING D2130
+     Equation BRG2[0].RSTF is always low.
+|> WARNING D2130
+     Equation BRG2[2].RSTF is always low.
+|> WARNING D2300
+     Clock signal also drives other logic data functions.
+
+      CLK0            A3              PIACS           CLKS            
+
+   1-V1 - TRACE_ON
+          LED[7..0]  CLK0  RST  SWC[0..1,6,7]  BREG[0,1,14,15]  
+          BRG2[0..4]  CLKS  
+   1-V1 - SETF
+          /SWC[0]  /SWC[1]  /SWC[6]  /SWC[7]  /RST  /CLK0  
+   2-V2 - SETF
+          RST  
+   6-V3 - CLOCKF
+          CLK0  
+   6-V4 - SETF
+          /RST  
+   7-V5 - SETF
+          SWC[0]  SWC[1]  /SWC[6]  
+   8-V6 - FOR
+  11-V6 - CLOCKF
+          CLK0  
+  14-V7 - CLOCKF
+          CLK0  
+  17-V8 - CLOCKF
+          CLK0  
+  20-V9 - CLOCKF
+          CLK0  
+  23-V10 - CLOCKF
+          CLK0  
+  26-V11 - CLOCKF
+          CLK0  
+  29-V12 - CLOCKF
+          CLK0  
+  32-V13 - CLOCKF
+          CLK0  
+  32-V14 - SETF
+          SWC[1]  /SWC[0]  RST  
+  33-V15 - SETF
+          /RST  
+  34-V16 - FOR
+  37-V16 - CLOCKF
+          CLK0  
+  40-V17 - CLOCKF
+          CLK0  
+  43-V18 - CLOCKF
+          CLK0  
+  46-V19 - CLOCKF
+          CLK0  
+  49-V20 - CLOCKF
+          CLK0  
+  52-V21 - CLOCKF
+          CLK0  
+  55-V22 - CLOCKF
+          CLK0  
+  58-V23 - CLOCKF
+          CLK0  
+  58-V24 - SETF
+          /SWC[1]  SWC[0]  RST  
+  59-V25 - SETF
+          /RST  
+  60-V26 - FOR
+  63-V26 - CLOCKF
+          CLK0  
+  66-V27 - CLOCKF
+          CLK0  
+  69-V28 - CLOCKF
+          CLK0  
+  72-V29 - CLOCKF
+          CLK0  
+  75-V30 - CLOCKF
+          CLK0  
+  78-V31 - CLOCKF
+          CLK0  
+  81-V32 - CLOCKF
+          CLK0  
+  84-V33 - CLOCKF
+          CLK0  
+  84-V34 - SETF
+          /SWC[1]  /SWC[0]  RST  
+  85-V35 - SETF
+          /RST  
+  86-V36 - FOR
+  89-V36 - CLOCKF
+          CLK0  
+  92-V37 - CLOCKF
+          CLK0  
+  95-V38 - CLOCKF
+          CLK0  
+  98-V39 - CLOCKF
+          CLK0  
+ 101-V40 - CLOCKF
+          CLK0  
+ 104-V41 - CLOCKF
+          CLK0  
+ 107-V42 - CLOCKF
+          CLK0  
+ 110-V43 - CLOCKF
+          CLK0  
+ 110-V44 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Db.HST
+Simulation results (trace) are in   ===> Db.TRF
+Merged results (JEDEC) are in       ===> Db.JDC
+Simulation results (trace vectors) are in   ===> Db.TRV
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 319561 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Db.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 35

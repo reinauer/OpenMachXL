@@ -1,0 +1,28 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME Msv3.pds
+#AMD TITLE 
+#AMD PATTERN 
+#AMD REVISION 
+#AMD AUTHOR 
+#AMD COMPANY 
+#AMD DATE 
+#AMD CHIP MSV3
+#AMD DEVICE MACH111
+#AMD JED_FILE Msv3.jed
+#AMD SIGNATURE 
+#AMD PIN 10 GND:1 A:2 B:3 CLK:11 GND:12 Y:18 VCC:22 GND:23 GND:34 VCC:44 
+#AMD NODE 1 QB:0 
+.type f
+.i 4
+.o 5
+.ilb A B CLK QB
+.ob  Y.REG Y.C Y.RE QB.REG QB.C
+.phase 11111
+.p 6
+---1 1~~~~
+1--- 1~~~~
+--1- ~1~~1
+-1-- ~~1~~
+1--0 ~~~1~
+-0-1 ~~~1~
+.e

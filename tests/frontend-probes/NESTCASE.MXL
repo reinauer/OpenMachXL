@@ -1,0 +1,81 @@
+[VERSION]=MACHXL 2.0
+[EXE_DIR]=D:\MACHXL\EXAMPLES
+[WORK_DIR]=D:\MACHXL\EXAMPLES
+[ORCAD_EXE]=
+[MIN_DISK]=50 
+[EDIT_FILE]=*.*
+[MOUSE_TYPE]=3
+[MOUSE_SPEED]=3
+[RAM_SIZE]=500
+[EQN_1_BPP]=1
+[EQN_1_EXP]=1
+[EQN_1_MIN]=1
+[EQN_1_PALXPT]=1
+[EQN_1_PLSASM]=1
+[EQN_1_PLDSIM]=1
+[EQN_1_TREPL2]=1
+[DESIGN_FILE]=TEST.PDS
+[EDITOR_NAME]=D:\MACHXL\EXE\ED.EXE
+[RUN_LOG]=TEST.LOG
+[COMP_OPT]=Y
+[SIM_OPT]=Y
+[DESIGN_OPT]=Y
+[BELL_OPT]=Y
+[NETLIST_OPT]=N
+[SILENT_OPT]=N
+[RUN_MODE]=Run All Programs
+[FILE_FORMAT]=Text
+[P_N]=Y
+[GATE_SPLIT]=N
+[THRESHOLD]=20 
+[BUCKET_SIZE]=20
+[D_T_REG_OPTM]=D,T As specified. JK,RS to D
+[M_POLAR]=As specified in design file
+[BPP_SIGNAL]=Off
+[FAST_MIN]=N
+[PTERM_CLK]=N
+[FITR_PLACE]=Design file
+[FITR_DATA]=Last successful placement
+[SIMF_OPT]=N
+[SIM_PLACE]=Last successful placement
+[EQN_22V10]=Y
+[M3XX_MSG]=N
+[M3XX_SET_RST]=Y
+[M3XX_RUNTIME]=0
+[M3XX_PREPLACE]=No Change
+[ZERO_HOLD_TM]=N
+[SIZE_REDUCE]=N
+[SIZE_REDUCE_N]=1
+[DOWN_CONFIG]=< None >
+[ROUTE_PER_PL]=N
+[RPT_LEVEL]=Brief
+[FLOAT_ALL]=N
+[RE_FIT]=N
+[UNUSED_IO]=N
+[UNUSED_IO_L]=H
+;next entry is new in this version
+[JTAG_STATUS]=Y
+;next entry is new in this version
+[JTAG_ERROR]=N
+;next entry is new in this version
+[JTAG_ERASE]=Y
+;next entry is new in this version
+[ITERATE_FITR]=Y
+;next entry is new in this version
+[JTAG_PORT]=lpt1
+;next entry is new in this version
+[SUPPORT_NT]=Y
+;next entry is new in this version
+[THRESHOLD_12]=12
+;next entry is new in this version
+[THRESHOLD_2X]=16
+;next entry is new in this version
+[BUCKET_SIZE0]=12
+;next entry is new in this version
+[BUCKET_SIZE1]=16
+;next entry is new in this version
+[PAIR]=Y
+;next entry is new in this version
+[BALANCED_PAR]=Y
+;next entry is new in this version
+[SPREAD_PL]=Y

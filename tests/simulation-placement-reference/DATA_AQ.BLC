@@ -1,0 +1,100 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file Data_aq.pds
+; FITTER-generated Placements.
+; DEVICE   MACH465
+; DATE     Tue Nov 10 03:14:04 2026
+
+
+Pin   9  RAM_AD001[0] Comb ; S6=1  S9=1  Pair 42
+Pin   107  RAM_AD001[1] Comb ; S6=1  S9=1  Pair 166
+Pin   109  RAM_AD001[2] Comb ; S6=1  S9=1  Pair 162
+Pin   117  RAM_AD001[3] Comb ; S6=1  S9=1  Pair 182
+Pin   15  RAM_AD001[4] Comb ; S6=1  S9=1  Pair 50
+Pin   158  RAM_AD001[5] Comb ; S6=1  S9=1  Pair 230
+Pin   143  RAM_AD001[6] Comb ; S6=1  S9=1  Pair 198
+Pin   170  RAM_AD001[7] Comb ; S6=1  S9=1  Pair 242
+Pin   49  RAM_DATA[0] Comb ; S6=1  S9=1  Pair 86
+Pin   37  RAM_DATA[1] Comb ; S6=1  S9=1  Pair 66
+Pin   60  RAM_DATA[2] Comb ; S6=1  S9=1  Pair 106
+Pin   54  RAM_DATA[3] Comb ; S6=1  S9=1  Pair 102
+Pin   39  RAM_DATA[4] Comb ; S6=1  S9=1  Pair 70
+Pin   47  RAM_DATA[5] Comb ; S6=1  S9=1  Pair 82
+Pin   56  RAM_DATA[6] Comb ; S6=1  S9=1  Pair 98
+Pin   5  RAM_DATA[7] Comb ; S6=1  S9=1  Pair 34
+Pin   108  MUXED_002[0] ;  IPair 344
+Pin   102  MUXED_002[1] ;  IPair 336
+Pin   101  MUXED_002[2] ;  IPair 335
+Pin   100  MUXED_002[3] ;  IPair 334
+Pin   99  MUXED_002[4] ;  IPair 333
+Pin   98  MUXED_002[5] ;  IPair 332
+Pin   97  MUXED_002[6] ;  IPair 331
+Pin   96  MUXED_002[7] ;  IPair 330
+Pin   205  DATABUS[0] Comb ; S6=1  S9=1  Pair 18
+Pin   141  DATABUS[1] Comb ; S6=1  S9=1  Pair 194
+Pin   3  DATABUS[2] Comb ; S6=1  S9=1  Pair 38
+Pin   43  DATABUS[3] Comb ; S6=1  S9=1  Pair 90
+Pin   91  DATABUS[4] Comb ; S6=1  S9=1  Pair 130
+Pin   119  DATABUS[5] Comb ; S6=1  S9=1  Pair 178
+Pin   66  DATABUS[6] Comb ; S6=1  S9=1  Pair 114
+Pin   160  DATABUS[7] Comb ; S6=1  S9=1  Pair 226
+Pin   33  BUSADDR[0]
+Pin   32  BUSADDR[1]
+Pin   31  BUSADDR[2]
+Pin   22  BUSADDR[3]
+Pin   21  BUSADDR[4]
+Pin   20  BUSADDR[5]
+Pin   19  BUSADDR[6]
+Pin   18  BUSADDR[7]
+Pin   10  SEL0
+Pin   8  SEL1
+Pin   17  SEL2
+Pin   7  CLK
+Pin   6  RST
+Pin   195  CLK_OUT Comb ; S6=1  S9=1  Pair 2
+Pin   4  OE0
+Pin   16  LOAD
+Pin   13  CE0
+Pin   14  CE1
+Pin   187  CLK_IREG
+Node  344  B_DATA[0] Reg ;
+Node  336  B_DATA[1] Reg ;
+Node  335  B_DATA[2] Reg ;
+Node  334  B_DATA[3] Reg ;
+Node  333  B_DATA[4] Reg ;
+Node  332  B_DATA[5] Reg ;
+Node  331  B_DATA[6] Reg ;
+Node  330  B_DATA[7] Reg ;
+Node  154  ADD[0] Comb ; S6=1  S9=1 
+Node  174  ADD[1] Comb ; S6=1  S9=1 
+Node  190  ADD[2] Comb ; S6=1  S9=1 
+Node  206  ADD[3] Comb ; S6=1  S9=1 
+Node  222  ADD[4] Comb ; S6=1  S9=1 
+Node  238  ADD[5] Comb ; S6=1  S9=1 
+Node  254  ADD[6] Comb ; S6=1  S9=1 
+Node  250  ADD[7] Comb ; S6=1  S9=1 
+Node  158  CARRY[1] Comb ; S6=1  S9=1 
+Node  170  CARRY[2] Comb ; S6=1  S9=1 
+Node  186  CARRY[3] Comb ; S6=1  S9=1 
+Node  202  CARRY[4] Comb ; S6=1  S9=1 
+Node  218  CARRY[5] Comb ; S6=1  S9=1 
+Node  234  CARRY[6] Comb ; S6=1  S9=1 
+Node  246  CARRY[7] Comb ; S6=1  S9=1 
+Node  214  A_DATA[0] Reg  ; S6=1  S9=0 
+Node  74  A_DATA[1] Reg  ; S6=1  S9=0 
+Node  118  A_DATA[2] Reg  ; S6=1  S9=0 
+Node  58  A_DATA[3] Reg  ; S6=1  S9=0 
+Node  54  A_DATA[4] Reg  ; S6=1  S9=0 
+Node  126  A_DATA[5] Reg  ; S6=1  S9=0 
+Node  210  A_DATA[6] Reg  ; S6=1  S9=0 
+Node  122  A_DATA[7] Reg  ; S6=1  S9=0 
+Node  22  Q[0] Reg  ; S6=1  S9=0 
+Node  150  Q[1] Reg  ; S6=1  S9=0 
+Node  146  Q[2] Reg  ; S6=1  S9=0 
+Node  26  Q[3] Reg  ; S6=1  S9=0 
+Node  138  Q[4] Reg  ; S6=1  S9=0 
+Node  134  Q[5] Reg  ; S6=1  S9=0 
+Node  10  Q[6] Reg  ; S6=1  S9=0 
+Node  6  Q[7] Reg  ; S6=1  S9=0 
+; Unused Pins & Nodes
+; -> None Found.

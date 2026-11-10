@@ -1,0 +1,162 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  P2_src.pds
+Title  Benchmark #2
+
+|> WARNING D2260
+     The following Pin/Nodes(s) have not been defined in original design
+     file and will be ignored.
+
+      RN_D_X[4]       RN_D_X[0]       RN_D_X[6]       RN_D_X[2]       
+      RN_D_X[1]       RN_D_X[3]       RN_D_X[5]       RN_D_X[7]       
+
+|> WARNING D2130
+     Equation CY_X.SETF is always low.
+|> WARNING D2130
+     Equation D_X[7].SETF is always low.
+|> WARNING D2130
+     Equation D_X[6].SETF is always low.
+|> WARNING D2130
+     Equation D_X[5].SETF is always low.
+|> WARNING D2130
+     Equation D_X[4].SETF is always low.
+|> WARNING D2130
+     Equation D_X[3].SETF is always low.
+|> WARNING D2130
+     Equation D_X[2].SETF is always low.
+|> WARNING D2130
+     Equation D_X[1].SETF is always low.
+|> WARNING D2130
+     Equation D_X[0].SETF is always low.
+|> WARNING D2130
+     Equation R1_X[7].SETF is always low.
+|> WARNING D2130
+     Equation R1_X[6].SETF is always low.
+|> WARNING D2130
+     Equation R1_X[5].SETF is always low.
+|> WARNING D2130
+     Equation R1_X[4].SETF is always low.
+|> WARNING D2130
+     Equation R1_X[3].SETF is always low.
+|> WARNING D2130
+     Equation R1_X[2].SETF is always low.
+|> WARNING D2130
+     Equation R1_X[1].SETF is always low.
+|> WARNING D2130
+     Equation R1_X[0].SETF is always low.
+|> WARNING D2130
+     Equation R2_X[7].SETF is always low.
+|> WARNING D2130
+     Equation R2_X[6].SETF is always low.
+|> WARNING D2130
+     Equation R2_X[5].SETF is always low.
+|> WARNING D2130
+     Equation R2_X[4].SETF is always low.
+|> WARNING D2130
+     Equation R2_X[3].SETF is always low.
+|> WARNING D2130
+     Equation R2_X[2].SETF is always low.
+|> WARNING D2130
+     Equation R2_X[1].SETF is always low.
+|> WARNING D2130
+     Equation R2_X[0].SETF is always low.
+
+
+   1-V1 - TRACE_ON
+          DATA2[7..0]  CH_X  CL_X  CY_X  CLK  LD_PRE  PRE_SEL  
+          LD_COMP  RST  D_X[7..0]  R1_X[7..0]  R2_X[7..0]  DATA1[7..0]  
+   1-V1 - SETF
+          /CLK  /LD_PRE  /LD_COMP  /PRE_SEL  /RST  /DATA2[7]  
+          /DATA2[6]  /DATA2[5]  /DATA2[4]  /DATA2[3]  /DATA2[2]  
+          /DATA2[1]  /DATA2[0]  /DATA1[7]  /DATA1[6]  /DATA1[5]  
+          /DATA1[4]  /DATA1[3]  /DATA1[2]  /DATA1[1]  /DATA1[0]  
+   2-V2 - SETF
+          RST  
+   3-V3 - SETF
+          /RST  
+   4-V3 - CHECK
+          /D_X[7]  /D_X[6]  /D_X[5]  /D_X[4]  /D_X[3]  /D_X[2]  
+          /D_X[1]  /D_X[0]  
+   4-V4 - SETF
+          PRE_SEL  
+   5-V5 - SETF
+          DATA2[7]  DATA2[6]  /DATA2[5]  DATA2[4]  DATA2[3]  
+          /DATA2[2]  DATA2[1]  /DATA2[0]  
+   6-V6 - SETF
+          LD_PRE  
+  10-V7 - CLOCKF
+          CLK  
+  10-V8 - SETF
+          /LD_PRE  
+  11-V9 - SETF
+          DATA2[7]  DATA2[6]  DATA2[5]  /DATA2[4]  /DATA2[3]  
+          /DATA2[2]  /DATA2[1]  DATA2[0]  
+  12-V10 - SETF
+          LD_COMP  
+  16-V11 - CLOCKF
+          CLK  
+  16-V12 - SETF
+          /LD_COMP  /PRE_SEL  
+  17-V12 - CHECK
+          D_X[7]  D_X[6]  /D_X[5]  D_X[4]  D_X[3]  /D_X[2]  
+          D_X[1]  /D_X[0]  
+  17-V13 - SETF
+          DATA1[6]  DATA1[4]  DATA1[3]  DATA1[2]  DATA1[1]  
+          DATA1[0]  
+  18-V14 - FOR
+  21-V14 - CLOCKF
+          CLK  
+  24-V15 - CLOCKF
+          CLK  
+  27-V16 - CLOCKF
+          CLK  
+  30-V17 - CLOCKF
+          CLK  
+  33-V18 - CLOCKF
+          CLK  
+  36-V19 - CLOCKF
+          CLK  
+  39-V20 - CLOCKF
+          CLK  
+  39-V20 - CHECK
+          D_X[7]  D_X[6]  D_X[5]  /D_X[4]  /D_X[3]  /D_X[2]  
+          /D_X[1]  D_X[0]  
+  42-V21 - CLOCKF
+          CLK  
+  42-V21 - CHECK
+          /D_X[7]  D_X[6]  /D_X[5]  D_X[4]  D_X[3]  D_X[2]  
+          D_X[1]  D_X[0]  
+  42-V22 - FOR
+  45-V22 - CLOCKF
+          CLK  
+  48-V23 - CLOCKF
+          CLK  
+  51-V24 - CLOCKF
+          CLK  
+  54-V25 - CLOCKF
+          CLK  
+  54-V25 - CHECK
+          /D_X[7]  D_X[6]  D_X[5]  /D_X[4]  /D_X[3]  /D_X[2]  
+          D_X[1]  D_X[0]  
+  54-V26 - SETF
+          RST  
+  58-V27 - CLOCKF
+          CLK  
+  58-V28 - SETF
+          /RST  
+  59-V28 - CHECK
+          /D_X[7]  /D_X[6]  /D_X[5]  /D_X[4]  /D_X[3]  /D_X[2]  
+          /D_X[1]  /D_X[0]  
+  59-V29 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> P2_src.HST
+Simulation results (trace) are in   ===> P2_src.TRF
+Merged results (JEDEC) are in       ===> P2_src.JDC
+Simulation results (trace vectors) are in   ===> P2_src.TRV
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 290237 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: P2_src.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 26

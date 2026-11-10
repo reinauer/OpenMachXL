@@ -1,0 +1,38 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file Lrshift.pds
+; FITTER-generated Placements.
+; DEVICE   MACH111
+; DATE     Mon Nov 09 20:19:46 2026
+
+
+Pin   35  CLK
+Pin   6  LOAD
+Pin   17  I[0]
+Pin   16  I[1]
+Pin   14  I[2]
+Pin   13  I[3]
+Pin   11  I[4]
+Pin   10  I[5]
+Pin   9  I[6]
+Pin   7  I[7]
+Pin   43  AB[0] Reg  ;
+Pin   40  AB[1] Reg  ;
+Pin   2  AB[2] Reg  ;
+Pin   5  AB[3] Reg  ;
+Pin   8  AB[4] Reg  ;
+Pin   15  AB[5] Reg  ;
+Pin   37  AB[6] Reg  ;
+Pin   30  AB[7] Reg  ;
+Pin   4  RESET
+Pin   3  LR
+Node  18  RN_AB[0] Reg  ;
+Node  21  RN_AB[1] Reg  ;
+Node  2  RN_AB[2] Reg  ;
+Node  5  RN_AB[3] Reg  ;
+Node  8  RN_AB[4] Reg  ;
+Node  11  RN_AB[5] Reg  ;
+Node  24  RN_AB[6] Reg  ;
+Node  27  RN_AB[7] Reg  ;
+; Unused Pins & Nodes
+; -> None Found.

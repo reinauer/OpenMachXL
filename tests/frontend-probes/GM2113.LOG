@@ -1,0 +1,138 @@
+
+*** Start MACHPAR.E 03:23:07 
+Gm2113.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP GM2113 MACH211
+   2     |PIN ? A[5..0]
+   3     |PIN 11 CLK
+   4     |PIN ? Q REG
+   5     |NODE ? NN LAT PAIR Q
+   6     |EQUATIONS
+   7     |Q=/A[5]*/A[4]*/A[3]*/A[2]*/A[1]*A[0]+/A[5]*/A[4]*/A[3]*/A[2]*A[1]*/A[0]+/A[5]*/A[4]*/A[3]*A[2]*/A[1]*/A[0]+/A[5]*/A[4]*/A[3]*A[2]*A[1]*A[0]+
+   8     |Q.CLKF=CLK
+   9     |NN=A[0]
+  10     |NN.CLKF=CLK
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Gm2113.pds
+
+*** End MACHPAR.EXE 03:23:08; (MACHPAR.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 03:23:08 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q
+Processing equation for ====>Q.CLKF
+Processing equation for ====>NN
+Processing equation for ====>NN.CLKF
+|> WARNING B604
+     Node equation NN and paired pin equation Q
+     are not identical.  Hence, PAIR declaration deleted.
+
+ %%  MACHBPP  %% Maximum memory allocated was: 93436 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Gm2113.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 1
+
+*** End MACHBPP.EXE 03:23:08; (MACHBPP.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 03:23:08 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node NN...
+====> NN                 MIN_ON (1 + pt)
+====> NN.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for pin Q...
+Gate splitting (PIN ? Q) to (NODE ? _N_O_D_E_0).
+Gate splitting (PIN ? Q) to (NODE ? _N_O_D_E_1).
+====> Q                  MIN_ON (32 + pt --> 2 + pt)
+====> Q.CLKF             MIN_ON (1 + pt)
+====> _N_O_D_E_0         MIN_ON (16 + pt)
+====> _N_O_D_E_1         MIN_ON (16 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 58892 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: GM2113.PDS.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 03:23:09; (MACHMIN.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 03:23:09 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file gm2113.tre to PLA file gm2113.pla...
+
+....
+....
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 55886 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: GM2113.PDS.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 03:23:09; (MACHMIN.EXE= 0 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 03:23:09 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is GM2113.PDS . Device is MACH211 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+|> ERROR z5093 - Invalid clock equation for signal NN .
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+|> WARNING z5071 - Nodes not referenced - discarded :
+NN 
+Check clock rules
+
+List of global clocks:
+   CLK:
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File GM2113.PDS .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 1 .
+
+*** End MACHFITR.EX 03:23:10; (MACHFITR.EXE= 1 sec.) elapsed time= 3 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

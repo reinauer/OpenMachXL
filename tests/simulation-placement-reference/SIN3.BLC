@@ -1,0 +1,14 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file Sin3.pds
+; FITTER-generated Placements.
+; DEVICE   MACH435
+; DATE     Tue Nov 10 03:13:08 2026
+
+
+Pin   8  A ;  IPair 135
+Pin   9  Q Comb ; S6=1  S9=1  Pair 2
+Pin   20  CLK
+Node  135  N Reg ;
+; Unused Pins & Nodes
+; -> None Found.

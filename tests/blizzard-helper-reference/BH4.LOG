@@ -1,0 +1,161 @@
+Bh4.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |;PALASM Design Description
+   2     |; pds2v test: MACH111 resource violations (checks 3 and 4).
+   3     |; EXPECT-EXIT: 1
+   4     |; EXPECT: error: block A needs 28 inputs from the switch matrix, only 26
+   5     |; EXPECT: error: XOR5 needs 16 product terms
+   6     |; EXPECT: warning: WIDE needs 9 product terms
+   7     |; EXPECT: error: EXPL: equation too complex
+   8     |; EXPECT: error: T4.TRST must be a single product term
+   9     |; EXPECT: error: bank IO8-15 needs 4 output-enable terms, only 2
+  10     |; EXPECT: warning: block A has one async reset term shared by all its flip-flops, but R1, R2 use different .RSTF
+  11     |; EXPECT: warning: block A: the async reset (.RSTF of R1) also acts on the flip-flops without .RSTF: R3
+  12     |; EXPECT: error: R2.SETF must be a single product term
+  13     |; EXPECT: warning: POS needs 12 product terms
+  14     |
+  15     |CHIP     BADRES  MACH111
+  16     |
+  17     |PIN  11  CLK
+  18     |PIN  10  IA
+  19     |PIN  13  IB
+  20     |PIN  32  IC
+  21     |PIN  33  ID
+  22     |PIN  35  IE
+  23     |PIN  24  B0                     ; block B pins all used as inputs
+  24     |PIN  25  B1
+  25     |PIN  26  B2
+  26     |PIN  27  B3
+  27     |PIN  28  B4
+  28     |PIN  29  B5
+  29     |PIN  30  B6
+  30     |PIN  31  B7
+  31     |PIN  36  B8
+  32     |PIN  37  B9
+  33     |PIN  38  B10
+  34     |PIN  39  B11
+  35     |PIN  40  B12
+  36     |PIN  41  B13
+  37     |PIN  42  B14
+  38     |PIN  43  B15
+  39     |PIN  8   A0
+  40     |PIN  9   A1
+  41     |
+  42     |PIN  2   BIG    COMBINATORIAL   ; 27 block inputs
+  43     |PIN  3   XOR5   COMBINATORIAL   ; 16 product terms in either polarity
+  44     |PIN  4   WIDE   COMBINATORIAL   ; 9 product terms (warning)
+  45     |PIN  5   R1     REGISTERED
+  46     |PIN  6   R2     REGISTERED
+  47     |PIN  7   R3     REGISTERED
+  48     |PIN  14  T1     COMBINATORIAL   ; bank IO8-15: too many / bad OE terms
+  49     |PIN  15  T2     COMBINATORIAL
+  50     |PIN  16  T3     COMBINATORIAL
+  51     |PIN  17  T4     COMBINATORIAL
+  52     |PIN  18  T5     COMBINATORIAL
+  53     |PIN  19  EXPL   COMBINATORIAL   ; too big to expand in either polarity
+  54     |PIN  20  POS    COMBINATORIAL   ; f explodes, /f has 12 product terms
+  55     |
+  56     |EQUATIONS
+  57     |BIG  = IA * IB * IC * ID * IE * A0
+  58     |     * B0 * B1 * B2 * B3 * B4 * B5 * B6 * B7
+  59     |     * B8 * B9 * B10 * B11 * B12 * B13 * B14 * B15
+  60     |     * XOR5 * WIDE * R1 * R2 * R3
+  61     |XOR5 = IA :+: IB :+: IC :+: ID :+: IE
+  62     |WIDE = B0*B1 + B2*B3 + B4*B5 + B6*B7 + B8*B9 + B10*B11 + B12*B13 + B14*B15
+  63     |     + A0*A1
+  64     |EXPL = B0 :+: B1 :+: B2 :+: B3 :+: B4 :+: B5 :+: B6 :+: B7
+  65     |       :+: B8 :+: B9 :+: B10 :+: B11 :+: B12
+  66     |POS  = (B0 + B1) * (B2 + B3) * (B4 + B5) * (B6 + B7) * (B8 + B9) * (B10 + B11)
+  67     |     * (B12 + B13) * (B14 + B15) * (A0 + A1) * (IA + IB) * (IC + ID) * (IE + A1)
+  68     |
+  69     |R1 := IA
+  70     |R2 := IB
+  71     |R3 := IC
+  72     |R1.CLKF = CLK
+  73     |R2.CLKF = CLK
+  74     |R3.CLKF = CLK
+  75     |R1.RSTF = IA
+  76     |R2.RSTF = IB
+  77     |R2.SETF = IA + IB
+  78     |
+  79     |T1 = IA
+  80     |T2 = IA
+  81     |T3 = IA
+  82     |T4 = IA
+  83     |T5 = IA
+  84     |T1.TRST = IA
+  85     |T2.TRST = IB
+  86     |T3.TRST = IC * /ID
+  87     |T4.TRST = IA + IB
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Bh4.pds
+
+*** Start MACHBPP.E 10:19:06 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>BIG
+Processing equation for ====>XOR5
+Processing equation for ====>WIDE
+Processing equation for ====>EXPL
+Processing equation for ====>POS
+Processing equation for ====>R1
+Processing equation for ====>R2
+Processing equation for ====>R3
+Processing equation for ====>R1.CLKF
+Processing equation for ====>R2.CLKF
+Processing equation for ====>R3.CLKF
+Processing equation for ====>R1.RSTF
+Processing equation for ====>R2.RSTF
+Processing equation for ====>R2.SETF
+Processing equation for ====>T1
+Processing equation for ====>T2
+Processing equation for ====>T3
+Processing equation for ====>T4
+Processing equation for ====>T5
+Processing equation for ====>T1.TRST
+Processing equation for ====>T2.TRST
+Processing equation for ====>T3.TRST
+Processing equation for ====>T4.TRST
+
+ %%  MACHBPP  %% Maximum memory allocated was: 61992 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Bh4.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 10:19:06; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 10:19:06 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin POS...
+|> ERROR L1260  Process stopped.  The equation has 2048 product terms
+                the largest device support has only 960 product terms.
+
+ %%  MACHMIN  %% Maximum memory allocated was: 237660 bytes.
+
+ %%  MACHMIN  %% File Processing Terminated.  File: Bh4.pds.
+ %%  MACHMIN  %% ERROR count: 1  WARNING count: 0
+
+
+*** End MACHMIN.EXE 10:19:29; (MACHMIN.EXE=23 sec.) elapsed time=23 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

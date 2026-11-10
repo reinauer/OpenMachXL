@@ -1,0 +1,13 @@
+H MACH111 44 33 6 6
+D 6
+
+B block #0 (A);  I: 4,   I/O: 1,  cluster#: 1
+FANIN list: 
+ENABLE RST RN_B[1] RN_B[0] 
+E: 1 , B[1] , RN_B[1] *
+
+B block #1 (B);  I: 5,   I/O: 2,  cluster#: 2
+FANIN list: 
+ENABLE RST RN_B[2] RN_B[1] RN_B[0] 
+E: 1 , B[2] , RN_B[2] *
+E: 1 , B[0] , RN_B[0] *

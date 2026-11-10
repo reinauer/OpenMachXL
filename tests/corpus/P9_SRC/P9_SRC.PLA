@@ -1,0 +1,49 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME P9_src.pds
+#AMD TITLE Memory Mapper - PREP Benchmark #9
+#AMD PATTERN P9.PDS
+#AMD REVISION A
+#AMD AUTHOR J. ENGINEER
+#AMD COMPANY ADVANCED MICRO DEVICES, INC.
+#AMD DATE 9 Jan 1993
+#AMD CHIP MAPPER
+#AMD DEVICE MACH435
+#AMD JED_FILE P9_src.jed
+#AMD SIGNATURE 
+#AMD PIN 9 GND:1 VCC:2 GND:11 VCC:21 GND:22 GND:32 VCC:42 GND:43 VCC:44 
+#AMD PIN 5 GND:53 VCC:63 GND:64 GND:74 VCC:84 
+#AMD PIN 8 CLK:0 AS:0 RST:0 ADR[0]:0 ADR[1]:0 ADR[2]:0 ADR[3]:0 ADR[4]:0 
+#AMD PIN 7 ADR[5]:0 ADR[6]:0 ADR[7]:0 ADR[8]:0 ADR[9]:0 ADR[10]:0 ADR[11]:0 
+#AMD PIN 8 ADR[12]:0 ADR[13]:0 ADR[14]:0 ADR[15]:0 A_X:0 B_X:0 C_X:0 D_X:0 
+#AMD PIN 5 E_X:0 F_X:0 G_X:0 H_X:0 BE_X:0 
+#AMD GROUP 10 X_X A_X B_X C_X D_X E_X F_X G_X H_X BE_X 
+.type f
+.i 19
+.o 27
+.ilb CLK AS RST ADR[0] ADR[1] ADR[2] ADR[3] ADR[4] ADR[5] ADR[6] ADR[7]
+     ADR[8] ADR[9] ADR[10] ADR[11] ADR[12] ADR[13] ADR[14] ADR[15]
+.ob  A_X.REG A_X.C A_X.RE B_X.REG B_X.C B_X.RE C_X.REG C_X.C C_X.RE D_X.REG
+     D_X.C D_X.RE E_X.REG E_X.C E_X.RE F_X.REG F_X.C F_X.RE G_X.REG G_X.C
+     G_X.RE H_X.REG H_X.C H_X.RE BE_X.REG BE_X.C BE_X.RE
+.phase 111111111111111111111111111
+.p 19
+-1-------------1111 1~~~~~~~~~~~~~~~~~~~~~~~~~~
+1------------------ ~1~~1~~1~~1~~1~~1~~1~~1~~1~
+--1---------------- ~~1~~1~~1~~1~~1~~1~~1~~1~~1
+-1------------10111 ~~~1~~~~~~~~~~~~~~~~~~~~~~~
+-1-----------100111 ~~~~~~1~~~~~~~~~~~~~~~~~~~~
+-1---------11000111 ~~~~~~~~~1~~~~~~~~~~~~~~~~~
+-1-------1101000111 ~~~~~~~~~~~~1~~~~~~~~~~~~~~
+-1-----110101000111 ~~~~~~~~~~~~~~~1~~~~~~~~~~~
+-1---11010101000111 ~~~~~~~~~~~~~~~~~~1~~~~~~~~
+-1-1101010101000111 ~~~~~~~~~~~~~~~~~~~~~1~~~~~
+-1----------------0 ~~~~~~~~~~~~~~~~~~~~~~~~1~~
+-1---------------0- ~~~~~~~~~~~~~~~~~~~~~~~~1~~
+-1--------------0-- ~~~~~~~~~~~~~~~~~~~~~~~~1~~
+-1----------0000--- ~~~~~~~~~~~~~~~~~~~~~~~~1~~
+-1--------00-000--- ~~~~~~~~~~~~~~~~~~~~~~~~1~~
+-1------00-0-000--- ~~~~~~~~~~~~~~~~~~~~~~~~1~~
+-1----00-0-0-000--- ~~~~~~~~~~~~~~~~~~~~~~~~1~~
+-1-0-0-0-0-0-000--- ~~~~~~~~~~~~~~~~~~~~~~~~1~~
+-1--00-0-0-0-000--- ~~~~~~~~~~~~~~~~~~~~~~~~1~~
+.e

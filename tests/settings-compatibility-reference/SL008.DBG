@@ -1,0 +1,22 @@
+spawnCall():
+=========SPAWN==========
+     Argument List
+     -------------
+SP    = C:\exe\MACHSP.exe 
+<runM>=Man
+<retC>=0
+<topL>=6
+<inFn>=SL008.PDS
+<otFn>=00
+<devN>=MACH111
+<deBg>=D
+<ProgCode> = 0 1 2 3 4 20 5 Y 
+=====Spawn with overlay ( MACHSP.EXE )====== Tue Nov 10 11:38:53 2026
+Tue Nov 10 11:38:53 2026
+C:\EXE\MACHP32.EXE  SL008.PDS -tre SL008.TRE -lis sp.log -log sp.@@1
+Tue Nov 10 11:38:53 2026
+C:\EXE\MACHBPP.EXE  SL008.TRE -PAIR -1eqn -tre SL008.TRE -dc0 -log sp.log
+Tue Nov 10 11:38:53 2026
+C:\EXE\MACHMIN.EXE  -TH 12 -P 12x16 -CON -N -ID  -tre SL008.TRE -log sp.log
+C:\EXE\MACHMENU.EXE -R 0 -D 
+======Spawn with overlay ( MACHMENU.EXE )=====  Tue Nov 10 11:38:53 2026

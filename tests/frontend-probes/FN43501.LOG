@@ -1,0 +1,112 @@
+
+*** Start MACHPAR.E 03:06:20 
+Fn43501.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP FN43501 MACH435
+   2     |PIN ? A
+   3     |PIN ? B
+   4     |PIN ? CLK
+   5     |PIN ? Q REG
+   6     |EQUATIONS
+   7     |Q.T1=B
+   8     |Q.CLKF=CLK
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Fn43501.pds
+
+*** End MACHPAR.EXE 03:06:20; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 03:06:20 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q.T1
+Processing equation for ====>Q.CLKF
+
+ %%  MACHBPP  %% Maximum memory allocated was: 68920 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Fn43501.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 03:06:20; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 03:06:20 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin Q...
+|> WARNING L2001  Signal Q doesn't have primary equation.
+====> Q.CLKF             MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 48376 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Fn43501.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 1
+
+
+*** End MACHMIN.EXE 03:06:20; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 03:06:20 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file fn43501.tre to PLA file fn43501.pla...
+
+.
+.
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 48434 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Fn43501.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 03:06:21; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 03:06:21 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Fn43501.pds . Device is MACH435 .
+|> WARNING z5063 - Invalid set/reset/clock equations for signal Q with no
+                   defining equation - discarding all equations .
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+|> WARNING z5073 - If a declared input signal is not used in any equation,
+                   then that signal may be discarded in order to reduce the
+                   number of pins required to fit the design. Input Pins
+                   not referenced - discarded :
+A B CLK Q 
+Check clock rules
+|> FATAL z5131 - Design has no referenced signals.
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Fn43501.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 2 .
+
+*** End MACHFITR.EX 03:06:21; (MACHFITR.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

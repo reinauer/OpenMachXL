@@ -1,0 +1,104 @@
+{
+  "name": "NOT2BIG",
+  "capture_script": "research/reports/capture_partition_failure.py",
+  "provenance": {
+    "purpose": "DOS reference only; not a native compiler",
+    "dosbox_version": "DOSBox-X version 2026.10.01 SDL2, copyright 2011-2026 The DOSBox-X Team.\nDOSBox-X project maintainer: joncampbell123 (The Great Codeholio)\n\nDOSBox-X comes with ABSOLUTELY NO WARRANTY.  This is free software,\nand you are welcome to redistribute it under certain conditions;\nplease read the COPYING file thoroughly before doing so.",
+    "archives": {
+      "EXAMPLES.ZIP": "6381d09ec30cb1412e9a497c110ace112857731941510573667eea086a521383",
+      "DAT.ZIP": "e142c7e385492f89240efba3cba46d2bdc97d1f410825a8444ceae1ea89e2af3",
+      "EXE-0.ZIP": "5c365d6578ec3d0f1b6c5d8b8dad19db086f0924f68f3e20a9fa0aca2fcab404",
+      "EXE-1.ZIP": "25180232178a5e0ad502874553a7bcec98ea0b8a6770167507d5c983a51b673a",
+      "EXE-2.ZIP": "ef15cb45ba642a103e6db15e6014f9a52d7772c6958fc8e938098c422639051e"
+    },
+    "results": [
+      {
+        "example": "NOT2BIG.PDS",
+        "directory": "build/failed-reports-original/not2big",
+        "source_sha256": "e2335d5ee7200bddae4b63933913c46b27c4f17cfc02208cd4482c9ce50dac00",
+        "original_settings_sha256": "ea1fd80d5dba5d03791de557870b969eff876da8e7152d8ab678e9911afb6457",
+        "settings_source": "EXAMPLES.ZIP/NOT2BIG.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "NOT2BIG.PDS",
+          "RUN_LOG": "NOT2BIG.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "178a36b2b6c695dbeb003578c0e14ec55551f1d95ef807facfde5d81193854ee",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/failed-reports-original/not2big/dosbox.conf",
+          "-defaultdir",
+          "build/failed-reports-original/not2big",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 17.082,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "fitting_successful": false,
+        "success": false,
+        "outputs": {
+          "NOT2BIG.DBG": {
+            "sha256": "705edf35c461d5fb1f4030a5d2ca99eaedebe35bee321b589fa6de61f309224a",
+            "bytes": 907
+          },
+          "NOT2BIG.GRP": {
+            "sha256": "24f937c1a0a62ddee5ea1dcbfea07d14cbbca528afb1493589dba8667bdc04ad",
+            "bytes": 1069
+          },
+          "NOT2BIG.LOG": {
+            "sha256": "49f136ca94a233743f29eafd3bc8b32ba0220878ffcb1617ab646ae1dd016d70",
+            "bytes": 35218
+          },
+          "NOT2BIG.MXL": {
+            "sha256": "178a36b2b6c695dbeb003578c0e14ec55551f1d95ef807facfde5d81193854ee",
+            "bytes": 1293
+          },
+          "NOT2BIG.PDS": {
+            "sha256": "e2335d5ee7200bddae4b63933913c46b27c4f17cfc02208cd4482c9ce50dac00",
+            "bytes": 11403
+          },
+          "NOT2BIG.PLA": {
+            "sha256": "ce4062a6f78c9f6c5c98141c9110ca2c24678a0fbca9e8cb32d3612e6e3cfa1f",
+            "bytes": 34889
+          },
+          "NOT2BIG.RPT": {
+            "sha256": "f7dc6f4d8763ff585831b840afe857f1484cdaf6d6a14f48b210c4cbaf39ac69",
+            "bytes": 65454
+          },
+          "NOT2BIG.TAL": {
+            "sha256": "87720d4d7287f88ca68dd1ed5bf4dbed4afbd9fca9300e49234f917ef345cc53",
+            "bytes": 8559
+          },
+          "NOT2BIG.TRE": {
+            "sha256": "22a8ca3ddb10dab304c0b3ff0afafaf5f452524c3e9b70daec70430908b91a0b",
+            "bytes": 12247
+          }
+        }
+      }
+    ]
+  },
+  "sha256": {
+    "NOT2BIG.PDS": "e2335d5ee7200bddae4b63933913c46b27c4f17cfc02208cd4482c9ce50dac00",
+    "NOT2BIG.MXL": "178a36b2b6c695dbeb003578c0e14ec55551f1d95ef807facfde5d81193854ee",
+    "NOT2BIG.RPT": "f7dc6f4d8763ff585831b840afe857f1484cdaf6d6a14f48b210c4cbaf39ac69",
+    "NOT2BIG.TAL": "87720d4d7287f88ca68dd1ed5bf4dbed4afbd9fca9300e49234f917ef345cc53",
+    "NOT2BIG.LOG": "49f136ca94a233743f29eafd3bc8b32ba0220878ffcb1617ab646ae1dd016d70"
+  },
+  "comparison_boundary": "Original failure identity, RESET reasons, unresolved names, IO/PT totals and summed block macrocells agree. Retained block membership/cluster charges and resulting partial tables follow actual native search and differ from DOS. Native progress counts clusters (68/73); original95% uses an unresolved logical-record population."
+}

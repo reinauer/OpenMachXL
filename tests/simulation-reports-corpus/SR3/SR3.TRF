@@ -1,0 +1,21 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+MACHXL SIMULATION SELECTIVE TRACE LISTING
+
+Title     :                          Author   :                  
+Pattern   :                          Company  :                  
+Revision  :                          Date     :                  
+
+MACH111        
+Page : 1 
+
+        gg                                                          
+ A[3]   LH                                                          
+ A[2]   HL                                                          
+ A[1]   LH                                                          
+ A[0]   HL                                                          
+/A[2]   LH                                                          
+/A[1]   HL                                                          
+ Y      LL                                                          
+

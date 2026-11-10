@@ -1,0 +1,35 @@
+
+*** Start MACHSIMU. 11:41:38 
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Sm014.pds
+Title  
+
+
+
+   1-V1 - TRACE_ON
+          A  Q  
+   1-V1 - SETF
+          /A  
+   2-V1 - CHECK
+          /Q  
+   2-V2 - SETF
+          A  
+   3-V2 - CHECK
+          Q  
+   3-V3 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Sm014.HST
+Simulation results (trace) are in   ===> Sm014.TRF
+Merged results (JEDEC) are in       ===> Sm014.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 86422 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Sm014.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHSIMU.EX 11:41:38; (MACHSIMU.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

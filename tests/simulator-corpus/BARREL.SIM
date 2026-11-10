@@ -1,0 +1,77 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Barrel.pds
+Title  Barrel Shifter
+
+|> WARNING D2260
+     The following Pin/Nodes(s) have not been defined in original design
+     file and will be ignored.
+
+      RN_Q[2]         RN_Q[3]         RN_Q[0]         RN_Q[1]         
+
+
+
+   1-V1 - TRACE_ON
+          DATA[3..0]  Q[3..0]  SEL1  SEL2  CLK  
+   1-V1 - SETF
+          RESET  ENA  
+   2-V2 - SETF
+          DATA[3]  /DATA[2]  /DATA[1]  /DATA[0]  
+   3-V3 - SETF
+          /RESET  ENA  
+   4-V4 - SETF
+          /SEL1  /SEL2  
+   8-V5 - CLOCKF
+          CLK  
+   8-V5 - CHECKQ
+          Q[3]  /Q[2]  /Q[1]  /Q[0]  
+   8-V6 - SETF
+          /SEL1  SEL2  
+   9-V7 - FOR
+  12-V7 - CLOCKF
+          CLK  
+  15-V8 - CLOCKF
+          CLK  
+  18-V9 - CLOCKF
+          CLK  
+  18-V9 - CHECKQ
+          /Q[3]  /Q[2]  /Q[1]  Q[0]  
+  18-V10 - SETF
+          SEL1  /SEL2  
+  19-V11 - FOR
+  22-V11 - CLOCKF
+          CLK  
+  25-V12 - CLOCKF
+          CLK  
+  28-V13 - CLOCKF
+          CLK  
+  31-V14 - CLOCKF
+          CLK  
+  31-V14 - CHECKQ
+          /Q[3]  /Q[2]  /Q[1]  Q[0]  
+  31-V15 - SETF
+          SEL1  SEL2  
+  32-V16 - FOR
+  35-V16 - CLOCKF
+          CLK  
+  38-V17 - CLOCKF
+          CLK  
+  41-V18 - CLOCKF
+          CLK  
+  44-V19 - CLOCKF
+          CLK  
+  44-V19 - CHECKQ
+          /Q[3]  /Q[2]  /Q[1]  Q[0]  
+  44-V20 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Barrel.HST
+Simulation results (trace) are in   ===> Barrel.TRF
+Merged results (JEDEC) are in       ===> Barrel.JDC
+Simulation results (trace vectors) are in   ===> Barrel.TRV
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 112719 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Barrel.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 1

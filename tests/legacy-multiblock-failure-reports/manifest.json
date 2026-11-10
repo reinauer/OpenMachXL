@@ -1,0 +1,200 @@
+{
+  "original": "MACHXL 2.1 R11 MACHFITR (3-31-95)",
+  "cases": [
+    {
+      "name": "MF111A",
+      "stage": "placement",
+      "corrected_rpt": true,
+      "original_directory": "build/legacy-multiblock-original/mf111a/WORK",
+      "sha256": {
+        "MF111A.PDS": "305c7321d30a7e0b5038373063150f6bd12ba114a514705381d47efc4f22e42f",
+        "MF111A.MXL": "ef617936ab3a46ae525cafbec184ada3b4eebd1286168e1bd3a6d00a8e0d1239",
+        "MF111A.RPT": "7e188dcdbe0db2cf22d06e03ce2098bb46711fc401836a028abb904dd6b28b92",
+        "MF111A.PRD": "ec7a1f360fdc3a5ee3f4112d202a3ca3b20a2620238dfa2068049c70c13ac91f",
+        "MF111A.TAL": "576e9904319d138b235738d168c18a321d10ce82fc86f3c0ad18b0d481cc6782",
+        "MF111A.LOG": "bdf3d232569c487528827ebe395eeda7f02875dcdbe4016d3d4aa2f3e6acaffb",
+        "MF111A.corrected.RPT": "4364febd7442ec1beea174c2de1cb336b8a942ce6cd173f559d8b784e3c2b004"
+      },
+      "provenance": {
+        "source_sha256": "305c7321d30a7e0b5038373063150f6bd12ba114a514705381d47efc4f22e42f",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "MF111A.PDS",
+          "RUN_LOG": "MF111A.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "ef617936ab3a46ae525cafbec184ada3b4eebd1286168e1bd3a6d00a8e0d1239",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "MF111B",
+      "stage": "placement",
+      "corrected_rpt": false,
+      "original_directory": "build/legacy-multiblock-original/mf111b/WORK",
+      "sha256": {
+        "MF111B.PDS": "b4d82359e477a4b8deba6b3a405b74d19d08ea0627508d7480f9dd16ffd148af",
+        "MF111B.MXL": "b71b157c9e662e8a3f92939198284f7cd6be7a6f726b6b9c18b3daff1ca2e597",
+        "MF111B.RPT": "2c17c7c0f4213f0d4b56eaf76a3759b275109e8f5c652e8fb3232d368a0026a5",
+        "MF111B.PRD": "c60e33eccfc6aee44df1ea78e149b6f952ece22cb3bde61a87bec385acbea300",
+        "MF111B.TAL": "78e5f6cd19698d83d0a122b4fc45ee45b0e77c92189a50b952bd96bb1d65352e",
+        "MF111B.LOG": "4666380791911493f8930c85348e1b8b43ea76246a3d932e3da6d5e67a37303a"
+      },
+      "provenance": {
+        "source_sha256": "b4d82359e477a4b8deba6b3a405b74d19d08ea0627508d7480f9dd16ffd148af",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "MF111B.PDS",
+          "RUN_LOG": "MF111B.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "b71b157c9e662e8a3f92939198284f7cd6be7a6f726b6b9c18b3daff1ca2e597",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "MR111",
+      "stage": "routing",
+      "corrected_rpt": false,
+      "original_directory": "build/legacy-multiblock-original/mr111/WORK",
+      "sha256": {
+        "MR111.PDS": "c4144faf6098da66f6c85b5b2643f387a57a1dab83f53204769e30195c59962b",
+        "MR111.MXL": "2e421eadc3970a2f00c4a2db1b1eac119d0dd73cd69233277ad095b56d9382a0",
+        "MR111.RPT": "40611252720c38cb22e88ac621d5b2f07f880a6ccfadea47eb3cdf5993198f53",
+        "MR111.PRD": "b729cf88c8ec8e60e668e40d427feb6219f241e2cddcd2264008442e180fc6a8",
+        "MR111.TAL": "d0a51b537b24929283b0849c8e9377471291fa85da346badd0ef068cea8ffa9c",
+        "MR111.LOG": "e0abea0e4ae9562bb86f1153217242a132fb96cdc7efa27a82fd05c573f4de8f"
+      },
+      "provenance": {
+        "source_sha256": "c4144faf6098da66f6c85b5b2643f387a57a1dab83f53204769e30195c59962b",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "MR111.PDS",
+          "RUN_LOG": "MR111.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "2e421eadc3970a2f00c4a2db1b1eac119d0dd73cd69233277ad095b56d9382a0",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "MP111",
+      "stage": "placement",
+      "corrected_rpt": true,
+      "original_directory": "build/legacy-multiblock-original/mp111/WORK",
+      "sha256": {
+        "MP111.PDS": "37e659f84eee15a36499631afacae7b0bd52cf2ec1778944101b13230cb45843",
+        "MP111.MXL": "5cbed87ca4d6efdf9a2a7013a0592655ecea412d37c0232a2b7becd1813dda49",
+        "MP111.RPT": "73c25d16703955a115456e009319444b2e887b926cdd31888555443af3d68cfa",
+        "MP111.PRD": "1d2981731e21c52987aa58c4bc1a5504d1824022af2fc9f2188698447956b22a",
+        "MP111.TAL": "edefcd282871f74422da39d564eef1441c805826fd16cb3bcc093f7da1fcb791",
+        "MP111.LOG": "dd002a93ee1ce9190710a61c29801a7dcafa7bfa066cef978a4e2e8f6d81cd1a",
+        "MP111.corrected.RPT": "9702a12899fe18d5c7b7cf0abdd52e723c3515b7b532dff2e6ed18ba40c19773"
+      },
+      "provenance": {
+        "source_sha256": "37e659f84eee15a36499631afacae7b0bd52cf2ec1778944101b13230cb45843",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "MP111.PDS",
+          "RUN_LOG": "MP111.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "5cbed87ca4d6efdf9a2a7013a0592655ecea412d37c0232a2b7becd1813dda49",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "MPA",
+      "stage": "placement",
+      "corrected_rpt": true,
+      "original_directory": "build/early-cell-failure/mpa/WORK",
+      "sha256": {
+        "MPA.PDS": "f35b5110629f8f91ee44cf07ea2842547fa7f3a0ec6b96e29ee5b51196fa4869",
+        "MPA.MXL": "fe6f7bfee082902a896774bb33cd5f86dddc56ce3f2f22075fc159ba73e29cfc",
+        "MPA.RPT": "dcbc6a9c13b40529a7816fe1f65fdb936bcbfae47d1a330fb907304f1d49f145",
+        "MPA.PRD": "73b930067f75370eee1d5a5a0d4a430166e1dd9f5b1ecf6418fce80d19b77468",
+        "MPA.TAL": "fe76c693e3a05f2b9940a4ccf1b5bfa807f5aec83eff38c8beb13d222028e26b",
+        "MPA.LOG": "75228b7882900bdcaee173244f3222c989b302b813337e34ddf455e20e73b4d5",
+        "MPA.corrected.RPT": "41969a1e6b27608925b69007b0dd0f8c6e46aa9ab4c36355607302caa907eadc"
+      },
+      "provenance": {
+        "source_sha256": "f35b5110629f8f91ee44cf07ea2842547fa7f3a0ec6b96e29ee5b51196fa4869",
+        "original_settings_sha256": "5cbed87ca4d6efdf9a2a7013a0592655ecea412d37c0232a2b7becd1813dda49",
+        "settings_source": "EXAMPLES.ZIP/MPA.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "MPA.PDS",
+          "RUN_LOG": "MPA.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "fe6f7bfee082902a896774bb33cd5f86dddc56ce3f2f22075fc159ba73e29cfc",
+        "dos_batch_completed": true
+      }
+    },
+    {
+      "name": "RF112",
+      "stage": "routing",
+      "corrected_rpt": false,
+      "original_directory": "build/failed-feedback-report-original/rf112/WORK",
+      "sha256": {
+        "RF112.PDS": "23c2b8de4135ae518ae24f949bff9b22bb2d9c5607c47535e0306b911c9a50d7",
+        "RF112.MXL": "cf10f871f21554679a8a103c279666877385859da740bb2288a1760e88e54539",
+        "RF112.RPT": "6cce29267862d7f2cdc7747ff2da824fe1070ae2056dc4f80261e3685cffd447",
+        "RF112.PRD": "8e85e80efe270d05d2efab39b811ffa3709b74d0ba58f97604d77009f9d82de2",
+        "RF112.TAL": "dd741564284b640f211425cb6a7fd742756dbd3c15b857d39c1d3e21a8e8ec3b",
+        "RF112.LOG": "c70fc12f8f71c25b0393ad58e85b3d51ceeb3bb492dd3d8018a195aba71fccff"
+      },
+      "provenance": {
+        "source_sha256": "23c2b8de4135ae518ae24f949bff9b22bb2d9c5607c47535e0306b911c9a50d7",
+        "original_settings_sha256": "30033b706baa04a12a9c8cacf0791c930c65dbfc221a91ca6ab433bf5194d961",
+        "settings_source": "DAT.ZIP/SETUP.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "RF112.PDS",
+          "RUN_LOG": "RF112.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "cf10f871f21554679a8a103c279666877385859da740bb2288a1760e88e54539",
+        "dos_batch_completed": true
+      }
+    }
+  ]
+}

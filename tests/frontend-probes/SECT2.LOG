@@ -1,0 +1,202 @@
+
+*** Start MACHPAR.E 08:44:23 
+Sect2.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP SECT2 MACH111
+   2     |PIN 2 A
+   3     |PIN 3 B
+   4     |PIN 11 CLK
+   5     |PIN 18 Y
+   6     |STATE
+   7     |MOORE_MACHINE
+   8     |CLKF=CLK
+   9     |S0:=A->S1 +->S0
+  10     |S1:=B->S0 +->S1
+  11     |S0.OUTF=/Y
+  12     |S1.OUTF=Y
+  13     |CONDITIONS
+|> WARNING P36  State condition C is defined but never used.
+
+  14     |C=A
+  15     |EQUATIONS
+  16     |Y=B
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  2
+
+ %% MACHPAR %%    File processed successfully.    File:  Sect2.pds
+
+*** End MACHPAR.EXE 08:44:23; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 08:44:23 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+STATE SEGMENT
+EQUATIONS SEGMENT
+Processing equation for ====>Y
+
+ %%  MACHBPP  %% Maximum memory allocated was: 57068 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Sect2.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 08:44:23; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHEXP.E 08:44:23 
+MACHXL 2.1 R9 MACHEXP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+......
+|> WARNING E1351
+     Automatically assigning state bit  _ST0 to ? NODE.
+
+STATE REGISTERS USED
+---------------------
+PIN NUMBER:     PIN NAME:
+  ? NODE         _ST0                                   
+STATE BIT ASSIGNMENT USED
+-------------------------
+STATE NAME:     STATE REGISTERS VALUES:
+                 _ST0   
+ S0              0      
+ S1              1      
+
+.
+
+ %%  MACHEXP  %% Maximum memory allocated was: 12796 bytes.
+
+ %%  MACHEXP  %% File Processed Successfully.  File: Sect2.pds.
+ %%  MACHEXP  %% ERROR count: 0  WARNING count: 1
+
+*** End MACHEXP.EXE 08:44:24; (MACHEXP.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 08:44:24 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>_ST0.CLKF
+Processing equation for ====>_ST0
+Processing equation for ====>/_ST0
+Processing equation for ====>Y
+Processing equation for ====>/Y
+Processing equation for ====>Y
+
+ %%  MACHBPP  %% Maximum memory allocated was: 56998 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Sect2.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 08:44:24; (MACHBPP.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 08:44:24 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node _ST0...
+====> _ST0               MIN_ON (2 + pt)
+====> _ST0.CLKF          MIN_ON (1 + pt)
+Processing equation(s) for pin Y...
+====> Y                  MIN_ON (2 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 41158 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Sect2.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 08:44:24; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 08:44:24 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file sect2.tre to PLA file sect2.pla...
+
+..
+..
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 39298 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Sect2.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 08:44:24; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 08:44:24 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Sect2.pds . Device is MACH111 .
+|> INFO z5109 - For this device, all input pairing is ignored since input
+                registers or latches do not exist. All signals must pass
+                through the central switch matrix before being latched or
+                registered.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of global clocks:
+   CLK:
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is Sect2.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File Sect2.pds .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 0 .
+
+*** End MACHFITR.EX 08:44:25; (MACHFITR.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

@@ -1,0 +1,302 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+**********************************************************************
+* Design Name = 3count_d.pds, Device = MACH111, Nov 09 20:18:33 2026 *
+**********************************************************************
+
+***********************
+* MACH FITTER OPTIONS *
+***********************
+SIGNAL PLACEMENT:
+  Handling of Preplacements                      No Change
+  Use placement data from                        Design file
+
+FITTING OPTIONS:
+  SET/RESET treated as DONT_CARE?                Y
+  Iterate between partitioning and place/route?  Y
+  Balanced partitioning?                         Y
+  Spread Placement?                              Y
+  Maximun Run Time                               run until completion
+
+***************************
+* DEVICE RESOURCE SUMMARY *
+***************************
+                                 Total
+                               Available  Used  Available  Utilization
+Dedicated Pins
+  Input-Only Pins                 2        0      2    -->     0%
+  Clock/Input Pins                4        1      3    -->    25%
+I/O Pins                         32        5     27    -->    15%
+Central Switch Matrix Outputs    52        9     43    -->    17%
+Product Term Clusters            32        3     29    -->     9%
+Logical Product Terms           128        8    120    -->     6%
+Logic Macrocells                 32        3     29    -->     9%
+  Input Registers                ..       ..     ..
+  Unusable Macrocells            ..        0     ..
+
+******************************
+* BLOCK PARTITIONING SUMMARY *
+******************************
+                                                                  # of PT  
+                  Logic   I/O           Macrocells    Macrocells  clusters 
+          Fanin    PTs    Pins         Used Unusable  available   available
+|---------------------------------------------------------------------------|
+Maximum     26     64     16            ..     ..         16        16
+|---------------------------------------------------------------------------|
+Block A      4      3      3             1      0         15        15
+Block B      5      5      2             2      0         14        14
+
+> Two rightmost columns above reflect last status of the placement process.
+
+******************
+* SIGNAL SUMMARY *
+******************
+                             Pin/Node Logic              Output
+       Signals Block Loc PTs   Type   Type  Preset  Reset Enable Fanout Power
+|---------------------------------------------------------------------------|
+          B[0]   B    40  1   output   ...   ...    ...   ...    --     H
+          B[1]   A     2  3   output   ...   ...    ...   ...    --     H
+          B[2]   B    43  4   output   ...   ...    ...   ...    --     H
+        ENABLE   A     4  .    input   ...   ...    ...   ...    AB     .
+           RST   A     3  .    input   ...   ...    ...   ...    AB     .
+       RN_B[0]   B    B3  1  implied    D    ...      1   ...    AB     H
+       RN_B[1]   A    A0  3  implied    D    ...      1   ...    AB     H
+       RN_B[2]   B    B0  4  implied    D    ...      1   ...    -B     H
+
+**************************************************
+* PRESET, RESET and OUTPUT ENABLE signal SUMMARY *
+**************************************************
+
+PRESET signal summary:
+
+Number      Pin or Node Name      Block 
+|--------------------------------------------------|
+
+RESET signal summary:
+
+Number      Pin or Node Name      Block 
+|--------------------------------------------------|
+ 1                  B[2]          AB
+
+OUTPUT ENABLE signal summary:
+
+Number      Pin or Node Name      Block 
+|--------------------------------------------------|
+
+***********************
+* TABULAR INFORMATION *
+***********************
+
+DEDICATED PINS
+                                             Logic             Clock
+Pin              Signal        Type          Fanout            Fanout
+|------------------------------------------------------------------------|
+ 10      ..............          ..                ..                ..
+ 11      ..............          ..                ..                ..
+ 13      ..............          ..                ..                ..
+ 32      ..............          ..                ..                ..
+ 33      ..............          ..                ..                ..
+ 35(Ck3)            CLK     clk/inp                --                AB
+
+**********************************
+* Signals - Equations Where Used *
+**********************************
+Signal Source :    Fanout List
+|---------------------------------------------------------------------------|
+        ENABLE:           B[2]{B}           B[1]{A}           B[0]{B}
+              {BAB}
+           RST:           B[2]{B}           B[1]{A}           B[0]{B}
+              {BAB}
+       RN_B[2]:           B[2]{B}
+              {B}
+       RN_B[1]:           B[2]{B}           B[1]{A}
+              {BA}
+       RN_B[0]:           B[2]{B}           B[1]{A}           B[0]{B}
+              {BAB}
+
+Block A singular list (Input drives only one logic equation)
+        ENABLE:           B[1]
+           RST:           B[1]
+       RN_B[1]:           B[1]
+       RN_B[0]:           B[1]
+
+Block B singular list (Input drives only one logic equation)
+       RN_B[2]:           B[2]
+       RN_B[1]:           B[2]
+
+
+BLOCK A LOGIC MACROCELLS 
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  P   C  S  R   P
+O                            P   E   A  O   L  E  E   I
+C     Node          Signal   E   D   L  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+A0      2          RN_B[1]   D   3   5  H Ck3  .  1   2  AB
+A1      3 ................  ...  .   8  .   .  .  .  ..  ..
+A2      4 ................  ...  .  12  .   .  .  .  ..  ..
+A3      5 ................  ...  .  12  .   .  .  .  ..  ..
+A4      6 ................  ...  .  12  .   .  .  .  ..  ..
+A5      7 ................  ...  .  12  .   .  .  .  ..  ..
+A6      8 ................  ...  .  12  .   .  .  .  ..  ..
+A7      9 ................  ...  .   8  .   .  .  .  ..  ..
+A8     10 ................  ...  .   8  .   .  .  .  ..  ..
+A9     11 ................  ...  .  12  .   .  .  .  ..  ..
+A10    12 ................  ...  .  12  .   .  .  .  ..  ..
+A11    13 ................  ...  .  12  .   .  .  .  ..  ..
+A12    14 ................  ...  .  12  .   .  .  .  ..  ..
+A13    15 ................  ...  .  12  .   .  .  .  ..  ..
+A14    16 ................  ...  .  12  .   .  .  .  ..  ..
+A15    17 ................  ...  .   8  .   .  .  .  ..  ..
+
+BLOCK A I/O PINS
+                  Output
+Pin onode        Enable           Signal     Type    Fanout
+|----------------------------------------------------------------|
+  2    2          ...               B[1]    output  --
+  3  ...          ...                RST     input  AB
+  4  ...          ...             ENABLE     input  AB
+  5  ...          ...   ................        ..  ..
+  6  ...          ...   ................        ..  ..
+  7  ...          ...   ................        ..  ..
+  8  ...          ...   ................        ..  ..
+  9  ...          ...   ................        ..  ..
+ 14  ...          ...   ................        ..  ..
+ 15  ...          ...   ................        ..  ..
+ 16  ...          ...   ................        ..  ..
+ 17  ...          ...   ................        ..  ..
+ 18  ...          ...   ................        ..  ..
+ 19  ...          ...   ................        ..  ..
+ 20  ...          ...   ................        ..  ..
+ 21  ...          ...   ................        ..  ..
+
+
+BLOCK A LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxA0           ENABLE         pin 4     mxA13             ...           ...
+mxA1              ...           ...     mxA14             ...           ...
+mxA2          RN_B[0]     mcell B-3     mxA15             ...           ...
+mxA3              ...           ...     mxA16             ...           ...
+mxA4              ...           ...     mxA17         RN_B[1]     mcell A-0
+mxA5              ...           ...     mxA18             ...           ...
+mxA6              ...           ...     mxA19             ...           ...
+mxA7              ...           ...     mxA20             ...           ...
+mxA8              RST         pin 3     mxA21             ...           ...
+mxA9              ...           ...     mxA22             ...           ...
+mxA10             ...           ...     mxA23             ...           ...
+mxA11             ...           ...     mxA24             ...           ...
+mxA12             ...           ...     mxA25             ...           ...
+
+
+BLOCK B LOGIC MACROCELLS 
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  P   C  S  R   P
+O                            P   E   A  O   L  E  E   I
+C     Node          Signal   E   D   L  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+B0     18          RN_B[2]   D   4   4  H Ck3  .  1  43  -B
+B1     19 ................  ...  .   8  .   .  .  .  ..  ..
+B2     20 ................  ...  .   8  .   .  .  .  ..  ..
+B3     21          RN_B[0]   D   1  11  H Ck3  .  1  40  AB
+B4     22 ................  ...  .   8  .   .  .  .  ..  ..
+B5     23 ................  ...  .  12  .   .  .  .  ..  ..
+B6     24 ................  ...  .  12  .   .  .  .  ..  ..
+B7     25 ................  ...  .   8  .   .  .  .  ..  ..
+B8     26 ................  ...  .   8  .   .  .  .  ..  ..
+B9     27 ................  ...  .  12  .   .  .  .  ..  ..
+B10    28 ................  ...  .  12  .   .  .  .  ..  ..
+B11    29 ................  ...  .  12  .   .  .  .  ..  ..
+B12    30 ................  ...  .  12  .   .  .  .  ..  ..
+B13    31 ................  ...  .  12  .   .  .  .  ..  ..
+B14    32 ................  ...  .  12  .   .  .  .  ..  ..
+B15    33 ................  ...  .   8  .   .  .  .  ..  ..
+
+BLOCK B I/O PINS
+                  Output
+Pin onode        Enable           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 24  ...          ...   ................        ..  ..
+ 25  ...          ...   ................        ..  ..
+ 26  ...          ...   ................        ..  ..
+ 27  ...          ...   ................        ..  ..
+ 28  ...          ...   ................        ..  ..
+ 29  ...          ...   ................        ..  ..
+ 30  ...          ...   ................        ..  ..
+ 31  ...          ...   ................        ..  ..
+ 36  ...          ...   ................        ..  ..
+ 37  ...          ...   ................        ..  ..
+ 38  ...          ...   ................        ..  ..
+ 39  ...          ...   ................        ..  ..
+ 40   21          ...               B[0]    output  --
+ 41  ...          ...   ................        ..  ..
+ 42  ...          ...   ................        ..  ..
+ 43   18          ...               B[2]    output  --
+
+
+BLOCK B LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxB0           ENABLE         pin 4     mxB13             ...           ...
+mxB1              ...           ...     mxB14             ...           ...
+mxB2          RN_B[0]     mcell B-3     mxB15             ...           ...
+mxB3          RN_B[2]     mcell B-0     mxB16             ...           ...
+mxB4              ...           ...     mxB17         RN_B[1]     mcell A-0
+mxB5              ...           ...     mxB18             ...           ...
+mxB6              ...           ...     mxB19             ...           ...
+mxB7              ...           ...     mxB20             ...           ...
+mxB8              RST         pin 3     mxB21             ...           ...
+mxB9              ...           ...     mxB22             ...           ...
+mxB10             ...           ...     mxB23             ...           ...
+mxB11             ...           ...     mxB24             ...           ...
+mxB12             ...           ...     mxB25             ...           ...
+
+
+MACH111 report file key:
+
+AVAL          - Additional product terms available within the current
+                steering allocation, plus those potentially available
+                through resteering of free clusters.
+C             - Combinatorial
+Ck0           - Dedicated clock pin
+Ck1           - Dedicated clock pin
+Ck2           - Dedicated clock pin
+Ck3           - Dedicated clock pin
+clk           - Clock
+CSM           - Central Switch Matrix
+D             - D-type flip flop
+G             - Ground
+H             - High
+H             - onode of signal is NOT powered down.
+implied       - Node occupying the macrocell drives the output pin
+                but not defined in the design file.
+inode         - Input node
+Inp           - Input
+ipair         - Input paired node
+I/O           - Input or Output
+L             - Low
+L             - Latch
+L             - onode of signal is powered down.
+LOC           - Location
+mcell <X>     - Source is macrocell from block <X>
+Mux           - Multiplexer
+mx            - Block Array input multiplexer
+onode         - Output node
+opair         - Output paired node
+P             - Product Term
+Pol           - Polarity
+PT(s)         - Product term(s)
+Reg           - Register
+Res           - Reset control
+RN_<pin_name> - Output node paired with <pin_name> created by Fitter.
+Set           - Preset control
+T             - T-type flip flop
+<Y>XX-ir      - Macrocell XX in block Y is used as an input register.
+.             - Not available or Not applicable
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%

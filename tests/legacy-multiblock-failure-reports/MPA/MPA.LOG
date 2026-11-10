@@ -1,0 +1,181 @@
+
+*** Start MACHPAR.E 14:33:22 
+Mpa.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP PARTIAL MACH111
+   2     |PIN 43 I0
+   3     |PIN 42 I1
+   4     |PIN 41 I2
+   5     |PIN 40 I3
+   6     |PIN 39 I4
+   7     |PIN ? X
+   8     |GROUP MACH_SEG_B X
+   9     |PIN 14 Q
+  10     |EQUATIONS
+  11     |X=I0*I1*I2*I3*I4
+  12     |Q=I0*/I1*/I2*/I3*/I4+/I0*I1*/I2*/I3*/I4+/I0*/I1*I2*/I3*/I4+I0*I1*I2*/I3*/I4+/I0*/I1*/I2*I3*/I4+I0*I1*/I2*I3*/I4+I0*/I1*I2*I3*/I4+/I0*I1*I2*I
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Mpa.pds
+
+*** End MACHPAR.EXE 14:33:22; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 14:33:22 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>X
+Processing equation for ====>Q
+
+ %%  MACHBPP  %% Maximum memory allocated was: 72916 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Mpa.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 14:33:22; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 14:33:22 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin X...
+====> X                  MIN_ON (1 + pt)
+Processing equation(s) for pin Q...
+====> Q                  MIN_ON (9 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 44822 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Mpa.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 14:33:22; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 14:33:22 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file mpa.tre to PLA file mpa.pla...
+
+..
+..
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 44370 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Mpa.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 14:33:23; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 14:33:23 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Mpa.pds . Device is MACH111 .
+|> INFO z5109 - For this device, all input pairing is ignored since input
+                registers or latches do not exist. All signals must pass
+                through the central switch matrix before being latched or
+                registered.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not place Sig [ Q] with [ 9] PTs
+                   in blk [A]. ].
+|> WARNING z7501 - Placer/Router [ Not enough PTs in block [A] for sig [Q].
+                   ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not place Sig [ Q] with [ 9] PTs
+                   in blk [A]. ].
+|> WARNING z7501 - Placer/Router [ Not enough PTs in block [A] for sig [Q].
+                   ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not place Sig [ Q] with [ 9] PTs
+                   in blk [A]. ].
+|> WARNING z7501 - Placer/Router [ Not enough PTs in block [A] for sig [Q].
+                   ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+
+*** Retry Partitioning
+
+...
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not place Sig [ Q] with [ 9] PTs
+                   in blk [A]. ].
+|> WARNING z7501 - Placer/Router [ Not enough PTs in block [A] for sig [Q].
+                   ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+|> FATAL z7502 - Placer/Router [ unsuccessful on final iteration ].
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement     85% - Completed
+Routing        0% - Completed
+%%% Fitting process has failed %%%
+*** Report Generator end.
+
+|> INFO z5122 - MACH111 fitting errors may result when preplaced and paired
+                nodes in block B of a MACH110 design have not been
+                translated to their MACH111 counterparts -- prior to
+                fitting.
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Mpa.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 16 .
+
+*** End MACHFITR.EX 14:33:23; (MACHFITR.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

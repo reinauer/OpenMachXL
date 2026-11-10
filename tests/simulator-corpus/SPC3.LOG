@@ -1,0 +1,145 @@
+
+*** Start MACHPAR.E 00:37:49 
+Spc3.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP SPC3 MACH215
+   2     |PIN 4 A
+   3     |PIN 5 B
+   4     |PIN 2 Y LATCHED
+   5     |EQUATIONS
+   6     |Y*=A+B
+   7     |SIMULATION
+   8     |TRACE_ON A B Y
+   9     |SETF /A /B
+  10     |CLOCKF
+  11     |SETF A
+  12     |CLOCKF
+  13     |SETF B
+  14     |CLOCKF
+  15     |SETF /A
+  16     |CLOCKF
+  17     |SETF /B
+  18     |CLOCKF
+  19     |TRACE_OFF
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Spc3.pds
+
+*** End MACHPAR.EXE 00:37:50; (MACHPAR.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 00:37:50 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Y
+SIMULATION SEGMENT
+............
+ %%  MACHBPP  %% Maximum memory allocated was: 59032 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Spc3.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 00:37:50; (MACHBPP.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 00:37:50 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin Y...
+====> Y                  MIN_ON (2 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 39800 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Spc3.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 00:37:50; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 00:37:50 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file spc3.tre to PLA file spc3.pla...
+
+.
+.
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 39864 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Spc3.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 00:37:50; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 00:37:50 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Spc3.pds . Device is MACH215 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5128 - Any unspecified SET/RESET equation will be defaulted to
+                GND.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+|> INFO z5121 - Implicit clock or latch enable will be assigned to the
+                default Clock/LE Pin 13 .
+
+List of global clocks:
+   DEF_GCLOCK:
+...... Is the default clock.
+
+List of non-global clocks:
+   None.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is Spc3.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File Spc3.pds .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 0 .
+
+*** End MACHFITR.EX 00:37:51; (MACHFITR.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

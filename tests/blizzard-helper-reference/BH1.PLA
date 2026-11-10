@@ -1,0 +1,35 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME Bh1.pds
+#AMD TITLE 
+#AMD PATTERN 
+#AMD REVISION 
+#AMD AUTHOR 
+#AMD COMPANY 
+#AMD DATE 
+#AMD CHIP BADCL
+#AMD DEVICE MACH111
+#AMD JED_FILE Bh1.jed
+#AMD SIGNATURE 
+#AMD PIN 10 GND:1 SMALL:2 BIG12:3 A:10 B:11 GND:12 C:13 VCC:22 GND:23 G:24 
+#AMD PIN 10 H:25 I:26 J:27 K:28 L:29 D:32 E:33 GND:34 F:35 VCC:44 
+.type f
+.i 12
+.o 2
+.ilb A B C G H I J K L D E F
+.ob  SMALL BIG12
+.phase 11
+.p 13
+11---------- 1~
+----------11 ~1
+---11------- ~1
+-----11----- ~1
+-------11--- ~1
+011------1-- ~1
+101------1-- ~1
+110------1-- ~1
+000------1-- ~1
+111------0-- ~1
+001------0-- ~1
+010------0-- ~1
+100------0-- ~1
+.e

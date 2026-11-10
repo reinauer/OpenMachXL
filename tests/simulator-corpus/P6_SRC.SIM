@@ -1,0 +1,567 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  P6_src.pds
+Title  16 Bit Accumulator (2 bit with lookahead carry techniques)
+
+|> WARNING D2260
+     The following Pin/Nodes(s) have not been defined in original design
+     file and will be ignored.
+
+      RN_Q_X[15]      RN_Q_X[14]      RN_Q_X[2]       RN_Q_X[7]       
+      RN_Q_X[5]       RN_Q_X[6]       RN_Q_X[1]       RN_Q_X[9]       
+      RN_Q_X[0]       RN_Q_X[11]      RN_Q_X[10]      RN_Q_X[13]      
+      RN_Q_X[3]       RN_Q_X[12]      RN_Q_X[8]       RN_Q_X[4]       
+
+|> WARNING D2130
+     Equation Q_X[15].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[0].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[1].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[2].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[3].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[4].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[5].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[6].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[7].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[8].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[9].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[10].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[11].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[12].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[13].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[14].SETF is always low.
+
+
+   1-V1 - TRACE_ON
+          D_X[15..0]  RST  CLK  Q_X[15..0]  
+   1-V1 - SETF
+          RST  
+   2-V2 - SETF
+          /RST  
+   3-V2 - CHECK
+          /Q_X[15]  /Q_X[14]  /Q_X[13]  /Q_X[12]  /Q_X[11]  
+          /Q_X[10]  /Q_X[9]  /Q_X[8]  /Q_X[7]  /Q_X[6]  /Q_X[5]  /Q_X[4]  
+          /Q_X[3]  /Q_X[2]  /Q_X[1]  /Q_X[0]  
+   3-V3 - SETF
+          /D_X[15]  /D_X[14]  /D_X[13]  /D_X[12]  /D_X[11]  
+          /D_X[10]  /D_X[9]  D_X[8]  D_X[7]  /D_X[6]  /D_X[5]  /D_X[4]  
+          /D_X[3]  /D_X[2]  /D_X[1]  /D_X[0]  
+   7-V4 - CLOCKF
+          CLK  
+   7-V4 - CHECK
+          /Q_X[15]  /Q_X[14]  /Q_X[13]  /Q_X[12]  /Q_X[11]  
+          /Q_X[10]  /Q_X[9]  Q_X[8]  Q_X[7]  /Q_X[6]  /Q_X[5]  /Q_X[4]  
+          /Q_X[3]  /Q_X[2]  /Q_X[1]  /Q_X[0]  
+   7-V5 - SETF
+          /D_X[15]  /D_X[14]  /D_X[13]  /D_X[12]  /D_X[11]  
+          /D_X[10]  D_X[9]  /D_X[8]  /D_X[7]  D_X[6]  /D_X[5]  /D_X[4]  
+          /D_X[3]  /D_X[2]  /D_X[1]  /D_X[0]  
+  11-V6 - CLOCKF
+          CLK  
+  11-V6 - CHECK
+          /Q_X[15]  /Q_X[14]  /Q_X[13]  /Q_X[12]  /Q_X[11]  
+          /Q_X[10]  Q_X[9]  Q_X[8]  Q_X[7]  Q_X[6]  /Q_X[5]  /Q_X[4]  
+          /Q_X[3]  /Q_X[2]  /Q_X[1]  /Q_X[0]  
+  11-V7 - SETF
+          /D_X[15]  /D_X[14]  /D_X[13]  /D_X[12]  /D_X[11]  
+          D_X[10]  /D_X[9]  /D_X[8]  /D_X[7]  /D_X[6]  D_X[5]  /D_X[4]  
+          /D_X[3]  /D_X[2]  /D_X[1]  /D_X[0]  
+  15-V8 - CLOCKF
+          CLK  
+  15-V8 - CHECK
+          /Q_X[15]  /Q_X[14]  /Q_X[13]  /Q_X[12]  /Q_X[11]  
+          Q_X[10]  Q_X[9]  Q_X[8]  Q_X[7]  Q_X[6]  Q_X[5]  /Q_X[4]  
+          /Q_X[3]  /Q_X[2]  /Q_X[1]  /Q_X[0]  
+  15-V9 - SETF
+          /D_X[15]  /D_X[14]  /D_X[13]  /D_X[12]  D_X[11]  
+          /D_X[10]  /D_X[9]  /D_X[8]  /D_X[7]  /D_X[6]  /D_X[5]  D_X[4]  
+          /D_X[3]  /D_X[2]  /D_X[1]  /D_X[0]  
+  19-V10 - CLOCKF
+          CLK  
+  19-V10 - CHECK
+          /Q_X[15]  /Q_X[14]  /Q_X[13]  /Q_X[12]  Q_X[11]  
+          Q_X[10]  Q_X[9]  Q_X[8]  Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  
+          /Q_X[3]  /Q_X[2]  /Q_X[1]  /Q_X[0]  
+  19-V11 - SETF
+          /D_X[15]  /D_X[14]  /D_X[13]  D_X[12]  /D_X[11]  
+          /D_X[10]  /D_X[9]  /D_X[8]  /D_X[7]  /D_X[6]  /D_X[5]  /D_X[4]  
+          D_X[3]  /D_X[2]  /D_X[1]  /D_X[0]  
+  23-V12 - CLOCKF
+          CLK  
+  23-V12 - CHECK
+          /Q_X[15]  /Q_X[14]  /Q_X[13]  Q_X[12]  Q_X[11]  
+          Q_X[10]  Q_X[9]  Q_X[8]  Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  
+          Q_X[3]  /Q_X[2]  /Q_X[1]  /Q_X[0]  
+  23-V13 - SETF
+          /D_X[15]  /D_X[14]  D_X[13]  /D_X[12]  /D_X[11]  
+          /D_X[10]  /D_X[9]  /D_X[8]  /D_X[7]  /D_X[6]  /D_X[5]  /D_X[4]  
+          /D_X[3]  D_X[2]  /D_X[1]  /D_X[0]  
+  27-V14 - CLOCKF
+          CLK  
+  27-V14 - CHECK
+          /Q_X[15]  /Q_X[14]  Q_X[13]  Q_X[12]  Q_X[11]  
+          Q_X[10]  Q_X[9]  Q_X[8]  Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  
+          Q_X[3]  Q_X[2]  /Q_X[1]  /Q_X[0]  
+  27-V15 - SETF
+          /D_X[15]  D_X[14]  /D_X[13]  /D_X[12]  /D_X[11]  
+          /D_X[10]  /D_X[9]  /D_X[8]  /D_X[7]  /D_X[6]  /D_X[5]  /D_X[4]  
+          /D_X[3]  /D_X[2]  D_X[1]  /D_X[0]  
+  31-V16 - CLOCKF
+          CLK  
+  31-V16 - CHECK
+          /Q_X[15]  Q_X[14]  Q_X[13]  Q_X[12]  Q_X[11]  
+          Q_X[10]  Q_X[9]  Q_X[8]  Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  
+          Q_X[3]  Q_X[2]  Q_X[1]  /Q_X[0]  
+  31-V17 - SETF
+          D_X[15]  D_X[0]  /D_X[14]  /D_X[13]  /D_X[12]  
+          /D_X[11]  /D_X[10]  /D_X[9]  /D_X[8]  /D_X[7]  /D_X[6]  
+          /D_X[5]  /D_X[4]  /D_X[3]  /D_X[2]  /D_X[1]  
+  35-V18 - CLOCKF
+          CLK  
+  35-V18 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[12]  Q_X[11]  Q_X[10]  
+          Q_X[9]  Q_X[8]  Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  Q_X[3]  
+          Q_X[2]  Q_X[1]  Q_X[0]  
+  35-V19 - SETF
+          D_X[15]  D_X[0]  /D_X[14]  /D_X[13]  /D_X[12]  
+          /D_X[11]  /D_X[10]  /D_X[9]  /D_X[8]  /D_X[7]  /D_X[6]  
+          /D_X[5]  /D_X[4]  /D_X[3]  /D_X[2]  /D_X[1]  
+  39-V20 - CLOCKF
+          CLK  
+  39-V20 - CHECK
+          Q_X[15]  /Q_X[14]  /Q_X[13]  /Q_X[12]  /Q_X[11]  
+          /Q_X[10]  /Q_X[9]  /Q_X[8]  /Q_X[7]  /Q_X[6]  /Q_X[5]  /Q_X[4]  
+          /Q_X[3]  /Q_X[2]  /Q_X[1]  /Q_X[0]  
+  39-V21 - SETF
+          D_X[14]  D_X[1]  /D_X[15]  /D_X[13]  /D_X[12]  
+          /D_X[11]  /D_X[10]  /D_X[9]  /D_X[8]  /D_X[7]  /D_X[6]  
+          /D_X[5]  /D_X[4]  /D_X[3]  /D_X[2]  /D_X[0]  
+  43-V22 - CLOCKF
+          CLK  
+  43-V22 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[1]  /Q_X[13]  /Q_X[12]  
+          /Q_X[11]  /Q_X[10]  /Q_X[9]  /Q_X[8]  /Q_X[7]  /Q_X[6]  
+          /Q_X[5]  /Q_X[4]  /Q_X[3]  /Q_X[2]  /Q_X[0]  
+  43-V23 - SETF
+          D_X[13]  D_X[2]  /D_X[15]  /D_X[14]  /D_X[12]  
+          /D_X[11]  /D_X[10]  /D_X[9]  /D_X[8]  /D_X[7]  /D_X[6]  
+          /D_X[5]  /D_X[4]  /D_X[3]  /D_X[1]  /D_X[0]  
+  47-V24 - CLOCKF
+          CLK  
+  47-V24 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[2]  Q_X[1]  /Q_X[12]  
+          /Q_X[11]  /Q_X[10]  /Q_X[9]  /Q_X[8]  /Q_X[7]  /Q_X[6]  
+          /Q_X[5]  /Q_X[4]  /Q_X[3]  /Q_X[0]  
+  47-V25 - SETF
+          D_X[12]  D_X[3]  /D_X[15]  /D_X[14]  /D_X[13]  
+          /D_X[11]  /D_X[10]  /D_X[9]  /D_X[8]  /D_X[7]  /D_X[6]  
+          /D_X[5]  /D_X[4]  /D_X[2]  /D_X[1]  /D_X[0]  
+  51-V26 - CLOCKF
+          CLK  
+  51-V26 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[12]  Q_X[3]  Q_X[2]  
+          Q_X[1]  /Q_X[11]  /Q_X[10]  /Q_X[9]  /Q_X[8]  /Q_X[7]  
+          /Q_X[6]  /Q_X[5]  /Q_X[4]  /Q_X[0]  
+  51-V27 - SETF
+          D_X[11]  D_X[4]  /D_X[15]  /D_X[14]  /D_X[13]  
+          /D_X[12]  /D_X[10]  /D_X[9]  /D_X[8]  /D_X[7]  /D_X[6]  
+          /D_X[5]  /D_X[3]  /D_X[2]  /D_X[1]  /D_X[0]  
+  55-V28 - CLOCKF
+          CLK  
+  55-V28 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[12]  Q_X[11]  Q_X[4]  
+          Q_X[3]  Q_X[2]  Q_X[1]  /Q_X[10]  /Q_X[9]  /Q_X[8]  /Q_X[7]  
+          /Q_X[6]  /Q_X[5]  /Q_X[0]  
+  55-V29 - SETF
+          D_X[10]  D_X[5]  /D_X[15]  /D_X[14]  /D_X[13]  
+          /D_X[12]  /D_X[11]  /D_X[9]  /D_X[8]  /D_X[7]  /D_X[6]  
+          /D_X[4]  /D_X[3]  /D_X[2]  /D_X[1]  /D_X[0]  
+  59-V30 - CLOCKF
+          CLK  
+  59-V30 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[12]  Q_X[11]  Q_X[10]  
+          Q_X[5]  Q_X[4]  Q_X[3]  Q_X[2]  Q_X[1]  /Q_X[9]  /Q_X[8]  
+          /Q_X[7]  /Q_X[6]  /Q_X[0]  
+  59-V31 - SETF
+          D_X[9]  D_X[6]  /D_X[15]  /D_X[14]  /D_X[13]  
+          /D_X[12]  /D_X[11]  /D_X[10]  /D_X[8]  /D_X[7]  /D_X[5]  
+          /D_X[4]  /D_X[3]  /D_X[2]  /D_X[1]  /D_X[0]  
+  63-V32 - CLOCKF
+          CLK  
+  63-V32 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[12]  Q_X[11]  Q_X[10]  
+          Q_X[9]  Q_X[6]  Q_X[5]  Q_X[4]  Q_X[3]  Q_X[2]  Q_X[1]  
+          /Q_X[8]  /Q_X[7]  /Q_X[0]  
+  63-V33 - SETF
+          D_X[8]  D_X[7]  /D_X[15]  /D_X[14]  /D_X[13]  
+          /D_X[12]  /D_X[11]  /D_X[10]  /D_X[9]  /D_X[6]  /D_X[5]  
+          /D_X[4]  /D_X[3]  /D_X[2]  /D_X[1]  /D_X[0]  
+  67-V34 - CLOCKF
+          CLK  
+  67-V34 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[12]  Q_X[11]  Q_X[10]  
+          Q_X[9]  Q_X[8]  Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  Q_X[3]  
+          Q_X[2]  Q_X[1]  /Q_X[0]  
+  67-V35 - SETF
+          RST  
+  68-V36 - SETF
+          /RST  
+  69-V36 - CHECK
+          /Q_X[15]  /Q_X[14]  /Q_X[13]  /Q_X[12]  /Q_X[11]  
+          /Q_X[10]  /Q_X[9]  /Q_X[8]  /Q_X[7]  /Q_X[6]  /Q_X[5]  /Q_X[4]  
+          /Q_X[3]  /Q_X[2]  /Q_X[1]  /Q_X[0]  
+  69-V37 - SETF
+          D_X[15]  D_X[14]  D_X[13]  D_X[12]  D_X[11]  D_X[10]  
+          D_X[9]  D_X[6]  D_X[5]  D_X[4]  D_X[3]  D_X[2]  D_X[1]  
+          D_X[0]  /D_X[8]  /D_X[7]  
+  73-V38 - CLOCKF
+          CLK  
+  73-V38 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[12]  Q_X[11]  Q_X[10]  
+          Q_X[9]  Q_X[6]  Q_X[5]  Q_X[4]  Q_X[3]  Q_X[2]  Q_X[1]  
+          Q_X[0]  /Q_X[8]  /Q_X[7]  
+  73-V39 - SETF
+          D_X[15]  D_X[14]  D_X[13]  D_X[12]  D_X[11]  D_X[10]  
+          D_X[8]  D_X[7]  D_X[5]  D_X[4]  D_X[3]  D_X[2]  D_X[1]  
+          D_X[0]  /D_X[9]  /D_X[6]  
+  77-V40 - CLOCKF
+          CLK  
+  77-V40 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[12]  Q_X[11]  Q_X[10]  
+          Q_X[5]  Q_X[4]  Q_X[3]  Q_X[2]  Q_X[1]  /Q_X[9]  /Q_X[8]  
+          /Q_X[7]  /Q_X[6]  /Q_X[0]  
+  77-V41 - SETF
+          D_X[15]  D_X[14]  D_X[13]  D_X[12]  D_X[11]  D_X[9]  
+          D_X[8]  D_X[7]  D_X[6]  D_X[4]  D_X[3]  D_X[2]  D_X[1]  
+          D_X[0]  /D_X[10]  /D_X[5]  
+  81-V42 - CLOCKF
+          CLK  
+  81-V42 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[12]  Q_X[11]  Q_X[4]  
+          Q_X[3]  Q_X[2]  Q_X[0]  /Q_X[10]  /Q_X[9]  /Q_X[8]  /Q_X[7]  
+          /Q_X[6]  /Q_X[5]  /Q_X[1]  
+  81-V43 - SETF
+          D_X[15]  D_X[14]  D_X[13]  D_X[12]  D_X[10]  D_X[9]  
+          D_X[8]  D_X[7]  D_X[6]  D_X[5]  D_X[3]  D_X[2]  D_X[1]  
+          D_X[0]  /D_X[11]  /D_X[4]  
+  85-V44 - CLOCKF
+          CLK  
+  85-V44 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[12]  Q_X[3]  Q_X[2]  
+          /Q_X[11]  /Q_X[10]  /Q_X[9]  /Q_X[8]  /Q_X[7]  /Q_X[6]  
+          /Q_X[5]  /Q_X[4]  /Q_X[1]  /Q_X[0]  
+  85-V45 - SETF
+          D_X[15]  D_X[14]  D_X[13]  D_X[11]  D_X[10]  D_X[9]  
+          D_X[8]  D_X[7]  D_X[6]  D_X[5]  D_X[4]  D_X[2]  D_X[1]  
+          D_X[0]  /D_X[12]  /D_X[3]  
+  89-V46 - CLOCKF
+          CLK  
+  89-V46 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[1]  Q_X[0]  /Q_X[12]  
+          /Q_X[11]  /Q_X[10]  /Q_X[9]  /Q_X[8]  /Q_X[7]  /Q_X[6]  
+          /Q_X[5]  /Q_X[4]  /Q_X[3]  /Q_X[2]  
+  89-V47 - SETF
+          D_X[15]  D_X[14]  D_X[12]  D_X[11]  D_X[10]  D_X[9]  
+          D_X[8]  D_X[7]  D_X[6]  D_X[5]  D_X[4]  D_X[3]  D_X[1]  
+          D_X[0]  /D_X[13]  /D_X[2]  
+  93-V48 - CLOCKF
+          CLK  
+  93-V48 - CHECK
+          Q_X[15]  Q_X[13]  Q_X[12]  Q_X[11]  Q_X[10]  Q_X[9]  
+          Q_X[8]  Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  Q_X[3]  Q_X[2]  
+          Q_X[1]  /Q_X[14]  /Q_X[0]  
+  93-V49 - SETF
+          D_X[15]  D_X[13]  D_X[12]  D_X[11]  D_X[10]  D_X[9]  
+          D_X[8]  D_X[7]  D_X[6]  D_X[5]  D_X[4]  D_X[3]  D_X[2]  
+          D_X[0]  /D_X[14]  /D_X[1]  
+  97-V50 - CLOCKF
+          CLK  
+  97-V50 - CHECK
+          Q_X[14]  Q_X[13]  Q_X[12]  Q_X[11]  Q_X[10]  Q_X[9]  
+          Q_X[8]  Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  Q_X[3]  Q_X[1]  
+          Q_X[0]  /Q_X[15]  /Q_X[2]  
+  97-V51 - SETF
+          D_X[14]  D_X[13]  D_X[12]  D_X[11]  D_X[10]  D_X[9]  
+          D_X[8]  D_X[7]  D_X[6]  D_X[5]  D_X[4]  D_X[3]  D_X[2]  
+          D_X[1]  /D_X[15]  /D_X[0]  
+ 101-V52 - CLOCKF
+          CLK  
+ 101-V52 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[12]  Q_X[11]  Q_X[10]  
+          Q_X[9]  Q_X[8]  Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  Q_X[3]  
+          Q_X[0]  /Q_X[2]  /Q_X[1]  
+ 101-V53 - SETF
+          D_X[14]  D_X[13]  D_X[12]  D_X[11]  D_X[10]  D_X[9]  
+          D_X[8]  D_X[7]  D_X[6]  D_X[5]  D_X[4]  D_X[3]  D_X[2]  
+          D_X[1]  /D_X[15]  /D_X[0]  
+ 105-V54 - CLOCKF
+          CLK  
+ 105-V54 - CHECK
+          Q_X[14]  Q_X[13]  Q_X[12]  Q_X[11]  Q_X[10]  Q_X[9]  
+          Q_X[8]  Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  Q_X[2]  Q_X[1]  
+          Q_X[0]  /Q_X[15]  /Q_X[3]  
+ 105-V55 - SETF
+          D_X[15]  D_X[13]  D_X[12]  D_X[11]  D_X[10]  D_X[9]  
+          D_X[8]  D_X[7]  D_X[6]  D_X[5]  D_X[4]  D_X[3]  D_X[2]  
+          D_X[0]  /D_X[14]  /D_X[1]  
+ 109-V56 - CLOCKF
+          CLK  
+ 109-V56 - CHECK
+          Q_X[13]  Q_X[12]  Q_X[11]  Q_X[10]  Q_X[9]  Q_X[8]  
+          Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  Q_X[2]  /Q_X[15]  /Q_X[14]  
+          /Q_X[3]  /Q_X[1]  /Q_X[0]  
+ 109-V57 - SETF
+          D_X[15]  D_X[14]  D_X[12]  D_X[11]  D_X[10]  D_X[9]  
+          D_X[8]  D_X[7]  D_X[6]  D_X[5]  D_X[4]  D_X[3]  D_X[1]  
+          D_X[0]  /D_X[13]  /D_X[2]  
+ 113-V58 - CLOCKF
+          CLK  
+ 113-V58 - CHECK
+          Q_X[12]  Q_X[11]  Q_X[10]  Q_X[9]  Q_X[8]  Q_X[7]  
+          Q_X[6]  Q_X[5]  Q_X[3]  Q_X[2]  Q_X[1]  Q_X[0]  /Q_X[15]  
+          /Q_X[14]  /Q_X[13]  /Q_X[4]  
+ 113-V59 - SETF
+          D_X[15]  D_X[14]  D_X[13]  D_X[11]  D_X[10]  D_X[9]  
+          D_X[8]  D_X[7]  D_X[6]  D_X[5]  D_X[4]  D_X[2]  D_X[1]  
+          D_X[0]  /D_X[12]  /D_X[3]  
+ 117-V60 - CLOCKF
+          CLK  
+ 117-V60 - CHECK
+          Q_X[11]  Q_X[10]  Q_X[9]  Q_X[8]  Q_X[7]  Q_X[6]  
+          Q_X[5]  Q_X[2]  Q_X[1]  /Q_X[15]  /Q_X[14]  /Q_X[13]  
+          /Q_X[12]  /Q_X[4]  /Q_X[3]  /Q_X[0]  
+ 117-V61 - SETF
+          D_X[15]  D_X[14]  D_X[13]  D_X[12]  D_X[10]  D_X[9]  
+          D_X[8]  D_X[7]  D_X[6]  D_X[5]  D_X[3]  D_X[2]  D_X[1]  
+          D_X[0]  /D_X[11]  /D_X[4]  
+ 121-V62 - CLOCKF
+          CLK  
+ 121-V62 - CHECK
+          Q_X[10]  Q_X[9]  Q_X[8]  Q_X[7]  Q_X[6]  Q_X[4]  
+          Q_X[2]  Q_X[0]  /Q_X[15]  /Q_X[14]  /Q_X[13]  /Q_X[12]  
+          /Q_X[11]  /Q_X[5]  /Q_X[3]  /Q_X[1]  
+ 121-V63 - SETF
+          D_X[15]  D_X[14]  D_X[13]  D_X[12]  D_X[11]  D_X[9]  
+          D_X[8]  D_X[7]  D_X[6]  D_X[4]  D_X[3]  D_X[2]  D_X[1]  
+          D_X[0]  /D_X[10]  /D_X[5]  
+ 125-V64 - CLOCKF
+          CLK  
+ 125-V64 - CHECK
+          Q_X[9]  Q_X[8]  Q_X[7]  Q_X[5]  Q_X[4]  Q_X[2]  
+          /Q_X[15]  /Q_X[14]  /Q_X[13]  /Q_X[12]  /Q_X[11]  /Q_X[10]  
+          /Q_X[6]  /Q_X[3]  /Q_X[1]  /Q_X[0]  
+ 125-V65 - SETF
+          D_X[15]  D_X[14]  D_X[13]  D_X[12]  D_X[11]  D_X[10]  
+          D_X[8]  D_X[7]  D_X[5]  D_X[4]  D_X[3]  D_X[2]  D_X[1]  
+          D_X[0]  /D_X[9]  /D_X[6]  
+ 129-V66 - CLOCKF
+          CLK  
+ 129-V66 - CHECK
+          Q_X[8]  Q_X[6]  Q_X[5]  Q_X[4]  Q_X[1]  Q_X[0]  
+          /Q_X[15]  /Q_X[14]  /Q_X[13]  /Q_X[12]  /Q_X[11]  /Q_X[10]  
+          /Q_X[9]  /Q_X[7]  /Q_X[3]  /Q_X[2]  
+ 129-V67 - SETF
+          D_X[15]  D_X[14]  D_X[13]  D_X[12]  D_X[11]  D_X[10]  
+          D_X[9]  D_X[6]  D_X[5]  D_X[4]  D_X[3]  D_X[2]  D_X[1]  
+          D_X[0]  /D_X[8]  /D_X[7]  
+ 133-V68 - CLOCKF
+          CLK  
+ 133-V68 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[12]  Q_X[11]  Q_X[10]  
+          Q_X[9]  Q_X[8]  Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  Q_X[1]  
+          /Q_X[3]  /Q_X[2]  /Q_X[0]  
+ 133-V69 - SETF
+          RST  
+ 134-V70 - SETF
+          /RST  
+ 135-V70 - CHECK
+          /Q_X[15]  /Q_X[14]  /Q_X[13]  /Q_X[12]  /Q_X[11]  
+          /Q_X[10]  /Q_X[9]  /Q_X[8]  /Q_X[7]  /Q_X[6]  /Q_X[5]  /Q_X[4]  
+          /Q_X[3]  /Q_X[2]  /Q_X[1]  /Q_X[0]  
+ 135-V71 - SETF
+          D_X[6]  D_X[5]  D_X[4]  D_X[3]  D_X[2]  D_X[1]  
+          D_X[0]  /D_X[15]  /D_X[14]  /D_X[13]  /D_X[12]  /D_X[11]  
+          /D_X[10]  /D_X[9]  /D_X[8]  /D_X[7]  
+ 139-V72 - CLOCKF
+          CLK  
+ 139-V72 - CHECK
+          Q_X[6]  Q_X[5]  Q_X[4]  Q_X[3]  Q_X[2]  Q_X[1]  
+          Q_X[0]  /Q_X[15]  /Q_X[14]  /Q_X[13]  /Q_X[12]  /Q_X[11]  
+          /Q_X[10]  /Q_X[9]  /Q_X[8]  /Q_X[7]  
+ 139-V73 - SETF
+          D_X[5]  D_X[4]  D_X[3]  D_X[2]  D_X[1]  D_X[0]  
+          /D_X[15]  /D_X[14]  /D_X[13]  /D_X[12]  /D_X[11]  /D_X[10]  
+          /D_X[9]  /D_X[8]  /D_X[7]  /D_X[6]  
+ 143-V74 - CLOCKF
+          CLK  
+ 143-V74 - CHECK
+          Q_X[7]  Q_X[5]  Q_X[4]  Q_X[3]  Q_X[2]  Q_X[1]  
+          /Q_X[15]  /Q_X[14]  /Q_X[13]  /Q_X[12]  /Q_X[11]  /Q_X[10]  
+          /Q_X[9]  /Q_X[8]  /Q_X[6]  /Q_X[0]  
+ 143-V75 - SETF
+          D_X[4]  D_X[3]  D_X[2]  D_X[1]  D_X[0]  /D_X[15]  
+          /D_X[14]  /D_X[13]  /D_X[12]  /D_X[11]  /D_X[10]  /D_X[9]  
+          /D_X[8]  /D_X[7]  /D_X[6]  /D_X[5]  
+ 147-V76 - CLOCKF
+          CLK  
+ 147-V76 - CHECK
+          Q_X[7]  Q_X[6]  Q_X[4]  Q_X[3]  Q_X[2]  Q_X[0]  
+          /Q_X[15]  /Q_X[14]  /Q_X[13]  /Q_X[12]  /Q_X[11]  /Q_X[10]  
+          /Q_X[9]  /Q_X[8]  /Q_X[5]  /Q_X[1]  
+ 147-V77 - SETF
+          D_X[3]  D_X[2]  D_X[1]  D_X[0]  /D_X[15]  /D_X[14]  
+          /D_X[13]  /D_X[12]  /D_X[11]  /D_X[10]  /D_X[9]  /D_X[8]  
+          /D_X[7]  /D_X[6]  /D_X[5]  /D_X[4]  
+ 151-V78 - CLOCKF
+          CLK  
+ 151-V78 - CHECK
+          Q_X[7]  Q_X[6]  Q_X[5]  Q_X[3]  Q_X[2]  /Q_X[15]  
+          /Q_X[14]  /Q_X[13]  /Q_X[12]  /Q_X[11]  /Q_X[10]  /Q_X[9]  
+          /Q_X[8]  /Q_X[4]  /Q_X[1]  /Q_X[0]  
+ 151-V79 - SETF
+          D_X[2]  D_X[1]  D_X[0]  /D_X[15]  /D_X[14]  /D_X[13]  
+          /D_X[12]  /D_X[11]  /D_X[10]  /D_X[9]  /D_X[8]  /D_X[7]  
+          /D_X[6]  /D_X[5]  /D_X[4]  /D_X[3]  
+ 155-V80 - CLOCKF
+          CLK  
+ 155-V80 - CHECK
+          Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  Q_X[1]  Q_X[0]  
+          /Q_X[15]  /Q_X[14]  /Q_X[13]  /Q_X[12]  /Q_X[11]  /Q_X[10]  
+          /Q_X[9]  /Q_X[8]  /Q_X[3]  /Q_X[2]  
+ 155-V81 - SETF
+          D_X[1]  D_X[0]  /D_X[15]  /D_X[14]  /D_X[13]  
+          /D_X[12]  /D_X[11]  /D_X[10]  /D_X[9]  /D_X[8]  /D_X[7]  
+          /D_X[6]  /D_X[5]  /D_X[4]  /D_X[3]  /D_X[2]  
+ 159-V82 - CLOCKF
+          CLK  
+ 159-V82 - CHECK
+          Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  Q_X[2]  Q_X[1]  
+          /Q_X[15]  /Q_X[14]  /Q_X[13]  /Q_X[12]  /Q_X[11]  /Q_X[10]  
+          /Q_X[9]  /Q_X[8]  /Q_X[3]  /Q_X[0]  
+ 159-V83 - SETF
+          D_X[0]  /D_X[15]  /D_X[14]  /D_X[13]  /D_X[12]  
+          /D_X[11]  /D_X[10]  /D_X[9]  /D_X[8]  /D_X[7]  /D_X[6]  
+          /D_X[5]  /D_X[4]  /D_X[3]  /D_X[2]  /D_X[1]  
+ 163-V84 - CLOCKF
+          CLK  
+ 163-V84 - CHECK
+          Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  Q_X[2]  Q_X[1]  
+          Q_X[0]  /Q_X[15]  /Q_X[14]  /Q_X[13]  /Q_X[12]  /Q_X[11]  
+          /Q_X[10]  /Q_X[9]  /Q_X[8]  /Q_X[3]  
+ 163-V85 - SETF
+          /D_X[15]  /D_X[14]  /D_X[13]  /D_X[12]  /D_X[11]  
+          /D_X[10]  /D_X[9]  /D_X[8]  /D_X[7]  /D_X[6]  /D_X[5]  /D_X[4]  
+          /D_X[3]  /D_X[2]  /D_X[1]  /D_X[0]  
+ 167-V86 - CLOCKF
+          CLK  
+ 167-V86 - CHECK
+          Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  Q_X[2]  Q_X[1]  
+          Q_X[0]  /Q_X[15]  /Q_X[14]  /Q_X[13]  /Q_X[12]  /Q_X[11]  
+          /Q_X[10]  /Q_X[9]  /Q_X[8]  /Q_X[3]  
+ 167-V87 - SETF
+          D_X[14]  D_X[13]  D_X[12]  D_X[11]  D_X[10]  D_X[9]  
+          D_X[8]  D_X[7]  D_X[6]  D_X[5]  D_X[4]  D_X[3]  D_X[2]  
+          D_X[1]  D_X[0]  /D_X[15]  
+ 171-V88 - CLOCKF
+          CLK  
+ 171-V88 - CHECK
+          Q_X[15]  Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  Q_X[2]  
+          Q_X[1]  /Q_X[14]  /Q_X[13]  /Q_X[12]  /Q_X[11]  /Q_X[10]  
+          /Q_X[9]  /Q_X[8]  /Q_X[3]  /Q_X[0]  
+ 171-V89 - SETF
+          D_X[13]  D_X[12]  D_X[11]  D_X[10]  D_X[9]  D_X[8]  
+          D_X[7]  D_X[6]  D_X[5]  D_X[4]  D_X[3]  D_X[2]  D_X[1]  
+          D_X[0]  /D_X[15]  /D_X[14]  
+ 175-V90 - CLOCKF
+          CLK  
+ 175-V90 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  
+          Q_X[2]  Q_X[0]  /Q_X[13]  /Q_X[12]  /Q_X[11]  /Q_X[10]  
+          /Q_X[9]  /Q_X[8]  /Q_X[3]  /Q_X[1]  
+ 175-V91 - SETF
+          D_X[12]  D_X[11]  D_X[10]  D_X[9]  D_X[8]  D_X[7]  
+          D_X[6]  D_X[5]  D_X[4]  D_X[3]  D_X[2]  D_X[1]  D_X[0]  
+          /D_X[15]  /D_X[14]  /D_X[13]  
+ 179-V92 - CLOCKF
+          CLK  
+ 179-V92 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[7]  Q_X[6]  Q_X[5]  
+          Q_X[4]  Q_X[2]  /Q_X[12]  /Q_X[11]  /Q_X[10]  /Q_X[9]  
+          /Q_X[8]  /Q_X[3]  /Q_X[1]  /Q_X[0]  
+ 179-V93 - SETF
+          D_X[11]  D_X[10]  D_X[9]  D_X[8]  D_X[7]  D_X[6]  
+          D_X[5]  D_X[4]  D_X[3]  D_X[2]  D_X[1]  D_X[0]  /D_X[15]  
+          /D_X[14]  /D_X[13]  /D_X[12]  
+ 183-V94 - CLOCKF
+          CLK  
+ 183-V94 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[12]  Q_X[7]  Q_X[6]  
+          Q_X[5]  Q_X[4]  Q_X[1]  Q_X[0]  /Q_X[11]  /Q_X[10]  /Q_X[9]  
+          /Q_X[8]  /Q_X[3]  /Q_X[2]  
+ 183-V95 - SETF
+          D_X[10]  D_X[9]  D_X[8]  D_X[7]  D_X[6]  D_X[5]  
+          D_X[4]  D_X[3]  D_X[2]  D_X[1]  D_X[0]  /D_X[15]  /D_X[14]  
+          /D_X[13]  /D_X[12]  /D_X[11]  
+ 187-V96 - CLOCKF
+          CLK  
+ 187-V96 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[12]  Q_X[11]  Q_X[7]  
+          Q_X[6]  Q_X[5]  Q_X[4]  Q_X[1]  /Q_X[10]  /Q_X[9]  /Q_X[8]  
+          /Q_X[3]  /Q_X[2]  /Q_X[0]  
+ 187-V97 - SETF
+          D_X[9]  D_X[8]  D_X[7]  D_X[6]  D_X[5]  D_X[4]  
+          D_X[3]  D_X[2]  D_X[1]  D_X[0]  /D_X[15]  /D_X[14]  /D_X[13]  
+          /D_X[12]  /D_X[11]  /D_X[10]  
+ 191-V98 - CLOCKF
+          CLK  
+ 191-V98 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[12]  Q_X[11]  Q_X[10]  
+          Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  Q_X[0]  /Q_X[9]  /Q_X[8]  
+          /Q_X[3]  /Q_X[2]  /Q_X[1]  
+ 191-V99 - SETF
+          D_X[8]  D_X[7]  D_X[6]  D_X[5]  D_X[4]  D_X[3]  
+          D_X[2]  D_X[1]  D_X[0]  /D_X[15]  /D_X[14]  /D_X[13]  
+          /D_X[12]  /D_X[11]  /D_X[10]  /D_X[9]  
+ 195-V100 - CLOCKF
+          CLK  
+ 195-V100 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[12]  Q_X[11]  Q_X[10]  
+          Q_X[9]  Q_X[7]  Q_X[6]  Q_X[5]  Q_X[4]  /Q_X[8]  /Q_X[3]  
+          /Q_X[2]  /Q_X[1]  /Q_X[0]  
+ 195-V101 - SETF
+          D_X[7]  D_X[6]  D_X[5]  D_X[4]  D_X[3]  D_X[2]  
+          D_X[1]  D_X[0]  /D_X[15]  /D_X[14]  /D_X[13]  /D_X[12]  
+          /D_X[11]  /D_X[10]  /D_X[9]  /D_X[8]  
+ 199-V102 - CLOCKF
+          CLK  
+ 199-V102 - CHECK
+          Q_X[15]  Q_X[14]  Q_X[13]  Q_X[12]  Q_X[11]  Q_X[10]  
+          Q_X[9]  Q_X[8]  Q_X[7]  Q_X[6]  Q_X[5]  Q_X[3]  Q_X[2]  
+          Q_X[1]  Q_X[0]  /Q_X[4]  
+ 199-V103 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> P6_src.HST
+Simulation results (trace) are in   ===> P6_src.TRF
+Merged results (JEDEC) are in       ===> P6_src.JDC
+Simulation results (trace vectors) are in   ===> P6_src.TRV
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 436938 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: P6_src.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 17

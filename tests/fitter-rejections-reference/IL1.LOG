@@ -1,0 +1,193 @@
+Il1.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP IMXRETRY MACH435
+   2     |PIN 8 A IPAIR N
+   3     |NODE ? N REG
+   4     |PIN 20 CLK
+   5     |PIN 9 Q
+   6     |PIN 67 I0
+   7     |PIN 17 I1
+   8     |PIN 55 I2
+   9     |PIN 56 I3
+  10     |PIN 19 I4
+  11     |PIN 6 I5
+  12     |PIN 82 I6
+  13     |PIN 40 I7
+  14     |PIN 61 I8
+  15     |PIN 27 I9
+  16     |PIN 51 I10
+  17     |PIN 13 I11
+  18     |PIN 3 I12
+  19     |PIN 77 I13
+  20     |PIN 35 I14
+  21     |PIN 39 I15
+  22     |PIN 7 I16
+  23     |PIN 76 I17
+  24     |PIN 70 I18
+  25     |PIN 33 I19
+  26     |PIN 47 I20
+  27     |PIN 57 I21
+  28     |PIN 28 I22
+  29     |PIN 5 I23
+  30     |PIN 36 I24
+  31     |PIN 69 I25
+  32     |PIN 45 I26
+  33     |PIN 30 I27
+  34     |PIN 68 I28
+  35     |PIN 29 I29
+  36     |EQUATIONS
+  37     |N=A
+  38     |N.CLKF=CLK
+  39     |Q=N*A*I0*I1*I2*I3*I4*I5*I6*I7*I8*I9*I10*I11*I12*I13*I14*I15*I16*I17*I18*I19*I20*I21*I22*I23*I24*I25*I26*I27*I28*I29
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Il1.pds
+
+*** Start MACHBPP.E 02:42:53 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>N
+Processing equation for ====>N.CLKF
+Processing equation for ====>Q
+
+ %%  MACHBPP  %% Maximum memory allocated was: 69644 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Il1.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 02:42:53; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 02:42:53 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node N...
+====> N                  MIN_ON (1 + pt)
+====> N.CLKF             MIN_ON (1 + pt)
+Processing equation(s) for pin Q...
+====> Q                  MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 58104 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Il1.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 02:42:54; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 02:42:54 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file il1.tre to PLA file il1.pla...
+
+..
+..
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 53150 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Il1.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 02:42:54; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 02:42:54 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Il1.pds . Device is MACH435 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of global clocks:
+   CLK:
+...... Controls a preplaced input register/latch.
+...... Is preplaced at a global clock pin.
+
+List of non-global clocks:
+   None.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ No alternate placements for signals
+                   feeding the unrouted block [A]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 96% routed ].
+
+*** Retry Partitioning
+
+...
+. 
+Reshuffle Equations
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ No alternate placements for signals
+                   feeding the unrouted block [A]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 96% routed ].
+
+*** Retry Partitioning
+
+...
+. 
+Shift to FANIN_PHASE2.
+. 
+Shift to BUR_NOD_PHASE.
+. 
+ SET/RST -> DONT CARE
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ No alternate placements for signals
+                   feeding the unrouted block [A]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 96% routed ].
+|> FATAL z7502 - Placer/Router [ unsuccessful on final iteration ].
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing       96% - Completed
+%%% Fitting process has failed %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Il1.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 9 .
+
+*** End MACHFITR.EX 02:42:55; (MACHFITR.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

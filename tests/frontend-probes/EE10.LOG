@@ -1,0 +1,194 @@
+
+*** Start MACHPAR.E 08:48:20 
+Ee10.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP EE10 MACH111
+   2     |PIN 2 A
+   3     |PIN 3 B
+   4     |PIN 11 CLK
+   5     |PIN 18 Q REG
+   6     |STATE
+   7     |MEALY_MACHINE
+   8     |CLKF=CLK
+   9     |S0:=A->S1 +->S0
+  10     |S1:=B->S0 +->S1
+  11     |S0.OUTF:=A->Q
+  12     |S1.OUTF:=B->/Q
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Ee10.pds
+
+*** End MACHPAR.EXE 08:48:21; (MACHPAR.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 08:48:21 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+STATE SEGMENT
+
+ %%  MACHBPP  %% Maximum memory allocated was: 57944 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Ee10.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 08:48:21; (MACHBPP.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHEXP.E 08:48:21 
+MACHXL 2.1 R9 MACHEXP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+.....
+|> WARNING E1351
+     Automatically assigning state bit  _ST0 to ? NODE.
+
+STATE REGISTERS USED
+---------------------
+PIN NUMBER:     PIN NAME:
+  ? NODE         _ST0                                   
+STATE BIT ASSIGNMENT USED
+-------------------------
+STATE NAME:     STATE REGISTERS VALUES:
+                 _ST0   
+ S0              0      
+ S1              1      
+
+
+ %%  MACHEXP  %% Maximum memory allocated was: 15694 bytes.
+
+ %%  MACHEXP  %% File Processed Successfully.  File: Ee10.pds.
+ %%  MACHEXP  %% ERROR count: 0  WARNING count: 1
+
+*** End MACHEXP.EXE 08:48:21; (MACHEXP.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 08:48:21 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>_ST0.CLKF
+Processing equation for ====>Q.CLKF
+Processing equation for ====>_ST0
+Processing equation for ====>/_ST0
+Processing equation for ====>Q
+Processing equation for ====>/Q
+
+ %%  MACHBPP  %% Maximum memory allocated was: 57960 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Ee10.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 08:48:21; (MACHBPP.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 08:48:21 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node _ST0...
+====> _ST0               MIN_ON (2 + pt)
+====> _ST0.CLKF          MIN_ON (1 + pt)
+Processing equation(s) for pin Q...
+====> Q                  MIN_ON (1 + pt)
+====> Q.CLKF             MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 41368 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Ee10.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 08:48:21; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 08:48:21 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file ee10.tre to PLA file ee10.pla...
+
+..
+..
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 39420 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Ee10.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 08:48:21; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 08:48:21 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Ee10.pds . Device is MACH111 .
+|> INFO z5109 - For this device, all input pairing is ignored since input
+                registers or latches do not exist. All signals must pass
+                through the central switch matrix before being latched or
+                registered.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of global clocks:
+   CLK:
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is Ee10.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File Ee10.pds .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 0 .
+
+*** End MACHFITR.EX 08:48:22; (MACHFITR.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

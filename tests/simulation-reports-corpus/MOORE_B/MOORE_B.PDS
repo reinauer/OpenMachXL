@@ -1,0 +1,96 @@
+
+TITLE      State machine using Boolean
+PATTERN    A
+REVISION   1.0
+AUTHOR     J. ENGINEER
+COMPANY    AMD
+DATE       6/7/94
+
+
+
+CHIP  REG_MOORE  MACH435
+
+
+PIN ?  CLOCK 
+PIN ?  INA 
+PIN ?  INB 
+PIN ?  OUT[2..0] REG 
+PIN ?  BIT[2..0] REG 
+PIN ?  RESET 
+
+
+EQUATIONS
+
+ BIT[2..0].RSTF=RESET
+ BIT[2..0].CLKF  =  CLOCK 
+ OUT[2..0].RSTF=RESET
+ OUT[2..0].CLKF  =  CLOCK 
+
+     BIT[0]  :=  INA * /BIT[1] * /BIT[0] 
+             +  INB * /BIT[2] * BIT[1] * BIT[0] 
+             +  INA * /BIT[2] * /BIT[1] 
+             +  INB * /INA * BIT[2] * BIT[1]
+     
+     BIT[1]  :=  INA * /BIT[2] * BIT[0] 
+             +  INB * BIT[2] * BIT[1] * BIT[0] 
+             +  INB * /INA * BIT[2] * /BIT[0] 
+             +  /INB * INA * /BIT[1] * /BIT[0]
+     
+     BIT[2]  :=  INA * BIT[1] * BIT[0] 
+             +  INB * BIT[2] * BIT[1] * /BIT[0] 
+             +  INB * /INA * /BIT[1] * /BIT[0] 
+             +  /INB * INA * /BIT[2] * BIT[0]
+     
+     OUT[0]  :=  BIT[2] * BIT[1] * BIT[0] 
+             +  /BIT[2] * /BIT[1] * BIT[0] 
+             +  BIT[2] * /BIT[1] * /BIT[0]
+     
+     OUT[1]  :=  BIT[1] * BIT[0]
+     
+     OUT[2]  :=  BIT[2] * /BIT[0]
+
+SIMULATION
+
+TRACE_ON  RESET OUT[2..0] BIT[2..0] INA INB CLOCK 
+
+SETF RESET
+SETF /RESET
+
+;---------------Condition "GO"
+SETF INB INA
+
+CHECK /OUT[2..0]
+FOR X:= 1 TO 4 DO
+BEGIN
+CLOCKF CLOCK
+END
+CHECK OUT[2..0]= #B011
+
+;--------------Condition "JUMP"
+SETF /INB INA
+
+FOR X:= 1 TO 3 DO
+BEGIN
+CLOCKF CLOCK
+END
+
+CHECK OUT[2..0]= #B010
+
+;------------Condition "BACK"
+
+SETF INB /INA
+FOR X:= 1 TO 3 DO
+BEGIN
+CLOCKF CLOCK
+END
+CHECK OUT[2..0]= #B010
+ 
+;------------Undefined condition
+SETF /INA /INB
+FOR X:= 1 TO 2 DO
+BEGIN
+CLOCKF CLOCK
+END
+
+     TRACE_OFF
+

@@ -1,0 +1,332 @@
+TITLE		MULTIPLE STATE MACHINES
+PATTERN		A
+REVISION	1.0
+AUTHOR          J. ENGINEER
+COMPANY		ADVANCED MICRO DEVICES
+DATE		02/12/93
+
+CHIP	MULTISTATE   MACH435
+
+;============================================================
+;            TRAFFIC CONTROLLER PIN DEFINITIONS
+;============================================================
+PIN ?  CLOCK1 ; CLOCK
+PIN ?  SENSOR ; INPUT
+
+; Outputs for controlling signals in the traffic example
+;	VOUT[5]  VOUT[4]  VOUT[3]  VOUT[2]  VOUT[1]
+;	RED1  YELLOW1  GREEN1  RED2  YELLOW2  GREEN2
+
+PIN ?  VOUT[5..0] REGISTERED ; OUTPUTS
+PIN ?  ST[1,0] REGISTERED ; STATE BITS
+
+;============================================================
+;            ANSWERING MACHINE PIN DEFINITIONS
+;============================================================
+
+PIN ?  CLOCK2 ; CLOCK
+PIN ?  _RESET1 ; RESET CONTROL
+PIN ?  _RESET2 ; RESET CONTROL
+PIN ?  RING ; INPUTS
+PIN ?  ENDGREETING 
+PIN ?  DIALTONE 
+PIN ?  ENDMESSAGES 
+PIN ?  ST2[1,0] REGISTERED ; STATE BITS
+PIN ?  ANSWER REGISTERED ; OUTPUTS
+PIN ?  PLAY REGISTERED 
+PIN ?  RECORD REGISTERED 
+
+GROUP	M2REG	ST2[1,0]  ANSWER  PLAY  RECORD	; GLOBAL USE
+
+;============================================================
+;            TRAFFIC CONTROLLER STRING DEFINITIONS
+;============================================================
+
+; state assignments
+
+STRING	1GREEN		'0'
+STRING	1YELLOW		'1'
+STRING	2GREEN		'3'
+STRING	2YELLOW		'2'
+STRING	M1		'ST[1,0]'
+STRING	V		'VOUT[5..0]'
+
+; output vector definitions
+
+; VOUT[5]  VOUT[4]  VOUT[3]  VOUT[2]  VOUT[1]  VOUT[0]
+; RED1  YELLOW1  GREEN1  RED2  YELLOW2  GREEN2
+
+STRING	G1_VECT		'#B001100'
+STRING	Y1_VECT		'#B010100'
+STRING	G2_VECT		'#B100001'
+STRING	Y2_VECT		'#B100010'
+
+;============================================================
+;            ANSWERING MACHINE STRING DEFINITIONS
+;============================================================
+
+; state assignments
+
+STRING	WAITING		'0'
+STRING	PLAYING		'1'
+STRING	RECORDING	'2'
+STRING	M2NULL		'3'
+STRING	M2		'ST2[1,0]'
+
+;------------------------------------------------------------
+
+EQUATIONS
+
+;============================================================
+;            TRAFFIC CONTROLLER EQUATIONS
+;============================================================
+
+VOUT[5..0].CLKF=CLOCK1
+VOUT[5..0].RSTF =_RESET1
+
+ST[1,0].CLKF=CLOCK1
+ST[1..0].RSTF =_RESET1
+
+CASE (M1)
+BEGIN
+
+1GREEN:
+	BEGIN
+	IF (SENSOR) THEN
+		BEGIN
+		V=Y1_VECT
+		M1=1YELLOW
+		END
+	ELSE
+		BEGIN
+		V=G1_VECT
+		M1=1GREEN
+		END
+	END
+
+1YELLOW:
+	BEGIN
+	V=G2_VECT
+	M1=2GREEN
+	END
+
+2GREEN:
+	BEGIN
+	IF (SENSOR) THEN
+		BEGIN
+		V=Y2_VECT
+		M1=2GREEN
+		END
+	ELSE
+		BEGIN
+		V=G2_VECT
+		M1=2GREEN
+		END
+	END
+
+2YELLOW:
+	BEGIN
+	V=G1_VECT
+	M1=1GREEN
+	END
+
+END
+
+;============================================================
+;            ANSWERING MACHINE EQUATIONS
+;============================================================
+
+M2REG.CLKF=CLOCK2
+M2REG.RSTF=_RESET2
+
+CASE (M2)
+BEGIN
+
+WAITING:
+	BEGIN
+	IF (RING) THEN
+		BEGIN
+		ANSWER=1
+		PLAY=1
+		RECORD=0
+		M2=PLAYING
+		END
+	ELSE
+		BEGIN
+		ANSWER=0
+		PLAY=0
+		RECORD=0
+		M2=WAITING
+		END
+	END
+
+PLAYING:
+	BEGIN
+	IF (DIALTONE) THEN
+		BEGIN
+		ANSWER=0
+		PLAY=0
+		RECORD=0
+		M2=WAITING
+		END
+
+	IF (/DIALTONE * /ENDGREETING) THEN
+		BEGIN
+		ANSWER=1
+		PLAY=1
+		RECORD=0
+		M2=PLAYING
+		END
+
+	IF (/DIALTONE * ENDGREETING) THEN
+		BEGIN
+		ANSWER=1
+		PLAY=0
+                RECORD=1
+		M2=RECORDING
+		END
+
+	END
+
+RECORDING:
+	BEGIN
+	IF (/ENDMESSAGES * /DIALTONE) THEN
+		BEGIN
+		ANSWER=1
+		PLAY=0
+		RECORD=1
+		M2=RECORDING
+		END
+
+	IF (ENDMESSAGES + DIALTONE) THEN
+		BEGIN
+		ANSWER=0
+		PLAY=0
+		RECORD=0
+		M2=WAITING
+		END
+
+	END
+
+M2NULL:
+	BEGIN
+	M2=WAITING
+	ANSWER=0
+	PLAY=0
+	RECORD=0
+	END
+
+END
+
+;------------------------------------------------------------
+SIMULATION
+
+;============================================================
+;            SIMULATION FOR TRAFFIC CONTROLLER
+;============================================================
+
+TRACE_ON CLOCK1 SENSOR ST[1,0] VOUT[5..0]
+
+SETF    _RESET1 /CLOCK1  ; RESET REGISTERS
+SETF    /_RESET1
+CHECK   VOUT[0] VOUT[1] VOUT[5] /VOUT[4] VOUT[3] /VOUT[2]
+        /ST[0]  ST[1]
+
+SETF    /SENSOR
+CLOCKF   CLOCK1
+CHECK   /VOUT[0] /VOUT[1] /VOUT[5] /VOUT[4] VOUT[3] VOUT[2]
+        /ST[0]   /ST[1]
+
+SETF     SENSOR
+CLOCKF   CLOCK1
+CLOCKF   CLOCK1
+CLOCKF   CLOCK1
+CLOCKF   CLOCK1
+CHECK    /VOUT[0] VOUT[1] VOUT[5] /VOUT[4] /VOUT[3] /VOUT[2]
+          ST[0]  ST[1]
+
+SETF    /SENSOR
+CLOCKF   CLOCK1
+CLOCKF   CLOCK1
+CLOCKF   CLOCK1
+CHECK    VOUT[0] /VOUT[1] VOUT[5] /VOUT[4] /VOUT[3] /VOUT[2]
+         ST[0]  ST[1]
+
+CLOCKF   CLOCK1
+CLOCKF   CLOCK1
+CLOCKF   CLOCK1
+CHECK    VOUT[0] /VOUT[1] VOUT[5] /VOUT[4] /VOUT[3] /VOUT[2]
+         ST[0]  ST[1]
+
+TRACE_OFF
+
+;============================================================
+;            SIMULATION FOR ANSWERING MACHINE
+;============================================================
+
+TRACE_ON CLOCK2 RING ENDGREETING DIALTONE ENDMESSAGES ST2[1,0]
+		ANSWER PLAY RECORD
+
+SETF    _RESET2 /CLOCK2  ; RESET REGISTERS
+SETF    /_RESET2
+CHECK   /PLAY /ANSWER  RECORD
+        /ST2[0] ST2[1]
+
+SETF    /ENDMESSAGES /DIALTONE /ENDGREETING /RING
+CLOCKF   CLOCK2
+CLOCKF   CLOCK2
+CHECK   /PLAY ANSWER RECORD
+        /ST2[0] ST2[1]
+
+SETF     RING
+CLOCKF   CLOCK2
+CLOCKF   CLOCK2
+CHECK   /PLAY  ANSWER  RECORD
+        /ST2[0] ST2[1]
+
+SETF    /RING
+CLOCKF   CLOCK2
+CHECK   /PLAY  ANSWER  RECORD
+        /ST2[0] ST2[1]
+
+SETF     DIALTONE
+CLOCKF   CLOCK2
+CHECK   /PLAY  /ANSWER  /RECORD
+        /ST2[0] /ST2[1]
+
+SETF    /DIALTONE
+SETF     RING
+CLOCKF   CLOCK2
+CLOCKF   CLOCK2
+CHECK    PLAY  ANSWER  /RECORD
+         ST2[0] /ST2[1]
+
+SETF     ENDGREETING
+CLOCKF   CLOCK2
+CLOCKF   CLOCK2
+CHECK   /PLAY  ANSWER  RECORD
+        /ST2[0] ST2[1]
+
+SETF    /ENDGREETING ENDMESSAGES /RING
+CLOCKF   CLOCK2
+CLOCKF   CLOCK2
+CHECK   /PLAY  /ANSWER  /RECORD
+        /ST2[0] /ST2[1]
+
+SETF    /ENDMESSAGES
+CLOCKF   CLOCK2
+CLOCKF   CLOCK2
+CHECK   /PLAY  /ANSWER  /RECORD
+        /ST2[0] /ST2[1]
+
+TRACE_OFF
+
+;============================================================
+;            END OF DESIGN
+;============================================================
+
+
+
+
+
+

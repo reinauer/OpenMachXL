@@ -1,0 +1,25 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Simunk.pds
+Title  Native simulation reference
+
+
+
+   2-V1 - TRACE_ON
+          A  B  CLK  RST  Q  Y  
+   2-V1 - SETF
+          A  
+   3-V1 - CHECK
+          /Q  /Y  
+   3-V2 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Simunk.HST
+Simulation results (trace) are in   ===> Simunk.TRF
+Merged results (JEDEC) are in       ===> Simunk.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 88771 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Simunk.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0

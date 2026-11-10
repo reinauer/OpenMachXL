@@ -1,0 +1,40 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Tf1111.pds
+Title  Native simulation reference
+
+
+
+   1-V1 - SETF
+          /A  /B  /CLK  /RST  
+   2-V2 - TEST
+          /Q  
+|> WARNING D2210
+     Test command not yet supported for the device selected,
+     assuming CHECKQ operation .
+   2-V2 - SETF
+          A  
+   6-V3 - CLOCKF
+          CLK  
+   6-V4 - TEST
+          Q  
+|> WARNING D2210
+     Test command not yet supported for the device selected,
+     assuming CHECKQ operation .
+   6-V4 - SETF
+          B  
+   7-V5 - TEST
+          Q  
+|> WARNING D2210
+     Test command not yet supported for the device selected,
+     assuming CHECKQ operation .
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Tf1111.HST
+Merged results (JEDEC) are in       ===> Tf1111.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 85636 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Tf1111.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 3

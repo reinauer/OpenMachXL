@@ -1,0 +1,80 @@
+;In this example an 8-bit Synchronous Counter with Parallel Load is implemented
+;using Boolean Equations, CASE Statements, and If-Then Statements.
+
+;---------------------------------- Declaration Segment ------------
+TITLE    8-BIT COUNTER with Parallel Load  (Boolean Implementation)
+PATTERN  1
+REVISION 1
+AUTHOR   J. ENGINEER
+COMPANY  AMD
+DATE    4/26/94
+
+CHIP  counter  MACH111
+
+;---------------------------------- PIN Declarations --------------
+
+PIN  ?          DATA[0..7]          
+PIN  ?          TC[0..7]           REGISTERED
+PIN  ?          COUNT
+PIN  ?          CLK
+PIN  ?          RST
+PIN  ?          OE
+
+string load '(/count)'
+
+EQUATIONS
+
+TC[0..7].CLKF = CLK                           ;Registers Clock
+TC[0..7].RSTF =RST                            ;Registers Reset
+TC[0..7].TRST =OE                             ;Registers Output Enable
+
+TC[7].T:= TC[0] * TC[1] * TC[2] *TC[3]* TC[4]*TC[5]*TC[6]*COUNT
+        +LOAD*DATA[7]*/TC[7] +LOAD*/DATA[7]*TC[7]
+TC[6].T:= TC[0] * TC[1] * TC[2] *TC[3]* TC[4]*TC[5]*COUNT 
+        +LOAD*DATA[6]*/TC[6] +LOAD*/DATA[6]*TC[6]
+TC[5].T:= TC[0] * TC[1] * TC[2] * TC[3] * TC[4]*COUNT     
+        +LOAD*DATA[5]*/TC[5] +LOAD*/DATA[5]*TC[5]
+TC[4].T:= TC[0] * TC[1] * TC[2] * TC[3]*COUNT             
+        +LOAD*DATA[4]*/TC[4] +LOAD*/DATA[4]*TC[4]
+TC[3].T:= TC[0] * TC[1] * TC[2]*COUNT                     
+        +LOAD*DATA[3]*/TC[3] +LOAD*/DATA[3]*TC[3]
+TC[2].T:= TC[0] * TC[1]*COUNT                            
+        +LOAD*DATA[2]*/TC[2] +LOAD*/DATA[2]*TC[2]
+TC[1].T:= TC[0]*COUNT                                        
+        +LOAD*DATA[1]*/TC[1] +LOAD*/DATA[1]*TC[1]
+TC[0].T:= COUNT                                     
+        +LOAD*DATA[0]*/TC[0] +LOAD*/DATA[0]*TC[0]    ;least significant bit
+
+;________________________________________________________
+SIMULATION
+;--------------------------------------------------------
+
+TRACE_ON   TC[7..0] CLK COUNT DATA[7..0]
+          
+;Setting inputs and resetting registers
+
+SETF RST OE DATA[7..0] = #h3e 
+SETF /RST COUNT 
+CHECKQ /TC[7..0]
+
+FOR X:= 1 TO 3 DO
+        BEGIN
+             CLOCKF CLK
+        END
+
+;Checking if it counted to 3
+CHECKQ TC[7..0] = #H03
+
+SETF /COUNT     ;loading counter
+CLOCKF CLK
+CHECKQ TC[7..0] = #H3E   
+
+SETF  COUNT
+
+FOR X:= 1 TO 3 DO
+        BEGIN
+             CLOCKF CLK
+        END
+CHECKQ TC[7..0] = #H41    
+TRACE_OFF
+

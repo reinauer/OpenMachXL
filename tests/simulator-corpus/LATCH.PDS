@@ -1,0 +1,188 @@
+;************************************************************
+   TITLE Latch Design File
+ PATTERN Latch.PDS
+REVISION 1.1
+  AUTHOR J. ENGINEER
+ COMPANY ADVANCED MICRO DEVICES, INC.
+    DATE 9/16/93
+;   DATE 3/2/93 - Creation
+
+ CHIP  Ltch_Tst  MACH435
+
+;************************************************************
+PIN 20 LE
+PIN 5 RST
+PIN 4 SET 
+
+PIN 9 Q1 
+PIN 8 Q2 
+PIN 3 D 
+
+;; PIN 10 Q3 ; Unused
+;; PIN 6 Q4
+
+;************************************************************
+
+EQUATIONS
+;************************************************************
+; With explicit S/R equations "Native" Latch in Macrocell
+
+     Q1 *= D
+     Q1.CLKF  =  LE
+     Q1.RSTF  =  RST
+     Q1.SETF  =  SET
+
+Minimize_off ; must be off to retain redundant logic
+
+     Q2 = D   *  LE             ; Loading Term - LE dominates
+       +  D   *  Q2  * /RST     ; Transient race - redundant logic
+       +  Q2  * /LE  * /RST     ; Data Holding term
+       +  SET * /LE  * /RST     ; Set term - LE & RST dominate
+
+Minimize_on
+     
+;; ;************************************************************
+;; ; This shows how to do a Latch w/ case & if/then
+;; ; BUT can not be used due to the way Minimize_Off
+;; ; is processed - Do not use this type of logic!
+;; ;************************************************************
+;; case (Q3) begin
+;;     0: begin
+;;         if (D * LE)       then begin Q3=1 end
+;;         if (SET*/RST*/LE) then begin Q3=1 end
+;;         if /((SET*/RST*/LE)
+;;               + (D * LE)) then begin Q3=0 end
+;;       end
+;;     1: begin
+;;         if (RST*/LE)  then begin Q3=0 end
+;;         if (/D * LE)  then begin Q3=0 end
+;;         if /((RST*/LE)
+;;          + (/D * LE)) then begin Q3=1 end
+;;       end
+;;   end
+;; ;************************************************************
+;; case (Q4) begin
+;;     0: begin
+;;         if (D * LE)               then begin Q4=1 end
+;;              else begin
+;;                 if (SET*/RST*/LE) then begin Q4=1 end
+;;                                   else begin Q4=0 end
+;;              end
+;;       end
+;;     1: begin
+;;         if (/D * LE)       then begin Q4=0 end
+;;           else begin
+;;              if (RST*/LE)  then begin Q4=0 end
+;;                            else begin Q4=1 end
+;;             end
+;;       end
+;;   end
+;; ;************************************************************
+;;
+;; ;************************************************************
+;; ; This should be off to keep term, but
+;; ; too many PT's generated.
+;; ;************************************************************
+;; Minimize_off ; must be off to retain redundant logic
+;;
+;;  Q3={Q3}   +  D   *  Q3  * /RST     ; Transient race - redundant logic
+;;  Q4={Q4}   +  D   *  Q4  * /RST     ; Transient race - redundant logic
+;; Minimize_on
+
+SIMULATION
+
+TRACE_ON   RST SET   Q1 Q2   D LE  ;; Q3 Q4
+
+SETF  /RST /SET /LE /D  ; 1     ; initial all zero
+
+SETF  /RST  SET /LE /D  ; 2     ; set to 1
+SETF  /RST /SET /LE /D  ; 3
+
+SETF   RST /SET /LE /D  ; 4     ; reset to 0
+SETF  /RST /SET /LE /D  ; 5
+
+SETF  /RST /SET  LE /D  ; 6     ; Transparent
+SETF  /RST /SET  LE  D  ; 7
+SETF  /RST /SET /LE  D  ; 8     ; Remove LE
+
+SETF   RST  SET /LE /D  ; 9     ; Rst dominates
+SETF  /RST /SET /LE /D  ;10
+
+SETF  /RST  SET /LE /D  ;11     ; set to 1
+SETF  /RST /SET /LE /D  ;12
+
+SETF  /RST  SET  LE /D  ;13     ; LE dominates
+SETF  /RST  SET /LE /D  ;14
+SETF  /RST /SET /LE /D  ;15
+
+SETF   RST /SET /LE /D  ;16     ; reset to 0
+SETF  /RST /SET /LE /D  ;17
+
+SETF   RST /SET  LE  D  ;18     ; LE dominates
+SETF   RST /SET /LE  D  ;19
+SETF  /RST /SET /LE /D  ;20
+
+SETF  /RST  SET /LE /D  ;21     ; Set to 1
+SETF  /RST /SET /LE /D  ;22
+
+SETF   RST  SET  LE /D  ;23     ; LE dominates
+SETF   RST  SET  LE  D  ;24
+SETF  /RST  SET /LE  D  ;25
+SETF  /RST /SET /LE /D  ;26
+
+SETF  /RST /SET  LE /D  ;27     ; load 0
+SETF  /RST /SET /LE /D  ;28
+
+TRACE_OFF
+
+;************************************************************
+; Latch Design & Simulation Notes:
+;
+; 1) In this example (LATCH.PDS) both outputs should produce the same
+;       behavior. Q1 uses the "native" latch elements,
+;       Q2 emulates the same function using PT logic.
+;
+;
+; 2) The 435 device latch operation is specified for all 8 states
+;       of 3 control lines -- LE, AR & AP.
+;       (in PDS files .CLKF .RSTF and .SETF auxiliary equations).
+;
+;     No simulator messages are generated for any of the states, and
+;     correct output is produced for all combinations, identical
+;     the device operation.
+;
+;
+; 2) The MACH 2xx Latches were only specified for 4 state operation:
+;        LE, AR, AP = (000, 100, 010, 001)
+;
+;     The simulator generates an error message when any 2 of
+;     the control lines are asserted simultaneously:
+;        LE, AR, AP = (110, 011, 101, 111)
+;
+;     |> ERROR D3490
+;       Preset, reset and latch enable are mutually exclusive.
+;       To assert any one of them for pin Q1, others have to be disabled.
+;
+;     The output of a simulated latch is set to "X" (don't know)
+;     whenever this error condition is detected.
+;
+;     To clear the "X", a LE, Set or Reset alone will restore the
+;     logic result to proper operation.
+;
+;
+; 3) Note: Jedec vectors are shut-off following any error messages.
+;
+;     Users who wish to do Jedec testing of their parts (2x)
+;     and/or use the same design files for 2xx & 4xx devices
+;     should avoid simultaneous assertion of the control lines.
+;
+;
+; 4) IF/CASE definitions of latch elements should be AVOIDED for
+;    ALL MACH designs due to the removal of redundant logic
+;    by the logic minimizer. This transient term is necessary
+;    for proper logic operation - without it, the logic is
+;    unreliable.
+;
+;************************************************************
+
+

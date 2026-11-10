@@ -1,0 +1,468 @@
+U7.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+   1     |;PALASM Design Description
+   2     |;---------------------------------- Declaration Segment ------------
+   3     |TITLE    BLIZZARD 1260 U7 - CLOCKS, 060 BUS CONTROL, DRAM TIMING
+   4     |PATTERN  U7
+   5     |REVISION 0.2 (RECONSTRUCTION)
+   6     |AUTHOR   RECONSTRUCTED FROM THE PCB, SEE ../ARCHITECTURE.MD
+   7     |COMPANY  BLIZZARD 1260 KICAD PROJECT
+   8     |DATE     2026-10-26
+   9     |CHIP     U7  MACH111
+  10     |
+  11     |; U7 is the fast (-7) part. It buffers the oscillator into the 060 CLK and
+  12     |; the board clock BCLK (fed back into its own CLK2 and to U8/U9), and runs
+  13     |; the 060 bus cycle. BCLK edges E0, E1, ... with TS sampled at E0:
+  14     |;
+  15     |;   E1 DEC    U1 decode settles
+  16     |;   E2 RASON  RAS low if U1 selected a SIMM (RAS = SELRAMx * RASON)
+  17     |;   E3        MUX = column (U9 asserts CAS at E4: CAS = MUX * /TA)
+  18     |;   E6 TA     sampled by the 060 at E7, CAS off; bursts: next TA every
+  19     |;             4 BCLK (phase counter PH), U9 advances the column on TA
+  20     |;
+  21     |; The same RASON/PH sequence runs for every cycle; for cycles U1 did not
+  22     |; map to a SIMM, AMI is set instead, no RAS falls, AREQ goes to U14 and TA
+  23     |; follows the synchronised ADONE.
+  24     |; Refresh: CAS-before-RAS on REFREQ from U8, Gray-coded counter RC so the
+  25     |; decoded RAS/CAS outputs cannot glitch. Refresh is not gated by reset, so
+  26     |; RAM (and the MAPROM copy) survives a Ctrl-Amiga-Amiga reset.
+  27     |
+  28     |;---------------------------------- PIN Declarations ---------------
+  29     |PIN  7   BCLK        COMBINATORIAL   ; board clock out (U7.27, U8, U9, J3)
+  30     |PIN  8   RAS3_N      COMBINATORIAL   ; expansion SIMM side 2 via RN6
+  31     |PIN  9   PCLK        COMBINATORIAL   ; 060 CLK / 040 PCLK
+  32     |PIN  10  R_W                         ; 060 R/W
+  33     |PIN  11  SIZ1                        ; 060 SIZ1
+  34     |PIN  13  SIZ0                        ; 060 SIZ0
+  35     |PIN  14  TS_N                        ; 060 /TS
+  36     |PIN  15  RAS2_N      COMBINATORIAL   ; expansion SIMM side 1 via RN6
+  37     |PIN  16  ADONE_N                     ; from U14: A1200/board-space cycle done
+  38     |PIN  17  OEBA_N      REGISTERED      ; '543 OEBA: CPU data onto the local bus
+  39     |PIN  18  RAS1_N      COMBINATORIAL   ; on-board SIMM RAS1/RAS3
+  40     |PIN  20  LEAB_N      COMBINATORIAL   ; '543 LEAB: A->B latch, kept transparent
+  41     |PIN  21  RAS0_N      COMBINATORIAL   ; on-board SIMM RAS0/RAS2
+  42     |PIN  25  TA_N        REGISTERED      ; 060 /TA
+  43     |PIN  26  TAX_N       REGISTERED      ; copy of TA to U8/U9
+  44     |PIN  27  SELRAM2_N                   ; from U1
+  45     |PIN  28  RSTI_N                      ; 060 /RSTI (driven by U8)
+  46     |PIN  29  SEL060                      ; R3: high = 68060 fitted, low = 68040
+  47     |PIN  30  CASEN_N     COMBINATORIAL   ; to U9: refresh CAS (all lanes)
+  48     |PIN  32  REFREQ_N                    ; from U8: refresh request pulse
+  49     |PIN  33  BCLKIN                      ; BCLK fed back (clock for this chip)
+  50     |PIN  35  OSC                         ; 50 MHz oscillator via R4
+  51     |PIN  36  RDOE_N      REGISTERED      ; to U9: read data phase
+  52     |PIN  37  SELRAM0_N                   ; from U1
+  53     |PIN  38  CYC_N       REGISTERED      ; to U8/U9: cycle in progress
+  54     |PIN  39  SELRAM3_N                   ; from U1
+  55     |PIN  41  AREQ_N      REGISTERED      ; to U14/U9: run an A1200/board cycle
+  56     |PIN  43  TEA_N       REGISTERED      ; 060 /TEA: bus watchdog on non-DRAM cycles
+  57     |PIN  4   BCLK040     REGISTERED      ; 68040 BCLK (pin R7, empty on a 060)
+  58     |PIN  5   MUX         REGISTERED      ; row/column select
+  59     |
+  60     |NODE ?   DEC         REGISTERED      ; decode wait (E1)
+  61     |NODE ?   RASON       REGISTERED      ; cycle sequence running (E2 .. last TA)
+  62     |NODE ?   PH1         REGISTERED      ; beat phase 0..3, TA when it wraps
+  63     |NODE ?   PH0         REGISTERED
+  64     |NODE ?   BT1         REGISTERED      ; TAs given in a line transfer
+  65     |NODE ?   BT0         REGISTERED
+  66     |NODE ?   LASTF       COMBINATORIAL   ; the TA now due ends the cycle
+  67     |NODE ?   AMI         REGISTERED      ; non-DRAM cycle, served by U14
+  68     |NODE ?   AD1         REGISTERED      ; ADONE synchroniser
+  69     |NODE ?   AD2         REGISTERED
+  70     |NODE ?   RFP         REGISTERED      ; refresh pending
+  71     |NODE ?   RC2         REGISTERED      ; refresh sequence, Gray code, 000 = idle
+  72     |NODE ?   RC1         REGISTERED
+  73     |NODE ?   RC0         REGISTERED
+  74     |NODE ?   TO1         REGISTERED      ; watchdog: one refresh tick seen in this cycle
+  75     |
+  76     |;---------------------------------- Boolean Equation Segment ------
+  77     |; refresh sequence (Gray code, one state per BCLK):
+  78     |;   000 idle -> 001 -> 011 -> 010 -> 110 -> 111 -> 101 -> 100 -> 000
+  79     |;   CASEN in 001/011; U9 registers it, so CAS is low during 011/010
+  80     |;   RAS in 010/110/111/101 (80 ns), i.e. CAS falls 20 ns before RAS
+  81     |;   and rises 20 ns after it; 100/000 + DEC give >= 60 ns precharge
+  82     |STRING  RFIDLE   '(/RC2 * /RC1 * /RC0)'
+  83     |STRING  RFRAS    '(RC1 * /RC0 + RC2 * RC0)'
+  84     |STRING  START    '(RFP * CYC_N * /RASON * /DEC)'
+  85     |
+  86     |EQUATIONS
+  87     |
+  88     |; ---- clocks ---------------------------------------------------------
+  89     |PCLK        = OSC
+  90     |BCLK040    := /BCLK040 * /SEL060          ; OSC/2 for a 68040, stopped for a 060
+  91     |BCLK040.CLKF = OSC
+  92     |BCLK        = SEL060 * OSC + /SEL060 * BCLK040
+  93     |
+  94     |LEAB_N      = GND
+  95     |
+  96     |; ---- cycle sequence ---------------------------------------------------
+  97     |LASTF       = /SIZ1 + /SIZ0 + AMI + BT1 * BT0
+  98     |
+  99     |/CYC_N     := RSTI_N * /TS_N * CYC_N
+ 100     |            + RSTI_N * /CYC_N * TA_N * TEA_N
+ 101     |            + RSTI_N * /CYC_N * /LASTF
+ 102     |CYC_N.CLKF  = BCLKIN
+ 103     |
+ 104     |; a new cycle waits until U14 has released ADONE (and with it the data path)
+ 105     |DEC        := RSTI_N * /CYC_N * /DEC * /RASON * TA_N *  
+ 105  s1 |(/RC2 * /RC1 * /RC0)
+ 105     |                                                               * /AD2
+ 106     |DEC.CLKF    = BCLKIN
+ 107     |
+ 108     |RASON      := RSTI_N * DEC
+ 109     |            + RSTI_N * RASON * TA_N * TEA_N
+ 110     |            + RSTI_N * RASON * /LASTF
+ 111     |RASON.CLKF  = BCLKIN
+ 112     |
+ 113     |PH0        := RSTI_N * RASON * /PH0 * TA_N * TEA_N
+ 114     |            + RSTI_N * RASON * /PH0 * /LASTF
+ 115     |PH0.CLKF    = BCLKIN
+ 116     |PH1        := RSTI_N * RASON * TA_N * TEA_N * (PH1 :+: PH0)
+ 117     |            + RSTI_N * RASON * /LASTF * (PH1 :+: PH0)
+ 118     |PH1.CLKF    = BCLKIN
+ 119     |
+ 120     |BT0        := RSTI_N * RASON * BT0 * TA_N * TEA_N
+ 121     |            + RSTI_N * RASON * /BT0 * /TA_N * /LASTF
+ 122     |BT0.CLKF    = BCLKIN
+ 123     |BT1        := RSTI_N * RASON * BT1 * TA_N * TEA_N
+ 124     |            + RSTI_N * RASON * (BT1 :+: BT0) * /TA_N * /LASTF
+ 125     |BT1.CLKF    = BCLKIN
+ 126     |
+ 127     |MUX        := RSTI_N * RASON * TA_N * TEA_N
+ 128     |            + RSTI_N * RASON * /LASTF
+ 129     |MUX.CLKF    = BCLKIN
+ 130     |
+ 131     |; RAS: selected SIMM while the sequence runs, all of them for refresh
+ 132     |/RAS0_N     = /SELRAM0_N * RASON +  
+ 132  s1 |(RC1 * /RC0 + RC2 * RC0)
+ 132     |
+ 133     |/RAS1_N     = /SELRAM0_N * RASON +  
+ 133  s1 |(RC1 * /RC0 + RC2 * RC0)
+ 133     |
+ 134     |/RAS2_N     = /SELRAM2_N * RASON +  
+ 134  s1 |(RC1 * /RC0 + RC2 * RC0)
+ 134     |
+ 135     |/RAS3_N     = /SELRAM3_N * RASON +  
+ 135  s1 |(RC1 * /RC0 + RC2 * RC0)
+ 135     |
+ 136     |
+ 137     |; ---- non-DRAM cycles via U14 -------------------------------------------
+ 138     |AMI        := RSTI_N * DEC * SELRAM0_N * SELRAM2_N * SELRAM3_N
+ 139     |            + RSTI_N * AMI * TA_N * TEA_N
+ 140     |AMI.CLKF    = BCLKIN
+ 141     |; AREQ only once ADONE from the previous cycle has gone away
+ 142     |/AREQ_N    := RSTI_N * AMI * /AD2 * AREQ_N * TA_N * TEA_N
+ 143     |            + RSTI_N * AMI * /AREQ_N * TA_N * TEA_N
+ 144     |AREQ_N.CLKF = BCLKIN
+ 145     |AD1        := /ADONE_N
+ 146     |AD1.CLKF    = BCLKIN
+ 147     |AD2        := AD1
+ 148     |AD2.CLKF    = BCLKIN
+ 149     |
+ 150     |; ---- terminations -----------------------------------------------------------
+ 151     |/TA_N      := RSTI_N * RASON * /AMI * PH1 * PH0
+ 152     |            + RSTI_N * AMI * AD2 * /AREQ_N * TA_N
+ 153     |TA_N.CLKF   = BCLKIN
+ 154     |/TAX_N     := RSTI_N * RASON * /AMI * PH1 * PH0
+ 155     |            + RSTI_N * AMI * AD2 * /AREQ_N * TA_N
+ 156     |TAX_N.CLKF  = BCLKIN
+ 157     |
+ 158     |; Watchdog: a non-DRAM cycle still waiting at the second refresh tick
+ 159     |; (11-23 us) ends with TEA. U14 lets a cycle answered with A1200 BERR hang
+ 160     |; on purpose, so BERR reaches the 060 as a bus error; a slot cycle that
+ 161     |; never gets DSACK becomes a bus error instead of a lock-up.
+ 162     |TO1        := RSTI_N * AMI * TO1
+ 163     |            + RSTI_N * AMI * /REFREQ_N
+ 164     |TO1.CLKF    = BCLKIN
+ 165     |/TEA_N     := RSTI_N * AMI * TO1 * /REFREQ_N * TA_N * TEA_N
+ 166     |TEA_N.CLKF  = BCLKIN
+ 167     |
+ 168     |; read data phase / write data phase for the whole cycle
+ 169     |/RDOE_N    := RSTI_N * R_W * /CYC_N * TA_N * TEA_N
+ 170     |            + RSTI_N * R_W * /CYC_N * /LASTF
+ 171     |RDOE_N.CLKF = BCLKIN
+ 172     |/OEBA_N    := RSTI_N * /R_W * /CYC_N * TA_N * TEA_N * /AD2
+ 173     |            + RSTI_N * /R_W * /CYC_N * /LASTF * /AD2
+ 174     |OEBA_N.CLKF = BCLKIN
+ 175     |
+ 176     |; ---- refresh (not gated by reset) ----------------------------------------
+ 177     |RFP        := /REFREQ_N
+ 178     |            + RFP *  
+ 178  s1 |(/RC2 * /RC1 * /RC0)
+ 178     |
+ 179     |RFP.CLKF    = BCLKIN
+ 180     |RC0        :=  
+ 180  s1 |(RFP * CYC_N * /RASON * /DEC)
+ 180     |                     *  
+ 180  s1 |(/RC2 * /RC1 * /RC0)
+ 180     |
+ 181     |            + /RC2 * /RC1 * RC0
+ 182     |            + RC2 * RC1
+ 183     |RC0.CLKF    = BCLKIN
+ 184     |RC1        := /RC2 * RC0
+ 185     |            + /RC2 * RC1
+ 186     |            + RC1 * /RC0
+ 187     |RC1.CLKF    = BCLKIN
+ 188     |RC2        := RC1 * /RC0
+ 189     |            + RC2 * RC0
+ 190     |RC2.CLKF    = BCLKIN
+ 191     |/CASEN_N    = /RC2 * RC0
+
+ %% MACHPAR %%    ERROR count:  0      WARNING count:  0
+
+ %% MACHPAR %%    File processed successfully.    File:  U7.pds
+
+*** Start MACHBPP.E 22:31:36 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>PCLK
+Processing equation for ====>BCLK040
+Processing equation for ====>BCLK040.CLKF
+Processing equation for ====>BCLK
+Processing equation for ====>LEAB_N
+Processing equation for ====>LASTF
+Processing equation for ====>/CYC_N
+Processing equation for ====>CYC_N.CLKF
+Processing equation for ====>DEC
+Processing equation for ====>DEC.CLKF
+Processing equation for ====>RASON
+Processing equation for ====>RASON.CLKF
+Processing equation for ====>PH0
+Processing equation for ====>PH0.CLKF
+Processing equation for ====>PH1
+Processing equation for ====>PH1.CLKF
+Processing equation for ====>BT0
+Processing equation for ====>BT0.CLKF
+Processing equation for ====>BT1
+Processing equation for ====>BT1.CLKF
+Processing equation for ====>MUX
+Processing equation for ====>MUX.CLKF
+Processing equation for ====>/RAS0_N
+Processing equation for ====>/RAS1_N
+Processing equation for ====>/RAS2_N
+Processing equation for ====>/RAS3_N
+Processing equation for ====>AMI
+Processing equation for ====>AMI.CLKF
+Processing equation for ====>/AREQ_N
+Processing equation for ====>AREQ_N.CLKF
+Processing equation for ====>AD1
+Processing equation for ====>AD1.CLKF
+Processing equation for ====>AD2
+Processing equation for ====>AD2.CLKF
+Processing equation for ====>/TA_N
+Processing equation for ====>TA_N.CLKF
+Processing equation for ====>/TAX_N
+Processing equation for ====>TAX_N.CLKF
+Processing equation for ====>TO1
+Processing equation for ====>TO1.CLKF
+Processing equation for ====>/TEA_N
+Processing equation for ====>TEA_N.CLKF
+Processing equation for ====>/RDOE_N
+Processing equation for ====>RDOE_N.CLKF
+Processing equation for ====>/OEBA_N
+Processing equation for ====>OEBA_N.CLKF
+Processing equation for ====>RFP
+Processing equation for ====>RFP.CLKF
+Processing equation for ====>RC0
+Processing equation for ====>RC0.CLKF
+Processing equation for ====>RC1
+Processing equation for ====>RC1.CLKF
+Processing equation for ====>RC2
+Processing equation for ====>RC2.CLKF
+Processing equation for ====>/CASEN_N
+
+ %%  MACHBPP  %% Maximum memory allocated was: 70260 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: U7.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 22:31:36; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 22:31:36 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node TO1...
+====> TO1                MIN_ON (2 + pt)
+====> TO1.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node RC0...
+====> RC0                MIN_ON (3 + pt)
+====> RC0.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node RC1...
+====> RC1                MIN_ON (3 + pt --> 2 + pt)
+====> RC1.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node RC2...
+====> RC2                MIN_ON (2 + pt)
+====> RC2.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node RFP...
+====> RFP                MIN_ON (2 + pt)
+====> RFP.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node AD2...
+====> AD2                MIN_ON (1 + pt)
+====> AD2.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node AD1...
+====> AD1                MIN_ON (1 + pt)
+====> AD1.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node AMI...
+====> AMI                MIN_ON (2 + pt)
+====> AMI.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node LASTF...
+====> LASTF              MIN_ON (4 + pt)
+Processing equation(s) for node BT0...
+====> BT0                MIN_ON (2 + pt)
+====> BT0.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node BT1...
+====> BT1                MIN_ON (3 + pt)
+====> BT1.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node PH0...
+====> PH0                MIN_ON (2 + pt)
+====> PH0.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node PH1...
+====> PH1                MIN_ON (4 + pt)
+====> PH1.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for node RASON...
+====> RASON              MIN_ON (3 + pt)
+====> RASON.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for node DEC...
+====> DEC                MIN_ON (1 + pt)
+====> DEC.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for pin TEA_N...
+====> /TEA_N             MIN_ON (1 - pt)
+====> TEA_N.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin AREQ_N...
+====> /AREQ_N            MIN_ON (2 - pt)
+====> AREQ_N.CLKF        MIN_ON (1 + pt)
+Processing equation(s) for pin CYC_N...
+====> /CYC_N             MIN_ON (3 - pt)
+====> CYC_N.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin RDOE_N...
+====> /RDOE_N            MIN_ON (2 - pt)
+====> RDOE_N.CLKF        MIN_ON (1 + pt)
+Processing equation(s) for pin CASEN_N...
+====> /CASEN_N           MIN_ON (1 - pt)
+Processing equation(s) for pin TAX_N...
+====> /TAX_N             MIN_ON (2 - pt)
+====> TAX_N.CLKF         MIN_ON (1 + pt)
+Processing equation(s) for pin TA_N...
+====> /TA_N              MIN_ON (2 - pt)
+====> TA_N.CLKF          MIN_ON (1 + pt)
+Processing equation(s) for pin RAS0_N...
+====> /RAS0_N            MIN_ON (3 - pt)
+Processing equation(s) for pin LEAB_N...
+====> LEAB_N             MIN_ON (1 + pt)
+Processing equation(s) for pin RAS1_N...
+====> /RAS1_N            MIN_ON (3 - pt)
+Processing equation(s) for pin OEBA_N...
+====> /OEBA_N            MIN_ON (2 - pt)
+====> OEBA_N.CLKF        MIN_ON (1 + pt)
+Processing equation(s) for pin RAS2_N...
+====> /RAS2_N            MIN_ON (3 - pt)
+Processing equation(s) for pin PCLK...
+====> PCLK               MIN_ON (1 + pt)
+Processing equation(s) for pin RAS3_N...
+====> /RAS3_N            MIN_ON (3 - pt)
+Processing equation(s) for pin BCLK...
+====> BCLK               MIN_ON (2 + pt)
+Processing equation(s) for pin MUX...
+====> MUX                MIN_ON (2 + pt)
+====> MUX.CLKF           MIN_ON (1 + pt)
+Processing equation(s) for pin BCLK040...
+====> BCLK040            MIN_ON (1 + pt)
+====> BCLK040.CLKF       MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 52674 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: U7.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 22:31:38; (MACHMIN.EXE= 2 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 22:31:38 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file u7.tre to PLA file u7.pla...
+
+................................
+................................
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 58872 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: U7.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 22:31:38; (MACHMIN.EXE= 0 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 22:31:38 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is U7.pds . Device is MACH111 .
+|> INFO z5109 - For this device, all input pairing is ignored since input
+                registers or latches do not exist. All signals must pass
+                through the central switch matrix before being latched or
+                registered.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of global clocks:
+   BCLKIN:
+   OSC:
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is U7.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File U7.pds .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 0 .
+
+*** End MACHFITR.EX 22:31:39; (MACHFITR.EXE= 1 sec.) elapsed time= 3 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

@@ -1,0 +1,222 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+******************************************************************
+* Design Name = E120.pds, Device = MACH120, Nov 10 13:48:38 2026 *
+******************************************************************
+
+***********************
+* MACH FITTER OPTIONS *
+***********************
+SIGNAL PLACEMENT:
+  Handling of Preplacements                      No Change
+  Use placement data from                        Design file
+
+FITTING OPTIONS:
+  SET/RESET treated as DONT_CARE?                Y
+  Unused I/O pins configured as outputs?         N
+  Iterate between partitioning and place/route?  Y
+  Balanced partitioning?                         Y
+  Spread Placement?                              Y
+  Maximun Run Time                               run until completion
+
+***************************
+* DEVICE RESOURCE SUMMARY *
+***************************
+                                 Total
+                               Available  Used  Available  Utilization
+Dedicated Pins
+  Input-Only Pins                 4        0      4    -->     0%
+  Clock/Input Pins                4        0      4    -->     0%
+I/O Pins                         48        2     46    -->     4%
+Central Switch Matrix Outputs   104        2    102    -->     1%
+Product Term Clusters            48        2     46    -->     4%
+Logical Product Terms           192        2    190    -->     1%
+Logic Macrocells                 48        4     44    -->     8%
+  Input Registers                ..       ..     ..
+  Unusable Macrocells            ..       ..     ..
+
+******************************
+* BLOCK PARTITIONING SUMMARY *
+******************************
+                                                                  # of PT  
+                  Logic   I/O           Macrocells    Macrocells  clusters 
+          Fanin    PTs    Pins         Used           available   available
+|---------------------------------------------------------------------------|
+Maximum     26     48     12            ..     ..         12        12
+|---------------------------------------------------------------------------|
+Block A      2      2      2             2     ..         ..        10
+Block B      0      0      0             0     ..         ..        12
+Block C      0      0      0             0     ..         ..        12
+Block D      0      0      0             0     ..         ..        12
+
+******************
+* SIGNAL SUMMARY *
+******************
+                             Pin/Node Logic              Output
+       Signals Block Loc PTs   Type   Type  Preset  Reset Enable Fanout
+|---------------------------------------------------------------------------|
+             A   ?     3  .    input   ...   ...    ...   ...    A---
+             B   ?     4  .    input   ...   ...    ...   ...    A---
+             Q   ?     ?  1   output   ...   ...    ...   ...    ----
+             R   A     ?  1   output   ...   ...    ...   ...    ----
+             S   A     ?  1   output   ...   ...    ...   ...    ----
+             Q   ?    ??  1  implied    C    ...    ...   ...    ----
+             R   A    A?  1  implied    C    ...    ...   ...    ----
+             S   A    A?  1  implied    C    ...    ...   ...    ----
+
+**************************************************
+* PRESET, RESET and OUTPUT ENABLE signal SUMMARY *
+**************************************************
+
+PRESET signal summary:
+
+Number      Pin or Node Name      Block 
+|--------------------------------------------------|
+
+RESET signal summary:
+
+Number      Pin or Node Name      Block 
+|--------------------------------------------------|
+
+OUTPUT ENABLE signal summary:
+
+Number      Pin or Node Name      Block 
+|--------------------------------------------------|
+ 1                     S          A---
+ 2                     R          A---
+ 3                     Q          A---
+
+***********************
+* TABULAR INFORMATION *
+***********************
+
+**********************************
+* Signals - Equations Where Used *
+**********************************
+Signal Source :    Fanout List
+|---------------------------------------------------------------------------|
+             A:              Q{.}              S{A}
+              {.A}
+             B:              R{A}              S{A}
+              {AA}
+
+Block A singular list (Input drives only one logic equation)
+             A:              S
+
+
+BLOCK A LOGIC MACROCELLS 
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  P   C  S  R   P
+O                            P   E   A  O   L  E  E   I
+C     Node          Signal   E   D   L  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+A0      2 ................  ...  .   8  .   .  .  .  ..  ....
+A1      3 ................  ...  .  12  .   .  .  .  ..  ....
+A2      4 ................  ...  .  12  .   .  .  .  ..  ....
+A3      5 ................  ...  .  12  .   .  .  .  ..  ....
+A4      6 ................  ...  .  12  .   .  .  .  ..  ....
+A5      7 ................  ...  .  12  .   .  .  .  ..  ....
+A6      8 ................  ...  .  12  .   .  .  .  ..  ....
+A7      9 ................  ...  .  12  .   .  .  .  ..  ....
+A8     10 ................  ...  .  12  .   .  .  .  ..  ....
+A9     11 ................  ...  .  12  .   .  .  .  ..  ....
+A10    12 ................  ...  .  12  .   .  .  .  ..  ....
+A11    13 ................  ...  .   8  .   .  .  .  ..  ....
+A?     ..                S   C   1   .  H   .  .  .  ..  ----
+A?     ..                R   C   1   .  H   .  .  .  ..  ----
+
+BLOCK A I/O PINS
+                  Output
+Pin onode        Enable           Signal     Type    Fanout
+|----------------------------------------------------------------|
+  2  ...          ...   ................        ..  ....
+  3  ...          ...   ................        ..  ....
+  4  ...          ...   ................        ..  ....
+  5  ...          ...   ................        ..  ....
+  6  ...          ...   ................        ..  ....
+  7  ...          ...   ................        ..  ....
+  9  ...          ...   ................        ..  ....
+ 10  ...          ...   ................        ..  ....
+ 11  ...          ...   ................        ..  ....
+ 12  ...          ...   ................        ..  ....
+ 13  ...          ...   ................        ..  ....
+ 14  ...          ...   ................        ..  ....
+  ?  ...          ...                  S    output  ----
+  ?  ...          ...                  R    output  ----
+
+
+BLOCK A LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxA?                A         pin 3     mxA?              ...           ...
+mxA?                B         pin 4     mxA?              ...           ...
+mxA?              ...           ...     mxA?              ...           ...
+mxA?              ...           ...     mxA?              ...           ...
+mxA?              ...           ...     mxA?              ...           ...
+mxA?              ...           ...     mxA?              ...           ...
+mxA?              ...           ...     mxA?              ...           ...
+mxA?              ...           ...     mxA?              ...           ...
+mxA?              ...           ...     mxA?              ...           ...
+mxA?              ...           ...     mxA?              ...           ...
+mxA?              ...           ...     mxA?              ...           ...
+mxA?              ...           ...     mxA?              ...           ...
+mxA?              ...           ...     mxA?              ...           ...
+
+*******************************
+* PARTITIONING FAILURE REPORT *
+*******************************
+Grouped or preplaced signal 'Q' cannot be partitioned in specified block
+for the following reasons:
+BLOCK A - 
+     OUTPUT ENABLE equation does not fit in the block.
+
+The following signals remain to be partitioned
+( excluding pins used only as inputs )
+                                  Q
+
+MACH120 report file key:
+
+AVAL          - Additional product terms available within the current
+                steering allocation, plus those potentially available
+                through resteering of free clusters.
+C             - Combinatorial
+Ck0           - Dedicated clock pin
+Ck1           - Dedicated clock pin
+Ck2           - Dedicated clock pin
+Ck3           - Dedicated clock pin
+clk           - Clock
+CSM           - Central Switch Matrix
+D             - D-type flip flop
+G             - Ground
+H             - High
+implied       - Node occupying the macrocell drives the output pin
+                but not defined in the design file.
+inode         - Input node
+Inp           - Input
+ipair         - Input paired node
+I/O           - Input or Output
+L             - Low
+L             - Latch
+LOC           - Location
+mcell <X>     - Source is macrocell from block <X>
+Mux           - Multiplexer
+mx            - Block Array input multiplexer
+onode         - Output node
+opair         - Output paired node
+P             - Product Term
+Pol           - Polarity
+PT(s)         - Product term(s)
+Reg           - Register
+Res           - Reset control
+RN_<pin_name> - Output node paired with <pin_name> created by Fitter.
+Set           - Preset control
+T             - T-type flip flop
+<Y>XX-ir      - Macrocell XX in block Y is used as an input register.
+.             - Not available or Not applicable
+
+Partitioning  40% - Completed
+Placement      0% - Completed
+Routing        0% - Completed
+%%% Fitting process has failed %%%

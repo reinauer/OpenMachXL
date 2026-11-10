@@ -1,0 +1,38 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file Udcnt.pds
+; FITTER-generated Placements.
+; DEVICE   MACH111
+; DATE     Mon Nov 09 20:22:22 2026
+
+
+Pin   35  CLK
+Pin   6  COUNT
+Pin   4  UP
+Pin   17  I0
+Pin   16  I1
+Pin   14  I2
+Pin   13  I3
+Pin   11  I4
+Pin   10  I5
+Pin   9  I6
+Pin   7  I7
+Pin   15  AB0 Reg  ;
+Pin   2  AB1 Reg  ;
+Pin   43  AB2 Reg  ;
+Pin   5  AB3 Reg  ;
+Pin   8  AB4 Reg  ;
+Pin   40  AB5 Reg  ;
+Pin   37  AB6 Reg  ;
+Pin   30  AB7 Reg  ;
+Pin   3  RST
+Node  11  RN_AB0 Reg  ;
+Node  2  RN_AB1 Reg  ;
+Node  18  RN_AB2 Reg  ;
+Node  5  RN_AB3 Reg  ;
+Node  8  RN_AB4 Reg  ;
+Node  21  RN_AB5 Reg  ;
+Node  24  RN_AB6 Reg  ;
+Node  27  RN_AB7 Reg  ;
+; Unused Pins & Nodes
+; -> None Found.

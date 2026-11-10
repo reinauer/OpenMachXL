@@ -1,0 +1,34 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Sc1111.pds
+Title  
+
+
+
+   1-V1 - TRACE_ON
+          A  Y  
+   1-V1 - SETF
+          /A  
+   5-V2 - CLOCKF
+   5-V3 - SETF
+          A  
+   9-V4 - CLOCKF
+   9-V4 - CHECK
+          Y  
+   9-V5 - SETF
+          /A  
+  13-V6 - CLOCKF
+  13-V6 - CHECK
+          /Y  
+  13-V7 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Sc1111.HST
+Simulation results (trace) are in   ===> Sc1111.TRF
+Merged results (JEDEC) are in       ===> Sc1111.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 87179 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Sc1111.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0

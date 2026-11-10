@@ -1,0 +1,144 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+MACHXL SIMULATION HISTORY LISTING
+
+Title     : MULTIPLEXER              Author   : J. ENGINEER      
+Pattern   : 1                        Company  : AMD              
+Revision  : 1                        Date     : 8/26/94          
+
+MACH465        
+Page : 1 
+            gggggggggggggggg                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ SEL3       LLLLLLLLLHLHLHLH                                            
+ SEL2       LLLLLLLLLLHHLLHH                                            
+ MUXOUT[5]  LLLLLLLLLHHLLHHL                                            
+ SEL1       LLLLLLLLLLLLHHHH                                            
+ DATH[7]    LLLLLLLHHHHHHHHH                                            
+ DATH[6]    LLLLLLLHHHHHHHHH                                            
+ DATH[5]    LLLLLLLLLLLLLLLL                                            
+ DATH[4]    LLLLLLLLLLLLLLLL                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ DATH[3]    LLLLLLLHHHHHHHHH                                            
+ DATH[2]    LLLLLLLHHHHHHHHH                                            
+ MUXOUT[4]  HHHHHHHHHLHLHLHL                                            
+ DATH[1]    LLLLLLLLLLLLLLLL                                            
+ DATH[0]    LLLLLLLLLLLLLLLL                                            
+ DATG[7]    LLLLLLHHHHHHHHHH                                            
+ DATG[6]    LLLLLLLLLLLLLLLL                                            
+ DATG[5]    LLLLLLHHHHHHHHHH                                            
+ DATG[4]    LLLLLLHHHHHHHHHH                                            
+ DATG[3]    LLLLLLHHHHHHHHHH                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ DATG[2]    LLLLLLLLLLLLLLLL                                            
+ DATG[1]    LLLLLLHHHHHHHHHH                                            
+ DATG[0]    LLLLLLHHHHHHHHHH                                            
+ DATF[7]    LLLLLHHHHHHHHHHH                                            
+ DATF[6]    LLLLLLLLLLLLLLLL                                            
+ DATF[5]    LLLLLHHHHHHHHHHH                                            
+ MUXOUT[3]  LLLLLLLLLLLHHHHH                                            
+ DATF[4]    LLLLLLLLLLLLLLLL                                            
+ DATF[3]    LLLLLHHHHHHHHHHH                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ DATF[2]    LLLLLLLLLLLLLLLL                                            
+ DATF[1]    LLLLLHHHHHHHHHHH                                            
+ DATF[0]    LLLLLLLLLLLLLLLL                                            
+ DATI[7]    LLLLHHHHHHHHHHHH                                            
+ DATI[6]    LLLLLLLLLLLLLLLL                                            
+ MUXOUT[2]  HHHHHHHHHHHLLLLH                                            
+ DATI[5]    LLLLLLLLLLLLLLLL                                            
+ DATI[4]    LLLLHHHHHHHHHHHH                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ DATI[3]    LLLLHHHHHHHHHHHH                                            
+ DATI[2]    LLLLLLLLLLLLLLLL                                            
+ MUXOUT[1]  LLLLLLLLLHHLLHHL                                            
+ DATI[1]    LLLLLLLLLLLLLLLL                                            
+ DATI[0]    LLLLHHHHHHHHHHHH                                            
+ DATD[7]    LLLHHHHHHHHHHHHH                                            
+ DATD[6]    LLLLLLLLLLLLLLLL                                            
+ DATD[5]    LLLLLLLLLLLLLLLL                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ DATD[4]    LLLLLLLLLLLLLLLL                                            
+ DATD[3]    LLLHHHHHHHHHHHHH                                            
+ MUXOUT[0]  HHHHHHHHHLHLHLHL                                            
+ DATD[2]    LLLLLLLLLLLLLLLL                                            
+ DATD[1]    LLLLLLLLLLLLLLLL                                            
+ DATD[0]    LLLLLLLLLLLLLLLL                                            
+ DATC[7]    LLLLLLLLLLLLLLLL                                            
+ DATC[6]    LLHHHHHHHHHHHHHH                                            
+ DATC[5]    LLHHHHHHHHHHHHHH                                            
+ DATC[4]    LLHHHHHHHHHHHHHH                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ DATC[3]    LLLLLLLLLLLLLLLL                                            
+ DATC[2]    LLHHHHHHHHHHHHHH                                            
+ DATC[1]    LLHHHHHHHHHHHHHH                                            
+ DATC[0]    LLHHHHHHHHHHHHHH                                            
+ DATB[7]    LLLLLLLLLLLLLLLL                                            
+ DATB[6]    LHHHHHHHHHHHHHHH                                            
+ DATB[5]    LHHHHHHHHHHHHHHH                                            
+ DATB[4]    LLLLLLLLLLLLLLLL                                            
+ DATB[3]    LLLLLLLLLLLLLLLL                                            
+ DATB[2]    LHHHHHHHHHHHHHHH                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ DATB[1]    LHHHHHHHHHHHHHHH                                            
+ DATB[0]    LLLLLLLLLLLLLLLL                                            
+ DATA[7]    LLLLLLLLLLLLLLLL                                            
+ DATA[6]    HHHHHHHHHHHHHHHH                                            
+ DATA[5]    LLLLLLLLLLLLLLLL                                            
+ DATA[4]    HHHHHHHHHHHHHHHH                                            
+ DATA[3]    LLLLLLLLLLLLLLLL                                            
+ DATA[2]    HHHHHHHHHHHHHHHH                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ DATA[1]    LLLLLLLLLLLLLLLL                                            
+ DATA[0]    HHHHHHHHHHHHHHHH                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ MUXOUT[7]  LLLLLLLLLLLHHHHH                                            
+ VCC        HHHHHHHHHHHHHHHH                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+ MUXOUT[6]  HHHHHHHHHHHLLLLH                                            
+ GND        LLLLLLLLLLLLLLLL                                            
+

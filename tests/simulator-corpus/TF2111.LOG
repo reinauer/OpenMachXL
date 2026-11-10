@@ -1,0 +1,165 @@
+
+*** Start MACHPAR.E 03:14:46 
+Tf2111.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+   1     |TITLE Native simulation reference
+|> WARNING P44  Missing date declaration.
+
+|> WARNING P43  Missing company declaration.
+
+|> WARNING P42  Missing author declaration.
+
+|> WARNING P41  Missing revision declaration.
+
+|> WARNING P40  Missing pattern declaration.
+
+   2     |CHIP TF2111 MACH211
+   3     |PIN 2 A
+   4     |PIN 3 B
+   5     |PIN 11 CLK
+   6     |PIN 10 RST
+   7     |PIN 18 Q REG
+   8     |PIN 19 Y
+   9     |EQUATIONS
+  10     |/Q=A
+  11     |Q.CLKF=CLK
+  12     |Q.RSTF=RST
+  13     |Y=A*B
+  14     |Q.TRST=B
+  15     |SIMULATION
+  16     |SETF /A /B /CLK /RST
+  17     |TESTF /Q
+  18     |SETF A
+  19     |CLOCKF CLK
+  20     |TESTF Q
+  21     |SETF B
+  22     |TESTF Q
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  5
+
+ %% MACHPAR %%    File processed successfully.    File:  Tf2111.pds
+
+*** End MACHPAR.EXE 03:14:46; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 03:14:46 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>/Q
+Processing equation for ====>Q.CLKF
+Processing equation for ====>Q.RSTF
+Processing equation for ====>Y
+Processing equation for ====>Q.TRST
+SIMULATION SEGMENT
+.......
+ %%  MACHBPP  %% Maximum memory allocated was: 59088 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Tf2111.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 03:14:46; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 03:14:46 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin Y...
+====> Y                  MIN_ON (1 + pt)
+Processing equation(s) for pin Q...
+====> /Q                 MIN_ON (1 - pt)
+====> Q.CLKF             MIN_ON (1 + pt)
+====> Q.RSTF             MIN_ON (1 + pt)
+====> Q.TRST             MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 42402 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Tf2111.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 03:14:47; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 03:14:47 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file tf2111.tre to PLA file tf2111.pla...
+
+..
+..
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 41286 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Tf2111.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 03:14:47; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 03:14:47 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Tf2111.pds . Device is MACH211 .
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of global clocks:
+   CLK:
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is Tf2111.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File Tf2111.pds .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 0 .
+
+*** End MACHFITR.EX 03:14:48; (MACHFITR.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

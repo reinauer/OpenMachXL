@@ -1,0 +1,47 @@
+;PALASM Design Description
+; pds2v test: 4-bit registered counter with three-state outputs, async reset,
+; a registered buried node (sticky wrap flag) and a combinatorial node.
+; EXPECT-EXIT: 0
+; EXPECT: note: Q0 uses async reset
+; EXPECT: node WRAP -> block
+
+TITLE    pds2v test counter
+CHIP     CNT  MACH111
+
+PIN  5   CLK                    ; CLK0
+PIN  4   RESET                  ; I0, active high
+PIN  7   EN                     ; CLK1/I2 used as plain input
+PIN  26  OE_N                   ; I3
+PIN  40  Q0     REGISTERED
+PIN  41  Q1     REGISTERED
+PIN  42  Q2     REGISTERED
+PIN  43  Q3     REGISTERED
+PIN  44  CARRY  COMBINATORIAL
+PIN  1   WRAPPED COMBINATORIAL
+NODE ?   WRAP   REGISTERED      ; sticky: set when the counter wraps
+NODE ?   ALL1   COMBINATORIAL
+
+EQUATIONS
+Q0 := Q0 :+: EN
+Q1 := Q1 :+: (EN * Q0)
+Q2 := Q2 :+: (EN * Q0 * Q1)
+Q3 := Q3 :+: (EN * Q0 * Q1 * Q2)
+ALL1  = Q0 * Q1 * Q2 * Q3
+CARRY = ALL1 * EN
+WRAP := WRAP + CARRY
+WRAPPED = WRAP
+
+Q0.CLKF = CLK
+Q1.CLKF = CLK
+Q2.CLKF = CLK
+Q3.CLKF = CLK
+WRAP.CLKF = CLK
+Q0.RSTF = RESET
+Q1.RSTF = RESET
+Q2.RSTF = RESET
+Q3.RSTF = RESET
+WRAP.RSTF = RESET
+Q0.TRST = /OE_N
+Q1.TRST = /OE_N
+Q2.TRST = /OE_N
+Q3.TRST = /OE_N

@@ -1,0 +1,20 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+MACHXL SIMULATION SELECTIVE TRACE LISTING
+
+Title     : 3 Bits D-Counter         Author   : J. ENGINEER      
+Pattern   : 1                        Company  : AMD              
+Revision  : 1                        Date     : 8/26/94          
+
+MACH111        
+Page : 1 
+
+         ggc  c  c  c  c  c  c  c  c  c                              
+ B[2]    LLLLLLLLLLLLHHHHHHHHHHHHLLLLLLLL                            
+ B[1]    LLLLLLHHHHHHLLLLLLHHHHHHLLLLLLHH                            
+ B[0]    LLLHHHLLLHHHLLLHHHLLLHHHLLLHHHLL                            
+ CLK     LLHHLHHLHHLHHLHHLHHLHHLHHLHHLHHL                            
+ RST     HLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL                            
+ ENABLE  HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH                            
+

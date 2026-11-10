@@ -1,0 +1,26 @@
+spawnCall():
+=========SPAWN==========
+     Argument List
+     -------------
+SP    = C:\exe\MACHSP.exe 
+<runM>=Man
+<retC>=0
+<topL>=6
+<inFn>=TF4350.PDS
+<otFn>=00
+<devN>=MACH435
+<deBg>=D
+<ProgCode> = 0 1 2 3 4 20 5 Y 
+=====Spawn with overlay ( MACHSP.EXE )====== Tue Nov 10 03:12:37 2026
+Tue Nov 10 03:12:37 2026
+C:\EXE\MACHPAR.EXE  TF4350.PDS -tre TF4350.TRE -lis sp.log -log sp.@@1
+Tue Nov 10 03:12:37 2026
+C:\EXE\MACHBPP.EXE  TF4350.TRE -IPAIR -PAIR -1eqn -tre TF4350.TRE -dc0 -log sp.log
+Tue Nov 10 03:12:38 2026
+C:\EXE\MACHMIN.EXE   -CON -N -ID  -tre TF4350.TRE -log sp.log
+Tue Nov 10 03:12:38 2026
+C:\EXE\MACHMIN.EXE -tre2pla -tre TF4350.TRE -pla TF4350.pla -log sp.log
+Tue Nov 10 03:12:38 2026
+C:\EXE\MACHFITR.EXE  TF4350.pla +r +s l=0 +G +C x=526336 -log sp.log
+C:\EXE\MACHMENU.EXE -R 0 -D -NT
+======Spawn with overlay ( MACHMENU.EXE )=====  Tue Nov 10 03:12:39 2026

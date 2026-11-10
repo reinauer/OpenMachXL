@@ -1,0 +1,39 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file Cntcase.pds
+; FITTER-generated Placements.
+; DEVICE   MACH131
+; DATE     Mon Nov 09 20:18:50 2026
+
+
+Pin   17  DATA[0]
+Pin   16  DATA[1]
+Pin   15  DATA[2]
+Pin   14  DATA[3]
+Pin   13  DATA[4]
+Pin   12  DATA[5]
+Pin   10  DATA[6]
+Pin   9  DATA[7]
+Pin   8  LOAD
+Pin   82  TC[0] Reg  ;
+Pin   40  TC[1] Reg  ;
+Pin   45  TC[2] Reg  ;
+Pin   3  TC[3] Reg  ;
+Pin   48  TC[4] Reg  ;
+Pin   6  TC[5] Reg  ;
+Pin   37  TC[6] Reg  ;
+Pin   79  TC[7] Reg  ;
+Pin   7  COUNT
+Pin   65  CLK
+Pin   5  RST
+Pin   4  OE
+Node  50  RN_TC[0] Reg  ;
+Node  18  RN_TC[1] Reg  ;
+Node  34  RN_TC[2] Reg  ;
+Node  2  RN_TC[3] Reg  ;
+Node  37  RN_TC[4] Reg  ;
+Node  5  RN_TC[5] Reg  ;
+Node  21  RN_TC[6] Reg  ;
+Node  53  RN_TC[7] Reg  ;
+; Unused Pins & Nodes
+; -> None Found.

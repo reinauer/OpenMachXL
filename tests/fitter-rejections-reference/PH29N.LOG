@@ -1,0 +1,278 @@
+
+*** Start MACHPAR.E 08:59:31 
+Ph29n.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP PHASE MACH111
+   2     |PIN 33 I0
+   3     |PIN 26 I1
+   4     |PIN 38 I2
+   5     |PIN 32 I3
+   6     |PIN 6 I4
+   7     |PIN 40 I5
+   8     |PIN 10 I6
+   9     |PIN 4 I7
+  10     |PIN 14 I8
+  11     |PIN 3 I9
+  12     |PIN 31 I10
+  13     |PIN 41 I11
+  14     |PIN 2 QA
+  15     |PIN 24 QB
+  16     |NODE 16 N0
+  17     |NODE 17 N1
+  18     |NODE 9 N2
+  19     |NODE 5 N3
+  20     |NODE 7 N4
+  21     |NODE 6 N5
+  22     |NODE 11 N6
+  23     |NODE 4 N7
+  24     |NODE 3 N8
+  25     |NODE 10 N9
+  26     |NODE 13 N10
+  27     |NODE 20 N11
+  28     |NODE 32 N12
+  29     |NODE 18 N13
+  30     |NODE 27 N14
+  31     |NODE 25 N15
+  32     |NODE 29 N16
+  33     |NODE 30 N17
+  34     |NODE 21 N18
+  35     |NODE 31 N19
+  36     |NODE 19 N20
+  37     |NODE 23 N21
+  38     |NODE ? N22
+  39     |NODE ? N23
+  40     |NODE ? N24
+  41     |NODE ? N25
+  42     |EQUATIONS
+  43     |N0=I1*I4*I0*I2
+  44     |N1=I4*I5*I3*I0
+  45     |N2=I1*I3*I2
+  46     |N3=I5*I4*I2
+  47     |N4=I5*I0*I2*I4
+  48     |N5=I2*I3*I4
+  49     |N6=I2*I0*I5
+  50     |N7=I5*I3
+  51     |N8=I5*I2*I3*I0
+  52     |N9=I0*I4
+  53     |N10=I4*I2
+  54     |N11=I7*I8*I6
+  55     |N12=I10*I7
+  56     |N13=I6*I10
+  57     |N14=I11*I8
+  58     |N15=I10*I7*I6
+  59     |N16=I11*I8
+  60     |N17=I6*I10
+  61     |N18=I7*I8
+  62     |N19=I11*I10*I9*I7
+  63     |N20=I10*I8*I6*I11
+  64     |N21=I10*I11*I7*I9
+  65     |N22=I5*I0
+  66     |N23=I5:+:I2:+:I3:+:I0
+  67     |N24=I4*I0*I3
+  68     |N25=I5:+:I1:+:I3:+:I2
+  69     |QA=N0*N1*N2*N3*N4*N5*N6*N7*N8*N9*N10*N22*N23
+  70     |QB=N11*N12*N13*N14*N15*N16*N17*N18*N19*N20*N21*N24*N25
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Ph29n.pds
+
+*** End MACHPAR.EXE 08:59:31; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 08:59:31 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>N0
+Processing equation for ====>N1
+Processing equation for ====>N2
+Processing equation for ====>N3
+Processing equation for ====>N4
+Processing equation for ====>N5
+Processing equation for ====>N6
+Processing equation for ====>N7
+Processing equation for ====>N8
+Processing equation for ====>N9
+Processing equation for ====>N10
+Processing equation for ====>N11
+Processing equation for ====>N12
+Processing equation for ====>N13
+Processing equation for ====>N14
+Processing equation for ====>N15
+Processing equation for ====>N16
+Processing equation for ====>N17
+Processing equation for ====>N18
+Processing equation for ====>N19
+Processing equation for ====>N20
+Processing equation for ====>N21
+Processing equation for ====>N22
+Processing equation for ====>N23
+Processing equation for ====>N24
+Processing equation for ====>N25
+Processing equation for ====>QA
+Processing equation for ====>QB
+
+ %%  MACHBPP  %% Maximum memory allocated was: 62226 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Ph29n.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 08:59:31; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 08:59:31 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node N25...
+====> N25                MIN_ON (8 + pt)
+Processing equation(s) for node N24...
+====> N24                MIN_ON (1 + pt)
+Processing equation(s) for node N23...
+====> N23                MIN_ON (8 + pt)
+Processing equation(s) for node N22...
+====> N22                MIN_ON (1 + pt)
+Processing equation(s) for node N12...
+====> N12                MIN_ON (1 + pt)
+Processing equation(s) for node N19...
+====> N19                MIN_ON (1 + pt)
+Processing equation(s) for node N17...
+====> N17                MIN_ON (1 + pt)
+Processing equation(s) for node N16...
+====> N16                MIN_ON (1 + pt)
+Processing equation(s) for node N14...
+====> N14                MIN_ON (1 + pt)
+Processing equation(s) for node N15...
+====> N15                MIN_ON (1 + pt)
+Processing equation(s) for node N21...
+====> N21                MIN_ON (1 + pt)
+Processing equation(s) for node N18...
+====> N18                MIN_ON (1 + pt)
+Processing equation(s) for node N11...
+====> N11                MIN_ON (1 + pt)
+Processing equation(s) for node N20...
+====> N20                MIN_ON (1 + pt)
+Processing equation(s) for node N13...
+====> N13                MIN_ON (1 + pt)
+Processing equation(s) for node N1...
+====> N1                 MIN_ON (1 + pt)
+Processing equation(s) for node N0...
+====> N0                 MIN_ON (1 + pt)
+Processing equation(s) for node N10...
+====> N10                MIN_ON (1 + pt)
+Processing equation(s) for node N6...
+====> N6                 MIN_ON (1 + pt)
+Processing equation(s) for node N9...
+====> N9                 MIN_ON (1 + pt)
+Processing equation(s) for node N2...
+====> N2                 MIN_ON (1 + pt)
+Processing equation(s) for node N4...
+====> N4                 MIN_ON (1 + pt)
+Processing equation(s) for node N5...
+====> N5                 MIN_ON (1 + pt)
+Processing equation(s) for node N3...
+====> N3                 MIN_ON (1 + pt)
+Processing equation(s) for node N7...
+====> N7                 MIN_ON (1 + pt)
+Processing equation(s) for node N8...
+====> N8                 MIN_ON (1 + pt)
+Processing equation(s) for pin QB...
+====> QB                 MIN_ON (1 + pt)
+Processing equation(s) for pin QA...
+====> QA                 MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 49356 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Ph29n.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 08:59:32; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 08:59:32 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file ph29n.tre to PLA file ph29n.pla...
+
+............................
+............................
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 54406 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Ph29n.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 08:59:32; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 08:59:32 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Ph29n.pds . Device is MACH111 .
+|> INFO z5109 - For this device, all input pairing is ignored since input
+                registers or latches do not exist. All signals must pass
+                through the central switch matrix before being latched or
+                registered.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+|> WARNING z7501 - Placer/Router [ Could not place Sig [ N25] with [ 8] PTs
+                   in blk [A]. ].
+|> WARNING z7501 - Placer/Router [ Not enough PTs in block [A] for sig
+                   [N25]. ].
+|> WARNING z7501 - Placer/Router [ Design unroutable ].
+|> WARNING z7501 - Placer/Router [ Design 0% routed ].
+|> FATAL z7502 - Placer/Router [ not successful ].
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement     97% - Completed
+Routing        0% - Completed
+%%% Fitting process has failed %%%
+*** Report Generator end.
+
+|> INFO z5122 - MACH111 fitting errors may result when preplaced and paired
+                nodes in block B of a MACH110 design have not been
+                translated to their MACH111 counterparts -- prior to
+                fitting.
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Ph29n.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 4 .
+
+*** End MACHFITR.EX 08:59:33; (MACHFITR.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

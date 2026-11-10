@@ -1,0 +1,29 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Simz.pds
+Title  Native simulation reference
+
+
+
+   2-V1 - TRACE_ON
+          A  B  Y  
+   2-V1 - SETF
+          A  /B  /RST  /CLK  
+   3-V1 - CHECK
+          ^Y  
+   3-V2 - SETF
+          B  
+   5-V2 - CHECK
+          Y  
+   5-V3 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Simz.HST
+Simulation results (trace) are in   ===> Simz.TRF
+Merged results (JEDEC) are in       ===> Simz.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 88873 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Simz.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0

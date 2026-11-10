@@ -1,0 +1,89 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file Db.pds
+; FITTER-generated Placements.
+; DEVICE   MACH445
+; DATE     Mon Nov 09 20:19:37 2026
+
+
+Pin   4  /RST
+Pin   13  CLK0
+Pin   19  IDB[0] Comb ; S6=1  S9=1  Pair 36
+Pin   20  IDB[1] Comb ; S6=1  S9=1  Pair 39
+Pin   21  IDB[2] Comb ; S6=1  S9=1  Pair 38
+Pin   22  IDB[3] Comb ; S6=1  S9=1  Pair 43
+Pin   23  IDB[4] Comb ; S6=1  S9=1  Pair 42
+Pin   24  IDB[5] Comb ; S6=1  S9=1  Pair 35
+Pin   25  IDB[6] Comb ; S6=1  S9=1  Pair 46
+Pin   26  IDB[7] Comb ; S6=1  S9=1  Pair 34
+Pin   34  A3
+Pin   35  A2
+Pin   36  /PIAWE
+Pin   37  /PIAOE
+Pin   38  /PIACS
+Pin   43  HDR[0] Reg  ; S6=1  S9=0  Pair 68
+Pin   44  HDR[1] Reg  ; S6=1  S9=0  Pair 71
+Pin   45  HDR[2] Reg  ; S6=1  S9=0  Pair 70
+Pin   46  HDR[3] Reg  ; S6=1  S9=0  Pair 75
+Pin   47  HDR[4] Reg  ; S6=1  S9=0  Pair 74
+Pin   48  HDR[5] Reg  ; S6=1  S9=0  Pair 67
+Pin   49  HDR[6] Reg  ; S6=1  S9=0  Pair 78
+Pin   50  HDR[7] Reg  ; S6=1  S9=0  Pair 66
+Pin   69  LED[0] Reg  ; S6=1  S9=0  Pair 102
+Pin   70  LED[1] Reg  ; S6=0  S9=0  Pair 100
+Pin   71  LED[2] Reg  ; S6=0  S9=0  Pair 103
+Pin   72  LED[3] Reg  ; S6=0  S9=0  Pair 107
+Pin   73  LED[4] Reg  ; S6=0  S9=0  Pair 106
+Pin   74  LED[5] Reg  ; S6=0  S9=0  Pair 99
+Pin   75  LED[6] Reg  ; S6=0  S9=0  Pair 110
+Pin   76  LED[7] Reg  ; S6=0  S9=0  Pair 98
+Pin   88  CLKS Comb ; S6=1  S9=1  Pair 114
+Pin   93  SWC[0]
+Pin   94  SWC[1]
+Pin   95  SWC[2]
+Pin   96  SWC[3]
+Pin   97  SWC[4]
+Pin   98  SWC[5]
+Pin   99  SWC[6]
+Pin   100  SWC[7]
+Node  68  RN_HDR[0] Reg  ; S6=1  S9=0 
+Node  71  RN_HDR[1] Reg  ; S6=1  S9=0 
+Node  70  RN_HDR[2] Reg  ; S6=1  S9=0 
+Node  75  RN_HDR[3] Reg  ; S6=1  S9=0 
+Node  74  RN_HDR[4] Reg  ; S6=1  S9=0 
+Node  67  RN_HDR[5] Reg  ; S6=1  S9=0 
+Node  78  RN_HDR[6] Reg  ; S6=1  S9=0 
+Node  66  RN_HDR[7] Reg  ; S6=1  S9=0 
+Node  102  RN_LED[0] Reg  ; S6=1  S9=0 
+Node  100  RN_LED[1] Reg  ; S6=0  S9=0 
+Node  103  RN_LED[2] Reg  ; S6=0  S9=0 
+Node  107  RN_LED[3] Reg  ; S6=0  S9=0 
+Node  106  RN_LED[4] Reg  ; S6=0  S9=0 
+Node  99  RN_LED[5] Reg  ; S6=0  S9=0 
+Node  110  RN_LED[6] Reg  ; S6=0  S9=0 
+Node  98  RN_LED[7] Reg  ; S6=0  S9=0 
+Node  18  BREG[1] Reg  ; S6=1  S9=1 
+Node  19  BREG[15] Reg  ; S6=1  S9=1 
+Node  20  BREG[14] Reg  ; S6=0  S9=1 
+Node  21  BREG[13] Reg  ; S6=0  S9=1 
+Node  22  BREG[12] Reg  ; S6=0  S9=1 
+Node  23  BREG[11] Reg  ; S6=0  S9=1 
+Node  24  BREG[10] Reg  ; S6=0  S9=1 
+Node  25  BREG[9] Reg  ; S6=0  S9=1 
+Node  26  BREG[8] Reg  ; S6=0  S9=1 
+Node  27  BREG[7] Reg  ; S6=0  S9=1 
+Node  28  BREG[6] Reg  ; S6=0  S9=1 
+Node  29  BREG[5] Reg  ; S6=0  S9=1 
+Node  30  BREG[4] Reg  ; S6=0  S9=1 
+Node  31  BREG[3] Reg  ; S6=0  S9=1 
+Node  32  BREG[2] Reg  ; S6=0  S9=1 
+Node  33  BREG[0] Reg  ; S6=1  S9=1 
+Node  115  BRG2[4] Reg  ; S6=1  S9=1 
+Node  116  BRG2[3] Reg  ; S6=1  S9=1 
+Node  117  BRG2[0] Reg  ; S6=1  S9=1 
+Node  118  BRG2[2] Reg  ; S6=1  S9=1 
+Node  119  BRG2[1] Reg  ; S6=0  S9=0 
+; Unused Pins & Nodes
+; PIO[15] PIO[14] PIO[13] PIO[12] PIO[11] PIO[10] PIO[9] 
+; PIO[8] HDR[15] HDR[14] HDR[13] HDR[12] HDR[11] HDR[10] 
+; HDR[9] HDR[8] 

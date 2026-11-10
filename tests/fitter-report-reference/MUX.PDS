@@ -1,0 +1,83 @@
+;8 TO 1 Multiplexer
+;Unlike the 4 to 1 Multiplexer in the DATA_AQ Example, this Multiplexer uses 
+;3 select bits to route one of eight buses, and has been implemented
+;with Boolean Equations instead of If-Then Statements. 
+
+
+;---------------------------------- Declaration Segment ------------
+TITLE    MULTIPLEXER
+PATTERN  1
+REVISION 1
+AUTHOR   J. ENGINEER
+COMPANY  AMD
+DATE    8/26/94
+
+CHIP  mux  MACH465
+
+;---------------------------------- PIN Declarations --------------
+
+PIN  ?          DATA[0..7] 
+PIN  ?          DATB[0..7] 
+PIN  ?          DATC[0..7] 
+PIN  ?          DATD[0..7] 
+PIN  ?          DATI[0..7] 
+PIN  ?          DATF[0..7] 
+PIN  ?          DATG[0..7] 
+PIN  ?          DATH[0..7] 
+PIN  ?          SEL1                            
+PIN  ?          SEL2
+PIN  ?          SEL3 
+PIN  ?          MUXOUT[0..7]
+
+EQUATIONS
+
+MUXOUT[0..7] = /SEL1*/SEL2*/SEL3*DATA[0..7] 
+        +/SEL1*/SEL2* SEL3*DATB[0..7] 
+        +/SEL1* SEL2*/SEL3*DATC[0..7] 
+        +/SEL1* SEL2* SEL3*DATD[0..7] 
+        + SEL1*/SEL2*/SEL3*DATI[0..7] 
+        + SEL1*/SEL2* SEL3*DATF[0..7] 
+        + SEL1* SEL2*/SEL3*DATG[0..7] 
+        + SEL1* SEL2* SEL3*DATH[0..7] 
+
+SIMULATION
+
+TRACE_ON DATA[7..0] DATB[7..0] DATC[7..0] DATD[7..0] 
+         DATI[7..0] DATF[7..0] DATG[7..0] DATH[7..0] 
+         MUXOUT[7..0] SEL1 SEL2 SEL3
+
+SETF DATA[7..0]= #H55
+SETF DATB[7..0]= #H66 
+SETF DATC[7..0]= #H77 
+SETF DATD[7..0]= #H88 
+SETF DATI[7..0]= #H99 
+SETF DATF[7..0]= #HAA 
+SETF DATG[7..0]= #HBB 
+SETF DATH[7..0]= #HCC 
+
+ SETF /SEL1 /SEL2 /SEL3   
+ CHECK MUXOUT[7..0] = #H55
+ 
+ SETF /SEL1 /SEL2  SEL3   
+ CHECK MUXOUT[7..0] = #H66 
+
+ SETF /SEL1  SEL2 /SEL3   
+ CHECK MUXOUT[7..0] = #H77 
+ 
+ SETF /SEL1  SEL2  SEL3   
+ CHECK MUXOUT[7..0] = #H88 
+ 
+ SETF  SEL1 /SEL2 /SEL3   
+ CHECK MUXOUT[7..0] = #H99 
+ 
+ SETF  SEL1 /SEL2  SEL3   
+ CHECK MUXOUT[7..0] = #HAA 
+ 
+ SETF  SEL1  SEL2 /SEL3   
+ CHECK MUXOUT[7..0] = #HBB 
+ 
+ SETF  SEL1  SEL2  SEL3   
+ CHECK MUXOUT[7..0] = #HCC 
+
+TRACE_OFF
+

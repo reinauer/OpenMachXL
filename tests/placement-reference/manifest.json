@@ -1,0 +1,169 @@
+{
+  "description": "Unmodified MACHFITR2.1 +P CUSTOM.PLC captures; MACHSP omission baseline SOURCE.JED",
+  "oracle": "research/devices/probe_placement_file.py",
+  "cases": [
+    {
+      "name": "plain",
+      "success": true,
+      "files": {
+        "plain.PDS": "dfc1503d8f9c9c27bc07d51189e0624c72846451300addae45022c7952381be9",
+        "plain.MXL": "90737825c268ec22b5108bcd7f64e7ecee103eda9b11cc5a59af8459b8f51d96",
+        "plain.PLC": "adc825d16a97f3eb071469fc567ddeaefef58d70cd67aec2821996c00188722d",
+        "plain.JED": "eca27dc26ad765067a086940649942f5e8ffd3373a829e1578991ed3cecb3773"
+      }
+    },
+    {
+      "name": "header",
+      "success": true,
+      "files": {
+        "header.PDS": "dfc1503d8f9c9c27bc07d51189e0624c72846451300addae45022c7952381be9",
+        "header.MXL": "90737825c268ec22b5108bcd7f64e7ecee103eda9b11cc5a59af8459b8f51d96",
+        "header.PLC": "9726c39e725314413883d450cde331e1d8a8698d3fc4dd768b0c0e9e8d0e5f61",
+        "header.JED": "eca27dc26ad765067a086940649942f5e8ffd3373a829e1578991ed3cecb3773"
+      }
+    },
+    {
+      "name": "partial",
+      "success": true,
+      "files": {
+        "partial.PDS": "dfc1503d8f9c9c27bc07d51189e0624c72846451300addae45022c7952381be9",
+        "partial.MXL": "90737825c268ec22b5108bcd7f64e7ecee103eda9b11cc5a59af8459b8f51d96",
+        "partial.PLC": "af1d6d98f01015b36cdcb288ad6d7595e889dea475ce7930f8f01e83a6295101",
+        "partial.JED": "8e56826ee69ea66af1545cc481308f18285292dad453ffbf8af3d85134a3828d"
+      }
+    },
+    {
+      "name": "unknown",
+      "success": true,
+      "files": {
+        "unknown.PDS": "dfc1503d8f9c9c27bc07d51189e0624c72846451300addae45022c7952381be9",
+        "unknown.MXL": "90737825c268ec22b5108bcd7f64e7ecee103eda9b11cc5a59af8459b8f51d96",
+        "unknown.PLC": "c9c8c044fea3bb27f2c831d86323822b368eef2367b0ac25c089fcdba27f35c3",
+        "unknown.JED": "b50ce3adf684ef251a5e164545977f78733a31b354d70318edea85942cfda64b"
+      }
+    },
+    {
+      "name": "lower",
+      "success": true,
+      "files": {
+        "lower.PDS": "dfc1503d8f9c9c27bc07d51189e0624c72846451300addae45022c7952381be9",
+        "lower.MXL": "90737825c268ec22b5108bcd7f64e7ecee103eda9b11cc5a59af8459b8f51d96",
+        "lower.PLC": "f42ce82d822244c7a1664a7b5d16389744cea98998088c0eea6ab83dfb402ebf",
+        "lower.JED": "b6293d08c20bbf2004952fdaa3eb8b8a3587f648baf45dc8b82dae00e2013e75"
+      }
+    },
+    {
+      "name": "wrongkind",
+      "success": false,
+      "files": {
+        "wrongkind.PDS": "dfc1503d8f9c9c27bc07d51189e0624c72846451300addae45022c7952381be9",
+        "wrongkind.MXL": "90737825c268ec22b5108bcd7f64e7ecee103eda9b11cc5a59af8459b8f51d96",
+        "wrongkind.PLC": "f9560e3de5005e386d2899c53695a0d958c228920e24db8271e1e473bd9c49ff"
+      }
+    },
+    {
+      "name": "duplicate",
+      "success": true,
+      "files": {
+        "duplicate.PDS": "dfc1503d8f9c9c27bc07d51189e0624c72846451300addae45022c7952381be9",
+        "duplicate.MXL": "90737825c268ec22b5108bcd7f64e7ecee103eda9b11cc5a59af8459b8f51d96",
+        "duplicate.PLC": "65c9f333d45ab54e0629d3d4da1440efa133a49f6f9adc2a160ca7670a062325",
+        "duplicate.JED": "20182a45a4b09f0cdb307ed58585c44be5fbc057f7e80e74d8d06734856bff62"
+      }
+    },
+    {
+      "name": "badnum",
+      "success": false,
+      "files": {
+        "badnum.PDS": "dfc1503d8f9c9c27bc07d51189e0624c72846451300addae45022c7952381be9",
+        "badnum.MXL": "90737825c268ec22b5108bcd7f64e7ecee103eda9b11cc5a59af8459b8f51d96",
+        "badnum.PLC": "c589e7e3a249b5394c0c23d319c6b73d98d34234338be3981025fc2daff0d324"
+      }
+    },
+    {
+      "name": "float",
+      "success": true,
+      "files": {
+        "float.PDS": "dfc1503d8f9c9c27bc07d51189e0624c72846451300addae45022c7952381be9",
+        "float.MXL": "90737825c268ec22b5108bcd7f64e7ecee103eda9b11cc5a59af8459b8f51d96",
+        "float.PLC": "10c05e9e44ccd48a6422c6c3681f3e9e1f484f3e1a537ace4c1b69b1f0ad50d8",
+        "float.JED": "54527d09d7450fb99b09cc0de915cdf3995fd362e3c254561c4e4b4cc705be34"
+      }
+    },
+    {
+      "name": "empty",
+      "success": true,
+      "files": {
+        "empty.PDS": "dfc1503d8f9c9c27bc07d51189e0624c72846451300addae45022c7952381be9",
+        "empty.MXL": "90737825c268ec22b5108bcd7f64e7ecee103eda9b11cc5a59af8459b8f51d96",
+        "empty.PLC": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "empty.JED": "3cff4576118a7e95ee6db5da3151029780971c2305a25c3cd5d45dd17bcd67be"
+      },
+      "check_omission": true
+    },
+    {
+      "name": "comments",
+      "success": true,
+      "files": {
+        "comments.PDS": "dfc1503d8f9c9c27bc07d51189e0624c72846451300addae45022c7952381be9",
+        "comments.MXL": "90737825c268ec22b5108bcd7f64e7ecee103eda9b11cc5a59af8459b8f51d96",
+        "comments.PLC": "89277844eecced0cd994fecc1770aa4619b9814715db6f45a716621c9e4caa61",
+        "comments.JED": "3cff4576118a7e95ee6db5da3151029780971c2305a25c3cd5d45dd17bcd67be"
+      },
+      "check_omission": true
+    },
+    {
+      "name": "floatall",
+      "success": true,
+      "files": {
+        "floatall.PDS": "dfc1503d8f9c9c27bc07d51189e0624c72846451300addae45022c7952381be9",
+        "floatall.MXL": "941631f45a2162bb27b637c5a98749f3b0a603611f80b9793bfe0b050caa77c5",
+        "floatall.PLC": "9726c39e725314413883d450cde331e1d8a8698d3fc4dd768b0c0e9e8d0e5f61",
+        "floatall.JED": "49695a486cfc5be27b7e05f7a28050496cc49b76abb97b7913c5ef38aaa2c0f6"
+      },
+      "check_omission": false
+    },
+    {
+      "name": "floatgroups",
+      "success": true,
+      "files": {
+        "floatgroups.PDS": "dfc1503d8f9c9c27bc07d51189e0624c72846451300addae45022c7952381be9",
+        "floatgroups.MXL": "9dba5eb6db8c2cc9e8062153923f7fb03f8a5be6153f0b152bc589bef59045c1",
+        "floatgroups.PLC": "9726c39e725314413883d450cde331e1d8a8698d3fc4dd768b0c0e9e8d0e5f61",
+        "floatgroups.JED": "1e39ec014814705c4a7194f288c1611e3292c7cdbc9b3a3172e2e3d7985d5c85"
+      },
+      "check_omission": false
+    },
+    {
+      "name": "floatnodes",
+      "success": true,
+      "files": {
+        "floatnodes.PDS": "dfc1503d8f9c9c27bc07d51189e0624c72846451300addae45022c7952381be9",
+        "floatnodes.MXL": "55d1bc7f0ffb1eb40c62dee063ad238d378a9e045ac1a4cef14736311004c998",
+        "floatnodes.PLC": "9726c39e725314413883d450cde331e1d8a8698d3fc4dd768b0c0e9e8d0e5f61",
+        "floatnodes.JED": "3dba08029444c5f32c5c8677c5599f69db90df9d9375384d5e2d2753e309a25e"
+      },
+      "check_omission": false
+    },
+    {
+      "name": "inverted",
+      "success": true,
+      "files": {
+        "inverted.PDS": "dfc1503d8f9c9c27bc07d51189e0624c72846451300addae45022c7952381be9",
+        "inverted.MXL": "90737825c268ec22b5108bcd7f64e7ecee103eda9b11cc5a59af8459b8f51d96",
+        "inverted.PLC": "d000648dadef26d33e627cbe7f505220938544e90066b7ef1b879bd782614083",
+        "inverted.JED": "671f1e3962a91a73bed46b8c20653bda3cbaea89f3252707c49f064677119a8e"
+      }
+    },
+    {
+      "name": "lower_inv",
+      "success": true,
+      "files": {
+        "lower_inv.PDS": "dfc1503d8f9c9c27bc07d51189e0624c72846451300addae45022c7952381be9",
+        "lower_inv.MXL": "90737825c268ec22b5108bcd7f64e7ecee103eda9b11cc5a59af8459b8f51d96",
+        "lower_inv.PLC": "ee964680ade52f2f9247e4db87620d1ec404c471a943ce0158667320278fe56c",
+        "lower_inv.JED": "ac5c8b71a5dd26306a1b2e955da8e9f5a48b17e89732b8e41d8eab6a5ff97690"
+      }
+    }
+  ]
+}

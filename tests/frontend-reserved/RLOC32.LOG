@@ -1,0 +1,19 @@
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+
+ %% MACHPAR %%    Processing design file.......Rloc32.pds
+
+ %% MACHPAR %%    Listing file.................Rloc32.lis
+|> WARNING P45  Missing design file header.
+
+   4     |NODE 1 VCC
+  ERROR -------^ (L4/C6)
+|> ERROR P166  Invalid pin/node position for VCC defined.
+
+
+ %% MACHPAR %%    ERROR count:  1     WARNING count:  1
+
+ %% MACHPAR %%    File processing terminated.     File:  Rloc32.pds

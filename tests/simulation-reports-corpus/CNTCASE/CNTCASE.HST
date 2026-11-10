@@ -1,0 +1,48 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+MACHXL SIMULATION HISTORY LISTING
+
+Title     : 8-BIT COUNTER with Paral Author   : J. ENGINEER      
+Pattern   : 1                        Company  : AMD              
+Revision  : 1                        Date     : 4/26/94          
+
+MACH131        
+Page : 1 
+          gggc  c  c  gc  gc  c  c                                    
+ GND      LLLLLLLLLLLLLLLLLLLLLLLLLL                                  
+ VCC      HHHHHHHHHHHHHHHHHHHHHHHHHH                                  
+ TC[3]    LLLLLLLLLLLLLLHHHHHHHLLLLL                                  
+ OE       HHHHHHHHHHHHHHHHHHHHHHHHHH                                  
+ RST      HLLLLLLLLLLLLLLLLLLLLLLLLL                                  
+ TC[5]    LLLLLLLLLLLLLLHHHHHHHLLLLL                                  
+ COUNT    LLHHHHHHHHHHLLLLHHHHHHHHHH                                  
+ LOAD     LLLLLLLLLLLLHHHHLLLLLLLLLL                                  
+ DATA[7]  LLLLLLLLLLLLLLLLLLLLLLLLLL                                  
+ DATA[6]  LLLLLLLLLLLLLLLLLLLLLLLLLL                                  
+ GND      LLLLLLLLLLLLLLLLLLLLLLLLLL                                  
+ DATA[5]  HHHHHHHHHHHHHHHHHHHHHHHHHH                                  
+ DATA[4]  HHHHHHHHHHHHHHHHHHHHHHHHHH                                  
+ DATA[3]  HHHHHHHHHHHHHHHHHHHHHHHHHH                                  
+ DATA[2]  HHHHHHHHHHHHHHHHHHHHHHHHHH                                  
+ DATA[1]  HHHHHHHHHHHHHHHHHHHHHHHHHH                                  
+ DATA[0]  LLLLLLLLLLLLLLLLLLLLLLLLLL                                  
+ VCC      HHHHHHHHHHHHHHHHHHHHHHHHHH                                  
+ GND      LLLLLLLLLLLLLLLLLLLLLLLLLL                                  
+ GND      LLLLLLLLLLLLLLLLLLLLLLLLLL                                  
+ TC[6]    LLLLLLLLLLLLLLLLLLLLLHHHHH                                  
+ TC[1]    LLLLLLLHHHHHHHHHHHHHHLLLLL                                  
+ VCC      HHHHHHHHHHHHHHHHHHHHHHHHHH                                  
+ GND      LLLLLLLLLLLLLLLLLLLLLLLLLL                                  
+ VCC      HHHHHHHHHHHHHHHHHHHHHHHHHH                                  
+ TC[2]    LLLLLLLLLLLLLLHHHHHHHLLLLL                                  
+ TC[4]    LLLLLLLLLLLLLLHHHHHHHLLLLL                                  
+ GND      LLLLLLLLLLLLLLLLLLLLLLLLLL                                  
+ VCC      HHHHHHHHHHHHHHHHHHHHHHHHHH                                  
+ GND      LLLLLLLLLLLLLLLLLLLLLLLLLL                                  
+ CLK      LLLHHLHHLHHLLHHLLHHLHHLHHL                                  
+ GND      LLLLLLLLLLLLLLLLLLLLLLLLLL                                  
+ TC[7]    LLLLLLLLLLLLLLLLLLLLLLLLLL                                  
+ TC[0]    LLLLHHHLLLHHHHLLLLHHHLLLHH                                  
+ VCC      HHHHHHHHHHHHHHHHHHHHHHHHHH                                  
+

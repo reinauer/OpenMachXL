@@ -1,0 +1,33 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME Polhigh.pds
+#AMD TITLE 3 Bits D-Counter
+#AMD PATTERN 1
+#AMD REVISION 1
+#AMD AUTHOR J. ENGINEER
+#AMD COMPANY AMD
+#AMD DATE 8/26/94
+#AMD CHIP POLHIGH
+#AMD DEVICE MACH111
+#AMD JED_FILE Polhigh.jed
+#AMD SIGNATURE 
+#AMD PIN 6 GND:1 GND:12 VCC:22 GND:23 GND:34 VCC:44 
+#AMD PIN 6 CLK:0 ENABLE:0 RST:0 B[2]:0 B[1]:0 B[0]:0 
+.type f
+.i 6
+.o 9
+.ilb CLK ENABLE RST B[2] B[1] B[0]
+.ob  B[2].REG B[2].C B[2].RE B[1].REG B[1].C B[1].RE B[0].REG B[0].C
+     B[0].RE
+.phase 111111111
+.p 10
+---10- 1~~~~~~~~
+---1-0 1~~~~~~~~
+-0-1-- 1~~~~~~~~
+-1-011 1~~~~~~~~
+1----- ~1~~1~~1~
+--1--- ~~1~~1~~1
+----10 ~~~1~~~~~
+-0--1- ~~~1~~~~~
+-1--01 ~~~1~~~~~
+-1---0 ~~~~~~1~~
+.e

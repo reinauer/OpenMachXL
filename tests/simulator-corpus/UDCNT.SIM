@@ -1,0 +1,88 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Udcnt.pds
+Title  Up-Down Counter
+
+|> WARNING D2260
+     The following Pin/Nodes(s) have not been defined in original design
+     file and will be ignored.
+
+      RN_AB1          RN_AB3          RN_AB4          RN_AB0          
+      RN_AB2          RN_AB5          RN_AB6          RN_AB7          
+
+
+
+   1-V1 - TRACE_ON
+          AB0  AB1  AB2  AB3  AB4  AB5  CLK  COUNT  I0  I1  I2  
+          I3  I4  I5  
+   1-V1 - SETF
+          RST  
+   2-V2 - SETF
+          /RST  
+   3-V3 - SETF
+          /I0  /I1  /I2  /I3  I4  I5  I6  I7  
+   4-V4 - SETF
+          /COUNT  
+   5-V5 - FOR
+   8-V5 - CLOCKF
+          CLK  
+  11-V6 - CLOCKF
+          CLK  
+  11-V7 - SETF
+          COUNT  UP  
+  12-V8 - FOR
+  15-V8 - CLOCKF
+          CLK  
+  18-V9 - CLOCKF
+          CLK  
+  21-V10 - CLOCKF
+          CLK  
+  24-V11 - CLOCKF
+          CLK  
+  27-V12 - CLOCKF
+          CLK  
+  30-V13 - CLOCKF
+          CLK  
+  33-V14 - CLOCKF
+          CLK  
+  36-V15 - CLOCKF
+          CLK  
+  39-V16 - CLOCKF
+          CLK  
+  42-V17 - CLOCKF
+          CLK  
+  42-V18 - SETF
+          /UP  
+  43-V19 - FOR
+  46-V19 - CLOCKF
+          CLK  
+  49-V20 - CLOCKF
+          CLK  
+  52-V21 - CLOCKF
+          CLK  
+  55-V22 - CLOCKF
+          CLK  
+  58-V23 - CLOCKF
+          CLK  
+  61-V24 - CLOCKF
+          CLK  
+  64-V25 - CLOCKF
+          CLK  
+  67-V26 - CLOCKF
+          CLK  
+  70-V27 - CLOCKF
+          CLK  
+  73-V28 - CLOCKF
+          CLK  
+  73-V29 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Udcnt.HST
+Simulation results (trace) are in   ===> Udcnt.TRF
+Merged results (JEDEC) are in       ===> Udcnt.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 125487 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Udcnt.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 1

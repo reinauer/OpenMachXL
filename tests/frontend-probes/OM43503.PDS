@@ -1,0 +1,20 @@
+CHIP MATRIX MACH435
+PIN 3 A
+PIN 4 B
+PIN 5 C
+PIN 6 D
+PIN 7 E
+PIN 12 F
+PIN 20 CLK
+PIN 8 Q0 REG
+PIN 9 Q1 REG
+PIN 10 Q2 REG
+PIN 19 Q3 
+EQUATIONS
+Q0=A*/C+/A*/D+/A*B*C*/D+/A*/C*/D*/E+/B*/C*/D+/A*C*D*F+A*/B*/C*/D
+Q0.CLKF=CLK
+Q1.T=/B*C*/D*/E+B*/E*F+B*/C*D*E+B*/C*/E*F+A*/B*/C*F+/A*/E+/A*/B*/C*/F
+Q1.CLKF=CLK
+Q2=(/D*E+/A*B+C*D*/E+/B*/E*F+A*/D*/E*/F+A*/C*/E*F+/A*/D*F) :+: F
+Q2.CLKF=CLK
+Q3=B*/E*/F+/C*E*F+D*F+A*C*F+/C*D*/E*/F+/A*B*/D+/A*/C*/D*F

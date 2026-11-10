@@ -1,0 +1,11 @@
+/build/
+__pycache__/
+*.pyc
+/research/ne/cache/
+/research/ne/home/
+/research/ne/tmp/
+/research/ne/projects/
+/research/ne/*.blocks/
+/research/ne/frontend-fit*/
+/research/ne/pla-order-experiment/
+/research/manual/probes/

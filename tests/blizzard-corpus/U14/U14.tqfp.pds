@@ -1,0 +1,221 @@
+;PALASM Design Description
+;---------------------------------- Declaration Segment ------------
+TITLE    BLIZZARD 1260 U14 - A1200 BUS CYCLES, BOARD-SPACE CYCLES
+PATTERN  U14
+REVISION 0.1 (RECONSTRUCTION)
+AUTHOR   RECONSTRUCTED FROM THE PCB, SEE ../ARCHITECTURE.MD
+COMPANY  BLIZZARD 1260 KICAD PROJECT
+DATE     2026-10-26
+CHIP     U14 MACH111
+
+; Clock: the A1200 14 MHz CPUCLK comes in on pin 41 and goes out inverted on
+; pin 8 into the clock pin 7. All registers therefore change on the FALLING
+; edge of CPUCLK, which is what the A1200 functional spec asks of a fast
+; card: AS (and DS for reads) on a falling edge, DS for writes one falling
+; edge later, DSACK/BERR sampled on falling edges, AS/DS negated on the next
+; falling edge and the read data latched there.
+;
+; U7 requests a cycle with AREQ (synchronised: AR1, AR2). The type is fixed
+; at the first falling edge after AREQ (FIRST):
+;   IACK: 060 AVEC (the AVEC output is the state), then ADONE; the A1200
+;       is autovector only
+;   TM  A1200 cycle; a 16-bit port answering a long at A1 = 0 gets a second
+;       cycle at A1 = 1 (two NEXT pulses to U9, which adds 2 to A1:A0)
+;   TF  diag EPROM read: bytes a..3 are read one by one (NEXT steps U9),
+;       latched into U10/U11 lanes 1-3, then a last step wraps A1:A0 to 0
+;       so the EPROM itself drives byte 0 on lane 0
+;   TL  other board space: one access with LSTB; reads are replicated from
+;       lane 0 to lanes 1-3 (byte reads at any offset work)
+; U10/U11 control: ADOE (drive A1200 data), LDOE (drive local data), both
+; = local mode; LCK01/LCK23 latch lanes 0/1 and 2/3 (LCK23 is the high-word
+; select level during A1200 writes).
+
+;---------------------------------- PIN Declarations ---------------
+PIN  1   LDOE        REGISTERED      ; U10/U11 I3
+PIN  2   TM1                         ; 060 TM1
+PIN  3   TM0                         ; 060 TM0
+PIN  4   TT1                         ; 060 TT1
+PIN  5   TT0                         ; 060 TT0
+PIN  7   CLKIN                       ; inverted CPUCLK from pin 8
+PIN  8   CLKN        COMBINATORIAL   ; /CPUCLK
+PIN  9   RST_N                       ; A1200 _RST
+PIN  10  RSTOUT_N    COMBINATORIAL   ; to U8/J3: 060 RSTO
+PIN  11  BERR_N                      ; A1200 _BERR
+PIN  12  NEXT_N      REGISTERED      ; to U9: advance A1:A0
+PIN  13  A31                         ; 060 A31, unused here
+PIN  14  LCK01       REGISTERED      ; U10/U11 CLK0
+PIN  15  LONG_N                      ; from U9
+PIN  18  FC1         COMBINATORIAL   ; A1200 FC1
+PIN  19  ADONE_N     REGISTERED      ; to U7
+PIN  20  LSTB_N      REGISTERED      ; to U1/J3: board-space strobe
+PIN  21  DS_N        REGISTERED      ; A1200 _DS
+PIN  22  DISABLE_N                   ; from U1
+PIN  23  R_W                         ; 060 R/W (= A1200 R/W)
+PIN  24  FC2         COMBINATORIAL   ; A1200 FC2 (slot pin 103)
+PIN  25  AVEC_N      REGISTERED      ; 060 /AVEC
+PIN  26  AREQ_N                      ; from U7
+PIN  27  KACK_N                      ; J3.87, unused here (fixed timing)
+PIN  29  RSTO_N                      ; 060 /RSTO
+PIN  30  BOSS_N                      ; A1200 _BR/_BOSS, unused here
+PIN  31  FC0         COMBINATORIAL   ; A1200 FC0
+PIN  32  AA1                         ; A1200 A1 (from U9)
+PIN  33  AA0                         ; A1200 A0 (from U9)
+PIN  34  AS_N        REGISTERED      ; A1200 _AS
+PIN  35  DSACK1_N                    ; A1200 _DSACK1
+PIN  36  DSACK0_N                    ; A1200 _DSACK0
+PIN  37  AMIGA_N                     ; from U1
+PIN  40  LCK23       REGISTERED      ; U10/U11 CLK2
+PIN  41  CPUCLK                      ; A1200 CPUCLK_A (slot pin 99)
+PIN  42  ADOE        REGISTERED      ; U10/U11 I0
+PIN  43  F0SEL_N                     ; from U1
+PIN  44  TM2                         ; 060 TM2
+
+NODE ?   AR1         REGISTERED      ; AREQ synchroniser
+NODE ?   AR2         REGISTERED
+NODE ?   TM          REGISTERED      ; cycle types (TI is the AVEC output)
+NODE ?   TF          REGISTERED
+NODE ?   TL          REGISTERED
+NODE ?   SS          REGISTERED      ; start an A1200 sub-cycle
+NODE ?   ACK         REGISTERED      ; DSACK/BERR seen
+NODE ?   P16         REGISTERED      ; ... from a 16-bit port
+NODE ?   DN1         REGISTERED      ; A1200 cycle finished
+NODE ?   NS2         REGISTERED      ; second-half sequence
+NODE ?   NS3         REGISTERED
+NODE ?   NS4         REGISTERED
+NODE ?   W1          REGISTERED      ; board-space step counter
+NODE ?   W0          REGISTERED
+NODE ?   FIN         REGISTERED      ; EPROM: wrapped back to offset 0; board space: latch now
+
+;---------------------------------- Boolean Equation Segment ------
+STRING  FIRST    '(AR2 * AVEC_N * /TM * /TF * /TL)'   ; request seen, type not yet set
+STRING  W2       '(W1 * /W0)'
+STRING  MORE     '(P16 * /LONG_N * /AA1)'
+
+EQUATIONS
+
+CLKN        = /CPUCLK
+RSTOUT_N    = RSTO_N
+
+; ---- function codes from TT/TM (A1200 sees a 68020) -------------------------
+; TT 11 acknowledge -> 7; TT 10 alternate -> TM; TT 0x: user data 1, user
+; code 2, supervisor data 5, supervisor code 6, push/table search -> 5/6
+FC2         = TT1 * TT0 + TT1 * TM2 + /TT1 * TM2 + /TT1 * /TM1 * /TM0 + /TT1 * TM1 * TM0
+FC2.TRST    = DISABLE_N
+FC1         = TT1 * TT0 + TT1 * TM1 + /TT1 * TM1 * /TM0 + /TT1 * TM2 * /TM0
+FC1.TRST    = DISABLE_N
+FC0         = TT1 * TT0 + TT1 * TM0 + /TT1 * TM0 + /TT1 * /TM2 * /TM1
+FC0.TRST    = DISABLE_N
+
+; ---- request and cycle type ---------------------------------------------------
+AR1        := RST_N * /AREQ_N
+AR1.CLKF    = CLKIN
+AR2        := RST_N * AR1
+AR2.CLKF    = CLKIN
+
+; The IACK address ($FFFFFFFF) is never A1200 or EPROM space, so TM/TF exclude
+; it by decode; TL may run alongside an IACK, harmlessly (the 060 ignores the
+; data bus when AVEC is asserted).
+TM         := FIRST * /AMIGA_N
+            + TM * AR2
+TM.CLKF     = CLKIN
+TF         := FIRST * AMIGA_N * /F0SEL_N * R_W
+            + TF * AR2
+TF.CLKF     = CLKIN
+TL         := FIRST * AMIGA_N * F0SEL_N
+            + FIRST * AMIGA_N * /R_W
+            + TL * AR2
+TL.CLKF     = CLKIN
+
+; ---- interrupt acknowledge --------------------------------------------------------
+/AVEC_N    := FIRST * TT1 * TT0 * TM2
+            + FIRST * TT1 * TT0 * TM1
+            + FIRST * TT1 * TT0 * TM0
+            + /AVEC_N * AR2
+AVEC_N.CLKF = CLKIN
+
+; ---- A1200 cycle ------------------------------------------------------------------
+SS         := FIRST * /AMIGA_N
+            + NS4
+SS.CLKF     = CLKIN
+; BERR ends AS/DS but never ADONE: U7's watchdog then gives the 060 TEA
+/AS_N      := RST_N * SS
+            + RST_N * /AS_N * /ACK * BERR_N
+AS_N.CLKF   = CLKIN
+AS_N.TRST   = DISABLE_N
+/DS_N      := RST_N * SS * R_W
+            + RST_N * /AS_N * DS_N * /R_W * /ACK * BERR_N
+            + RST_N * /DS_N * /ACK * BERR_N
+DS_N.CLKF   = CLKIN
+DS_N.TRST   = DISABLE_N
+ACK        := /AS_N * /ACK * /DSACK1_N
+            + /AS_N * /ACK * /DSACK0_N
+ACK.CLKF    = CLKIN
+P16        := /AS_N * /ACK * /DSACK1_N * DSACK0_N
+            + P16 * ACK
+P16.CLKF    = CLKIN
+DN1        := TM * ACK * /P16
+            + TM * ACK * LONG_N
+            + TM * ACK * AA1
+DN1.CLKF    = CLKIN
+NS2        := TM * ACK * MORE
+NS2.CLKF    = CLKIN
+NS3        := NS2
+NS3.CLKF    = CLKIN
+NS4        := NS3
+NS4.CLKF    = CLKIN
+
+; ---- board-space step counter ------------------------------------------------------
+W0         := TF * AR2 * /W0
+            + TL * AR2 * /W0
+W0.CLKF     = CLKIN
+W1         := TF * AR2 * (W1 :+: W0)
+            + TL * AR2 * (W1 :+: W0)
+W1.CLKF     = CLKIN
+FIN        := TF * W2 * AA1 * AA0
+            + TL * /W1 * W0
+            + FIN * TF
+            + FIN * TL
+FIN.CLKF    = CLKIN
+
+; Board space (TL): strobe while W = 0/1 (first round only, FIN), latch
+; lanes at W = 2 and again at W = 0 of the next round (FIN set), ADONE with
+; the second latch. The first latch is one edge after LDOE turns on, so
+; U10/U11 are already in local mode when they latch.
+/LSTB_N    := TL * AR2 * /W1 * /FIN
+LSTB_N.CLKF = CLKIN
+
+; ---- U9 offset steps ------------------------------------------------------------------
+/NEXT_N    := TM * ACK * MORE
+            + NS3
+            + TF * W2 * /FIN
+NEXT_N.CLKF = CLKIN
+
+; ---- U10/U11 data path -----------------------------------------------------------------
+ADOE       := AR2 * TF
+            + AR2 * TL * R_W
+            + AR2 * TM * /R_W
+ADOE.CLKF   = CLKIN
+; off as soon as U7 drops AREQ, so the next cycle finds the local bus free
+LDOE       := AR2 * ADOE * R_W * /AREQ_N
+            + TM * R_W * /AS_N * /ACK * /DSACK1_N * DSACK0_N * AA1 * /AREQ_N
+            + TM * R_W * DN1 * /AREQ_N
+            + LDOE * AR2 * TM * R_W * /AREQ_N
+LDOE.CLKF   = CLKIN
+LCK01      := TM * R_W * ACK * /P16
+            + TM * R_W * ACK * /AA1
+            + TF * W2 * /FIN * /AA1
+            + TL * /W0 * FIN
+LCK01.CLKF  = CLKIN
+LCK23      := TM * R_W * ACK
+            + TM * /R_W * AA1
+            + TF * W2 * /FIN * AA1
+            + TL * /W0 * FIN
+LCK23.CLKF  = CLKIN
+
+; ---- done --------------------------------------------------------------------------------
+/ADONE_N   := /AVEC_N
+            + DN1
+            + TF * W2 * FIN
+            + TL * /W1 * /W0 * FIN
+            + /ADONE_N * AR2
+ADONE_N.CLKF = CLKIN

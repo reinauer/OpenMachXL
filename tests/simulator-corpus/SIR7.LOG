@@ -1,0 +1,166 @@
+
+*** Start MACHPAR.E 00:54:56 
+Sir7.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP SIR7 MACH435
+   2     |PIN 8 A IPAIR N
+   3     |NODE ? N REG
+   4     |PIN 20 CLK
+   5     |PIN 4 B
+   6     |PIN 9 Q
+   7     |EQUATIONS
+   8     |N=A
+   9     |N.CLKF=CLK*B
+  10     |Q=N
+  11     |SIMULATION
+  12     |TRACE_ON A N CLK Q
+  13     |SETF /A /CLK /B
+  14     |SETF A
+  15     |CLOCKF CLK
+  16     |SETF /A
+  17     |CLOCKF CLK
+  18     |SETF A B
+  19     |CLOCKF CLK
+  20     |SETF /A
+  21     |CLOCKF CLK
+  22     |SETF /B
+  23     |SETF CLK
+  24     |SETF A
+  25     |SETF /CLK
+  26     |SETF /A
+  27     |TRACE_OFF
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Sir7.pds
+
+*** End MACHPAR.EXE 00:54:56; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 00:54:56 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>N
+Processing equation for ====>N.CLKF
+Processing equation for ====>Q
+|> WARNING B622
+     The clock equation is invalid for pin A and input-paired
+     node N. Hence, PAIR declaration deleted.
+SIMULATION SEGMENT
+................
+ %%  MACHBPP  %% Maximum memory allocated was: 68984 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Sir7.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 1
+
+*** End MACHBPP.EXE 00:54:56; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 00:54:56 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node N...
+====> N                  MIN_ON (1 + pt)
+====> N.CLKF             MIN_ON (1 + pt)
+Processing equation(s) for pin Q...
+====> Q                  MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 48832 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: SIR7.PDS.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 00:54:57; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 00:54:57 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file sir7.tre to PLA file sir7.pla...
+
+..
+..
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 48486 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: SIR7.PDS.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 00:54:57; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 00:54:57 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is SIR7.PDS . Device is MACH435 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of global clocks:
+   CLK:
+...... Is preplaced at a global clock pin.
+
+List of non-global clocks:
+   B:
+...... is preplaced on a pin that is not a dedicated clock.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is SIR7.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File SIR7.PDS .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 0 .
+
+*** End MACHFITR.EX 00:54:58; (MACHFITR.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

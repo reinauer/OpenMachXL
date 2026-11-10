@@ -1,0 +1,313 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+*********************************************************************
+* Design Name = Compara.pds, Device = MACH435, Nov 09 20:19:04 2026 *
+*********************************************************************
+
+***********************
+* MACH FITTER OPTIONS *
+***********************
+SIGNAL PLACEMENT:
+  Handling of Preplacements                      No Change
+  Use placement data from                        Design file
+
+FITTING OPTIONS:
+  Global clocks routable as PT clocks?           N
+  22V10/MACH1XX/2XX S/R Compatibility?           Y
+  SET/RESET treated as DONT_CARE?                Y
+  Reduce Unforced Global Clocks?                 N 
+  Iterate between partitioning and place/route?  Y
+  Balanced partitioning?                         Y
+  Reduce Routes Per Placement?                   N
+  Maximun Run Time                               run until completion
+
+***************************
+* DEVICE RESOURCE SUMMARY *
+***************************
+                                 Total
+                               Available  Used  Available  Utilization
+Dedicated Pins
+  Input-Only Pins                 2        0      2    -->     0%
+  Clock/Input Pins                4        2      2    -->    50%
+I/O Pins                         64       19     45    -->    29%
+Input Registers                  64        0     64    -->     0%
+Central Switch Matrix Outputs   264       20    244    -->     7%
+Product Term Clusters           128        4    124    -->     3%
+Logical Product Terms           640       20    620    -->     3%
+Logic Macrocells                128        1    127    -->     0%
+  > 1 PT Macrocells              ..        1    127
+  1 PT Macrocells                ..        0      0
+  Unusable Macrocells            ..        0     ..
+
+******************************
+* BLOCK PARTITIONING SUMMARY *
+******************************
+                                                      Macrocells  # of PT  
+                  Logic   I/O    Inp    Macrocells    available   clusters 
+          Fanin    PTs    Pins   Reg   Used Unusable  1PT   >1PT  available
+|---------------------------------------------------------------------------|
+Maximum     33     80      8      8     ..     ..         16        16
+|---------------------------------------------------------------------------|
+Block A     20     20      8      0      1      0      0     15     12
+Block B      0      0      8      0      0      0      0     16     16
+Block C      0      0      3      0      0      0      0     16     16
+Block D      0      0      0      0      0      0      0     16     16
+Block E      0      0      0      0      0      0      0     16     16
+Block F      0      0      0      0      0      0      0     16     16
+Block G      0      0      0      0      0      0      0     16     16
+Block H      0      0      0      0      0      0      0     16     16
+
+> Four rightmost columns above reflect last status of the placement process.
+
+******************
+* SIGNAL SUMMARY *
+******************
+                                 Pin/Node Logic
+       Signals Block Loc PTs XOR   Type   Type    Fanout
+|---------------------------------------------------------------------------|
+       COMPOUT   A    10 20   .   output   ...   --------
+        INX[0]   C    26  .   .    input   ...   A-------
+        INX[1]   C    25  .   .    input   ...   A-------
+        INX[2]   C    24  .   .    input   ...   A-------
+        INX[5]   B    19  .   .    input   ...   A-------
+        INX[6]   B    18  .   .    input   ...   A-------
+        INX[7]   B    17  .   .    input   ...   A-------
+        INX[8]   B    16  .   .    input   ...   A-------
+        INX[9]   B    15  .   .    input   ...   A-------
+         IN[0]   B    14  .   .    input   ...   A-------
+         IN[1]   B    13  .   .    input   ...   A-------
+         IN[2]   B    12  .   .    input   ...   A-------
+         IN[3]   A     9  .   .    input   ...   A-------
+         IN[4]   A     8  .   .    input   ...   A-------
+         IN[5]   A     7  .   .    input   ...   A-------
+         IN[6]   A     6  .   .    input   ...   A-------
+         IN[7]   A     5  .   .    input   ...   A-------
+         IN[8]   A     4  .   .    input   ...   A-------
+         IN[9]   A     3  .   .    input   ...   A-------
+       COMPOUT   A    A4 20   G  implied   C/.   --------
+
+***********************
+* TABULAR INFORMATION *
+***********************
+
+DEDICATED PINS
+                                             Logic             Clock
+Pin              Signal        Type          Fanout            Fanout
+|------------------------------------------------------------------------|
+ 20              INX[4]       input          A-------          --------
+ 23              INX[3]       input          A-------          --------
+ 41      ..............          ..          ........          ........
+ 62      ..............          ..          ........          ........
+ 65      ..............          ..          ........          ........
+ 83      ..............          ..          ........          ........
+
+**********************************
+* Signals - Equations Where Used *
+**********************************
+Signal Source :    Fanout List
+|---------------------------------------------------------------------------|
+        INX[0]:        COMPOUT{A}
+              {A}
+        INX[1]:        COMPOUT{A}
+              {A}
+        INX[2]:        COMPOUT{A}
+              {A}
+        INX[3]:        COMPOUT{A}
+              {A}
+        INX[4]:        COMPOUT{A}
+              {A}
+        INX[5]:        COMPOUT{A}
+              {A}
+        INX[6]:        COMPOUT{A}
+              {A}
+        INX[7]:        COMPOUT{A}
+              {A}
+        INX[8]:        COMPOUT{A}
+              {A}
+        INX[9]:        COMPOUT{A}
+              {A}
+         IN[0]:        COMPOUT{A}
+              {A}
+         IN[1]:        COMPOUT{A}
+              {A}
+         IN[2]:        COMPOUT{A}
+              {A}
+         IN[3]:        COMPOUT{A}
+              {A}
+         IN[4]:        COMPOUT{A}
+              {A}
+         IN[5]:        COMPOUT{A}
+              {A}
+         IN[6]:        COMPOUT{A}
+              {A}
+         IN[7]:        COMPOUT{A}
+              {A}
+         IN[8]:        COMPOUT{A}
+              {A}
+         IN[9]:        COMPOUT{A}
+              {A}
+
+Block A singular list (Input drives only one logic equation)
+        INX[0]:        COMPOUT
+        INX[1]:        COMPOUT
+        INX[2]:        COMPOUT
+        INX[3]:        COMPOUT
+        INX[4]:        COMPOUT
+        INX[5]:        COMPOUT
+        INX[6]:        COMPOUT
+        INX[7]:        COMPOUT
+        INX[8]:        COMPOUT
+        INX[9]:        COMPOUT
+         IN[0]:        COMPOUT
+         IN[1]:        COMPOUT
+         IN[2]:        COMPOUT
+         IN[3]:        COMPOUT
+         IN[4]:        COMPOUT
+         IN[5]:        COMPOUT
+         IN[6]:        COMPOUT
+         IN[7]:        COMPOUT
+         IN[8]:        COMPOUT
+         IN[9]:        COMPOUT
+
+
+BLOCK A LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+A0      2 ................  ...  .  15  .  .   .  .  .  ..  ........
+A1      3 ................  ...  .  15  .  .   .  .  .  ..  ........
+A2      4 ................  ...  .  10  .  .   .  .  .  ..  ........
+A3      5 ................  ...  .   5  .  .   .  .  .  ..  ........
+A4      6          COMPOUT  C/. 20   0  G  H   .  .  .  10  --------
+A5      7 ................  ...  .   5  .  .   .  .  .  ..  ........
+A6      8 ................  ...  .  10  .  .   .  .  .  ..  ........
+A7      9 ................  ...  .  15  .  .   .  .  .  ..  ........
+A8     10 ................  ...  .  20  .  .   .  .  .  ..  ........
+A9     11 ................  ...  .  20  .  .   .  .  .  ..  ........
+A10    12 ................  ...  .  20  .  .   .  .  .  ..  ........
+A11    13 ................  ...  .  20  .  .   .  .  .  ..  ........
+A12    14 ................  ...  .  20  .  .   .  .  .  ..  ........
+A13    15 ................  ...  .  20  .  .   .  .  .  ..  ........
+A14    16 ................  ...  .  15  .  .   .  .  .  ..  ........
+A15    17 ................  ...  .  10  .  .   .  .  .  ..  ........
+Air-0 130 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-1 131 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-2 132 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-3 133 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-4 134 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-5 135 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-6 136 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-7 137 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+BLOCK A I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+  3  ...   ...             IN[9]     input  A-------
+  4  ...   ...             IN[8]     input  A-------
+  5  ...   ...             IN[7]     input  A-------
+  6  ...   ...             IN[6]     input  A-------
+  7  ...   ...             IN[5]     input  A-------
+  8  ...   ...             IN[4]     input  A-------
+  9  ...   ...             IN[3]     input  A-------
+ 10    6   ...           COMPOUT    output  --------
+
+
+BLOCK A LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxA0              ...           ...     mxA17           IN[5]         pin 7
+mxA1           INX[7]        pin 17     mxA18             ...           ...
+mxA2            IN[2]        pin 12     mxA19           IN[0]        pin 14
+mxA3           INX[1]        pin 25     mxA20             ...           ...
+mxA4           INX[5]        pin 19     mxA21             ...           ...
+mxA5           INX[3]        pin 23     mxA22             ...           ...
+mxA6            IN[3]         pin 9     mxA23             ...           ...
+mxA7           INX[2]        pin 24     mxA24             ...           ...
+mxA8            IN[9]         pin 3     mxA25             ...           ...
+mxA9           INX[0]        pin 26     mxA26           IN[4]         pin 8
+mxA10          INX[8]        pin 16     mxA27             ...           ...
+mxA11           IN[1]        pin 13     mxA28             ...           ...
+mxA12             ...           ...     mxA29           IN[7]         pin 5
+mxA13          INX[9]        pin 15     mxA30           IN[8]         pin 4
+mxA14          INX[4]        pin 20     mxA31             ...           ...
+mxA15           IN[6]         pin 6     mxA32             ...           ...
+mxA16          INX[6]        pin 18
+
+BLOCK B I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 12  ...   ...             IN[2]     input  A-------
+ 13  ...   ...             IN[1]     input  A-------
+ 14  ...   ...             IN[0]     input  A-------
+ 15  ...   ...            INX[9]     input  A-------
+ 16  ...   ...            INX[8]     input  A-------
+ 17  ...   ...            INX[7]     input  A-------
+ 18  ...   ...            INX[6]     input  A-------
+ 19  ...   ...            INX[5]     input  A-------
+
+BLOCK C I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 24  ...   ...            INX[2]     input  A-------
+ 25  ...   ...            INX[1]     input  A-------
+ 26  ...   ...            INX[0]     input  A-------
+ 27  ...   ...  ................        ..  ........
+ 28  ...   ...  ................        ..  ........
+ 29  ...   ...  ................        ..  ........
+ 30  ...   ...  ................        ..  ........
+ 31  ...   ...  ................        ..  ........
+
+
+MACH435 report file key:
+
+A             - Asynchronous mode
+AVAL          - Additional product terms available within the current
+                steering allocation, plus those potentially available
+                through resteering of free clusters.
+B0            - Block Asynchronous Reset/Preset product term 0
+B1            - Block Asynchronous Reset/Preset product term 1
+C             - Combinatorial
+Ck0           - Block clock generated from pin 20 or pin 23
+Ck1           - Block clock generated from pin 20 or pin 23
+Ck2           - Block clock generated from pin 62 or pin 65
+Ck3           - Block clock generated from pin 62 or pin 65
+clk           - Clock
+CSM           - Central Switch Matrix
+D             - D-type flip flop
+G             - Ground
+H             - High
+implied       - Node occupying the macrocell drives the output pin
+                but not defined in the design file.
+inode         - Input node
+Inp           - Input
+ipair         - Input paired node
+I/O           - Input or Output
+L             - Low
+L             - Latch
+LOC           - Location
+mcell <X>     - Source is macrocell from block <X>
+Mux           - Multiplexer
+mx            - Block Array input multiplexer
+onode         - Output node
+opair         - Output paired node
+P             - Product Term
+Pol           - Polarity
+PT(s)         - Product term(s)
+Reg           - Register
+Res           - Reset control
+RN_<pin_name> - Output node paired with <pin_name> created by Fitter.
+S             - Synchronous mode
+Set           - Preset control
+T             - T-type flip flop
+XOR           - Exclusive OR gate
+<X>ir         - Input register in block <X>
+.             - Not available or Not applicable
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%

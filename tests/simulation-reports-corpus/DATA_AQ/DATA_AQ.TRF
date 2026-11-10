@@ -1,0 +1,180 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+MACHXL SIMULATION SELECTIVE TRACE LISTING
+
+Title     : Large Example            Author   : J. ENGINEER      
+Pattern   : 1                        Company  : AMD              
+Revision  : 1                        Date     : 8/26/94          
+
+MACH465        
+Page : 1 
+
+               ggc  c  c  gc  gc  c  c  gc  gc  gc  gc  gc  gc  gc  gc  gc 
+ CLK           LLHHLHHLHHLLHHLLHHLHHLHHLLHHLLHHLLHHLLHHLLHHLLLLLLHHLLHHLLHH
+ Q[7]          LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHHHHHH
+ Q[6]          LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHHHHHH
+ Q[5]          LLLLLLLLLLLLLHHHHHHHHHHHHHHHHHHHHHHHHHHLLLLLLLLLLLLLLLLLLLLL
+ Q[4]          LLLLLLLLLLLLLHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+ Q[3]          LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHHHHHH
+ Q[2]          LLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+ Q[1]          LLLLLLHHHHHHHHHHHHHHLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ Q[0]          LLLHHHLLLHHHHLLLLHHHLLLHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+ CE1           HHHHHHHHHHHHHHHHHHHHHHHHHLLLLLLLLLLLLHHHHLLLLLLLLLLLLLLLLLLL
+ LOAD          LLLLLLLLLLLHHHHLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHHHHHHHH
+ DATABUS[7]    ZZZZZZZZZZZLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+ DATABUS[6]    ZZZZZZZZZZZLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+ DATABUS[5]    ZZZZZZZZZZZHHHHHHHHHHHHHHHHHHLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ DATABUS[4]    ZZZZZZZZZZZHHHHHHHHHHHHHHHHHHLLLLLLLLHHHHHHHHHHHHHHHHHHHHHHH
+ DATABUS[3]    ZZZZZZZZZZZLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+ DATABUS[2]    ZZZZZZZZZZZLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+ DATABUS[1]    ZZZZZZZZZZZHHHHHHHHHHHHHHHHHHLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ DATABUS[0]    ZZZZZZZZZZZLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHHHHHHHH
+ RAM_DATA[7]   XXXXXXXXXXXLLLLLLLLLLLLLLLLLLHHHHLLLLHHHHHHHHHHHHHHHHHHHHHHH
+ RAM_DATA[6]   XXXXXXXXXXXLLLLLLLLLLLLLLLLLLHHHHLLLLHHHHHHHHHHHHHHHHHHHHHHH
+ RAM_DATA[5]   XXXXXXXXXXXHHHHHHHHHHHHHHHHHHLLLLHHHHLLLLLLLLLLLLLLLLLLLLLLL
+ RAM_DATA[4]   XXXXXXXXXXXHHHHHHHHHHHHHHHHHHLLLLHHHHHHHHHHHHHHHHHHHHHHHHHHH
+ RAM_DATA[3]   XXXXXXXXXXXLLLLLLLLLLLLLLLLLLHHHHLLLLHHHHHHHHHHHHHHHHHHHHHHH
+ RAM_DATA[2]   XXXXXXXXXXXLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+ RAM_DATA[1]   XXXXXXXXXXXHHHHHHHHHHHHHHHHHHLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ RAM_DATA[0]   XXXXXXXXXXXLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHHHHHHHHHHHH
+ SEL2          HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ OE0           LLLLLLLLLLLHHHHHHHHHHHHHHHHHHLLLLLLLLHHHHHHHHHHHHHHHHHHHHHHH
+ CE0           LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHLLLLLLLLLLLLLLL
+ CLK_IREG      LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHLLLLLLLLLLLL
+ MUXED_002[7]  LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ MUXED_002[6]  LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHH
+ MUXED_002[5]  LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHLLLLLLLLLLLLLLL
+ MUXED_002[4]  LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHLLLLLLLLLLLLLLL
+ MUXED_002[3]  LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ MUXED_002[2]  LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHH
+ MUXED_002[1]  LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHLLLLLLLLLLLLLLL
+ MUXED_002[0]  LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHLLLLLLLLLLLLLLL
+ A_DATA[7]     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ A_DATA[6]     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ A_DATA[5]     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHH
+ A_DATA[4]     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHH
+ A_DATA[3]     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ A_DATA[2]     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ A_DATA[1]     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHH
+ A_DATA[0]     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHH
+ B_DATA[7]     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ B_DATA[6]     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHH
+ B_DATA[5]     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ B_DATA[4]     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ B_DATA[3]     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ B_DATA[2]     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHH
+ B_DATA[1]     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ B_DATA[0]     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ ADD[7]        LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ ADD[6]        LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHH
+ ADD[5]        LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHH
+ ADD[4]        LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHH
+ ADD[3]        LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ ADD[2]        LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHH
+ ADD[1]        LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHH
+ ADD[0]        LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHH
+ BUSADDR[7]    LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ BUSADDR[6]    LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHH
+ BUSADDR[5]    LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ BUSADDR[4]    LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHH
+ BUSADDR[3]    LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ BUSADDR[2]    LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHH
+ BUSADDR[1]    LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ BUSADDR[0]    LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHH
+ RAM_AD001[7]  LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ RAM_AD001[6]  LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHH
+ RAM_AD001[5]  LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHLLLLHHH
+ RAM_AD001[4]  LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHLLLLHHH
+ RAM_AD001[3]  LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ RAM_AD001[2]  LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHH
+ RAM_AD001[1]  LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHLLLLHHH
+ RAM_AD001[0]  LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHLLLLHHH
+ SEL0          LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHH
+ SEL1          LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHLLL
+
+MACH465        
+Page : 2 
+                gc                                                         
+ CLK           LLHHL                                                       
+ Q[7]          HHHHH                                                       
+ Q[6]          HHHHH                                                       
+ Q[5]          LLLLL                                                       
+ Q[4]          HHHHH                                                       
+ Q[3]          HHHHH                                                       
+ Q[2]          HHHHH                                                       
+ Q[1]          LLLLL                                                       
+ Q[0]          HHHHH                                                       
+ CE1           LLLLL                                                       
+ LOAD          HHHHH                                                       
+ DATABUS[7]    HHHHH                                                       
+ DATABUS[6]    HHHHH                                                       
+ DATABUS[5]    LLLLL                                                       
+ DATABUS[4]    HHHHH                                                       
+ DATABUS[3]    HHHHH                                                       
+ DATABUS[2]    HHHHH                                                       
+ DATABUS[1]    LLLLL                                                       
+ DATABUS[0]    HHHHH                                                       
+ RAM_DATA[7]   HHHHH                                                       
+ RAM_DATA[6]   HHHHH                                                       
+ RAM_DATA[5]   LLLLL                                                       
+ RAM_DATA[4]   HHHHH                                                       
+ RAM_DATA[3]   HHHHH                                                       
+ RAM_DATA[2]   HHHHH                                                       
+ RAM_DATA[1]   LLLLL                                                       
+ RAM_DATA[0]   HHHHH                                                       
+ SEL2          LLLLL                                                       
+ OE0           HHHHH                                                       
+ CE0           LLLLL                                                       
+ CLK_IREG      LLLLL                                                       
+ MUXED_002[7]  LLLLL                                                       
+ MUXED_002[6]  HHHHH                                                       
+ MUXED_002[5]  LLLLL                                                       
+ MUXED_002[4]  LLLLL                                                       
+ MUXED_002[3]  LLLLL                                                       
+ MUXED_002[2]  HHHHH                                                       
+ MUXED_002[1]  LLLLL                                                       
+ MUXED_002[0]  LLLLL                                                       
+ A_DATA[7]     LLLLL                                                       
+ A_DATA[6]     LLLLL                                                       
+ A_DATA[5]     HHHHH                                                       
+ A_DATA[4]     HHHHH                                                       
+ A_DATA[3]     LLLLL                                                       
+ A_DATA[2]     LLLLL                                                       
+ A_DATA[1]     HHHHH                                                       
+ A_DATA[0]     HHHHH                                                       
+ B_DATA[7]     LLLLL                                                       
+ B_DATA[6]     HHHHH                                                       
+ B_DATA[5]     LLLLL                                                       
+ B_DATA[4]     LLLLL                                                       
+ B_DATA[3]     LLLLL                                                       
+ B_DATA[2]     HHHHH                                                       
+ B_DATA[1]     LLLLL                                                       
+ B_DATA[0]     LLLLL                                                       
+ ADD[7]        LLLLL                                                       
+ ADD[6]        HHHHH                                                       
+ ADD[5]        HHHHH                                                       
+ ADD[4]        HHHHH                                                       
+ ADD[3]        LLLLL                                                       
+ ADD[2]        HHHHH                                                       
+ ADD[1]        HHHHH                                                       
+ ADD[0]        HHHHH                                                       
+ BUSADDR[7]    LLLLL                                                       
+ BUSADDR[6]    HHHHH                                                       
+ BUSADDR[5]    LLLLL                                                       
+ BUSADDR[4]    HHHHH                                                       
+ BUSADDR[3]    LLLLL                                                       
+ BUSADDR[2]    HHHHH                                                       
+ BUSADDR[1]    LLLLL                                                       
+ BUSADDR[0]    HHHHH                                                       
+ RAM_AD001[7]  LLLLL                                                       
+ RAM_AD001[6]  HHHHH                                                       
+ RAM_AD001[5]  HLLLL                                                       
+ RAM_AD001[4]  HHHHH                                                       
+ RAM_AD001[3]  LLLLL                                                       
+ RAM_AD001[2]  HHHHH                                                       
+ RAM_AD001[1]  HLLLL                                                       
+ RAM_AD001[0]  HHHHH                                                       
+ SEL0          HHHHH                                                       
+ SEL1          LHHHH                                                       
+

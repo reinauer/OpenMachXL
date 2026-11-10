@@ -1,0 +1,206 @@
+Bh7.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+   1     |;PALASM Design Description
+   2     |; pds2v test: purely combinatorial address decoder.
+   3     |; Exercises STRING macros, multi-line equations, active-low left sides,
+   4     |; XOR/XNOR, VCC/GND, an output enable (.TRST) and a read-back of an output.
+   5     |; EXPECT-EXIT: 0
+   6     |; EXPECT: warning: SPARE (pin 13) is never used
+   7     |
+   8     |TITLE    pds2v test decoder
+   9     |PATTERN  decoder
+  10     |REVISION 1
+  11     |AUTHOR   test
+  12     |COMPANY  none
+  13     |DATE     1995-10-01
+  14     |CHIP     DEC  MACH111
+  15     |
+  16     |PIN  10  AS_N                     ; dedicated inputs
+  17     |PIN  32  RW
+  18     |PIN  2   A31
+  19     |PIN  3   A30
+  20     |PIN  4   A29
+  21     |PIN  5   A28
+  22     |PIN  6   FC2
+  23     |PIN  7   FC1
+  24     |PIN  19  SPARE
+  25     |PIN  8   ROM_N      COMBINATORIAL
+  26     |PIN  9   RAM_N      COMBINATORIAL
+  27     |PIN  14  IO_N       COMBINATORIAL
+  28     |PIN  15  ANY_N      COMBINATORIAL ; reads back ROM_N, RAM_N, IO_N
+  29     |PIN  16  PAR        COMBINATORIAL ; A31 xor A30 xor A29 xor A28
+  30     |PIN  17  SAME       COMBINATORIAL ; A31 xnor A30
+  31     |PIN  24  HI         COMBINATORIAL ; constant 1
+  32     |PIN  25  LO         COMBINATORIAL ; constant 0
+  33     |PIN  26  DOUT       COMBINATORIAL ; three-state, enabled on read
+  34     |PIN  27  OE_N       COMBINATORIAL
+  35     |
+  36     |STRING  CYC    '( /AS_N * FC2 )'
+  37     |STRING  ROMSEL '/A31 * /A30'
+  38     |
+  39     |EQUATIONS
+  40     |/ROM_N =  
+  40  s1 |( /AS_N * FC2 )
+  40     |              *  
+  40  s1 |/A31 * /A30
+  40     |                                  ; active low: ROM_N = NOT(...)
+  41     |/RAM_N =  
+  41  s1 |( /AS_N * FC2 )
+  41     |              * /A31 * A30
+  42     |       +  
+  42  s1 |( /AS_N * FC2 )
+  42     |              * A31 * /A30 * /A29
+  43     |/IO_N  =  
+  43  s1 |( /AS_N * FC2 )
+  43     |
+  44     |       * A31 * A30 * A29        ; continuation over several lines
+  45     |ANY_N  = ROM_N * RAM_N * IO_N
+  46     |PAR    = (A31 :+: A30) :+: (A29 :+: A28)
+  47     |SAME   = A31 :*: A30
+  48     |HI     = VCC
+  49     |LO     = GND
+  50     |DOUT   = FC1
+  51     |DOUT.TRST = RW * /AS_N
+  52     |OE_N   = /( RW * /AS_N )
+
+ %% MACHPAR %%    ERROR count:  0      WARNING count:  0
+
+ %% MACHPAR %%    File processed successfully.    File:  Bh7.pds
+
+*** Start MACHBPP.E 10:16:51 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>/ROM_N
+Processing equation for ====>/RAM_N
+Processing equation for ====>/IO_N
+Processing equation for ====>ANY_N
+Processing equation for ====>PAR
+Processing equation for ====>SAME
+Processing equation for ====>HI
+Processing equation for ====>LO
+Processing equation for ====>DOUT
+Processing equation for ====>DOUT.TRST
+Processing equation for ====>OE_N
+
+ %%  MACHBPP  %% Maximum memory allocated was: 58236 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Bh7.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 10:16:51; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 10:16:51 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin OE_N...
+====> OE_N               MIN_ON (2 + pt)
+Processing equation(s) for pin DOUT...
+====> DOUT               MIN_ON (1 + pt)
+====> DOUT.TRST          MIN_ON (1 + pt)
+Processing equation(s) for pin LO...
+====> LO                 MIN_ON (1 + pt)
+Processing equation(s) for pin HI...
+====> HI                 MIN_ON (1 + pt)
+Processing equation(s) for pin SAME...
+====> SAME               MIN_ON (2 + pt)
+Processing equation(s) for pin PAR...
+====> PAR                MIN_ON (8 + pt)
+Processing equation(s) for pin ANY_N...
+====> ANY_N              MIN_ON (1 + pt)
+Processing equation(s) for pin IO_N...
+====> /IO_N              MIN_ON (1 - pt)
+Processing equation(s) for pin RAM_N...
+====> /RAM_N             MIN_ON (2 - pt)
+Processing equation(s) for pin ROM_N...
+====> /ROM_N             MIN_ON (1 - pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 43982 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Bh7.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 10:16:51; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 10:16:51 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file bh7.tre to PLA file bh7.pla...
+
+..........
+..........
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 45212 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Bh7.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 10:16:52; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 10:16:52 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Bh7.pds . Device is MACH111 .
+|> INFO z5109 - For this device, all input pairing is ignored since input
+                registers or latches do not exist. All signals must pass
+                through the central switch matrix before being latched or
+                registered.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+|> WARNING z5073 - If a declared input signal is not used in any equation,
+                   then that signal may be discarded in order to reduce the
+                   number of pins required to fit the design. Input Pins
+                   not referenced - discarded :
+SPARE 
+Check clock rules
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is Bh7.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File Bh7.pds .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 1 .
+
+*** End MACHFITR.EX 10:16:52; (MACHFITR.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

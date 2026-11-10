@@ -1,0 +1,53 @@
+;---------------------------------- Declaration Segment ------------
+TITLE     3 Bit T-Counter
+PATTERN   1
+REVISION  1
+AUTHOR    Alex Marrero
+COMPANY   AMD
+DATE      9/5/94
+
+CHIP  3COUNT_T  MACH111
+
+;---------------------------------- PIN Declarations --------------
+PIN  ?          CLK                                         ; INPUT
+PIN  ?          ENABLE
+PIN  ?          RST
+PIN  ?          B[2..0]     REGISTERED                      ; OUTPUT
+
+
+;----------------------------------- Boolean Equation Segment ------
+
+EQUATIONS
+;------------ T-FF
+
+
+B[0].T := ENABLE       
+B[1].T := ENABLE *B[0] 
+B[2].T := ENABLE *B[0] * B[1]    
+
+B[2..0].CLKF=CLK
+B[2..0].RSTF=RST
+
+;----------------------------------- Simulation Segment ------------
+SIMULATION
+
+
+TRACE_ON   B[2..0]  CLK RST ENABLE
+
+
+SETF RST ENABLE
+SETF /RST
+
+CHECKQ /B[2..0]
+
+FOR X:= 1 TO 10 DO
+        BEGIN
+             CLOCKF CLK
+        END
+
+CHECKQ  B[2..0] = #B010
+
+TRACE_OFF
+
+
+;-------------------------------------------------------------------

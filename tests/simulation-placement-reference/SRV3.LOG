@@ -1,0 +1,35 @@
+
+*** Start MACHSIMU. 03:02:06 
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Srv3.pds
+Title  
+
+
+
+   1-V1 - TRACE_ON
+          A  CLK  Q  
+   1-V1 - SETF
+          /A  
+   5-V2 - CLOCKF
+          CLK  
+   5-V3 - SETF
+          A  
+   9-V4 - CLOCKF
+          CLK  
+   9-V5 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Srv3.HST
+Simulation results (trace) are in   ===> Srv3.TRF
+Merged results (JEDEC) are in       ===> Srv3.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 163851 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Srv3.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHSIMU.EX 03:02:08; (MACHSIMU.EXE= 2 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

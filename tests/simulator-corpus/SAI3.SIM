@@ -1,0 +1,35 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Sai3.pds
+Title  
+
+
+
+   1-V1 - SETF
+          /A  /B  /CLK  
+   2-V1 - CHECK
+          Y  
+%% WARNING  Total number of check clashes   ====>>> 1
+               Clash detected at vector number ====>>> 2
+   3-V2 - SETF
+          A  B  
+   4-V2 - CHECK
+          Y  
+%% WARNING  Total number of check clashes   ====>>> 2
+               Clash detected at vector number ====>>> 4
+   5-V3 - SETF
+          /A  /B  
+   9-V4 - CLOCKF
+          CLK  
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Sai3.HST
+Merged results (JEDEC) are in       ===> Sai3.JDC
+|> WARNING D1310
+    %% Total check clashes issued = 2
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 85968 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Sai3.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 2

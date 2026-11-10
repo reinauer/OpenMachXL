@@ -1,0 +1,100 @@
+;-------------------------------------------------------------------
+; NOTICE: This implementation of PREP Co. Benchmark #1 - Datapath
+; is the property of AMD. It has submitted for the PREP benchmarks.
+;
+;       All other uses are expressly forbidden!
+;
+;       AMD Contact: Nick Schmitz (408) 749-4868        Fax:749-8433
+;       M/s 1002, P. O. Box 3453, Sunnyvale Ca 94088
+;-------------------------------------------------------------------
+; MACHXL Design description
+
+; -----------------------Declaration Segment ------------
+   TITLE Filler - PREP Benchmark
+ PATTERN PF.PDS
+REVISION A
+  AUTHOR J. ENGINEER
+ COMPANY ADVANCED MICRO DEVICES, INC.
+    DATE 17 Dec 1992
+CHIP   FILLER      MACH435
+
+Pin  ? CLK              Pin  ? RST              pin  ? ld_x
+Pin  ? d_x[0..3]        Pin  ? s_x[0..3]
+Node ? q_x[0..3]        Node ? f_x[0..1]        Node ? c_x[1..3]
+Node ? m_x
+
+EQUATIONS;
+
+s_x[0..3].clkf=CLK        s_x[0..3].rstf=RST        s_x[0..3].setf=gnd
+q_x[0..3].clkf=CLK        q_x[0..3].rstf=RST        q_x[0..3].setf=gnd
+
+;---------------------------------------------------------------
+; Load Terms
+q_x[0..3].T :=   ld_x *(q_x[0..3]*/d_x[0..3] + /q_x[0..3]*d_x[0..3])
+
+;Count up terms
+q_x[0].T:={q_x[0].T}+ /ld_x
+q_x[1].T:={q_x[1].T}+ /ld_x* q_x[0]
+q_x[2].T:={q_x[2].T}+ /ld_x* q_x[0]* q_x[1]
+q_x[3].T:={q_x[3].T}+ /ld_x* q_x[0]* q_x[1]* q_x[2]
+
+;---------------------------------------------------------------
+     f_x[1] = /q_x[3] */q_x[2] */q_x[1] */q_x[0]
+            + /q_x[3] * q_x[2] */q_x[1] * q_x[0]
+            +  q_x[3] * q_x[2] * q_x[1] * q_x[0];
+
+     f_x[0] = /q_x[3] */q_x[2] * q_x[1] */q_x[0]
+            + /q_x[3] * q_x[2] * q_x[1] * q_x[0]
+            +  q_x[3] * q_x[2] */q_x[1] */q_x[0];
+
+;---------------------------------------------------------------
+ case (f_x[1],f_x[0]) begin
+        #b00: begin m_x=q_x[0] end
+        #b01: begin m_x=q_x[1] end
+        #b02: begin m_x=q_x[2] end
+        #b03: begin m_x=q_x[3] end
+    end;
+
+;---------------------------------------------------------------
+        s_x[0] := s_x[0] :+: q_x[0] :+: m_x;
+        s_x[1] := s_x[1] :+: q_x[1] :+: C_x[1];
+        s_x[2] := s_x[2] :+: q_x[2] :+: C_x[2];
+        s_x[3] := s_x[3] :+: q_x[3] :+: C_x[3];
+
+        C_x[2] = s_x[1] * q_x[1] + s_x[1] * C_x[1] + q_x[1] * C_x[1]
+        C_x[1] = s_x[0] * q_x[0] + s_x[0] * m_x    + q_x[0] * m_x
+        C_x[3] = s_x[2] * q_x[2] + s_x[2] * C_x[2] + q_x[2] * C_x[2]
+
+;---------------------------------------------------------------
+Simulation
+Trace_on d_x[3..0] q_x[3..0] RST   CLK   ld_x s_x[3..0]
+
+        Setf /RST   /CLK   /d_x[3..0] /ld_x
+        setf d_x[3..0]=#H9 RST       ;
+        setf /d_x[3..0] Clockf CLK
+        setf /RST       Clockf CLK
+
+        Clockf CLK      Clockf CLK      Clockf CLK
+        Clockf CLK      Clockf CLK      Clockf CLK
+        Clockf CLK      Clockf CLK      Clockf CLK
+
+        setf  RST        Clockf CLK
+        setf /RST        Clockf CLK
+        Clockf CLK       Clockf CLK
+
+        setf  RST        Clockf CLK
+        setf /RST        Clockf CLK
+        Clockf CLK       Clockf CLK
+
+        setf  d_x[3..0]=#H5  ld_x Clockf CLK
+        setf /ld_x
+        setf /d_x[3..0] ld_x Clockf CLK
+        Clockf CLK   Clockf CLK   Clockf CLK
+
+        setf  d_x[3..0]=#H6  ld_x Clockf CLK
+        setf /ld_x
+        Clockf CLK   Clockf CLK   Clockf CLK
+
+   TRACE_OFF
+
+

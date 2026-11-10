@@ -1,0 +1,29 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file O2152.pds
+; FITTER-generated Placements.
+; DEVICE   MACH215
+; DATE     Tue Nov 10 00:03:41 2026
+
+
+Pin   11  A
+Pin   10  B
+Pin   24  Y0 Comb ;
+Pin   4  Y1 Comb ;
+Pin   14  Y2 Comb ;
+Pin   9  Y3 Comb ;
+Pin   19  Y4 Comb ;
+Pin   8  Y5 Comb ;
+Pin   15  Y6 Comb ;
+Pin   3  Y7 Comb ;
+Pin   7  Y8 Comb ;
+Pin   6  Y9 Comb ;
+Pin   2  Y10 Comb ;
+Pin   5  Y11 Comb ;
+Pin   16  Y12 Comb ;
+Pin   20  Y13 Comb ;
+Pin   17  Y14 Comb ;
+Pin   18  Y15 Comb ;
+Pin   21  Y16 Comb ;
+; Unused Pins & Nodes
+; -> None Found.

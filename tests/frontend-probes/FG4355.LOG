@@ -1,0 +1,170 @@
+
+*** Start MACHPAR.E 08:46:33 
+Fg4355.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP FG4355 MACH435
+   2     |PIN ? A
+   3     |PIN ? B
+   4     |PIN 20 CLK
+   5     |PIN ? Y REG
+   6     |NODE ? NN REG
+   7     |NODE ? MM REG
+   8     |NODE ? PP REG
+   9     |EQUATIONS
+  10     |Y:=B
+  11     |Y.CLKF=CLK
+  12     |NN:=MM
+  13     |NN.CLKF=CLK
+  14     |MM:=PP
+  15     |MM.CLKF=CLK
+  16     |PP:=A
+  17     |PP.CLKF=CLK
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Fg4355.pds
+
+*** End MACHPAR.EXE 08:46:34; (MACHPAR.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 08:46:34 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Y
+Processing equation for ====>Y.CLKF
+Processing equation for ====>NN
+Processing equation for ====>NN.CLKF
+Processing equation for ====>MM
+Processing equation for ====>MM.CLKF
+Processing equation for ====>PP
+Processing equation for ====>PP.CLKF
+
+ %%  MACHBPP  %% Maximum memory allocated was: 69114 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Fg4355.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 08:46:34; (MACHBPP.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 08:46:34 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node PP...
+====> PP                 MIN_ON (1 + pt)
+====> PP.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for node MM...
+====> MM                 MIN_ON (1 + pt)
+====> MM.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for node NN...
+====> NN                 MIN_ON (1 + pt)
+====> NN.CLKF            MIN_ON (1 + pt)
+Processing equation(s) for pin Y...
+====> Y                  MIN_ON (1 + pt)
+====> Y.CLKF             MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 48476 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Fg4355.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 08:46:34; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 08:46:34 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file fg4355.tre to PLA file fg4355.pla...
+
+....
+....
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 48534 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Fg4355.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 08:46:35; (MACHMIN.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 08:46:35 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Fg4355.pds . Device is MACH435 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+|> WARNING z5073 - If a declared input signal is not used in any equation,
+                   then that signal may be discarded in order to reduce the
+                   number of pins required to fit the design. Input Pins
+                   not referenced - discarded :
+A 
+|> WARNING z5071 - Nodes not referenced - discarded :
+NN MM PP 
+Check clock rules
+
+List of global clocks:
+   CLK:
+...... Is preplaced at a global clock pin.
+
+List of non-global clocks:
+   None.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is Fg4355.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File Fg4355.pds .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 2 .
+
+*** End MACHFITR.EX 08:46:36; (MACHFITR.EXE= 1 sec.) elapsed time= 3 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

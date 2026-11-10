@@ -1,0 +1,758 @@
+{
+  "description": "Fresh original DOS fitting failures, no JEDEC permitted in either native mode",
+  "cases": [
+    {
+      "name": "GCG6",
+      "errors": [
+        "z5529"
+      ],
+      "files": {
+        "GCG6.PDS": "94189344a3ce376377145175c66d3ee9f139463591388aeb6bae13758c71e091",
+        "GCG6.MXL": "03e4c1caa7447b16e267af14075cb4bce929b4c1b3da3c5eb4d82569e2672f82",
+        "GCG6.LOG": "45a8f43c1f9694c5881e1c1ef1948fea3d657886bd8e16b4c684378229beeb96"
+      }
+    },
+    {
+      "name": "GCG7",
+      "errors": [
+        "z5529"
+      ],
+      "files": {
+        "GCG7.PDS": "43061e231e8550bb7c992164af377f78535daa0f4560ff35514271998f4d82d6",
+        "GCG7.MXL": "d0fc3bd751d0bcbd1e7b4c8086d61322371c0ee770e90d772b5be7e188fdf1c2",
+        "GCG7.LOG": "2771a8764e510f1c945b23320a8200828af5fa751115b86e45c7e0fe0dfdb691"
+      }
+    },
+    {
+      "name": "GCG8",
+      "errors": [
+        "z5529"
+      ],
+      "files": {
+        "GCG8.PDS": "6c7cdff43c38a1123da1891437c71f27905d9abf68ac9ef5f641315aa27d74e2",
+        "GCG8.MXL": "c761f3bb5db3f2316d6ea79acf1162c82406095182110d8a5710357757f25841",
+        "GCG8.LOG": "4968f8f5f6033542dcc8eef27341fc9ec83343a9a8e71d20d9ebc776cad8ff10"
+      }
+    },
+    {
+      "name": "RPF3",
+      "errors": [
+        "z7502"
+      ],
+      "files": {
+        "RPF3.PDS": "bd6987c1e893cd5cbde421ee12c8695499fc91b85aca03dae3bcf252efcff707",
+        "RPF3.MXL": "5928ab59db353ef7e67db0d77029f2d98be41ed3fb6879068fc9e2917d723bb5",
+        "RPF3.LOG": "11465fbb506ec039cbc0a89e3e1cdfc4732295ac1e946642c0721c295171130c"
+      }
+    },
+    {
+      "name": "MRW4",
+      "errors": [
+        "z7502"
+      ],
+      "files": {
+        "MRW4.PDS": "2e8df21a728314ab05c1f6c6c14a46045e9bc0dc7ddeba1f6044c05998272cf5",
+        "MRW4.MXL": "068a0cc2afd4165177d7d6804e51f0422b534a80c5bf450e608e02aa17be07aa",
+        "MRW4.LOG": "01932c0b3452d32d431769f441587cd035a5cf549a657b5d2abed235764cae95"
+      }
+    },
+    {
+      "name": "IL0",
+      "errors": [
+        "z7502"
+      ],
+      "files": {
+        "IL0.PDS": "1fb63154f2719482417c3326e90e3d7ae83a82c04988d804061e0874f8599b6c",
+        "IL0.MXL": "5c07e684ba915b03c6da6f39b83d411ebaef25795e1c3f639d04ffec03ded998",
+        "IL0.LOG": "40b6ddef9e2d7858bd16add34df3468ae7fa26b9271a31666bd891d5afd96780"
+      }
+    },
+    {
+      "name": "IL1",
+      "errors": [
+        "z7502"
+      ],
+      "files": {
+        "IL1.PDS": "67efb936522f4d5493d3bf72ee09fba50dbe2aa8286f34b42a37b6789ce262b6",
+        "IL1.MXL": "9ab735dbcb31afc979a1cc7f0440834d216939c2fc0ff780472be20b26c4e928",
+        "IL1.LOG": "5238efaea2a698f194cab7ea5cf750c093421463e667ac0dec93a5043e79ddab"
+      }
+    },
+    {
+      "name": "AP9",
+      "errors": [
+        "z8007"
+      ],
+      "files": {
+        "AP9.PDS": "80f7f5b97f9d2d9bf21d8b07eb74aebda06376264ed8ca03a39044bad77b0f92",
+        "AP9.MXL": "1c74a27a33a54afe3e8d7e3287b71cedf6b1f88e4d8952783f3d2944e106d6d2",
+        "AP9.LOG": "0eecbf340962c769454c70e9a21e14ce7681607210552ad8a274613ab1218b11"
+      },
+      "oracle_manifest": "build/partition-auxiliary/manifest.json"
+    },
+    {
+      "name": "AP10",
+      "errors": [
+        "z8007"
+      ],
+      "files": {
+        "AP10.PDS": "8004603830a5ee65ee347b9f67cc669e63def3cbb806d9be1649b2e8a8596576",
+        "AP10.MXL": "456c48b18d6f11d23d18d2f206db07b0a6f056d9bb7053c9345748fa31f5d839",
+        "AP10.LOG": "574bca4b185a75290ebce2c679da72f859629dbf8e709436a4bcc32fb9039176"
+      },
+      "oracle_manifest": "build/partition-auxiliary/manifest.json"
+    },
+    {
+      "name": "APM1",
+      "errors": [
+        "z8007"
+      ],
+      "files": {
+        "APM1.PDS": "c45adf5de0b3332e9aa3d73ecb30830146f7b1a4d6b9760fb5432789ac3c2e61",
+        "APM1.MXL": "eed19f822748a1c1e5fb12f35eee5e632dff078d592522dbb87450ee54b8862b",
+        "APM1.LOG": "054c0518636f25ec907d74c33029fbee6898c5a3be809b31f8841660ffc2048e"
+      },
+      "oracle_manifest": "build/partition-auxiliary-mixed/manifest.json"
+    },
+    {
+      "name": "RPM815",
+      "errors": [
+        "z7502"
+      ],
+      "files": {
+        "RPM815.PDS": "27e50d7828647f6b6708b353adfd78f48e3ab7da4c2ec5de1bb5794a254be3e1",
+        "RPM815.MXL": "597601b0a4effaee414e7e458c334c48ca80e9ea6006b7d297101323b79d74f4",
+        "RPM815.LOG": "0a5fc508028dab97caa4c59c403edc45e2314f8379ab41f3448e704f8ce1b909"
+      }
+    },
+    {
+      "name": "IT1152N",
+      "errors": [
+        "z7502"
+      ],
+      "files": {
+        "IT1152N.PDS": "000c3994a6786c2fbd9c3dd18844d3be9199319118e379a821fe262decb93eb6",
+        "IT1152N.MXL": "30268637f80c629cbab04bf64cf4b18a8f1486b4720178606e62b117d53889e8",
+        "IT1152N.LOG": "0d4fefa31e8144216f537b3a141bd31b795e89ecae0c3304a3c5999b6e564a19"
+      }
+    },
+    {
+      "name": "IT553N",
+      "errors": [
+        "z7502"
+      ],
+      "files": {
+        "IT553N.PDS": "cd2c85907369c0eca1dcf44a4167f08ae53b291e1991b4e39e5b233941f812b6",
+        "IT553N.MXL": "4232ab6f52331b25338f421e0f2b7b76dbf0282074af048d3c6eccfc9c2c8928",
+        "IT553N.LOG": "097e9d6b1ae2dab96013519579d1cce7eed53218eb22ea1206f9352e2d609bb6"
+      }
+    },
+    {
+      "name": "IT1715N",
+      "errors": [
+        "z7502"
+      ],
+      "files": {
+        "IT1715N.PDS": "651aa9a4d5693d0c018b5b15fead95c07b1f537688850ab77fa9a1c934230ec1",
+        "IT1715N.MXL": "ab4acc36af395576ce096064a843a19e2b37aca526f943e40e5b565409db6b93",
+        "IT1715N.LOG": "4c1bf24856b98211f59d7dbb8677ec16fe2196dac02d47369d39025f37683e84"
+      }
+    },
+    {
+      "name": "IT1849N",
+      "errors": [
+        "z7502"
+      ],
+      "files": {
+        "IT1849N.PDS": "ec69a7e0514121575ee97868a572eac7be7ab5cbd0bc7f7ab4af4984827f9e0c",
+        "IT1849N.MXL": "52bb78c5b6f4d0b0b257afe1ed266f35148a4908dad9781c23500e4fcb75cbe9",
+        "IT1849N.LOG": "1fb55038c0af5901455d4ce81eeb84b3b64db0027d766aed746a0c1784b931be"
+      }
+    },
+    {
+      "name": "AZ14",
+      "errors": [
+        "z8007"
+      ],
+      "files": {
+        "AZ14.PDS": "0cea4e8a2ac423023a7cf0767fcb94989d8008892cf64afaf6cc01c21ffc982d",
+        "AZ14.MXL": "5ad4e7e023ff50bf4454bc7647e6ed2363b5241eb62d2f6bd5d41441e27067ec",
+        "AZ14.LOG": "3dd542c1baa629e60f369db0c2842c0910d446b5cf87a7978be7c351ca284661"
+      },
+      "oracle_manifest": "build/modern-allocator-wide-pressure/manifest.json"
+    },
+    {
+      "name": "PH5N",
+      "errors": [
+        "z7502"
+      ],
+      "files": {
+        "PH5N.PDS": "2534abcf5f1b68da1b1e5fac21eb2cb0c88a79dbcb3c7a933dcf495004532fa0",
+        "PH5N.MXL": "4abc35f1143ab6b045c7103f0640ff39a69ceac5d131ebeba31a61053d474c22",
+        "PH5N.LOG": "45f7553858abd3b4604a47a3386c03b39fb2298dc5c7cecc62ba06c4ed945fa2"
+      }
+    },
+    {
+      "name": "PH29N",
+      "errors": [
+        "z7502"
+      ],
+      "files": {
+        "PH29N.PDS": "7eb7e59eb0ccef6e89ed5c0f65227fe961dc1acf9cbd584fbbcc3b02cccc4deb",
+        "PH29N.MXL": "b446df1451785b882ba722ea80b5bb1438ed51211b8c3234dd6abed756a2a215",
+        "PH29N.LOG": "980b93697aa304b96f78f6abf163d1fe270cf34647e7ddc983008f38d794345c"
+      }
+    },
+    {
+      "name": "NU1110",
+      "errors": [
+        "z5045"
+      ],
+      "files": {
+        "NU1110.PDS": "da0b74ddc73075acce1deffa7791605c170546b6dbceec1e94f977ec5396ec62",
+        "NU1110.MXL": "7989b4e3a1d43fb57e59328cf7f126919c16bc547021ade50590504778e4aa8f",
+        "NU1110.LOG": "5ecf5d0540669da7a4f41c816d8a213b7ecf7c09c58f2a672479eb64b9d33dbd"
+      }
+    },
+    {
+      "name": "NU1111",
+      "errors": [
+        "z5045"
+      ],
+      "files": {
+        "NU1111.PDS": "a59b97d41923e45ef2ae5c4858f74506da258318bf236d6282e646701eb9dbc9",
+        "NU1111.MXL": "33bd030961b8484e9633c05ba71867dec6aedf4e25a38c318d37052fcbc2fd61",
+        "NU1111.LOG": "7951e80c494dc443e1f86d4e5e0cebc808f2b5a8da800b629fb78a205a149353"
+      }
+    },
+    {
+      "name": "NU1200",
+      "errors": [
+        "z5045"
+      ],
+      "files": {
+        "NU1200.PDS": "f16ba4b317d077d0a79c54a770ec24fd699d525bab4a0d1124ec6422fee3e9ac",
+        "NU1200.MXL": "0cd46aac85bda197896db79ca84c746410809d3deef7a95a0f9ab0b45bffe157",
+        "NU1200.LOG": "c29950dcc6c0453b50ede560ce92299f8e37e95f970a04d65d88bc52856e878a"
+      }
+    },
+    {
+      "name": "NU1201",
+      "errors": [
+        "z5045"
+      ],
+      "files": {
+        "NU1201.PDS": "7a5eaf1781eeedc26c12c4471147f8a9efcf7e1874dc1c971e40c625cfe31223",
+        "NU1201.MXL": "078c06ad1ebbd89b941ec95ea3eae92e82db2de9b0c836bc449220d5f41b0164",
+        "NU1201.LOG": "e368ae8d170c73f49cb56cfb4b610e83a3494f451031cc8165ac5bf311f593b6"
+      }
+    },
+    {
+      "name": "NU2110",
+      "errors": [
+        "z5045"
+      ],
+      "files": {
+        "NU2110.PDS": "4b4802159c8560a7d0befd9c1298d984d67ddb13453a1203396e654fbd5c402c",
+        "NU2110.MXL": "f47aecc2f947bc173d9470718a6be7ace98af323fc8d5df13406af5c10bd8293",
+        "NU2110.LOG": "82be71c1d88fdf6aa3fb5dc2cbbc6cc4a51a7627f9f8d1c9e66b78a018d74f40"
+      }
+    },
+    {
+      "name": "NU2111",
+      "errors": [
+        "z5045"
+      ],
+      "files": {
+        "NU2111.PDS": "ea7eb6e13b49b2ec691cd54fab3a8e90be9ec2c8cd3ee2f91075e091b912c9a9",
+        "NU2111.MXL": "41d23f0f8afd70f58a3fbbaaa8dba26a06d59678a7bdb818fa9e736a549167be",
+        "NU2111.LOG": "2c0d6ba9938b930caf34747a912a4237f0dde67ac06610e3441ab79bd05fc09f"
+      }
+    },
+    {
+      "name": "NU2150",
+      "errors": [
+        "z5045"
+      ],
+      "files": {
+        "NU2150.PDS": "86f8497073c25c53c169302a8cc4b92ec1739ae1c9f83b8551ac01f734db4796",
+        "NU2150.MXL": "24dbbac89aa4015596a72f309c6c5c15cfb5507b132758bd67f83aadd5469de2",
+        "NU2150.LOG": "984405f2eb501c356a6396af3cc60dde152490666c52e5b9750522765c1ac525"
+      }
+    },
+    {
+      "name": "NU2151",
+      "errors": [
+        "z5045"
+      ],
+      "files": {
+        "NU2151.PDS": "4ba1b5b394c7fa1ed03d8902b15d4f74683874b3b82e19f740406961dd3c5397",
+        "NU2151.MXL": "23140abca66faa0ac14268125556697af6c703a2e59c9e552f345a65f7298662",
+        "NU2151.LOG": "ab03ca4eab740a72d098b29acca48f4511015a93b33378ee654e9994c79feb37"
+      }
+    },
+    {
+      "name": "NU4350",
+      "errors": [
+        "z5045"
+      ],
+      "files": {
+        "NU4350.PDS": "79468db8bdd58a563d0f28966426db79b76970d3db4856cf7004183bec15de62",
+        "NU4350.MXL": "fc9382ccd466672e477bf3d05a1f45a4cb2b283be4f7c24866a18467d6f338ab",
+        "NU4350.LOG": "3a554eeccd8796c2cc7a498b57c82cf2cd540ea2839f5ced67cb3293344239e5"
+      }
+    },
+    {
+      "name": "NU4351",
+      "errors": [
+        "z5045"
+      ],
+      "files": {
+        "NU4351.PDS": "2b8fbc2c07a5ad628af201aabd3157d3f7f8916d0ed43929623d99cc9c73c8b6",
+        "NU4351.MXL": "bc84f57236f1beee031cb67c5c06e0b6642900933163d5cd099891f30d4d1490",
+        "NU4351.LOG": "c936e8c82783a70d16a5079c7a9805ba15a8e5056194d05d222cb665907b722d"
+      }
+    },
+    {
+      "name": "NC1110",
+      "errors": [
+        "z5045"
+      ],
+      "files": {
+        "NC1110.PDS": "8f7e849f63c582e72ee95f6be6d03feb5b50297bb2192209811d31a0d9f13ed5",
+        "NC1110.MXL": "e3f30d84cfa4df26a6295887c3815d6cfb80033e9519bcc7fcd11b8749fe4753",
+        "NC1110.LOG": "aa0240feb90a0f9bbd0fd8fe7fb7991973aaa9e8be8993746466440f7da675ac"
+      }
+    },
+    {
+      "name": "NC1200",
+      "errors": [
+        "z5045"
+      ],
+      "files": {
+        "NC1200.PDS": "c56a2deea84ee57e49e924c498f8ab7fbf6f489c0bed3733f0d339fc6a622dac",
+        "NC1200.MXL": "b744ff684770a0f832b2167bf9a753e50b5c644f0b1c451ccec990b377e229bf",
+        "NC1200.LOG": "d4858af11fc287e5930559b9088b96bcbff261c62c6a2259fd51d6e8957056f7"
+      }
+    },
+    {
+      "name": "NC2110",
+      "errors": [
+        "z5045"
+      ],
+      "files": {
+        "NC2110.PDS": "eea2033830d58a0c952d369d27f0d036d8f7b7625d511b28fcb0d30ec1f6613c",
+        "NC2110.MXL": "d7ab9b411af5b144546d9fee4290fdc98a9057e02106f4195b0fac8878faaa38",
+        "NC2110.LOG": "0c949764656140f8a34e3cde24fcdc0439ac3c945ad72e1ef24e399e9e287ee3"
+      }
+    },
+    {
+      "name": "NC2150",
+      "errors": [
+        "z5045"
+      ],
+      "files": {
+        "NC2150.PDS": "349e230d6df942ec62cb6150630684fc061d0d1434b209aa57495109b036623e",
+        "NC2150.MXL": "e366a6eb07cbfa2ffe137dc40302f916bcaceb94220b41e90407916d1237617d",
+        "NC2150.LOG": "04b0303de911fc3869117a66687ec6c525744026c1e4bafc346da4f737b15eda"
+      }
+    },
+    {
+      "name": "NC4350",
+      "errors": [
+        "z5045"
+      ],
+      "files": {
+        "NC4350.PDS": "bbb861b0c99d473fd6338a148d3d86c2c8e7fa2c099dd2bef0f933e59ed7f78b",
+        "NC4350.MXL": "5e05de8f757fa082386a3997c9e2c0a018006f4fe86ab4f3fcec7d512f7f48cf",
+        "NC4350.LOG": "a2dffc9d50f1352b9e11af2e4719d2d4ca5921d5c2e149834afa991b7f83e262"
+      }
+    },
+    {
+      "name": "AL0",
+      "errors": [
+        "z5517"
+      ],
+      "files": {
+        "AL0.PDS": "6e68e335ee65438627a0448b2ee52d8fd6c193b0b1263f951b3ffb589af4859c",
+        "AL0.MXL": "243e0f3a2aae3791b0f3f925cb778ddd2e6b1bdc632b79443e3f49b36e318fdf",
+        "AL0.LOG": "f60ba8728501efdb2aeafea14a691f79403c7e1d5cbb395418decebeaded1279"
+      },
+      "oracle_manifest": "build/modern-allocator-limit-pressure/manifest.json"
+    },
+    {
+      "name": "AL2",
+      "errors": [
+        "z5513",
+        "z5517"
+      ],
+      "files": {
+        "AL2.PDS": "e9f7aafd82b734cdcea4c241ee7bd507b668986e16a77b0fb14f996d5c379c4e",
+        "AL2.MXL": "4a6a4d25aa3466bf09ab0d27b35de9216a6b4cbb70d343e8fd4877f9858360a2",
+        "AL2.LOG": "e88de769807e8f56ea4c45080141120878166b739c89abb5d93d1762dbeb6692"
+      },
+      "oracle_manifest": "build/modern-allocator-limit-pressure/manifest.json"
+    },
+    {
+      "name": "AL5",
+      "errors": [
+        "z5517"
+      ],
+      "files": {
+        "AL5.PDS": "39a95f4a4267367292fb35b563d4507f7651e45edd991471a69216a4ced18d3b",
+        "AL5.MXL": "dc2fb3244147ae371a0da63f7e3792cc34e5096bce2ef6de17946b8ad6c4a80f",
+        "AL5.LOG": "c87dcbf429c2ba9644a97331d0fea13ac9b0bdb0e5522076185709136415a9cb"
+      },
+      "oracle_manifest": "build/modern-allocator-limit-pressure/manifest.json"
+    },
+    {
+      "name": "AL6",
+      "errors": [
+        "z5517"
+      ],
+      "files": {
+        "AL6.PDS": "aa532df41178832ef51ada49939657c58673bc48405fcd6695831b60c847eaaf",
+        "AL6.MXL": "919ce45b8d47e0fb33ea1a42773939cd99f90510df2c5577e56be524ad807844",
+        "AL6.LOG": "44945f87364c8a23c50f0d438f0245decca6c4eee0b4e2415a37349990f43e06"
+      },
+      "oracle_manifest": "build/modern-allocator-limit-pressure/manifest.json"
+    },
+    {
+      "name": "AL8",
+      "errors": [
+        "z8004",
+        "z8007"
+      ],
+      "files": {
+        "AL8.PDS": "222c4ce2a80570e2ce903741b94a52aa9bd0b4d55a633f68fb1d2f4596bc4764",
+        "AL8.MXL": "9ee68230334ef400c706a78b0da54eda214d516eb057b47497416f462165e0d7",
+        "AL8.LOG": "fd991eb8f04ad9316aea8b71717bd416353594d6447e7eb100d069d4086387f0"
+      },
+      "oracle_manifest": "build/modern-allocator-limit-pressure/manifest.json"
+    },
+    {
+      "name": "AL10",
+      "errors": [
+        "z5517"
+      ],
+      "files": {
+        "AL10.PDS": "dce6500ff0f30dd39638f84b867f48515317b6bdde8a5083621de0d0b29e3ba1",
+        "AL10.MXL": "a6c8ed73051eabb82bcf19eb04b2c1d586a6149a486b68dcde901465d7471060",
+        "AL10.LOG": "85a9472099b6a7416d023921670e6174e296a80c67e2f89c9378a52d1677eabc"
+      },
+      "oracle_manifest": "build/modern-allocator-limit-pressure/manifest.json"
+    },
+    {
+      "name": "PW1111",
+      "errors": [
+        "z5520"
+      ],
+      "files": {
+        "PW1111.PDS": "28b94d2b8d12334a6c342ccff76d1ac84327c7f3935719420ede56a2ee1ffb04",
+        "PW1111.MXL": "73d238fb63f62a72185e861664d3f069c27a2bf1dc49245321f6a21fb04a5d96",
+        "PW1111.LOG": "0f190a2e08b93eee817ca1ad3db042e7e11415fe19b704bbcad59a2589a2da74"
+      },
+      "oracle_manifest": "build/parity-review-dead-controls-v2/manifest.json",
+      "source_sha256": "28b94d2b8d12334a6c342ccff76d1ac84327c7f3935719420ede56a2ee1ffb04"
+    },
+    {
+      "name": "PW1112",
+      "errors": [
+        "z5519"
+      ],
+      "files": {
+        "PW1112.PDS": "85f4599116c962a8f798b1d8fbdc11baa6123c294927c9ab3f02ec412003a436",
+        "PW1112.MXL": "a04e97d356d550c6a2c15f17d5eab5be6b3b508515ec851006efe0ba839bacd9",
+        "PW1112.LOG": "5d8e138cf8beb4c418eaf0aa635c7bcd770472957b763eb3ea4c1adf8ab63ef6"
+      },
+      "oracle_manifest": "build/parity-review-dead-controls-v2/manifest.json",
+      "source_sha256": "85f4599116c962a8f798b1d8fbdc11baa6123c294927c9ab3f02ec412003a436"
+    },
+    {
+      "name": "PW1118",
+      "errors": [
+        "z5093"
+      ],
+      "files": {
+        "PW1118.PDS": "953f50cf35064edaa5fd6b2d6335de55bc935b2b2112e5c3f968c783012c1971",
+        "PW1118.MXL": "575be6a6a4f4229ffb9fc9003239a1de1df453808c52e913fa4fd45d8359f7f2",
+        "PW1118.LOG": "1fccbe4d2f333f77d60f78d3249dd140833e5c26001e70ea2c9e0775962fb4d7"
+      },
+      "oracle_manifest": "build/parity-review-dead-controls-v2/manifest.json",
+      "source_sha256": "953f50cf35064edaa5fd6b2d6335de55bc935b2b2112e5c3f968c783012c1971"
+    },
+    {
+      "name": "PW1201",
+      "errors": [
+        "z5520"
+      ],
+      "files": {
+        "PW1201.PDS": "0dd0c5ea60106f836250b5e0c0d0cd46d3bee0e3af1916cb7ee92933380f8714",
+        "PW1201.MXL": "80bff5b059006e06d9ea82fefad08a415590d9c02adf059d79e8b04806b18bbc",
+        "PW1201.LOG": "39915c6e9dfebfbcfc734bd880684521bf7ab9f0cc97a41cfb55e37f1b55eeb2"
+      },
+      "oracle_manifest": "build/parity-review-dead-controls-v2/manifest.json",
+      "source_sha256": "0dd0c5ea60106f836250b5e0c0d0cd46d3bee0e3af1916cb7ee92933380f8714"
+    },
+    {
+      "name": "PW1202",
+      "errors": [
+        "z5519"
+      ],
+      "files": {
+        "PW1202.PDS": "32b38ad2f9d2a292341147a00a2065875cccdb483a57579012d93bbab4a8a074",
+        "PW1202.MXL": "298b91d605a06d33f16c75789aeb3b2eaa11f7b91427338359c18efbdb411357",
+        "PW1202.LOG": "f41861150766ec028359713d6f082ae41d63e089a72cf02702b8d6a5ecfaaec7"
+      },
+      "oracle_manifest": "build/parity-review-dead-controls-v2/manifest.json",
+      "source_sha256": "32b38ad2f9d2a292341147a00a2065875cccdb483a57579012d93bbab4a8a074"
+    },
+    {
+      "name": "PW1208",
+      "errors": [
+        "z5093"
+      ],
+      "files": {
+        "PW1208.PDS": "fd98262e16ec7e3f0d8b5df413c23ec298f198bab27bbfcb3097aa1e0a36c390",
+        "PW1208.MXL": "bbc6336ea4718429570e3a69a7e13726e12c44f9d43d14fdff346e18c7aa512c",
+        "PW1208.LOG": "154bb363a851b97220c198a4179238478d02148d7126ff53978832bf39ba17d2"
+      },
+      "oracle_manifest": "build/parity-review-dead-controls-v2/manifest.json",
+      "source_sha256": "fd98262e16ec7e3f0d8b5df413c23ec298f198bab27bbfcb3097aa1e0a36c390"
+    },
+    {
+      "name": "PW2111",
+      "errors": [
+        "z5520"
+      ],
+      "files": {
+        "PW2111.PDS": "3c48a72fecd9fcce20512b7474fd44d5c0047a642a067a39f606f11cf19a8196",
+        "PW2111.MXL": "7cf0c4e13bb97bd142569b87664a678dc381e6de19a49c39ed67bd681e62da7e",
+        "PW2111.LOG": "ee6ce10499d216c61db1452259b56aed512db6ea41e21e3d256e62a96cac5569"
+      },
+      "oracle_manifest": "build/parity-review-dead-controls-v2/manifest.json",
+      "source_sha256": "3c48a72fecd9fcce20512b7474fd44d5c0047a642a067a39f606f11cf19a8196"
+    },
+    {
+      "name": "PW2112",
+      "errors": [
+        "z5519"
+      ],
+      "files": {
+        "PW2112.PDS": "14ebd9da7486c605265ca3e6a0385713cf8e85e437e2d295e06db74076978d88",
+        "PW2112.MXL": "914db6a4dd18df8647bcd7dce7fb67e9017321de6005eb50516c893b8384e16a",
+        "PW2112.LOG": "9705551f8faeafa780d10b2e614729990c3394fc855aa7eba6f269ab8f646c80"
+      },
+      "oracle_manifest": "build/parity-review-dead-controls-v2/manifest.json",
+      "source_sha256": "14ebd9da7486c605265ca3e6a0385713cf8e85e437e2d295e06db74076978d88"
+    },
+    {
+      "name": "PW2118",
+      "errors": [
+        "z5093"
+      ],
+      "files": {
+        "PW2118.PDS": "4ceff49da58d601b6611616b8e7e6d564d238abf49f4ac5eff3ca2d1223540ec",
+        "PW2118.MXL": "3a92f02ab7eee47049b3d30d1b24b7c7a7b7731d6065397be21236314287bd07",
+        "PW2118.LOG": "994f4b270020c58766bfcf5e851d9953f0b6bf4c5153c8f9f0889a5720fd67e1"
+      },
+      "oracle_manifest": "build/parity-review-dead-controls-v2/manifest.json",
+      "source_sha256": "4ceff49da58d601b6611616b8e7e6d564d238abf49f4ac5eff3ca2d1223540ec"
+    },
+    {
+      "name": "PW2151",
+      "errors": [
+        "z5520"
+      ],
+      "files": {
+        "PW2151.PDS": "9c3f7c7f288171868edbc25b9c64b7ae349814efc1e8faba368b287ab593bc4c",
+        "PW2151.MXL": "a364d1a482147562b06395c6d7168b3dfabea112ce287fc1c56e72faff08da0e",
+        "PW2151.LOG": "87feec887c1b2300bba43880ac585f4cb8d3a408f3e69e97251861f3905c4970"
+      },
+      "oracle_manifest": "build/parity-review-dead-controls-v2/manifest.json",
+      "source_sha256": "9c3f7c7f288171868edbc25b9c64b7ae349814efc1e8faba368b287ab593bc4c"
+    },
+    {
+      "name": "PW2152",
+      "errors": [
+        "z5519"
+      ],
+      "files": {
+        "PW2152.PDS": "e2e7122d31f7d0f8f535f5a3692dfb0c29431c574d49792abe01c788d6e7b9f3",
+        "PW2152.MXL": "df474944cb64d4b05fa44d818db0f1a761e532c3dc3f89c00a0bc28d94ecd950",
+        "PW2152.LOG": "5544e1c647ff97d1e8e24d3ce9465e496a7fc2052cb02148ebf85943b0604746"
+      },
+      "oracle_manifest": "build/parity-review-dead-controls-v2/manifest.json",
+      "source_sha256": "e2e7122d31f7d0f8f535f5a3692dfb0c29431c574d49792abe01c788d6e7b9f3"
+    },
+    {
+      "name": "PW4351",
+      "errors": [
+        "z5520"
+      ],
+      "files": {
+        "PW4351.PDS": "29e382423890ea262a60c3e813e577bafa7307a42e5900594bea54be2c1d3b67",
+        "PW4351.MXL": "fab01b0e15744fb5f38b543a5d1be2accde9c7e772764c3916dd95ddd4893f23",
+        "PW4351.LOG": "535f84d2609a2aa3f4197342e0324efac3192d5ce90228e28d7457057a1ea9c6"
+      },
+      "oracle_manifest": "build/parity-review-dead-controls-v2/manifest.json",
+      "source_sha256": "29e382423890ea262a60c3e813e577bafa7307a42e5900594bea54be2c1d3b67"
+    },
+    {
+      "name": "PW4352",
+      "errors": [
+        "z5519"
+      ],
+      "files": {
+        "PW4352.PDS": "d07be894437d2b9e43e084dde21aecd85cb18c3841d0b54b6f3ca043fe43543a",
+        "PW4352.MXL": "6e5e5557ab0ebb955f7e62569bca0b742391339823b644e3137ac49825253eb7",
+        "PW4352.LOG": "9620da3c560e6edc8d680ea0cb8780fc739f90d1940906af48fcacc76f3bf41b"
+      },
+      "oracle_manifest": "build/parity-review-dead-controls-v2/manifest.json",
+      "source_sha256": "d07be894437d2b9e43e084dde21aecd85cb18c3841d0b54b6f3ca043fe43543a"
+    },
+    {
+      "name": "PW4354",
+      "errors": [
+        "z5061"
+      ],
+      "files": {
+        "PW4354.PDS": "7d57cebdb3950488496b29d42fb1db6f343e32ec6ec8e21d8716f3dfee5919cc",
+        "PW4354.MXL": "728c215b2d2f64b255da2945d773c4fb294b46d7208a1c39241726e46d262f5d",
+        "PW4354.LOG": "65e660df89a8d9432f00ceed5e8470056ea0f5e34eef0729f408eafdebe79f55"
+      },
+      "oracle_manifest": "build/parity-review-dead-controls-v2/manifest.json",
+      "source_sha256": "7d57cebdb3950488496b29d42fb1db6f343e32ec6ec8e21d8716f3dfee5919cc"
+    },
+    {
+      "name": "PX3550",
+      "errors": [
+        "z5061"
+      ],
+      "files": {
+        "PX3550.PDS": "308743bbf47aa0eef4566d0514fe0486a2f286cdcbf64f7e1c81015fade795fd",
+        "PX3550.MXL": "35fa1038e3fd2f8ec226363645edae9f9a1c68c706dec9eeb3d1ea7c95b4af12",
+        "PX3550.LOG": "f5a7727919f0795f0383ee80b1912a7619494e2231c6270f2b47c819cbd340f9"
+      },
+      "oracle_manifest": "build/parity-review-default-clock/manifest.json",
+      "source_sha256": "308743bbf47aa0eef4566d0514fe0486a2f286cdcbf64f7e1c81015fade795fd"
+    },
+    {
+      "name": "PX3554",
+      "errors": [
+        "z5061"
+      ],
+      "files": {
+        "PX3554.PDS": "34212db19b751493cc87c819740b6fcfb49a67e937cc76bf4e8558d5b2ef5fca",
+        "PX3554.MXL": "8334279bf4917b2f3eef4a8d5ebcfcf625bee593040469328161ad5a7c68c889",
+        "PX3554.LOG": "1b94d72bdb99207826a4bbc7bcb8c68614dba283d98add095b36df2b9ad19721"
+      },
+      "oracle_manifest": "build/parity-review-default-clock/manifest.json",
+      "source_sha256": "34212db19b751493cc87c819740b6fcfb49a67e937cc76bf4e8558d5b2ef5fca"
+    },
+    {
+      "name": "PX4350",
+      "errors": [
+        "z5061"
+      ],
+      "files": {
+        "PX4350.PDS": "9d7876da738bcd427126d08b55f53a860b3040a0e956cd0dffce51cc17ac83d5",
+        "PX4350.MXL": "c42ab0da65287345fb8b729a3691b0ee2fb75cd7882304311cd636341197f316",
+        "PX4350.LOG": "fd0dae1f0920230442cb11452236518cb78dea6c2ce40ce323b10e8c1c5308c2"
+      },
+      "oracle_manifest": "build/parity-review-default-clock/manifest.json",
+      "source_sha256": "9d7876da738bcd427126d08b55f53a860b3040a0e956cd0dffce51cc17ac83d5"
+    },
+    {
+      "name": "PX4354",
+      "errors": [
+        "z5061"
+      ],
+      "files": {
+        "PX4354.PDS": "b5976802df3aeb0d499201e9ef9c947e1d1628ddab2f8225a02c3c05d62a9ef9",
+        "PX4354.MXL": "591ff386eaaf08b862bfce667c4e68a7c91039931565af01d64ba2599a1cd8ff",
+        "PX4354.LOG": "fc2ce0499e3da747c5fbdbe4c38675e83d9950b7665347099b2e5efa25d5e5e1"
+      },
+      "oracle_manifest": "build/parity-review-default-clock/manifest.json",
+      "source_sha256": "b5976802df3aeb0d499201e9ef9c947e1d1628ddab2f8225a02c3c05d62a9ef9"
+    },
+    {
+      "name": "PX4450",
+      "errors": [
+        "z5061"
+      ],
+      "files": {
+        "PX4450.PDS": "4b15916702487ecb4fa31e2dc5239fd15958389b9caf25b2be624c189d13d850",
+        "PX4450.MXL": "c60ab5378a1e1fe87bf5a503d2791dc86d2a401068203dd6b5a433e15d55c836",
+        "PX4450.LOG": "4e4ce65f6b4c0dde33b12adb56ce568938ac7ef87f3764e5a904e100e2f96bc7"
+      },
+      "oracle_manifest": "build/parity-review-default-clock/manifest.json",
+      "source_sha256": "4b15916702487ecb4fa31e2dc5239fd15958389b9caf25b2be624c189d13d850"
+    },
+    {
+      "name": "PX4454",
+      "errors": [
+        "z5061"
+      ],
+      "files": {
+        "PX4454.PDS": "b2aeef55b055fac4756274652eedaae0194d11559ed6e7c7135317b84068400f",
+        "PX4454.MXL": "813766440b02a95f02762448d14be0e76cad46b0b5c42b7f6c05b5181d4f7bf5",
+        "PX4454.LOG": "277530ed3011635362a25a51e3c23ee1e32796be587ac6cad2e8d20b289de0eb"
+      },
+      "oracle_manifest": "build/parity-review-default-clock/manifest.json",
+      "source_sha256": "b2aeef55b055fac4756274652eedaae0194d11559ed6e7c7135317b84068400f"
+    },
+    {
+      "name": "PX4460",
+      "errors": [
+        "z5061"
+      ],
+      "files": {
+        "PX4460.PDS": "0453604ee859c78e823d80ff7b822f35958cbb4dd01387154d4b87b10da82a46",
+        "PX4460.MXL": "8d3975916863cc1b338193849e648a4ab1c95c9d439dddbecef76d54ce8d4d37",
+        "PX4460.LOG": "4e077af0cb4648d62ff8362acf5537e5b75737ace05a755b682c1a517a6494aa"
+      },
+      "oracle_manifest": "build/parity-review-default-clock/manifest.json",
+      "source_sha256": "0453604ee859c78e823d80ff7b822f35958cbb4dd01387154d4b87b10da82a46"
+    },
+    {
+      "name": "PX4464",
+      "errors": [
+        "z5061"
+      ],
+      "files": {
+        "PX4464.PDS": "d86da0f36ed548fa4d07686dc4746094b19b879a06d4366765bc2cc1fde637d1",
+        "PX4464.MXL": "efe676ad0cd7c7ded2e66192a7edd4e21c64ce77c19df3eb3f2db2d19d0f3e7a",
+        "PX4464.LOG": "d4370a4c127b809e29cb2bd223404aa1d64b9e1954421cb01cdda758250971c6"
+      },
+      "oracle_manifest": "build/parity-review-default-clock/manifest.json",
+      "source_sha256": "d86da0f36ed548fa4d07686dc4746094b19b879a06d4366765bc2cc1fde637d1"
+    },
+    {
+      "name": "PX4650",
+      "errors": [
+        "z5061"
+      ],
+      "files": {
+        "PX4650.PDS": "02b42c6a6d8c30d0efaf13c7e0bdab8ca7073aba084fd50d94aa593f7253f6cc",
+        "PX4650.MXL": "441094da5e200a222348ad0bf148e7dd7979f14e641b1a11590921f7f44a37a3",
+        "PX4650.LOG": "0c5772cf898506bd1e3287d807b465b39af95a6dc61a2d77779deaffcb419aa9"
+      },
+      "oracle_manifest": "build/parity-review-default-clock/manifest.json",
+      "source_sha256": "02b42c6a6d8c30d0efaf13c7e0bdab8ca7073aba084fd50d94aa593f7253f6cc"
+    },
+    {
+      "name": "PX4654",
+      "errors": [
+        "z5061"
+      ],
+      "files": {
+        "PX4654.PDS": "8def40747d1fbef821bb6a88a86b070d4c6dfddc3437b682434bb82aec2133a4",
+        "PX4654.MXL": "4fd34780552963e7b8dcf9953a3eb7d7d18ec98f94ef07a18fd0a82fede15351",
+        "PX4654.LOG": "376a0053aa105194fded7021d7d4ac2438ae07665e95d564ac644dee88cacf2d"
+      },
+      "oracle_manifest": "build/parity-review-default-clock/manifest.json",
+      "source_sha256": "8def40747d1fbef821bb6a88a86b070d4c6dfddc3437b682434bb82aec2133a4"
+    }
+  ]
+}

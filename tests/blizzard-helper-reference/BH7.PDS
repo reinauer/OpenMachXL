@@ -1,0 +1,52 @@
+;PALASM Design Description
+; pds2v test: purely combinatorial address decoder.
+; Exercises STRING macros, multi-line equations, active-low left sides,
+; XOR/XNOR, VCC/GND, an output enable (.TRST) and a read-back of an output.
+; EXPECT-EXIT: 0
+; EXPECT: warning: SPARE (pin 13) is never used
+
+TITLE    pds2v test decoder
+PATTERN  decoder
+REVISION 1
+AUTHOR   test
+COMPANY  none
+DATE     1995-10-01
+CHIP     DEC  MACH111
+
+PIN  10  AS_N                     ; dedicated inputs
+PIN  32  RW
+PIN  2   A31
+PIN  3   A30
+PIN  4   A29
+PIN  5   A28
+PIN  6   FC2
+PIN  7   FC1
+PIN  19  SPARE
+PIN  8   ROM_N      COMBINATORIAL
+PIN  9   RAM_N      COMBINATORIAL
+PIN  14  IO_N       COMBINATORIAL
+PIN  15  ANY_N      COMBINATORIAL ; reads back ROM_N, RAM_N, IO_N
+PIN  16  PAR        COMBINATORIAL ; A31 xor A30 xor A29 xor A28
+PIN  17  SAME       COMBINATORIAL ; A31 xnor A30
+PIN  24  HI         COMBINATORIAL ; constant 1
+PIN  25  LO         COMBINATORIAL ; constant 0
+PIN  26  DOUT       COMBINATORIAL ; three-state, enabled on read
+PIN  27  OE_N       COMBINATORIAL
+
+STRING  CYC    '( /AS_N * FC2 )'
+STRING  ROMSEL '/A31 * /A30'
+
+EQUATIONS
+/ROM_N = CYC * ROMSEL           ; active low: ROM_N = NOT(...)
+/RAM_N = CYC * /A31 * A30
+       + CYC * A31 * /A30 * /A29
+/IO_N  = CYC
+       * A31 * A30 * A29        ; continuation over several lines
+ANY_N  = ROM_N * RAM_N * IO_N
+PAR    = (A31 :+: A30) :+: (A29 :+: A28)
+SAME   = A31 :*: A30
+HI     = VCC
+LO     = GND
+DOUT   = FC1
+DOUT.TRST = RW * /AS_N
+OE_N   = /( RW * /AS_N )

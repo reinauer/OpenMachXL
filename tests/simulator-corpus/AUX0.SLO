@@ -1,0 +1,38 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Aux0.pds
+Title  
+
+
+
+   1-V1 - TRACE_ON
+          A  Q  
+   1-V1 - SETF
+          A  
+   2-V2 - TRACE_OFF
+   2-V2 - TRACE_ON
+          A  Q  
+   2-V2 - SETF
+          /A  
+   3-V2 - CHECK
+          /Q  
+   3-V3 - SETF
+          A  
+   4-V3 - CHECK
+          Q  
+   4-V4 - SETF
+          /A  
+   5-V4 - CHECK
+          /Q  
+   5-V5 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Aux0.HST
+Simulation results (trace) are in   ===> Aux0.TRF
+Merged results (JEDEC) are in       ===> Aux0.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 90657 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Aux0.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0

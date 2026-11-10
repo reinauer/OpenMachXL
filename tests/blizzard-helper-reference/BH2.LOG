@@ -1,0 +1,281 @@
+Bh2.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |;PALASM Design Description
+   2     |; pds2v test: macrocell exhaustion (check 2).  All 32 I/O pins drive
+   3     |; outputs, so the NODE has no free macrocell left.
+   4     |; EXPECT-EXIT: 1
+   5     |; EXPECT: error: 1 NODEs need macrocells but only 0 are free
+   6     |
+   7     |CHIP     BADNODE  MACH111
+   8     |PIN  10  IN0
+   9     |PIN  32  IN1
+  10     |PIN  2   O0   COMBINATORIAL
+  11     |PIN  3   O1   COMBINATORIAL
+  12     |PIN  4   O2   COMBINATORIAL
+  13     |PIN  5   O3   COMBINATORIAL
+  14     |PIN  6   O4   COMBINATORIAL
+  15     |PIN  7   O5   COMBINATORIAL
+  16     |PIN  8   O6   COMBINATORIAL
+  17     |PIN  9   O7   COMBINATORIAL
+  18     |PIN  14  O8   COMBINATORIAL
+  19     |PIN  15  O9   COMBINATORIAL
+  20     |PIN  16  O10  COMBINATORIAL
+  21     |PIN  17  O11  COMBINATORIAL
+  22     |PIN  18  O12  COMBINATORIAL
+  23     |PIN  19  O13  COMBINATORIAL
+  24     |PIN  20  O14  COMBINATORIAL
+  25     |PIN  21  O15  COMBINATORIAL
+  26     |PIN  24  O16  COMBINATORIAL
+  27     |PIN  25  O17  COMBINATORIAL
+  28     |PIN  26  O18  COMBINATORIAL
+  29     |PIN  27  O19  COMBINATORIAL
+  30     |PIN  28  O20  COMBINATORIAL
+  31     |PIN  29  O21  COMBINATORIAL
+  32     |PIN  30  O22  COMBINATORIAL
+  33     |PIN  31  O23  COMBINATORIAL
+  34     |PIN  36  O24  COMBINATORIAL
+  35     |PIN  37  O25  COMBINATORIAL
+  36     |PIN  38  O26  COMBINATORIAL
+  37     |PIN  39  O27  COMBINATORIAL
+  38     |PIN  40  O28  COMBINATORIAL
+  39     |PIN  41  O29  COMBINATORIAL
+  40     |PIN  42  O30  COMBINATORIAL
+  41     |PIN  43  O31  COMBINATORIAL
+  42     |NODE ?   EXTRA COMBINATORIAL
+  43     |
+  44     |EQUATIONS
+  45     |EXTRA = IN0 * IN1
+  46     |O0 = /IN0
+  47     |O1 = EXTRA
+  48     |O2 = /IN0
+  49     |O3 = EXTRA
+  50     |O4 = /IN0
+  51     |O5 = EXTRA
+  52     |O6 = /IN0
+  53     |O7 = EXTRA
+  54     |O8 = /IN0
+  55     |O9 = EXTRA
+  56     |O10 = /IN0
+  57     |O11 = EXTRA
+  58     |O12 = /IN0
+  59     |O13 = EXTRA
+  60     |O14 = /IN0
+  61     |O15 = EXTRA
+  62     |O16 = /IN0
+  63     |O17 = EXTRA
+  64     |O18 = /IN0
+  65     |O19 = EXTRA
+  66     |O20 = /IN0
+  67     |O21 = EXTRA
+  68     |O22 = /IN0
+  69     |O23 = EXTRA
+  70     |O24 = /IN0
+  71     |O25 = EXTRA
+  72     |O26 = /IN0
+  73     |O27 = EXTRA
+  74     |O28 = /IN0
+  75     |O29 = EXTRA
+  76     |O30 = /IN0
+  77     |O31 = EXTRA
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Bh2.pds
+
+*** Start MACHBPP.E 10:16:46 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>EXTRA
+Processing equation for ====>O0
+Processing equation for ====>O1
+Processing equation for ====>O2
+Processing equation for ====>O3
+Processing equation for ====>O4
+Processing equation for ====>O5
+Processing equation for ====>O6
+Processing equation for ====>O7
+Processing equation for ====>O8
+Processing equation for ====>O9
+Processing equation for ====>O10
+Processing equation for ====>O11
+Processing equation for ====>O12
+Processing equation for ====>O13
+Processing equation for ====>O14
+Processing equation for ====>O15
+Processing equation for ====>O16
+Processing equation for ====>O17
+Processing equation for ====>O18
+Processing equation for ====>O19
+Processing equation for ====>O20
+Processing equation for ====>O21
+Processing equation for ====>O22
+Processing equation for ====>O23
+Processing equation for ====>O24
+Processing equation for ====>O25
+Processing equation for ====>O26
+Processing equation for ====>O27
+Processing equation for ====>O28
+Processing equation for ====>O29
+Processing equation for ====>O30
+Processing equation for ====>O31
+
+ %%  MACHBPP  %% Maximum memory allocated was: 65526 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Bh2.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 10:16:46; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 10:16:46 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node EXTRA...
+====> EXTRA              MIN_ON (1 + pt)
+Processing equation(s) for pin O31...
+====> O31                MIN_ON (1 + pt)
+Processing equation(s) for pin O30...
+====> O30                MIN_ON (1 + pt)
+Processing equation(s) for pin O29...
+====> O29                MIN_ON (1 + pt)
+Processing equation(s) for pin O28...
+====> O28                MIN_ON (1 + pt)
+Processing equation(s) for pin O27...
+====> O27                MIN_ON (1 + pt)
+Processing equation(s) for pin O26...
+====> O26                MIN_ON (1 + pt)
+Processing equation(s) for pin O25...
+====> O25                MIN_ON (1 + pt)
+Processing equation(s) for pin O24...
+====> O24                MIN_ON (1 + pt)
+Processing equation(s) for pin O23...
+====> O23                MIN_ON (1 + pt)
+Processing equation(s) for pin O22...
+====> O22                MIN_ON (1 + pt)
+Processing equation(s) for pin O21...
+====> O21                MIN_ON (1 + pt)
+Processing equation(s) for pin O20...
+====> O20                MIN_ON (1 + pt)
+Processing equation(s) for pin O19...
+====> O19                MIN_ON (1 + pt)
+Processing equation(s) for pin O18...
+====> O18                MIN_ON (1 + pt)
+Processing equation(s) for pin O17...
+====> O17                MIN_ON (1 + pt)
+Processing equation(s) for pin O16...
+====> O16                MIN_ON (1 + pt)
+Processing equation(s) for pin O15...
+====> O15                MIN_ON (1 + pt)
+Processing equation(s) for pin O14...
+====> O14                MIN_ON (1 + pt)
+Processing equation(s) for pin O13...
+====> O13                MIN_ON (1 + pt)
+Processing equation(s) for pin O12...
+====> O12                MIN_ON (1 + pt)
+Processing equation(s) for pin O11...
+====> O11                MIN_ON (1 + pt)
+Processing equation(s) for pin O10...
+====> O10                MIN_ON (1 + pt)
+Processing equation(s) for pin O9...
+====> O9                 MIN_ON (1 + pt)
+Processing equation(s) for pin O8...
+====> O8                 MIN_ON (1 + pt)
+Processing equation(s) for pin O7...
+====> O7                 MIN_ON (1 + pt)
+Processing equation(s) for pin O6...
+====> O6                 MIN_ON (1 + pt)
+Processing equation(s) for pin O5...
+====> O5                 MIN_ON (1 + pt)
+Processing equation(s) for pin O4...
+====> O4                 MIN_ON (1 + pt)
+Processing equation(s) for pin O3...
+====> O3                 MIN_ON (1 + pt)
+Processing equation(s) for pin O2...
+====> O2                 MIN_ON (1 + pt)
+Processing equation(s) for pin O1...
+====> O1                 MIN_ON (1 + pt)
+Processing equation(s) for pin O0...
+====> O0                 MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 43498 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Bh2.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 10:16:47; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 10:16:47 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file bh2.tre to PLA file bh2.pla...
+
+.................................
+.................................
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 45092 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Bh2.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 10:16:47; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 10:16:47 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Bh2.pds . Device is MACH111 .
+|> INFO z5109 - For this device, all input pairing is ignored since input
+                registers or latches do not exist. All signals must pass
+                through the central switch matrix before being latched or
+                registered.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+*** End of Normalization.
+|> ERROR z5502 - Number of macrocells required, 33 , exceeds device limit
+                 of 32 cells.
+|> ERROR z5502 - Number of macrocells required, 33 , exceeds device limit
+                 of 32 cells.
+|> ERROR z5536 - The number of ouput macrocells, 33 , required by all
+                 signals in the design exceeds the number of output
+                 macrocells, 32 , in the device.
+|> ERROR z5538 - The number of clusters, 33 , that are required to
+                 implement the design exceeds the number, 32 , of clusters
+                 available in the device.
+
+*** End of DRC. 
+
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Bh2.pds .
+%%%% MACHFITR %%%% ERROR count 4 WARNING count 0 .
+
+*** End MACHFITR.EX 10:16:48; (MACHFITR.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

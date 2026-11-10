@@ -1,0 +1,17 @@
+CHIP AUTO5 MACH111
+PIN ? A
+PIN ? CLK
+PIN ? Y
+STATE
+MOORE_MACHINE
+CLKF=CLK
+S0 := A -> S1 +-> S0
+S0.OUTF=/Y
+S1 := A -> S2 +-> S0
+S1.OUTF=Y
+S2 := A -> S3 +-> S0
+S2.OUTF=/Y
+S3 := A -> S4 +-> S0
+S3.OUTF=Y
+S4 := A -> S0 +-> S0
+S4.OUTF=/Y

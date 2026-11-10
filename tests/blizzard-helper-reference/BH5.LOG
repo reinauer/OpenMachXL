@@ -1,0 +1,75 @@
+Bh5.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |;PALASM Design Description
+   2     |; pds2v test: structural errors.  Nothing may be written.
+   3     |; EXPECT-EXIT: 1
+   4     |; EXPECT: error: polarity in the declaration (/NEG) is not supported
+   5     |; EXPECT: error: unsupported storage type 'LATCHED'
+   6     |; EXPECT: error: STRING must be
+   7     |; EXPECT: error: unexpected character '['
+   8     |; EXPECT: error: Y: expression ends unexpectedly
+   9     |; EXPECT: error: UNDECL is not declared as PIN or NODE
+  10     |; EXPECT: error: Z: undeclared signal NOPE
+  11     |; EXPECT: error: Z is driven twice
+  12     |; EXPECT: error: R is declared REGISTERED; use ':='
+  13     |; EXPECT: error: registered R2 has no .CLKF
+  14     |; EXPECT: error: R3.CLKF must be a single clock pin name
+  15     |; EXPECT: error: Z.FOO: extension .FOO not supported
+  16     |; EXPECT: error: NODE N cannot have .TRST
+  17     |; EXPECT: error: C.CLKF on a combinatorial signal
+  18     |; EXPECT: error: W.RSTF given but W has no equation
+  19     |; EXPECT: error: V: 'IF': IF/CASE syntax is not supported
+  20     |; EXPECT: pds2v: 16 error(s), nothing written
+  21     |
+  22     |CHIP     BADSYN  MACH111
+  23     |PIN  11  CLK
+  24     |PIN  10  A
+  25     |PIN  32  B
+  26     |PIN  8   /NEG
+  27     |PIN  9   L     LATCHED
+  28     |STRING   BROKEN   no quotes
+  ERROR -----------^ (L28/C10)
+|> ERROR P91  String BROKEN is empty.  Ignoring definition.
+
+  ERROR --------------------^ (L28/C19)
+|> ERROR P91  String NO is empty.  Ignoring definition.
+
+  ERROR -----------------------^ (L28/C22)
+|> ERROR P91  String QUOTES is empty.  Ignoring definition.
+
+  29     |PIN  2   Y
+  30     |PIN  3   Z
+  31     |PIN  4   R     REGISTERED
+  32     |PIN  5   R2    REGISTERED
+  33     |PIN  6   R3    REGISTERED
+  34     |PIN  7   C     COMBINATORIAL
+  35     |PIN  14  W
+  36     |PIN  15  V
+  37     |NODE ?   N     COMBINATORIAL
+  38     |
+  39     |EQUATIONS
+  40     |Y = A *
+  41     |Z = A * NOPE
+  ERROR ----^ (L41/C3)
+|> ERROR P88  Unexpected reserved word or operator =
+
+  42     |Z = B
+  43     |UNDECL = A
+  44     |R = A
+|> ERROR P88  Unexpected reserved word or operator -- ABORTING
+
+
+ %% MACHPAR %%    ERROR count:  5     WARNING count:  1
+
+ %% MACHPAR %%    File processing terminated.     File:  Bh5.pds

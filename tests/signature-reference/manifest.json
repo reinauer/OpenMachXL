@@ -1,0 +1,3378 @@
+{
+  "cases": [
+    {
+      "name": "NULL",
+      "signature": "",
+      "original_run": {
+        "example": "NULL.PDS",
+        "directory": "build/signature-original/null",
+        "source_sha256": "55e5912524c9c7c499e8e0774af29767a49a831074f67ec268108c77444784d3",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/NULL.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "NULL.PDS",
+          "RUN_LOG": "NULL.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "34747570fbb40faf056bb3cbf24bd2337a9de76e904658b3895dc6c063293f05",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-original/null/dosbox.conf",
+          "-defaultdir",
+          "build/signature-original/null",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.692,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "NULL.BSD": {
+            "sha256": "88b38cefe5c0b555f374e4fe9c57019b5e0fe8f5254f11f663641bfec7547a0d",
+            "bytes": 19248
+          },
+          "NULL.DBG": {
+            "sha256": "7b32529c7c582e65e6899986eb92361da583973207f4398542635fe51b93b581",
+            "bytes": 870
+          },
+          "NULL.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "NULL.JED": {
+            "sha256": "63b4034cc05660a72630337699798cf2127616bc4ffed342ddec45593b99d980",
+            "bytes": 52977
+          },
+          "NULL.LOG": {
+            "sha256": "07feaf3411266068110167defba395af964858c3b98a38f46a2de0bc92c6ef41",
+            "bytes": 3607
+          },
+          "NULL.MXL": {
+            "sha256": "34747570fbb40faf056bb3cbf24bd2337a9de76e904658b3895dc6c063293f05",
+            "bytes": 1287
+          },
+          "NULL.PDS": {
+            "sha256": "55e5912524c9c7c499e8e0774af29767a49a831074f67ec268108c77444784d3",
+            "bytes": 52
+          },
+          "NULL.PLA": {
+            "sha256": "0e6a8837573a97d93efcde07b84a7963440335112585d2bf718b676c89203658",
+            "bytes": 613
+          },
+          "NULL.PLC": {
+            "sha256": "560703811480942b553196d955bdc273992fbede70b1371527ea0881fb5eb33c",
+            "bytes": 309
+          },
+          "NULL.PRD": {
+            "sha256": "2dd3088c8deb564df01be5bd0c109f18336e1d1978a31fcf7fc61a10f680fbd6",
+            "bytes": 21891
+          },
+          "NULL.RPT": {
+            "sha256": "cf57dc174916f6129dfe7845318ed0da2b85d93c60a2894738f9d53cefeab57d",
+            "bytes": 9545
+          },
+          "NULL.TAL": {
+            "sha256": "319396d7a955f9117b1db3462230917352964960bc265da272d18c8197d72fe0",
+            "bytes": 1410
+          },
+          "NULL.TRE": {
+            "sha256": "88c730ce1dbacc612ff7ee9e48274e7bfcc36bd9cbeffc887ca6d96d16e04de0",
+            "bytes": 1633
+          }
+        },
+        "signature": "",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00000000000000000000000000000000"
+        ]
+      },
+      "sha256": {
+        ".PDS": "55e5912524c9c7c499e8e0774af29767a49a831074f67ec268108c77444784d3",
+        ".JED": "63b4034cc05660a72630337699798cf2127616bc4ffed342ddec45593b99d980"
+      }
+    },
+    {
+      "name": "DEC",
+      "signature": "1234567890",
+      "original_run": {
+        "example": "DEC.PDS",
+        "directory": "build/signature-original/dec",
+        "source_sha256": "fd044610b89bbd39e1d25c33031c10c796d2907eee938166b9c998dffe3639ef",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/DEC.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "DEC.PDS",
+          "RUN_LOG": "DEC.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "306c543e5b10eb8a3b78cd16b2065251b025824b22cc29233111aebb435c44d3",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-original/dec/dosbox.conf",
+          "-defaultdir",
+          "build/signature-original/dec",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.692,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "DEC.BSD": {
+            "sha256": "f4c4137ab0b930c571a3af6a5e58af3d4706aa38b362d0e8e3b6e0ef8e6321cc",
+            "bytes": 19248
+          },
+          "DEC.DBG": {
+            "sha256": "0e0b05318dd62c3902d2453410da2427e4eb2a57ff61eb1ca7bf400c76084597",
+            "bytes": 861
+          },
+          "DEC.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "DEC.JED": {
+            "sha256": "ac0b6aee518b613c2d88487e71844d8a38a253ef215ddf901edc5663786a8220",
+            "bytes": 52977
+          },
+          "DEC.LOG": {
+            "sha256": "a7284c43c544ae289fdbb227cb90be2ffad17f9d0ddb38f4220761cfc4332b8e",
+            "bytes": 3701
+          },
+          "DEC.MXL": {
+            "sha256": "306c543e5b10eb8a3b78cd16b2065251b025824b22cc29233111aebb435c44d3",
+            "bytes": 1285
+          },
+          "DEC.PDS": {
+            "sha256": "fd044610b89bbd39e1d25c33031c10c796d2907eee938166b9c998dffe3639ef",
+            "bytes": 74
+          },
+          "DEC.PLA": {
+            "sha256": "d797acd139eedca9334dcf26c6d7505230a3a4e2130f8fd136971078fd4cfa72",
+            "bytes": 621
+          },
+          "DEC.PLC": {
+            "sha256": "3ae988d4e85392067176130fc788ce6bf7f892970b1496c51d65481cc4669a8c",
+            "bytes": 308
+          },
+          "DEC.PRD": {
+            "sha256": "9d4ba453d38aba27fddbe3c944641c9a83d46d526bc77f9b5468b0b6a77d123c",
+            "bytes": 21890
+          },
+          "DEC.RPT": {
+            "sha256": "da799d493356dc0fb520398368e6e8422c5cff8c72aecadab2fb94c74d0cca25",
+            "bytes": 9542
+          },
+          "DEC.TAL": {
+            "sha256": "71f879f2082173351e9d806b4c45431747312bfb37df1dc72cae1314a7d312d0",
+            "bytes": 1407
+          },
+          "DEC.TRE": {
+            "sha256": "e8707187cc257c3f96a36d5a24d2ac78385d2310cb40b35f5dc4498a52f6200c",
+            "bytes": 1666
+          }
+        },
+        "signature": "1234567890",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00000111010110111100110100010101"
+        ]
+      },
+      "sha256": {
+        ".PDS": "fd044610b89bbd39e1d25c33031c10c796d2907eee938166b9c998dffe3639ef",
+        ".JED": "ac0b6aee518b613c2d88487e71844d8a38a253ef215ddf901edc5663786a8220"
+      }
+    },
+    {
+      "name": "HEX",
+      "signature": "#h89abcdef",
+      "original_run": {
+        "example": "HEX.PDS",
+        "directory": "build/signature-original/hex",
+        "source_sha256": "17ed74584335717bba5784796479a57a5b1d43771197b7ebcc609ca978f5d5e3",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/HEX.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "HEX.PDS",
+          "RUN_LOG": "HEX.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "3423fd88190936650899063ccdb99989038db5896d45c7419d360e7726ee6d4d",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-original/hex/dosbox.conf",
+          "-defaultdir",
+          "build/signature-original/hex",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.663,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "HEX.BSD": {
+            "sha256": "e19a8a8e836db677160ff394e90f376d40351deaed30df86912c4a864eb73ea8",
+            "bytes": 19248
+          },
+          "HEX.DBG": {
+            "sha256": "c51417d75cf7aa616375a5a6b18d6c99e7abd91d02c72d9a5d46119dea3197df",
+            "bytes": 861
+          },
+          "HEX.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "HEX.JED": {
+            "sha256": "03d9518d0c82d153c8616cc5fb3835c7e5230cdf6b93bf488cf70a0b7479d4bd",
+            "bytes": 52977
+          },
+          "HEX.LOG": {
+            "sha256": "c93dde0fd0365eb561a814274495b985541c1bd981645ab7582e700e5d32c686",
+            "bytes": 3628
+          },
+          "HEX.MXL": {
+            "sha256": "3423fd88190936650899063ccdb99989038db5896d45c7419d360e7726ee6d4d",
+            "bytes": 1285
+          },
+          "HEX.PDS": {
+            "sha256": "17ed74584335717bba5784796479a57a5b1d43771197b7ebcc609ca978f5d5e3",
+            "bytes": 74
+          },
+          "HEX.PLA": {
+            "sha256": "4627a3b5080d73d319318c0e8f37ee6fce1e45f315c36ed761e71b0bf2c3e6fb",
+            "bytes": 621
+          },
+          "HEX.PLC": {
+            "sha256": "68d7c21c3a9957b233712d0b35bf354fdb3835f9dc61a2719d2f6a01dddea636",
+            "bytes": 308
+          },
+          "HEX.PRD": {
+            "sha256": "2a73ca9d299ba63e3a63228bad9fb6ef5675f4f577d9cf9435557ce92c077399",
+            "bytes": 21890
+          },
+          "HEX.RPT": {
+            "sha256": "4548fab1d42d9c75bb824754ed808dcf14d63b915cb8d770c3dd7ef7d2af9dd4",
+            "bytes": 9542
+          },
+          "HEX.TAL": {
+            "sha256": "657d7d456dfad1f9af4e2641248ce9aa228f700476f5f3d023f090d9b2fbc5e7",
+            "bytes": 1407
+          },
+          "HEX.TRE": {
+            "sha256": "5d462702bc96c2740983db38e00f905952324795845d1d8e8b67b692dead60cc",
+            "bytes": 1666
+          }
+        },
+        "signature": "#h89abcdef",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U10001001101010111100110111101111"
+        ]
+      },
+      "sha256": {
+        ".PDS": "17ed74584335717bba5784796479a57a5b1d43771197b7ebcc609ca978f5d5e3",
+        ".JED": "03d9518d0c82d153c8616cc5fb3835c7e5230cdf6b93bf488cf70a0b7479d4bd"
+      }
+    },
+    {
+      "name": "HEXLONG",
+      "signature": "#h123456789",
+      "original_run": {
+        "example": "HEXLONG.PDS",
+        "directory": "build/signature-original/hexlong",
+        "source_sha256": "1515e293b1cae5f6d0c940053b475c799260e93d9a9220b9183309c29928ed8a",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/HEXLONG.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "HEXLONG.PDS",
+          "RUN_LOG": "HEXLONG.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "275f6d97a510449ce250cb8842905abc759c979bbf45449071cdbb615e2873e3",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-original/hexlong/dosbox.conf",
+          "-defaultdir",
+          "build/signature-original/hexlong",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.663,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "HEXLONG.BSD": {
+            "sha256": "457fd0be236262475a03afd45ba7d0b86b1d35bde7bb42dcbb4278128277801b",
+            "bytes": 19248
+          },
+          "HEXLONG.DBG": {
+            "sha256": "3a5d4545de1264924ebe45948f020a4303a314fc00d4529fdf90af8cf4f5ea40",
+            "bytes": 897
+          },
+          "HEXLONG.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "HEXLONG.JED": {
+            "sha256": "c49dac29b6521ba2bfb4a89b3666d38f625b42fc5423141147f9b97889b6ee6b",
+            "bytes": 52977
+          },
+          "HEXLONG.LOG": {
+            "sha256": "636ce87e11d6e8624148540b69cc9ab24c1bf173412648a7e6c0cbd5ff458aae",
+            "bytes": 3747
+          },
+          "HEXLONG.MXL": {
+            "sha256": "275f6d97a510449ce250cb8842905abc759c979bbf45449071cdbb615e2873e3",
+            "bytes": 1293
+          },
+          "HEXLONG.PDS": {
+            "sha256": "1515e293b1cae5f6d0c940053b475c799260e93d9a9220b9183309c29928ed8a",
+            "bytes": 75
+          },
+          "HEXLONG.PLA": {
+            "sha256": "3475bf0f7b7c359e3495d1544c9efa8ac9b0c6d5dee2d6a7448419de5e689a15",
+            "bytes": 630
+          },
+          "HEXLONG.PLC": {
+            "sha256": "91e777c4ed8d2cbb9da42011e7d14ae7db622ea8daad5801f49945d00b92058b",
+            "bytes": 312
+          },
+          "HEXLONG.PRD": {
+            "sha256": "1d09795411f8f3aa73400d6508641d0b0d4aa1b5a0bd93a3a191cb5e2994c2f1",
+            "bytes": 21894
+          },
+          "HEXLONG.RPT": {
+            "sha256": "cd8806b7144573d4ed8cee2a231eb10f17a8675a9cd4cfe6356816bc039ec412",
+            "bytes": 9554
+          },
+          "HEXLONG.TAL": {
+            "sha256": "a08a0c86a4cbab612a4f2136dbe56e2562fcbb28969678b44a3e840393aa3732",
+            "bytes": 1419
+          },
+          "HEXLONG.TRE": {
+            "sha256": "829b12be95ffea0d627a504fa3c3170a69c2a219fe001b7344e7178f8b615788",
+            "bytes": 1671
+          }
+        },
+        "signature": "#h123456789",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00010010001101000101011001111000"
+        ]
+      },
+      "sha256": {
+        ".PDS": "1515e293b1cae5f6d0c940053b475c799260e93d9a9220b9183309c29928ed8a",
+        ".JED": "c49dac29b6521ba2bfb4a89b3666d38f625b42fc5423141147f9b97889b6ee6b"
+      }
+    },
+    {
+      "name": "BIN",
+      "signature": "#b101010101010",
+      "original_run": {
+        "example": "BIN.PDS",
+        "directory": "build/signature-original/bin",
+        "source_sha256": "50b64a3249460093c47c51203374f12205dca637c80b5595be7f43eb59aef01d",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/BIN.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "BIN.PDS",
+          "RUN_LOG": "BIN.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "4dc04fdfeb16274ac23f31a5cc9fb98cb04044ad504f59c6023a02abd60fcae4",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-original/bin/dosbox.conf",
+          "-defaultdir",
+          "build/signature-original/bin",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.653,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "BIN.BSD": {
+            "sha256": "7c977db483bd3c1ca81c6a027120485e166905f31c635d3c84f4525c4bed05d9",
+            "bytes": 19248
+          },
+          "BIN.DBG": {
+            "sha256": "e6d3b83966f1e9d053fc572cca2442822c0bf3e5a49f2f240935a41335daf6e3",
+            "bytes": 861
+          },
+          "BIN.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "BIN.JED": {
+            "sha256": "ab2edb8d8f841f5032e918dcf47f1e92552da6803e312e3c2e274ac7e833e586",
+            "bytes": 52977
+          },
+          "BIN.LOG": {
+            "sha256": "821465a8747116476ce5a8ca8959e95318de4d4082d5fd5ff2eb0630403f711a",
+            "bytes": 3632
+          },
+          "BIN.MXL": {
+            "sha256": "4dc04fdfeb16274ac23f31a5cc9fb98cb04044ad504f59c6023a02abd60fcae4",
+            "bytes": 1285
+          },
+          "BIN.PDS": {
+            "sha256": "50b64a3249460093c47c51203374f12205dca637c80b5595be7f43eb59aef01d",
+            "bytes": 78
+          },
+          "BIN.PLA": {
+            "sha256": "6fcd72ed71ee4d083f44632ba4e15a30dca65076d6620a24f176c61a644a8b37",
+            "bytes": 625
+          },
+          "BIN.PLC": {
+            "sha256": "5dfe01c63f411346d0c91ad43fda7c738e11223bf767078c97a770974c4071a0",
+            "bytes": 308
+          },
+          "BIN.PRD": {
+            "sha256": "dc974647a0053619291477ea3627eaf595df6cffb90fcfd6fd2ca4019aa3edfe",
+            "bytes": 21890
+          },
+          "BIN.RPT": {
+            "sha256": "14c190726079485619e579d42c25e4e35dd0dc26e7f63d803bef0fc003f05fcf",
+            "bytes": 9542
+          },
+          "BIN.TAL": {
+            "sha256": "854b42aa5149e79c09fda29edb1c262fa71761f7c5e9cd17ae39fb91d7044569",
+            "bytes": 1407
+          },
+          "BIN.TRE": {
+            "sha256": "cac2fc750ea064ae8b3c165e9c24ca7a9b76d2d7c1a1f2694df13150d54bf7cf",
+            "bytes": 1670
+          }
+        },
+        "signature": "#b101010101010",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00000000000000000000101010101010"
+        ]
+      },
+      "sha256": {
+        ".PDS": "50b64a3249460093c47c51203374f12205dca637c80b5595be7f43eb59aef01d",
+        ".JED": "ab2edb8d8f841f5032e918dcf47f1e92552da6803e312e3c2e274ac7e833e586"
+      }
+    },
+    {
+      "name": "OCT",
+      "signature": "#o12345670123",
+      "original_run": {
+        "example": "OCT.PDS",
+        "directory": "build/signature-original/oct",
+        "source_sha256": "d4b30ff70ce605a42550555c12608ac52dba22e089cc62344debba52ff0e9a73",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/OCT.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "OCT.PDS",
+          "RUN_LOG": "OCT.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "441e96b8e67209b4d708a5d2b50aca8eb8227f0a07e1a2cacd6400512f4413d1",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-original/oct/dosbox.conf",
+          "-defaultdir",
+          "build/signature-original/oct",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.652,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "OCT.BSD": {
+            "sha256": "f15750aac303770d8604b086ecd89cfa18d9831f0912812af41dfd384e9ee221",
+            "bytes": 19248
+          },
+          "OCT.DBG": {
+            "sha256": "cfc7a5661b95e6542874b4d194b5c353916472dce91b8e3618aa70dd22ac3a49",
+            "bytes": 861
+          },
+          "OCT.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "OCT.JED": {
+            "sha256": "7f37d287c3e75abf268d91dcc1c01d00b93da054034acb906272a3aaf74391fb",
+            "bytes": 52977
+          },
+          "OCT.LOG": {
+            "sha256": "2123e2034bd998a7222f2c130281c3e780586bd319c219de32f9edf450079be3",
+            "bytes": 3707
+          },
+          "OCT.MXL": {
+            "sha256": "441e96b8e67209b4d708a5d2b50aca8eb8227f0a07e1a2cacd6400512f4413d1",
+            "bytes": 1285
+          },
+          "OCT.PDS": {
+            "sha256": "d4b30ff70ce605a42550555c12608ac52dba22e089cc62344debba52ff0e9a73",
+            "bytes": 77
+          },
+          "OCT.PLA": {
+            "sha256": "17c5f24eb145a78d8decc2d8879efad448d444f08a1f3cd20b6002d9a3c4888e",
+            "bytes": 624
+          },
+          "OCT.PLC": {
+            "sha256": "bcf6d22dd6c127b80b66c998c0ff66b7c24d314b1cdb0f9b9d6b73b23899dace",
+            "bytes": 308
+          },
+          "OCT.PRD": {
+            "sha256": "2c8f8d9ebeeba8c818c7aeb39fc3b976b40229bcbc7917dfa8fb85825bc13aa3",
+            "bytes": 21890
+          },
+          "OCT.RPT": {
+            "sha256": "1c2cd3905bab54156bbe46109ba4e3ec0a4d168da7dff9a08eb2780a977e31d5",
+            "bytes": 9542
+          },
+          "OCT.TAL": {
+            "sha256": "6c86382b98f9f6c367c74d13122390d3cedc11dfb81525e68872afb5f27659e9",
+            "bytes": 1407
+          },
+          "OCT.TRE": {
+            "sha256": "88b463fcb5cb6ced164b9130c8f2b02ef800927c3da34245138ea5876ec5787f",
+            "bytes": 1669
+          }
+        },
+        "signature": "#o12345670123",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00001010011100101110111000001010"
+        ]
+      },
+      "sha256": {
+        ".PDS": "d4b30ff70ce605a42550555c12608ac52dba22e089cc62344debba52ff0e9a73",
+        ".JED": "7f37d287c3e75abf268d91dcc1c01d00b93da054034acb906272a3aaf74391fb"
+      }
+    },
+    {
+      "name": "TEXT",
+      "signature": "ABCD",
+      "original_run": {
+        "example": "TEXT.PDS",
+        "directory": "build/signature-original/text",
+        "source_sha256": "96e04ebea2cb9e9f79c08dd0285e0396e1b7f5cac5ee65f4bbce21229538ecc0",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/TEXT.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "TEXT.PDS",
+          "RUN_LOG": "TEXT.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "1ac3981b2fc514ca3de8f326fb8f53d75895ae9c873c56f68222fee890098bd7",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-original/text/dosbox.conf",
+          "-defaultdir",
+          "build/signature-original/text",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.656,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "TEXT.BSD": {
+            "sha256": "a54c9104c46c7c8b4d3dea4d1f4a75941427b1c67a907ea7ba582d91a03550b9",
+            "bytes": 19248
+          },
+          "TEXT.DBG": {
+            "sha256": "0dca4eb90a14dc4a67927dae1bc42985daa7d8d8cbf7f54c816eabe79bd5cab3",
+            "bytes": 870
+          },
+          "TEXT.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "TEXT.JED": {
+            "sha256": "584b2b5340226ee4c2875f36020cd654289e160a218fc144d342c6f364633e18",
+            "bytes": 52977
+          },
+          "TEXT.LOG": {
+            "sha256": "d3b0efc416ba570c37129a726e949dc5c7855275e4837a8732468c6b88e5a017",
+            "bytes": 3633
+          },
+          "TEXT.MXL": {
+            "sha256": "1ac3981b2fc514ca3de8f326fb8f53d75895ae9c873c56f68222fee890098bd7",
+            "bytes": 1287
+          },
+          "TEXT.PDS": {
+            "sha256": "96e04ebea2cb9e9f79c08dd0285e0396e1b7f5cac5ee65f4bbce21229538ecc0",
+            "bytes": 68
+          },
+          "TEXT.PLA": {
+            "sha256": "0748df0c2b2ef21a6f678555c3d949538ee155ac1d335cda2e53a79f31258ded",
+            "bytes": 617
+          },
+          "TEXT.PLC": {
+            "sha256": "ce6ebb3e67378daf1b1def931e02a38d090fb0ba31a314a6e3c20e5d0735e369",
+            "bytes": 309
+          },
+          "TEXT.PRD": {
+            "sha256": "8a358a899e56e4cae145b7983ec74a8a304900d56c84c100591e2d75e0c67087",
+            "bytes": 21891
+          },
+          "TEXT.RPT": {
+            "sha256": "578d13ef033d57fc7932ea95af02031915361ac9ce4d250055eb3c1234e15f92",
+            "bytes": 9545
+          },
+          "TEXT.TAL": {
+            "sha256": "92690a5e8daf8328b7eb3718cacc05fbc01d906b914334cbbd8912c3bc2224d6",
+            "bytes": 1410
+          },
+          "TEXT.TRE": {
+            "sha256": "63ef0517e8e390ab4a11965ece97957f96dcf205dd8b42434c80ec7bb7ee298f",
+            "bytes": 1661
+          }
+        },
+        "signature": "ABCD",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U01000001010000100100001101000100"
+        ]
+      },
+      "sha256": {
+        ".PDS": "96e04ebea2cb9e9f79c08dd0285e0396e1b7f5cac5ee65f4bbce21229538ecc0",
+        ".JED": "584b2b5340226ee4c2875f36020cd654289e160a218fc144d342c6f364633e18"
+      }
+    },
+    {
+      "name": "SHORT",
+      "signature": "xy",
+      "original_run": {
+        "example": "SHORT.PDS",
+        "directory": "build/signature-original/short",
+        "source_sha256": "90436f43b44630e35ab4466c69cae61e9ca28728d59e0fa92566502650488eb8",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/SHORT.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "SHORT.PDS",
+          "RUN_LOG": "SHORT.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "47c988b915a479c820f3af5048e6d4432e422a2b774b594315d5546e3894dde4",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-original/short/dosbox.conf",
+          "-defaultdir",
+          "build/signature-original/short",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.655,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "SHORT.BSD": {
+            "sha256": "6ef8e2bedb8d22a2387ba9325ea72337f7c622ad76e5763e2362934ea5a8b251",
+            "bytes": 19248
+          },
+          "SHORT.DBG": {
+            "sha256": "5fa6387a2ff883908b7101761c17d4d9e9c85ceac6ec6c611fdfdaf066d45051",
+            "bytes": 879
+          },
+          "SHORT.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "SHORT.JED": {
+            "sha256": "38d157e4b91758c3b175a8cf64b0402fbd65eb81c95efead8970b43555337057",
+            "bytes": 52977
+          },
+          "SHORT.LOG": {
+            "sha256": "e10c030718a6938a5ff4cef080530dc24e4d3ef2b039c50459badc0c8f2bc96c",
+            "bytes": 3642
+          },
+          "SHORT.MXL": {
+            "sha256": "47c988b915a479c820f3af5048e6d4432e422a2b774b594315d5546e3894dde4",
+            "bytes": 1289
+          },
+          "SHORT.PDS": {
+            "sha256": "90436f43b44630e35ab4466c69cae61e9ca28728d59e0fa92566502650488eb8",
+            "bytes": 66
+          },
+          "SHORT.PLA": {
+            "sha256": "9511b2178154bfe6b1e1bd7a3e70a3b69317510f9714d4bf85485ab609e92285",
+            "bytes": 617
+          },
+          "SHORT.PLC": {
+            "sha256": "70e3694f78d15efe152d28a68015ad7efec31136af1d87ce0c7f2b3787c794a6",
+            "bytes": 310
+          },
+          "SHORT.PRD": {
+            "sha256": "f6384bf35dbb12f7ef5b37e05e80da7904281d66fc96854d94ffbb830e2f57b5",
+            "bytes": 21892
+          },
+          "SHORT.RPT": {
+            "sha256": "0879eaa0c68762e1bef27a4fa397f329753fbd154102f8079af4ffed30e35a28",
+            "bytes": 9548
+          },
+          "SHORT.TAL": {
+            "sha256": "8d8927a70b84524d2d0ebf009f3564d2d0933e52b3a53a2770b1de063f88ef8b",
+            "bytes": 1413
+          },
+          "SHORT.TRE": {
+            "sha256": "d0b18d465aabd5f5e77f24d11a1a7bf2bbd239dca365d5c3d1385460a861ef8a",
+            "bytes": 1660
+          }
+        },
+        "signature": "xy",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00100000001000000111100001111001"
+        ]
+      },
+      "sha256": {
+        ".PDS": "90436f43b44630e35ab4466c69cae61e9ca28728d59e0fa92566502650488eb8",
+        ".JED": "38d157e4b91758c3b175a8cf64b0402fbd65eb81c95efead8970b43555337057"
+      }
+    },
+    {
+      "name": "LONG",
+      "signature": "abcde",
+      "original_run": {
+        "example": "LONG.PDS",
+        "directory": "build/signature-original/long",
+        "source_sha256": "897b284c30a258dfdb757f39ad579a6772617a2b050084514272488f9bb44396",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/LONG.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "LONG.PDS",
+          "RUN_LOG": "LONG.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "12ece51b6ab6969730101198db407b464010c282954e7b5d8752fc4476a96166",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-original/long/dosbox.conf",
+          "-defaultdir",
+          "build/signature-original/long",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.654,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "LONG.BSD": {
+            "sha256": "f146f666a262dcc6dc227abe9a669c6a8c40924e2a4f15e01e9789b4cf2fe1df",
+            "bytes": 19248
+          },
+          "LONG.DBG": {
+            "sha256": "844f473867168084357b3a8ad7f202281eb5f46b21c3b3985706d68b5719c1ef",
+            "bytes": 870
+          },
+          "LONG.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "LONG.JED": {
+            "sha256": "87fbfde9416f147d15677844f9f7d677f5db52634c4a5b666c284d737377c6ac",
+            "bytes": 52977
+          },
+          "LONG.LOG": {
+            "sha256": "5f938ad6b8c2efb5d6a4d6087257c7dc0ec26bc89c3c49d35a74dbb1d6b88b43",
+            "bytes": 3702
+          },
+          "LONG.MXL": {
+            "sha256": "12ece51b6ab6969730101198db407b464010c282954e7b5d8752fc4476a96166",
+            "bytes": 1287
+          },
+          "LONG.PDS": {
+            "sha256": "897b284c30a258dfdb757f39ad579a6772617a2b050084514272488f9bb44396",
+            "bytes": 69
+          },
+          "LONG.PLA": {
+            "sha256": "b6c90ad9cee0027b07ff0e7d94d4c7d5a1674477c5ca5945793d32e7f06e3e8e",
+            "bytes": 618
+          },
+          "LONG.PLC": {
+            "sha256": "33ab0b45bc4f0debe1c5e6a663c361eead524aa0f9832a977294a2ef6ea90671",
+            "bytes": 309
+          },
+          "LONG.PRD": {
+            "sha256": "d11dcb53a40800f772f0cd91acfc3aac456c5d5fbe2d0e88460813061a46763b",
+            "bytes": 21891
+          },
+          "LONG.RPT": {
+            "sha256": "2fb186ccd3d82f0d6e52d46ebc8f7b28330d542ad023804f80b0893fc1624a4f",
+            "bytes": 9545
+          },
+          "LONG.TAL": {
+            "sha256": "40ec036bdb02de0250e313c3d17bc55eff91d593c2afd75c16df4fa2245a3afd",
+            "bytes": 1410
+          },
+          "LONG.TRE": {
+            "sha256": "097bc6118e7dbca724dc9bdb16830dd2a090bf31e9e91be5ca70a8bbd6bf07f6",
+            "bytes": 1662
+          }
+        },
+        "signature": "abcde",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U01100001011000100110001101100100"
+        ]
+      },
+      "sha256": {
+        ".PDS": "897b284c30a258dfdb757f39ad579a6772617a2b050084514272488f9bb44396",
+        ".JED": "87fbfde9416f147d15677844f9f7d677f5db52634c4a5b666c284d737377c6ac"
+      }
+    },
+    {
+      "name": "BADHEX",
+      "signature": "#hz5",
+      "original_run": {
+        "example": "BADHEX.PDS",
+        "directory": "build/signature-original/badhex",
+        "source_sha256": "97cb5e4d17eba98e3175f3531fbb62dc2eb843e29dcefc630f78b184b137410f",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/BADHEX.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "BADHEX.PDS",
+          "RUN_LOG": "BADHEX.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "d7f559438c4eb8bff662d54fa50c498219032982bb8e8d97ae70bfcdf43c0158",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-original/badhex/dosbox.conf",
+          "-defaultdir",
+          "build/signature-original/badhex",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.654,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "BADHEX.BSD": {
+            "sha256": "41ce23e240801175738d8e99034071a811da62a959725a94126946a622e05e75",
+            "bytes": 19248
+          },
+          "BADHEX.DBG": {
+            "sha256": "64a472a9c5949137ed0337763e7b83140f888827ae64e21a3dc846edb9f32c21",
+            "bytes": 888
+          },
+          "BADHEX.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "BADHEX.JED": {
+            "sha256": "d1a1035d84503381bf3468c3c09fef443f528d1c50497e71c12ac0a5c5aac3e9",
+            "bytes": 52977
+          },
+          "BADHEX.LOG": {
+            "sha256": "b78563326f0ed412b804b8ff0cdf6cd732e5241108e11ab3961eadac6de4211d",
+            "bytes": 3655
+          },
+          "BADHEX.MXL": {
+            "sha256": "d7f559438c4eb8bff662d54fa50c498219032982bb8e8d97ae70bfcdf43c0158",
+            "bytes": 1291
+          },
+          "BADHEX.PDS": {
+            "sha256": "97cb5e4d17eba98e3175f3531fbb62dc2eb843e29dcefc630f78b184b137410f",
+            "bytes": 68
+          },
+          "BADHEX.PLA": {
+            "sha256": "290570e50c023aa00b4ffa9e87faa224738efcff4233b996793faa7ec637ff83",
+            "bytes": 621
+          },
+          "BADHEX.PLC": {
+            "sha256": "7f33edc30c4ec5ebd06521650374d47cfa5e5e3d5e641df8dee33556a4acd700",
+            "bytes": 311
+          },
+          "BADHEX.PRD": {
+            "sha256": "714c3c77180c1b7eec33dac7db6ce642d1041877b350a4fab231ff3b9c44a44d",
+            "bytes": 21893
+          },
+          "BADHEX.RPT": {
+            "sha256": "3dd78cc4699ec4002a9997445450d20afc20243369ff62b87766d2da0dabd43f",
+            "bytes": 9551
+          },
+          "BADHEX.TAL": {
+            "sha256": "af360f6381e4b433fc0054bdc0577be30a2d9675acdcdd146dc42dfb94e3cd47",
+            "bytes": 1416
+          },
+          "BADHEX.TRE": {
+            "sha256": "a724669b4812a72f6b4c4f31dcb5137eff9d14f2d0ac04619a5d9eb854f90084",
+            "bytes": 1663
+          }
+        },
+        "signature": "#hz5",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00100011011010000111101000110101"
+        ]
+      },
+      "sha256": {
+        ".PDS": "97cb5e4d17eba98e3175f3531fbb62dc2eb843e29dcefc630f78b184b137410f",
+        ".JED": "d1a1035d84503381bf3468c3c09fef443f528d1c50497e71c12ac0a5c5aac3e9"
+      }
+    },
+    {
+      "name": "QUOTED",
+      "signature": "\"AbC\"",
+      "original_run": {
+        "example": "QUOTED.PDS",
+        "directory": "build/signature-original/quoted",
+        "source_sha256": "e17e1251557c22280bc496789c79e07687f11c1c9d7265d9ee7a0093b1963df6",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/QUOTED.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "QUOTED.PDS",
+          "RUN_LOG": "QUOTED.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "b373d4b6134a524c4837909bc0047f5863205da706c25c712851644c7445263f",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-original/quoted/dosbox.conf",
+          "-defaultdir",
+          "build/signature-original/quoted",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.661,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "QUOTED.BSD": {
+            "sha256": "ebed64cf16c6c7eac091068fa7f5599fff4ab08a63750d1aa03c12af2672f59f",
+            "bytes": 19248
+          },
+          "QUOTED.DBG": {
+            "sha256": "cc85ea5add33b3933958bb016d0cd2940886de2f4fd78450980b10450082f8b3",
+            "bytes": 888
+          },
+          "QUOTED.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "QUOTED.JED": {
+            "sha256": "6937ffff673e422540cb08fdaeb538a4a0cf8db47f8a8cf05137e92b768b4317",
+            "bytes": 52977
+          },
+          "QUOTED.LOG": {
+            "sha256": "d163cf374b4a82f8f53986a6ab0431f58730992bf80af937431b25f53e284fd1",
+            "bytes": 3724
+          },
+          "QUOTED.MXL": {
+            "sha256": "b373d4b6134a524c4837909bc0047f5863205da706c25c712851644c7445263f",
+            "bytes": 1291
+          },
+          "QUOTED.PDS": {
+            "sha256": "e17e1251557c22280bc496789c79e07687f11c1c9d7265d9ee7a0093b1963df6",
+            "bytes": 69
+          },
+          "QUOTED.PLA": {
+            "sha256": "18c391602aa907610d8a1e8450848aa25a516ebf7e5bb460c6cb0f85e8c429c9",
+            "bytes": 622
+          },
+          "QUOTED.PLC": {
+            "sha256": "0f2543d251341f154b8adaff256e005fd4b0b93942914e94a16773e6263f45e2",
+            "bytes": 311
+          },
+          "QUOTED.PRD": {
+            "sha256": "e659f4c149446e7e2aa135381a78ff1cf3702210e326966036ebe9219f477634",
+            "bytes": 21893
+          },
+          "QUOTED.RPT": {
+            "sha256": "3b3edf89eb4d7a8d3597fb785e216235deabdc51eb939b8866e16151f2e13159",
+            "bytes": 9551
+          },
+          "QUOTED.TAL": {
+            "sha256": "579ad367e3d80e4f6df5b618e49ecdbd95c9106aee764c777aea0c9a11eac97d",
+            "bytes": 1416
+          },
+          "QUOTED.TRE": {
+            "sha256": "fe30942de64d857a8f48971effe5412bc40c8991bddc0d1f4664e5caf31b4fda",
+            "bytes": 1664
+          }
+        },
+        "signature": "\"AbC\"",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00100010010000010110001001000011"
+        ]
+      },
+      "sha256": {
+        ".PDS": "e17e1251557c22280bc496789c79e07687f11c1c9d7265d9ee7a0093b1963df6",
+        ".JED": "6937ffff673e422540cb08fdaeb538a4a0cf8db47f8a8cf05137e92b768b4317"
+      }
+    },
+    {
+      "name": "SPACE",
+      "signature": "A B",
+      "original_run": {
+        "example": "SPACE.PDS",
+        "directory": "build/signature-original/space",
+        "source_sha256": "0b9d45ba1a21adf3f811e9fbaa575a6a0129879ef1e7ac749df4dd14b89996ea",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/SPACE.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "SPACE.PDS",
+          "RUN_LOG": "SPACE.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "74ee200b588c2326882e73466a84b24b22d7505e21d93b1ace7c0842d805d155",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-original/space/dosbox.conf",
+          "-defaultdir",
+          "build/signature-original/space",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.662,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "SPACE.BSD": {
+            "sha256": "4d96626896fe7b23a4fee63eb19223de7e9d2125dfea70a41cd02f0d7dcfb248",
+            "bytes": 19248
+          },
+          "SPACE.DBG": {
+            "sha256": "0d072d2643c5154fc4426e5226e92ce179395702fe3a0039d7dd452e0be69224",
+            "bytes": 879
+          },
+          "SPACE.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "SPACE.JED": {
+            "sha256": "f5d410ab881571ef191b6d6e8ff70aab24604de84b1602b1495b584f6c437ba3",
+            "bytes": 52977
+          },
+          "SPACE.LOG": {
+            "sha256": "d10b6f3992985fd33da102dbe51d7cd096af277ecfb1db134dfe6c04979f91ad",
+            "bytes": 3643
+          },
+          "SPACE.MXL": {
+            "sha256": "74ee200b588c2326882e73466a84b24b22d7505e21d93b1ace7c0842d805d155",
+            "bytes": 1289
+          },
+          "SPACE.PDS": {
+            "sha256": "0b9d45ba1a21adf3f811e9fbaa575a6a0129879ef1e7ac749df4dd14b89996ea",
+            "bytes": 67
+          },
+          "SPACE.PLA": {
+            "sha256": "00f8bc6c678d508aa319c4a3fd0b144953dec0921fba1144d347863001e09988",
+            "bytes": 618
+          },
+          "SPACE.PLC": {
+            "sha256": "7fadf9e9d1e781d3c1596f852bf1c2d53e92a018e95d292360c97b0cd6f9bfd5",
+            "bytes": 310
+          },
+          "SPACE.PRD": {
+            "sha256": "a132151a917ee1adfe90307f70b3989154fc6114dcb39466ac342c5106e93915",
+            "bytes": 21892
+          },
+          "SPACE.RPT": {
+            "sha256": "c085a7e6867537da751123ea8fb5a396abbd6e076d66388c1734dada48bcc812",
+            "bytes": 9548
+          },
+          "SPACE.TAL": {
+            "sha256": "75cce32397af167d854d92383f53cb6cc5722f0f04ec3295cf2a26974c23e067",
+            "bytes": 1413
+          },
+          "SPACE.TRE": {
+            "sha256": "3d5bcbc1ff2a52bde77b1790f4271b4e6901167528792657b9ce1366eed50ce0",
+            "bytes": 1661
+          }
+        },
+        "signature": "A B",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00100000010000010010000001000010"
+        ]
+      },
+      "sha256": {
+        ".PDS": "0b9d45ba1a21adf3f811e9fbaa575a6a0129879ef1e7ac749df4dd14b89996ea",
+        ".JED": "f5d410ab881571ef191b6d6e8ff70aab24604de84b1602b1495b584f6c437ba3"
+      }
+    },
+    {
+      "name": "NEG",
+      "signature": "-1",
+      "original_run": {
+        "example": "NEG.PDS",
+        "directory": "build/signature-original/neg",
+        "source_sha256": "ff6fef1dec3bfc86c552ab28ee0fb4c3bada70916fa76c0248b31f565d3d1d2b",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/NEG.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "NEG.PDS",
+          "RUN_LOG": "NEG.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "10d8001045c0aafccf8928ca1c18dff8644f59d0f10c21f00efd1a627cf1d430",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-original/neg/dosbox.conf",
+          "-defaultdir",
+          "build/signature-original/neg",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.658,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "NEG.BSD": {
+            "sha256": "6f6738ad313d0a1158f177aeabae4ac2da39090bf4ad302cd6ff3406d57e9abd",
+            "bytes": 19248
+          },
+          "NEG.DBG": {
+            "sha256": "ce97ed403feddda923ab1ac2561b60e987c03e17b7da6656d45ceb0882927763",
+            "bytes": 861
+          },
+          "NEG.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "NEG.JED": {
+            "sha256": "7608a4c3959b89f13e967fb9683bf5588d5dae179053042d48c93b6c2a59ae5f",
+            "bytes": 52977
+          },
+          "NEG.LOG": {
+            "sha256": "c63857de29245c5ef157a9dd8f8ad8ba5cf8a04f80d768b796f9abbdd6a094da",
+            "bytes": 3620
+          },
+          "NEG.MXL": {
+            "sha256": "10d8001045c0aafccf8928ca1c18dff8644f59d0f10c21f00efd1a627cf1d430",
+            "bytes": 1285
+          },
+          "NEG.PDS": {
+            "sha256": "ff6fef1dec3bfc86c552ab28ee0fb4c3bada70916fa76c0248b31f565d3d1d2b",
+            "bytes": 66
+          },
+          "NEG.PLA": {
+            "sha256": "d1189a001b03301d4b4ac25c384ea0978714f3875543b4570481660139bb6372",
+            "bytes": 613
+          },
+          "NEG.PLC": {
+            "sha256": "a885080350c223720732d83b6ad2f0a66368cf8c95199f4127ae12e177ed78f4",
+            "bytes": 308
+          },
+          "NEG.PRD": {
+            "sha256": "2636f3d59cc225ae6ed4b8340815a85d76480285ef6a1048a0ae90459fa06fcc",
+            "bytes": 21890
+          },
+          "NEG.RPT": {
+            "sha256": "28085c756db92552554818cc057fdfb09147843cf9736ce3ce1d0a90bbf8aa38",
+            "bytes": 9542
+          },
+          "NEG.TAL": {
+            "sha256": "c2dd87bca050188900cdb8bf68b071a5090bdef1cb04d441a14a4da5051c5890",
+            "bytes": 1407
+          },
+          "NEG.TRE": {
+            "sha256": "3f2e85acff072cb33b4d6f7a8d9fbbdcdcb6011fae9e533ea2f65fcf18db5464",
+            "bytes": 1658
+          }
+        },
+        "signature": "-1",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U11111111111111111111111111111111"
+        ]
+      },
+      "sha256": {
+        ".PDS": "ff6fef1dec3bfc86c552ab28ee0fb4c3bada70916fa76c0248b31f565d3d1d2b",
+        ".JED": "7608a4c3959b89f13e967fb9683bf5588d5dae179053042d48c93b6c2a59ae5f"
+      }
+    },
+    {
+      "name": "D0",
+      "signature": "0",
+      "original_run": {
+        "example": "D0.PDS",
+        "directory": "build/signature-original/d0",
+        "source_sha256": "fb688401d1592bdbf7e03f3a5e785e94e9591e9a0f5b9859c203bf358eaa80aa",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/D0.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "D0.PDS",
+          "RUN_LOG": "D0.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "10b6656bbb5ca1e871bc5dcbfab8b0c634a534cc1b9735bb32fcb541a30c5a3c",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-original/d0/dosbox.conf",
+          "-defaultdir",
+          "build/signature-original/d0",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.659,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "D0.BSD": {
+            "sha256": "88b38cefe5c0b555f374e4fe9c57019b5e0fe8f5254f11f663641bfec7547a0d",
+            "bytes": 19248
+          },
+          "D0.DBG": {
+            "sha256": "e4cb8f7ccf124d29d0654c7e2ce99d4d240b87ff26ebaf0accfe42a9d32f3b77",
+            "bytes": 852
+          },
+          "D0.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "D0.JED": {
+            "sha256": "dbcbf2c8d6f4bf064aee85982dbd072b5efa9a9480ef833d5e27cac1b96c9578",
+            "bytes": 52977
+          },
+          "D0.LOG": {
+            "sha256": "9620cd940909de759c3f075a0f009271431f693a52484271e86e3721c43a1421",
+            "bytes": 3608
+          },
+          "D0.MXL": {
+            "sha256": "10b6656bbb5ca1e871bc5dcbfab8b0c634a534cc1b9735bb32fcb541a30c5a3c",
+            "bytes": 1283
+          },
+          "D0.PDS": {
+            "sha256": "fb688401d1592bdbf7e03f3a5e785e94e9591e9a0f5b9859c203bf358eaa80aa",
+            "bytes": 65
+          },
+          "D0.PLA": {
+            "sha256": "982a70ab76182caeb62dc6506bca1e4df82c22f0bde17612249cbad78b8c2461",
+            "bytes": 610
+          },
+          "D0.PLC": {
+            "sha256": "302497dfcf9e0e1ef269fb7a2d1eacec1393c819591788dad8fec35868e0d257",
+            "bytes": 307
+          },
+          "D0.PRD": {
+            "sha256": "0abe4fe0fc6dd98adc4d0ddb898859b4610721dce9f19b371ea650f66a35ce5b",
+            "bytes": 21889
+          },
+          "D0.RPT": {
+            "sha256": "2e05e55eef56deee2584d9635a005d9016118a78a7d77255e39a55d2b326650d",
+            "bytes": 9539
+          },
+          "D0.TAL": {
+            "sha256": "1707e42e257e2635d65778ff098e22aa99af4ffd892fd1f175b438ff051a6a6b",
+            "bytes": 1404
+          },
+          "D0.TRE": {
+            "sha256": "fe0f2def94d89caec311ddcd51be5a5070f0292a0f075f6163492a1518fbf705",
+            "bytes": 1656
+          }
+        },
+        "signature": "0",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00000000000000000000000000000000"
+        ]
+      },
+      "sha256": {
+        ".PDS": "fb688401d1592bdbf7e03f3a5e785e94e9591e9a0f5b9859c203bf358eaa80aa",
+        ".JED": "dbcbf2c8d6f4bf064aee85982dbd072b5efa9a9480ef833d5e27cac1b96c9578"
+      }
+    },
+    {
+      "name": "IGNORE",
+      "signature": "#h1234",
+      "original_run": {
+        "example": "IGNORE.PDS",
+        "directory": "build/signature-original/ignore",
+        "source_sha256": "cc50d6085664bbcc25eec0293440e151eed935f9c7256be4fdebca070d80cc5d",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/IGNORE.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "IGNORE.PDS",
+          "RUN_LOG": "IGNORE.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "a13207c51451bff6c547f77d0fd2daf92a32af28a5c40acdb1fc9a5565461e6a",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-original/ignore/dosbox.conf",
+          "-defaultdir",
+          "build/signature-original/ignore",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 1.658,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "IGNORE.DBG": {
+            "sha256": "ef2d599468397a3eb052873794b4a71f5035da76db38513b4d0edc5206bbf93e",
+            "bytes": 888
+          },
+          "IGNORE.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "IGNORE.JED": {
+            "sha256": "ff4ef2c2b952bb794368461134f91e87fd17ab93033baed7929919d20764dec8",
+            "bytes": 11059
+          },
+          "IGNORE.LOG": {
+            "sha256": "9eb63530a4349959c79e83aed2d29478c036aef123e33ff2e17ffdcd3734e496",
+            "bytes": 3565
+          },
+          "IGNORE.MXL": {
+            "sha256": "a13207c51451bff6c547f77d0fd2daf92a32af28a5c40acdb1fc9a5565461e6a",
+            "bytes": 1291
+          },
+          "IGNORE.PDS": {
+            "sha256": "cc50d6085664bbcc25eec0293440e151eed935f9c7256be4fdebca070d80cc5d",
+            "bytes": 70
+          },
+          "IGNORE.PLA": {
+            "sha256": "05ba957333fdf297db66a6e9c2ef5dd9c1ccb9c9add9ae09000a360468b42cc0",
+            "bytes": 350
+          },
+          "IGNORE.PLC": {
+            "sha256": "a87983775186848e467b207a2adeca3505cd993bd739f97937d157135f473f60",
+            "bytes": 290
+          },
+          "IGNORE.PRD": {
+            "sha256": "4fdcfa0567fc9396fd0f4513b926414b6bbb7948ba156fa6d7ec24b9e82893f2",
+            "bytes": 15698
+          },
+          "IGNORE.RPT": {
+            "sha256": "cdf72b40566f5304ad8d064324551ec68192eb120be36cb1cb46a5a00b204e5d",
+            "bytes": 9190
+          },
+          "IGNORE.TAL": {
+            "sha256": "9de1163edd37312c71bc457b09c84c68948d4bdea68ef6527cb08628fcdf5526",
+            "bytes": 1416
+          },
+          "IGNORE.TRE": {
+            "sha256": "e6625c9bdbf33fbfe407ef33d97032e471717adf52182139b6886e045fb2ab16",
+            "bytes": 680
+          }
+        },
+        "signature": "#h1234",
+        "auxiliary": [
+          "QP44",
+          "G0"
+        ]
+      },
+      "sha256": {
+        ".PDS": "cc50d6085664bbcc25eec0293440e151eed935f9c7256be4fdebca070d80cc5d",
+        ".JED": "ff4ef2c2b952bb794368461134f91e87fd17ab93033baed7929919d20764dec8"
+      }
+    },
+    {
+      "name": "PLUS",
+      "signature": "+42",
+      "original_run": {
+        "example": "PLUS.PDS",
+        "directory": "build/signature-edge-original/plus",
+        "source_sha256": "948c1c919867241a28da9155c3dc3bd7ee9a2ecbc0ca16a31bb1b6d8704ecb20",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/PLUS.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "PLUS.PDS",
+          "RUN_LOG": "PLUS.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "b621fa14bd90a4d93d5b66239c91ce75871d677d2df93fe5350197fc6564c78b",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-edge-original/plus/dosbox.conf",
+          "-defaultdir",
+          "build/signature-edge-original/plus",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.685,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "PLUS.BSD": {
+            "sha256": "87f98addbc18dd5fed438ca46d19943141243554f433daa27b9995a00c00e57a",
+            "bytes": 19248
+          },
+          "PLUS.DBG": {
+            "sha256": "61a6b32b38d6eb212bfd5109c2b4c4c6eabb1f490d0a29516107c6e8dd7b3873",
+            "bytes": 870
+          },
+          "PLUS.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "PLUS.JED": {
+            "sha256": "0f9b6a7abacf01740d1a389a6f579fcec29d3cafc507faea29bfd058a74dfa62",
+            "bytes": 52977
+          },
+          "PLUS.LOG": {
+            "sha256": "d3099d33b8155505566ecc994d70c45478953bf0e6c34dc78fb58ea8061050db",
+            "bytes": 3632
+          },
+          "PLUS.MXL": {
+            "sha256": "b621fa14bd90a4d93d5b66239c91ce75871d677d2df93fe5350197fc6564c78b",
+            "bytes": 1287
+          },
+          "PLUS.PDS": {
+            "sha256": "948c1c919867241a28da9155c3dc3bd7ee9a2ecbc0ca16a31bb1b6d8704ecb20",
+            "bytes": 67
+          },
+          "PLUS.PLA": {
+            "sha256": "e2d8646cbc551f683ee6d4ea4f4be9ae11cad99acaf098a9e7523cd7ecbeb393",
+            "bytes": 616
+          },
+          "PLUS.PLC": {
+            "sha256": "88c21a569997602c4e96aa34c099c8226f2466c859478292200198ff3056af01",
+            "bytes": 309
+          },
+          "PLUS.PRD": {
+            "sha256": "dfe0c106bf5cad74f609f6fafb175fa0074f431d5c711ffc195a3be1c27ea03f",
+            "bytes": 21891
+          },
+          "PLUS.RPT": {
+            "sha256": "3114b2e8aa7b5101be07ca724af0ddbd5ad29263c05ba38ad69256f2e4fa0a82",
+            "bytes": 9545
+          },
+          "PLUS.TAL": {
+            "sha256": "5f81b1bcda9d796e988dc2d5dd0918662738dabc3c650bba56e02dc36ad50c7c",
+            "bytes": 1410
+          },
+          "PLUS.TRE": {
+            "sha256": "7410ea64b8e25bac2bbd00e9ed45dff70454ce8911f327207eed9983e7449553",
+            "bytes": 1660
+          }
+        },
+        "signature": "+42",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00000000000000000000000000101010"
+        ]
+      },
+      "sha256": {
+        ".PDS": "948c1c919867241a28da9155c3dc3bd7ee9a2ecbc0ca16a31bb1b6d8704ecb20",
+        ".JED": "0f9b6a7abacf01740d1a389a6f579fcec29d3cafc507faea29bfd058a74dfa62"
+      }
+    },
+    {
+      "name": "TRAIL",
+      "signature": "123Z",
+      "original_run": {
+        "example": "TRAIL.PDS",
+        "directory": "build/signature-edge-original/trail",
+        "source_sha256": "a63b5b95569cc1c67ef3b419c542318040cf0fd3825d6b3411ccf523e5a2a2d4",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/TRAIL.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "TRAIL.PDS",
+          "RUN_LOG": "TRAIL.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "6732b6a606ea3d54b152ca31b01d00eea6ed582c04c69a654d436e7400571336",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-edge-original/trail/dosbox.conf",
+          "-defaultdir",
+          "build/signature-edge-original/trail",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.692,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "TRAIL.BSD": {
+            "sha256": "8b9b570910cd27e03214e7b16e026317c0ad193a50e34b6b4cbad40ad194afec",
+            "bytes": 19248
+          },
+          "TRAIL.DBG": {
+            "sha256": "b998f86465d5a4fc90d086f7d07de0b30e7ddb4044019677ea521d4c2afe4120",
+            "bytes": 879
+          },
+          "TRAIL.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "TRAIL.JED": {
+            "sha256": "e17663b730f9d3b41801988885ea954d369789562aca8f4b97d9377570e0b25d",
+            "bytes": 52977
+          },
+          "TRAIL.LOG": {
+            "sha256": "2fa28191221e75f547dd84623e949a0703641d260559c7b6b7bd268a0637db61",
+            "bytes": 3644
+          },
+          "TRAIL.MXL": {
+            "sha256": "6732b6a606ea3d54b152ca31b01d00eea6ed582c04c69a654d436e7400571336",
+            "bytes": 1289
+          },
+          "TRAIL.PDS": {
+            "sha256": "a63b5b95569cc1c67ef3b419c542318040cf0fd3825d6b3411ccf523e5a2a2d4",
+            "bytes": 68
+          },
+          "TRAIL.PLA": {
+            "sha256": "7532290bb59aff18dc78d1861f3da3dab29131af0ecdd22c3fee067c087554cb",
+            "bytes": 619
+          },
+          "TRAIL.PLC": {
+            "sha256": "5a02dc7b13025846800ae27f009b76ccc34a9d7192e54f05f00401e3938a9b01",
+            "bytes": 310
+          },
+          "TRAIL.PRD": {
+            "sha256": "137b1c1f04e4c9cf07255031e621e8b75659ff41aa462b821f39285f5e701399",
+            "bytes": 21892
+          },
+          "TRAIL.RPT": {
+            "sha256": "4d3b5e1ee4ab9d3152d59ada42445958a5ba82295af1d2a9566580558a736a8f",
+            "bytes": 9548
+          },
+          "TRAIL.TAL": {
+            "sha256": "526aca855f157705f223c5adc429258fc1492503edc30427834db41edfd21fa9",
+            "bytes": 1413
+          },
+          "TRAIL.TRE": {
+            "sha256": "aa41a843018de86d5a84465a985774afc8d5bfc1a1297b232ceb4ea7e3647eb2",
+            "bytes": 1662
+          }
+        },
+        "signature": "123Z",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00110001001100100011001101011010"
+        ]
+      },
+      "sha256": {
+        ".PDS": "a63b5b95569cc1c67ef3b419c542318040cf0fd3825d6b3411ccf523e5a2a2d4",
+        ".JED": "e17663b730f9d3b41801988885ea954d369789562aca8f4b97d9377570e0b25d"
+      }
+    },
+    {
+      "name": "HNEG",
+      "signature": "#h-1",
+      "original_run": {
+        "example": "HNEG.PDS",
+        "directory": "build/signature-edge-original/hneg",
+        "source_sha256": "546645410c86924a6a5b115c9674b7a0682afa8d0f2b56478703e77b36327808",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/HNEG.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "HNEG.PDS",
+          "RUN_LOG": "HNEG.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "4e0a3765d4f314e793b6a9670a26a671a0a137571d3de2dfce34471548980a4f",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-edge-original/hneg/dosbox.conf",
+          "-defaultdir",
+          "build/signature-edge-original/hneg",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.677,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "HNEG.BSD": {
+            "sha256": "6f6738ad313d0a1158f177aeabae4ac2da39090bf4ad302cd6ff3406d57e9abd",
+            "bytes": 19248
+          },
+          "HNEG.DBG": {
+            "sha256": "55bae2423239b111a5d0c06db1302762e01c09febf27ee0f0b78dc1f3e73c4a3",
+            "bytes": 870
+          },
+          "HNEG.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "HNEG.JED": {
+            "sha256": "b31bfdc9745a806dfdf663b57ddde5951f3e48f722288d40fefdb54a5b48791c",
+            "bytes": 52977
+          },
+          "HNEG.LOG": {
+            "sha256": "ac4f17141256d6732185da4f8fdda6a8ba9007bde3bc91ad2a7447ee08f69e5a",
+            "bytes": 3633
+          },
+          "HNEG.MXL": {
+            "sha256": "4e0a3765d4f314e793b6a9670a26a671a0a137571d3de2dfce34471548980a4f",
+            "bytes": 1287
+          },
+          "HNEG.PDS": {
+            "sha256": "546645410c86924a6a5b115c9674b7a0682afa8d0f2b56478703e77b36327808",
+            "bytes": 68
+          },
+          "HNEG.PLA": {
+            "sha256": "2ec157d8542087e5c83c1bf98228ad9e10097d05bdc2ca004c0793059de258aa",
+            "bytes": 617
+          },
+          "HNEG.PLC": {
+            "sha256": "03cac3b92dc738d4001b2390c01504b52a98afb97ddc582ad14247ed3659615c",
+            "bytes": 309
+          },
+          "HNEG.PRD": {
+            "sha256": "a8b00922f749ce8cd38f86518d06f8e8c6030e6f9b784fbbafaa0bb2ca2e4bd5",
+            "bytes": 21891
+          },
+          "HNEG.RPT": {
+            "sha256": "2c5c4564a90978152f0a62d19aa8b797d2e53fc9da1383eb0ba944fa32a19279",
+            "bytes": 9545
+          },
+          "HNEG.TAL": {
+            "sha256": "717bd76c10fd6a6dd12697aab2358175ea94de5a342527a5043b568bf0093cdd",
+            "bytes": 1410
+          },
+          "HNEG.TRE": {
+            "sha256": "d5093714fbdc0b97645a0c2736d1facdcd1107c4881f3b985ec305ee4d3a9113",
+            "bytes": 1661
+          }
+        },
+        "signature": "#h-1",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U11111111111111111111111111111111"
+        ]
+      },
+      "sha256": {
+        ".PDS": "546645410c86924a6a5b115c9674b7a0682afa8d0f2b56478703e77b36327808",
+        ".JED": "b31bfdc9745a806dfdf663b57ddde5951f3e48f722288d40fefdb54a5b48791c"
+      }
+    },
+    {
+      "name": "BNEG",
+      "signature": "#b-1",
+      "original_run": {
+        "example": "BNEG.PDS",
+        "directory": "build/signature-edge-original/bneg",
+        "source_sha256": "90dd1cb1a749adf72bb7aba758e93acc888e24fee50112b34d48c5020a18656e",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/BNEG.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "BNEG.PDS",
+          "RUN_LOG": "BNEG.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "0011057e1d846d15bec77b9311891a530948183274f1852b9bfbd8ca027d56c4",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-edge-original/bneg/dosbox.conf",
+          "-defaultdir",
+          "build/signature-edge-original/bneg",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.676,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "BNEG.BSD": {
+            "sha256": "6f6738ad313d0a1158f177aeabae4ac2da39090bf4ad302cd6ff3406d57e9abd",
+            "bytes": 19248
+          },
+          "BNEG.DBG": {
+            "sha256": "662b8926568514cb26c97c1608a58c389bb5fe41a72e2ee1401563798a75ce0f",
+            "bytes": 870
+          },
+          "BNEG.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "BNEG.JED": {
+            "sha256": "b31bfdc9745a806dfdf663b57ddde5951f3e48f722288d40fefdb54a5b48791c",
+            "bytes": 52977
+          },
+          "BNEG.LOG": {
+            "sha256": "a15bb6fff1a1cf0b881a8bb85fcf580882c07f39544e7ba2f57cf588a63e279e",
+            "bytes": 3633
+          },
+          "BNEG.MXL": {
+            "sha256": "0011057e1d846d15bec77b9311891a530948183274f1852b9bfbd8ca027d56c4",
+            "bytes": 1287
+          },
+          "BNEG.PDS": {
+            "sha256": "90dd1cb1a749adf72bb7aba758e93acc888e24fee50112b34d48c5020a18656e",
+            "bytes": 68
+          },
+          "BNEG.PLA": {
+            "sha256": "c0cee1830ae59b89312474a2110294a40600814f3886bd0c78c4fd917052fb10",
+            "bytes": 617
+          },
+          "BNEG.PLC": {
+            "sha256": "f7438f21e0373edd07506b2db1587f74042ab95da3ac950e67791a9a983eb563",
+            "bytes": 309
+          },
+          "BNEG.PRD": {
+            "sha256": "70acde592b556f779038b610aa725ee11cbfe93a2f740b36f7258d6202c45675",
+            "bytes": 21891
+          },
+          "BNEG.RPT": {
+            "sha256": "d33ecf967e2d98d8fabec34791b4d5730a37e0dd00940eb90b5074bcc27c3b3e",
+            "bytes": 9545
+          },
+          "BNEG.TAL": {
+            "sha256": "e19e07205eea109456621ab3ff06e2099ddf4ac19d6f3bd01384dcbdba6e6c28",
+            "bytes": 1410
+          },
+          "BNEG.TRE": {
+            "sha256": "065178353d42571cc64fe2ac1bda9103ec70fdf6743ea01c702f4d9fbc7ef157",
+            "bytes": 1661
+          }
+        },
+        "signature": "#b-1",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U11111111111111111111111111111111"
+        ]
+      },
+      "sha256": {
+        ".PDS": "90dd1cb1a749adf72bb7aba758e93acc888e24fee50112b34d48c5020a18656e",
+        ".JED": "b31bfdc9745a806dfdf663b57ddde5951f3e48f722288d40fefdb54a5b48791c"
+      }
+    },
+    {
+      "name": "EMPTY",
+      "signature": "#h",
+      "original_run": {
+        "example": "EMPTY.PDS",
+        "directory": "build/signature-edge-original/empty",
+        "source_sha256": "42dc8761650d71c546a80e5e5a1b91625a268b7379335ae08abf6731850f56de",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/EMPTY.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "EMPTY.PDS",
+          "RUN_LOG": "EMPTY.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "84f78755493e7f2fe6e034bb1893368e96cc192a0f20b70864517e8872912f35",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-edge-original/empty/dosbox.conf",
+          "-defaultdir",
+          "build/signature-edge-original/empty",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.669,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "EMPTY.BSD": {
+            "sha256": "14ad0d9f1c3173632b4bfb062dbb1dca6a7d549facb1c506f80a32c5e9897c08",
+            "bytes": 19248
+          },
+          "EMPTY.DBG": {
+            "sha256": "0cc2e1940620da2c65e925fef3089b6e5a1d110509f5b5bf0a9ac18a04732e79",
+            "bytes": 879
+          },
+          "EMPTY.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "EMPTY.JED": {
+            "sha256": "3805174682a5a6a52f866f6a50c63ea93e7c5daec8c0d24d1e59d6aa471916f6",
+            "bytes": 52977
+          },
+          "EMPTY.LOG": {
+            "sha256": "f9522d71d6e1e38f31b6fc7ac8087be59ddd22c0559aef50e4e0cfdc6323919c",
+            "bytes": 3642
+          },
+          "EMPTY.MXL": {
+            "sha256": "84f78755493e7f2fe6e034bb1893368e96cc192a0f20b70864517e8872912f35",
+            "bytes": 1289
+          },
+          "EMPTY.PDS": {
+            "sha256": "42dc8761650d71c546a80e5e5a1b91625a268b7379335ae08abf6731850f56de",
+            "bytes": 66
+          },
+          "EMPTY.PLA": {
+            "sha256": "84c26243447add524b2a1e837cf32b00f3f60a0dc12a804a004b9d14d32e615c",
+            "bytes": 617
+          },
+          "EMPTY.PLC": {
+            "sha256": "9dbd3a05a1d004b42bcb8a1e9754e278d13449093e99018994cb60c50236ae49",
+            "bytes": 310
+          },
+          "EMPTY.PRD": {
+            "sha256": "6229c83a8c3555e85b963143eb575518226ed357e2b601e7d757687d4e8e7295",
+            "bytes": 21892
+          },
+          "EMPTY.RPT": {
+            "sha256": "c20fef021ea6f366cf7508b4ea8701a8f02809aafaee1795a170874c34f4a7aa",
+            "bytes": 9548
+          },
+          "EMPTY.TAL": {
+            "sha256": "bf6e7c97abe8bee85a460c6742b5bfaf20aa97c634508fc393429c1142d14d8e",
+            "bytes": 1413
+          },
+          "EMPTY.TRE": {
+            "sha256": "f7fd80479b55de86f5ae6deb70674178d879cef7056d712c9fb1b918d71f6dea",
+            "bytes": 1660
+          }
+        },
+        "signature": "#h",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00100000001000000010001101101000"
+        ]
+      },
+      "sha256": {
+        ".PDS": "42dc8761650d71c546a80e5e5a1b91625a268b7379335ae08abf6731850f56de",
+        ".JED": "3805174682a5a6a52f866f6a50c63ea93e7c5daec8c0d24d1e59d6aa471916f6"
+      }
+    },
+    {
+      "name": "DNEG",
+      "signature": "-1234567890",
+      "original_run": {
+        "example": "DNEG.PDS",
+        "directory": "build/signature-edge-original/dneg",
+        "source_sha256": "03ec48cdfbfa225508ad75c3e949dafce36febe434f9e6c9695676b72eeeb988",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/DNEG.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "DNEG.PDS",
+          "RUN_LOG": "DNEG.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "0985eadc24382ef06aafb55e3fa3e75f84b59e8e7525db097d37525b52260667",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-edge-original/dneg/dosbox.conf",
+          "-defaultdir",
+          "build/signature-edge-original/dneg",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.673,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "DNEG.BSD": {
+            "sha256": "70155b741b04ae68209ecec2494b8670a90d65eafd294df0db3661d64ff370e2",
+            "bytes": 19248
+          },
+          "DNEG.DBG": {
+            "sha256": "536dbb41512a46fb5ab32f4f3c776cbbee63d782b0b424dc1331d8cfbd68d018",
+            "bytes": 870
+          },
+          "DNEG.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "DNEG.JED": {
+            "sha256": "41f7827f2c106f3a713180915bd1c2f3ddced37e1f1847c93f621f68e6899880",
+            "bytes": 52977
+          },
+          "DNEG.LOG": {
+            "sha256": "ae488575085e2ac348fa76ed1417da387988a9e0ce03f5958d8a064154d432ca",
+            "bytes": 3714
+          },
+          "DNEG.MXL": {
+            "sha256": "0985eadc24382ef06aafb55e3fa3e75f84b59e8e7525db097d37525b52260667",
+            "bytes": 1287
+          },
+          "DNEG.PDS": {
+            "sha256": "03ec48cdfbfa225508ad75c3e949dafce36febe434f9e6c9695676b72eeeb988",
+            "bytes": 75
+          },
+          "DNEG.PLA": {
+            "sha256": "33c480a0fc172f578250926e8767a341407c14999d4c39d19371ff499081a843",
+            "bytes": 624
+          },
+          "DNEG.PLC": {
+            "sha256": "11de0c574c6e008669279a08e694801da8a3f574f82ffb931e18b0f72a10a3c4",
+            "bytes": 309
+          },
+          "DNEG.PRD": {
+            "sha256": "eed74a643a8ea909bad830a4aec317ffd12ca8ef297e8380f4ee6014327b62f2",
+            "bytes": 21891
+          },
+          "DNEG.RPT": {
+            "sha256": "c977d35b38757142afc3f9755703bf140ccf38dd65223aefe6da2b9dc2b48cf2",
+            "bytes": 9545
+          },
+          "DNEG.TAL": {
+            "sha256": "696c7ae6908c1eaedb88367212e10c9aaec52300414fb5858a79ec913d026176",
+            "bytes": 1410
+          },
+          "DNEG.TRE": {
+            "sha256": "5364ca86a250bef7e354eb0216362ab885de76872695fc909209f937a9b5dc65",
+            "bytes": 1668
+          }
+        },
+        "signature": "-1234567890",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U11111111010000111001111010110010"
+        ]
+      },
+      "sha256": {
+        ".PDS": "03ec48cdfbfa225508ad75c3e949dafce36febe434f9e6c9695676b72eeeb988",
+        ".JED": "41f7827f2c106f3a713180915bd1c2f3ddced37e1f1847c93f621f68e6899880"
+      }
+    },
+    {
+      "name": "ZEROS",
+      "signature": "000000001234",
+      "original_run": {
+        "example": "ZEROS.PDS",
+        "directory": "build/signature-edge-original/zeros",
+        "source_sha256": "d942094c302c1d4a86f5fb087932b5c196009be72c0036db649ceeba13ae39c4",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/ZEROS.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "ZEROS.PDS",
+          "RUN_LOG": "ZEROS.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "eadbf69e21db518cd408dd2acb2f4b03dfb37c56af22331396a4efba7c7a0262",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-edge-original/zeros/dosbox.conf",
+          "-defaultdir",
+          "build/signature-edge-original/zeros",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.68,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "ZEROS.BSD": {
+            "sha256": "8cff7fbb28b7aad4d093d4befe10fbecbb261a7997ff9cc6337a2d809860d3db",
+            "bytes": 19248
+          },
+          "ZEROS.DBG": {
+            "sha256": "daf81632556fbe328b25c71708e6f5eebb8fe8b209630427090df9c6f324dd07",
+            "bytes": 879
+          },
+          "ZEROS.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "ZEROS.JED": {
+            "sha256": "0b5a1721509e73a31a8d151d437223d44ceb94a2e5299a64b3fce71380419409",
+            "bytes": 52977
+          },
+          "ZEROS.LOG": {
+            "sha256": "941a5f53b0e7db83e107d0f9e53964e66c7ba210c6f80d48b02fece5b67e309b",
+            "bytes": 3727
+          },
+          "ZEROS.MXL": {
+            "sha256": "eadbf69e21db518cd408dd2acb2f4b03dfb37c56af22331396a4efba7c7a0262",
+            "bytes": 1289
+          },
+          "ZEROS.PDS": {
+            "sha256": "d942094c302c1d4a86f5fb087932b5c196009be72c0036db649ceeba13ae39c4",
+            "bytes": 76
+          },
+          "ZEROS.PLA": {
+            "sha256": "e045df7d21bd32da5e0ada6987c16e73136f81f4016a67ecb960e3fc5473ae07",
+            "bytes": 627
+          },
+          "ZEROS.PLC": {
+            "sha256": "ab6d23ec95dd5113edb65456eb2c970a8ef5849b3bd82c6792cf79d1bcf38515",
+            "bytes": 310
+          },
+          "ZEROS.PRD": {
+            "sha256": "c60b2f07b85c4035d0b7ec3de2441e3e26a6a29b3af3e148a94ade29eb3404d6",
+            "bytes": 21892
+          },
+          "ZEROS.RPT": {
+            "sha256": "0e5c467d0a6a855581616d80587fc0d85c974765c0b561ba85ae5a99202431b6",
+            "bytes": 9548
+          },
+          "ZEROS.TAL": {
+            "sha256": "b8630ed12d464cf1a7978cbbb566885d16b5ab5744fc92229b04a173002cb8e0",
+            "bytes": 1413
+          },
+          "ZEROS.TRE": {
+            "sha256": "20748b83f6763e76abd481d75701232cef2a79c8e224998cb3c33414c7d12db4",
+            "bytes": 1670
+          }
+        },
+        "signature": "000000001234",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00000000000000000000000000000001"
+        ]
+      },
+      "sha256": {
+        ".PDS": "d942094c302c1d4a86f5fb087932b5c196009be72c0036db649ceeba13ae39c4",
+        ".JED": "0b5a1721509e73a31a8d151d437223d44ceb94a2e5299a64b3fce71380419409"
+      }
+    },
+    {
+      "name": "ODD",
+      "signature": "0x123",
+      "original_run": {
+        "example": "ODD.PDS",
+        "directory": "build/signature-edge-original/odd",
+        "source_sha256": "56e1f2cfc1c1e1ff83fea3640d65a479115748f707aa4fd8dcf01c49829e4520",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/ODD.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "ODD.PDS",
+          "RUN_LOG": "ODD.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "162fe526476cd8e217a47fe255f0e8b1cc0a0d37c82ada8652037a836f36f8dd",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-edge-original/odd/dosbox.conf",
+          "-defaultdir",
+          "build/signature-edge-original/odd",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.68,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "ODD.BSD": {
+            "sha256": "43bc9ea29c7bfe4fab1629f71f1dfb1c3a6ef91d4b390d79c1fb4c595fd486ca",
+            "bytes": 19248
+          },
+          "ODD.DBG": {
+            "sha256": "e9e0be8026bf46866b2bb33907741ed51dbe861cba8ed5ec1d12c6901107af1f",
+            "bytes": 861
+          },
+          "ODD.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "ODD.JED": {
+            "sha256": "d51dd4508b05559fa826f8de0f67531d6728302b07c499dce9c23fa643685722",
+            "bytes": 52977
+          },
+          "ODD.LOG": {
+            "sha256": "d001ff063325d8034170b11b68b85c324de8c0913a43876fe2556b809718f0e6",
+            "bytes": 3691
+          },
+          "ODD.MXL": {
+            "sha256": "162fe526476cd8e217a47fe255f0e8b1cc0a0d37c82ada8652037a836f36f8dd",
+            "bytes": 1285
+          },
+          "ODD.PDS": {
+            "sha256": "56e1f2cfc1c1e1ff83fea3640d65a479115748f707aa4fd8dcf01c49829e4520",
+            "bytes": 69
+          },
+          "ODD.PLA": {
+            "sha256": "cd6efffd3e0a8c53fb713f72a0350f85963d4a54dd5431895100d3d3b83e0e5c",
+            "bytes": 616
+          },
+          "ODD.PLC": {
+            "sha256": "176bd6a8792dc1c5b0f30118fe91e280a26569915e94e9a260a283530f5d94dc",
+            "bytes": 308
+          },
+          "ODD.PRD": {
+            "sha256": "f1eb6644c261d95768050cfe5917dcb7d526d8aeaaf61622500c8fffdab2b1af",
+            "bytes": 21890
+          },
+          "ODD.RPT": {
+            "sha256": "fb406ce6b328ae6b65d407c01f4d1fccbdf892b17afa1bbc8a9486baea7af09b",
+            "bytes": 9542
+          },
+          "ODD.TAL": {
+            "sha256": "a706adf5e0fa8fdf088dba8371d4d214b6b35383958bdcbdad7b9e0c00bdb7a2",
+            "bytes": 1407
+          },
+          "ODD.TRE": {
+            "sha256": "4d95a1679574d1a12bd97906bc6dfbed40358ad9d91b40fb2cb9aee088212bed",
+            "bytes": 1661
+          }
+        },
+        "signature": "0x123",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00110000011110000011000100110010"
+        ]
+      },
+      "sha256": {
+        ".PDS": "56e1f2cfc1c1e1ff83fea3640d65a479115748f707aa4fd8dcf01c49829e4520",
+        ".JED": "d51dd4508b05559fa826f8de0f67531d6728302b07c499dce9c23fa643685722"
+      }
+    },
+    {
+      "name": "HDIG",
+      "signature": "#HDEADBEEF",
+      "original_run": {
+        "example": "HDIG.PDS",
+        "directory": "build/signature-edge-original/hdig",
+        "source_sha256": "3c39204840f470780d4e3007b6cde12a27452662fbe2d8203b5808c611dc1c26",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/HDIG.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "HDIG.PDS",
+          "RUN_LOG": "HDIG.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "c880877565ee607f5726af87b88e626559b5402137770133652ee78bb38fc7c7",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-edge-original/hdig/dosbox.conf",
+          "-defaultdir",
+          "build/signature-edge-original/hdig",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.669,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "HDIG.BSD": {
+            "sha256": "09d6f906a3e1c6eb71477d69448dea16fef53e0af15bd1d46f6bdf744e623552",
+            "bytes": 19248
+          },
+          "HDIG.DBG": {
+            "sha256": "452dec6beaa13a9fd4b65dc396b6cd3fb40e800e8746449f900df698a246a851",
+            "bytes": 870
+          },
+          "HDIG.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "HDIG.JED": {
+            "sha256": "dc82e6cc950bd26548594c87188263331b3eaa35c13278028ac60c25d72a5f3c",
+            "bytes": 52977
+          },
+          "HDIG.LOG": {
+            "sha256": "406cf0097d0c7343c66f5f5ebe5af499a9db44218a0acd8226f504bb20d71754",
+            "bytes": 3639
+          },
+          "HDIG.MXL": {
+            "sha256": "c880877565ee607f5726af87b88e626559b5402137770133652ee78bb38fc7c7",
+            "bytes": 1287
+          },
+          "HDIG.PDS": {
+            "sha256": "3c39204840f470780d4e3007b6cde12a27452662fbe2d8203b5808c611dc1c26",
+            "bytes": 74
+          },
+          "HDIG.PLA": {
+            "sha256": "8e9a725c425a9cc7b5d13420f42f37d280e9caf0309e81d54aeda2b11ebf6ee6",
+            "bytes": 623
+          },
+          "HDIG.PLC": {
+            "sha256": "a28c35fcc5898fac6fcfeb7ad9ecd10f617b334b9231d22c345ab3ebb7521ecc",
+            "bytes": 309
+          },
+          "HDIG.PRD": {
+            "sha256": "ef336693ac084737d0c7a50f4a3b0b51ec519ad3876d900d5a514cee1fa85ebd",
+            "bytes": 21891
+          },
+          "HDIG.RPT": {
+            "sha256": "dae25d1e6329a7082de3b149810933068cd3ca1a3849db69baf15fe1b543ca60",
+            "bytes": 9545
+          },
+          "HDIG.TAL": {
+            "sha256": "9d40531ae54d64be7056e82992f11eca338e94b9491028822ffe11e9804814af",
+            "bytes": 1410
+          },
+          "HDIG.TRE": {
+            "sha256": "e5f212cc34de2a84ddd08e65e5ee34e30ff44c77901a823d741e91eab8a18003",
+            "bytes": 1667
+          }
+        },
+        "signature": "#HDEADBEEF",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U11011110101011011011111011101111"
+        ]
+      },
+      "sha256": {
+        ".PDS": "3c39204840f470780d4e3007b6cde12a27452662fbe2d8203b5808c611dc1c26",
+        ".JED": "dc82e6cc950bd26548594c87188263331b3eaa35c13278028ac60c25d72a5f3c"
+      }
+    },
+    {
+      "name": "DECIMAL",
+      "signature": "#d1234567890",
+      "original_run": {
+        "example": "DECIMAL.PDS",
+        "directory": "build/signature-edge-original/decimal",
+        "source_sha256": "ac230e7b39ae46ce82c74b650e5778c180843a435d5eac0f8af41a482b15a90e",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/DECIMAL.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "DECIMAL.PDS",
+          "RUN_LOG": "DECIMAL.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "2da03ddcd705e9b0c323dcb6f1e60732cea7e358137940c83718b76738b506ea",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-edge-original/decimal/dosbox.conf",
+          "-defaultdir",
+          "build/signature-edge-original/decimal",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.662,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "DECIMAL.BSD": {
+            "sha256": "f4c4137ab0b930c571a3af6a5e58af3d4706aa38b362d0e8e3b6e0ef8e6321cc",
+            "bytes": 19248
+          },
+          "DECIMAL.DBG": {
+            "sha256": "7097709ddce443d1a92bca0f72a178afb36a9a77a489cade372a485f56ec7370",
+            "bytes": 897
+          },
+          "DECIMAL.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "DECIMAL.JED": {
+            "sha256": "cd702ddc75bf962addb49e2725b020d45c0cf8416f30458173c79a2fa295a8fd",
+            "bytes": 52977
+          },
+          "DECIMAL.LOG": {
+            "sha256": "9426301c1fff5051e98b42e70f64c1f6708f2a1dd0382adf6a8f369406f41c4c",
+            "bytes": 3749
+          },
+          "DECIMAL.MXL": {
+            "sha256": "2da03ddcd705e9b0c323dcb6f1e60732cea7e358137940c83718b76738b506ea",
+            "bytes": 1293
+          },
+          "DECIMAL.PDS": {
+            "sha256": "ac230e7b39ae46ce82c74b650e5778c180843a435d5eac0f8af41a482b15a90e",
+            "bytes": 76
+          },
+          "DECIMAL.PLA": {
+            "sha256": "d3f2b858ab1cc992a1dbb854953b2be729e697299f1bc6fae3fd254198844625",
+            "bytes": 631
+          },
+          "DECIMAL.PLC": {
+            "sha256": "53f25fdf501472920e90c623a72f211073e7999cc3f647a8042c65a7306d5ed6",
+            "bytes": 312
+          },
+          "DECIMAL.PRD": {
+            "sha256": "354a003c0a2145c7a8d21fa4f88f104dba432c4a794b98f4e58896ca774dea1d",
+            "bytes": 21894
+          },
+          "DECIMAL.RPT": {
+            "sha256": "beb468634102a9a73d7e421993e1a16b14ca4c7dfbab3a966cfa0d5bd4b094c3",
+            "bytes": 9554
+          },
+          "DECIMAL.TAL": {
+            "sha256": "719b2df5071eaf61935204f986351e60ee5245efc33f87092cb752cca728c4fd",
+            "bytes": 1419
+          },
+          "DECIMAL.TRE": {
+            "sha256": "474fa04fc14038d233b727a36883bafeaf64fc85760d3a010870b5372da129e7",
+            "bytes": 1672
+          }
+        },
+        "signature": "#d1234567890",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00000111010110111100110100010101"
+        ]
+      },
+      "sha256": {
+        ".PDS": "ac230e7b39ae46ce82c74b650e5778c180843a435d5eac0f8af41a482b15a90e",
+        ".JED": "cd702ddc75bf962addb49e2725b020d45c0cf8416f30458173c79a2fa295a8fd"
+      }
+    },
+    {
+      "name": "QUOTES",
+      "signature": "'ab'",
+      "original_run": {
+        "example": "QUOTES.PDS",
+        "directory": "build/signature-edge-original/quotes",
+        "source_sha256": "7982de93a16334feac61b4090c4669ea9cc22ed3c27b19db6cec20bb5c2e03ae",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/QUOTES.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "QUOTES.PDS",
+          "RUN_LOG": "QUOTES.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "d13e8e02b56dcc7473a9aebb6c9cd3cfd5697fb7863794f19704e1435fcab523",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-edge-original/quotes/dosbox.conf",
+          "-defaultdir",
+          "build/signature-edge-original/quotes",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.662,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "QUOTES.BSD": {
+            "sha256": "f26f8cb2fcad2c0ada803b8830c58c709b48cd3b65563e8c9107092bfaa94d2c",
+            "bytes": 19248
+          },
+          "QUOTES.DBG": {
+            "sha256": "3359903ae95e6c734ad6afc54e8c92b3f9d1dee986da707f855cf29bde9f76e2",
+            "bytes": 888
+          },
+          "QUOTES.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "QUOTES.JED": {
+            "sha256": "8ab189d997dfe35e15332e026da1003295b6e0487fe996e9f44ae20b78ef3bb0",
+            "bytes": 52977
+          },
+          "QUOTES.LOG": {
+            "sha256": "96012d1e20d46d4578517a651d1ac74b31ea2232e3e4d6e4561b2a07ef84bf7f",
+            "bytes": 3655
+          },
+          "QUOTES.MXL": {
+            "sha256": "d13e8e02b56dcc7473a9aebb6c9cd3cfd5697fb7863794f19704e1435fcab523",
+            "bytes": 1291
+          },
+          "QUOTES.PDS": {
+            "sha256": "7982de93a16334feac61b4090c4669ea9cc22ed3c27b19db6cec20bb5c2e03ae",
+            "bytes": 68
+          },
+          "QUOTES.PLA": {
+            "sha256": "6702a19a270fce70406804ed4b9b922702512172045582012391bb0e7b3d6f20",
+            "bytes": 621
+          },
+          "QUOTES.PLC": {
+            "sha256": "8f9ae0221ab8c4c8a65a9c83e9382b46b18f649b5092a046072a81247408a7d0",
+            "bytes": 311
+          },
+          "QUOTES.PRD": {
+            "sha256": "2c442c07ab191a16b3d9a2d2957890c2140c8288a218e206f5dc8521a55fd461",
+            "bytes": 21893
+          },
+          "QUOTES.RPT": {
+            "sha256": "ca69716f614405038012d31d256154216622dfd0aa3760a7e652e4515ae8a9f4",
+            "bytes": 9551
+          },
+          "QUOTES.TAL": {
+            "sha256": "928d80cb59fe04e8de9757d325e26f5b3cc6351dc19db0374bfa267131cc944f",
+            "bytes": 1416
+          },
+          "QUOTES.TRE": {
+            "sha256": "9d59ff8148fe126babca5963f4592ca5ff3721cc31f752e316e3d50a8a093472",
+            "bytes": 1663
+          }
+        },
+        "signature": "'ab'",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00100111011000010110001000100111"
+        ]
+      },
+      "sha256": {
+        ".PDS": "7982de93a16334feac61b4090c4669ea9cc22ed3c27b19db6cec20bb5c2e03ae",
+        ".JED": "8ab189d997dfe35e15332e026da1003295b6e0487fe996e9f44ae20b78ef3bb0"
+      }
+    },
+    {
+      "name": "DOT",
+      "signature": "1.5",
+      "original_run": {
+        "example": "DOT.PDS",
+        "directory": "build/signature-edge-original/dot",
+        "source_sha256": "8603486a3785dc6c9b98ca1ba17c5fb7ee0b7b5e6f643c69cc9692b077f881e0",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/DOT.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "DOT.PDS",
+          "RUN_LOG": "DOT.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "4be364f159f2d86fe13d2cd653a68d1dd5858a17039d1d54f3ed974642a10fe0",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-edge-original/dot/dosbox.conf",
+          "-defaultdir",
+          "build/signature-edge-original/dot",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.662,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "DOT.BSD": {
+            "sha256": "fadd75084fd305366e067503015b58aa0aa1d32fab04dd2e6f91d75b6cdaa821",
+            "bytes": 19248
+          },
+          "DOT.DBG": {
+            "sha256": "7bac61a2b71f873b64c9fa5dfbdc5bb71b0cfdc0fb467bf5f907a224458a3f6b",
+            "bytes": 861
+          },
+          "DOT.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "DOT.JED": {
+            "sha256": "c2ddc9c2c9415784e0ca5d14763591db67bdb9ccbb5adb862b562d2cbd2a34d6",
+            "bytes": 52977
+          },
+          "DOT.LOG": {
+            "sha256": "31bf31c8b446b666b79b93083fb9f615c8827bbaf9176068ec8de54f83ed61c4",
+            "bytes": 3621
+          },
+          "DOT.MXL": {
+            "sha256": "4be364f159f2d86fe13d2cd653a68d1dd5858a17039d1d54f3ed974642a10fe0",
+            "bytes": 1285
+          },
+          "DOT.PDS": {
+            "sha256": "8603486a3785dc6c9b98ca1ba17c5fb7ee0b7b5e6f643c69cc9692b077f881e0",
+            "bytes": 67
+          },
+          "DOT.PLA": {
+            "sha256": "816b5a64d8e365d17d562870832ba3fae1820aaf5e07b80d354f59ba19e24e24",
+            "bytes": 614
+          },
+          "DOT.PLC": {
+            "sha256": "0dfa50809fd929e2c8fa19ce8603fe14719d03f6ec730a7e434395c2f34508ee",
+            "bytes": 308
+          },
+          "DOT.PRD": {
+            "sha256": "f5c6cf2f1a10346570701f444de03f566004c4acd86f16172eda5c431888afce",
+            "bytes": 21890
+          },
+          "DOT.RPT": {
+            "sha256": "c2c631a5346d3c5f59a7f9005d00a7ca17bf61fdb978d24514911572fbcdb86d",
+            "bytes": 9542
+          },
+          "DOT.TAL": {
+            "sha256": "72e74ea3797eb56f1c6f044c997a15acc3b01622a0f63410bbfa3cdb392772ba",
+            "bytes": 1407
+          },
+          "DOT.TRE": {
+            "sha256": "9c25fabc62ec82c5e38cb1cbd62ad0a7678d5b02b48469de22b3b218d56d1244",
+            "bytes": 1659
+          }
+        },
+        "signature": "1.5",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00100000001100010010111000110101"
+        ]
+      },
+      "sha256": {
+        ".PDS": "8603486a3785dc6c9b98ca1ba17c5fb7ee0b7b5e6f643c69cc9692b077f881e0",
+        ".JED": "c2ddc9c2c9415784e0ca5d14763591db67bdb9ccbb5adb862b562d2cbd2a34d6"
+      }
+    },
+    {
+      "name": "HXTAIL",
+      "signature": "#h12345678Z",
+      "original_run": {
+        "example": "HXTAIL.PDS",
+        "directory": "build/signature-tail-original/hxtail",
+        "source_sha256": "53c7d721665ed39a0d87c165036242b7ecd02cd5da6b046d9e25d183a685e8a2",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/HXTAIL.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "HXTAIL.PDS",
+          "RUN_LOG": "HXTAIL.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "d8ac2f37e9299ab3a76efde243d9003292a001cba71e708f8e018bd713edc6b5",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-tail-original/hxtail/dosbox.conf",
+          "-defaultdir",
+          "build/signature-tail-original/hxtail",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.738,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "HXTAIL.BSD": {
+            "sha256": "457fd0be236262475a03afd45ba7d0b86b1d35bde7bb42dcbb4278128277801b",
+            "bytes": 19248
+          },
+          "HXTAIL.DBG": {
+            "sha256": "1fa7943d2ea801a7cb819c89718b05c1cbf0714f790fe83ae1dd52d182ea4f96",
+            "bytes": 888
+          },
+          "HXTAIL.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "HXTAIL.JED": {
+            "sha256": "7d4771a951744d76fc51a4a51b7eec56531483440423a2fc72ed7aacfa5de4f3",
+            "bytes": 52977
+          },
+          "HXTAIL.LOG": {
+            "sha256": "365e0c74479e804a71964c48f798f4419cd89976ccd2f7047dba4889c4b5e307",
+            "bytes": 3736
+          },
+          "HXTAIL.MXL": {
+            "sha256": "d8ac2f37e9299ab3a76efde243d9003292a001cba71e708f8e018bd713edc6b5",
+            "bytes": 1291
+          },
+          "HXTAIL.PDS": {
+            "sha256": "53c7d721665ed39a0d87c165036242b7ecd02cd5da6b046d9e25d183a685e8a2",
+            "bytes": 75
+          },
+          "HXTAIL.PLA": {
+            "sha256": "559da13cea29ad22acdbe2d94a5c06b974cc4555986432ac01bbcb3517370cc0",
+            "bytes": 628
+          },
+          "HXTAIL.PLC": {
+            "sha256": "2297ca017392fa2b78a1d50ebafc453319b74021dbbf78d6e971b4b3a1e03c32",
+            "bytes": 311
+          },
+          "HXTAIL.PRD": {
+            "sha256": "47cf7c398dfb38b86d417741339fa238549446c0b94ef85880eeebd9d1ea658e",
+            "bytes": 21893
+          },
+          "HXTAIL.RPT": {
+            "sha256": "457abf7d4c3926d33a75f4bc0c7db8cb2c817bbd269927ebd5af05825d2024bb",
+            "bytes": 9551
+          },
+          "HXTAIL.TAL": {
+            "sha256": "592b50c87dc909ef0cef415cde44f561a8f2d18f950b29f2c6e7f64619dcd7f7",
+            "bytes": 1416
+          },
+          "HXTAIL.TRE": {
+            "sha256": "62eee1b6e105a797916c6784cabd38929b4d8be5cc3446336325cc6c139d1c55",
+            "bytes": 1670
+          }
+        },
+        "signature": "#h12345678Z",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00010010001101000101011001111000"
+        ]
+      },
+      "sha256": {
+        ".PDS": "53c7d721665ed39a0d87c165036242b7ecd02cd5da6b046d9e25d183a685e8a2",
+        ".JED": "7d4771a951744d76fc51a4a51b7eec56531483440423a2fc72ed7aacfa5de4f3"
+      }
+    },
+    {
+      "name": "DTAIL",
+      "signature": "123456789Z",
+      "original_run": {
+        "example": "DTAIL.PDS",
+        "directory": "build/signature-tail-original/dtail",
+        "source_sha256": "8019a8adcf8a3bb444a20b80e2fd6690bbcc9ed67520af9dc791e45fef8cb5f4",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/DTAIL.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "DTAIL.PDS",
+          "RUN_LOG": "DTAIL.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "1bd5461e7e99bf40479ad723d48807bd397ba2b52a817ad392262f5122b94441",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-tail-original/dtail/dosbox.conf",
+          "-defaultdir",
+          "build/signature-tail-original/dtail",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.737,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "DTAIL.BSD": {
+            "sha256": "f4c4137ab0b930c571a3af6a5e58af3d4706aa38b362d0e8e3b6e0ef8e6321cc",
+            "bytes": 19248
+          },
+          "DTAIL.DBG": {
+            "sha256": "c67292282bd716559a0ad13e387a3c85b14fdae19f6383026e2934f1e0af4c4b",
+            "bytes": 879
+          },
+          "DTAIL.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "DTAIL.JED": {
+            "sha256": "ac152724ee252bea61c44fad213a49758589339c1e1ad771088b112491de98c1",
+            "bytes": 52977
+          },
+          "DTAIL.LOG": {
+            "sha256": "65629e212154ad0b587170e05b11601634979db9ab226985497484d5e614eb02",
+            "bytes": 3723
+          },
+          "DTAIL.MXL": {
+            "sha256": "1bd5461e7e99bf40479ad723d48807bd397ba2b52a817ad392262f5122b94441",
+            "bytes": 1289
+          },
+          "DTAIL.PDS": {
+            "sha256": "8019a8adcf8a3bb444a20b80e2fd6690bbcc9ed67520af9dc791e45fef8cb5f4",
+            "bytes": 74
+          },
+          "DTAIL.PLA": {
+            "sha256": "f1dd2459c79bb01ec57a9139661b79d766cb29be7b5c2cba07c4e0018270b3c7",
+            "bytes": 625
+          },
+          "DTAIL.PLC": {
+            "sha256": "4bf084908992acce4bc50249fd5f1088f798955b457556ca913202dbc8ff02d6",
+            "bytes": 310
+          },
+          "DTAIL.PRD": {
+            "sha256": "723410744318e7df3fd2fc1a1c937efa4bdbe590d6f25c42900703c0a3335b54",
+            "bytes": 21892
+          },
+          "DTAIL.RPT": {
+            "sha256": "c92b89d6e2ac8f21f6e587afdaf3a0711afec06d95776a40844b1e4f263c7185",
+            "bytes": 9548
+          },
+          "DTAIL.TAL": {
+            "sha256": "f191b1e7ebb7976ad41475353a9563481ee895978c51a709c97efd0285aa17cd",
+            "bytes": 1413
+          },
+          "DTAIL.TRE": {
+            "sha256": "991daec0dddc7928f11df121471c9400c986b557c6b0d3889dfdbd49bbafac3d",
+            "bytes": 1668
+          }
+        },
+        "signature": "123456789Z",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00000111010110111100110100010101"
+        ]
+      },
+      "sha256": {
+        ".PDS": "8019a8adcf8a3bb444a20b80e2fd6690bbcc9ed67520af9dc791e45fef8cb5f4",
+        ".JED": "ac152724ee252bea61c44fad213a49758589339c1e1ad771088b112491de98c1"
+      }
+    },
+    {
+      "name": "BT",
+      "signature": " #b11111111111111111111111111111111Z",
+      "original_run": {
+        "example": "BT.PDS",
+        "directory": "build/signature-tail-original/bt",
+        "source_sha256": "2832bafa62d8483a7297fd7906943899713a25c57c90d481c62286f0f4271571",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/BT.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "BT.PDS",
+          "RUN_LOG": "BT.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "73fbac5afce6c9f7f6d26cd70bdf70512fb40950690db62b63ccaef0ed6bd742",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-tail-original/bt/dosbox.conf",
+          "-defaultdir",
+          "build/signature-tail-original/bt",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.659,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "BT.BSD": {
+            "sha256": "6f6738ad313d0a1158f177aeabae4ac2da39090bf4ad302cd6ff3406d57e9abd",
+            "bytes": 19248
+          },
+          "BT.DBG": {
+            "sha256": "8f48478f315dfd3e781738153e7cabd77406ea62f51b826a442c971f0534cb50",
+            "bytes": 852
+          },
+          "BT.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "BT.JED": {
+            "sha256": "04455eb87f2a2517797ad53215851c2d1676dcc4c6ff831b8face5a7efbc87d8",
+            "bytes": 52977
+          },
+          "BT.LOG": {
+            "sha256": "e85f4cc97880a0720ea10ed38d8f0c43407f8a55ce66f93f4781cf686c0174e3",
+            "bytes": 3758
+          },
+          "BT.MXL": {
+            "sha256": "73fbac5afce6c9f7f6d26cd70bdf70512fb40950690db62b63ccaef0ed6bd742",
+            "bytes": 1283
+          },
+          "BT.PDS": {
+            "sha256": "2832bafa62d8483a7297fd7906943899713a25c57c90d481c62286f0f4271571",
+            "bytes": 100
+          },
+          "BT.PLA": {
+            "sha256": "0705220285ea9e6e4bcc94668b866ef4b4fca34b447e6b5e57a80a3b9b3657a3",
+            "bytes": 644
+          },
+          "BT.PLC": {
+            "sha256": "09e58eee9e9e7f6154a63072b8786a3d2e6d5eb7067259eb6a6d5598ccf98b23",
+            "bytes": 307
+          },
+          "BT.PRD": {
+            "sha256": "c1c65dd4def63f3c5cf7cf376a88f5de24990070993264a476f7a6cd5d52656c",
+            "bytes": 21889
+          },
+          "BT.RPT": {
+            "sha256": "3886e23bece503494f4f1716e8b9755e9cec1855a20eddda45cdef62c1fac6d6",
+            "bytes": 9539
+          },
+          "BT.TAL": {
+            "sha256": "a94ff9c040254157c9b59d691accd4b97d9e837359f8a9bd2b0a0156f622f010",
+            "bytes": 1404
+          },
+          "BT.TRE": {
+            "sha256": "bd075d580763600299d6ca017d9d3ddbde729d3bd4e8f7539c045a4a005da888",
+            "bytes": 1690
+          }
+        },
+        "signature": " #b11111111111111111111111111111111Z",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U11111111111111111111111111111111"
+        ]
+      },
+      "sha256": {
+        ".PDS": "2832bafa62d8483a7297fd7906943899713a25c57c90d481c62286f0f4271571",
+        ".JED": "04455eb87f2a2517797ad53215851c2d1676dcc4c6ff831b8face5a7efbc87d8"
+      }
+    },
+    {
+      "name": "BEFORE",
+      "signature": "#h123Z56789",
+      "original_run": {
+        "example": "BEFORE.PDS",
+        "directory": "build/signature-tail-original/before",
+        "source_sha256": "38e100a328f4ed6937a788930b7dd755613f970a7d093c91f2ef0506b7a29ac0",
+        "original_settings_sha256": "77330cad51181d5ea50b2ee0c502f0c5a593602d31cd9804b1c66cffd2009fc9",
+        "settings_source": "EXAMPLES.ZIP/BEFORE.MXL",
+        "settings_overrides": {
+          "EXE_DIR": "C:\\EXE",
+          "WORK_DIR": "C:\\WORK",
+          "DESIGN_FILE": "BEFORE.PDS",
+          "RUN_LOG": "BEFORE.LOG",
+          "COMP_OPT": "N",
+          "SIM_OPT": "N",
+          "DESIGN_OPT": "N",
+          "BELL_OPT": "N",
+          "SILENT_OPT": "Y"
+        },
+        "effective_settings_sha256": "d0c6b7bd9a35c7379d23e0f1722345575da7f6b1c9787d378a52c39a24dfcfe4",
+        "command": [
+          "/opt/homebrew/bin/dosbox-x",
+          "-conf",
+          "build/signature-tail-original/before/dosbox.conf",
+          "-defaultdir",
+          "build/signature-tail-original/before",
+          "-fastlaunch",
+          "-nogui",
+          "-nomenu"
+        ],
+        "host_returncode": 0,
+        "elapsed_seconds": 2.659,
+        "dos_batch_completed": true,
+        "error_counts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fitting_successful": true,
+        "success": true,
+        "outputs": {
+          "BEFORE.BSD": {
+            "sha256": "b46bcc11232d8d8bf8ff94f0c87171e9e536e92251202e613dc6aac2eeb43b9f",
+            "bytes": 19248
+          },
+          "BEFORE.DBG": {
+            "sha256": "1401a07c3aad6970f8adf69263434b18689538232c0491a7a701ba7f3b893108",
+            "bytes": 888
+          },
+          "BEFORE.GRP": {
+            "sha256": "8c17d5c16945b5fffdd74fd95cac54d2467b47bd2991297c24b0712faab26ae8",
+            "bytes": 21
+          },
+          "BEFORE.JED": {
+            "sha256": "550a2cea794795f35e36cb0ba26e553cef5670feca29d2401e10484974a88a4b",
+            "bytes": 52977
+          },
+          "BEFORE.LOG": {
+            "sha256": "6e367701ad1672d6d52b94a641927465fc8b4767190167451f1f19dbdb02aed1",
+            "bytes": 3736
+          },
+          "BEFORE.MXL": {
+            "sha256": "d0c6b7bd9a35c7379d23e0f1722345575da7f6b1c9787d378a52c39a24dfcfe4",
+            "bytes": 1291
+          },
+          "BEFORE.PDS": {
+            "sha256": "38e100a328f4ed6937a788930b7dd755613f970a7d093c91f2ef0506b7a29ac0",
+            "bytes": 75
+          },
+          "BEFORE.PLA": {
+            "sha256": "25afc03c77710cadded71e49f4df9d077cb196881b25c4764646be0734f3ba5b",
+            "bytes": 628
+          },
+          "BEFORE.PLC": {
+            "sha256": "73fb61c5bf49f4bd9db063c3d6a7a43d8592347bd113dc04c0641574ca6c3bbc",
+            "bytes": 311
+          },
+          "BEFORE.PRD": {
+            "sha256": "d7988bf4e679ccb1e3b666cec84ff8782054e120313d8e2b76bf7683a7d71f50",
+            "bytes": 21893
+          },
+          "BEFORE.RPT": {
+            "sha256": "e6b6db9a00bfe93c1a0a6193f7ec7c2a9c8739cb15a9bf829c2655b12d04ee6d",
+            "bytes": 9551
+          },
+          "BEFORE.TAL": {
+            "sha256": "274da95f709e2845cabeb7fe224637df54c39167d40592c475f4d5796733bc00",
+            "bytes": 1416
+          },
+          "BEFORE.TRE": {
+            "sha256": "b54988bce1a595e7d671802fc97b978c9f607f9c3d56237f1d77aa6272a8d1e7",
+            "bytes": 1670
+          }
+        },
+        "signature": "#h123Z56789",
+        "auxiliary": [
+          "QP144",
+          "G0",
+          "U00100011011010000011000100110010"
+        ]
+      },
+      "sha256": {
+        ".PDS": "38e100a328f4ed6937a788930b7dd755613f970a7d093c91f2ef0506b7a29ac0",
+        ".JED": "550a2cea794795f35e36cb0ba26e553cef5670feca29d2401e10484974a88a4b"
+      }
+    }
+  ]
+}

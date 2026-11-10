@@ -1,0 +1,67 @@
+Bh3.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |;PALASM Design Description
+   2     |; pds2v test: pin assignment errors (check 1) and a register clocked from a
+   3     |; pin that is not a clock pin.
+   4     |; EXPECT-EXIT: 1
+   5     |; EXPECT: error: GNDPIN: pin 6 is a GND pin
+   6     |; EXPECT: error: VCCPIN: pin 38 is a VCC pin
+   7     |; EXPECT: error: NOPIN: pin 45 does not exist
+   8     |; EXPECT: error: pin 2 used twice (A and B)
+   9     |; EXPECT: error: IN3: pin 26 (I3) is a dedicated input and cannot be driven
+  10     |; EXPECT: error: X.CLKF = NOTCLK: registers can only be clocked by pins 5, 7, 27, 29
+  11     |; EXPECT: warning: OK_UNUSED (pin 13) is never used
+  12     |
+  13     |CHIP     BADPINS  MACH111
+  14     |PIN  12  GNDPIN
+  ERROR -----------^ (L14/C10)
+|> ERROR P106  Invalid signal name defined for pin position reserved for GND.
+
+  15     |PIN  44  VCCPIN
+  ERROR -----------^ (L15/C10)
+|> ERROR P105  Invalid signal name defined for pin position reserved for VCC.
+
+  16     |PIN  7   NOPIN
+  17     |PIN  8   A
+  18     |PIN  8   B
+  WARNING -----^ (L18/C6)
+|> WARNING P141  Duplicate signal statement; overriding previous statement.
+
+  19     |PIN  32  IN3   COMBINATORIAL
+  20     |PIN  2   X     REGISTERED
+  21     |PIN  10  NOTCLK
+  22     |PIN  19  OK_UNUSED
+  23     |PIN  3   USEPINS
+  24     |
+  25     |EQUATIONS
+  26     |IN3 = A
+  ERROR --------^ (L26/C7)
+|> ERROR P60  Undeclared signal name A
+
+  27     |X := A * B
+  ERROR -------^ (L27/C6)
+|> ERROR P60  Undeclared signal name A
+
+  28     |X.CLKF = NOTCLK
+  29     |USEPINS = GNDPIN * VCCPIN * NOPIN
+  ERROR ------------^ (L29/C11)
+|> ERROR P60  Undeclared signal name GNDPIN
+
+  ERROR ---------------------^ (L29/C20)
+|> ERROR P60  Undeclared signal name VCCPIN
+
+
+ %% MACHPAR %%    ERROR count:  6     WARNING count:  2
+
+ %% MACHPAR %%    File processing terminated.     File:  Bh3.pds

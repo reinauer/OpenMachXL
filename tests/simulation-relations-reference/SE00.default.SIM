@@ -1,0 +1,27 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Se00.pds
+Title  
+
+
+
+   1-V1 - SETF
+          /A  B  
+   2-V2 - SETF
+          /A  
+   3-V3 - SETF
+          A  
+   4-V4 - SETF
+          /A  
+   5-V5 - SETF
+          /A  
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Se00.HST
+Merged results (JEDEC) are in       ===> Se00.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 83289 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Se00.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0

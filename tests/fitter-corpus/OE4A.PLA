@@ -1,0 +1,30 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME Oe4a.pds
+#AMD TITLE 
+#AMD PATTERN 
+#AMD REVISION 
+#AMD AUTHOR 
+#AMD COMPANY 
+#AMD DATE 
+#AMD CHIP PROBE
+#AMD DEVICE MACH111
+#AMD JED_FILE Oe4a.jed
+#AMD SIGNATURE 
+#AMD PIN 11 GND:1 A:10 E:11 GND:12 F:13 VCC:22 GND:23 B:32 G:33 GND:34 H:35 
+#AMD PIN 1 VCC:44 
+#AMD PIN 4 P:0 Q:0 R:0 S:0 
+#AMD GROUP 5 A P Q R S 
+.type f
+.i 6
+.o 8
+.ilb A E F B G H
+.ob  P P.OE Q Q.OE R R.OE S S.OE
+.phase 11111111
+.p 6
+1----- 1~~~1~~~
+-1---- ~1~~~~~~
+---1-- ~~1~~~1~
+--1--- ~~~1~~~~
+----1- ~~~~~1~~
+-----1 ~~~~~~~1
+.e

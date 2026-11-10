@@ -1,0 +1,46 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME Compara.pds
+#AMD TITLE Fast Comparator-- Compares two ten bit busses.
+#AMD PATTERN 1
+#AMD REVISION 1
+#AMD AUTHOR J. ENGINEER
+#AMD COMPANY AMD
+#AMD DATE 4/26/94
+#AMD CHIP COMPARE
+#AMD DEVICE MACH435
+#AMD JED_FILE Compara.jed
+#AMD SIGNATURE 
+#AMD PIN 9 GND:1 VCC:2 GND:11 VCC:21 GND:22 GND:32 VCC:42 GND:43 VCC:44 
+#AMD PIN 5 GND:53 VCC:63 GND:64 GND:74 VCC:84 
+#AMD PIN 7 INX[0]:0 INX[1]:0 INX[2]:0 INX[3]:0 INX[4]:0 INX[5]:0 INX[6]:0 
+#AMD PIN 7 INX[7]:0 INX[8]:0 INX[9]:0 IN[0]:0 IN[1]:0 IN[2]:0 IN[3]:0 
+#AMD PIN 7 IN[4]:0 IN[5]:0 IN[6]:0 IN[7]:0 IN[8]:0 IN[9]:0 COMPOUT:0 
+.type f
+.i 20
+.o 1
+.ilb INX[0] INX[1] INX[2] INX[3] INX[4] INX[5] INX[6] INX[7] INX[8] INX[9]
+     IN[0] IN[1] IN[2] IN[3] IN[4] IN[5] IN[6] IN[7] IN[8] IN[9]
+.ob  COMPOUT
+.phase 1
+.p 20
+0---------1--------- 1
+1---------0--------- 1
+-0---------1-------- 1
+-1---------0-------- 1
+--0---------1------- 1
+--1---------0------- 1
+---0---------1------ 1
+---1---------0------ 1
+----0---------1----- 1
+----1---------0----- 1
+-----0---------1---- 1
+-----1---------0---- 1
+------0---------1--- 1
+------1---------0--- 1
+-------0---------1-- 1
+-------1---------0-- 1
+--------0---------1- 1
+--------1---------0- 1
+---------0---------1 1
+---------1---------0 1
+.e

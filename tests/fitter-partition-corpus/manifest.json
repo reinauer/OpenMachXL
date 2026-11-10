@@ -1,0 +1,57 @@
+{
+  "compiler_sha256": "770f34627c654c66dbb2fecaa40946615c51d83dbca87beae0382f9a733d5726",
+  "command": "MACHFITR <name>.PLA +r +s l=0 +G +C x=526341 -deb 1 -log ir.log",
+  "scope": "Exact partition-cluster membership, not native physical placement or end-to-end automatic compilation. EQN2 gives partition inputs; DEB1 gives output block lists after debug sorting.",
+  "cases": [
+    {
+      "name": "3COUNT_D",
+      "source_directory": "research/fitter/partition-debug-probes/3count_d/WORK",
+      "files": {
+        "3COUNT_D.PDS": "f8ad382a1d69cc1f3cc88ee317a37ffd470c64bbcf4ec2b465ed438d2dffd4b1",
+        "3COUNT_D.PLA": "89e09c4e3e1b337fd35599f7c7f0da9f8f91343e6dcad0b676150df5031b1046",
+        "EQN2.PLA": "0720c47a05b7f89c00116ace44b57fbed153dd76d8ae1ae9beb26133a3e92f98",
+        "DEB1.PLA": "4f143f5be8a476272084fc36ffe9e3ed2416753ee4073cff98f99199abfaa920"
+      }
+    },
+    {
+      "name": "DECODE",
+      "source_directory": "research/fitter/partition-debug-probes/decode/WORK",
+      "files": {
+        "DECODE.PDS": "2f4d2e91382c58f56f4d16569a357c3b1509bdae955f1674a639c8e50d37a278",
+        "DECODE.PLA": "69cd6f5d86c9c94b64f4bd9237b3ad2b9e5ec4208ff337099f54e5a9d95ea3cb",
+        "EQN2.PLA": "2f9b320acafd654423ce95c886837656f346ba6ef2f48317adb771a5ae6d488e",
+        "DEB1.PLA": "12e30fc1b3bf715b32ca85b1c5e88e4203975dd822c8dfabea974c5358dd9bba"
+      }
+    },
+    {
+      "name": "AUTO2",
+      "source_directory": "research/fitter/partition-small-probes/auto2/WORK",
+      "files": {
+        "AUTO2.PDS": "050f237f1dba82d2f7dda99065a09bd3041bef871c4be02c9d90fc6a01506953",
+        "AUTO2.PLA": "f62009069e5a2d6b169228127b8b670bf049e4365c5bb02118bdf1c5b0e5e7fd",
+        "EQN2.PLA": "a23d090def9258c73a88bab3fe9fe8c91a0a1d53e6737f67fa1a997998f3dccb",
+        "DEB1.PLA": "d9ae73c0dba805cfff106d20fff5bf8393e73dcbaa58714e37d484862180eb25"
+      }
+    },
+    {
+      "name": "AUTO3",
+      "source_directory": "research/fitter/partition-small-probes/auto3/WORK",
+      "files": {
+        "AUTO3.PDS": "a56308a979565f811bf155c4cc04acd91dba5af6a3034828882ec38782536c2c",
+        "AUTO3.PLA": "52253bff5b8492974cabd3f467294343b65e05eedd7e254f76d638da593d0fd1",
+        "EQN2.PLA": "505fcb4f970d7b667373a7c8d3710f5172defad6440cc29c06e57474fad2361a",
+        "DEB1.PLA": "91c02b0a8c3b144b69d2e89f66ab0287943288f79fad057dec30cdf87cc47b6d"
+      }
+    },
+    {
+      "name": "AUTO5",
+      "source_directory": "research/fitter/partition-small-probes/auto5/WORK",
+      "files": {
+        "AUTO5.PDS": "2a47091a545967bd9a9e768034435303547f1844d34e8e73c6fad4ba4a48eb77",
+        "AUTO5.PLA": "af1da1981f9d015d8081fedd5259ce0494a982c1f571054fbefdd2279ea6d43d",
+        "EQN2.PLA": "fc9a9b9586a6a3bc24bc8d299d32a214b1652be1e8a24cef734778c29f0ffa74",
+        "DEB1.PLA": "2a3d220dc7e6194a61e1af4431d3fa3e922c109c267a50fcea310fda54c76fe9"
+      }
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Mux.pds
+Title  MULTIPLEXER
+
+
+
+   1-V1 - TRACE_ON
+          DATA[7..0]  DATB[7..0]  DATC[7..0]  DATD[7..0]  
+          DATI[7..0]  DATF[7..0]  DATG[7..0]  DATH[7..0]  MUXOUT[7..0]  
+          SEL1  SEL2  SEL3  
+   1-V1 - SETF
+          /DATA[7]  DATA[6]  /DATA[5]  DATA[4]  /DATA[3]  
+          DATA[2]  /DATA[1]  DATA[0]  
+   2-V2 - SETF
+          /DATB[7]  DATB[6]  DATB[5]  /DATB[4]  /DATB[3]  
+          DATB[2]  DATB[1]  /DATB[0]  
+   3-V3 - SETF
+          /DATC[7]  DATC[6]  DATC[5]  DATC[4]  /DATC[3]  
+          DATC[2]  DATC[1]  DATC[0]  
+   4-V4 - SETF
+          DATD[7]  /DATD[6]  /DATD[5]  /DATD[4]  DATD[3]  
+          /DATD[2]  /DATD[1]  /DATD[0]  
+   5-V5 - SETF
+          DATI[7]  /DATI[6]  /DATI[5]  DATI[4]  DATI[3]  
+          /DATI[2]  /DATI[1]  DATI[0]  
+   6-V6 - SETF
+          DATF[7]  /DATF[6]  DATF[5]  /DATF[4]  DATF[3]  
+          /DATF[2]  DATF[1]  /DATF[0]  
+   7-V7 - SETF
+          DATG[7]  /DATG[6]  DATG[5]  DATG[4]  DATG[3]  
+          /DATG[2]  DATG[1]  DATG[0]  
+   8-V8 - SETF
+          DATH[7]  DATH[6]  /DATH[5]  /DATH[4]  DATH[3]  
+          DATH[2]  /DATH[1]  /DATH[0]  
+   9-V9 - SETF
+          /SEL1  /SEL2  /SEL3  
+  10-V9 - CHECK
+          /MUXOUT[7]  MUXOUT[6]  /MUXOUT[5]  MUXOUT[4]  
+          /MUXOUT[3]  MUXOUT[2]  /MUXOUT[1]  MUXOUT[0]  
+  10-V10 - SETF
+          /SEL1  /SEL2  SEL3  
+  11-V10 - CHECK
+          /MUXOUT[7]  MUXOUT[6]  MUXOUT[5]  /MUXOUT[4]  
+          /MUXOUT[3]  MUXOUT[2]  MUXOUT[1]  /MUXOUT[0]  
+  11-V11 - SETF
+          /SEL1  SEL2  /SEL3  
+  12-V11 - CHECK
+          /MUXOUT[7]  MUXOUT[6]  MUXOUT[5]  MUXOUT[4]  
+          /MUXOUT[3]  MUXOUT[2]  MUXOUT[1]  MUXOUT[0]  
+  12-V12 - SETF
+          /SEL1  SEL2  SEL3  
+  13-V12 - CHECK
+          MUXOUT[7]  /MUXOUT[6]  /MUXOUT[5]  /MUXOUT[4]  
+          MUXOUT[3]  /MUXOUT[2]  /MUXOUT[1]  /MUXOUT[0]  
+  13-V13 - SETF
+          SEL1  /SEL2  /SEL3  
+  14-V13 - CHECK
+          MUXOUT[7]  /MUXOUT[6]  /MUXOUT[5]  MUXOUT[4]  
+          MUXOUT[3]  /MUXOUT[2]  /MUXOUT[1]  MUXOUT[0]  
+  14-V14 - SETF
+          SEL1  /SEL2  SEL3  
+  15-V14 - CHECK
+          MUXOUT[7]  /MUXOUT[6]  MUXOUT[5]  /MUXOUT[4]  
+          MUXOUT[3]  /MUXOUT[2]  MUXOUT[1]  /MUXOUT[0]  
+  15-V15 - SETF
+          SEL1  SEL2  /SEL3  
+  16-V15 - CHECK
+          MUXOUT[7]  /MUXOUT[6]  MUXOUT[5]  MUXOUT[4]  
+          MUXOUT[3]  /MUXOUT[2]  MUXOUT[1]  MUXOUT[0]  
+  16-V16 - SETF
+          SEL1  SEL2  SEL3  
+  17-V16 - CHECK
+          MUXOUT[7]  MUXOUT[6]  /MUXOUT[5]  /MUXOUT[4]  
+          MUXOUT[3]  MUXOUT[2]  /MUXOUT[1]  /MUXOUT[0]  
+  17-V17 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Mux.HST
+Simulation results (trace) are in   ===> Mux.TRF
+Merged results (JEDEC) are in       ===> Mux.JDC
+Simulation results (trace vectors) are in   ===> Mux.TRV
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 398578 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Mux.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0

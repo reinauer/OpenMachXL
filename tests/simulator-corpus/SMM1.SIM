@@ -1,0 +1,33 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Smm1.pds
+Title  
+
+
+
+   1-V1 - SETF
+          /A  /B  /CLK  
+   2-V1 - CHECK
+          Y  
+%% WARNING  Total number of check clashes   ====>>> 1
+               Clash detected at vector number ====>>> 2
+   3-V2 - SETF
+          A  
+   7-V3 - CLOCKF
+          CLK  
+   7-V4 - SETF
+          /A  B  
+  11-V5 - CLOCKF
+          CLK  
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Smm1.HST
+Merged results (JEDEC) are in       ===> Smm1.JDC
+|> WARNING D1310
+    %% Total check clashes issued = 1
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 84982 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Smm1.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 1

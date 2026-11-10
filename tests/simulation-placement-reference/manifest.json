@@ -1,0 +1,499 @@
+{
+  "description": "Unmodified MACHXL2.1 simulation selection and saved pin/S6 records",
+  "cases": [
+    {
+      "name": "SP11100",
+      "reference": "SP11100.JDC",
+      "files": {
+        "SP11100.PDS": "a82064454251523f9cbf39ad7bbadc9a9dd5659ffb30ff01072b06817be2fd06",
+        "SP11100.MXL": "d4c818ab82a3627cc1c94c5e0377836b6b6c0d6c43be7fb39dddc3509e4f58e7",
+        "SP11100.BLC": "7c204ee7601bf6c0893f5f057fe26c54ff97bdcce5da380ce7d51656018330da",
+        "SP11100.JED": "dc77c0ec95f10af56efab2792fbd770ca8b961b01014095341573767a0761255",
+        "SP11100.JDC": "1de198eaaeba36f74d594734abc3c60362433eefdb218b98a8ab1cc23dbee799",
+        "SP11100.LOG": "c2da41e0f2f72fd494b9f94e16998e04bbd6a2d11e18c04d7dafb96469cb5295"
+      },
+      "capture_directory": "build/simulation-placement-original/WORK"
+    },
+    {
+      "name": "SP11101",
+      "reference": "SP11101.JED",
+      "files": {
+        "SP11101.PDS": "bbf7645a882d9e208829f9297ab619bbc2adab2ced95438ade4de01cd82ed7e9",
+        "SP11101.MXL": "74e75b77e5faa62a7862f6c36454883efcd31598c747679564f43d5197c7fc0e",
+        "SP11101.BLC": "7c204ee7601bf6c0893f5f057fe26c54ff97bdcce5da380ce7d51656018330da",
+        "SP11101.JED": "7ec94e83ffa7f8f597efa21cd9c0c14ac016931c1b3a386532a3d3b07d9fa17e",
+        "SP11101.LOG": "1e24fdcac6b5526ec3767aab4a515b5c8f053343715e3aa6383003aa55da91a2"
+      },
+      "capture_directory": "build/simulation-placement-original/WORK",
+      "warning": "D2200"
+    },
+    {
+      "name": "SP11110",
+      "reference": "SP11110.JDC",
+      "files": {
+        "SP11110.PDS": "e06b5e49f57a2cd1efc1ebb98a221842bd3ea81bf8c98d29b11c840f2b6d13b6",
+        "SP11110.MXL": "b9ee55f9374c35098368c9719211ec5ebee68b2a424b16e57779e7bf551d444a",
+        "SP11110.BLC": "7c204ee7601bf6c0893f5f057fe26c54ff97bdcce5da380ce7d51656018330da",
+        "SP11110.JED": "e3c8e3b840179553df00dfe17fe2b5acc515fb0cf4de252af3e7a4667f5d87e8",
+        "SP11110.JDC": "9eab3f93f07bec7703cd731d6802c82cde985f87e59ce27e391a95f34141587e",
+        "SP11110.LOG": "c93c802964a9df1a7b4d5393861960c5d959fbc8c8e12bead49024db729da93a"
+      },
+      "capture_directory": "build/simulation-placement-original/WORK"
+    },
+    {
+      "name": "SP11111",
+      "reference": "SP11111.JDC",
+      "files": {
+        "SP11111.PDS": "ab433c795da851bd60892adcd1e48b1a65d4216042cccb961e0652babb2a3a21",
+        "SP11111.MXL": "3e091939c33f7443e309c25881b03a6570c76df73957549b17bb414579b3bd53",
+        "SP11111.BLC": "7c204ee7601bf6c0893f5f057fe26c54ff97bdcce5da380ce7d51656018330da",
+        "SP11111.JED": "8215692be95a3e9d1f1cf717fa752dd8f067eb11a90c8768c6d2a926969b687d",
+        "SP11111.JDC": "5fee289d875cbc627841a3f8d2be5da8a292c3155c4a83057d00e38781ebee41",
+        "SP11111.LOG": "dfae676bdf0e6379d013626f38605d904fbdfcb7f95e2dbd4c3d43c677708d53"
+      },
+      "capture_directory": "build/simulation-placement-original/WORK"
+    },
+    {
+      "name": "SP11120",
+      "reference": "SP11120.JDC",
+      "files": {
+        "SP11120.PDS": "a6cc2f71bff339c727e5dc53e1e79b51231586099848140f81fc389ae4c9b217",
+        "SP11120.MXL": "4a22db31b0ab135b87694c1f0d110cde95b22163ae7d0eab9498ca8e51da348a",
+        "SP11120.BLC": "7c204ee7601bf6c0893f5f057fe26c54ff97bdcce5da380ce7d51656018330da",
+        "SP11120.JED": "076d49ad770d0668a7826185481644e3f659dc37c3000e21cb3a2d386c765e05",
+        "SP11120.JDC": "efacee369e6a898050d6e69b9a96bf3a29ef4e6b62793d7f967e537410e932ee",
+        "SP11120.LOG": "5caef56dc22bf5e1f761dc325d4a161642f0fdf90007658be5f455c3e1be4a7b"
+      },
+      "capture_directory": "build/simulation-placement-original/WORK"
+    },
+    {
+      "name": "SP11121",
+      "reference": "SP11121.JDC",
+      "files": {
+        "SP11121.PDS": "fecb5328c46c31bade919d07879ee5d5c0e6c1561ae5a08187c6159ab00675c3",
+        "SP11121.MXL": "dc44d41406977c8f22865eb280a40492e1b42d8083778447fea944cd82813f60",
+        "SP11121.BLC": "7c204ee7601bf6c0893f5f057fe26c54ff97bdcce5da380ce7d51656018330da",
+        "SP11121.JED": "4b6dbb4d3a0d60cf851355e8d585e4eb37881229944184a5d43bcce3490d6c21",
+        "SP11121.JDC": "31a0984c3e009a38daf10c07e90140dc34f53b7263758a6823f1cb09e34b6651",
+        "SP11121.LOG": "a72d3127e4e4cf8d02ae6470f0d5e0f0de89579a10a33953c54fb1d00cfbc125"
+      },
+      "capture_directory": "build/simulation-placement-original/WORK"
+    },
+    {
+      "name": "SP43500",
+      "reference": "SP43500.JED",
+      "files": {
+        "SP43500.PDS": "d1a1473aba0c634618f335c2850ba82e07d4595631f2400e87144953d8fe7681",
+        "SP43500.MXL": "aee77183613edacd0e6632852dd03b7cb0ab7a49e4bc296197d102150adc27da",
+        "SP43500.BLC": "15a17936c7601eaaf5d61d1e9fc8f2feb6fc456ee0749f0d76eae11314270f4d",
+        "SP43500.JED": "b372febfea4ac7b19f1014f800309d445f218ac6db20ab51be9f1f05252d5d45",
+        "SP43500.LOG": "c68ec4b2ed865f97fa7db9ac14275ba1a3e021b280b4e66b3e9e2a701e387cd3"
+      },
+      "capture_directory": "build/simulation-placement-original/WORK",
+      "warning": "D2290"
+    },
+    {
+      "name": "SP43501",
+      "reference": "SP43501.JED",
+      "files": {
+        "SP43501.PDS": "3489f3949d5a00af7d2f39d077277c9a80b44bb5d99988f61dd5e7c3ca9fbed9",
+        "SP43501.MXL": "c75c6396a3a3e9b5c23a60eb489131ab2a836d357c0dca2230c8c0ec822b8b81",
+        "SP43501.BLC": "15a17936c7601eaaf5d61d1e9fc8f2feb6fc456ee0749f0d76eae11314270f4d",
+        "SP43501.JED": "30507d798ec0cfffbc904f3a288da98c80d6bf17475724684d7d66327466db36",
+        "SP43501.LOG": "f15f36c35fea1f3efd4cae4fdde55ae1513728c09a8042c3f2b1aa9495ccf55a"
+      },
+      "capture_directory": "build/simulation-placement-original/WORK",
+      "warning": "D2200"
+    },
+    {
+      "name": "SP43510",
+      "reference": "SP43510.JDC",
+      "files": {
+        "SP43510.PDS": "1a57e2f9384a2e9ac26f89792df38f9b0f5b0f8e6b3a46965659cab7eedf2160",
+        "SP43510.MXL": "03342496cde6b5d1b72c25be3149cfe5dc8be82576e66962c6d20f3bd8e546c9",
+        "SP43510.BLC": "15a17936c7601eaaf5d61d1e9fc8f2feb6fc456ee0749f0d76eae11314270f4d",
+        "SP43510.JED": "18cced531e2abd68a8b2a2266fc290704cbd91b034f9f165befbac88b1485894",
+        "SP43510.JDC": "31ce5143f65c46683e9732dfd7dcb8dc83cb37546d099c071d16bd80c4b47c4c",
+        "SP43510.LOG": "1f89bd54513dcdafd9bd79674f5edd143447e69281f0627ec4831ec61f349cf2"
+      },
+      "capture_directory": "build/simulation-placement-original/WORK"
+    },
+    {
+      "name": "SP43511",
+      "reference": "SP43511.JDC",
+      "files": {
+        "SP43511.PDS": "282a37554d23495b44ef1a193ec0527a1a35657b060f79d6399ff6405077b274",
+        "SP43511.MXL": "957888a4ba23b66ca093e11556afd4ca310d99d6722df9cb2a1610af1a38738e",
+        "SP43511.BLC": "15a17936c7601eaaf5d61d1e9fc8f2feb6fc456ee0749f0d76eae11314270f4d",
+        "SP43511.JED": "5b55f421e3a5a7dae0cf1fab5b6cf105bde375edc370cc4bbb07d13cfe408650",
+        "SP43511.JDC": "f323aeba1e9f4cca9f8ab0d6ef408a7af034239444eb2481398d32e610efc080",
+        "SP43511.LOG": "2dd6c998cbebef4cac94609c6e649650b990e7fbaa2455cafee64cd7ac08792e"
+      },
+      "capture_directory": "build/simulation-placement-original/WORK"
+    },
+    {
+      "name": "SP43520",
+      "reference": "SP43520.JDC",
+      "files": {
+        "SP43520.PDS": "add846d00d62401e0ef262137cb561fb4bc65c9cb38ff9d8e7efaed3f6f43891",
+        "SP43520.MXL": "ce0c32e640b99554c59e0a2d620f6ef4376f6c76b72ffdf978fee87272e8216b",
+        "SP43520.BLC": "15a17936c7601eaaf5d61d1e9fc8f2feb6fc456ee0749f0d76eae11314270f4d",
+        "SP43520.JED": "c39c3da8082eb2ff471e95676d1a9ccaa71c06c5113ab1805de7c4240eb4de4f",
+        "SP43520.JDC": "afcd0d71cfbb21932ae3a852c53f3cb2144d8387f9fce94f71cf7e43cc05666c",
+        "SP43520.LOG": "745e7713290fa2f4b65cc141d50336a6363248f0bd512ac200b75b5197f72a1b"
+      },
+      "capture_directory": "build/simulation-placement-original/WORK"
+    },
+    {
+      "name": "SP43521",
+      "reference": "SP43521.JDC",
+      "files": {
+        "SP43521.PDS": "eb2706d672d46957191be2373b658016ed6fcac3ffa2ac8a9eb91cb956a08b9d",
+        "SP43521.MXL": "eab24d3ffc48bab6d23c7a76e4523144f10ddfef22270fe3b02cd89bccc03a6c",
+        "SP43521.BLC": "15a17936c7601eaaf5d61d1e9fc8f2feb6fc456ee0749f0d76eae11314270f4d",
+        "SP43521.JED": "ebbf67196bb88500ca1c211ef7e60973f8252a32904c946a5db437ccae9a159b",
+        "SP43521.JDC": "cb9acec20bf280d7e4b9fd25a175ac2a7a2e801522163c1ab53c8216669aeb3f",
+        "SP43521.LOG": "7996f9aa1fe3e516ca18ed8247ec0881a6f2cf3a6a02c6a8e3f016e354f1ad3a"
+      },
+      "capture_directory": "build/simulation-placement-original/WORK"
+    },
+    {
+      "name": "SRG0",
+      "reference": "SRG0.JDC",
+      "files": {
+        "SRG0.PDS": "8725ab09bda523a0b028b1475e01971f4e04dfaa40f4f13fa7074ac411d246d5",
+        "SRG0.MXL": "85ac910f790d29cf99c292d8e12e34a7f9b3ddc9a291c5b350a39f7fa3eebc88",
+        "SRG0.BLC": "a68e8f4ce926995023d0d8d021a0627285e20ce8290ddca1549fa21118d7e691",
+        "SRG0.JED": "99a049b18c7f6af2a1f98e70be253c8d0eaac459f5b02d5de2482fa96e21f283",
+        "SRG0.JDC": "121ed928b616d1f83df436afad88a7ea5bfeb491d09125b8c058e055fb58e2e2",
+        "SRG0.LOG": "72c4be0eb07807e5522b37e7e3ccaa8a8b22e83bd64e25072a0b47474611cbef"
+      },
+      "capture_directory": "build/simulation-saved-registers/WORK"
+    },
+    {
+      "name": "SRG1",
+      "reference": "SRG1.JDC",
+      "files": {
+        "SRG1.PDS": "c5aa127f188c67d91bd9e8dc364a37a5dc42708c53bc472beba1111ccd2e8346",
+        "SRG1.MXL": "a11e3caec8e92699e933e6d03ec8e33db84154e79569d37995b1c61f85eeffb8",
+        "SRG1.BLC": "845985ca4f3071a5a611c3e239ee5a809fe26b73f06317dbfb3fd599424ac3a0",
+        "SRG1.JED": "0da75900ae90a89c88bfe9f0a80b7ad7b2e6e643f46b4553230a30a8f72a47e1",
+        "SRG1.JDC": "96be570cf0d0bf65746016c88a00cc9797afa026dd9bc3c4c1014f769f7818c3",
+        "SRG1.LOG": "7c55401e02c66e09baed746f4a4cac7c33bef864272efd2cc973f77a0206fa27"
+      },
+      "capture_directory": "build/simulation-saved-registers/WORK"
+    },
+    {
+      "name": "SRG2",
+      "reference": "SRG2.JDC",
+      "files": {
+        "SRG2.PDS": "155f9ccd49c222c6b85badc40b1da45ca5dd5f13d33fb370105de12aab07da8b",
+        "SRG2.MXL": "39e87d21389ac4bbac0e682aa3fcd8e66b221b062b70663fb5f3977f8f71528f",
+        "SRG2.BLC": "5d5d702197cab8a2c776d95cabc01ac3bd13f42ce015e97ec58d57af2fecda84",
+        "SRG2.JED": "64f8c3e27b199e180e70f7c1e498aba8388247fa4b1a1a045c11bc9dd1cf63f9",
+        "SRG2.JDC": "4e3c969094ea6b4a7996c2edc1f1f4ce67e6c36a8a86ca667bc3f14f2e41b6a4",
+        "SRG2.LOG": "c3c862165fb5400cedadaf357e32320abafe2fa69319300bc938d1636c436afe"
+      },
+      "capture_directory": "build/simulation-saved-registers/WORK"
+    },
+    {
+      "name": "SRG3",
+      "reference": "SRG3.JDC",
+      "files": {
+        "SRG3.PDS": "5bed0171e0face28d03dd4cf9281132b644043472930e69c160599aeaef46b1a",
+        "SRG3.MXL": "8957d1d55243c184e55d458e24ce12087abcb558022ea791c689107c92835f28",
+        "SRG3.BLC": "7afdf5d87e6176dc876e206dd62a82545d0bea3bad7b91da9701ed6199be26e1",
+        "SRG3.JED": "fcf6ee8dff960d034e80267c7cf67a3123efe4ebcb453ac265a4a9ada49ee8e0",
+        "SRG3.JDC": "6156160501e8c8303e676daf52b151d248a52aa067a45b1e1d2a1e4b05edeed1",
+        "SRG3.LOG": "01440c0eb87de542084ef3b4397c86fd5995c98d093ae2b43dfc46721fbf8fab"
+      },
+      "capture_directory": "build/simulation-saved-registers/WORK"
+    },
+    {
+      "name": "SRV0",
+      "reference": "SRV0.JDC",
+      "files": {
+        "SRV0.PDS": "c32efe3d1d510a497861313f5ae6041d51e39b93f5de69aede03ba015a03a24f",
+        "SRV0.MXL": "89c385a5ffb86d9be57f2f21a9369955c0b7000b3fde574375ddba64b01cf148",
+        "SRV0.BLC": "845985ca4f3071a5a611c3e239ee5a809fe26b73f06317dbfb3fd599424ac3a0",
+        "SRV0.JED": "c1a74cd0aaef1935d4c7d77860f308fde1b7ef8b8d188b566043320d43366328",
+        "SRV0.JDC": "62cf45fd2d52e5441913fa01bfd0565b74c56f34a9c95f62effc796ef9b2ff6c",
+        "SRV0.LOG": "9dc549aeb0c2f16c66c08ed4c0dc4be30ff740d6e4e2fcdae200af054b933529"
+      },
+      "capture_directory": "build/simulation-saved-registers-v2/WORK"
+    },
+    {
+      "name": "SRV1",
+      "reference": "SRV1.JDC",
+      "files": {
+        "SRV1.PDS": "0a05d36023cfd0e9cd358d30102826fb2996bce7aaf43611f0b3ee3eed1b4626",
+        "SRV1.MXL": "bbcc59b6cea8645e99a22bada48281daa072a03e91dc3fb6e240ef99396c40de",
+        "SRV1.BLC": "b40bd7103e55cd4aa4d3b29ac7b992a21ca43d0fbd91afe567cce5606ec5b981",
+        "SRV1.JED": "ee7e7e01b3a7c51eef7ea60a9bac20409d2babb87794a18fb3b4133bf81d4289",
+        "SRV1.JDC": "36a2b83f954329efb0e47b476271b1fdc3ba483d3f416bbf0508138d805cb9f5",
+        "SRV1.LOG": "c6be8be1e1b26a59fda873fb9b5b965c1b759501f482e655dcc2429682e27034"
+      },
+      "capture_directory": "build/simulation-saved-registers-v2/WORK"
+    },
+    {
+      "name": "SRV2",
+      "reference": "SRV2.JDC",
+      "files": {
+        "SRV2.PDS": "f2020830a55acfc1df7aefc0b9475f3c9689b6a568a2461c32c065ab65d9db60",
+        "SRV2.MXL": "48dfd1fd8f1a37d2656442404df178373567c101d3a01ddd14ffaecc455ddacf",
+        "SRV2.BLC": "5d5d702197cab8a2c776d95cabc01ac3bd13f42ce015e97ec58d57af2fecda84",
+        "SRV2.JED": "5d82d0d02886f619b0b289c89dda0a9d4a7aea1f5f14300e705437c74a3b94f8",
+        "SRV2.JDC": "7753483a7b8c67ec1556a5603743a9109abe0578be61fe941a418cb8f70d76c7",
+        "SRV2.LOG": "b8e007d8108eacd6af6db33bb94e3d08812135384e4ce6d691ac76498fb04935"
+      },
+      "capture_directory": "build/simulation-saved-registers-v2/WORK"
+    },
+    {
+      "name": "SRV3",
+      "reference": "SRV3.JDC",
+      "files": {
+        "SRV3.PDS": "b4f78bf3bf67858d250063373f9b20f4a3b193a04638ff15f3bc3b3586e8d096",
+        "SRV3.MXL": "ee8550514fc59936fdaf529f8ba36ccdcc96d4fa81e975ccd6852d1cc4abb20d",
+        "SRV3.BLC": "95431ae8028c4ecaf6758c2d2b7e5991a8e44d69c448ff6c7204ef4a91b31c78",
+        "SRV3.JED": "6d5c3a635682b81213b0c11224a9ccf68fb1b371cdbf95ea75c70616005f6890",
+        "SRV3.JDC": "c6d617c894065a6f28060f814af3e5c83a917653ad40c677bce18d1ea417a2c8",
+        "SRV3.LOG": "7915fd94834321b2dcde35e12aaa492727f63a7faae1af879a9ccdaeea025fbe"
+      },
+      "capture_directory": "build/simulation-saved-registers-v2/WORK"
+    },
+    {
+      "name": "SRV4",
+      "reference": "SRV4.JDC",
+      "files": {
+        "SRV4.PDS": "66deadcb7731ba81c01bfa28be756236fe03b64cfb1dafafc24b3f630808fe22",
+        "SRV4.MXL": "9860356474bb3c14bc5f1a85860fe297853e6563a44328e684949d190068abf3",
+        "SRV4.BLC": "f7e626eeb7cc1b85c704793f8f076117d30b180f08d20aacbee8931f36e3ecd7",
+        "SRV4.JED": "d0045ef16a7d49521888169e7834b742b5d3f6eb4d12eaefd74f82544b2a55ab",
+        "SRV4.JDC": "286b7e6a1ff9eb7dea034d47a872222cbcbe2b1010b91ba51e75e02dce012b76",
+        "SRV4.LOG": "eb9987c7172b7897eceeb30bd610895dd64787c3c4d840ed0a749460ae0e7594"
+      },
+      "capture_directory": "build/simulation-saved-registers-v2/WORK"
+    },
+    {
+      "name": "SRV5",
+      "reference": "SRV5.JDC",
+      "files": {
+        "SRV5.PDS": "b842bb44575f6622c9588e83451108402574b803c8b963a992f8810b69a586ec",
+        "SRV5.MXL": "5f40e2ca4121da02b14c74a66ddeeb8d9f928a8b780117ed82abd10eaa64b23d",
+        "SRV5.BLC": "f7e626eeb7cc1b85c704793f8f076117d30b180f08d20aacbee8931f36e3ecd7",
+        "SRV5.JED": "6849e1f55e79571fa64d0673aedd4f9b616e31c65b53b7a24a24691f6f007d99",
+        "SRV5.JDC": "d152bf68b9eea8bfa86d029ed7cfc0817b6a20e5415716594fecd9e20b8b861b",
+        "SRV5.LOG": "d00a634bec3e87fb75e41eaa19b9305627c4dc1bd3c940be32e20129c6ed5196"
+      },
+      "capture_directory": "build/simulation-saved-registers-v2/WORK"
+    },
+    {
+      "name": "SRV6",
+      "reference": "SRV6.JDC",
+      "files": {
+        "SRV6.PDS": "b806626a290ad9b1dded7e7d166f7ac095965a1f9f2027ad536378b1849bedc8",
+        "SRV6.MXL": "e0c4d001d5637bb8a020228c5b92150e75b2e3dda2276959ef0c4be4ca3cd33b",
+        "SRV6.BLC": "4d1d990d4061aec14c1e704af2d19beeafbaaaf923deff6a78a251ce5d15f809",
+        "SRV6.JED": "b94857c58ddbee6eba477f5ae533feef4fcba4d4c71227cb3d5424ea69f265b5",
+        "SRV6.JDC": "7905316199ae106a169ffc2a71748211b1f0774384a105baa14cd731a0b01757",
+        "SRV6.LOG": "4b9d0d4f48a6c55f221597de75d605b3ddf792dfb641a180a9d7b142a277cb20"
+      },
+      "capture_directory": "build/simulation-saved-registers-v2/WORK"
+    },
+    {
+      "name": "SRV7",
+      "reference": "SRV7.JDC",
+      "files": {
+        "SRV7.PDS": "16096b539b8d6ea71f6a1f3194ab72de4fc4d8e32c560c608d9a3a2c136ef5a4",
+        "SRV7.MXL": "718187826d1fe45c7712fced51dd19dd747e09afe1d16ac448055bade06fb37e",
+        "SRV7.BLC": "4d1d990d4061aec14c1e704af2d19beeafbaaaf923deff6a78a251ce5d15f809",
+        "SRV7.JED": "ef4db452cd7e6bb811f65dc065cddebc85beda6fddf317ab2703588e3ef5bd3f",
+        "SRV7.JDC": "358867b798b170cc971a967182856833c961031ec46cd946fd8de49a0a05ede7",
+        "SRV7.LOG": "609ad5b006b49f81fc8113d269dcb8dc434e2063b7e1c771e72340b0ce7a9733"
+      },
+      "capture_directory": "build/simulation-saved-registers-v2/WORK"
+    },
+    {
+      "name": "DATA_AQ",
+      "reference": "DATA_AQ.JDC",
+      "files": {
+        "DATA_AQ.PDS": "9e2e5e60bd6594e2409a7094535f04b1fae2c3eb3543df32ba84b2a6838e8900",
+        "DATA_AQ.MXL": "1c8bd45c41f93e1f5ba3d0c1550d46d3b01804987d0c5240d4a50e5a95a512df",
+        "DATA_AQ.BLC": "85126860d58ce785fc56fbd6db5f60a07fc604a45d8b5b6cd2c12070432b4d6a",
+        "DATA_AQ.JED": "33f12c3eac6c603daad832a76b902b2563466696ccdf5337729a4e51cce3154c",
+        "DATA_AQ.JDC": "8a337edec85e367a305981a067de86a4d103a98cb86fe3e4549e1a764f6b4e11",
+        "DATA_AQ.LOG": "2ae72088bb2d490df01f3aabcc22f5668a826f8ec2bdab3623b5f743e6927e52"
+      },
+      "capture_directory": "build/simulation-saved-pairs/WORK"
+    },
+    {
+      "name": "SI2110",
+      "reference": "SI2110.JDC",
+      "files": {
+        "SI2110.PDS": "ddb662b640df690c0fd5b191ccf4d2976122a685ad0249e272beda97ea611bfb",
+        "SI2110.MXL": "09bdb978f9980dcf177a4695cb80672e3ac5987312077e8d5a6b790fa4d79ead",
+        "SI2110.BLC": "b14053228663dd45df905dc04d5c32878c8289a16a9f459e20049cebd743efea",
+        "SI2110.JED": "5aca9bae9c0812ac7fde904d4852e72db7f384b7e4cc111ce5aa0c6e8b52a92b",
+        "SI2110.JDC": "fd9721f44bd8dcfdef195ff3f7372ca3738dd80bbec6d948202feff4d88c9085",
+        "SI2110.LOG": "f4f20abb2ab2e2172bb0f41a868ff4e4f038d9cf7ddec1634d7c178568cd3364"
+      },
+      "capture_directory": "build/simulation-saved-pairs/WORK"
+    },
+    {
+      "name": "SI2153",
+      "reference": "SI2153.JDC",
+      "files": {
+        "SI2153.PDS": "827f875910397a7a9576bd65e0ed7c86560240e1eb0fa624bea58e113976849b",
+        "SI2153.MXL": "2525a96f209d5fcf54a67e7dcf2e5a20b16c5e07d40a09d9ab1d19d96987c8df",
+        "SI2153.BLC": "51c791314bd4025ba3217c477b8f55e10784a93af1cc2894e448b31e0766b096",
+        "SI2153.JED": "15dc7597f61645c5730799d83ca0ae24fb5640f87fcf9345093bb8660116cbd0",
+        "SI2153.JDC": "e2e0a6d8af9186e7d173349feee9f8cdb4946e2d9c13e2d8fd7232bc08a9f1e8",
+        "SI2153.LOG": "92cc6993b2c5094aa7f76314bc8bb4b1b7597847f02636201239f584e5003da9"
+      },
+      "capture_directory": "build/simulation-saved-pairs/WORK"
+    },
+    {
+      "name": "SIN0",
+      "reference": "SIN0.JDC",
+      "files": {
+        "SIN0.PDS": "fb5b4eb40a3ec93fbf22b8f6e687a76fb76d549d275d0fd7e50b5d656ccb9f63",
+        "SIN0.MXL": "e135747fc6c5dab3683498220eec246ace1e3fc4e093623fc4575e3f0a280b18",
+        "SIN0.BLC": "77155d04f59d63645368de2bcf5b14d78bc1ee5d29c1c13dfef0830394934142",
+        "SIN0.JED": "d1da9005e8686e67b96d10a1f29137f1b6c9e95c75f7ce4ab454068fe7ddc24a",
+        "SIN0.JDC": "2c03c8f268a2c2f55b3f8d962180f6864f0539be2009c64c3524b7dbc478f8cd",
+        "SIN0.LOG": "e279d651348cec7b4f2c9f3481b5f255efaef4c31fedcee0de7e5667b6e2ca63"
+      },
+      "capture_directory": "build/simulation-saved-pairs/WORK"
+    },
+    {
+      "name": "SIN1",
+      "reference": "SIN1.JDC",
+      "files": {
+        "SIN1.PDS": "9a7b08ddc5b94285ca66f16f4677d25e69c5c6bbdf3db60c011b9500a729c606",
+        "SIN1.MXL": "b008c1792e92e0f98cc88457f6b04e62a461115a54c2c318c1d64239bf2b65b0",
+        "SIN1.BLC": "f169795e889bbb803bb4633fe2e0d70b441c555c4cc4bbd43adca5231ab0b076",
+        "SIN1.JED": "9ddfdec7cc1f3b9e6148742affce9ae11dcbcc2a5ce03e79136ab2bf477902b6",
+        "SIN1.JDC": "4cec2810fe42341a6d12d736d78c72b68dd533116cea2c08ce2027a4cf638ef7",
+        "SIN1.LOG": "10dd0d2670b5870b2d3e9a95864976d49139b5605837d53ff14f9505f8511005"
+      },
+      "capture_directory": "build/simulation-saved-pairs/WORK"
+    },
+    {
+      "name": "SIN2",
+      "reference": "SIN2.JDC",
+      "files": {
+        "SIN2.PDS": "32db184b0cb3bf3c95984a6b92d551a871eab72912f153406944570d60ac03d7",
+        "SIN2.MXL": "cdcd4148bceaf5c77bd8ed986560e809ca97d5f4f7e6a4d06cda4c0572032348",
+        "SIN2.BLC": "96189bb16184adaf745b5a96c9e13e0c09638906fbb69bce081cd8f74319e128",
+        "SIN2.JED": "05b63903a0c54ada00a2e1fd9cffb51db303efcd4916b65c41b6a8113712dad3",
+        "SIN2.JDC": "d63db94b3a1b3cb493d674cf80d7654109a83dc7a15b39de1c60100c5ceec656",
+        "SIN2.LOG": "7f63cd62b5d52fb9d414d230c65c2f12898992a3860fb07554f419884a5a6595"
+      },
+      "capture_directory": "build/simulation-saved-pairs/WORK"
+    },
+    {
+      "name": "SIN3",
+      "reference": "SIN3.JDC",
+      "files": {
+        "SIN3.PDS": "161d316501abe4a6374ab8556a47e3c72424a0db302463b32e1bf34166bf2b8e",
+        "SIN3.MXL": "4e88737aaa31171afd0b6d6d9c69ace907259b4c2865e35924a9fb5c1e8e3351",
+        "SIN3.BLC": "48b7cf82eef9b2ec080082d04f54d0242ea6e185d9002981d72054b6bcedd776",
+        "SIN3.JED": "2165355a4e21665d54bd947579f0b8c841727b55fdc6380299079b9789366104",
+        "SIN3.JDC": "43a2daf71c0de84bf7eb487793c6678c66e9acb36d5ea2a8062a29be4ff00f96",
+        "SIN3.LOG": "dfece00259c84ceb792c3c824e7fbc351473d2824ba639958c87503f4558063b"
+      },
+      "capture_directory": "build/simulation-saved-pairs/WORK"
+    },
+    {
+      "name": "SIR0",
+      "reference": "SIR0.JDC",
+      "files": {
+        "SIR0.PDS": "890a8d30a5a7fa8e5cba59314b5612de92bb27f59c9b78dd25f1514ef351d5f8",
+        "SIR0.MXL": "df44d46b0fac7bf987065968b8b184ed050417620ecc154f3bb037a491d6ad7f",
+        "SIR0.BLC": "b231ff8e8891bbfe89db8e058445ef0c00703cebefa0831d7583ab7cec2c0f93",
+        "SIR0.JED": "bed817576f141d7ed7887849f0cc908f1055b4df381a422f967c4982f01b6ed7",
+        "SIR0.JDC": "f21c591584d63d1ded287eabd59bc450f15745d954aa11542a211bab2bd8400a",
+        "SIR0.LOG": "14a8df3f9f3f73b2c68ade554d132f13fa40f7ab1b723267edb503d83525a3e7"
+      },
+      "capture_directory": "build/simulation-saved-pairs/WORK"
+    },
+    {
+      "name": "SIR1",
+      "reference": "SIR1.JDC",
+      "files": {
+        "SIR1.PDS": "5aefe633c842c8a384e7d9a36c7a856d64eeba1ca851dbe0328c0eaea6a55033",
+        "SIR1.MXL": "8d8dfeff4d1457ad8d51fd9d7c9c729f75620698f4758e634f9a8775c3e9e514",
+        "SIR1.BLC": "86c9c9d7a85d330ede8a87a29fc507528ffafb085439aa2fd9bd5474e68b0bcb",
+        "SIR1.JED": "a3507e162dd4f9c29ad6bdddc959e0281cd9bf46c8cc82a1273230569e6429e8",
+        "SIR1.JDC": "22ec9130c96b89fbf8e818b11050110ef89c74d06c4f10c228821f0929585a6e",
+        "SIR1.LOG": "9dc4cdf300e761b6221b08515e8045fc86dfbbe6828e3a7c0c905e803d89a684"
+      },
+      "capture_directory": "build/simulation-saved-pairs/WORK"
+    },
+    {
+      "name": "SIR2",
+      "reference": "SIR2.JDC",
+      "files": {
+        "SIR2.PDS": "46d7835ca20653dd1322700aece7f6c5e2bdd28aba0d75fd461b017d3e9af2b8",
+        "SIR2.MXL": "73b7c23b11b2daf0a742bdb542bf17a26e319d5b8dcd30b6e5ffcb26282bd5cb",
+        "SIR2.BLC": "d78bb705133673b6a7c2d980c49de6c904eae4332e1e710980d1a3ef4cdc43c4",
+        "SIR2.JED": "1daadf5e7c7429c849105867536c764602017c4091e1556204f7754f2463a258",
+        "SIR2.JDC": "e9ed4acddd20410376ef32489eb859a74af415bfc1a0668a09a67d815dcce7b5",
+        "SIR2.LOG": "b5aa29368f010cd58e9f3c3bb50e8abe09289326a53b64254f16d0f998aff52c"
+      },
+      "capture_directory": "build/simulation-saved-pairs/WORK"
+    },
+    {
+      "name": "SIR3",
+      "reference": "SIR3.JDC",
+      "files": {
+        "SIR3.PDS": "bc3453e2faa800907a5f9a7a0c852070dbfc1fa5e41ea960ca62ab6cef3d414c",
+        "SIR3.MXL": "28a23a32c600c08b4ae35e4b53d7128db706f1a2e50d44019fb4c253b9a3fc55",
+        "SIR3.BLC": "5253f1454606e25a7c42524bc15ea36480a5140d96280a9ea51fe053f09eaabb",
+        "SIR3.JED": "478bfaf278ee863a3d4d219f1718deb18340e70a3689ac08c740036ef8f165c1",
+        "SIR3.JDC": "dfb509f8ae7aefa1814210c1ab52cac024a29f4bb2f7ef32c4ed0d9cfe819880",
+        "SIR3.LOG": "27522cebbfd24dff05d0276d11bd71eb9b0b5461d0aafea41e684af8ee75cd35"
+      },
+      "capture_directory": "build/simulation-saved-pairs/WORK"
+    },
+    {
+      "name": "SIR4",
+      "reference": "SIR4.JDC",
+      "files": {
+        "SIR4.PDS": "82bb49cabb522902416433b4f43a85829c8c42c8dd2e2e2343154bc3185864fe",
+        "SIR4.MXL": "7c13bff5c45afcbf381afa34ba6aaec8899147a45458f1fa3c860c9f22232ab2",
+        "SIR4.BLC": "cb50eded13bf7f208f5306f59a9fe8abb98d8ff82a6d547e6ea294e8c48bed31",
+        "SIR4.JED": "54dbe1dab526ddd04745d5d3d588c90b0c7317fd201e64af83101fb91ef3e3fe",
+        "SIR4.JDC": "97c45eb4c8139cae006c8a86305cb40a261b012a45a4f60f0145ea61dd357ed7",
+        "SIR4.LOG": "3fbb0dbcf4f95211df104d5d4b15613c43221d94280df2f98f863fcdbf9de115"
+      },
+      "capture_directory": "build/simulation-saved-pairs/WORK"
+    },
+    {
+      "name": "SIR5",
+      "reference": "SIR5.JDC",
+      "files": {
+        "SIR5.PDS": "ccc465f7a8f4f7c6f5de7282076e0e6aaad6ae8faf78d2f175e574e702d723f4",
+        "SIR5.MXL": "b7247ce4898223aa75ab16e309ff6c29abf59d0bebaf9e5df67d86e1beaf5f73",
+        "SIR5.BLC": "0cd0a3d6b9ef1e894883588bd8c923ec04870cb74fdb2694d2cb0d83cb92b579",
+        "SIR5.JED": "58fcfce5ad38ffa48e4646c6de6c317b7e58b8da8d02aa323bf585bce53d9111",
+        "SIR5.JDC": "0e688c00ea34770d1d6b0522ad2d0b1cc462c55eca7a60fda81a38f6a4a4a982",
+        "SIR5.LOG": "d70ca523f247a4c92df2c4f2f608af5c2fefec4aae230c7392164cd5b3f6e33c"
+      },
+      "capture_directory": "build/simulation-saved-pairs/WORK"
+    },
+    {
+      "name": "SMOP5",
+      "reference": "SMOP5.JDC",
+      "files": {
+        "SMOP5.PDS": "644fe7b7b09abc0de043fe94a9a31de700a24ec2d0482218895e0aea673bc60f",
+        "SMOP5.MXL": "fe5c44cd5fc60455295c2e29082e77dbccb37a0f136d42f15966758a55e6fd9a",
+        "SMOP5.BLC": "2eadcdfa9a5a1c8174970589c3120d69ed4af431bd1a55f396db93048380c9f9",
+        "SMOP5.JED": "132335e5722eb3ee8c929c3786eea32055ebc3712fcaae462a5f612a8bf95fdd",
+        "SMOP5.JDC": "ce64d433e3a6b3cc34950bcf6d52105ed362936070971ecd8e8cef08aa279aa2",
+        "SMOP5.LOG": "9230bf78262d3b88a7d780956f5a144c870980997eef256e32ec3c4bb86645f0"
+      },
+      "capture_directory": "build/simulation-saved-pairs/WORK"
+    }
+  ]
+}

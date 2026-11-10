@@ -1,0 +1,833 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+****************************************************************
+* Design Name = Db.pds, Device = MACH445, Nov 09 20:19:38 2026 *
+****************************************************************
+
+***********************
+* MACH FITTER OPTIONS *
+***********************
+SIGNAL PLACEMENT:
+  Handling of Preplacements                      No Change
+  Use placement data from                        Design file
+
+FITTING OPTIONS:
+  Global clocks routable as PT clocks?           N
+  Zero hold time for input register?             N
+  22V10/MACH1XX/2XX S/R Compatibility?           N
+  SET/RESET treated as DONT_CARE?                Y
+  Reduce Unforced Global Clocks?                 N 
+  Iterate between partitioning and place/route?  Y
+  Balanced partitioning?                         Y
+  Reduce Routes Per Placement?                   N
+  Maximun Run Time                               run until completion
+
+***************************
+* DEVICE RESOURCE SUMMARY *
+***************************
+                                 Total
+                               Available  Used  Available  Utilization
+Dedicated Pins
+  Input-Only Pins                 2        1      1    -->    50%
+  Clock/Input Pins                4        1      3    -->    25%
+I/O Pins                         64       38     26    -->    59%
+Input Registers                  64        0     64    -->     0%
+Central Switch Matrix Outputs   264       78    186    -->    29%
+Product Term Clusters           128       22    106    -->    17%
+Logical Product Terms           640       76    564    -->    11%
+Logic Macrocells                128       47     81    -->    36%
+  > 1 PT Macrocells              ..       11     81
+  1 PT Macrocells                ..       35      0
+  Unusable Macrocells            ..        1     ..
+
+******************************
+* BLOCK PARTITIONING SUMMARY *
+******************************
+                                                      Macrocells  # of PT  
+                  Logic   I/O    Inp    Macrocells    available   clusters 
+          Fanin    PTs    Pins   Reg   Used Unusable  1PT   >1PT  available
+|---------------------------------------------------------------------------|
+Maximum     33     80      8      8     ..     ..         16        16
+|---------------------------------------------------------------------------|
+Block A      0      0      8      0      0      0      0     16     16
+Block B     17     16      0      0     16      0      0      0     16
+Block C     11      8      8      0      8      0      0      8     16
+Block D      0      0      5      0      0      0      0     16     16
+Block E     13      8      8      0      8      0      0      8     16
+Block F      0      0      0      0      0      0      0     16     16
+Block G     26     34      8      0      8      1      0      7      5
+Block H     11     10      1      0      6      0      0     10     13
+
+> Four rightmost columns above reflect last status of the placement process.
+
+******************
+* SIGNAL SUMMARY *
+******************
+                                 Pin/Node Logic
+       Signals Block Loc PTs XOR   Type   Type    Fanout
+|---------------------------------------------------------------------------|
+            A2   D    35  .   .    input   ...   ----E---
+            A3   D    34  .   .    input   ...   --C-E---
+          CLKS   H    88  3   .   output   ...   ------GH
+        HDR[0]   E    43  1   .   output   ...   --------
+        HDR[1]   E    44  1   .   output   ...   --------
+        HDR[2]   E    45  1   .   output   ...   --------
+        HDR[3]   E    46  1   .   output   ...   --------
+        HDR[4]   E    47  1   .   output   ...   --------
+        HDR[5]   E    48  1   .   output   ...   --------
+        HDR[6]   E    49  1   .   output   ...   --------
+        HDR[7]   E    50  1   .   output   ...   --------
+        IDB[0]   C    19  1   .  i/o pin   ...   ----E---
+        IDB[1]   C    20  1   .  i/o pin   ...   ----E---
+        IDB[2]   C    21  1   .  i/o pin   ...   ----E---
+        IDB[3]   C    22  1   .  i/o pin   ...   ----E---
+        IDB[4]   C    23  1   .  i/o pin   ...   ----E---
+        IDB[5]   C    24  1   .  i/o pin   ...   ----E---
+        IDB[6]   C    25  1   .  i/o pin   ...   ----E---
+        IDB[7]   C    26  1   .  i/o pin   ...   ----E---
+        LED[0]   G    69  4   .   output   ...   --------
+        LED[1]   G    70  3   .   output   ...   --------
+        LED[2]   G    71  3   .   output   ...   --------
+        LED[3]   G    72  4   .   output   ...   --------
+        LED[4]   G    73  5   .   output   ...   --------
+        LED[5]   G    74  5   .   output   ...   --------
+        LED[6]   G    75  5   .   output   ...   --------
+        LED[7]   G    76  5   .   output   ...   --------
+         PIACS   D    38  .   .    input   ...   --C-E---
+         PIAOE   D    37  .   .    input   ...   --C-----
+         PIAWE   D    36  .   .    input   ...   ----E---
+        SWC[0]   A    93  .   .    input   ...   ------G-
+        SWC[1]   A    94  .   .    input   ...   ------G-
+        SWC[2]   A    95  .   .    input   ...   ------G-
+        SWC[3]   A    96  .   .    input   ...   ------G-
+        SWC[4]   A    97  .   .    input   ...   ------G-
+        SWC[5]   A    98  .   .    input   ...   ------G-
+        SWC[6]   A    99  .   .    input   ...   ------GH
+        SWC[7]   A   100  .   .    input   ...   ------GH
+       BREG[0]   B   B15  1   P   buried   T/S   -B------
+      BREG[10]   B    B6  1   P   buried   T/S   -B------
+      BREG[11]   B    B5  1   P   buried   T/S   -B------
+      BREG[12]   B    B4  1   P   buried   T/S   -B------
+      BREG[13]   B    B3  1   P   buried   T/S   -B------
+      BREG[14]   B    B2  1   P   buried   T/S   -B------
+      BREG[15]   B    B1  1   P   buried   D/S   -------H
+       BREG[1]   B    B0  1   P   buried   T/S   -B------
+       BREG[2]   B   B14  1   P   buried   T/S   -B------
+       BREG[3]   B   B13  1   P   buried   T/S   -B------
+       BREG[4]   B   B12  1   P   buried   T/S   -B------
+       BREG[5]   B   B11  1   P   buried   T/S   -B------
+       BREG[6]   B   B10  1   P   buried   T/S   -B------
+       BREG[7]   B    B9  1   P   buried   T/S   -B------
+       BREG[8]   B    B8  1   P   buried   T/S   -B------
+       BREG[9]   B    B7  1   P   buried   T/S   -B------
+       BRG2[0]   H    H3  1   P   buried   T/S   -------H
+       BRG2[1]   H    H5  1   P   buried   T/A   -------H
+       BRG2[2]   H    H4  1   P   buried   T/S   -------H
+       BRG2[3]   H    H2  2   G   buried   T/S   -------H
+       BRG2[4]   H    H1  2   G   buried   T/S   -------H
+          CLKS   H    H0  3   G  implied   C/.   ------GH
+        IDB[0]   C    C2  1   P  implied   C/.   ----E---
+        IDB[1]   C    C5  1   P  implied   C/.   ----E---
+        IDB[2]   C    C4  1   P  implied   C/.   ----E---
+        IDB[3]   C    C9  1   P  implied   C/.   ----E---
+        IDB[4]   C    C8  1   P  implied   C/.   ----E---
+        IDB[5]   C    C1  1   P  implied   C/.   ----E---
+        IDB[6]   C   C12  1   P  implied   C/.   ----E---
+        IDB[7]   C    C0  1   P  implied   C/.   ----E---
+     RN_HDR[0]   E    E2  1   P  implied   D/A   --C---G-
+     RN_HDR[1]   E    E5  1   P  implied   D/A   --C---G-
+     RN_HDR[2]   E    E4  1   P  implied   D/A   --C---G-
+     RN_HDR[3]   E    E9  1   P  implied   D/A   --C---G-
+     RN_HDR[4]   E    E8  1   P  implied   D/A   --C---G-
+     RN_HDR[5]   E    E1  1   P  implied   D/A   --C---G-
+     RN_HDR[6]   E   E12  1   P  implied   D/A   --C---G-
+     RN_HDR[7]   E    E0  1   P  implied   D/A   --C---G-
+     RN_LED[0]   G    G4  4   G  implied   D/A   ------G-
+     RN_LED[1]   G    G2  3   G  implied   D/A   ------G-
+     RN_LED[2]   G    G5  3   G  implied   D/A   ------G-
+     RN_LED[3]   G    G9  4   G  implied   D/A   ------G-
+     RN_LED[4]   G    G8  5   G  implied   D/A   ------G-
+     RN_LED[5]   G    G1  5   G  implied   D/A   ------G-
+     RN_LED[6]   G   G12  5   G  implied   D/A   ------G-
+     RN_LED[7]   G    G0  5   G  implied   D/A   ------G-
+
+***********************
+* TABULAR INFORMATION *
+***********************
+
+DEDICATED PINS
+                                             Logic             Clock
+Pin              Signal        Type          Fanout            Fanout
+|------------------------------------------------------------------------|
+  4                 RST       input          -B--E-GH          --------
+ 13                CLK0     clk/inp          -B-----H          -B-----H
+ 18      ..............          ..          ........          ........
+ 54      ..............          ..          ........          ........
+ 63      ..............          ..          ........          ........
+ 68      ..............          ..          ........          ........
+
+**********************************
+* Signals - Equations Where Used *
+**********************************
+Signal Source :    Fanout List
+|---------------------------------------------------------------------------|
+           RST:         HDR[0]{E}         HDR[1]{E}         HDR[2]{E}
+              :         HDR[3]{E}         HDR[4]{E}         HDR[5]{E}
+              :         HDR[6]{E}         HDR[7]{E}         LED[0]{G}
+              :         LED[1]{G}         LED[2]{G}         LED[3]{G}
+              :         LED[4]{G}         LED[5]{G}         LED[6]{G}
+              :         LED[7]{G}        BREG[1]{B}       BREG[15]{B}
+              :       BREG[14]{B}       BREG[13]{B}       BREG[12]{B}
+              :       BREG[11]{B}       BREG[10]{B}        BREG[9]{B}
+              :        BREG[8]{B}        BREG[7]{B}        BREG[6]{B}
+              :        BREG[5]{B}        BREG[4]{B}        BREG[3]{B}
+              :        BREG[2]{B}        BREG[0]{B}        BRG2[1]{H}
+              {EEE EEE EEG GGG GGG GBB BBB BBB BBB BBB BBH}
+          CLK0:           CLKS{H}       BREG[15]{B}
+              {HB}
+        IDB[0]:         HDR[0]{E}
+              {E}
+        IDB[1]:         HDR[1]{E}
+              {E}
+        IDB[2]:         HDR[2]{E}
+              {E}
+        IDB[3]:         HDR[3]{E}
+              {E}
+        IDB[4]:         HDR[4]{E}
+              {E}
+        IDB[5]:         HDR[5]{E}
+              {E}
+        IDB[6]:         HDR[6]{E}
+              {E}
+        IDB[7]:         HDR[7]{E}
+              {E}
+            A3:         IDB[0]{C}         IDB[1]{C}         IDB[2]{C}
+              :         IDB[3]{C}         IDB[4]{C}         IDB[5]{C}
+              :         IDB[6]{C}         IDB[7]{C}         HDR[0]{E}
+              :         HDR[1]{E}         HDR[2]{E}         HDR[3]{E}
+              :         HDR[4]{E}         HDR[5]{E}         HDR[6]{E}
+              :         HDR[7]{E}
+              {CCC CCC CCE EEE EEE E}
+            A2:         HDR[0]{E}         HDR[1]{E}         HDR[2]{E}
+              :         HDR[3]{E}         HDR[4]{E}         HDR[5]{E}
+              :         HDR[6]{E}         HDR[7]{E}
+              {EEE EEE EE}
+         PIAWE:         HDR[0]{E}         HDR[1]{E}         HDR[2]{E}
+              :         HDR[3]{E}         HDR[4]{E}         HDR[5]{E}
+              :         HDR[6]{E}         HDR[7]{E}
+              {EEE EEE EE}
+         PIAOE:         IDB[0]{C}         IDB[1]{C}         IDB[2]{C}
+              :         IDB[3]{C}         IDB[4]{C}         IDB[5]{C}
+              :         IDB[6]{C}         IDB[7]{C}
+              {CCC CCC CC}
+         PIACS:         IDB[0]{C}         IDB[1]{C}         IDB[2]{C}
+              :         IDB[3]{C}         IDB[4]{C}         IDB[5]{C}
+              :         IDB[6]{C}         IDB[7]{C}         HDR[0]{E}
+              :         HDR[1]{E}         HDR[2]{E}         HDR[3]{E}
+              :         HDR[4]{E}         HDR[5]{E}         HDR[6]{E}
+              :         HDR[7]{E}
+              {CCC CCC CCE EEE EEE E}
+     RN_HDR[0]:         IDB[0]{C}         LED[0]{G}         LED[1]{G}
+              :         LED[2]{G}         LED[3]{G}         LED[4]{G}
+              :         LED[5]{G}         LED[6]{G}         LED[7]{G}
+              {CGG GGG GGG}
+     RN_HDR[1]:         IDB[1]{C}         LED[0]{G}         LED[1]{G}
+              :         LED[2]{G}         LED[3]{G}         LED[4]{G}
+              :         LED[5]{G}         LED[6]{G}         LED[7]{G}
+              {CGG GGG GGG}
+     RN_HDR[2]:         IDB[2]{C}         LED[0]{G}         LED[1]{G}
+              :         LED[2]{G}         LED[3]{G}         LED[4]{G}
+              :         LED[5]{G}         LED[6]{G}         LED[7]{G}
+              {CGG GGG GGG}
+     RN_HDR[3]:         IDB[3]{C}         LED[0]{G}         LED[1]{G}
+              :         LED[2]{G}         LED[3]{G}         LED[4]{G}
+              :         LED[5]{G}         LED[6]{G}         LED[7]{G}
+              {CGG GGG GGG}
+     RN_HDR[4]:         IDB[4]{C}         LED[0]{G}         LED[1]{G}
+              :         LED[2]{G}         LED[3]{G}         LED[4]{G}
+              :         LED[5]{G}         LED[6]{G}         LED[7]{G}
+              {CGG GGG GGG}
+     RN_HDR[5]:         IDB[5]{C}         LED[0]{G}         LED[1]{G}
+              :         LED[2]{G}         LED[3]{G}         LED[4]{G}
+              :         LED[5]{G}         LED[6]{G}         LED[7]{G}
+              {CGG GGG GGG}
+     RN_HDR[6]:         IDB[6]{C}         LED[0]{G}         LED[1]{G}
+              :         LED[2]{G}         LED[3]{G}         LED[4]{G}
+              :         LED[5]{G}         LED[6]{G}         LED[7]{G}
+              {CGG GGG GGG}
+     RN_HDR[7]:         IDB[7]{C}         LED[0]{G}         LED[1]{G}
+              :         LED[2]{G}         LED[3]{G}         LED[4]{G}
+              :         LED[5]{G}         LED[6]{G}         LED[7]{G}
+              {CGG GGG GGG}
+     RN_LED[0]:         LED[1]{G}         LED[3]{G}         LED[4]{G}
+              :         LED[6]{G}         LED[7]{G}
+              {GGG GG}
+     RN_LED[1]:         LED[0]{G}         LED[2]{G}         LED[5]{G}
+              {GGG}
+     RN_LED[2]:         LED[1]{G}         LED[3]{G}         LED[4]{G}
+              {GGG}
+     RN_LED[3]:         LED[0]{G}         LED[2]{G}         LED[4]{G}
+              :         LED[7]{G}
+              {GGG G}
+     RN_LED[4]:         LED[3]{G}         LED[5]{G}
+              {GG}
+     RN_LED[5]:         LED[4]{G}         LED[6]{G}
+              {GG}
+     RN_LED[6]:         LED[5]{G}         LED[7]{G}
+              {GG}
+     RN_LED[7]:         LED[0]{G}         LED[6]{G}
+              {GG}
+          CLKS:         LED[0]{G}         LED[1]{G}         LED[2]{G}
+              :         LED[3]{G}         LED[4]{G}         LED[5]{G}
+              :         LED[6]{G}         LED[7]{G}        BRG2[4]{H}
+              :        BRG2[3]{H}
+              {GGG GGG GGH H}
+        SWC[0]:         LED[0]{G}         LED[1]{G}         LED[2]{G}
+              :         LED[3]{G}         LED[4]{G}         LED[5]{G}
+              :         LED[6]{G}         LED[7]{G}
+              {GGG GGG GG}
+        SWC[1]:         LED[0]{G}         LED[1]{G}         LED[3]{G}
+              :         LED[4]{G}         LED[5]{G}         LED[6]{G}
+              :         LED[7]{G}
+              {GGG GGG G}
+        SWC[2]:         LED[2]{G}
+              {G}
+        SWC[3]:         LED[3]{G}
+              {G}
+        SWC[4]:         LED[4]{G}
+              {G}
+        SWC[5]:         LED[5]{G}
+              {G}
+        SWC[6]:         LED[6]{G}           CLKS{H}
+              {GH}
+        SWC[7]:         LED[7]{G}           CLKS{H}        BRG2[4]{H}
+              :        BRG2[3]{H}
+              {GHH H}
+       BREG[1]:       BREG[15]{B}       BREG[14]{B}       BREG[13]{B}
+              :       BREG[12]{B}       BREG[11]{B}       BREG[10]{B}
+              :        BREG[9]{B}        BREG[8]{B}        BREG[7]{B}
+              :        BREG[6]{B}        BREG[5]{B}        BREG[4]{B}
+              :        BREG[3]{B}        BREG[2]{B}
+              {BBB BBB BBB BBB BB}
+      BREG[15]:           CLKS{H}        BRG2[4]{H}        BRG2[3]{H}
+              :        BRG2[0]{H}        BRG2[2]{H}        BRG2[1]{H}
+              {HHH HHH}
+      BREG[14]:       BREG[15]{B}
+              {B}
+      BREG[13]:       BREG[15]{B}       BREG[14]{B}
+              {BB}
+      BREG[12]:       BREG[15]{B}       BREG[14]{B}       BREG[13]{B}
+              {BBB}
+      BREG[11]:       BREG[15]{B}       BREG[14]{B}       BREG[13]{B}
+              :       BREG[12]{B}
+              {BBB B}
+      BREG[10]:       BREG[15]{B}       BREG[14]{B}       BREG[13]{B}
+              :       BREG[12]{B}       BREG[11]{B}
+              {BBB BB}
+       BREG[9]:       BREG[15]{B}       BREG[14]{B}       BREG[13]{B}
+              :       BREG[12]{B}       BREG[11]{B}       BREG[10]{B}
+              {BBB BBB}
+       BREG[8]:       BREG[15]{B}       BREG[14]{B}       BREG[13]{B}
+              :       BREG[12]{B}       BREG[11]{B}       BREG[10]{B}
+              :        BREG[9]{B}
+              {BBB BBB B}
+       BREG[7]:       BREG[15]{B}       BREG[14]{B}       BREG[13]{B}
+              :       BREG[12]{B}       BREG[11]{B}       BREG[10]{B}
+              :        BREG[9]{B}        BREG[8]{B}
+              {BBB BBB BB}
+       BREG[6]:       BREG[15]{B}       BREG[14]{B}       BREG[13]{B}
+              :       BREG[12]{B}       BREG[11]{B}       BREG[10]{B}
+              :        BREG[9]{B}        BREG[8]{B}        BREG[7]{B}
+              {BBB BBB BBB}
+       BREG[5]:       BREG[15]{B}       BREG[14]{B}       BREG[13]{B}
+              :       BREG[12]{B}       BREG[11]{B}       BREG[10]{B}
+              :        BREG[9]{B}        BREG[8]{B}        BREG[7]{B}
+              :        BREG[6]{B}
+              {BBB BBB BBB B}
+       BREG[4]:       BREG[15]{B}       BREG[14]{B}       BREG[13]{B}
+              :       BREG[12]{B}       BREG[11]{B}       BREG[10]{B}
+              :        BREG[9]{B}        BREG[8]{B}        BREG[7]{B}
+              :        BREG[6]{B}        BREG[5]{B}
+              {BBB BBB BBB BB}
+       BREG[3]:       BREG[15]{B}       BREG[14]{B}       BREG[13]{B}
+              :       BREG[12]{B}       BREG[11]{B}       BREG[10]{B}
+              :        BREG[9]{B}        BREG[8]{B}        BREG[7]{B}
+              :        BREG[6]{B}        BREG[5]{B}        BREG[4]{B}
+              {BBB BBB BBB BBB}
+       BREG[2]:       BREG[15]{B}       BREG[14]{B}       BREG[13]{B}
+              :       BREG[12]{B}       BREG[11]{B}       BREG[10]{B}
+              :        BREG[9]{B}        BREG[8]{B}        BREG[7]{B}
+              :        BREG[6]{B}        BREG[5]{B}        BREG[4]{B}
+              :        BREG[3]{B}
+              {BBB BBB BBB BBB B}
+       BREG[0]:        BREG[1]{B}       BREG[15]{B}       BREG[14]{B}
+              :       BREG[13]{B}       BREG[12]{B}       BREG[11]{B}
+              :       BREG[10]{B}        BREG[9]{B}        BREG[8]{B}
+              :        BREG[7]{B}        BREG[6]{B}        BREG[5]{B}
+              :        BREG[4]{B}        BREG[3]{B}        BREG[2]{B}
+              {BBB BBB BBB BBB BBB}
+       BRG2[4]:           CLKS{H}
+              {H}
+       BRG2[3]:           CLKS{H}        BRG2[4]{H}
+              {HH}
+       BRG2[0]:           CLKS{H}        BRG2[4]{H}        BRG2[3]{H}
+              :        BRG2[2]{H}        BRG2[1]{H}
+              {HHH HH}
+       BRG2[2]:           CLKS{H}        BRG2[4]{H}        BRG2[3]{H}
+              {HHH}
+       BRG2[1]:           CLKS{H}        BRG2[4]{H}        BRG2[3]{H}
+              :        BRG2[2]{H}
+              {HHH H}
+
+Block B singular list (Input drives only one logic equation)
+          CLK0:       BREG[15]
+      BREG[14]:       BREG[15]
+
+Block C singular list (Input drives only one logic equation)
+     RN_HDR[0]:         IDB[0]
+     RN_HDR[1]:         IDB[1]
+     RN_HDR[2]:         IDB[2]
+     RN_HDR[3]:         IDB[3]
+     RN_HDR[4]:         IDB[4]
+     RN_HDR[5]:         IDB[5]
+     RN_HDR[6]:         IDB[6]
+     RN_HDR[7]:         IDB[7]
+
+Block E singular list (Input drives only one logic equation)
+        IDB[0]:         HDR[0]
+        IDB[1]:         HDR[1]
+        IDB[2]:         HDR[2]
+        IDB[3]:         HDR[3]
+        IDB[4]:         HDR[4]
+        IDB[5]:         HDR[5]
+        IDB[6]:         HDR[6]
+        IDB[7]:         HDR[7]
+
+Block G singular list (Input drives only one logic equation)
+        SWC[2]:         LED[2]
+        SWC[3]:         LED[3]
+        SWC[4]:         LED[4]
+        SWC[5]:         LED[5]
+        SWC[6]:         LED[6]
+        SWC[7]:         LED[7]
+
+Block H singular list (Input drives only one logic equation)
+           RST:        BRG2[1]
+          CLK0:           CLKS
+        SWC[6]:           CLKS
+       BRG2[4]:           CLKS
+
+BLOCK A I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 93  ...   ...            SWC[0]     input  ------G-
+ 94  ...   ...            SWC[1]     input  ------G-
+ 95  ...   ...            SWC[2]     input  ------G-
+ 96  ...   ...            SWC[3]     input  ------G-
+ 97  ...   ...            SWC[4]     input  ------G-
+ 98  ...   ...            SWC[5]     input  ------G-
+ 99  ...   ...            SWC[6]     input  ------GH
+100  ...   ...            SWC[7]     input  ------GH
+
+BLOCK B CLOCK MUX 
+Block Clocks     Signal    Pin   Pol
+|-----------------------------------|
+Ck0                CLK0     13    H
+Ck1                 ...     ..    .
+Ck2                 ...     ..    .
+Ck3                 ...     ..    .
+
+
+BLOCK B LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+B0     18          BREG[1]  T/S  1  12  P  H  B0  G B0  ..  -B------
+B1     19         BREG[15]  D/S  1  16  P  H  B1  G B0  ..  -------H
+B2     20         BREG[14]  T/S  1  16  P  H  B2 B0  G  ..  -B------
+B3     21         BREG[13]  T/S  1  16  P  H  B3 B0  G  ..  -B------
+B4     22         BREG[12]  T/S  1  16  P  H  B4 B0  G  ..  -B------
+B5     23         BREG[11]  T/S  1  16  P  H  B5 B0  G  ..  -B------
+B6     24         BREG[10]  T/S  1  16  P  H  B6 B0  G  ..  -B------
+B7     25          BREG[9]  T/S  1  16  P  H  B7 B0  G  ..  -B------
+B8     26          BREG[8]  T/S  1  16  P  H  B8 B0  G  ..  -B------
+B9     27          BREG[7]  T/S  1  16  P  H  B9 B0  G  ..  -B------
+B10    28          BREG[6]  T/S  1  16  P  H B10 B0  G  ..  -B------
+B11    29          BREG[5]  T/S  1  16  P  H B11 B0  G  ..  -B------
+B12    30          BREG[4]  T/S  1  16  P  H B12 B0  G  ..  -B------
+B13    31          BREG[3]  T/S  1  16  P  H B13 B0  G  ..  -B------
+B14    32          BREG[2]  T/S  1  12  P  H B14 B0  G  ..  -B------
+B15    33          BREG[0]  T/S  1   8  P  H B15  G B0  ..  -B------
+Bir-0 138 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-1 139 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-2 140 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-3 141 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-4 142 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-5 143 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-6 144 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-7 145 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+
+BLOCK B LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxB0              RST         pin 4     mxB17             ...           ...
+mxB1          BREG[4]    mcell B-12     mxB18             ...           ...
+mxB2         BREG[10]     mcell B-6     mxB19         BREG[0]    mcell B-15
+mxB3             CLK0        pin 13     mxB20             ...           ...
+mxB4              ...           ...     mxB21         BREG[3]    mcell B-13
+mxB5         BREG[13]     mcell B-3     mxB22             ...           ...
+mxB6          BREG[7]     mcell B-9     mxB23             ...           ...
+mxB7          BREG[5]    mcell B-11     mxB24         BREG[9]     mcell B-7
+mxB8          BREG[8]     mcell B-8     mxB25             ...           ...
+mxB9          BREG[2]    mcell B-14     mxB26         BREG[1]     mcell B-0
+mxB10        BREG[14]     mcell B-2     mxB27        BREG[12]     mcell B-4
+mxB11             ...           ...     mxB28        BREG[11]     mcell B-5
+mxB12         BREG[6]    mcell B-10     mxB29             ...           ...
+mxB13             ...           ...     mxB30             ...           ...
+mxB14             ...           ...     mxB31             ...           ...
+mxB15             ...           ...     mxB32             ...           ...
+mxB16             ...           ...
+
+
+BLOCK C LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+C0     34           IDB[7]  C/.  1  12  P  H   .  .  .  26  ----E---
+C1     35           IDB[5]  C/.  1  17  P  H   .  .  .  24  ----E---
+C2     36           IDB[0]  C/.  1  17  P  H   .  .  .  19  ----E---
+C3     37 ................  ...  .  17  .  .   .  .  .  ..  ........
+C4     38           IDB[2]  C/.  1  18  P  H   .  .  .  21  ----E---
+C5     39           IDB[1]  C/.  1  18  P  H   .  .  .  20  ----E---
+C6     40 ................  ...  .  18  .  .   .  .  .  ..  ........
+C7     41 ................  ...  .  18  .  .   .  .  .  ..  ........
+C8     42           IDB[4]  C/.  1  18  P  H   .  .  .  23  ----E---
+C9     43           IDB[3]  C/.  1  18  P  H   .  .  .  22  ----E---
+C10    44 ................  ...  .  18  .  .   .  .  .  ..  ........
+C11    45 ................  ...  .  19  .  .   .  .  .  ..  ........
+C12    46           IDB[6]  C/.  1  19  P  H   .  .  .  25  ----E---
+C13    47 ................  ...  .  19  .  .   .  .  .  ..  ........
+C14    48 ................  ...  .  15  .  .   .  .  .  ..  ........
+C15    49 ................  ...  .  10  .  .   .  .  .  ..  ........
+Cir-0 146 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-1 147 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-2 148 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-3 149 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-4 150 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-5 151 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-6 152 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-7 153 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+BLOCK C I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 19   36   ...            IDB[0]   i/o pin  ----E---
+ 20   39   ...            IDB[1]   i/o pin  ----E---
+ 21   38   ...            IDB[2]   i/o pin  ----E---
+ 22   43   ...            IDB[3]   i/o pin  ----E---
+ 23   42   ...            IDB[4]   i/o pin  ----E---
+ 24   35   ...            IDB[5]   i/o pin  ----E---
+ 25   46   ...            IDB[6]   i/o pin  ----E---
+ 26   34   ...            IDB[7]   i/o pin  ----E---
+
+
+BLOCK C LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxC0               A3        pin 34     mxC17             ...           ...
+mxC1              ...           ...     mxC18             ...           ...
+mxC2        RN_HDR[3]     mcell E-9     mxC19             ...           ...
+mxC3        RN_HDR[0]     mcell E-2     mxC20             ...           ...
+mxC4              ...           ...     mxC21             ...           ...
+mxC5        RN_HDR[5]     mcell E-1     mxC22       RN_HDR[2]     mcell E-4
+mxC6            PIACS        pin 38     mxC23             ...           ...
+mxC7            PIAOE        pin 37     mxC24             ...           ...
+mxC8        RN_HDR[4]     mcell E-8     mxC25             ...           ...
+mxC9              ...           ...     mxC26             ...           ...
+mxC10       RN_HDR[6]    mcell E-12     mxC27             ...           ...
+mxC11             ...           ...     mxC28             ...           ...
+mxC12             ...           ...     mxC29             ...           ...
+mxC13             ...           ...     mxC30             ...           ...
+mxC14       RN_HDR[1]     mcell E-5     mxC31       RN_HDR[7]     mcell E-0
+mxC15             ...           ...     mxC32             ...           ...
+mxC16             ...           ...
+
+BLOCK D I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 31  ...   ...  ................        ..  ........
+ 32  ...   ...  ................        ..  ........
+ 33  ...   ...  ................        ..  ........
+ 34  ...   ...                A3     input  --C-E---
+ 35  ...   ...                A2     input  ----E---
+ 36  ...   ...             PIAWE     input  ----E---
+ 37  ...   ...             PIAOE     input  --C-----
+ 38  ...   ...             PIACS     input  --C-E---
+
+
+BLOCK E LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+E0     66        RN_HDR[7]  D/A  1   6  P  H   P  G  P  50  --C---G-
+E1     67        RN_HDR[5]  D/A  1  11  P  H   P  G  P  48  --C---G-
+E2     68        RN_HDR[0]  D/A  1  11  P  H   P  G  P  43  --C---G-
+E3     69 ................  ...  .  11  .  .   .  .  .  ..  ........
+E4     70        RN_HDR[2]  D/A  1  14  P  H   P  G  P  45  --C---G-
+E5     71        RN_HDR[1]  D/A  1  14  P  H   P  G  P  44  --C---G-
+E6     72 ................  ...  .  14  .  .   .  .  .  ..  ........
+E7     73 ................  ...  .  14  .  .   .  .  .  ..  ........
+E8     74        RN_HDR[4]  D/A  1  14  P  H   P  G  P  47  --C---G-
+E9     75        RN_HDR[3]  D/A  1  14  P  H   P  G  P  46  --C---G-
+E10    76 ................  ...  .  14  .  .   .  .  .  ..  ........
+E11    77 ................  ...  .  17  .  .   .  .  .  ..  ........
+E12    78        RN_HDR[6]  D/A  1  17  P  H   P  G  P  49  --C---G-
+E13    79 ................  ...  .  17  .  .   .  .  .  ..  ........
+E14    80 ................  ...  .  15  .  .   .  .  .  ..  ........
+E15    81 ................  ...  .  10  .  .   .  .  .  ..  ........
+Eir-0 162 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-1 163 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-2 164 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-3 165 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-4 166 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-5 167 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-6 168 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-7 169 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+BLOCK E I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 43   68   ...            HDR[0]    output  --------
+ 44   71   ...            HDR[1]    output  --------
+ 45   70   ...            HDR[2]    output  --------
+ 46   75   ...            HDR[3]    output  --------
+ 47   74   ...            HDR[4]    output  --------
+ 48   67   ...            HDR[5]    output  --------
+ 49   78   ...            HDR[6]    output  --------
+ 50   66   ...            HDR[7]    output  --------
+
+
+BLOCK E LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxE0              RST         pin 4     mxE17          IDB[7]        pin 26
+mxE1              ...           ...     mxE18             ...           ...
+mxE2              ...           ...     mxE19             ...           ...
+mxE3           IDB[1]        pin 20     mxE20             ...           ...
+mxE4           IDB[6]        pin 25     mxE21             ...           ...
+mxE5           IDB[4]        pin 23     mxE22             ...           ...
+mxE6            PIACS        pin 38     mxE23           PIAWE        pin 36
+mxE7           IDB[0]        pin 19     mxE24              A3        pin 34
+mxE8               A2        pin 35     mxE25             ...           ...
+mxE9           IDB[2]        pin 21     mxE26             ...           ...
+mxE10          IDB[5]        pin 24     mxE27             ...           ...
+mxE11             ...           ...     mxE28             ...           ...
+mxE12          IDB[3]        pin 22     mxE29             ...           ...
+mxE13             ...           ...     mxE30             ...           ...
+mxE14             ...           ...     mxE31             ...           ...
+mxE15             ...           ...     mxE32             ...           ...
+mxE16             ...           ...
+
+
+BLOCK G LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+G0     98        RN_LED[7]  D/A  5   1  G  H   P  P  G  76  ------G-
+G1     99        RN_LED[5]  D/A  5   0  G  H   P  P  G  74  ------G-
+G2    100        RN_LED[1]  D/A  3   0  G  H   P  P  G  70  ------G-
+G3    101 ................  ...  .   0  .  .   .  .  .  ..  ........
+G4    102        RN_LED[0]  D/A  4   2  G  H   P  G  P  69  ------G-
+G5    103        RN_LED[2]  D/A  3   7  G  H   P  P  G  71  ------G-
+G6    104 ................  ...  .   6  .  .   .  .  .  ..  ........
+G7    105 ................  ...  .   5  .  .   .  .  .  ..  ........
+G8    106        RN_LED[4]  D/A  5   6  G  H   P  P  G  73  ------G-
+G9    107        RN_LED[3]  D/A  4   6  G  H   P  P  G  72  ------G-
+G10   108 ................  ...  .   9  .  .   .  .  .  ..  ........
+G11   109 ................  ...  .   8  .  .   .  .  .  ..  ........
+G12   110        RN_LED[6]  D/A  5  13  G  H   P  P  G  75  ------G-
+G13   111 ................  ...  .  13  .  .   .  .  .  ..  ........
+G14   112 ................  ...  .  10  .  .   .  .  .  ..  ........
+G15   113 ................  ...  .  10  .  .   .  .  .  ..  ........
+Gir-0 178 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-1 179 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-2 180 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-3 181 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-4 182 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-5 183 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-6 184 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-7 185 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+BLOCK G I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 69  102   ...            LED[0]    output  --------
+ 70  100   ...            LED[1]    output  --------
+ 71  103   ...            LED[2]    output  --------
+ 72  107   ...            LED[3]    output  --------
+ 73  106   ...            LED[4]    output  --------
+ 74   99   ...            LED[5]    output  --------
+ 75  110   ...            LED[6]    output  --------
+ 76   98   ...            LED[7]    output  --------
+
+
+BLOCK G LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxG0        RN_LED[7]     mcell G-0     mxG17          SWC[4]        pin 97
+mxG1              ...           ...     mxG18          SWC[7]       pin 100
+mxG2        RN_LED[0]     mcell G-4     mxG19             ...           ...
+mxG3           SWC[2]        pin 95     mxG20             ...           ...
+mxG4        RN_LED[5]     mcell G-1     mxG21             RST         pin 4
+mxG5           SWC[1]        pin 94     mxG22       RN_LED[2]     mcell G-5
+mxG6           SWC[6]        pin 99     mxG23       RN_LED[1]     mcell G-2
+mxG7        RN_HDR[7]     mcell E-0     mxG24       RN_HDR[3]     mcell E-9
+mxG8           SWC[0]        pin 93     mxG25             ...           ...
+mxG9              ...           ...     mxG26       RN_HDR[1]     mcell E-5
+mxG10       RN_LED[4]     mcell G-8     mxG27       RN_HDR[0]     mcell E-2
+mxG11          SWC[5]        pin 98     mxG28             ...           ...
+mxG12       RN_LED[3]     mcell G-9     mxG29       RN_HDR[2]     mcell E-4
+mxG13       RN_HDR[5]     mcell E-1     mxG30             ...           ...
+mxG14       RN_LED[6]    mcell G-12     mxG31       RN_HDR[6]    mcell E-12
+mxG15          SWC[3]        pin 96     mxG32            CLKS        pin 88
+mxG16       RN_HDR[4]     mcell E-8
+
+BLOCK H CLOCK MUX 
+Block Clocks     Signal    Pin   Pol
+|-----------------------------------|
+Ck0                CLK0     13    H
+Ck1                 ...     ..    .
+Ck2                 ...     ..    .
+Ck3                 ...     ..    .
+
+
+BLOCK H LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+H0    114             CLKS  C/.  3   2  G  H   .  .  .  88  ------GH
+H1    115          BRG2[4]  T/S  2   7  G  H  H1  G  G  ..  -------H
+H2    116          BRG2[3]  T/S  2  11  G  H  H2  G  G  ..  -------H
+H3    117          BRG2[0]  T/S  1  10  P  H  H3  G  G  ..  -------H
+H4    118          BRG2[2]  T/S  1  15  P  H  H4  G  G  ..  -------H
+H5    119          BRG2[1]  T/A  1  16  P  H  H5  P  G  ..  -------H
+H6    120 ................  ...  .  17  .  .   .  .  .  ..  ........
+H7    121 ................  ...  .  20  .  .   .  .  .  ..  ........
+H8    122 ................  ...  .  20  .  .   .  .  .  ..  ........
+H9    123 ................  ...  .  20  .  .   .  .  .  ..  ........
+H10   124 ................  ...  .  20  .  .   .  .  .  ..  ........
+H11   125 ................  ...  .  20  .  .   .  .  .  ..  ........
+H12   126 ................  ...  .  20  .  .   .  .  .  ..  ........
+H13   127 ................  ...  .  20  .  .   .  .  .  ..  ........
+H14   128 ................  ...  .  15  .  .   .  .  .  ..  ........
+H15   129 ................  ...  .  10  .  .   .  .  .  ..  ........
+Hir-0 186 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-1 187 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-2 188 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-3 189 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-4 190 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-5 191 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-6 192 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-7 193 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+BLOCK H I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 81  ...   ...  ................        ..  ........
+ 82  ...   ...  ................        ..  ........
+ 83  ...   ...  ................        ..  ........
+ 84  ...   ...  ................        ..  ........
+ 85  ...   ...  ................        ..  ........
+ 86  ...   ...  ................        ..  ........
+ 87  ...   ...  ................        ..  ........
+ 88  114   ...              CLKS    output  ------GH
+
+
+BLOCK H LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxH0              RST         pin 4     mxH17             ...           ...
+mxH1              ...           ...     mxH18             ...           ...
+mxH2              ...           ...     mxH19             ...           ...
+mxH3             CLK0        pin 13     mxH20         BRG2[2]     mcell H-4
+mxH4          BRG2[1]     mcell H-5     mxH21             ...           ...
+mxH5           SWC[7]       pin 100     mxH22             ...           ...
+mxH6           SWC[6]        pin 99     mxH23             ...           ...
+mxH7              ...           ...     mxH24             ...           ...
+mxH8             CLKS        pin 88     mxH25             ...           ...
+mxH9              ...           ...     mxH26             ...           ...
+mxH10         BRG2[0]     mcell H-3     mxH27             ...           ...
+mxH11             ...           ...     mxH28             ...           ...
+mxH12         BRG2[4]     mcell H-1     mxH29             ...           ...
+mxH13             ...           ...     mxH30             ...           ...
+mxH14         BRG2[3]     mcell H-2     mxH31             ...           ...
+mxH15        BREG[15]     mcell B-1     mxH32             ...           ...
+mxH16             ...           ...
+
+
+MACH445 report file key:
+
+A             - Asynchronous mode
+AVAL          - Additional product terms available within the current
+                steering allocation, plus those potentially available
+                through resteering of free clusters.
+B0            - Block Asynchronous Reset/Preset product term 0
+B1            - Block Asynchronous Reset/Preset product term 1
+C             - Combinatorial
+Ck0           - Block clock generated from pin 13 or pin 18
+Ck1           - Block clock generated from pin 13 or pin 18
+Ck2           - Block clock generated from pin 63 or pin 68
+Ck3           - Block clock generated from pin 63 or pin 68
+clk           - Clock
+CSM           - Central Switch Matrix
+D             - D-type flip flop
+G             - Ground
+H             - High
+implied       - Node occupying the macrocell drives the output pin
+                but not defined in the design file.
+inode         - Input node
+Inp           - Input
+ipair         - Input paired node
+I/O           - Input or Output
+L             - Low
+L             - Latch
+LOC           - Location
+mcell <X>     - Source is macrocell from block <X>
+Mux           - Multiplexer
+mx            - Block Array input multiplexer
+onode         - Output node
+opair         - Output paired node
+P             - Product Term
+Pol           - Polarity
+PT(s)         - Product term(s)
+Reg           - Register
+Res           - Reset control
+RN_<pin_name> - Output node paired with <pin_name> created by Fitter.
+S             - Synchronous mode
+Set           - Preset control
+T             - T-type flip flop
+XOR           - Exclusive OR gate
+<X>ir         - Input register in block <X>
+.             - Not available or Not applicable
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%

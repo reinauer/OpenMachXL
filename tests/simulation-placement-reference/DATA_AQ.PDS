@@ -1,0 +1,225 @@
+
+;This example of CPLDs applications features a Data Acquisition
+;System. In this design multiplexed data enters the MACH device,
+;and is demultiplexed inside.  The Demultiplexer consists of two sets
+;of registers controlled by different clock-enable logic.  Therefore each bank
+;of registers will register a different set of data.  
+;Such demultiplexing techniques
+;are useful to save device pins.  The Adder and the Mux provide several
+;addressing choices for this real-time cpu controlled system. The counter
+;loads data from an outside RAM, increments it and writes it back to the RAM.
+;The Bidirectional MUX provides multiplexing and parallel communication
+;between external busses and memory devices.
+
+;---------------------------------- Declaration Segment ------------
+TITLE    Large Example
+PATTERN  1
+REVISION 1
+AUTHOR   J. ENGINEER
+COMPANY  AMD
+DATE    8/26/94
+
+CHIP  DATA_AQ  MACH465
+
+;---------------------------------- PIN Declarations --------------
+
+NODE  ?  ADD[0..7]             
+NODE  ?  CARRY[1..7]                           ;Adder's carry bits
+PIN   ?  RAM_ADDRESS[0..7]                     ;outputs
+PIN   ?  RAM_DATA[0..7]                        ;bidirectional
+NODE  ?  B_DATA[0..7]       REGISTERED  
+PIN   ?  MUXED_DATA[0..7]   IPAIR B_DATA[0..7] ;pairs B_DATA to input-registers             
+NODE  ?  A_DATA[0..7]       REGISTERED   
+NODE  ?  Q[0..7]            REGISTERED         ;counter output
+PIN   ?  DATABUS[0..7]
+PIN   ?  BUSADDR[0..7]
+PIN   ?  SEL0
+PIN   ?  SEL1
+PIN   ?  SEL2
+PIN   ?  CLK
+PIN   ?  RST 
+PIN   ?  CLK_OUT                               ; clocks input registers
+PIN   ?  OE0 
+PIN   ?  LOAD
+PIN   ?  CE0
+PIN   ?  CE1
+PIN   ?  CLK_IREG   ;clk_out hardwired outside CPLD. Only Pin Signals can clock
+                 ;input registers.
+
+STRING CNT '(/LOAD)'
+
+EQUATIONS
+
+;----------DEMULTIPLEXER------------
+
+A_DATA[0..7] := MUXED_DATA[0..7]       ;using macrocell register
+A_DATA[0..7].CLKF= CLK * CE0
+A_DATA[0..7].RSTF=RST
+
+B_DATA[0..7] = MUXED_DATA[0..7]        ;using input register
+B_DATA[0..7].CLKF= CLK_ireg       ;input registers clocks have to be from a pin
+CLK_OUT=CLK * /CE0              ;clk_out is hardwired with clk_ireg outside chip
+
+
+;--------4 to 1 MULTIPLEXER
+
+CASE (SEL0,SEL1)
+    BEGIN
+     #B00:  BEGIN
+              RAM_ADDRESS[0..7]=A_DATA[0..7]
+            END
+     #B01:  BEGIN
+              RAM_ADDRESS[0..7]=B_DATA[0..7]
+            END
+     #B10:  BEGIN
+              RAM_ADDRESS[0..7]=add[0..7]
+            END
+     #B11:  BEGIN
+              RAM_ADDRESS[0..7]=BUSADDR[0..7]
+            END
+     END
+
+;--------ADDER
+add[0] = A_DATA[0] :+: B_DATA[0]                     ;least significant bit
+add[1] = A_DATA[1] :+: B_DATA[1] :+: CARRY[1]
+add[2] = A_DATA[2] :+: B_DATA[2] :+: CARRY[2] 
+add[3] = A_DATA[3] :+: B_DATA[3] :+: CARRY[3] 
+add[4] = A_DATA[4] :+: B_DATA[4] :+: CARRY[4]
+add[5] = A_DATA[5] :+: B_DATA[5] :+: CARRY[5]
+add[6] = A_DATA[6] :+: B_DATA[6] :+: CARRY[6]
+add[7] = A_DATA[7] :+: B_DATA[7] :+: CARRY[7]
+
+CARRY[1] = A_DATA[0] * B_DATA[0]
+CARRY[2] = A_DATA[1] * B_DATA[1] + CARRY[1]* ( A_DATA[1] + B_DATA[1] )
+CARRY[3] = A_DATA[2] * B_DATA[2] + CARRY[2]* ( A_DATA[2] + B_DATA[2] )
+CARRY[4] = A_DATA[3] * B_DATA[3] + CARRY[3]* ( A_DATA[3] + B_DATA[3] )  
+CARRY[5] = A_DATA[4] * B_DATA[4] + CARRY[4]* ( A_DATA[4] + B_DATA[4] )
+CARRY[6] = A_DATA[5] * B_DATA[5] + CARRY[5]* ( A_DATA[5] + B_DATA[5] )
+CARRY[7] = A_DATA[6] * B_DATA[6] + CARRY[6]* ( A_DATA[6] + B_DATA[6] )
+
+
+;Inplementing this counter with T-FF will require less Product Terms
+
+;------------ Synchronous Counter
+Q[ 0] := /Q[0]*CNT                                          +load*ram_data[0] 
+Q[ 1] := (Q[ 0] :+: Q[ 1])*CNT                               +load*ram_data[1]
+Q[ 2] := (Q[ 0] * Q[ 1] :+: Q[ 2])*CNT                       +load*ram_data[2]
+Q[ 3] := (Q[0] * Q[1] * Q[2] :+: Q[3])*CNT                   +load*ram_data[3]
+Q[ 4] := (Q[0] * Q[1] * Q[2] *Q[3]:+:Q[4])*CNT               +load*ram_data[4]
+Q[ 5] := (Q[0] * Q[1] * Q[2] *Q[3]*Q[4]:+:Q[5])*CNT          +load*ram_data[5]
+Q[ 6] := (Q[0] * Q[1] * Q[2] *Q[3]*Q[4]*Q[5]:+:Q[6])*CNT     +load*ram_data[6]
+Q[ 7] := (Q[0] * Q[1] * Q[2] *Q[3]*Q[4]*Q[5]*Q[6]:+:Q[7])*CNT+load*ram_data[7]
+
+Q[0..7].CLKF = CLK*CE1         ;
+Q[0..7].RSTF = RST        ;
+
+;---------Bidirectional Mux
+databus[0..7] = ram_data[0..7]
+ram_data[0..7] = databus[0..7]*SEL2+q[0..7]*/SEL2 ;selects data from counter
+                                                  ;or from databus
+databus[0..7].trst = oe0
+ram_data[0..7].trst = /oe0
+
+;----------------------------------------------------------------
+;----------------------------SIMULATION SECTION------------------
+SIMULATION
+
+
+TRACE_ON   CLK Q[7..0] CE1 LOAD
+           DATABUS[7..0] RAM_DATA[7..0] SEL2 OE0 
+           CE0 CLK_IREG MUXED_DATA[7..0]  
+           A_DATA[7..0] B_DATA[7..0] ADD[7..0] BUSADDR[7..0]
+           RAM_ADDRESS[7..0] SEL0 SEL1
+
+
+
+SETF CE1 SEL2 /LOAD RST
+SETF   /RST                       ;Reseting registers
+
+;---------------------------COUNTER
+
+;counting to 3
+
+FOR X:= 1 TO 3 DO
+        BEGIN
+             CLOCKF CLK
+        END
+
+;Loading RAM_DATA  to counter
+
+SETF LOAD OE0
+RAM_DATA[7..0]= #h32
+CLOCKF CLK
+CHECK Q[7..0]=#H32
+
+;counting from hex 32
+
+SETF /LOAD
+FOR X:= 1 TO 3 DO
+        BEGIN
+             CLOCKF CLK
+        END
+SETF /CE1        ;Disabling the counter's clock
+
+CLOCKF CLK
+;-----------SIMULATING BIMUX----      
+;loading RAM_DATA with DATABUS or the Counter's outputs
+
+SETF /OE0 SEL2  DATABUS[7..0] = #hCC
+
+CLOCKF CLK
+
+CHECK RAM_DATA[7..0] = #hCC
+
+SETF /SEL2               ;writes the counter's output, q[0..7], to RAM_DATA
+
+CLOCKF CLK
+CHECK RAM_DATA[7..0] = #h35 
+
+;loading DATABUS and Counter with RAM_DATA
+SETF OE0                      ;tristating RAM_DATA[0..7]
+     CE1 LOAD                 ;for loading counter
+     RAM_DATA[7..0] = #hDD
+
+             CLOCKF CLK
+
+CHECK Q[7..0] = #hDD
+CHECK RAM_DATA[7..0] = #hDD
+
+;--------------------------DEMULTIPLEXER AND ADDER
+
+
+;loading first bank of registers   "A_DATA"
+SETF /CE1 CE0 MUXED_DATA[7..0] = #h33
+CLOCKF CLK
+CHECK A_DATA[7..0] = #h33 
+
+;loading second bank of registers   "B_DATA"
+SETF MUXED_DATA[7..0] = #h44 
+     /CE0                       ;disabling clock for first bank of registers
+
+CLOCKF CLK_IREG             ;CLK_IREG equals CLOCKOUT 
+CHECK B_DATA[7..0] = #h44 
+
+;----------------------------SIMULATING MUX
+
+SETF BUSADDR[7..0] = #h55
+     /SEL0 /SEL1
+CLOCKF CLK
+CHECK RAM_ADDRESS[7..0] = #h33
+
+SETF /SEL0 SEL1
+CLOCKF CLK
+CHECK RAM_ADDRESS[7..0] = #h44    
+
+SETF SEL0 /SEL1
+             CLOCKF CLK
+CHECK RAM_ADDRESS[7..0] = #h77       
+
+SETF SEL0 SEL1
+             CLOCKF CLK
+CHECK RAM_ADDRESS[7..0] = #h55     
+
+TRACE_OFF
+
+

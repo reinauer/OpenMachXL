@@ -1,0 +1,31 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Qf1111.pds
+Title  Native simulation reference
+
+
+
+   1-V1 - SETF
+          /A  /B  /CLK  /RST  
+   2-V1 - CHECKQ
+          /Q  
+   2-V2 - SETF
+          A  
+   6-V3 - CLOCKF
+          CLK  
+   6-V3 - CHECKQ
+          Q  
+   6-V4 - SETF
+          B  
+   7-V4 - CHECKQ
+          Q  
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Qf1111.HST
+Merged results (JEDEC) are in       ===> Qf1111.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 85636 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Qf1111.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0

@@ -1,0 +1,13 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file Longout.pds
+; FITTER-generated Placements.
+; DEVICE   MACH111
+; DATE     Mon Nov 09 23:24:54 2026
+
+
+Pin   3  A
+Pin   2  AAAAAA001[0] Comb ;
+Pin   5  AAAAAA002[0] Comb ;
+; Unused Pins & Nodes
+; -> None Found.

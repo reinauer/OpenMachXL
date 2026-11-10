@@ -1,0 +1,11 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+|> ERROR D5029
+     Missing or bad tree file (.TRE).
+     Run Parse (Check Syntax) to generate PALASM2.TRE.
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 421 bytes.
+
+ %%  MACHSIMU  %% File Processing Terminated.  File: .
+ %%  MACHSIMU  %% ERROR count: 1  WARNING count: 0

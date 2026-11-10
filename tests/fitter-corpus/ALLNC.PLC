@@ -1,0 +1,44 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file Allnc.pds
+; FITTER-generated Placements.
+; DEVICE   MACH111
+; DATE     Mon Nov 09 23:24:57 2026
+
+
+Pin   2  Q0 Reg  ;
+Pin   3  Q1 Reg  ;
+Pin   4  Q2 Reg  ;
+Pin   5  Q3 Reg  ;
+Pin   6  Q4 Reg  ;
+Pin   7  Q5 Reg  ;
+Pin   8  Q6 Reg  ;
+Pin   9  Q7 Reg  ;
+Pin   10  A
+Pin   14  Q8 Reg  ;
+Pin   15  Q9 Reg  ;
+Pin   16  Q10 Reg  ;
+Pin   17  Q11 Reg  ;
+Pin   18  Q12 Reg  ;
+Pin   19  Q13 Reg  ;
+Pin   20  Q14 Reg  ;
+Pin   21  Q15 Reg  ;
+Pin   24  Q16 Reg  ;
+Pin   25  Q17 Reg  ;
+Pin   26  Q18 Reg  ;
+Pin   27  Q19 Reg  ;
+Pin   28  Q20 Reg  ;
+Pin   29  Q21 Reg  ;
+Pin   30  Q22 Reg  ;
+Pin   31  Q23 Reg  ;
+Pin   36  Q24 Reg  ;
+Pin   37  Q25 Reg  ;
+Pin   38  Q26 Reg  ;
+Pin   39  Q27 Reg  ;
+Pin   40  Q28 Reg  ;
+Pin   41  Q29 Reg  ;
+Pin   42  Q30 Reg  ;
+Pin   43  Q31 Reg  ;
+Pin   35  DEF_GCLOCK
+; Unused Pins & Nodes
+; -> None Found.

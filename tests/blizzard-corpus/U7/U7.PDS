@@ -1,0 +1,191 @@
+;PALASM Design Description
+;---------------------------------- Declaration Segment ------------
+TITLE    BLIZZARD 1260 U7 - CLOCKS, 060 BUS CONTROL, DRAM TIMING
+PATTERN  U7
+REVISION 0.2 (RECONSTRUCTION)
+AUTHOR   RECONSTRUCTED FROM THE PCB, SEE ../ARCHITECTURE.MD
+COMPANY  BLIZZARD 1260 KICAD PROJECT
+DATE     2026-10-26
+CHIP     U7  MACH111
+
+; U7 is the fast (-7) part. It buffers the oscillator into the 060 CLK and
+; the board clock BCLK (fed back into its own CLK2 and to U8/U9), and runs
+; the 060 bus cycle. BCLK edges E0, E1, ... with TS sampled at E0:
+;
+;   E1 DEC    U1 decode settles
+;   E2 RASON  RAS low if U1 selected a SIMM (RAS = SELRAMx * RASON)
+;   E3        MUX = column (U9 asserts CAS at E4: CAS = MUX * /TA)
+;   E6 TA     sampled by the 060 at E7, CAS off; bursts: next TA every
+;             4 BCLK (phase counter PH), U9 advances the column on TA
+;
+; The same RASON/PH sequence runs for every cycle; for cycles U1 did not
+; map to a SIMM, AMI is set instead, no RAS falls, AREQ goes to U14 and TA
+; follows the synchronised ADONE.
+; Refresh: CAS-before-RAS on REFREQ from U8, Gray-coded counter RC so the
+; decoded RAS/CAS outputs cannot glitch. Refresh is not gated by reset, so
+; RAM (and the MAPROM copy) survives a Ctrl-Amiga-Amiga reset.
+
+;---------------------------------- PIN Declarations ---------------
+PIN  7   BCLK        COMBINATORIAL   ; board clock out (U7.27, U8, U9, J3)
+PIN  8   RAS3_N      COMBINATORIAL   ; expansion SIMM side 2 via RN6
+PIN  9   PCLK        COMBINATORIAL   ; 060 CLK / 040 PCLK
+PIN  10  R_W                         ; 060 R/W
+PIN  11  SIZ1                        ; 060 SIZ1
+PIN  13  SIZ0                        ; 060 SIZ0
+PIN  14  TS_N                        ; 060 /TS
+PIN  15  RAS2_N      COMBINATORIAL   ; expansion SIMM side 1 via RN6
+PIN  16  ADONE_N                     ; from U14: A1200/board-space cycle done
+PIN  17  OEBA_N      REGISTERED      ; '543 OEBA: CPU data onto the local bus
+PIN  18  RAS1_N      COMBINATORIAL   ; on-board SIMM RAS1/RAS3
+PIN  20  LEAB_N      COMBINATORIAL   ; '543 LEAB: A->B latch, kept transparent
+PIN  21  RAS0_N      COMBINATORIAL   ; on-board SIMM RAS0/RAS2
+PIN  25  TA_N        REGISTERED      ; 060 /TA
+PIN  26  TAX_N       REGISTERED      ; copy of TA to U8/U9
+PIN  27  SELRAM2_N                   ; from U1
+PIN  28  RSTI_N                      ; 060 /RSTI (driven by U8)
+PIN  29  SEL060                      ; R3: high = 68060 fitted, low = 68040
+PIN  30  CASEN_N     COMBINATORIAL   ; to U9: refresh CAS (all lanes)
+PIN  32  REFREQ_N                    ; from U8: refresh request pulse
+PIN  33  BCLKIN                      ; BCLK fed back (clock for this chip)
+PIN  35  OSC                         ; 50 MHz oscillator via R4
+PIN  36  RDOE_N      REGISTERED      ; to U9: read data phase
+PIN  37  SELRAM0_N                   ; from U1
+PIN  38  CYC_N       REGISTERED      ; to U8/U9: cycle in progress
+PIN  39  SELRAM3_N                   ; from U1
+PIN  41  AREQ_N      REGISTERED      ; to U14/U9: run an A1200/board cycle
+PIN  43  TEA_N       REGISTERED      ; 060 /TEA: bus watchdog on non-DRAM cycles
+PIN  4   BCLK040     REGISTERED      ; 68040 BCLK (pin R7, empty on a 060)
+PIN  5   MUX         REGISTERED      ; row/column select
+
+NODE ?   DEC         REGISTERED      ; decode wait (E1)
+NODE ?   RASON       REGISTERED      ; cycle sequence running (E2 .. last TA)
+NODE ?   PH1         REGISTERED      ; beat phase 0..3, TA when it wraps
+NODE ?   PH0         REGISTERED
+NODE ?   BT1         REGISTERED      ; TAs given in a line transfer
+NODE ?   BT0         REGISTERED
+NODE ?   LASTF       COMBINATORIAL   ; the TA now due ends the cycle
+NODE ?   AMI         REGISTERED      ; non-DRAM cycle, served by U14
+NODE ?   AD1         REGISTERED      ; ADONE synchroniser
+NODE ?   AD2         REGISTERED
+NODE ?   RFP         REGISTERED      ; refresh pending
+NODE ?   RC2         REGISTERED      ; refresh sequence, Gray code, 000 = idle
+NODE ?   RC1         REGISTERED
+NODE ?   RC0         REGISTERED
+NODE ?   TO1         REGISTERED      ; watchdog: one refresh tick seen in this cycle
+
+;---------------------------------- Boolean Equation Segment ------
+; refresh sequence (Gray code, one state per BCLK):
+;   000 idle -> 001 -> 011 -> 010 -> 110 -> 111 -> 101 -> 100 -> 000
+;   CASEN in 001/011; U9 registers it, so CAS is low during 011/010
+;   RAS in 010/110/111/101 (80 ns), i.e. CAS falls 20 ns before RAS
+;   and rises 20 ns after it; 100/000 + DEC give >= 60 ns precharge
+STRING  RFIDLE   '(/RC2 * /RC1 * /RC0)'
+STRING  RFRAS    '(RC1 * /RC0 + RC2 * RC0)'
+STRING  START    '(RFP * CYC_N * /RASON * /DEC)'
+
+EQUATIONS
+
+; ---- clocks ---------------------------------------------------------
+PCLK        = OSC
+BCLK040    := /BCLK040 * /SEL060          ; OSC/2 for a 68040, stopped for a 060
+BCLK040.CLKF = OSC
+BCLK        = SEL060 * OSC + /SEL060 * BCLK040
+
+LEAB_N      = GND
+
+; ---- cycle sequence ---------------------------------------------------
+LASTF       = /SIZ1 + /SIZ0 + AMI + BT1 * BT0
+
+/CYC_N     := RSTI_N * /TS_N * CYC_N
+            + RSTI_N * /CYC_N * TA_N * TEA_N
+            + RSTI_N * /CYC_N * /LASTF
+CYC_N.CLKF  = BCLKIN
+
+; a new cycle waits until U14 has released ADONE (and with it the data path)
+DEC        := RSTI_N * /CYC_N * /DEC * /RASON * TA_N * RFIDLE * /AD2
+DEC.CLKF    = BCLKIN
+
+RASON      := RSTI_N * DEC
+            + RSTI_N * RASON * TA_N * TEA_N
+            + RSTI_N * RASON * /LASTF
+RASON.CLKF  = BCLKIN
+
+PH0        := RSTI_N * RASON * /PH0 * TA_N * TEA_N
+            + RSTI_N * RASON * /PH0 * /LASTF
+PH0.CLKF    = BCLKIN
+PH1        := RSTI_N * RASON * TA_N * TEA_N * (PH1 :+: PH0)
+            + RSTI_N * RASON * /LASTF * (PH1 :+: PH0)
+PH1.CLKF    = BCLKIN
+
+BT0        := RSTI_N * RASON * BT0 * TA_N * TEA_N
+            + RSTI_N * RASON * /BT0 * /TA_N * /LASTF
+BT0.CLKF    = BCLKIN
+BT1        := RSTI_N * RASON * BT1 * TA_N * TEA_N
+            + RSTI_N * RASON * (BT1 :+: BT0) * /TA_N * /LASTF
+BT1.CLKF    = BCLKIN
+
+MUX        := RSTI_N * RASON * TA_N * TEA_N
+            + RSTI_N * RASON * /LASTF
+MUX.CLKF    = BCLKIN
+
+; RAS: selected SIMM while the sequence runs, all of them for refresh
+/RAS0_N     = /SELRAM0_N * RASON + RFRAS
+/RAS1_N     = /SELRAM0_N * RASON + RFRAS
+/RAS2_N     = /SELRAM2_N * RASON + RFRAS
+/RAS3_N     = /SELRAM3_N * RASON + RFRAS
+
+; ---- non-DRAM cycles via U14 -------------------------------------------
+AMI        := RSTI_N * DEC * SELRAM0_N * SELRAM2_N * SELRAM3_N
+            + RSTI_N * AMI * TA_N * TEA_N
+AMI.CLKF    = BCLKIN
+; AREQ only once ADONE from the previous cycle has gone away
+/AREQ_N    := RSTI_N * AMI * /AD2 * AREQ_N * TA_N * TEA_N
+            + RSTI_N * AMI * /AREQ_N * TA_N * TEA_N
+AREQ_N.CLKF = BCLKIN
+AD1        := /ADONE_N
+AD1.CLKF    = BCLKIN
+AD2        := AD1
+AD2.CLKF    = BCLKIN
+
+; ---- terminations -----------------------------------------------------------
+/TA_N      := RSTI_N * RASON * /AMI * PH1 * PH0
+            + RSTI_N * AMI * AD2 * /AREQ_N * TA_N
+TA_N.CLKF   = BCLKIN
+/TAX_N     := RSTI_N * RASON * /AMI * PH1 * PH0
+            + RSTI_N * AMI * AD2 * /AREQ_N * TA_N
+TAX_N.CLKF  = BCLKIN
+
+; Watchdog: a non-DRAM cycle still waiting at the second refresh tick
+; (11-23 us) ends with TEA. U14 lets a cycle answered with A1200 BERR hang
+; on purpose, so BERR reaches the 060 as a bus error; a slot cycle that
+; never gets DSACK becomes a bus error instead of a lock-up.
+TO1        := RSTI_N * AMI * TO1
+            + RSTI_N * AMI * /REFREQ_N
+TO1.CLKF    = BCLKIN
+/TEA_N     := RSTI_N * AMI * TO1 * /REFREQ_N * TA_N * TEA_N
+TEA_N.CLKF  = BCLKIN
+
+; read data phase / write data phase for the whole cycle
+/RDOE_N    := RSTI_N * R_W * /CYC_N * TA_N * TEA_N
+            + RSTI_N * R_W * /CYC_N * /LASTF
+RDOE_N.CLKF = BCLKIN
+/OEBA_N    := RSTI_N * /R_W * /CYC_N * TA_N * TEA_N * /AD2
+            + RSTI_N * /R_W * /CYC_N * /LASTF * /AD2
+OEBA_N.CLKF = BCLKIN
+
+; ---- refresh (not gated by reset) ----------------------------------------
+RFP        := /REFREQ_N
+            + RFP * RFIDLE
+RFP.CLKF    = BCLKIN
+RC0        := START * RFIDLE
+            + /RC2 * /RC1 * RC0
+            + RC2 * RC1
+RC0.CLKF    = BCLKIN
+RC1        := /RC2 * RC0
+            + /RC2 * RC1
+            + RC1 * /RC0
+RC1.CLKF    = BCLKIN
+RC2        := RC1 * /RC0
+            + RC2 * RC0
+RC2.CLKF    = BCLKIN
+/CASEN_N    = /RC2 * RC0

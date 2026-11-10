@@ -1,0 +1,15 @@
+H MACH111 44 33 10 10
+D 10
+
+B block #0 (A);  I: 4,   I/O: 3,  cluster#: 3
+FANIN list: 
+A C D E 
+E: 1 , W *
+E: 1 , X *
+E: 1 , Z *
+
+B block #1 (B);  I: 3,   I/O: 2,  cluster#: 2
+FANIN list: 
+A B D 
+E: 1 , V *
+E: 1 , Y *

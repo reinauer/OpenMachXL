@@ -1,0 +1,16 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file Latch.pds
+; FITTER-generated Placements.
+; DEVICE   MACH435
+; DATE     Mon Nov 09 20:19:43 2026
+
+
+Pin   3  D
+Pin   4  SET
+Pin   5  RST
+Pin   8  Q2 Comb ; S6=1  S9=1  Pair 2
+Pin   9  Q1 Lat  ; S6=1  S9=1  Pair 14
+Pin   20  LE
+; Unused Pins & Nodes
+; -> None Found.

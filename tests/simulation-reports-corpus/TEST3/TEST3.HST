@@ -1,0 +1,51 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+MACHXL SIMULATION HISTORY LISTING
+
+Title     : multibus2_module         Author   : J. ENGINEER      
+Pattern   : bus_arbiter              Company  : AMD              
+Revision  : 1.0                      Date     : 12/09/92         
+
+MACH435        
+Page : 1 
+               ggc  gc  gc  gc  gc  gc                                     
+ GND           LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ VCC           HHHHHHHHHHHHHHHHHHHHHHHHH                                   
+ SYSCLEAR      HLLLLLLLLLLLLLLLLLLLLLLLL                                   
+/SC4           HHHHHHHHHHHHHHHHHHHHHLLLL                                   
+/SC2           HHHHHHHHHHHHHHHHHHHHHLLLL                                   
+/SC0           HHHHHLLLLHHHHHHHHHHHHHHHH                                   
+/SC1           HHHHHHHHHHHHHHHHHHHHHHHHH                                   
+ TRANS_MON     LLLLLLLHHHHHHHHHHHHHHHHLL                                   
+ ARB_ID_MATCH  LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ AGENT_ERR     LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ GND           LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ ARB_OPER[1]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ HI_PRI        LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ ARB_OPER[0]   LLLLLLLLLLLLLLLLLLLLLLLHH                                   
+ OWNRDY        LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ BREQ          LLLLLLLLLHHHHHHHHHHHHHHHH                                   
+/BUS_REQ       HHHHHHHHHLLLLLLLLLLLLHHHH                                   
+ REQ_READY     LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ CLEAR         LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ BCLK          LLHHLLHHLLHHLLHHLLHHLLHHL                                   
+ VCC           HHHHHHHHHHHHHHHHHHHHHHHHH                                   
+ GND           LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ TRANS_ST[0]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ GND           LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ ARB_MON[0]    LLLLLLLLLLLHHHHLLLLLLLLLL                                   
+ PUT_BUS_REQ   LLLLLLLLLLLLLLLLLLLLLLLHH                                   
+ VCC           HHHHHHHHHHHHHHHHHHHHHHHHH                                   
+ GND           LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ VCC           HHHHHHHHHHHHHHHHHHHHHHHHH                                   
+ ARB_MON[1]    LLLLLLLLLLLLLLLHHHHHHHHLL                                   
+ GND           LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ PUT_ARB_ID    LLLLLLLLLLLLLLLLLLLLLLLHH                                   
+ VCC           HHHHHHHHHHHHHHHHHHHHHHHHH                                   
+ GND           LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ TRANS_ST[1]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ GND           LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ TRANS_ST[2]   LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ VCC           HHHHHHHHHHHHHHHHHHHHHHHHH                                   
+

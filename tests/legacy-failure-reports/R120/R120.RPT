@@ -1,0 +1,348 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+******************************************************************
+* Design Name = R120.pds, Device = MACH120, Nov 10 13:43:05 2026 *
+******************************************************************
+
+***********************
+* MACH FITTER OPTIONS *
+***********************
+SIGNAL PLACEMENT:
+  Handling of Preplacements                      No Change
+  Use placement data from                        Design file
+
+FITTING OPTIONS:
+  SET/RESET treated as DONT_CARE?                Y
+  Unused I/O pins configured as outputs?         N
+  Iterate between partitioning and place/route?  Y
+  Balanced partitioning?                         Y
+  Spread Placement?                              Y
+  Maximun Run Time                               run until completion
+
+***************************
+* DEVICE RESOURCE SUMMARY *
+***************************
+                                 Total
+                               Available  Used  Available  Utilization
+Dedicated Pins
+  Input-Only Pins                 4        0      4    -->     0%
+  Clock/Input Pins                4        0      4    -->     0%
+I/O Pins                         48       25     23    -->    52%
+Central Switch Matrix Outputs   104       24     80    -->    23%
+Product Term Clusters            48        1     47    -->     2%
+Logical Product Terms           192        1    191    -->     0%
+Logic Macrocells                 48        1     47    -->     2%
+  Input Registers                ..       ..     ..
+  Unusable Macrocells            ..        0     ..
+
+******************************
+* BLOCK PARTITIONING SUMMARY *
+******************************
+                                                                  # of PT  
+                  Logic   I/O           Macrocells    Macrocells  clusters 
+          Fanin    PTs    Pins         Used Unusable  available   available
+|---------------------------------------------------------------------------|
+Maximum     26     48     12            ..     ..         12        12
+|---------------------------------------------------------------------------|
+Block A     24      1      8             1      0         11        11
+Block B      0      0      6             0      0         12        12
+Block C      0      0      6             0      0         12        12
+Block D      0      0      5             0      0         12        12
+
+> Two rightmost columns above reflect last status of the placement process.
+
+******************
+* SIGNAL SUMMARY *
+******************
+                             Pin/Node Logic              Output
+       Signals Block Loc PTs   Type   Type  Preset  Reset Enable Fanout
+|---------------------------------------------------------------------------|
+            I0   C    41  .    input   ...   ...    ...   ...    A---
+            I1   A     9  .    input   ...   ...    ...   ...    A---
+           I10   D    57  .    input   ...   ...    ...   ...    A---
+           I11   B    32  .    input   ...   ...    ...   ...    A---
+           I12   B    22  .    input   ...   ...    ...   ...    A---
+           I13   A    13  .    input   ...   ...    ...   ...    A---
+           I14   D    62  .    input   ...   ...    ...   ...    A---
+           I15   D    59  .    input   ...   ...    ...   ...    A---
+           I16   C    48  .    input   ...   ...    ...   ...    A---
+           I17   C    36  .    input   ...   ...    ...   ...    A---
+           I18   C    40  .    input   ...   ...    ...   ...    A---
+           I19   B    33  .    input   ...   ...    ...   ...    A---
+            I2   C    38  .    input   ...   ...    ...   ...    A---
+           I20   D    64  .    input   ...   ...    ...   ...    A---
+           I21   A    14  .    input   ...   ...    ...   ...    A---
+           I22   B    24  .    input   ...   ...    ...   ...    A---
+           I23   A     7  .    input   ...   ...    ...   ...    A---
+            I3   B    28  .    input   ...   ...    ...   ...    A---
+            I4   A    12  .    input   ...   ...    ...   ...    A---
+            I5   D    65  .    input   ...   ...    ...   ...    A---
+            I6   B    23  .    input   ...   ...    ...   ...    A---
+            I7   C    46  .    input   ...   ...    ...   ...    A---
+            I8   A     6  .    input   ...   ...    ...   ...    A---
+            I9   A     5  .    input   ...   ...    ...   ...    A---
+             Q   A     2  1   output   ...   ...    ...   ...    ----
+             Q   A    A0  1  implied    C    ...    ...   ...    ----
+
+**************************************************
+* PRESET, RESET and OUTPUT ENABLE signal SUMMARY *
+**************************************************
+
+PRESET signal summary:
+
+Number      Pin or Node Name      Block 
+|--------------------------------------------------|
+
+RESET signal summary:
+
+Number      Pin or Node Name      Block 
+|--------------------------------------------------|
+
+OUTPUT ENABLE signal summary:
+
+Number      Pin or Node Name      Block 
+|--------------------------------------------------|
+
+***********************
+* TABULAR INFORMATION *
+***********************
+
+**********************************
+* Signals - Equations Where Used *
+**********************************
+Signal Source :    Fanout List
+|---------------------------------------------------------------------------|
+            I9:              Q{A}
+              {A}
+            I8:              Q{A}
+              {A}
+           I23:              Q{A}
+              {A}
+            I1:              Q{A}
+              {A}
+            I4:              Q{A}
+              {A}
+           I13:              Q{A}
+              {A}
+           I21:              Q{A}
+              {A}
+           I12:              Q{A}
+              {A}
+            I6:              Q{A}
+              {A}
+           I22:              Q{A}
+              {A}
+            I3:              Q{A}
+              {A}
+           I11:              Q{A}
+              {A}
+           I19:              Q{A}
+              {A}
+           I17:              Q{A}
+              {A}
+            I2:              Q{A}
+              {A}
+           I18:              Q{A}
+              {A}
+            I0:              Q{A}
+              {A}
+            I7:              Q{A}
+              {A}
+           I16:              Q{A}
+              {A}
+           I10:              Q{A}
+              {A}
+           I15:              Q{A}
+              {A}
+           I14:              Q{A}
+              {A}
+           I20:              Q{A}
+              {A}
+            I5:              Q{A}
+              {A}
+
+Block A singular list (Input drives only one logic equation)
+            I9:              Q
+            I8:              Q
+           I23:              Q
+            I1:              Q
+            I4:              Q
+           I13:              Q
+           I21:              Q
+           I12:              Q
+            I6:              Q
+           I22:              Q
+            I3:              Q
+           I11:              Q
+           I19:              Q
+           I17:              Q
+            I2:              Q
+           I18:              Q
+            I0:              Q
+            I7:              Q
+           I16:              Q
+           I10:              Q
+           I15:              Q
+           I14:              Q
+           I20:              Q
+            I5:              Q
+
+
+BLOCK A LOGIC MACROCELLS 
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  P   C  S  R   P
+O                            P   E   A  O   L  E  E   I
+C     Node          Signal   E   D   L  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+A0      2                Q   C   1   7  H   .  .  .   2  ----
+A1      3 ................  ...  .   8  .   .  .  .  ..  ....
+A2      4 ................  ...  .  12  .   .  .  .  ..  ....
+A3      5 ................  ...  .  12  .   .  .  .  ..  ....
+A4      6 ................  ...  .  12  .   .  .  .  ..  ....
+A5      7 ................  ...  .  12  .   .  .  .  ..  ....
+A6      8 ................  ...  .  12  .   .  .  .  ..  ....
+A7      9 ................  ...  .  12  .   .  .  .  ..  ....
+A8     10 ................  ...  .  12  .   .  .  .  ..  ....
+A9     11 ................  ...  .  12  .   .  .  .  ..  ....
+A10    12 ................  ...  .  12  .   .  .  .  ..  ....
+A11    13 ................  ...  .   8  .   .  .  .  ..  ....
+
+BLOCK A I/O PINS
+                  Output
+Pin onode        Enable           Signal     Type    Fanout
+|----------------------------------------------------------------|
+  2    2          ...                  Q    output  ----
+  3  ...          ...   ................        ..  ....
+  4  ...          ...   ................        ..  ....
+  5  ...          ...                 I9     input  A---
+  6  ...          ...                 I8     input  A---
+  7  ...          ...                I23     input  A---
+  9  ...          ...                 I1     input  A---
+ 10  ...          ...   ................        ..  ....
+ 11  ...          ...   ................        ..  ....
+ 12  ...          ...                 I4     input  A---
+ 13  ...          ...                I13     input  A---
+ 14  ...          ...                I21     input  A---
+
+
+BLOCK A LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxA?               I9         pin 5     mxA?              I17        pin 36
+mxA?               I8         pin 6     mxA?               I2        pin 38
+mxA?              I23         pin 7     mxA?              I18        pin 40
+mxA?               I1         pin 9     mxA?               I0        pin 41
+mxA?               I4        pin 12     mxA?               I7        pin 46
+mxA?              I13        pin 13     mxA?              I16        pin 48
+mxA?              I21        pin 14     mxA?              I10        pin 57
+mxA?              I12        pin 22     mxA?              I15        pin 59
+mxA?               I6        pin 23     mxA?              I14        pin 62
+mxA?              I22        pin 24     mxA?              I20        pin 64
+mxA?               I3        pin 28     mxA?               I5        pin 65
+mxA?              I11        pin 32     mxA?              ...           ...
+mxA?              I19        pin 33     mxA?              ...           ...
+
+BLOCK B I/O PINS
+                  Output
+Pin onode        Enable           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 21  ...          ...   ................        ..  ....
+ 22  ...          ...                I12     input  A---
+ 23  ...          ...                 I6     input  A---
+ 24  ...          ...                I22     input  A---
+ 25  ...          ...   ................        ..  ....
+ 26  ...          ...   ................        ..  ....
+ 28  ...          ...                 I3     input  A---
+ 29  ...          ...   ................        ..  ....
+ 30  ...          ...   ................        ..  ....
+ 31  ...          ...   ................        ..  ....
+ 32  ...          ...                I11     input  A---
+ 33  ...          ...                I19     input  A---
+
+BLOCK C I/O PINS
+                  Output
+Pin onode        Enable           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 36  ...          ...                I17     input  A---
+ 37  ...          ...   ................        ..  ....
+ 38  ...          ...                 I2     input  A---
+ 39  ...          ...   ................        ..  ....
+ 40  ...          ...                I18     input  A---
+ 41  ...          ...                 I0     input  A---
+ 43  ...          ...   ................        ..  ....
+ 44  ...          ...   ................        ..  ....
+ 45  ...          ...   ................        ..  ....
+ 46  ...          ...                 I7     input  A---
+ 47  ...          ...   ................        ..  ....
+ 48  ...          ...                I16     input  A---
+
+BLOCK D I/O PINS
+                  Output
+Pin onode        Enable           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 55  ...          ...   ................        ..  ....
+ 56  ...          ...   ................        ..  ....
+ 57  ...          ...                I10     input  A---
+ 58  ...          ...   ................        ..  ....
+ 59  ...          ...                I15     input  A---
+ 60  ...          ...   ................        ..  ....
+ 62  ...          ...                I14     input  A---
+ 63  ...          ...   ................        ..  ....
+ 64  ...          ...                I20     input  A---
+ 65  ...          ...                 I5     input  A---
+ 66  ...          ...   ................        ..  ....
+ 67  ...          ...   ................        ..  ....
+
+**************************
+* ROUTING FAILURE REPORT *
+**************************
+Reason(s): Not enough routing resources.
+I5 can not be routed to block A
+
+
+MACH120 report file key:
+
+AVAL          - Additional product terms available within the current
+                steering allocation, plus those potentially available
+                through resteering of free clusters.
+C             - Combinatorial
+Ck0           - Dedicated clock pin
+Ck1           - Dedicated clock pin
+Ck2           - Dedicated clock pin
+Ck3           - Dedicated clock pin
+clk           - Clock
+CSM           - Central Switch Matrix
+D             - D-type flip flop
+G             - Ground
+H             - High
+implied       - Node occupying the macrocell drives the output pin
+                but not defined in the design file.
+inode         - Input node
+Inp           - Input
+ipair         - Input paired node
+I/O           - Input or Output
+L             - Low
+L             - Latch
+LOC           - Location
+mcell <X>     - Source is macrocell from block <X>
+Mux           - Multiplexer
+mx            - Block Array input multiplexer
+onode         - Output node
+opair         - Output paired node
+P             - Product Term
+Pol           - Polarity
+PT(s)         - Product term(s)
+Reg           - Register
+Res           - Reset control
+RN_<pin_name> - Output node paired with <pin_name> created by Fitter.
+Set           - Preset control
+T             - T-type flip flop
+<Y>XX-ir      - Macrocell XX in block Y is used as an input register.
+.             - Not available or Not applicable
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing       95% - Completed
+%%% Fitting process has failed %%%

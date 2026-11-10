@@ -1,0 +1,178 @@
+;-------------------------------------------------------------------
+; NOTICE: This implementation of PREP Co. Benchmark #1 - Datapath
+; is the property of AMD. It has submitted for the PREP benchmarks.
+;
+;       All other uses are expressly forbidden!
+;
+;       AMD Contact: Nick Schmitz (408) 749-4868        Fax:749-8433
+;       M/s 1002, 901 Thompson, Sunnyvale Ca 94088
+;-------------------------------------------------------------------
+;;
+;; This version multiplexes the MSB of the datapath on the output pins.
+;; (Reduce total pin count to 38 signal pins.)
+;; Double semi-colons (;;) indicate changes for this.
+;;
+;; Reduced pin version - NAS 1/20/93
+;;
+
+;MACHXL Design Description
+
+;---------------------------------- Declaration Segment ------------
+TITLE    Cascaded Data Path Benchmark for PREP #1
+PATTERN  p1-srn.pds
+REVISION 0
+AUTHOR   J. ENGINEER
+COMPANY  AMD
+DATE     1/15/93
+; Org: 05/12/92
+
+
+CHIP  _d_path_c  MACH435
+
+;---------------------------------- PIN Declarations ---------------
+PIN  ?          id[15..0]       ; 24 -> 16 for MACH210
+PIN  ?          sel[1..0]
+PIN  ?          S_L
+PIN  ?          clk
+PIN  ?          rst
+PIN  ?          oe
+
+PIN  ?          ipd[7..0]
+;-------------------------------------------------------------------
+NODE ?          m_x[7..0]   REGISTERED
+
+PIN  ?          p_x[7..0]   REGISTERED                  ;; added
+NODE ?          q_x[7..0]   REGISTERED PAIR p_x[7..0]   ;; added
+;-------------------------------------------------------------------
+
+;----------------------------------- Boolean Equation Segment ------
+EQUATIONS
+
+;-------------------------------------------------------------------
+; Instance 0
+;-------------------------------------------------------------------
+; Input Select
+
+  case (sel[1],sel[0])
+       begin
+       0: begin m_x[7..0] := ipd[ 7..0]  end
+       1: begin m_x[7..0] :=  id[ 7..0]  end
+       2: begin m_x[7..0] :=  id[15..8]  end
+       3: begin m_x[7..0] := p_x[ 7..0]  end  ;;  id[23..16] end
+       end
+
+;-------------------------------------------------------------------
+;OUTPUT BLOCK
+
+  if S_L then
+       begin    ; Data shift mode
+               q_x[7] := q_x[6]         q_x[6] := q_x[5]
+               q_x[5] := q_x[4]         q_x[4] := q_x[3]
+               q_x[3] := q_x[2]         q_x[2] := q_x[1]
+               q_x[1] := q_x[0]         q_x[0] := q_x[7]
+       end
+    else
+       begin    ; Data load
+               q_x[7..0] := m_x[7..0]
+       end
+;-------------------------------------------------------------------
+q_x[7..0].clkf = clk    q_x[7..0].rstf = rst    q_x[7..0].setf = gnd
+m_x[7..0].clkf = clk    m_x[7..0].rstf = rst    m_x[7..0].setf = gnd
+;-------------------------------------------------------------------
+
+;-------------------------------------------------------------------
+;; replicate logic for pair
+        p_x[7] := {q_x[7]}      p_x[3] := {q_x[3]}
+        p_x[6] := {q_x[6]}      p_x[2] := {q_x[2]}
+        p_x[5] := {q_x[5]}      p_x[1] := {q_x[1]}
+        p_x[4] := {q_x[4]}      p_x[0] := {q_x[0]}
+
+;; Match functional equations for PAIR
+p_x[7..0].clkf = clk    p_x[7..0].trst=oe
+p_x[7..0].rstf = rst    p_x[7..0].setf = gnd
+;-------------------------------------------------------------------
+
+;----------------------------------- Simulation Segment ------------
+SIMULATION
+
+Trace_on q_x[7..0] sel[1..0] CLK RST S_L
+        oe ;;
+        id[15,11,4,0] ipd[7,1..0]
+
+; Set the input data to:
+;
+;       ipd[ 7.. 0] = 01h
+;       id[23..16] = 80h        ;; loaded thru p_x[7..0]
+;       id[15..8]  = 08h
+;       id[7..0]   = 10h
+;
+
+;-------------------------------------------------------------------
+;; setf /ipd[7..1] ipd[0] id[23] /id[22..12] id[11] /id[10..5] id[4] /id[3..0]
+
+setf /ipd[7..1] ipd[0]  /id[15..12] id[11] /id[10..5] id[4] /id[3..0]
+        /S_L /clk /sel[1..0] /rst      /oe ;;
+
+setf  rst               oe    ;; Enable Q's
+clockf clk                    ; Reset the registers
+setf /rst
+
+Check /Q_x[7..0]       ; Zeros
+
+;-------------------------------------------------------------------
+for i := 1 to 4 do
+        begin clockf clk end   ; Mux and load the registers with idp[7..0]
+
+setf S_L
+Check /Q_x[7..1]  Q_x[0]                        ; idp value
+for i := 1 to 7 do begin clockf clk end         ; Shift q_x[7..0] 7 times
+Check /Q_x[6..0]  Q_x[7]                        ; value shifted
+
+;-------------------------------------------------------------------
+setf sel[1] /sel[0]           ; Prepare to Mux through id[15..8]
+clockf clk                    ; Shift q_x[7..0] and load id into m_x
+
+setf /S_L
+clockf clk                    ; Load id[15..8] into q_x[7..0]
+setf S_L                      ; Prepare to shift
+
+Check /Q_x[7..4,2..0]  Q_x[3]                   ; id[15..8] value
+for i := 1 to 7 do begin clockf clk end         ; Shift q_x[7..0] 7 times
+Check /Q_x[7..3,1..0]  Q_x[2]                   ; value shifted
+
+;-------------------------------------------------------------------
+Setf /oe                      ;; disable SR outputs
+Setf p_x[7] /p_x[6..0]        ;;
+
+setf sel[1] sel[0]            ; Prepare to mux through id[23..16]
+clockf clk                    ; Shift q_x[7..0] and load id[23..16] into m_x
+
+Setf oe                       ;; enable SR outputs
+
+setf /S_L
+clockf clk                    ; Load id[23..16] into q_x[7..0]
+setf S_L                      ; Prepare to shift
+
+Check /Q_x[6..0]  Q_x[7]                        ; id [23..16] value
+for i := 1 to 7 do begin clockf clk end         ; Shift q_x[7..0] 7 times
+Check /Q_x[7,5..0]  Q_x[6]                      ; value shifted
+
+;-------------------------------------------------------------------
+setf /sel[1] sel[0]           ; Prepare to mux id[7..0]
+clockf clk                    ; Shift q_x[7..0] and load id[7..0] to m_x
+       
+setf /S_L
+clockf clk                    ; Load id[7..0] to q_x[7..0]
+setf S_L                      ; Prepare to shift
+
+Check /Q_x[7..5,3..0]  Q_x[4]                   ; id [7..0] value
+for i := 1 to 7 do begin clockf clk end         ; Shift q_x[7..0] 7 times
+Check /Q_x[7..4,2..0]  Q_x[3]                   ; value shifted
+
+setf /sel[1..0]
+clockf clk
+
+trace_off
+;-------------------------------------------------------------------
+
+

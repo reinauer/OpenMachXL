@@ -1,0 +1,78 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+MACHXL SIMULATION HISTORY LISTING
+
+Title     : Fast Comparator-- Compar Author   : J. ENGINEER      
+Pattern   : 1                        Company  : AMD              
+Revision  : 1                        Date     : 4/26/94          
+
+Check clash    1:COMPOUT
+Expect  L  Actual  H
+
+Total number of check clashes   ====>>>    1
+Clash detected at vector number ====>>>    7
+
+Check clash    2:COMPOUT
+Expect  L  Actual  H
+
+Total number of check clashes   ====>>>    2
+Clash detected at vector number ====>>>    9
+
+Check clash    3:COMPOUT
+Expect  L  Actual  H
+
+Total number of check clashes   ====>>>    3
+Clash detected at vector number ====>>>    11
+
+Check clash    4:COMPOUT
+Expect  L  Actual  H
+
+Total number of check clashes   ====>>>    4
+Clash detected at vector number ====>>>    13
+
+Check clash    5:COMPOUT
+Expect  L  Actual  H
+
+Total number of check clashes   ====>>>    5
+Clash detected at vector number ====>>>    15
+
+MACH435        
+Page : 1 
+          gggggg g g g g                                              
+ GND      LLLLLLLLLLLLLLL                                             
+ VCC      HHHHHHHHHHHHHHH                                             
+ IN[9]    HHHHHHHHHHHHHHH                                             
+ IN[8]    HHHHHLLLLLLLLLL                                             
+ IN[7]    HHHHHLLLLLLLLLL                                             
+ IN[6]    HHHHHHHHHHHHHHH                                             
+ IN[5]    HHHHHLLLLLLLLLL                                             
+ IN[4]    HHHHHLLLLLLLLLL                                             
+ IN[3]    HHHHHLLLLLLLLLL                                             
+ COMPOUT  LLLLLH?H?H?H?H?                                             
+ GND      LLLLLLLLLLLLLLL                                             
+ IN[2]    HHHHHLLLLLLLLLL                                             
+ IN[1]    HHHHHLLLLLLLLLL                                             
+ IN[0]    HHHHHLLLLLLLLLL                                             
+ INX[9]   HHHHHLLLLLLLLLL                                             
+ INX[8]   HHHHHHHHHHHHHHH                                             
+ INX[7]   HHHHHLLLLLLLLLL                                             
+ INX[6]   HHHHHHHHHHHHHHH                                             
+ INX[5]   HHHHHLLLLLLLLLL                                             
+ INX[4]   HHHHHLLLLLLLLLL                                             
+ VCC      HHHHHHHHHHHHHHH                                             
+ GND      LLLLLLLLLLLLLLL                                             
+ INX[3]   HHHHHLLLLLLLLLL                                             
+ INX[2]   HHHHHLLLLLLLLLL                                             
+ INX[1]   HHHHHLLLLLLLLLL                                             
+ INX[0]   HHHHHLLLLLLLLLL                                             
+ GND      LLLLLLLLLLLLLLL                                             
+ VCC      HHHHHHHHHHHHHHH                                             
+ GND      LLLLLLLLLLLLLLL                                             
+ VCC      HHHHHHHHHHHHHHH                                             
+ GND      LLLLLLLLLLLLLLL                                             
+ VCC      HHHHHHHHHHHHHHH                                             
+ GND      LLLLLLLLLLLLLLL                                             
+ GND      LLLLLLLLLLLLLLL                                             
+ VCC      HHHHHHHHHHHHHHH                                             
+

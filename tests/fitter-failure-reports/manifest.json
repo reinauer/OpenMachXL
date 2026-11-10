@@ -1,0 +1,50 @@
+[
+  {
+    "name": "MRW4",
+    "origin": "build/modern-raw-pair-original/mrw4/WORK",
+    "sha256": {
+      "MRW4.PDS": "2e8df21a728314ab05c1f6c6c14a46045e9bc0dc7ddeba1f6044c05998272cf5",
+      "MRW4.MXL": "068a0cc2afd4165177d7d6804e51f0422b534a80c5bf450e608e02aa17be07aa",
+      "MRW4.RPT": "b8b62f20d5bb594e24091795dc373edcae8202da7486676256dcff524c85b10c",
+      "MRW4.PRD": "202b95f92079931341a6ff6fd906cdeed6de909c5edbb4db5997cd846297ffa5",
+      "MRW4.TAL": "279de2b3c8553086522ba991fde9596e8cef50f9ba4519c0e00fbf6af22333ed"
+    },
+    "known_difference": "Native reports feasible routes and actual retained placement; DOS reports inconsistent completion and stale route tables."
+  },
+  {
+    "name": "RPM815",
+    "origin": "build/raw-pair-movement-dense/rpm815/WORK",
+    "sha256": {
+      "RPM815.PDS": "27e50d7828647f6b6708b353adfd78f48e3ab7da4c2ec5de1bb5794a254be3e1",
+      "RPM815.MXL": "597601b0a4effaee414e7e458c334c48ca80e9ea6006b7d297101323b79d74f4",
+      "RPM815.RPT": "35c662ab365c6040cfae9864e1766ad58abb7f25ebc7479e1b6e1c4a6ff694c5",
+      "RPM815.PRD": "820f835bd3aa478b4bbe8cfbadd7a144060c203401d6a394c282b8ce39fcbbe0",
+      "RPM815.TAL": "5973bf17a09dd6965009677e048bfbe427923bdd4e998e648bb80cf8ef2555c3"
+    },
+    "known_difference": "Native reports feasible routes and actual retained placement; DOS reports inconsistent completion and stale route tables."
+  },
+  {
+    "name": "FI0",
+    "origin": "build/failed-imx-search-original/fi0/WORK",
+    "sha256": {
+      "FI0.PDS": "fae8db3f63f6e927d10ee18ac3ebf553a0ff33eb3fd293607cb807676de0f977",
+      "FI0.MXL": "12d5155e33d5367a7065f9589f4fc9996361423b4fa462cbe74f45d2c3b1719e",
+      "FI0.RPT": "c906e32fc70b4f9bb4599c65ace1688e2cf151b8aadfb82c2fc7785527373a19",
+      "FI0.PRD": "40abcb5f9f0e3feb80bd274aafbea9138fa2a3f8565e465c1cd69a91cef506a7",
+      "FI0.TAL": "7b00d382381fbfd3dbf5df02ab4682dea486508bb5366a66f6a4039ec87ef718"
+    },
+    "known_difference": "Original final physical placement and counters match. Native CSM feasibility replaces inconsistent DOS completion and stale route tables."
+  },
+  {
+    "name": "FI1",
+    "origin": "build/failed-imx-search-original/fi1/WORK",
+    "sha256": {
+      "FI1.PDS": "27e50d7828647f6b6708b353adfd78f48e3ab7da4c2ec5de1bb5794a254be3e1",
+      "FI1.MXL": "93e7769068fce6a3d73db3ea56dd3a715ba4e7a1a6862fc58e3a892e362e2787",
+      "FI1.RPT": "6a61fd5252d7a9e99ad000418c64535ef4bbf3a6e0fa490cb62ef1bea3ddcc89",
+      "FI1.PRD": "3d323d89482e15dc16142b9c8944b9f85903f03045c9cbc0443bc89b2ee4475f",
+      "FI1.TAL": "5428d12ac2128e4c346b13631f0e8824da4ceb7ed9e4405c43e2dc08bf9ee954"
+    },
+    "known_difference": "Original final physical placement and counters match. Native CSM feasibility replaces inconsistent DOS completion and stale route tables."
+  }
+]

@@ -1,0 +1,440 @@
+{
+  "upstream": "https://github.com/chipsalliance/espresso",
+  "tag": "v2.5.1",
+  "commit": "d80d7bb96051b81d343bd66761f2768307b35a4b",
+  "scope": "Shared function implementations adopted; retained APIs and project adaptations are documented in README.machxl.md. Header and word layout remain the full MachXL interface, modernized to ANSI C.",
+  "files": {
+    "cofactor.c": {
+      "upstream_sha256": "c122ff2548ef01210d5d7a87dc8f038935d25f236bfbf0c9e66d38873cfd6148",
+      "adopted_functions": [
+        "cofactor",
+        "scofactor",
+        "massive_count",
+        "cube1list",
+        "cube2list",
+        "cube3list",
+        "cubeunlist"
+      ],
+      "retained_functions": [
+        {
+          "name": "binate_split_select",
+          "reason": "retained-extension"
+        }
+      ]
+    },
+    "cols.c": {
+      "upstream_sha256": "6f7fe6f223ba8c83b65c322eb5e299c94732ff7cac17e7d97874eaed775d9d9f",
+      "adopted_functions": [
+        "sm_col_alloc",
+        "sm_col_free",
+        "sm_col_contains",
+        "sm_col_remove_element"
+      ],
+      "retained_functions": []
+    },
+    "compl.c": {
+      "upstream_sha256": "3ef43a84956176088aaacfb13d29c2b049723ecedfdc0b6174c4a86031ba7a8e",
+      "adopted_functions": [
+        "compl_cube",
+        "compl_special_cases",
+        "compl_d1merge",
+        "compl_lift_onset",
+        "compl_lift",
+        "compl_merge",
+        "complement"
+      ],
+      "retained_functions": []
+    },
+    "contain.c": {
+      "upstream_sha256": "540bf003950778d8c479f96e4fd1bcaf858c09a60687d11a1315ec3586218549",
+      "adopted_functions": [
+        "sf_contain",
+        "sf_rev_contain",
+        "sf_dupl",
+        "rm_contain",
+        "rm_rev_contain",
+        "sf_list",
+        "sf_unlist",
+        "dist_merge",
+        "d1merge"
+      ],
+      "retained_functions": [
+        {
+          "name": "rm_equal",
+          "reason": "retained-extension"
+        },
+        {
+          "name": "sf_sort",
+          "reason": "retained-extension"
+        },
+        {
+          "name": "d1_rm_equal",
+          "reason": "retained-extension"
+        }
+      ]
+    },
+    "cubestr.c": {
+      "upstream_sha256": "e79ec3e5244c0fca5d58e52e39464cf12b5de20241b606097b7bb5ec7def32d8",
+      "adopted_functions": [
+        "cube_setup",
+        "setdown_cube"
+      ],
+      "retained_functions": [],
+      "local_adaptations": [
+        "cube_setup retains dimension validation, num_mv_vars initialization and binary-only output=-1 for the full library interface."
+      ]
+    },
+    "cvrin.c": {
+      "upstream_sha256": "939592fd34e56daad2e707fa5bd2fbacf922b9ed3c822be7e14245fe7588047f",
+      "adopted_functions": [],
+      "retained_functions": [
+        {
+          "name": "skip_line",
+          "reason": "retained-legacy-io"
+        },
+        {
+          "name": "get_word",
+          "reason": "retained-legacy-io"
+        },
+        {
+          "name": "read_cube",
+          "reason": "retained-legacy-io"
+        },
+        {
+          "name": "parse_pla",
+          "reason": "retained-legacy-io"
+        },
+        {
+          "name": "read_pla",
+          "reason": "retained-legacy-io"
+        },
+        {
+          "name": "new_PLA",
+          "reason": "retained-legacy-io"
+        },
+        {
+          "name": "free_PLA",
+          "reason": "retained-legacy-io"
+        }
+      ]
+    },
+    "cvrm.c": {
+      "upstream_sha256": "0f482875ba709f341028c8dd5cbde5e421c05670a383b2c93bafbb003870cb37",
+      "adopted_functions": [
+        "cb_unravel",
+        "unravel_range",
+        "unravel",
+        "sort_reduce"
+      ],
+      "retained_functions": [
+        {
+          "name": "mini_sort",
+          "reason": "retained-extension"
+        },
+        {
+          "name": "cubelist_partition",
+          "reason": "retained-extension"
+        }
+      ]
+    },
+    "cvrmisc.c": {
+      "upstream_sha256": "959417b5095ac067c5ffe09b16948fb24a462288a1e2e81935acaa257c1319ab",
+      "adopted_functions": [
+        "cover_cost",
+        "copy_cost",
+        "fatal"
+      ],
+      "retained_functions": []
+    },
+    "cvrout.c": {
+      "upstream_sha256": "4c721923fd1e3da3eb822e6f6009140be0a131c4a417b5793dd12998478f7fe0",
+      "adopted_functions": [],
+      "retained_functions": [
+        {
+          "name": "fprint_pla",
+          "reason": "retained-legacy-io"
+        },
+        {
+          "name": "print_cube",
+          "reason": "retained-legacy-io"
+        }
+      ]
+    },
+    "dominate.c": {
+      "upstream_sha256": "e401f031bd332fe5a6768d38472a5d86f3dfccd9336a11f9eb1da574753f1285",
+      "adopted_functions": [
+        "sm_row_dominance",
+        "sm_col_dominance"
+      ],
+      "retained_functions": []
+    },
+    "espresso.c": {
+      "upstream_sha256": "be6c41df5c078344ee72e3160a39fd663c5d8963c2648f39c2605160b5044153",
+      "adopted_functions": [],
+      "retained_functions": [
+        {
+          "name": "espresso",
+          "reason": "retained-extension"
+        }
+      ]
+    },
+    "essen.c": {
+      "upstream_sha256": "ce8fcb483dc7062b92b401f9ad33f28d3ecc7bcdd233f6a263d71f25ca9eb2ad",
+      "adopted_functions": [
+        "essential",
+        "essen_cube",
+        "cb_consensus",
+        "cb_consensus_dist0"
+      ],
+      "retained_functions": []
+    },
+    "expand.c": {
+      "upstream_sha256": "cc253e5918e3e442d6bd5b2ce27589862c08074ed220326eda011db65c4affe3",
+      "adopted_functions": [
+        "expand",
+        "expand1",
+        "essen_parts",
+        "essen_raising",
+        "elim_lowering",
+        "most_frequent",
+        "setup_BB_CC",
+        "select_feasible",
+        "feasibly_covered",
+        "mincov"
+      ],
+      "retained_functions": [],
+      "local_adaptations": [
+        "expand preserves the use_random_order policy branch from the full v2.4 interface."
+      ]
+    },
+    "gasp.c": {
+      "upstream_sha256": "b1fa33d020bfbe90bd5835aa1bf48e33b9d352a0998d40bcc738893754fe5377",
+      "adopted_functions": [
+        "reduce_gasp",
+        "expand_gasp",
+        "expand1_gasp",
+        "irred_gasp"
+      ],
+      "retained_functions": [
+        {
+          "name": "last_gasp",
+          "reason": "retained-extension"
+        }
+      ]
+    },
+    "gimpel.c": {
+      "upstream_sha256": "5d856983079556097ab9767424470ad61a540473a332bc668aa1d42f60245315",
+      "adopted_functions": [
+        "gimpel_reduce"
+      ],
+      "retained_functions": []
+    },
+    "indep.c": {
+      "upstream_sha256": "136a6611a7c3f6b854996a8fdcdc54d75c04b64776994056aa1597fa02922355",
+      "adopted_functions": [
+        "build_intersection_matrix",
+        "sm_maximal_independent_set"
+      ],
+      "retained_functions": []
+    },
+    "irred.c": {
+      "upstream_sha256": "8ed5433182d1958e899ac8949546add876cbb0b0c82fc73375a41f2326cb1100",
+      "adopted_functions": [
+        "irredundant",
+        "mark_irredundant",
+        "irred_split_cover",
+        "ftaut_special_cases",
+        "ftautology",
+        "fcube_is_covered",
+        "irred_derive_table",
+        "cube_is_covered",
+        "tautology",
+        "taut_special_cases"
+      ],
+      "retained_functions": []
+    },
+    "matrix.c": {
+      "upstream_sha256": "d0d236af9a536a7f827f6dee9a39b2bce791e1f2277ea261796caa42b8cb65e1",
+      "adopted_functions": [
+        "sm_alloc",
+        "sm_free",
+        "sm_dup",
+        "sm_resize",
+        "sm_insert",
+        "sm_delrow",
+        "sm_delcol",
+        "sm_cleanup"
+      ],
+      "retained_functions": []
+    },
+    "mincov.c": {
+      "upstream_sha256": "6be899cc2d6cb9edd7d43d9a477f2833c6e5fa4a7dff1947b10a1b64320e8865",
+      "adopted_functions": [
+        "verify_cover",
+        "select_essential",
+        "select_column",
+        "sm_mincov"
+      ],
+      "retained_functions": [
+        {
+          "name": "sm_minimum_cover",
+          "reason": "retained-extension"
+        }
+      ],
+      "local_adaptations": [
+        "sm_mincov retains depth-zero lower_bound accounting for the full diagnostic interface.",
+        "select_column retains the NULL independent-set fallback used when USE_INDEP_SET is disabled."
+      ]
+    },
+    "part.c": {
+      "upstream_sha256": "dbe7bf26eb8ec82b5d33454652b02617f8f0e6f6d78e64b159e3c0fd3d3d60d7",
+      "adopted_functions": [
+        "copy_row",
+        "visit_row",
+        "visit_col",
+        "sm_block_partition"
+      ],
+      "retained_functions": []
+    },
+    "reduce.c": {
+      "upstream_sha256": "447fdf6b7de54bcc119544b4de388591573b555c507a8af294b3bd4e180e8d9c",
+      "adopted_functions": [
+        "reduce_cube",
+        "sccc",
+        "sccc_merge",
+        "sccc_cube",
+        "sccc_special_cases"
+      ],
+      "retained_functions": [
+        {
+          "name": "reduce",
+          "reason": "retained-extension"
+        }
+      ]
+    },
+    "rows.c": {
+      "upstream_sha256": "ea558c9b6f7fa463b7542c8fd28429e779ef0bac23ad40308d7e288390804965",
+      "adopted_functions": [
+        "sm_row_alloc",
+        "sm_row_free",
+        "sm_row_dup",
+        "sm_row_insert",
+        "sm_row_remove",
+        "sm_row_contains",
+        "sm_row_intersects",
+        "sm_row_remove_element"
+      ],
+      "retained_functions": []
+    },
+    "set.c": {
+      "upstream_sha256": "fe6f3db5797e87873c4c3640f188f1a40af2b63cd3a30f84d2fb9a394027da85",
+      "adopted_functions": [
+        "bit_index",
+        "set_ord",
+        "set_dist",
+        "set_clear",
+        "set_fill",
+        "set_copy",
+        "set_and",
+        "set_or",
+        "set_diff",
+        "set_merge",
+        "setp_empty",
+        "setp_equal",
+        "setp_disjoint",
+        "setp_implies",
+        "sf_active",
+        "sf_inactive",
+        "sf_copy",
+        "sf_join",
+        "sf_append",
+        "sf_new",
+        "sf_save",
+        "sf_free",
+        "sf_cleanup",
+        "sf_addset",
+        "set_adjcnt",
+        "sf_count",
+        "sf_count_restricted"
+      ],
+      "retained_functions": [
+        {
+          "name": "intcpy",
+          "reason": "retained-extension"
+        }
+      ]
+    },
+    "setc.c": {
+      "upstream_sha256": "a6bba56140fbebd3521f6f097293f726275fe02eeeeeed5a0898ac3c57e785bb",
+      "adopted_functions": [
+        "full_row",
+        "cdist0",
+        "cdist01",
+        "cdist",
+        "force_lower",
+        "consensus",
+        "cactive",
+        "ccommon"
+      ],
+      "retained_functions": [
+        {
+          "name": "descend",
+          "reason": "retained-extension"
+        },
+        {
+          "name": "ascend",
+          "reason": "retained-extension"
+        },
+        {
+          "name": "d1_order",
+          "reason": "retained-extension"
+        }
+      ]
+    },
+    "sminterf.c": {
+      "upstream_sha256": "18e33fb7ab3b041d9fc516f1b4e6681dfd294d4a834de64511eb29de630e8cd0",
+      "adopted_functions": [
+        "do_sm_minimum_cover"
+      ],
+      "retained_functions": []
+    },
+    "solution.c": {
+      "upstream_sha256": "0d107e7834b2f815e13c7b80d54c7ee019b46d6074503bc5101ff58493adc060",
+      "adopted_functions": [
+        "solution_alloc",
+        "solution_free",
+        "solution_dup",
+        "solution_add",
+        "solution_accept",
+        "solution_reject",
+        "solution_choose_best"
+      ],
+      "retained_functions": []
+    },
+    "sparse.c": {
+      "upstream_sha256": "fe00b2465d1466346e6f26e2f108f3608cfd9e8dc50c0f7d221a4b136c31ad3d",
+      "adopted_functions": [
+        "mv_reduce"
+      ],
+      "retained_functions": [
+        {
+          "name": "make_sparse",
+          "reason": "retained-option-aware-driver-and-cost-updates"
+        }
+      ]
+    },
+    "unate.c": {
+      "upstream_sha256": "618ee912c3989c3ce941a2fa78bffb21c6235660fa77733abcd86ff56bd8295a",
+      "adopted_functions": [
+        "map_cover_to_unate",
+        "map_unate_to_cover",
+        "unate_compl",
+        "abs_covered",
+        "abs_covered_many",
+        "abs_select_restricted",
+        "unate_complement"
+      ],
+      "retained_functions": []
+    }
+  }
+}

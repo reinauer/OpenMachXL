@@ -1,0 +1,43 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME Bh7.pds
+#AMD TITLE pds2v test decoder
+#AMD PATTERN decoder
+#AMD REVISION 1
+#AMD AUTHOR test
+#AMD COMPANY none
+#AMD DATE 1995-10-01
+#AMD CHIP DEC
+#AMD DEVICE MACH111
+#AMD JED_FILE Bh7.jed
+#AMD SIGNATURE 
+#AMD PIN 10 GND:1 A31:2 A30:3 A29:4 A28:5 FC2:6 FC1:7 ROM_N:8 RAM_N:9 AS_N:10 
+#AMD PIN 8 GND:12 IO_N:14 ANY_N:15 PAR:16 SAME:17 SPARE:19 VCC:22 GND:23 
+#AMD PIN 7 HI:24 LO:25 DOUT:26 OE_N:27 RW:32 GND:34 VCC:44 
+.type f
+.i 11
+.o 11
+.ilb A31 A30 A29 A28 FC2 FC1 ROM_N RAM_N AS_N IO_N RW
+.ob  ROM_N- RAM_N- IO_N- ANY_N PAR SAME HI LO DOUT DOUT.OE OE_N
+.phase 11111111111
+.p 20
+00--1---0-- 1~~~~~~~~~~
+01--1---0-- ~1~~~~~~~~~
+100-1---0-- ~1~~~~~~~~~
+111-1---0-- ~~1~~~~~~~~
+------11-1- ~~~1~~~~~~~
+0111------- ~~~~1~~~~~~
+1011------- ~~~~1~~~~~~
+1101------- ~~~~1~~~~~~
+0001------- ~~~~1~~~~~~
+1110------- ~~~~1~~~~~~
+0010------- ~~~~1~~~~~~
+0100------- ~~~~1~~~~~~
+1000------- ~~~~1~~~~~~
+11--------- ~~~~~1~~~~~
+00--------- ~~~~~1~~~~~
+----------- ~~~~~~1~~~~
+-----1----- ~~~~~~~~1~~
+--------0-1 ~~~~~~~~~1~
+--------1-- ~~~~~~~~~~1
+----------0 ~~~~~~~~~~1
+.e

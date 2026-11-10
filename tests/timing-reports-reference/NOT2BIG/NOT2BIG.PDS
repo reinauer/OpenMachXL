@@ -1,0 +1,293 @@
+
+;---------------------------------- Declaration Segment -----------
+TITLE    NOT TOO BIG TO FIT A MACH435
+PATTERN  A
+REVISION 1
+AUTHOR   J. ENGINEER
+COMPANY  AMD
+DATE     10/03/94
+
+CHIP  _not2bi  MACH435
+
+;---------------------------------- PIN Declarations --------------
+PIN  19         siga                                      ; INPUT 
+PIN  33         sigb                                      ; INPUT 
+PIN  20         sigc                                      ; INPUT 
+PIN  23         clk1                                      ; INPUT 
+PIN  41         clk2                                      ; INPUT 
+PIN  54         sigd                                      ; INPUT 
+PIN  62         clockin                                   ; INPUT 
+PIN  65         sige                                      ; INPUT 
+PIN  66         sigf                                      ; INPUT 
+PIN  67         sigg                                      ; INPUT 
+PIN  81         clockout                    COMBINATORIAL ; OUTPUT
+PIN  82         sigh                        COMBINATORIAL ; OUTPUT
+PIN  10         sigi                        COMBINATORIAL ; OUTPUT
+NODE ?          resesigjnt                  COMBINATORIAL ; OUTPUT
+PIN  3          cntzero                     REGISTERED    ; OUTPUT
+PIN  5          cntone                      REGISTERED    ; OUTPUT
+PIN  6          cnttwo                      REGISTERED    ; OUTPUT
+PIN  7          cntthree                    REGISTERED    ; OUTPUT
+PIN  8          cntfour                     REGISTERED    ; OUTPUT
+NODE ?          sigj                        REGISTERED    ; OUTPUT
+NODE ?          sigk                        REGISTERED    ; OUTPUT
+PIN  24         sigl                        REGISTERED    ; OUTPUT
+PIN  26         sigm                        REGISTERED    ; OUTPUT
+PIN  28         sign                        REGISTERED    ; OUTPUT
+PIN  29         sigo                        REGISTERED    ; OUTPUT
+PIN  30         sigp                        REGISTERED    ; OUTPUT
+PIN  31         sigq                        REGISTERED    ; OUTPUT
+PIN  35         sigr                        REGISTERED    ; OUTPUT
+PIN  36         sigs                        REGISTERED    ; OUTPUT
+PIN  37         sigt                        REGISTERED    ; OUTPUT
+PIN  38         sigu                        REGISTERED    ; OUTPUT
+PIN  39         sigaa                       REGISTERED    ; OUTPUT
+PIN  40         sigab                       REGISTERED    ; OUTPUT
+PIN  45         sigac                       REGISTERED    ; OUTPUT
+PIN  46         sigad                       REGISTERED    ; OUTPUT
+PIN  47         sigae                       REGISTERED    ; OUTPUT
+PIN  48         sigaf                       REGISTERED    ; OUTPUT
+PIN  55         sigag                       REGISTERED    ; OUTPUT
+PIN  57         sigah                       REGISTERED    ; OUTPUT
+PIN  58         sigai                       REGISTERED    ; OUTPUT
+PIN  59         sigaj                       REGISTERED    ; OUTPUT
+PIN  60         sigak                       REGISTERED    ; OUTPUT
+PIN  61         sigal                       REGISTERED    ; OUTPUT
+PIN  68         sigam                       REGISTERED    ; OUTPUT
+PIN  69         sigan                       REGISTERED    ; OUTPUT
+PIN  70         sigao                       REGISTERED    ; OUTPUT
+PIN  71         sigap                       REGISTERED    ; OUTPUT
+PIN  72         sigaq                       REGISTERED    ; OUTPUT
+PIN  73         sigar                       REGISTERED    ; OUTPUT
+PIN  75         sigas                       REGISTERED    ; OUTPUT
+PIN  76         sigat                       REGISTERED    ; OUTPUT
+PIN  78         sigau                       REGISTERED    ; OUTPUT
+PIN  79         sigav                       REGISTERED    ; OUTPUT
+PIN  80         sigba                       REGISTERED    ; OUTPUT
+NODE  ?         sigbb                       REGISTERED    ; OUTPUT
+NODE  ?         sigbc                       REGISTERED    ; OUTPUT
+PIN  12         sigbd                       REGISTERED    ; OUTPUT
+NODE  ?         sigbe                       REGISTERED    ; OUTPUT
+NODE  ?         sigbf                       REGISTERED    ; OUTPUT
+PIN  14         sigbg                       REGISTERED    ; OUTPUT
+NODE  ?         sigbh                       REGISTERED    ; OUTPUT
+NODE  ?         sigbi                       REGISTERED    ; OUTPUT
+PIN  15         sigbj                       REGISTERED    ; OUTPUT
+NODE  ?         sigbk                       REGISTERED    ; OUTPUT
+NODE  ?         sigbl                       REGISTERED    ; OUTPUT
+PIN  16         sigbm                       REGISTERED    ; OUTPUT
+NODE  ?         sigbn                       REGISTERED    ; OUTPUT
+NODE  ?         sigbo                       REGISTERED    ; OUTPUT
+PIN  17         sigbp                       REGISTERED    ; OUTPUT
+NODE  ?         sigbq                       REGISTERED    ; OUTPUT
+NODE  ?         sigbr                       REGISTERED    ; OUTPUT
+PIN  18         sigbs                       REGISTERED    ; OUTPUT
+NODE  ?         sigbt                       REGISTERED    ; OUTPUT
+NODE  ?         sigbu                       REGISTERED    ; OUTPUT
+PIN  49         sigbv                       REGISTERED    ; OUTPUT
+NODE  ?         sigbw                       REGISTERED    ; OUTPUT
+NODE  ?         sigbx                       REGISTERED    ; OUTPUT
+PIN  51         sigca                       REGISTERED    ; OUTPUT
+NODE  ?         sigcb                       REGISTERED    ; OUTPUT
+NODE  ?         sigcc                       REGISTERED    ; OUTPUT
+PIN  52         sigcd                       REGISTERED    ; OUTPUT
+NODE  ?         sigce                       REGISTERED    ; OUTPUT
+NODE  ?         sigcf                       REGISTERED    ; OUTPUT
+
+;----------------------------------- String Definitions ------------
+;STRING RESESIGJNT '/(sigf * sigc * sige)'
+STRING  SHIFT_EN  '(sige)'
+
+;----------------------------------- Boolean Equation Segment ------
+EQUATIONS
+/sigi    = /clk1 *              (sigbd + sigbg + sigbm + sigbj +
+                                 sigbp + sigbs + sigbv + sigca +
+                                 sigcd + sigba);
+/sigh  = /clk2 * sigj
+clockout   = clk2;
+resesigjnt = /sigf + /sigc + /sige;
+
+; Define event FF control inputs
+sigbd.CLKF  = clk1;
+sigbe.CLKF  = sige;
+sigbf.CLKF  = clk1;
+sigbe.RSTF  = sigbd;
+sigbf.RSTF  = sigbd;
+sigbg.CLKF  = clk1;
+sigbh.CLKF  = /sige;
+sigbi.CLKF  = clk1;
+sigbh.RSTF  = sigbg;
+sigbi.RSTF  = sigbg;
+sigbj.CLKF  = clk1;
+sigbk.CLKF  = /sigc;
+sigbl.CLKF  = clk1;
+sigbk.RSTF  = sigbj;
+sigbl.RSTF  = sigbj;
+sigbm.CLKF  = clk1;
+sigbn.CLKF  = sigc;
+sigbo.CLKF  = clk1;
+sigbn.RSTF  = sigbm;
+sigbo.RSTF  = sigbm;
+sigbp.CLKF  = clk1;
+sigbq.CLKF  = /sigf;
+sigbr.CLKF  = clk1;
+sigbq.RSTF  = sigbp;
+sigbr.RSTF  = sigbp;
+sigbs.CLKF  = clk1;
+sigbt.CLKF  = sigf;
+sigbu.CLKF  = clk1;
+sigbt.RSTF  = sigbs;
+sigbu.RSTF  = sigbs;
+sigbv.CLKF  = clk1;
+sigbw.CLKF  = /siga;
+sigbx.CLKF  = clk1;
+sigbw.RSTF  = sigbv;
+sigbx.RSTF  = sigbv;
+sigca.CLKF  = clk1;
+sigcb.CLKF  = /sigd;
+sigcc.CLKF  = clk1;
+sigcb.RSTF  = sigca;
+sigcc.RSTF  = sigca;
+sigcd.CLKF  = clk1;
+sigce.CLKF  = /sigb;
+sigcf.CLKF  = clk1;
+sigce.RSTF  = sigcd;
+sigcf.RSTF  = sigcd;
+sigba.CLKF  = clk1;
+sigbb.CLKF  = /clk2;
+sigbc.CLKF  = clk1;
+sigbb.RSTF  = sigba;
+sigbc.RSTF  = sigba;
+
+; Define event FF data inputs
+sigbd  := sigbf;
+sigbe  := VCC;
+sigbf  := sigbe;
+sigbg  := sigbi;
+sigbh  := VCC;
+sigbi  := sigbh;
+sigbj  := sigbl;
+sigbk  := VCC;
+sigbl  := sigbk;
+sigbm  := sigbo;
+sigbn  := VCC;
+sigbo  := sigbn;
+sigbp  := sigbr;
+sigbq  := VCC;
+sigbr  := sigbq;
+sigbs  := sigbu;
+sigbt  := VCC;
+sigbu  := sigbt;
+sigbv  := sigbx;
+sigbw  := sigk * sige;
+sigbx  := sigbw;
+sigca  := sigcc;
+sigcb  := sige;
+sigcc  := sigcb;
+sigcd  := sigcf;
+sigce  := sige;
+sigcf  := sigce;
+sigba  := sigbc;
+sigbb  := /sige;
+sigbc  := sigbb;
+
+; Define counter FF control inputs
+cntzero.CLKF  = clockin;
+cntone.CLKF   = clockin;
+cnttwo.CLKF   = clockin;
+cntthree.CLKF = clockin;
+cntfour.CLKF  = clockin;
+sigj.CLKF     = clockin;
+sigk.CLKF     = clockin;
+cntzero.RSTF  = resesigjnt;
+cntone.RSTF   = resesigjnt;
+cnttwo.RSTF   = resesigjnt;
+cntthree.RSTF = resesigjnt;
+cntfour.RSTF  = resesigjnt;
+sigj.RSTF     = resesigjnt;
+sigk.RSTF     = resesigjnt;
+
+; Define counter FF data inputs
+cntzero.T  := /sigj + (sigj * cntzero);
+cntone.T   := (/sigj * cntzero) + (sigj * cntone);
+cnttwo.T   := (/sigj * cntone * cntzero) + (sigj * cnttwo);
+cntthree.T := (/sigj * cnttwo * cntone * cntzero) + (sigj * cntthree);
+cntfour.T  := (/sigj * cntthree * cnttwo * cntone * cntzero) + (sigj * 
+cntfour);
+sigj       := cntzero * cntone * cnttwo * cntthree;
+sigk       := sigj;
+
+; Define command shift register FF control inputs
+sigl.CLKF    = clockin;
+sigm.CLKF    = clockin;
+sign.CLKF    = clockin;
+sigo.CLKF    = clockin;
+sigp.CLKF    = clockin;
+sigq.CLKF    = clockin;
+sigr.CLKF    = clockin;
+sigs.CLKF    = clockin;
+sigt.CLKF    = clockin;
+sigu.CLKF    = clockin;
+sigaa.CLKF   = clockin;
+sigab.CLKF   = clockin;
+sigac.CLKF   = clockin;
+sigad.CLKF   = clockin;
+sigae.CLKF   = clockin;
+sigaf.CLKF   = clockin;
+
+; Define command shift register FF data inputs
+sigl         := sige * sigg + /sige * sigl;
+sigm         := sige * sigl + /sige * sigm;
+sign         := sige * sigm + /sige * sign;
+sigo         := sige * sign + /sige * sigo;
+sigp         := sige * sigo + /sige * sigp;
+sigq         := sige * sigp + /sige * sigq;
+sigr         := sige * sigq + /sige * sigr;
+sigs         := sige * sigr + /sige * sigs;
+sigt         := sige * sigs + /sige * sigt;
+sigu         := sige * sigt + /sige * sigu;
+sigaa        := sige * sigu + /sige * sigaa;
+sigab        := sige * sigaa + /sige * sigab;
+sigac        := sige * sigab + /sige * sigac;
+sigad        := sige * sigac + /sige * sigad;
+sigae        := sige * sigad + /sige * sigae;
+sigaf        := sige * sigae + /sige * sigaf;
+
+; Define response shift register FF control inputs
+sigag.CLKF  = clockin;
+sigah.CLKF  = clockin;
+sigai.CLKF  = clockin;
+sigaj.CLKF  = clockin;
+sigak.CLKF  = clockin;
+sigal.CLKF  = clockin;
+sigam.CLKF  = clockin;
+sigan.CLKF  = clockin;
+sigao.CLKF  = clockin;
+sigap.CLKF  = clockin;
+sigaq.CLKF  = clockin;
+sigar.CLKF  = clockin;
+sigas.CLKF  = clockin;
+sigat.CLKF  = clockin;
+sigau.CLKF  = clockin;
+sigav.CLKF  = clockin;
+
+; Define response shift register FF data inputs
+sigag       := sige * siga + /sige * sigag;
+sigah       := sige * sigag + /sige * sigah;
+sigai       := sige * sigah + /sige * sigai;
+sigaj       := sige * sigai + /sige * sigaj;
+sigak       := sige * sigaj + /sige * sigak;
+sigal       := sige * sigak + /sige * sigal;
+sigam       := sige * sigal + /sige * sigam;
+sigan       := sige * sigam + /sige * sigan;
+sigao       := sige * sigan + /sige * sigao;
+sigap       := sige * sigao + /sige * sigap;
+sigaq       := sige * sigap + /sige * sigaq;
+sigar       := sige * sigaq + /sige * sigar;
+sigas       := sige * sigar + /sige * sigas;
+sigat       := sige * sigas + /sige * sigat;
+sigau       := sige * sigat + /sige * sigau;
+sigav       := sige * sigau + /sige * sigav;
+
+
+

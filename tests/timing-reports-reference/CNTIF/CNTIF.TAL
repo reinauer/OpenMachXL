@@ -1,0 +1,50 @@
+
+***************************
+* Design Name = CNTIF.PDS *
+***************************
+
+
+*******************
+* TIMING ANALYSIS *
+*******************
+
+Timing Analysis KEY:
+One unit of delay time is equivalent to one pass 
+     through the Central Switch Matrix.
+..   Delay ( in this column ) not applicable to the indicated signal.
+TSU, Set-Up Time ( 0 for input-paired signals ),
+     represents the number of switch matrix passes between
+     an input pin and a register setup before clock.
+     TSU is reported on the register.
+TCO, Clocked Output-to-Pin Time ( 0 for output-paired signals ),
+     represents the number of switch matrix passes between
+     a clocked register and an output pin.
+     TCO is reported on the register.
+TPD, Propagation Delay Time ( calculated only for combinatorial eqns.),
+     represents the number of switch matrix passes between
+     an input pin and an output pin.
+     TPD is reported on the output pin.
+TCR, Clocked Output-to-Register Time,
+     represents the number of switch matrix passes between
+     a clocked register and the register it drives ( before clock ).
+     TCR is reported on the driving register.
+
+                    TSU       TCO       TPD       TCR
+                  #passes   #passes   #passes   #passes
+SIGNAL NAME       min  max  min  max  min  max  min  max
+           TC[0]   1    1    0    0   ..   ..    1    1   
+        RN_TC[0]   1    1    0    0   ..   ..    1    1   
+           TC[1]   1    1    0    0   ..   ..    1    1   
+        RN_TC[1]   1    1    0    0   ..   ..    1    1   
+           TC[2]   1    1    0    0   ..   ..    1    1   
+        RN_TC[2]   1    1    0    0   ..   ..    1    1   
+           TC[3]   1    1    0    0   ..   ..    1    1   
+        RN_TC[3]   1    1    0    0   ..   ..    1    1   
+           TC[4]   1    1    0    0   ..   ..    1    1   
+        RN_TC[4]   1    1    0    0   ..   ..    1    1   
+           TC[5]   1    1    0    0   ..   ..    1    1   
+        RN_TC[5]   1    1    0    0   ..   ..    1    1   
+           TC[6]   1    1    0    0   ..   ..    1    1   
+        RN_TC[6]   1    1    0    0   ..   ..    1    1   
+           TC[7]   1    1    0    0   ..   ..    1    1   
+        RN_TC[7]   1    1    0    0   ..   ..    1    1   

@@ -1,0 +1,133 @@
+Pw4351.pds
+
+MACHXL 2.1 R9-F PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP PW4351 MACH435
+   2     |PIN 4 A
+   3     |PIN 5 B
+   4     |PIN 6 C
+   5     |PIN 20 CLK
+   6     |PIN 8 Q
+   7     |NODE ? NN REG
+   8     |EQUATIONS
+   9     |Q=C
+  10     |NN=A
+  11     |NN.CLKF=CLK
+  12     |NN.RSTF=A+B
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Pw4351.pds
+
+*** Start MACHBPP.E 10:45:37 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q
+Processing equation for ====>NN
+Processing equation for ====>NN.CLKF
+Processing equation for ====>NN.RSTF
+
+ %%  MACHBPP  %% Maximum memory allocated was: 68888 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Pw4351.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 10:45:37; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 10:45:37 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node NN...
+====> NN                 MIN_ON (1 + pt)
+====> NN.CLKF            MIN_ON (1 + pt)
+====> NN.RSTF            MIN_ON (2 + pt)
+Processing equation(s) for pin Q...
+====> Q                  MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 48406 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Pw4351.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 10:45:37; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 10:45:37 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file pw4351.tre to PLA file pw4351.pla...
+
+..
+..
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 48464 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Pw4351.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 10:45:38; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 10:45:38 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Pw4351.pds . Device is MACH435 .
+|> ERROR z5520 - Too many product terms, 2 , in RESET equation for signal
+                 NN : limit is 1 product terms.
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+|> INFO z5070 - Unspecified SET/RESETs are to be treated as DON'T CARE.
+                Hence, a register with unspecified SET/RESET equation(s)
+                may be initialized via SET/RESET product terms that are
+                inherited from partitioning/placement to the same PAL block
+                as other registers for which SET/RESET equations have been
+                written. Therefore, simulation results may be unexpected
+                for any register uninitialized via explicit SET/RESET in
+                the design file.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+|> WARNING z5073 - If a declared input signal is not used in any equation,
+                   then that signal may be discarded in order to reduce the
+                   number of pins required to fit the design. Input Pins
+                   not referenced - discarded :
+A B CLK 
+|> WARNING z5071 - Nodes not referenced - discarded :
+NN 
+Check clock rules
+
+List of non-global clocks:
+   None.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Pw4351.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 2 .
+
+*** End MACHFITR.EX 10:45:38; (MACHFITR.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

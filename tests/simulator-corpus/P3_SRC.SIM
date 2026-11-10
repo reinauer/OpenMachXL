@@ -1,0 +1,212 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  P3_src.pds
+Title  Small State Machine (PREP suite 1: benchmark #3)
+
+|> WARNING D2130
+     Equation Q_X[0].SETF is always low.
+|> WARNING D2130
+     Equation O_X[7].SETF is always low.
+|> WARNING D2130
+     Equation O_X[6].SETF is always low.
+|> WARNING D2130
+     Equation O_X[5].SETF is always low.
+|> WARNING D2130
+     Equation O_X[4].SETF is always low.
+|> WARNING D2130
+     Equation O_X[3].SETF is always low.
+|> WARNING D2130
+     Equation O_X[2].SETF is always low.
+|> WARNING D2130
+     Equation O_X[1].SETF is always low.
+|> WARNING D2130
+     Equation O_X[0].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[2].SETF is always low.
+|> WARNING D2130
+     Equation Q_X[1].SETF is always low.
+
+
+   1-V1 - TRACE_ON
+          CLK  O_X[7..0]  
+   1-V1 - SETF
+          /CLK  RST  
+   2-V2 - SETF
+          /I_X[7]  /I_X[6]  /I_X[5]  /I_X[4]  /I_X[3]  /I_X[2]  
+          /I_X[1]  /I_X[0]  
+   3-V3 - FOR
+   6-V3 - CLOCKF
+          CLK  
+   9-V4 - CLOCKF
+          CLK  
+   9-V5 - SETF
+          /RST  
+  13-V6 - CLOCKF
+          CLK  
+  16-V7 - CLOCKF
+          CLK  
+  16-V8 - SETF
+          /I_X[7]  /I_X[6]  I_X[5]  I_X[4]  I_X[3]  I_X[2]  
+          /I_X[1]  /I_X[0]  
+  20-V9 - CLOCKF
+          CLK  
+  20-V9 - CHECK
+          O_X[7]  /O_X[6]  /O_X[5]  /O_X[4]  /O_X[3]  /O_X[2]  
+          O_X[1]  /O_X[0]  
+  20-V10 - SETF
+          I_X[7]  I_X[6]  I_X[5]  I_X[4]  I_X[3]  I_X[2]  
+          I_X[1]  I_X[0]  
+  24-V11 - CLOCKF
+          CLK  
+  24-V11 - CHECK
+          /O_X[7]  /O_X[6]  /O_X[5]  /O_X[4]  /O_X[3]  O_X[2]  
+          /O_X[1]  /O_X[0]  
+  24-V12 - SETF
+          I_X[7]  /I_X[6]  /I_X[5]  /I_X[4]  /I_X[3]  /I_X[2]  
+          I_X[1]  /I_X[0]  
+  28-V13 - CLOCKF
+          CLK  
+  28-V13 - CHECK
+          /O_X[7]  /O_X[6]  /O_X[5]  /O_X[4]  /O_X[3]  O_X[2]  
+          /O_X[1]  /O_X[0]  
+  28-V14 - SETF
+          /I_X[7]  /I_X[6]  I_X[5]  /I_X[4]  I_X[3]  /I_X[2]  
+          I_X[1]  /I_X[0]  
+  32-V15 - CLOCKF
+          CLK  
+  32-V15 - CHECK
+          /O_X[7]  O_X[6]  /O_X[5]  /O_X[4]  /O_X[3]  /O_X[2]  
+          /O_X[1]  /O_X[0]  
+  32-V16 - SETF
+          /I_X[7]  /I_X[6]  /I_X[5]  /I_X[4]  /I_X[3]  /I_X[2]  
+          /I_X[1]  /I_X[0]  
+  36-V17 - CLOCKF
+          CLK  
+  36-V17 - CHECK
+          /O_X[7]  /O_X[6]  /O_X[5]  /O_X[4]  O_X[3]  /O_X[2]  
+          /O_X[1]  /O_X[0]  
+  36-V18 - SETF
+          /I_X[7]  /I_X[6]  /I_X[5]  /I_X[4]  /I_X[3]  /I_X[2]  
+          /I_X[1]  /I_X[0]  
+  40-V19 - CLOCKF
+          CLK  
+  40-V19 - CHECK
+          O_X[7]  /O_X[6]  /O_X[5]  /O_X[4]  /O_X[3]  /O_X[2]  
+          /O_X[1]  /O_X[0]  
+  40-V20 - SETF
+          /I_X[7]  /I_X[6]  /I_X[5]  /I_X[4]  /I_X[3]  /I_X[2]  
+          /I_X[1]  /I_X[0]  
+  44-V21 - CLOCKF
+          CLK  
+  44-V21 - CHECK
+          /O_X[7]  /O_X[6]  /O_X[5]  /O_X[4]  /O_X[3]  /O_X[2]  
+          /O_X[1]  O_X[0]  
+  44-V22 - SETF
+          /I_X[7]  /I_X[6]  /I_X[5]  /I_X[4]  /I_X[3]  /I_X[2]  
+          /I_X[1]  /I_X[0]  
+  48-V23 - CLOCKF
+          CLK  
+  48-V23 - CHECK
+          /O_X[7]  /O_X[6]  /O_X[5]  /O_X[4]  /O_X[3]  /O_X[2]  
+          /O_X[1]  /O_X[0]  
+  48-V24 - SETF
+          /I_X[7]  /I_X[6]  I_X[5]  I_X[4]  I_X[3]  I_X[2]  
+          /I_X[1]  /I_X[0]  
+  52-V25 - CLOCKF
+          CLK  
+  52-V25 - CHECK
+          O_X[7]  /O_X[6]  /O_X[5]  /O_X[4]  /O_X[3]  /O_X[2]  
+          O_X[1]  /O_X[0]  
+  52-V26 - SETF
+          /I_X[7]  /I_X[6]  /I_X[5]  I_X[4]  I_X[3]  I_X[2]  
+          I_X[1]  I_X[0]  
+  56-V27 - CLOCKF
+          CLK  
+  56-V27 - CHECK
+          /O_X[7]  /O_X[6]  O_X[5]  /O_X[4]  /O_X[3]  /O_X[2]  
+          /O_X[1]  /O_X[0]  
+  56-V28 - SETF
+          I_X[7]  I_X[6]  I_X[5]  I_X[4]  I_X[3]  I_X[2]  
+          I_X[1]  I_X[0]  
+  60-V29 - CLOCKF
+          CLK  
+  60-V29 - CHECK
+          /O_X[7]  /O_X[6]  O_X[5]  O_X[4]  /O_X[3]  /O_X[2]  
+          /O_X[1]  /O_X[0]  
+  60-V30 - SETF
+          /I_X[7]  /I_X[6]  /I_X[5]  /I_X[4]  /I_X[3]  /I_X[2]  
+          /I_X[1]  /I_X[0]  
+  64-V31 - CLOCKF
+          CLK  
+  64-V31 - CHECK
+          /O_X[7]  /O_X[6]  /O_X[5]  /O_X[4]  /O_X[3]  /O_X[2]  
+          O_X[1]  /O_X[0]  
+  64-V32 - SETF
+          /I_X[7]  /I_X[6]  /I_X[5]  /I_X[4]  /I_X[3]  /I_X[2]  
+          /I_X[1]  /I_X[0]  
+  68-V33 - CLOCKF
+          CLK  
+  68-V33 - CHECK
+          /O_X[7]  /O_X[6]  /O_X[5]  /O_X[4]  /O_X[3]  /O_X[2]  
+          /O_X[1]  O_X[0]  
+  68-V34 - SETF
+          /I_X[7]  /I_X[6]  /I_X[5]  /I_X[4]  /I_X[3]  /I_X[2]  
+          /I_X[1]  /I_X[0]  
+  72-V35 - CLOCKF
+          CLK  
+  72-V35 - CHECK
+          /O_X[7]  /O_X[6]  /O_X[5]  /O_X[4]  /O_X[3]  /O_X[2]  
+          /O_X[1]  /O_X[0]  
+  72-V36 - SETF
+          /I_X[7]  /I_X[6]  I_X[5]  I_X[4]  I_X[3]  I_X[2]  
+          /I_X[1]  /I_X[0]  
+  76-V37 - CLOCKF
+          CLK  
+  76-V37 - CHECK
+          O_X[7]  /O_X[6]  /O_X[5]  /O_X[4]  /O_X[3]  /O_X[2]  
+          O_X[1]  /O_X[0]  
+  76-V38 - SETF
+          /I_X[7]  /I_X[6]  /I_X[5]  I_X[4]  I_X[3]  I_X[2]  
+          I_X[1]  I_X[0]  
+  80-V39 - CLOCKF
+          CLK  
+  80-V39 - CHECK
+          /O_X[7]  /O_X[6]  O_X[5]  /O_X[4]  /O_X[3]  /O_X[2]  
+          /O_X[1]  /O_X[0]  
+  80-V40 - SETF
+          I_X[7]  /I_X[6]  I_X[5]  /I_X[4]  I_X[3]  /I_X[2]  
+          I_X[1]  /I_X[0]  
+  84-V41 - CLOCKF
+          CLK  
+  84-V41 - CHECK
+          /O_X[7]  /O_X[6]  /O_X[5]  O_X[4]  /O_X[3]  /O_X[2]  
+          /O_X[1]  O_X[0]  
+  84-V42 - SETF
+          /I_X[7]  /I_X[6]  /I_X[5]  /I_X[4]  /I_X[3]  /I_X[2]  
+          /I_X[1]  /I_X[0]  
+  88-V43 - CLOCKF
+          CLK  
+  88-V43 - CHECK
+          /O_X[7]  O_X[6]  /O_X[5]  /O_X[4]  /O_X[3]  /O_X[2]  
+          /O_X[1]  /O_X[0]  
+  88-V44 - SETF
+          /I_X[7]  /I_X[6]  /I_X[5]  /I_X[4]  /I_X[3]  /I_X[2]  
+          /I_X[1]  /I_X[0]  
+  92-V45 - CLOCKF
+          CLK  
+  92-V45 - CHECK
+          /O_X[7]  /O_X[6]  /O_X[5]  /O_X[4]  /O_X[3]  /O_X[2]  
+          /O_X[1]  /O_X[0]  
+  92-V46 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> P3_src.HST
+Simulation results (trace) are in   ===> P3_src.TRF
+Merged results (JEDEC) are in       ===> P3_src.JDC
+Simulation results (trace vectors) are in   ===> P3_src.TRV
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 255765 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: P3_src.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 11

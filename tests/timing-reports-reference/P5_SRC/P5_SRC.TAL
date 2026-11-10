@@ -1,0 +1,76 @@
+
+****************************
+* Design Name = P5_SRC.PDS *
+****************************
+
+
+*******************
+* TIMING ANALYSIS *
+*******************
+
+Timing Analysis KEY:
+One unit of delay time is equivalent to one pass 
+     through the Central Switch Matrix.
+..   Delay ( in this column ) not applicable to the indicated signal.
+TSU, Set-Up Time ( 0 for input-paired signals ),
+     represents the number of switch matrix passes between
+     an input pin and a register setup before clock.
+     TSU is reported on the register.
+TCO, Clocked Output-to-Pin Time ( 0 for output-paired signals ),
+     represents the number of switch matrix passes between
+     a clocked register and an output pin.
+     TCO is reported on the register.
+TPD, Propagation Delay Time ( calculated only for combinatorial eqns.),
+     represents the number of switch matrix passes between
+     an input pin and an output pin.
+     TPD is reported on the output pin.
+TCR, Clocked Output-to-Register Time,
+     represents the number of switch matrix passes between
+     a clocked register and the register it drives ( before clock ).
+     TCR is reported on the driving register.
+
+                    TSU       TCO       TPD       TCR
+                  #passes   #passes   #passes   #passes
+SIGNAL NAME       min  max  min  max  min  max  min  max
+          Q_X[7]   2    7    0    0   ..   ..    2    2   
+       RN_Q_X[7]   2    7    0    0   ..   ..    2    2   
+          Q_X[6]   2    7    0    0   ..   ..    2    2   
+       RN_Q_X[6]   2    7    0    0   ..   ..    2    2   
+          Q_X[5]   2    6    0    0   ..   ..    2    4   
+       RN_Q_X[5]   2    6    0    0   ..   ..    2    4   
+          Q_X[3]   2    4    0    0   ..   ..    2    6   
+       RN_Q_X[3]   2    4    0    0   ..   ..    2    6   
+          Q_X[2]   2    3    0    0   ..   ..    2    6   
+       RN_Q_X[2]   2    3    0    0   ..   ..    2    6   
+          Q_X[1]   1    2    0    0   ..   ..    1    6   
+       RN_Q_X[1]   1    2    0    0   ..   ..    1    6   
+          Q_X[0]   1    1    0    0   ..   ..    1    6   
+       RN_Q_X[0]   1    1    0    0   ..   ..    1    6   
+          T_X[6]  ..   ..   ..   ..    1    6   ..   ..   
+          C_X[5]  ..   ..   ..   ..    2    6   ..   ..   
+          Q_X[4]   2    5    0    0   ..   ..    2    4   
+       RN_Q_X[4]   2    5    0    0   ..   ..    2    4   
+          C_X[4]  ..   ..   ..   ..    2    5   ..   ..   
+          P_X[5]  ..   ..   ..   ..    2    4   ..   ..   
+          C_X[3]  ..   ..   ..   ..    2    4   ..   ..   
+          G_X[5]  ..   ..   ..   ..    2    3   ..   ..   
+          C_X[2]  ..   ..   ..   ..    2    3   ..   ..   
+          P_X[3]  ..   ..   ..   ..    2    2   ..   ..   
+          G_X[3]  ..   ..   ..   ..    2    2   ..   ..   
+          C_X[1]  ..   ..   ..   ..    1    2   ..   ..   
+          Y_X[4]  ..   ..   ..   ..    1    2   ..   ..   
+          Y_X[5]  ..   ..   ..   ..    1    2   ..   ..   
+          W_X[7]  ..   ..   ..   ..    1    1   ..   ..   
+          W_X[6]  ..   ..   ..   ..    1    1   ..   ..   
+          W_X[5]  ..   ..   ..   ..    1    1   ..   ..   
+          W_X[4]  ..   ..   ..   ..    1    1   ..   ..   
+          W_X[3]  ..   ..   ..   ..    1    1   ..   ..   
+          W_X[2]  ..   ..   ..   ..    1    1   ..   ..   
+          W_X[1]  ..   ..   ..   ..    1    1   ..   ..   
+          T_X[7]  ..   ..   ..   ..    1    1   ..   ..   
+          T_X[5]  ..   ..   ..   ..    1    1   ..   ..   
+          T_X[4]  ..   ..   ..   ..    1    1   ..   ..   
+          T_X[3]  ..   ..   ..   ..    1    1   ..   ..   
+          T_X[2]  ..   ..   ..   ..    1    1   ..   ..   
+          Z_X[3]  ..   ..   ..   ..    1    1   ..   ..   
+          Z_X[4]  ..   ..   ..   ..    1    1   ..   ..   

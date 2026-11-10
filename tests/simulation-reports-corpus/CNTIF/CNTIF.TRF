@@ -1,0 +1,32 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+MACHXL SIMULATION SELECTIVE TRACE LISTING
+
+Title     : 8-BIT COUNTER with Paral Author   : J. ENGINEER      
+Pattern   : 1                        Company  : AMD              
+Revision  : 1                        Date     : 4/26/94          
+
+MACH111        
+Page : 1 
+
+          ggc  c  c  gc  gc  c  c                                     
+ TC[7]    LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ TC[6]    LLLLLLLLLLLLLLLLLLLLHHHHH                                   
+ TC[5]    LLLLLLLLLLLLLHHHHHHHLLLLL                                   
+ TC[4]    LLLLLLLLLLLLLHHHHHHHLLLLL                                   
+ TC[3]    LLLLLLLLLLLLLHHHHHHHLLLLL                                   
+ TC[2]    LLLLLLLLLLLLLHHHHHHHLLLLL                                   
+ TC[1]    LLLLLLHHHHHHHHHHHHHHLLLLL                                   
+ TC[0]    LLLHHHLLLHHHHLLLLHHHLLLHH                                   
+ CLK      LLHHLHHLHHLLHHLLHHLHHLHHL                                   
+ COUNT    LHHHHHHHHHHLLLLHHHHHHHHHH                                   
+ DATA[7]  LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ DATA[6]  LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+ DATA[5]  HHHHHHHHHHHHHHHHHHHHHHHHH                                   
+ DATA[4]  HHHHHHHHHHHHHHHHHHHHHHHHH                                   
+ DATA[3]  HHHHHHHHHHHHHHHHHHHHHHHHH                                   
+ DATA[2]  HHHHHHHHHHHHHHHHHHHHHHHHH                                   
+ DATA[1]  HHHHHHHHHHHHHHHHHHHHHHHHH                                   
+ DATA[0]  LLLLLLLLLLLLLLLLLLLLLLLLL                                   
+

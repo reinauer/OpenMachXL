@@ -1,0 +1,148 @@
+
+*** Start MACHPAR.E 03:01:28 
+Fpo4.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP FPO4 MACH435
+   2     |PIN ? A
+   3     |PIN ? B
+   4     |PIN ? Q0
+   5     |NODE 12 N0 PAIR Q0
+   6     |PIN ? Q1
+   7     |NODE 4 N1 PAIR Q1
+   8     |PIN ? R
+   9     |PIN ? S
+  10     |EQUATIONS
+  11     |Q0=A*B
+  12     |N0=A*B
+  13     |Q1=A*B
+  14     |N1=A*B
+  15     |R=A*B
+  16     |S=A*B
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Fpo4.pds
+
+*** End MACHPAR.EXE 03:01:28; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 03:01:28 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q0
+Processing equation for ====>N0
+Processing equation for ====>Q1
+Processing equation for ====>N1
+Processing equation for ====>R
+Processing equation for ====>S
+
+ %%  MACHBPP  %% Maximum memory allocated was: 69218 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Fpo4.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 03:01:29; (MACHBPP.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 03:01:29 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node N0 and paired pin Q0...
+====> N0                 MIN_ON (1 + pt)
+====> Q0                 MIN_ON (1 + pt)
+Processing equation(s) for node N1 and paired pin Q1...
+====> N1                 MIN_ON (1 + pt)
+====> Q1                 MIN_ON (1 + pt)
+Processing equation(s) for pin R...
+====> R                  MIN_ON (1 + pt)
+Processing equation(s) for pin S...
+====> S                  MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 49488 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: FPO4.PDS.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 03:01:29; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 03:01:29 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file fpo4.tre to PLA file fpo4.pla...
+
+......
+......
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 48620 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: FPO4.PDS.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 03:01:29; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 03:01:29 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is FPO4.PDS . Device is MACH435 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+|> WARNING z5071 - Nodes not referenced
+N1 N0 
+Check clock rules
+
+List of non-global clocks:
+   None.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is FPO4.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File FPO4.PDS .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 1 .
+
+*** End MACHFITR.EX 03:01:31; (MACHFITR.EXE= 2 sec.) elapsed time= 3 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

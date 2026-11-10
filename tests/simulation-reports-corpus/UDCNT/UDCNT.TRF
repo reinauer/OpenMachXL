@@ -1,0 +1,46 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+MACHXL SIMULATION SELECTIVE TRACE LISTING
+
+Title     : Up-Down Counter          Author   : J. ENGINEER      
+Pattern   : B                        Company  : AMD              
+Revision  : 1.0                      Date     : 10/09/92         
+
+MACH111        
+Page : 1 
+
+        ggggc  c  gc  c  c  c  c  c  c  c  c  c  gc  c  c  c  c  c  
+ AB0    LLLLLLLLLLLLHHHLLLHHHLLLHHHLLLHHHLLLHHHLLLLHHHLLLHHHLLLHHHLL
+ AB1    LLLLLLLLLLLLLLLHHHHHHLLLLLLHHHHHHLLLLLLHHHHLLLLLLHHHHHHLLLLL
+ AB2    LLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHLLLLLLLLLLLLLLLLHHHHHHHHHHH
+ AB3    LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLHHHHHHHHHHHHHHHHLLLLLLLLLLL
+ AB4    LLLLLHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+ AB5    LLLLLHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+ CLK    LLLLHHLHHLLHHLHHLHHLHHLHHLHHLHHLHHLHHLHHLLHHLHHLHHLHHLHHLHHL
+ COUNT  LLLLLLLLLLHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+ I0     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ I1     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ I2     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ I3     LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+ I4     LLHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+ I5     LLHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+
+MACH111        
+Page : 2 
+        c  c  c  c                                                  
+ AB0    LHHHLLLHHHLL                                                
+ AB1    LHHHHHHLLLLL                                                
+ AB2    HLLLLLLLLLLL                                                
+ AB3    LLLLLLLLLLLL                                                
+ AB4    HHHHHHHHHHHH                                                
+ AB5    HHHHHHHHHHHH                                                
+ CLK    HHLHHLHHLHHL                                                
+ COUNT  HHHHHHHHHHHH                                                
+ I0     LLLLLLLLLLLL                                                
+ I1     LLLLLLLLLLLL                                                
+ I2     LLLLLLLLLLLL                                                
+ I3     LLLLLLLLLLLL                                                
+ I4     HHHHHHHHHHHH                                                
+ I5     HHHHHHHHHHHH                                                
+

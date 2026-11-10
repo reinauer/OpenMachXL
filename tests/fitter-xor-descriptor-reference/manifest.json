@@ -1,0 +1,112 @@
+{
+  "scope": "Legacy 18-term clocked XOR fit rejection and corrected reference JEDEC maps.",
+  "archives": {
+    "DAT.ZIP": "e142c7e385492f89240efba3cba46d2bdc97d1f410825a8444ceae1ea89e2af3",
+    "EXAMPLES.ZIP": "6381d09ec30cb1412e9a497c110ace112857731941510573667eea086a521383",
+    "EXE-0.ZIP": "5c365d6578ec3d0f1b6c5d8b8dad19db086f0924f68f3e20a9fa0aca2fcab404",
+    "EXE-1.ZIP": "25180232178a5e0ad502874553a7bcec98ea0b8a6770167507d5c983a51b673a",
+    "DOC.ZIP": "d700e822b4e3324e51c64e8bc2488ecedff9694c0439c2a076294669a3ae71f5",
+    "EXE-2.ZIP": "ef15cb45ba642a103e6db15e6014f9a52d7772c6958fc8e938098c422639051e"
+  },
+  "cases": [
+    {
+      "name": "AL9",
+      "files": {
+        "AL9.PDS": "80bfbd3b93f64d615ec18a6bf070e8d08a5550efc352237497dd2c8ba1e2d080",
+        "AL9.MXL": "eeba65ccabbb718a87b67a6f5baa84e0877690efc2ac73dd41c26173d7d95e8c",
+        "AL9.LOG": "acf720f6530433ee770aaeecebe978298f578decabef72df482dcd32ff40716b",
+        "AL9.CORRECTED.JED": "c8538080cb914b916486f2d2f4239355cea27dfba98f06c6adc6d124861b0da0",
+        "AL9.CORRECTED.LOG": "e8219bb86d5ec445cca540a904c17d75a3069e0b88beb8856bc55c36c045a436"
+      },
+      "source_sha256": "80bfbd3b93f64d615ec18a6bf070e8d08a5550efc352237497dd2c8ba1e2d080"
+    },
+    {
+      "name": "XL3",
+      "files": {
+        "XL3.PDS": "2739e21d64e7d2a3f9adb0dff600f46089b544c7f9066d3e793348efa7c56eb9",
+        "XL3.MXL": "c089bcf488e6ff4dd37daaae26e4e726f1116c52d3d2ab03ffb4968d0f70db0d",
+        "XL3.LOG": "5e9a2dd1c3a81b6122a62d9cab79d8b4f2866fc9de1bbdece906115a0829175b",
+        "XL3.CORRECTED.JED": "ed9ab7bdf15d373be26ad2d0b82a5e8e3e6a5e11728c5d99e5705a9011bd0035",
+        "XL3.CORRECTED.LOG": "b73289ad7ff06859df74843969a27762d6a3bf1bf3ead56fed8e591d640adbe8"
+      },
+      "source_sha256": "2739e21d64e7d2a3f9adb0dff600f46089b544c7f9066d3e793348efa7c56eb9"
+    },
+    {
+      "name": "XL4",
+      "files": {
+        "XL4.PDS": "402c0a4d6a7a018df78db5f35c4f82d9d167f79d932dda2ff815c23a14351c5f",
+        "XL4.MXL": "071be873620ab5aa308e0e6305dc19306acd87f7b92c181d04c723d7b96623c9",
+        "XL4.LOG": "3ba7cd6e6b2f4e99da020448a7a1d6002e7208d5f45e91fc363b7dabd8d2f50b",
+        "XL4.CORRECTED.JED": "0c4a0eb402a2c83f55eb2d847a75580bf25aa219bb694d31a93c16a9d06ae451",
+        "XL4.CORRECTED.LOG": "da4492c56efa1f9af1ccf9d688db26f46430b9532ffba07c75e5272642fd1247"
+      },
+      "source_sha256": "402c0a4d6a7a018df78db5f35c4f82d9d167f79d932dda2ff815c23a14351c5f"
+    },
+    {
+      "name": "XM1",
+      "files": {
+        "XM1.PDS": "bbf4b8aac31923f15e7084f604c1c84bb09d02e594e0f2e50207258f86a7ee8d",
+        "XM1.MXL": "fb5fd5a195d30ad4f863f2f520721855ee017164af3ec813311f86f45acbe26b",
+        "XM1.LOG": "cb2f10685a22453d83f7bbc2904bcab54e529e107f05863c00ad3b5ff32c854a",
+        "XM1.CORRECTED.JED": "32c4f3753dbb910d1981edcf992da4d5554a1382d8960da77c149377be3a60eb",
+        "XM1.CORRECTED.LOG": "436b9826c2028352b52b041b88ffb421571c8dbea938e60504213d6fb061f70b"
+      },
+      "source_sha256": "bbf4b8aac31923f15e7084f604c1c84bb09d02e594e0f2e50207258f86a7ee8d"
+    },
+    {
+      "name": "XM2",
+      "files": {
+        "XM2.PDS": "715bb0cafc8a4c6953b351088848c5f632a850c0898a07e926798cedd356a050",
+        "XM2.MXL": "aebfb7aa1b9944e7cad2e10744c0a79374c54a25ede4f3463d7784587325d724",
+        "XM2.LOG": "f1aef22f4dac6d8f55e011752534420a38b3f3effd251c3324861e9652428d75",
+        "XM2.CORRECTED.JED": "82d869bacd32b4092add386b94e255a7f7ed58c9412e283a73c0d5d51e18ca05",
+        "XM2.CORRECTED.LOG": "6e416089eee7260a0664a3223c592406c15da679414902efde0aa9b996c382ae"
+      },
+      "source_sha256": "715bb0cafc8a4c6953b351088848c5f632a850c0898a07e926798cedd356a050"
+    },
+    {
+      "name": "XF1",
+      "files": {
+        "XF1.PDS": "3c6f4467ccfd564384bf61ad91330ee9ab41bcb4fb888edda30f38a86816dfc9",
+        "XF1.MXL": "c2065c1563f1888388556f57e0ca36da6b2332710c5d7745813f747f41e5a40d",
+        "XF1.LOG": "e072330e9b5ad5d381684d088832ec156b4a51c058d13132d0c6ad282d8385c4",
+        "XF1.CORRECTED.JED": "7ac4e51e98443a73d9026db5cedc2ac5beda752a28e2b785057f73fdf338e82e",
+        "XF1.CORRECTED.LOG": "0e98cb9bf2fdef50deb7d65c9ecdfe390f8a73bd203eb8f8c0a9c280b99a6079"
+      },
+      "source_sha256": "3c6f4467ccfd564384bf61ad91330ee9ab41bcb4fb888edda30f38a86816dfc9"
+    },
+    {
+      "name": "XF3",
+      "files": {
+        "XF3.PDS": "e75deff9735e1464423d963a09302bc2ba306ecf18f048e2dc833758e56e7dba",
+        "XF3.MXL": "36e18e79341270957e1b058abc84d7862fc62a0b1b1c8f826fc2acc918677dde",
+        "XF3.LOG": "f1cf0aa7c82a0cd52fc763f3f6489d3fe7f4f4036716050937075fa8d716ee43",
+        "XF3.CORRECTED.JED": "61e7ec2e7aca2b29757eaa0d12ccea24eb2e8abe3f5ce9913053fbcc581b7936",
+        "XF3.CORRECTED.LOG": "8b580cd40a55eb92358edcfb1b6e058ee1f501b35054b7c1eda707ea7fd64052"
+      },
+      "source_sha256": "e75deff9735e1464423d963a09302bc2ba306ecf18f048e2dc833758e56e7dba"
+    },
+    {
+      "name": "XF5",
+      "files": {
+        "XF5.PDS": "fc746fa3bd9b4c26b68c2798f800d2c554bd3b5505e3ff83922b6d4f1c1134f0",
+        "XF5.MXL": "f786c713c28ef0ee74a31b4dea250ebd46a0ea56403f7acca09833d0b52b2720",
+        "XF5.LOG": "5e53e6141d7ff68339236b73f2a857b36b7ec8c427bfc12c058e450066863d25",
+        "XF5.CORRECTED.JED": "2d54f744391c13f84c266ab4e3f4e24d0721e64c1898c3194319a525d05f6c98",
+        "XF5.CORRECTED.LOG": "f5a3be7273c7d7d1e66096f0d291393cc9755edd9d661f52cd1568ed8dc89635"
+      },
+      "source_sha256": "fc746fa3bd9b4c26b68c2798f800d2c554bd3b5505e3ff83922b6d4f1c1134f0"
+    },
+    {
+      "name": "XF7",
+      "files": {
+        "XF7.PDS": "9e5fc9043bcd5a70e4512f87ea3ec42632b6e5ea4ab4b2c3bc62763f3fc5e203",
+        "XF7.MXL": "7acdc5e50dd706546e93e0d79bb921a0962efdfcf54a5f4630f441c7f19d7271",
+        "XF7.LOG": "ec08ccf11e5dc6d68019b88c8573d5a1df26d0258e4d0aeb9e07ac99f07a318c",
+        "XF7.CORRECTED.JED": "509cb54a58daaebfb6e9852f5d3a45d7f4b18dd8400afbf0eac3ff967f55551a",
+        "XF7.CORRECTED.LOG": "8298e570ac6cdf0d1d2493f46c510d763d6f412561d3312a29ba1579a19b745d"
+      },
+      "source_sha256": "9e5fc9043bcd5a70e4512f87ea3ec42632b6e5ea4ab4b2c3bc62763f3fc5e203"
+    }
+  ]
+}

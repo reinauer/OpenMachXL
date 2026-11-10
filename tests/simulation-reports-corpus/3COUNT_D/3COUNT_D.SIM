@@ -1,0 +1,57 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  3count_d.pds
+Title  3 Bits D-Counter
+
+|> WARNING D2260
+     The following Pin/Nodes(s) have not been defined in original design
+     file and will be ignored.
+
+      RN_B[1]         RN_B[2]         RN_B[0]         
+
+
+
+   1-V1 - TRACE_ON
+          B[2..0]  CLK  RST  ENABLE  
+   1-V1 - SETF
+          RST  ENABLE  
+   2-V2 - SETF
+          /RST  
+   3-V2 - CHECKQ
+          /B[2]  /B[1]  /B[0]  
+   3-V3 - FOR
+   6-V3 - CLOCKF
+          CLK  
+   9-V4 - CLOCKF
+          CLK  
+  12-V5 - CLOCKF
+          CLK  
+  15-V6 - CLOCKF
+          CLK  
+  18-V7 - CLOCKF
+          CLK  
+  21-V8 - CLOCKF
+          CLK  
+  24-V9 - CLOCKF
+          CLK  
+  27-V10 - CLOCKF
+          CLK  
+  30-V11 - CLOCKF
+          CLK  
+  33-V12 - CLOCKF
+          CLK  
+  33-V12 - CHECKQ
+          /B[2]  B[1]  /B[0]  
+  33-V13 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> 3count_d.HST
+Simulation results (trace) are in   ===> 3count_d.TRF
+Merged results (JEDEC) are in       ===> 3count_d.JDC
+Simulation results (trace vectors) are in   ===> 3count_d.TRV
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 97813 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: 3count_d.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 1

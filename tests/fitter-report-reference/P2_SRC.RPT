@@ -1,0 +1,964 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+********************************************************************
+* Design Name = P2_src.pds, Device = MACH435, Nov 09 20:20:48 2026 *
+********************************************************************
+
+***********************
+* MACH FITTER OPTIONS *
+***********************
+SIGNAL PLACEMENT:
+  Handling of Preplacements                      No Change
+  Use placement data from                        Design file
+
+FITTING OPTIONS:
+  Global clocks routable as PT clocks?           N
+  22V10/MACH1XX/2XX S/R Compatibility?           Y
+  SET/RESET treated as DONT_CARE?                Y
+  Reduce Unforced Global Clocks?                 N 
+  Iterate between partitioning and place/route?  Y
+  Balanced partitioning?                         Y
+  Reduce Routes Per Placement?                   N
+  Maximun Run Time                               run until completion
+
+***************************
+* DEVICE RESOURCE SUMMARY *
+***************************
+                                 Total
+                               Available  Used  Available  Utilization
+Dedicated Pins
+  Input-Only Pins                 2        0      2    -->     0%
+  Clock/Input Pins                4        2      2    -->    50%
+I/O Pins                         64       27     37    -->    42%
+Input Registers                  64        0     64    -->     0%
+Central Switch Matrix Outputs   264      115    149    -->    43%
+Product Term Clusters           128       36     92    -->    28%
+Logical Product Terms           640       98    542    -->    15%
+Logic Macrocells                128       27    101    -->    21%
+  > 1 PT Macrocells              ..       27    101
+  1 PT Macrocells                ..        0      0
+  Unusable Macrocells            ..        0     ..
+
+******************************
+* BLOCK PARTITIONING SUMMARY *
+******************************
+                                                      Macrocells  # of PT  
+                  Logic   I/O    Inp    Macrocells    available   clusters 
+          Fanin    PTs    Pins   Reg   Used Unusable  1PT   >1PT  available
+|---------------------------------------------------------------------------|
+Maximum     33     80      8      8     ..     ..         16        16
+|---------------------------------------------------------------------------|
+Block A     16     14      8      0      4      0      0     12     11
+Block B     15     10      8      0      3      0      0     13     12
+Block C     18     12      7      0      3      0      0     13     12
+Block D     10      8      0      0      4      0      0     12     12
+Block E     16     16      2      0      4      0      0     12     10
+Block F     15     14      2      0      3      0      0     13     11
+Block G     13     12      0      0      3      0      0     13     12
+Block H     12     12      0      0      3      0      0     13     12
+
+> Four rightmost columns above reflect last status of the placement process.
+
+******************
+* SIGNAL SUMMARY *
+******************
+                                 Pin/Node Logic
+       Signals Block Loc PTs XOR   Type   Type    Fanout
+|---------------------------------------------------------------------------|
+      DATA1[0]   B    18  .   .    input   ...   A-C-----
+      DATA1[1]   B    19  .   .    input   ...   --C-E---
+      DATA1[2]   C    25  .   .    input   ...   --C-----
+      DATA1[4]   C    26  .   .    input   ...   A-------
+      DATA1[5]   C    27  .   .    input   ...   -----F--
+      DATA1[6]   C    28  .   .    input   ...   -B------
+      DATA1[7]   C    30  .   .    input   ...   -----F--
+      DATA2[0]   A     7  .   .    input   ...   ----E-G-
+      DATA2[1]   A     9  .   .    input   ...   -BC-----
+      DATA2[2]   B    12  .   .    input   ...   -B-D----
+      DATA2[3]   B    13  .   .    input   ...   A---E---
+      DATA2[4]   B    15  .   .    input   ...   A-----G-
+      DATA2[5]   B    16  .   .    input   ...   ---D---H
+      DATA2[6]   C    24  .   .    input   ...   ---D----
+      DATA2[7]   B    17  .   .    input   ...   -----F-H
+        D_X[0]   A    10  4   .   output   ...   --------
+        D_X[1]   E    50  6   .   output   ...   --------
+        D_X[2]   C    29  6   .   output   ...   --------
+        D_X[3]   E    52  6   .   output   ...   --------
+        D_X[4]   A     8  6   .   output   ...   --------
+        D_X[5]   F    56  6   .   output   ...   --------
+        D_X[6]   B    14  6   .   output   ...   --------
+        D_X[7]   F    54  6   .   output   ...   --------
+       LD_COMP   A     4  .   .    input   ...   AB-D--GH
+        LD_PRE   A     6  .   .    input   ...   A-CDEF--
+       PRE_SEL   A     5  .   .    input   ...   ABC-EF--
+           RST   A     3  .   .    input   ...   ABCDEFGH
+          CH_X   H    H0  8   G   buried   C/.   ABC-EF--
+          CL_X   G    G0  8   G   buried   C/.   ABC-EF--
+          CY_X   C    C4  4   G   buried   D/S   AB---F--
+       R1_X[0]   E    E8  2   G   buried   D/S   A-C-E---
+       R1_X[1]   C    C8  2   G   buried   D/S   --C-E---
+       R1_X[2]   D    D4  2   G   buried   D/S   --CD----
+       R1_X[3]   E   E12  2   G   buried   D/S   --C-E---
+       R1_X[4]   A   A12  2   G   buried   D/S   A-------
+       R1_X[5]   D    D8  2   G   buried   D/S   ---D-F--
+       R1_X[6]   D   D12  2   G   buried   D/S   -B-D----
+       R1_X[7]   F    F8  2   G   buried   D/S   -----F--
+       R2_X[0]   G    G8  2   G   buried   D/S   ------G-
+       R2_X[1]   B    B4  2   G   buried   D/S   -B----G-
+       R2_X[2]   B    B8  2   G   buried   D/S   -B----G-
+       R2_X[3]   A    A8  2   G   buried   D/S   A-----G-
+       R2_X[4]   G    G4  2   G   buried   D/S   ------GH
+       R2_X[5]   H    H4  2   G   buried   D/S   -------H
+       R2_X[6]   D    D0  2   G   buried   D/S   ---D---H
+       R2_X[7]   H    H8  2   G   buried   D/S   -------H
+     RN_D_X[0]   A    A4  4   G  implied   T/S   A-C-E-G-
+     RN_D_X[1]   E    E0  6   G  implied   T/S   --C-E-G-
+     RN_D_X[2]   C    C0  6   G  implied   T/S   --C-E-G-
+     RN_D_X[3]   E    E4  6   G  implied   T/S   --C-E-G-
+     RN_D_X[4]   A    A0  6   G  implied   T/S   AB---F-H
+     RN_D_X[5]   F    F0  6   G  implied   T/S   -B---F-H
+     RN_D_X[6]   B    B0  6   G  implied   T/S   -B---F-H
+     RN_D_X[7]   F    F4  6   G  implied   T/S   -----F-H
+
+***********************
+* TABULAR INFORMATION *
+***********************
+
+DEDICATED PINS
+                                             Logic             Clock
+Pin              Signal        Type          Fanout            Fanout
+|------------------------------------------------------------------------|
+ 20                 CLK     clk/inp          --------          ABCDEFGH
+ 23            DATA1[3]       input          --C-E---          --------
+ 41      ..............          ..          ........          ........
+ 62      ..............          ..          ........          ........
+ 65      ..............          ..          ........          ........
+ 83      ..............          ..          ........          ........
+
+**********************************
+* Signals - Equations Where Used *
+**********************************
+Signal Source :    Fanout List
+|---------------------------------------------------------------------------|
+      DATA1[7]:         D_X[7]{F}
+              {F}
+      DATA1[6]:         D_X[6]{B}
+              {B}
+      DATA1[5]:         D_X[5]{F}
+              {F}
+      DATA1[4]:         D_X[4]{A}
+              {A}
+      DATA1[3]:         D_X[3]{E}           CY_X{C}
+              {EC}
+      DATA1[2]:         D_X[2]{C}           CY_X{C}
+              {CC}
+      DATA1[1]:         D_X[1]{E}           CY_X{C}
+              {EC}
+      DATA1[0]:         D_X[0]{A}           CY_X{C}
+              {AC}
+      DATA2[7]:        R1_X[7]{F}        R2_X[7]{H}
+              {FH}
+      DATA2[6]:        R1_X[6]{D}        R2_X[6]{D}
+              {DD}
+      DATA2[5]:        R1_X[5]{D}        R2_X[5]{H}
+              {DH}
+      DATA2[4]:        R1_X[4]{A}        R2_X[4]{G}
+              {AG}
+      DATA2[3]:        R1_X[3]{E}        R2_X[3]{A}
+              {EA}
+      DATA2[2]:        R1_X[2]{D}        R2_X[2]{B}
+              {DB}
+      DATA2[1]:        R1_X[1]{C}        R2_X[1]{B}
+              {CB}
+      DATA2[0]:        R1_X[0]{E}        R2_X[0]{G}
+              {EG}
+        LD_PRE:        R1_X[7]{F}        R1_X[6]{D}        R1_X[5]{D}
+              :        R1_X[4]{A}        R1_X[3]{E}        R1_X[2]{D}
+              :        R1_X[1]{C}        R1_X[0]{E}
+              {FDD AED CE}
+       PRE_SEL:         D_X[7]{F}         D_X[6]{B}         D_X[5]{F}
+              :         D_X[4]{A}         D_X[3]{E}         D_X[2]{C}
+              :         D_X[1]{E}         D_X[0]{A}           CY_X{C}
+              {FBF AEC EAC}
+       LD_COMP:        R2_X[7]{H}        R2_X[6]{D}        R2_X[5]{H}
+              :        R2_X[4]{G}        R2_X[3]{A}        R2_X[2]{B}
+              :        R2_X[1]{B}        R2_X[0]{G}
+              {HDH GAB BG}
+           RST:         D_X[7]{F}         D_X[6]{B}         D_X[5]{F}
+              :         D_X[4]{A}         D_X[3]{E}         D_X[2]{C}
+              :         D_X[1]{E}         D_X[0]{A}        R1_X[7]{F}
+              :        R1_X[6]{D}        R1_X[5]{D}        R1_X[4]{A}
+              :        R1_X[3]{E}        R1_X[2]{D}        R1_X[1]{C}
+              :        R1_X[0]{E}        R2_X[7]{H}        R2_X[6]{D}
+              :        R2_X[5]{H}        R2_X[4]{G}        R2_X[3]{A}
+              :        R2_X[2]{B}        R2_X[1]{B}        R2_X[0]{G}
+              :           CY_X{C}
+              {FBF AEC EAF DDA EDC EHD HGA BBG C}
+     RN_D_X[7]:         D_X[7]{F}           CH_X{H}
+              {FH}
+     RN_D_X[6]:         D_X[7]{F}         D_X[6]{B}           CH_X{H}
+              {FBH}
+     RN_D_X[5]:         D_X[7]{F}         D_X[6]{B}         D_X[5]{F}
+              :           CH_X{H}
+              {FBF H}
+     RN_D_X[4]:         D_X[7]{F}         D_X[6]{B}         D_X[5]{F}
+              :         D_X[4]{A}           CH_X{H}
+              {FBF AH}
+     RN_D_X[3]:         D_X[3]{E}           CL_X{G}           CY_X{C}
+              {EGC}
+     RN_D_X[2]:         D_X[3]{E}         D_X[2]{C}           CL_X{G}
+              :           CY_X{C}
+              {ECG C}
+     RN_D_X[1]:         D_X[3]{E}         D_X[2]{C}         D_X[1]{E}
+              :           CL_X{G}           CY_X{C}
+              {ECE GC}
+     RN_D_X[0]:         D_X[3]{E}         D_X[2]{C}         D_X[1]{E}
+              :         D_X[0]{A}           CL_X{G}           CY_X{C}
+              {ECE AGC}
+       R1_X[7]:         D_X[7]{F}        R1_X[7]{F}
+              {FF}
+       R1_X[6]:         D_X[6]{B}        R1_X[6]{D}
+              {BD}
+       R1_X[5]:         D_X[5]{F}        R1_X[5]{D}
+              {FD}
+       R1_X[4]:         D_X[4]{A}        R1_X[4]{A}
+              {AA}
+       R1_X[3]:         D_X[3]{E}        R1_X[3]{E}           CY_X{C}
+              {EEC}
+       R1_X[2]:         D_X[2]{C}        R1_X[2]{D}           CY_X{C}
+              {CDC}
+       R1_X[1]:         D_X[1]{E}        R1_X[1]{C}           CY_X{C}
+              {ECC}
+       R1_X[0]:         D_X[0]{A}        R1_X[0]{E}           CY_X{C}
+              {AEC}
+       R2_X[7]:        R2_X[7]{H}           CH_X{H}
+              {HH}
+       R2_X[6]:        R2_X[6]{D}           CH_X{H}
+              {DH}
+       R2_X[5]:        R2_X[5]{H}           CH_X{H}
+              {HH}
+       R2_X[4]:        R2_X[4]{G}           CH_X{H}
+              {GH}
+       R2_X[3]:        R2_X[3]{A}           CL_X{G}
+              {AG}
+       R2_X[2]:        R2_X[2]{B}           CL_X{G}
+              {BG}
+       R2_X[1]:        R2_X[1]{B}           CL_X{G}
+              {BG}
+       R2_X[0]:        R2_X[0]{G}           CL_X{G}
+              {GG}
+          CL_X:         D_X[7]{F}         D_X[6]{B}         D_X[5]{F}
+              :         D_X[4]{A}         D_X[3]{E}         D_X[2]{C}
+              :         D_X[1]{E}         D_X[0]{A}           CY_X{C}
+              {FBF AEC EAC}
+          CH_X:         D_X[7]{F}         D_X[6]{B}         D_X[5]{F}
+              :         D_X[4]{A}         D_X[3]{E}         D_X[2]{C}
+              :         D_X[1]{E}         D_X[0]{A}           CY_X{C}
+              {FBF AEC EAC}
+          CY_X:         D_X[7]{F}         D_X[6]{B}         D_X[5]{F}
+              :         D_X[4]{A}
+              {FBF A}
+
+Block A singular list (Input drives only one logic equation)
+      DATA1[4]:         D_X[4]
+      DATA1[0]:         D_X[0]
+      DATA2[4]:        R1_X[4]
+      DATA2[3]:        R2_X[3]
+        LD_PRE:        R1_X[4]
+       LD_COMP:        R2_X[3]
+     RN_D_X[4]:         D_X[4]
+     RN_D_X[0]:         D_X[0]
+       R1_X[0]:         D_X[0]
+       R2_X[3]:        R2_X[3]
+          CY_X:         D_X[4]
+
+Block B singular list (Input drives only one logic equation)
+      DATA1[6]:         D_X[6]
+      DATA2[2]:        R2_X[2]
+      DATA2[1]:        R2_X[1]
+       PRE_SEL:         D_X[6]
+     RN_D_X[6]:         D_X[6]
+     RN_D_X[5]:         D_X[6]
+     RN_D_X[4]:         D_X[6]
+       R1_X[6]:         D_X[6]
+       R2_X[2]:        R2_X[2]
+       R2_X[1]:        R2_X[1]
+          CL_X:         D_X[6]
+          CH_X:         D_X[6]
+          CY_X:         D_X[6]
+
+Block C singular list (Input drives only one logic equation)
+      DATA1[3]:           CY_X
+      DATA1[1]:           CY_X
+      DATA1[0]:           CY_X
+      DATA2[1]:        R1_X[1]
+        LD_PRE:        R1_X[1]
+     RN_D_X[3]:           CY_X
+       R1_X[3]:           CY_X
+       R1_X[0]:           CY_X
+
+Block D singular list (Input drives only one logic equation)
+      DATA2[5]:        R1_X[5]
+      DATA2[2]:        R1_X[2]
+       LD_COMP:        R2_X[6]
+       R1_X[6]:        R1_X[6]
+       R1_X[5]:        R1_X[5]
+       R1_X[2]:        R1_X[2]
+       R2_X[6]:        R2_X[6]
+
+Block E singular list (Input drives only one logic equation)
+      DATA1[3]:         D_X[3]
+      DATA1[1]:         D_X[1]
+      DATA2[3]:        R1_X[3]
+      DATA2[0]:        R1_X[0]
+     RN_D_X[3]:         D_X[3]
+     RN_D_X[2]:         D_X[3]
+       R1_X[1]:         D_X[1]
+       R1_X[0]:        R1_X[0]
+
+Block F singular list (Input drives only one logic equation)
+      DATA1[7]:         D_X[7]
+      DATA1[5]:         D_X[5]
+      DATA2[7]:        R1_X[7]
+        LD_PRE:        R1_X[7]
+     RN_D_X[7]:         D_X[7]
+     RN_D_X[6]:         D_X[7]
+       R1_X[5]:         D_X[5]
+
+Block G singular list (Input drives only one logic equation)
+      DATA2[4]:        R2_X[4]
+      DATA2[0]:        R2_X[0]
+     RN_D_X[3]:           CL_X
+     RN_D_X[2]:           CL_X
+     RN_D_X[1]:           CL_X
+     RN_D_X[0]:           CL_X
+       R2_X[4]:        R2_X[4]
+       R2_X[3]:           CL_X
+       R2_X[2]:           CL_X
+       R2_X[1]:           CL_X
+
+Block H singular list (Input drives only one logic equation)
+      DATA2[7]:        R2_X[7]
+      DATA2[5]:        R2_X[5]
+     RN_D_X[7]:           CH_X
+     RN_D_X[6]:           CH_X
+     RN_D_X[5]:           CH_X
+     RN_D_X[4]:           CH_X
+       R2_X[6]:           CH_X
+       R2_X[4]:           CH_X
+
+BLOCK A CLOCK MUX 
+Block Clocks     Signal    Pin   Pol
+|-----------------------------------|
+Ck0                 CLK     20    H
+Ck1                 ...     ..    .
+Ck2                 ...     ..    .
+Ck3                 ...     ..    .
+
+
+BLOCK A LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+A0      2        RN_D_X[4]  T/S  6   9  G  H  A0  G B0   8  AB---F-H
+A1      3 ................  ...  .  11  .  .   .  .  .  ..  ........
+A2      4 ................  ...  .  10  .  .   .  .  .  ..  ........
+A3      5 ................  ...  .  15  .  .   .  .  .  ..  ........
+A4      6        RN_D_X[0]  T/S  4  16  G  H  A4  G B0  10  A-C-E-G-
+A5      7 ................  ...  .  15  .  .   .  .  .  ..  ........
+A6      8 ................  ...  .  15  .  .   .  .  .  ..  ........
+A7      9 ................  ...  .  15  .  .   .  .  .  ..  ........
+A8     10          R2_X[3]  D/S  2  18  G  H  A8  G B0  ..  A-----G-
+A9     11 ................  ...  .  15  .  .   .  .  .  ..  ........
+A10    12 ................  ...  .  15  .  .   .  .  .  ..  ........
+A11    13 ................  ...  .  15  .  .   .  .  .  ..  ........
+A12    14          R1_X[4]  D/S  2  18  G  H A12  G B0  ..  A-------
+A13    15 ................  ...  .  15  .  .   .  .  .  ..  ........
+A14    16 ................  ...  .  15  .  .   .  .  .  ..  ........
+A15    17 ................  ...  .  10  .  .   .  .  .  ..  ........
+Air-0 130 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-1 131 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-2 132 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-3 133 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-4 134 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-5 135 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-6 136 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-7 137 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+BLOCK A I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+  3  ...   ...               RST     input  ABCDEFGH
+  4  ...   ...           LD_COMP     input  AB-D--GH
+  5  ...   ...           PRE_SEL     input  ABC-EF--
+  6  ...   ...            LD_PRE     input  A-CDEF--
+  7  ...   ...          DATA2[0]     input  ----E-G-
+  8    2   ...            D_X[4]    output  --------
+  9  ...   ...          DATA2[1]     input  -BC-----
+ 10    6   ...            D_X[0]    output  --------
+
+
+BLOCK A LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxA0             CL_X     mcell G-0     mxA17             ...           ...
+mxA1         DATA2[3]        pin 13     mxA18         R2_X[3]     mcell A-8
+mxA2              ...           ...     mxA19       RN_D_X[0]     mcell A-4
+mxA3          PRE_SEL         pin 5     mxA20             ...           ...
+mxA4         DATA2[4]        pin 15     mxA21             ...           ...
+mxA5           LD_PRE         pin 6     mxA22             ...           ...
+mxA6             CY_X     mcell C-4     mxA23            CH_X     mcell H-0
+mxA7              ...           ...     mxA24             ...           ...
+mxA8         DATA1[0]        pin 18     mxA25             ...           ...
+mxA9         DATA1[4]        pin 26     mxA26             ...           ...
+mxA10             ...           ...     mxA27             ...           ...
+mxA11             RST         pin 3     mxA28             ...           ...
+mxA12             ...           ...     mxA29       RN_D_X[4]     mcell A-0
+mxA13             ...           ...     mxA30             ...           ...
+mxA14         LD_COMP         pin 4     mxA31             ...           ...
+mxA15         R1_X[4]    mcell A-12     mxA32             ...           ...
+mxA16         R1_X[0]     mcell E-8
+
+BLOCK B CLOCK MUX 
+Block Clocks     Signal    Pin   Pol
+|-----------------------------------|
+Ck0                 CLK     20    H
+Ck1                 ...     ..    .
+Ck2                 ...     ..    .
+Ck3                 ...     ..    .
+
+
+BLOCK B LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+B0     18        RN_D_X[6]  T/S  6   9  G  H  B0  G B0  14  -B---F-H
+B1     19 ................  ...  .  11  .  .   .  .  .  ..  ........
+B2     20 ................  ...  .  10  .  .   .  .  .  ..  ........
+B3     21 ................  ...  .  15  .  .   .  .  .  ..  ........
+B4     22          R2_X[1]  D/S  2  18  G  H  B4  G B0  ..  -B----G-
+B5     23 ................  ...  .  15  .  .   .  .  .  ..  ........
+B6     24 ................  ...  .  15  .  .   .  .  .  ..  ........
+B7     25 ................  ...  .  15  .  .   .  .  .  ..  ........
+B8     26          R2_X[2]  D/S  2  18  G  H  B8  G B0  ..  -B----G-
+B9     27 ................  ...  .  15  .  .   .  .  .  ..  ........
+B10    28 ................  ...  .  20  .  .   .  .  .  ..  ........
+B11    29 ................  ...  .  20  .  .   .  .  .  ..  ........
+B12    30 ................  ...  .  20  .  .   .  .  .  ..  ........
+B13    31 ................  ...  .  20  .  .   .  .  .  ..  ........
+B14    32 ................  ...  .  15  .  .   .  .  .  ..  ........
+B15    33 ................  ...  .  10  .  .   .  .  .  ..  ........
+Bir-0 138 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-1 139 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-2 140 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-3 141 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-4 142 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-5 143 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-6 144 ................  ...  .   .  .  .   .  .  .  ..  ........
+Bir-7 145 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+BLOCK B I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 12  ...   ...          DATA2[2]     input  -B-D----
+ 13  ...   ...          DATA2[3]     input  A---E---
+ 14   18   ...            D_X[6]    output  --------
+ 15  ...   ...          DATA2[4]     input  A-----G-
+ 16  ...   ...          DATA2[5]     input  ---D---H
+ 17  ...   ...          DATA2[7]     input  -----F-H
+ 18  ...   ...          DATA1[0]     input  A-C-----
+ 19  ...   ...          DATA1[1]     input  --C-E---
+
+
+BLOCK B LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxB0          R2_X[1]     mcell B-4     mxB17         R2_X[2]     mcell B-8
+mxB1              ...           ...     mxB18             ...           ...
+mxB2         DATA2[2]        pin 12     mxB19             ...           ...
+mxB3          PRE_SEL         pin 5     mxB20            CL_X     mcell G-0
+mxB4        RN_D_X[4]     mcell A-0     mxB21             ...           ...
+mxB5         DATA1[6]        pin 28     mxB22             ...           ...
+mxB6         DATA2[1]         pin 9     mxB23            CH_X     mcell H-0
+mxB7              ...           ...     mxB24             ...           ...
+mxB8              RST         pin 3     mxB25       RN_D_X[5]     mcell F-0
+mxB9              ...           ...     mxB26       RN_D_X[6]     mcell B-0
+mxB10             ...           ...     mxB27             ...           ...
+mxB11         R1_X[6]    mcell D-12     mxB28             ...           ...
+mxB12             ...           ...     mxB29            CY_X     mcell C-4
+mxB13             ...           ...     mxB30             ...           ...
+mxB14         LD_COMP         pin 4     mxB31             ...           ...
+mxB15             ...           ...     mxB32             ...           ...
+mxB16             ...           ...
+
+BLOCK C CLOCK MUX 
+Block Clocks     Signal    Pin   Pol
+|-----------------------------------|
+Ck0                 CLK     20    H
+Ck1                 ...     ..    .
+Ck2                 ...     ..    .
+Ck3                 ...     ..    .
+
+
+BLOCK C LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+C0     34        RN_D_X[2]  T/S  6   9  G  H  C0  G B0  29  --C-E-G-
+C1     35 ................  ...  .  11  .  .   .  .  .  ..  ........
+C2     36 ................  ...  .  10  .  .   .  .  .  ..  ........
+C3     37 ................  ...  .  15  .  .   .  .  .  ..  ........
+C4     38             CY_X  D/S  4  16  G  H  C4  G B0  ..  AB---F--
+C5     39 ................  ...  .  15  .  .   .  .  .  ..  ........
+C6     40 ................  ...  .  15  .  .   .  .  .  ..  ........
+C7     41 ................  ...  .  15  .  .   .  .  .  ..  ........
+C8     42          R1_X[1]  D/S  2  18  G  H  C8  G B0  ..  --C-E---
+C9     43 ................  ...  .  15  .  .   .  .  .  ..  ........
+C10    44 ................  ...  .  20  .  .   .  .  .  ..  ........
+C11    45 ................  ...  .  20  .  .   .  .  .  ..  ........
+C12    46 ................  ...  .  20  .  .   .  .  .  ..  ........
+C13    47 ................  ...  .  20  .  .   .  .  .  ..  ........
+C14    48 ................  ...  .  15  .  .   .  .  .  ..  ........
+C15    49 ................  ...  .  10  .  .   .  .  .  ..  ........
+Cir-0 146 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-1 147 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-2 148 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-3 149 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-4 150 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-5 151 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-6 152 ................  ...  .   .  .  .   .  .  .  ..  ........
+Cir-7 153 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+BLOCK C I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 24  ...   ...          DATA2[6]     input  ---D----
+ 25  ...   ...          DATA1[2]     input  --C-----
+ 26  ...   ...          DATA1[4]     input  A-------
+ 27  ...   ...          DATA1[5]     input  -----F--
+ 28  ...   ...          DATA1[6]     input  -B------
+ 29   34   ...            D_X[2]    output  --------
+ 30  ...   ...          DATA1[7]     input  -----F--
+ 31  ...   ...  ................        ..  ........
+
+
+BLOCK C LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxC0             CL_X     mcell G-0     mxC17         PRE_SEL         pin 5
+mxC1        RN_D_X[0]     mcell A-4     mxC18             ...           ...
+mxC2              ...           ...     mxC19             ...           ...
+mxC3         DATA1[2]        pin 25     mxC20             ...           ...
+mxC4         DATA1[1]        pin 19     mxC21             ...           ...
+mxC5         DATA1[3]        pin 23     mxC22       RN_D_X[3]     mcell E-4
+mxC6         DATA2[1]         pin 9     mxC23            CH_X     mcell H-0
+mxC7          R1_X[1]     mcell C-8     mxC24             ...           ...
+mxC8         DATA1[0]        pin 18     mxC25             ...           ...
+mxC9        RN_D_X[2]     mcell C-0     mxC26             ...           ...
+mxC10         R1_X[3]    mcell E-12     mxC27             ...           ...
+mxC11             RST         pin 3     mxC28             ...           ...
+mxC12             ...           ...     mxC29             ...           ...
+mxC13             ...           ...     mxC30             ...           ...
+mxC14         R1_X[2]     mcell D-4     mxC31       RN_D_X[1]     mcell E-0
+mxC15          LD_PRE         pin 6     mxC32             ...           ...
+mxC16         R1_X[0]     mcell E-8
+
+BLOCK D CLOCK MUX 
+Block Clocks     Signal    Pin   Pol
+|-----------------------------------|
+Ck0                 CLK     20    H
+Ck1                 ...     ..    .
+Ck2                 ...     ..    .
+Ck3                 ...     ..    .
+
+
+BLOCK D LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+D0     50          R2_X[6]  D/S  2  13  G  H  D0  G B0  ..  ---D---H
+D1     51 ................  ...  .  15  .  .   .  .  .  ..  ........
+D2     52 ................  ...  .  15  .  .   .  .  .  ..  ........
+D3     53 ................  ...  .  15  .  .   .  .  .  ..  ........
+D4     54          R1_X[2]  D/S  2  18  G  H  D4  G B0  ..  --CD----
+D5     55 ................  ...  .  15  .  .   .  .  .  ..  ........
+D6     56 ................  ...  .  15  .  .   .  .  .  ..  ........
+D7     57 ................  ...  .  15  .  .   .  .  .  ..  ........
+D8     58          R1_X[5]  D/S  2  18  G  H  D8  G B0  ..  ---D-F--
+D9     59 ................  ...  .  15  .  .   .  .  .  ..  ........
+D10    60 ................  ...  .  15  .  .   .  .  .  ..  ........
+D11    61 ................  ...  .  15  .  .   .  .  .  ..  ........
+D12    62          R1_X[6]  D/S  2  18  G  H D12  G B0  ..  -B-D----
+D13    63 ................  ...  .  15  .  .   .  .  .  ..  ........
+D14    64 ................  ...  .  15  .  .   .  .  .  ..  ........
+D15    65 ................  ...  .  10  .  .   .  .  .  ..  ........
+Dir-0 154 ................  ...  .   .  .  .   .  .  .  ..  ........
+Dir-1 155 ................  ...  .   .  .  .   .  .  .  ..  ........
+Dir-2 156 ................  ...  .   .  .  .   .  .  .  ..  ........
+Dir-3 157 ................  ...  .   .  .  .   .  .  .  ..  ........
+Dir-4 158 ................  ...  .   .  .  .   .  .  .  ..  ........
+Dir-5 159 ................  ...  .   .  .  .   .  .  .  ..  ........
+Dir-6 160 ................  ...  .   .  .  .   .  .  .  ..  ........
+Dir-7 161 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+
+BLOCK D LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxD0              ...           ...     mxD17             ...           ...
+mxD1          R2_X[6]     mcell D-0     mxD18             ...           ...
+mxD2         DATA2[2]        pin 12     mxD19             ...           ...
+mxD3              ...           ...     mxD20             ...           ...
+mxD4              ...           ...     mxD21         R1_X[2]     mcell D-4
+mxD5           LD_PRE         pin 6     mxD22             ...           ...
+mxD6              ...           ...     mxD23             ...           ...
+mxD7         DATA2[6]        pin 24     mxD24             ...           ...
+mxD8              RST         pin 3     mxD25             ...           ...
+mxD9              ...           ...     mxD26             ...           ...
+mxD10        DATA2[5]        pin 16     mxD27             ...           ...
+mxD11         R1_X[6]    mcell D-12     mxD28             ...           ...
+mxD12             ...           ...     mxD29             ...           ...
+mxD13             ...           ...     mxD30             ...           ...
+mxD14         LD_COMP         pin 4     mxD31             ...           ...
+mxD15             ...           ...     mxD32             ...           ...
+mxD16         R1_X[5]     mcell D-8
+
+BLOCK E CLOCK MUX 
+Block Clocks     Signal    Pin   Pol
+|-----------------------------------|
+Ck0                 CLK     20    H
+Ck1                 ...     ..    .
+Ck2                 ...     ..    .
+Ck3                 ...     ..    .
+
+
+BLOCK E LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+E0     66        RN_D_X[1]  T/S  6   9  G  H  E0  G B0  50  --C-E-G-
+E1     67 ................  ...  .  11  .  .   .  .  .  ..  ........
+E2     68 ................  ...  .  10  .  .   .  .  .  ..  ........
+E3     69 ................  ...  .  10  .  .   .  .  .  ..  ........
+E4     70        RN_D_X[3]  T/S  6  14  G  H  E4  G B0  52  --C-E-G-
+E5     71 ................  ...  .  11  .  .   .  .  .  ..  ........
+E6     72 ................  ...  .  10  .  .   .  .  .  ..  ........
+E7     73 ................  ...  .  15  .  .   .  .  .  ..  ........
+E8     74          R1_X[0]  D/S  2  18  G  H  E8  G B0  ..  A-C-E---
+E9     75 ................  ...  .  15  .  .   .  .  .  ..  ........
+E10    76 ................  ...  .  15  .  .   .  .  .  ..  ........
+E11    77 ................  ...  .  15  .  .   .  .  .  ..  ........
+E12    78          R1_X[3]  D/S  2  18  G  H E12  G B0  ..  --C-E---
+E13    79 ................  ...  .  15  .  .   .  .  .  ..  ........
+E14    80 ................  ...  .  15  .  .   .  .  .  ..  ........
+E15    81 ................  ...  .  10  .  .   .  .  .  ..  ........
+Eir-0 162 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-1 163 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-2 164 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-3 165 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-4 166 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-5 167 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-6 168 ................  ...  .   .  .  .   .  .  .  ..  ........
+Eir-7 169 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+BLOCK E I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 45  ...   ...  ................        ..  ........
+ 46  ...   ...  ................        ..  ........
+ 47  ...   ...  ................        ..  ........
+ 48  ...   ...  ................        ..  ........
+ 49  ...   ...  ................        ..  ........
+ 50   66   ...            D_X[1]    output  --------
+ 51  ...   ...  ................        ..  ........
+ 52   70   ...            D_X[3]    output  --------
+
+
+BLOCK E LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxE0             CL_X     mcell G-0     mxE17        DATA2[0]         pin 7
+mxE1         DATA2[3]        pin 13     mxE18             ...           ...
+mxE2              ...           ...     mxE19       RN_D_X[0]     mcell A-4
+mxE3          PRE_SEL         pin 5     mxE20             ...           ...
+mxE4         DATA1[1]        pin 19     mxE21             ...           ...
+mxE5         DATA1[3]        pin 23     mxE22       RN_D_X[1]     mcell E-0
+mxE6        RN_D_X[3]     mcell E-4     mxE23            CH_X     mcell H-0
+mxE7          R1_X[1]     mcell C-8     mxE24             ...           ...
+mxE8              RST         pin 3     mxE25             ...           ...
+mxE9        RN_D_X[2]     mcell C-0     mxE26             ...           ...
+mxE10         R1_X[3]    mcell E-12     mxE27             ...           ...
+mxE11             ...           ...     mxE28             ...           ...
+mxE12             ...           ...     mxE29             ...           ...
+mxE13             ...           ...     mxE30             ...           ...
+mxE14             ...           ...     mxE31             ...           ...
+mxE15          LD_PRE         pin 6     mxE32             ...           ...
+mxE16         R1_X[0]     mcell E-8
+
+BLOCK F CLOCK MUX 
+Block Clocks     Signal    Pin   Pol
+|-----------------------------------|
+Ck0                 CLK     20    H
+Ck1                 ...     ..    .
+Ck2                 ...     ..    .
+Ck3                 ...     ..    .
+
+
+BLOCK F LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+F0     82        RN_D_X[5]  T/S  6   9  G  H  F0  G B0  56  -B---F-H
+F1     83 ................  ...  .  11  .  .   .  .  .  ..  ........
+F2     84 ................  ...  .  10  .  .   .  .  .  ..  ........
+F3     85 ................  ...  .  10  .  .   .  .  .  ..  ........
+F4     86        RN_D_X[7]  T/S  6  14  G  H  F4  G B0  54  -----F-H
+F5     87 ................  ...  .  11  .  .   .  .  .  ..  ........
+F6     88 ................  ...  .  10  .  .   .  .  .  ..  ........
+F7     89 ................  ...  .  15  .  .   .  .  .  ..  ........
+F8     90          R1_X[7]  D/S  2  18  G  H  F8  G B0  ..  -----F--
+F9     91 ................  ...  .  15  .  .   .  .  .  ..  ........
+F10    92 ................  ...  .  20  .  .   .  .  .  ..  ........
+F11    93 ................  ...  .  20  .  .   .  .  .  ..  ........
+F12    94 ................  ...  .  20  .  .   .  .  .  ..  ........
+F13    95 ................  ...  .  20  .  .   .  .  .  ..  ........
+F14    96 ................  ...  .  15  .  .   .  .  .  ..  ........
+F15    97 ................  ...  .  10  .  .   .  .  .  ..  ........
+Fir-0 170 ................  ...  .   .  .  .   .  .  .  ..  ........
+Fir-1 171 ................  ...  .   .  .  .   .  .  .  ..  ........
+Fir-2 172 ................  ...  .   .  .  .   .  .  .  ..  ........
+Fir-3 173 ................  ...  .   .  .  .   .  .  .  ..  ........
+Fir-4 174 ................  ...  .   .  .  .   .  .  .  ..  ........
+Fir-5 175 ................  ...  .   .  .  .   .  .  .  ..  ........
+Fir-6 176 ................  ...  .   .  .  .   .  .  .  ..  ........
+Fir-7 177 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+BLOCK F I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 54   86   ...            D_X[7]    output  --------
+ 55  ...   ...  ................        ..  ........
+ 56   82   ...            D_X[5]    output  --------
+ 57  ...   ...  ................        ..  ........
+ 58  ...   ...  ................        ..  ........
+ 59  ...   ...  ................        ..  ........
+ 60  ...   ...  ................        ..  ........
+ 61  ...   ...  ................        ..  ........
+
+
+BLOCK F LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxF0        RN_D_X[6]     mcell B-0     mxF17         PRE_SEL         pin 5
+mxF1         DATA2[7]        pin 17     mxF18             ...           ...
+mxF2          R1_X[7]     mcell F-8     mxF19             ...           ...
+mxF3         DATA1[5]        pin 27     mxF20            CL_X     mcell G-0
+mxF4         DATA1[7]        pin 30     mxF21             ...           ...
+mxF5           LD_PRE         pin 6     mxF22             ...           ...
+mxF6             CY_X     mcell C-4     mxF23            CH_X     mcell H-0
+mxF7              ...           ...     mxF24             ...           ...
+mxF8              RST         pin 3     mxF25       RN_D_X[5]     mcell F-0
+mxF9              ...           ...     mxF26             ...           ...
+mxF10       RN_D_X[7]     mcell F-4     mxF27             ...           ...
+mxF11             ...           ...     mxF28             ...           ...
+mxF12             ...           ...     mxF29             ...           ...
+mxF13             ...           ...     mxF30             ...           ...
+mxF14             ...           ...     mxF31             ...           ...
+mxF15       RN_D_X[4]     mcell A-0     mxF32             ...           ...
+mxF16         R1_X[5]     mcell D-8
+
+BLOCK G CLOCK MUX 
+Block Clocks     Signal    Pin   Pol
+|-----------------------------------|
+Ck0                 CLK     20    H
+Ck1                 ...     ..    .
+Ck2                 ...     ..    .
+Ck3                 ...     ..    .
+
+
+BLOCK G LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+G0     98             CL_X  C/.  8   7  G  H   .  .  .  ..  ABC-EF--
+G1     99 ................  ...  .  11  .  .   .  .  .  ..  ........
+G2    100 ................  ...  .  10  .  .   .  .  .  ..  ........
+G3    101 ................  ...  .  15  .  .   .  .  .  ..  ........
+G4    102          R2_X[4]  D/S  2  18  G  H  G4  G B0  ..  ------GH
+G5    103 ................  ...  .  15  .  .   .  .  .  ..  ........
+G6    104 ................  ...  .  15  .  .   .  .  .  ..  ........
+G7    105 ................  ...  .  15  .  .   .  .  .  ..  ........
+G8    106          R2_X[0]  D/S  2  18  G  H  G8  G B0  ..  ------G-
+G9    107 ................  ...  .  15  .  .   .  .  .  ..  ........
+G10   108 ................  ...  .  20  .  .   .  .  .  ..  ........
+G11   109 ................  ...  .  20  .  .   .  .  .  ..  ........
+G12   110 ................  ...  .  20  .  .   .  .  .  ..  ........
+G13   111 ................  ...  .  20  .  .   .  .  .  ..  ........
+G14   112 ................  ...  .  15  .  .   .  .  .  ..  ........
+G15   113 ................  ...  .  10  .  .   .  .  .  ..  ........
+Gir-0 178 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-1 179 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-2 180 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-3 181 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-4 182 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-5 183 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-6 184 ................  ...  .   .  .  .   .  .  .  ..  ........
+Gir-7 185 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+
+BLOCK G LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxG0          R2_X[1]     mcell B-4     mxG17        DATA2[0]         pin 7
+mxG1        RN_D_X[0]     mcell A-4     mxG18             ...           ...
+mxG2          R2_X[4]     mcell G-4     mxG19             ...           ...
+mxG3          R2_X[3]     mcell A-8     mxG20             ...           ...
+mxG4         DATA2[4]        pin 15     mxG21             ...           ...
+mxG5          LD_COMP         pin 4     mxG22             ...           ...
+mxG6        RN_D_X[3]     mcell E-4     mxG23             ...           ...
+mxG7        RN_D_X[1]     mcell E-0     mxG24             ...           ...
+mxG8              RST         pin 3     mxG25         R2_X[2]     mcell B-8
+mxG9        RN_D_X[2]     mcell C-0     mxG26             ...           ...
+mxG10         R2_X[0]     mcell G-8     mxG27             ...           ...
+mxG11             ...           ...     mxG28             ...           ...
+mxG12             ...           ...     mxG29             ...           ...
+mxG13             ...           ...     mxG30             ...           ...
+mxG14             ...           ...     mxG31             ...           ...
+mxG15             ...           ...     mxG32             ...           ...
+mxG16             ...           ...
+
+BLOCK H CLOCK MUX 
+Block Clocks     Signal    Pin   Pol
+|-----------------------------------|
+Ck0                 CLK     20    H
+Ck1                 ...     ..    .
+Ck2                 ...     ..    .
+Ck3                 ...     ..    .
+
+
+BLOCK H LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+H0    114             CH_X  C/.  8   7  G  H   .  .  .  ..  ABC-EF--
+H1    115 ................  ...  .  11  .  .   .  .  .  ..  ........
+H2    116 ................  ...  .  10  .  .   .  .  .  ..  ........
+H3    117 ................  ...  .  15  .  .   .  .  .  ..  ........
+H4    118          R2_X[5]  D/S  2  18  G  H  H4  G B0  ..  -------H
+H5    119 ................  ...  .  15  .  .   .  .  .  ..  ........
+H6    120 ................  ...  .  15  .  .   .  .  .  ..  ........
+H7    121 ................  ...  .  15  .  .   .  .  .  ..  ........
+H8    122          R2_X[7]  D/S  2  18  G  H  H8  G B0  ..  -------H
+H9    123 ................  ...  .  15  .  .   .  .  .  ..  ........
+H10   124 ................  ...  .  20  .  .   .  .  .  ..  ........
+H11   125 ................  ...  .  20  .  .   .  .  .  ..  ........
+H12   126 ................  ...  .  20  .  .   .  .  .  ..  ........
+H13   127 ................  ...  .  20  .  .   .  .  .  ..  ........
+H14   128 ................  ...  .  15  .  .   .  .  .  ..  ........
+H15   129 ................  ...  .  10  .  .   .  .  .  ..  ........
+Hir-0 186 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-1 187 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-2 188 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-3 189 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-4 190 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-5 191 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-6 192 ................  ...  .   .  .  .   .  .  .  ..  ........
+Hir-7 193 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+
+BLOCK H LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxH0          R2_X[5]     mcell H-4     mxH17             ...           ...
+mxH1         DATA2[7]        pin 17     mxH18         R2_X[6]     mcell D-0
+mxH2          R2_X[4]     mcell G-4     mxH19             ...           ...
+mxH3          R2_X[7]     mcell H-8     mxH20             ...           ...
+mxH4        RN_D_X[4]     mcell A-0     mxH21             ...           ...
+mxH5          LD_COMP         pin 4     mxH22             ...           ...
+mxH6              ...           ...     mxH23             ...           ...
+mxH7              ...           ...     mxH24             ...           ...
+mxH8              RST         pin 3     mxH25       RN_D_X[5]     mcell F-0
+mxH9              ...           ...     mxH26       RN_D_X[6]     mcell B-0
+mxH10        DATA2[5]        pin 16     mxH27             ...           ...
+mxH11             ...           ...     mxH28             ...           ...
+mxH12             ...           ...     mxH29             ...           ...
+mxH13             ...           ...     mxH30             ...           ...
+mxH14       RN_D_X[7]     mcell F-4     mxH31             ...           ...
+mxH15             ...           ...     mxH32             ...           ...
+mxH16             ...           ...
+
+
+MACH435 report file key:
+
+A             - Asynchronous mode
+AVAL          - Additional product terms available within the current
+                steering allocation, plus those potentially available
+                through resteering of free clusters.
+B0            - Block Asynchronous Reset/Preset product term 0
+B1            - Block Asynchronous Reset/Preset product term 1
+C             - Combinatorial
+Ck0           - Block clock generated from pin 20 or pin 23
+Ck1           - Block clock generated from pin 20 or pin 23
+Ck2           - Block clock generated from pin 62 or pin 65
+Ck3           - Block clock generated from pin 62 or pin 65
+clk           - Clock
+CSM           - Central Switch Matrix
+D             - D-type flip flop
+G             - Ground
+H             - High
+implied       - Node occupying the macrocell drives the output pin
+                but not defined in the design file.
+inode         - Input node
+Inp           - Input
+ipair         - Input paired node
+I/O           - Input or Output
+L             - Low
+L             - Latch
+LOC           - Location
+mcell <X>     - Source is macrocell from block <X>
+Mux           - Multiplexer
+mx            - Block Array input multiplexer
+onode         - Output node
+opair         - Output paired node
+P             - Product Term
+Pol           - Polarity
+PT(s)         - Product term(s)
+Reg           - Register
+Res           - Reset control
+RN_<pin_name> - Output node paired with <pin_name> created by Fitter.
+S             - Synchronous mode
+Set           - Preset control
+T             - T-type flip flop
+XOR           - Exclusive OR gate
+<X>ir         - Input register in block <X>
+.             - Not available or Not applicable
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%

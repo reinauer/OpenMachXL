@@ -1,0 +1,48 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME Test2.pds
+#AMD TITLE MULTIPLE STATE MACHINES
+#AMD PATTERN A
+#AMD REVISION 1.0
+#AMD AUTHOR J. ENGINEER
+#AMD COMPANY ADVANCED MICRO DEVICES
+#AMD DATE 02/12/93
+#AMD CHIP MULTISTATE
+#AMD DEVICE MACH435
+#AMD JED_FILE Test2.jed
+#AMD SIGNATURE 
+#AMD PIN 9 GND:1 VCC:2 GND:11 VCC:21 GND:22 GND:32 VCC:42 GND:43 VCC:44 
+#AMD PIN 5 GND:53 VCC:63 GND:64 GND:74 VCC:84 
+#AMD PIN 6 CLOCK1:0 SENSOR:0 VOUT[5]:0 VOUT[4]:0 VOUT[3]:0 VOUT[2]:0 
+#AMD PIN 7 VOUT[1]:0 VOUT[0]:0 ST[1]:0 ST[0]:0 CLOCK2:0 _RESET1:0 _RESET2:0 
+#AMD PIN 6 RING:0 ENDGREETING:0 DIALTONE:0 ENDMESSAGES:0 ST2[1]:0 ST2[0]:0 
+#AMD PIN 3 ANSWER:0 PLAY:0 RECORD:0 
+#AMD GROUP 6 M2REG ST2[1] ST2[0] ANSWER PLAY RECORD 
+.type f
+.i 13
+.o 39
+.ilb CLOCK1 SENSOR ST[1] ST[0] CLOCK2 _RESET1 _RESET2 RING ENDGREETING
+     DIALTONE ENDMESSAGES ST2[1] ST2[0]
+.ob  VOUT[5].REG- VOUT[5].C VOUT[5].RE VOUT[4].REG VOUT[4].C VOUT[4].RE
+     VOUT[3].REG- VOUT[3].C VOUT[3].RE VOUT[2].REG VOUT[2].C VOUT[2].RE
+     VOUT[1].REG-% VOUT[1].C VOUT[1].RE VOUT[0].REG- VOUT[0].C VOUT[0].RE
+     ST[1].REG- ST[1].C ST[1].RE ST[0].REG ST[0].C ST[0].RE ST2[1].REG-%
+     ST2[1].C ST2[1].RE ST2[0].REG ST2[0].C ST2[0].RE ANSWER.REG ANSWER.C
+     ANSWER.RE PLAY.REG PLAY.C PLAY.RE RECORD.REG-% RECORD.C RECORD.RE
+.phase 111111111111111111111111111111111111111
+.p 15
+---0--------- 1~~~~~~~~1~~~~~1~~1~~~~~~~~~~~~~~~~~~~~
+1------------ ~1~~1~~1~~1~~1~~1~~1~~1~~~~~~~~~~~~~~~~
+-----1------- ~~1~~1~~1~~1~~1~~1~~1~~1~~~~~~~~~~~~~~~
+-100--------- ~~~1~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---1--------- ~~~~~~1~~~~~~~~~~~~~~1~~~~~~~~~~~~~~~~~
+-10---------- ~~~~~~1~~~~~~~~~~~~~~1~~~~~~~~~~~~~~~~~
+-111--------- ~~~~~~~~~~~~1~~~~~~~~~~~~~~~~~~~~~~~~~~
+-11---------- ~~~~~~~~~~~~~~~1~~~~~~~~~~~~~~~~~~~~~~~
+---------0010 ~~~~~~~~~~~~~~~~~~~~~~~~1~~~~~1~~~~~1~~
+--------10-01 ~~~~~~~~~~~~~~~~~~~~~~~~1~~~~~~~~~~~1~~
+----1-------- ~~~~~~~~~~~~~~~~~~~~~~~~~1~~1~~1~~1~~1~
+------1------ ~~~~~~~~~~~~~~~~~~~~~~~~~~1~~1~~1~~1~~1
+-------1---00 ~~~~~~~~~~~~~~~~~~~~~~~~~~~1~~1~~1~~~~~
+--------00-01 ~~~~~~~~~~~~~~~~~~~~~~~~~~~1~~~~~1~~~~~
+---------0-01 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1~~~~~~~~
+.e

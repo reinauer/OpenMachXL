@@ -1,0 +1,39 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Simpre.pds
+Title  Native simulation reference
+
+
+
+   2-V1 - TRACE_ON
+          A  CLK  Q  
+   2-V1 - SETF
+          /RST  /CLK  /A  /B  
+   3-V2 - PRELOAD
+          Q  
+|> WARNING D2110
+     JEDEC preload not supported for this device.
+     The preload is in software only.
+|> WARNING D2120
+     Test vector generation is turned off.
+   5-V0 - CHECKQ
+          Q  
+   5-V0 - PRELOAD
+          /Q  
+|> WARNING D2110
+     JEDEC preload not supported for this device.
+     The preload is in software only.
+   7-V0 - CHECKQ
+          /Q  
+   7-V0 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Simpre.HST
+Simulation results (trace) are in   ===> Simpre.TRF
+Merged results (JEDEC) are in       ===> Simpre.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 89110 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Simpre.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 3

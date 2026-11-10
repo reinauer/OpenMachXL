@@ -1,0 +1,150 @@
+;PALASM Design Description
+;---------------------------------- Declaration Segment ------------
+TITLE    BLIZZARD 1260 U8 - RESET, INTERRUPTS, ARBITRATION, REFRESH TIMER
+PATTERN  U8
+REVISION 0.1 (RECONSTRUCTION)
+AUTHOR   RECONSTRUCTED FROM THE PCB, SEE ../ARCHITECTURE.MD
+COMPANY  BLIZZARD 1260 KICAD PROJECT
+DATE     2026-10-26
+CHIP     U8  MACH111
+
+; - A1200 _RST in (pin 26) and out (pin 19): the 060's RESET instruction
+;   (RSTO, relayed by U14 as RSTOUT_N) resets the A1200 through pin 19,
+;   and the self-reset latch SELF keeps that reset from also resetting the
+;   060 via RSTI. An A1200 reset (power-on, Ctrl-Amiga-Amiga) does.
+; - Board disabled (U1): 060 held in reset, _BOSS/_BR released so the
+;   68EC020 runs, no grant for the expansion.
+; - IPL from Paula: double-synchronised, a new level is passed on only
+;   after two equal samples; all negated while RSTI is asserted, so the 060
+;   samples no special modes at reset (68040-style termination).
+; - Expansion bus request/grant: the 060 loses BG, the expansion gets EXTBG
+;   once BB is free and no cycle runs.
+; - DRAM refresh request: one BCLK pulse every 8 E clocks (~11.3 us).
+; - EPROM /OE and the SIMM address bits MA2 (A15/A6) and MA6 (A16/A7).
+
+;---------------------------------- PIN Declarations ---------------
+PIN  7   RSTOUT_N                    ; from U14: 060 RSTO
+PIN  8   BOSS_N      COMBINATORIAL   ; A1200 _BR + _BOSS (open drain)
+PIN  9   A16
+PIN  10  A3                          ; unused here
+PIN  11  A1                          ; unused here
+PIN  13  A4                          ; unused here
+PIN  14  ROMOE_N     COMBINATORIAL   ; EPROM /OE
+PIN  15  A5                          ; unused here
+PIN  16  A15
+PIN  17  MA6         COMBINATORIAL   ; SIMM A6 via RN4
+PIN  18  Z2SEL_N                     ; from U1
+PIN  19  R_W
+PIN  20  IPL2O_N     REGISTERED      ; 060 /IPL2
+PIN  21  EXTBG_N     REGISTERED      ; J3.90: expansion bus grant
+PIN  25  RSTDRV      COMBINATORIAL   ; A1200 _RST, driven low on RSTOUT
+PIN  26  F0SEL2_N                    ; from U1
+PIN  27  BG_N        REGISTERED      ; 060 /BG
+PIN  28  MUX                         ; from U7
+PIN  29  A6
+PIN  30  MA2         COMBINATORIAL   ; SIMM A2 via RN4
+PIN  31  RSTI_N      REGISTERED      ; 060 /RSTI (also to U7/U9)
+PIN  32  RST_N                       ; A1200 _RST
+PIN  33  BCLK                        ; board clock
+PIN  35  ECLK                        ; A1200 E clock (used as data)
+PIN  36  KACK_N                      ; J3.87, unused here
+PIN  37  REFREQ_N    REGISTERED      ; to U7
+PIN  38  TAX_N                       ; from U7, unused here
+PIN  39  CYC_N                       ; from U7
+PIN  40  IPL2_N                      ; A1200 _IPL2
+PIN  41  IPL1_N                      ; A1200 _IPL1
+PIN  42  IPL0_N                      ; A1200 _IPL0
+PIN  43  EXTBR_N                     ; J3.89: expansion bus request (pull-up)
+PIN  2   IPL1O_N     REGISTERED      ; 060 /IPL1
+PIN  3   BB_N                        ; 060 /BB (pull-up)
+PIN  4   DISABLE_N                   ; from U1
+PIN  5   IPL0O_N     REGISTERED      ; 060 /IPL0
+PIN  6   A7
+
+NODE ?   SELF        REGISTERED      ; A1200 reset caused by our RESET instruction
+NODE ?   P2A         REGISTERED      ; IPL synchronisers
+NODE ?   P2B         REGISTERED
+NODE ?   P1A         REGISTERED
+NODE ?   P1B         REGISTERED
+NODE ?   P0A         REGISTERED
+NODE ?   P0B         REGISTERED
+NODE ?   E1          REGISTERED      ; E clock synchroniser
+NODE ?   E2          REGISTERED
+NODE ?   EC2         REGISTERED      ; E clock divider
+NODE ?   EC1         REGISTERED
+NODE ?   EC0         REGISTERED
+NODE ?   KR          REGISTERED      ; expansion request, synchronised
+
+;---------------------------------- Boolean Equation Segment ------
+STRING  ERISE    '(E1 * /E2)'
+
+EQUATIONS
+
+; ---- SIMM address bits -----------------------------------------------------
+MA2        = /MUX * A15 + MUX * A6
+MA6        = /MUX * A16 + MUX * A7
+
+; ---- EPROM: diag window, and the lower 32 K of the Z2 board space ---------
+; only inside a cycle (MUX is high from E3 to the end of every cycle), so the
+; EPROM never drives lane 0 on a stray address between cycles
+/ROMOE_N   = R_W * /F0SEL2_N * MUX
+           + R_W * /Z2SEL_N * /A16 * /A15 * MUX
+
+; ---- reset -----------------------------------------------------------------
+RSTDRV      = GND
+RSTDRV.TRST = /RSTOUT_N
+
+SELF       := /RSTOUT_N
+            + SELF * /RST_N
+SELF.CLKF   = BCLK
+
+/RSTI_N    := /RST_N * /SELF * RSTOUT_N
+            + /DISABLE_N
+RSTI_N.CLKF = BCLK
+
+; ---- A1200 bus ownership: hold _BR/_BOSS low unless disabled -------------------
+BOSS_N      = GND
+BOSS_N.TRST = DISABLE_N
+
+; ---- interrupts --------------------------------------------------------------
+P2A        := IPL2_N
+P2A.CLKF    = BCLK
+P2B        := P2A
+P2B.CLKF    = BCLK
+P1A        := IPL1_N
+P1A.CLKF    = BCLK
+P1B        := P1A
+P1B.CLKF    = BCLK
+P0A        := IPL0_N
+P0A.CLKF    = BCLK
+P0B        := P0A
+P0B.CLKF    = BCLK
+
+IPL2O_N    := /RSTI_N + P2A * P2B + IPL2O_N * (P2A :+: P2B)
+IPL2O_N.CLKF = BCLK
+IPL1O_N    := /RSTI_N + P1A * P1B + IPL1O_N * (P1A :+: P1B)
+IPL1O_N.CLKF = BCLK
+IPL0O_N    := /RSTI_N + P0A * P0B + IPL0O_N * (P0A :+: P0B)
+IPL0O_N.CLKF = BCLK
+
+; ---- expansion bus request / grant ----------------------------------------------
+KR         := /EXTBR_N * DISABLE_N
+KR.CLKF     = BCLK
+BG_N       := KR + /EXTBG_N
+BG_N.CLKF   = BCLK
+/EXTBG_N   := KR * BG_N * BB_N * CYC_N
+EXTBG_N.CLKF = BCLK
+
+; ---- refresh timer from the E clock (not gated by reset) ------------------------
+E1         := ECLK
+E1.CLKF     = BCLK
+E2         := E1
+E2.CLKF     = BCLK
+EC0        := EC0 :+: ERISE
+EC0.CLKF    = BCLK
+EC1        := EC1 :+: (EC0 * ERISE)
+EC1.CLKF    = BCLK
+EC2        := EC2 :+: (EC1 * EC0 * ERISE)
+EC2.CLKF    = BCLK
+/REFREQ_N  := ERISE * EC2 * EC1 * EC0
+REFREQ_N.CLKF = BCLK

@@ -1,0 +1,110 @@
+;Left/Right Shift Register 
+;Shift Registers are widely used in communications and computer systems.  They
+;can serialize data, and allow the designer to minimize the number
+;of output pins and bus bits.  This particular Shift Register will shift left,
+;right, or load 8 bits of data.
+
+;---------------------------------- Declaration Segment ------------
+TITLE    Shift Register
+PATTERN  B
+REVISION 1.0
+AUTHOR   J. ENGINEER
+COMPANY  AMD
+DATE     6/7/94
+
+CHIP  LRSHIFT  MACH111
+
+;---------------------------------- PIN Declarations ---------------
+
+pin ?  CLK 
+PIN ?  LOAD ;
+pin ?  I[0..7] ;    
+PIN ?  AB[0..7] REGISTERED ;
+PIN ?  RESET
+PIN ?  LR
+
+
+;----------------------------------- Boolean Equation Segment ------
+EQUATIONS
+
+AB[0..7].CLKF = CLK
+AB[0..7].RSTF = RESET
+
+CASE (LR, LOAD)
+   BEGIN
+ 
+ #B01:    BEGIN        
+           AB[0..7] := I[0..7]
+          END
+
+ #B10: BEGIN
+   AB[0] := AB[7]
+   AB[1] := AB[0]
+   AB[2] := AB[1]
+   AB[3] := AB[2]
+   AB[4] := AB[3]
+   AB[5] := AB[4]
+   AB[6] := AB[5]
+   AB[7] := AB[6]
+ END
+
+#B00: BEGIN
+   AB[0] := AB[1]
+   AB[1] := AB[2]
+   AB[2] := AB[3]
+   AB[3] := AB[4]
+   AB[4] := AB[5]
+   AB[5] := AB[6]
+   AB[6] := AB[7]
+   AB[7] := AB[0]
+       END
+
+#B11: BEGIN
+    AB[7..0]=AB[7..0]
+      END
+END
+
+SIMULATION
+
+TRACE_ON I[7..0] AB[7..0] CLK LOAD LR
+
+SETF RESET
+SETF /RESET 
+SETF I[7..0] = #B00010000
+
+
+;LOADING DATA
+
+SETF /LR LOAD
+      CLOCKF CLK
+CHECKQ AB[7..0] = #B00010000 
+
+
+
+;SHIFTING TO THE RIGHT
+
+SETF /LR /LOAD 
+FOR X:= 1 TO 3 DO
+     BEGIN
+      CLOCKF CLK
+     END
+CHECK AB[7..0] = #B00000010
+
+;SHIFTING TO THE LEFT
+
+SETF LR /LOAD 
+
+FOR X:= 1 TO 2 DO
+     BEGIN
+      CLOCKF CLK
+     END
+
+CHECK AB[7..0] = #B00001000  
+
+;The following CHECK is checking a wrong value, consequently the Waveforms 
+;screen will show a question mark at this point.
+
+CHECK AB[2]
+
+TRACE_OFF
+

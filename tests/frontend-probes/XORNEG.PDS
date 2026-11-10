@@ -1,0 +1,14 @@
+CHIP XORNEG MACH435
+PIN ? A
+PIN ? B
+PIN ? C
+PIN ? D
+PIN ? E
+PIN ? F
+PIN ? G
+PIN ? H
+PIN ? Y
+PIN ? Z
+EQUATIONS
+Y=A :+: (B*/C*D*/E*/F+/C*F+/C*D*/E*F+C*E+/B*/C*E+B*/C*D*E*/F*/G)
+Z=(A*H) :+: (B*/C*D*/E*/F+/C*F+/C*D*/E*F+C*E+/B*/C*E+B*/C*D*E*/F*/G)

@@ -1,0 +1,46 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Simloop.pds
+Title  Native simulation reference
+
+
+
+   2-V1 - TRACE_ON
+          A  B  Q  Y  
+   2-V1 - SETF
+          /A  /B  RST  /CLK  
+   3-V2 - SETF
+          /RST  
+   4-V3 - FOR
+   4-V3 - IF
+   4-V3 - SETF
+          A  
+   9-V4 - CLOCKF
+          CLK  
+   9-V5 - IF
+   9-V5 - SETF
+          /A  
+  14-V6 - CLOCKF
+          CLK  
+  14-V7 - IF
+  14-V7 - SETF
+          A  
+  19-V8 - CLOCKF
+          CLK  
+  19-V9 - WHILE
+  19-V9 - SETF
+          /A  
+  20-V9 - CHECK
+          Q  /Y  
+  20-V10 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Simloop.HST
+Simulation results (trace) are in   ===> Simloop.TRF
+Merged results (JEDEC) are in       ===> Simloop.JDC
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 90571 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Simloop.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 0

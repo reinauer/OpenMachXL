@@ -1,0 +1,96 @@
+MACHXL 2.1 R9 MACHSIMU (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+File  Compara.pds
+Title  Fast Comparator-- Compares two ten bit busses.
+
+
+
+   1-V1 - TRACE_ON
+          INX[0..9]  IN[0..9]  COMPOUT  
+   1-V1 - FOR
+   1-V1 - SETF
+          IN[0]  IN[1]  IN[2]  IN[3]  IN[4]  IN[5]  IN[6]  
+          IN[7]  IN[8]  IN[9]  INX[0]  INX[1]  INX[2]  INX[3]  INX[4]  
+          INX[5]  INX[6]  INX[7]  INX[8]  INX[9]  
+   2-V1 - CHECK
+          /COMPOUT  
+   2-V2 - SETF
+          IN[0]  IN[1]  IN[2]  IN[3]  IN[4]  IN[5]  IN[6]  
+          IN[7]  IN[8]  IN[9]  INX[0]  INX[1]  INX[2]  INX[3]  INX[4]  
+          INX[5]  INX[6]  INX[7]  INX[8]  INX[9]  
+   3-V2 - CHECK
+          /COMPOUT  
+   3-V3 - SETF
+          IN[0]  IN[1]  IN[2]  IN[3]  IN[4]  IN[5]  IN[6]  
+          IN[7]  IN[8]  IN[9]  INX[0]  INX[1]  INX[2]  INX[3]  INX[4]  
+          INX[5]  INX[6]  INX[7]  INX[8]  INX[9]  
+   4-V3 - CHECK
+          /COMPOUT  
+   4-V4 - SETF
+          IN[0]  IN[1]  IN[2]  IN[3]  IN[4]  IN[5]  IN[6]  
+          IN[7]  IN[8]  IN[9]  INX[0]  INX[1]  INX[2]  INX[3]  INX[4]  
+          INX[5]  INX[6]  INX[7]  INX[8]  INX[9]  
+   5-V4 - CHECK
+          /COMPOUT  
+   5-V5 - SETF
+          IN[0]  IN[1]  IN[2]  IN[3]  IN[4]  IN[5]  IN[6]  
+          IN[7]  IN[8]  IN[9]  INX[0]  INX[1]  INX[2]  INX[3]  INX[4]  
+          INX[5]  INX[6]  INX[7]  INX[8]  INX[9]  
+   6-V5 - CHECK
+          /COMPOUT  
+   6-V6 - FOR
+   6-V6 - SETF
+          /IN[0]  /IN[1]  /IN[2]  /IN[3]  /IN[4]  /IN[5]  
+          IN[6]  /IN[7]  /IN[8]  IN[9]  /INX[0]  /INX[1]  /INX[2]  
+          /INX[3]  /INX[4]  /INX[5]  INX[6]  /INX[7]  INX[8]  /INX[9]  
+   7-V6 - CHECK
+          /COMPOUT  
+%% WARNING  Total number of check clashes   ====>>> 1
+               Clash detected at vector number ====>>> 7
+   8-V7 - SETF
+          /IN[0]  /IN[1]  /IN[2]  /IN[3]  /IN[4]  /IN[5]  
+          IN[6]  /IN[7]  /IN[8]  IN[9]  /INX[0]  /INX[1]  /INX[2]  
+          /INX[3]  /INX[4]  /INX[5]  INX[6]  /INX[7]  INX[8]  /INX[9]  
+   9-V7 - CHECK
+          /COMPOUT  
+%% WARNING  Total number of check clashes   ====>>> 2
+               Clash detected at vector number ====>>> 9
+  10-V8 - SETF
+          /IN[0]  /IN[1]  /IN[2]  /IN[3]  /IN[4]  /IN[5]  
+          IN[6]  /IN[7]  /IN[8]  IN[9]  /INX[0]  /INX[1]  /INX[2]  
+          /INX[3]  /INX[4]  /INX[5]  INX[6]  /INX[7]  INX[8]  /INX[9]  
+  11-V8 - CHECK
+          /COMPOUT  
+%% WARNING  Total number of check clashes   ====>>> 3
+               Clash detected at vector number ====>>> 11
+  12-V9 - SETF
+          /IN[0]  /IN[1]  /IN[2]  /IN[3]  /IN[4]  /IN[5]  
+          IN[6]  /IN[7]  /IN[8]  IN[9]  /INX[0]  /INX[1]  /INX[2]  
+          /INX[3]  /INX[4]  /INX[5]  INX[6]  /INX[7]  INX[8]  /INX[9]  
+  13-V9 - CHECK
+          /COMPOUT  
+%% WARNING  Total number of check clashes   ====>>> 4
+               Clash detected at vector number ====>>> 13
+  14-V10 - SETF
+          /IN[0]  /IN[1]  /IN[2]  /IN[3]  /IN[4]  /IN[5]  
+          IN[6]  /IN[7]  /IN[8]  IN[9]  /INX[0]  /INX[1]  /INX[2]  
+          /INX[3]  /INX[4]  /INX[5]  INX[6]  /INX[7]  INX[8]  /INX[9]  
+  15-V10 - CHECK
+          /COMPOUT  
+%% WARNING  Total number of check clashes   ====>>> 5
+               Clash detected at vector number ====>>> 15
+  16-V11 - TRACE_OFF
+
+   END OF SIMULATION
+Simulation results (history) are in ===> Compara.HST
+Simulation results (trace) are in   ===> Compara.TRF
+Merged results (JEDEC) are in       ===> Compara.JDC
+|> WARNING D1310
+    %% Total check clashes issued = 5
+Simulation results (trace vectors) are in   ===> Compara.TRV
+
+ %%  MACHSIMU  %% Maximum memory allocated was: 188684 bytes.
+
+ %%  MACHSIMU  %% File Processed Successfully.  File: Compara.pds.
+ %%  MACHSIMU  %% ERROR count: 0  WARNING count: 5

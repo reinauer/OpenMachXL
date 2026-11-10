@@ -1,0 +1,64 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+; Source file P1_srn.pds
+; FITTER-generated Placements.
+; DEVICE   MACH435
+; DATE     Mon Nov 09 20:20:38 2026
+
+
+Pin   40  ID[15]
+Pin   39  ID[14]
+Pin   38  ID[13]
+Pin   37  ID[12]
+Pin   36  ID[11]
+Pin   34  ID[10]
+Pin   33  ID[9]
+Pin   31  ID[8]
+Pin   30  ID[7]
+Pin   28  ID[6]
+Pin   27  ID[5]
+Pin   26  ID[4]
+Pin   25  ID[3]
+Pin   24  ID[2]
+Pin   23  ID[1]
+Pin   19  ID[0]
+Pin   7  SEL[1]
+Pin   6  SEL[0]
+Pin   5  S_L
+Pin   20  CLK
+Pin   3  RST
+Pin   4  OE
+Pin   18  IPD[7]
+Pin   17  IPD[6]
+Pin   16  IPD[5]
+Pin   15  IPD[4]
+Pin   13  IPD[3]
+Pin   12  IPD[2]
+Pin   10  IPD[1]
+Pin   9  IPD[0]
+Pin   77  P_X[7] Reg  ; S6=1  S9=1  Pair 114
+Pin   73  P_X[6] Reg  ; S6=1  S9=1  Pair 102
+Pin   35  P_X[5] Reg  ; S6=1  S9=1  Pair 50
+Pin   29  P_X[4] Reg  ; S6=1  S9=1  Pair 34
+Pin   56  P_X[3] Reg  ; S6=1  S9=1  Pair 82
+Pin   14  P_X[2] Reg  ; S6=1  S9=1  Pair 18
+Pin   8  P_X[1] Reg  ; S6=1  S9=1  Pair 2
+Pin   71  P_X[0] Reg  ; S6=1  S9=1  Pair 98
+Node  114  Q_X[7] Reg  ; S6=1  S9=1 
+Node  102  Q_X[6] Reg  ; S6=1  S9=1 
+Node  50  Q_X[5] Reg  ; S6=1  S9=1 
+Node  34  Q_X[4] Reg  ; S6=1  S9=1 
+Node  82  Q_X[3] Reg  ; S6=1  S9=1 
+Node  18  Q_X[2] Reg  ; S6=1  S9=1 
+Node  2  Q_X[1] Reg  ; S6=1  S9=1 
+Node  98  Q_X[0] Reg  ; S6=1  S9=1 
+Node  70  M_X[7] Reg  ; S6=1  S9=1 
+Node  66  M_X[6] Reg  ; S6=1  S9=1 
+Node  54  M_X[5] Reg  ; S6=1  S9=1 
+Node  118  M_X[4] Reg  ; S6=1  S9=1 
+Node  38  M_X[3] Reg  ; S6=1  S9=1 
+Node  22  M_X[2] Reg  ; S6=1  S9=1 
+Node  86  M_X[1] Reg  ; S6=1  S9=1 
+Node  6  M_X[0] Reg  ; S6=1  S9=1 
+; Unused Pins & Nodes
+; -> None Found.
