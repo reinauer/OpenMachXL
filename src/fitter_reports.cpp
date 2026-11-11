@@ -95,6 +95,12 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
     const unsigned pts_per_cluster = modern ? 5 : 4;
     const unsigned logic_cells     = device == "MACH215" ? cells / 2 : cells;
     std::map<std::string, unsigned> logical_order, route_order;
+    // Rank of a signal, 0 for one that has none. A lookup must not insert:
+    // the size of logical_order is itself used to number signals.
+    const auto rank = [](const std::map<std::string, unsigned>& order, const std::string& name) {
+        const auto found = order.find(name);
+        return found == order.end() ? 0u : found->second;
+    };
     if (data.optimized_design) {
         const auto aliases = pla_signal_aliases(*data.optimized_design);
         const auto display = [&](std::string& name) {
@@ -137,7 +143,7 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
             if (node.paired || node.input_register)
                 for (const auto& pin : data.pins)
                     if (int(pin.number) == node.pin)
-                        logical_order[node.name] = logical_order[pin.name] + 1;
+                        logical_order[node.name] = rank(logical_order, pin.name) + 1;
         // A device without input registers discards an input pairing, but the
         // node keeps the place it was given with its pad: directly ahead of it.
         for (const auto& pad : data.optimized_design->pins) {
@@ -149,10 +155,10 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
             const auto fitted = std::find_if(data.nodes.begin(), data.nodes.end(),
                                              [&](const auto& candidate) { return candidate.name == node; });
             if (fitted != data.nodes.end() && !fitted->input_register && !fitted->paired && logical_order.count(name))
-                logical_order[node] = logical_order[name] - 1;
+                logical_order[node] = rank(logical_order, name) - 1;
         }
         std::stable_sort(data.nodes.begin(), data.nodes.end(),
-                         [&](const auto& a, const auto& b) { return logical_order[a.name] < logical_order[b.name]; });
+                         [&](const auto& a, const auto& b) { return rank(logical_order, a.name) < rank(logical_order, b.name); });
     }
     // Signals that some equation reads, under the names pins carry.
     std::set<std::string> read_signals;
@@ -164,7 +170,7 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
             display_names[node.name] = "RN_" + node.name;
     for (auto& node : data.nodes) {
         if (display_names.count(node.name)) {
-            logical_order[display_names.at(node.name)] = logical_order[node.name];
+            logical_order[display_names.at(node.name)] = rank(logical_order, node.name);
             node.name                                  = display_names.at(node.name);
         }
         for (auto& name : node.fanins)
@@ -174,7 +180,7 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
     for (auto& block : data.blocks)
         for (auto& route : block.routes)
             if (display_names.count(route.signal)) {
-                route_order[display_names.at(route.signal)] = route_order[route.signal];
+                route_order[display_names.at(route.signal)] = rank(route_order, route.signal);
                 route.signal                                = display_names.at(route.signal);
             }
     for (auto& pin : data.pins)
@@ -502,7 +508,9 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
                    "\n|--------------------------------------------------|\n";
             // The backend supplies canonical shared control identities. A
             // constant/implicit control has no named signal summary entry.
-            const auto& controls = control_summaries[category];
+            static const std::vector<Control> none;
+            const auto summary   = control_summaries.find(category);
+            const auto& controls = summary == control_summaries.end() ? none : summary->second;
             for (unsigned i = 0; i < controls.size(); ++i) {
                 const auto used =
                     format_fanout(blocks, std::vector<unsigned>(controls[i].blocks.begin(), controls[i].blocks.end()));
@@ -567,7 +575,7 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
             source_order.push_back(node.name);
     if (!logical_order.empty())
         std::stable_sort(source_order.begin(), source_order.end(),
-                         [&](const auto& a, const auto& b) { return logical_order[a] < logical_order[b]; });
+                         [&](const auto& a, const auto& b) { return rank(logical_order, a) < rank(logical_order, b); });
     const auto equation_name = [&](const auto& node) {
         if (node.paired)
             for (const auto& pin : data.pins)
@@ -792,7 +800,7 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
                 for (const auto& node : data.nodes)
                     if (node.name == pin->output_signal)
                         return node.traversal_order.value_or(
-                            unsigned(logical_order.size() * 2 - logical_order[node.name]));
+                            unsigned(logical_order.size() * 2 - rank(logical_order, node.name)));
                 return 0u;
             };
             if (data.partition_failure)
@@ -825,7 +833,7 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
         // router uses a different, fanout-dependent traversal (shown in PRD).
         if (!modern && !data.successful && !data.partition_failure)
             std::stable_sort(report_routes.begin(), report_routes.end(), [&](auto a, auto c) {
-                return a->logical_id.value_or(route_order[a->signal]) < c->logical_id.value_or(route_order[c->signal]);
+                return a->logical_id.value_or(rank(route_order, a->signal)) < c->logical_id.value_or(rank(route_order, c->signal));
             });
         const auto route_row = [&](unsigned mux) {
             const FitterReportRoute* route = nullptr;
@@ -883,8 +891,8 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
             // independent of both the fanin table and the PRD search order.
             if (!modern)
                 std::stable_sort(failed_routes.begin(), failed_routes.end(), [&](auto a, auto c) {
-                    return a->logical_id.value_or(route_order[a->signal]) >
-                           c->logical_id.value_or(route_order[c->signal]);
+                    return a->logical_id.value_or(rank(route_order, a->signal)) >
+                           c->logical_id.value_or(rank(route_order, c->signal));
                 });
             for (auto route : failed_routes)
                 out += route->signal + " can not be routed to block " + char('A' + b) + "\n";
