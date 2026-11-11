@@ -1397,20 +1397,44 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
         fail("Source exceeds 4 MiB");
     auto clean_source = [](const std::string& text) {
         std::string clean;
-        bool comment = false, quoted = false;
-        for (unsigned char c : text) {
+        bool comment = false, quoted = false, metadata = false;
+        std::size_t line_start = 0;
+        // Header text such as "TITLE Bob's design" is free text up to a
+        // comment: an apostrophe there does not open a STRING literal.
+        const auto metadata_line = [&](std::size_t at) {
+            while (at < text.size() && (text[at] == ' ' || text[at] == '\t'))
+                ++at;
+            for (const char* keyword : {"TITLE", "PATTERN", "REVISION", "AUTHOR", "COMPANY", "DATE"}) {
+                const auto length = std::char_traits<char>::length(keyword);
+                bool matches      = at + length <= text.size();
+                for (std::size_t i = 0; matches && i < length; ++i)
+                    matches = std::toupper(static_cast<unsigned char>(text[at + i])) == keyword[i];
+                // Only look past the keyword when it is there: the text may end
+                // before a keyword of this length.
+                if (matches &&
+                    (at + length == text.size() ||
+                     !(std::isalnum(static_cast<unsigned char>(text[at + length])) || text[at + length] == '_')))
+                    return true;
+            }
+            return false;
+        };
+        metadata = metadata_line(0);
+        for (std::size_t position = 0; position < text.size(); ++position) {
+            const unsigned char c = static_cast<unsigned char>(text[position]);
             if (c == 26)
                 break;
             if (c == '\r')
                 continue;
             if (c == '\n') {
-                comment = false;
+                comment    = false;
+                line_start = position + 1;
+                metadata   = !quoted && metadata_line(line_start);
                 clean += '\n';
                 continue;
             }
             if (comment)
                 continue;
-            if (c == '\'')
+            if (c == '\'' && !metadata)
                 quoted = !quoted;
             if (c == ';' && !quoted) {
                 comment = true;

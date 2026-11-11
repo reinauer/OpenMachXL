@@ -1,0 +1,6 @@
+TITLE Bob's design ; comment
+CHIP AP3 MACH111
+PIN ? A
+PIN ? Q
+EQUATIONS
+Q=A

@@ -1,0 +1,7 @@
+TITLE Bob's design
+AUTHOR O'Brien
+CHIP AP2 MACH111
+PIN ? A
+PIN ? Q
+EQUATIONS
+Q=A

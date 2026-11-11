@@ -1,0 +1,77 @@
+{
+ "description": "Original MACHXL 2.1 results for apostrophes and semicolons in header lines, comments and STRING declarations",
+ "cases": [
+  {
+   "name": "AP1",
+   "files": {
+    "AP1.PDS": "faaf9bc98cb2fd5c1341d4d762c079c6be8c6f77ee49f6a6d534903ef4b7fdb2",
+    "AP1.MXL": "d20bbd8e5d2bcb811e0ce0108b7c4c7c7a221c50d9321f70e1be71ca47419003",
+    "AP1.PLA": "8907c82bf0413384088e8c7a9f4de11d5496cb37f61e6e29eee9a40d40ff68a2"
+   },
+   "header": true
+  },
+  {
+   "name": "AP2",
+   "files": {
+    "AP2.PDS": "fa73dbb2df664ff6b544fc3a533e0b823d85766acea0d5395184ba98d3cb0779",
+    "AP2.MXL": "43bfdc6f2b6670927745ee95e5fcdd53a8acc4de2f5f5e410164e67ea77d4feb",
+    "AP2.PLA": "3c23b5dd51d05af71b6b300333add2284d89b8ce04d575131227fe29603ece41"
+   },
+   "header": true
+  },
+  {
+   "name": "AP3",
+   "files": {
+    "AP3.PDS": "9f27243200a9b9099770e3730da37afe77f06a94326396cc1f58d902beca0d49",
+    "AP3.MXL": "7a6f6ea549df662974a65baddbf3f35303f97b06b115d84586c74ac241c77555",
+    "AP3.PLA": "f0f0bd2520109085bcf9c1a63558aed247c325d3cfd9cc4bcfac5b0969467628"
+   },
+   "header": true
+  },
+  {
+   "name": "AP4",
+   "files": {
+    "AP4.PDS": "580b1121f750defa6defb949689865baacf58a5890b97743f4d2c583e0f58981",
+    "AP4.MXL": "871c8fbf6134a157e2db75a71f3d9949ab8966e482a379e361e21243cac01e26",
+    "AP4.PLA": "6b9a2d270571acd1f9f1bef896f225a472dd1680407d33de9f5c7f29ec045407"
+   },
+   "header": true
+  },
+  {
+   "name": "AP5",
+   "files": {
+    "AP5.PDS": "7503f9573225b4a64fe2f6065e15b3b205b200fa1dbb5c3e37d766449f9e47a9",
+    "AP5.MXL": "9e4821e215dc5c17500df081487fee90f868fdde025dfeb0ec875d93eb563206",
+    "AP5.PLA": "d4d68f1e5fb076f33473547c9d042681df54dc9faacefc2d3442bb202b7fc49e"
+   },
+   "header": true
+  },
+  {
+   "name": "AP6",
+   "files": {
+    "AP6.PDS": "af59e0976090f57a2f669503287856797f7436bc1557b93cd0817060dbbb00cc",
+    "AP6.MXL": "ff957ef53dd5516fcb960fd29f3f34d1259099812f10fad5fe8518544e0ab211",
+    "AP6.PLA": "9665695cf7cffaf7cb0d96ad1fc6a57f1c33895f0de0ff3783e4c25bd71509ac"
+   },
+   "header": true
+  },
+  {
+   "name": "AP7",
+   "files": {
+    "AP7.PDS": "ba0acf670458b04adf4bc9680c9d477a3728aacddb69fc8f8461d64315636652",
+    "AP7.MXL": "9983f75246ff4ab0015fd89d6f945f5911b600c321ded61f6661a5f3ef4b920d",
+    "AP7.PLA": "bb2e1d36cc39c92ddbc79c8d22fef1d55b839e0af4960130f8d5e77d02cf49f3"
+   },
+   "header": true
+  },
+  {
+   "name": "AP8",
+   "files": {
+    "AP8.PDS": "17a9cd972c6258e5b811917b38f4b427c4bc0e8d756b60db8313e15d0e804abb",
+    "AP8.MXL": "1858b1648308ca846d638bc6b4bb193b2dd2bfcae1191466c1a19ca46651c0f4",
+    "AP8.PLA": "263569f78b324590355423632c96cbf2cb888309ded038430e22ce9913d5ce07"
+   },
+   "header": true
+  }
+ ]
+}

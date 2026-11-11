@@ -1,0 +1,6 @@
+TITLE plain
+CHIP AP5 MACH111
+PIN ? A
+PIN ? Q
+EQUATIONS
+Q=A ; it's a comment

@@ -1,0 +1,6 @@
+TITLE semi;colon 'quoted; text' end
+CHIP AP6 MACH111
+PIN ? A
+PIN ? Q
+EQUATIONS
+Q=A

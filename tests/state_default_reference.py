@@ -32,4 +32,12 @@ for case in json.loads((fixtures / 'manifest.json').read_text())['cases']:
         assert result.returncode == 0, (name, flags, result.stderr)
         comparison = compare_pla(parse_pla(result.stdout), read_pla(fixtures / (name + '.PLA')))
         assert comparison['equivalent'] and comparison['matrix_equal'], (name, flags, comparison)
+        if case.get('header'):
+            # The header text the original copies into its PLA must be the same.
+            # It also writes a line for each header the design does not have.
+            def header(data):
+                lines = [line.rstrip() for line in data.decode('latin1').replace('\r', '').split('\n')]
+                return [line for line in lines if len(line.split(' ')) > 2 and line.split(' ')[0] == '#AMD' and
+                        line.split(' ')[1] in ('TITLE', 'PATTERN', 'REVISION', 'AUTHOR', 'COMPANY', 'DATE')]
+            assert header(result.stdout) == header((fixtures / (name + '.PLA')).read_bytes()), (name, flags)
     print(name + (': original rejection reproduced' if 'error' in case else ': exact labeled matrix'))
