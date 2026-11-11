@@ -22,6 +22,9 @@ FLOATING_DESIGN = 'CHIP T {device}\nPIN ? A\nPIN ? B\nPIN ? Y\nNODE ? N\nEQUATIO
 STATE_MACHINE = ('CHIP T MACH111\nPIN ? CLK\nPIN ? X\nPIN ? S0 REG\nSTATE\nMEALY_MACHINE\nCLKF = CLK\n'
                  'SA = /S0\nSB = S0\nSA := X -> SB\nSB := X -> SA\nSIMULATION\n')
 
+REGISTERED_PIN = ('CHIP T MACH211\nPIN ? CLK\nPIN ? A\nPIN ? E\nPIN ? Q REG\n{more}EQUATIONS\nQ=A\nQ.CLKF=CLK\n'
+                  'Q.TRST=E\n{read}SIMULATION\nSETF /CLK A E\nSETF /E\nSETF Q\nCLOCKF CLK\n')
+
 # name, files, arguments after the compiler, expected success, text that must
 # occur in the diagnostic of an expected rejection, and optionally files an
 # accepted run must write.
@@ -124,6 +127,28 @@ CASES = [
     # the lookup of the name itself used to fail with "map::at".
     dict(name='simulation_setf_state_name',
          files={'T.PDS': STATE_MACHINE + 'SETF /CLK X\nSETF SA\nCLOCKF CLK\n'},
+         args=['--emit-jedec', 'T.PDS', '--simulate'], ok=False,
+         message='D3530: Cannot SETF signal S0 whose references are taken from the register'),
+    # SETF on a registered pin: the original's D3530 applies only when an
+    # equation reads that pin and no paired node makes it read the pin itself.
+    dict(name='simulation_setf_registered_pin_read_by_equation',
+         files={'T.PDS': REGISTERED_PIN.format(more='PIN ? Y\n', read='Y=Q\n')},
+         args=['--emit-jedec', 'T.PDS', '--simulate'], ok=False,
+         message='D3530: Cannot SETF signal Q whose references are taken from the register'),
+    # SETF on an output that always drives its pin, and on a buried node.
+    dict(name='simulation_setf_combinatorial_output',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? Q\nEQUATIONS\nQ=A\nSIMULATION\nSETF A\nSETF Q\n'},
+         args=['--emit-jedec', 'T.PDS', '--simulate'], ok=False,
+         message='D3165: Cannot SETF output pin/node Q.'),
+    dict(name='simulation_setf_combinatorial_output_with_enable',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? Q\nEQUATIONS\nQ=A\nQ.TRST=VCC\nSIMULATION\nSETF A\nSETF Q\n'},
+         args=['--emit-jedec', 'T.PDS', '--simulate'], ok=True),
+    dict(name='simulation_setf_node',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? Q\nNODE ? N\nEQUATIONS\nN=A\nQ=N\nSIMULATION\nSETF A\nSETF N\n'},
+         args=['--emit-jedec', 'T.PDS', '--simulate'], ok=False,
+         message='D3340: Cannot SETF pin/node N.'),
+    dict(name='simulation_setf_registered_pin_not_read',
+         files={'T.PDS': REGISTERED_PIN.format(more='', read='')},
          args=['--emit-jedec', 'T.PDS', '--simulate'], ok=True),
     dict(name='simulation_clockf_state_name',
          files={'T.PDS': STATE_MACHINE + 'SETF /CLK X\nCLOCKF SB\n'},

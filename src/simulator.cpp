@@ -187,7 +187,7 @@ class Simulator
     std::map<std::string, Value> inputs, registers, values, clocks;
     std::map<std::string, long long> variables;
     std::map<std::string, std::vector<std::string>> groups;
-    std::set<std::string> clock_inputs, physical_feedback;
+    std::set<std::string> clock_inputs, physical_feedback, read_signals;
     std::size_t command_count  = 0;
     int active_trace           = -1;
     unsigned default_clock_pin = 0;
@@ -727,7 +727,21 @@ class Simulator
                         if (!is_known_value(literal.value))
                             error("SETF requires low or high values");
                         if (pins.at(literal.name)->node)
-                            error("SETF cannot drive a buried node");
+                            error("D3340: Cannot SETF pin/node " + literal.name + ".");
+                        // A combinatorial output without an output enable
+                        // equation always drives its pin.
+                        const auto driven = primary.find(literal.name);
+                        if (driven != primary.end() && driven->second->function == "COM" &&
+                            !equations.count(literal.name + ".OE"))
+                            error("D3165: Cannot SETF output pin/node " + literal.name + ".");
+                        // An equation that reads a registered pin without a
+                        // paired node reads its register, not the pin, so the
+                        // forced value could never reach it.
+                        const auto stored = primary.find(literal.name);
+                        if (stored != primary.end() && stored->second->function != "COM" &&
+                            !physical_feedback.count(literal.name) && read_signals.count(literal.name))
+                            error("D3530: Cannot SETF signal " + literal.name +
+                                  " whose references are taken from the register rather then the pin.");
                         if (clock_inputs.count(literal.name) && literal.value != values.at(literal.name))
                             edges[literal.name] = literal.value == Value::High ? 2 : -2;
                         inputs[literal.name] = literal.value;
@@ -856,7 +870,16 @@ class Simulator
         for (const auto& g : design.groups)
             groups.emplace(g.first, g.second);
         for (const auto& e : design.equations) {
-            equations[e.signal + "." + e.function] = &e;
+            equations[e.signal + "." + e.function]         = &e;
+            std::function<void(const ExprPtr&)> note_reads = [&](const ExprPtr& expression) {
+                if (!expression)
+                    return;
+                if (expression->kind == ExprKind::Identifier)
+                    read_signals.insert(expression->name);
+                note_reads(expression->left);
+                note_reads(expression->right);
+            };
+            note_reads(e.expression);
             if (e.function == "COM" || e.function == "REG" || e.function == "T" || e.function == "G") {
                 if (e.care && (e.care->kind != ExprKind::Constant || !e.care->value) &&
                     !(e.function == "COM" ? options.fitted_model && options.fitted_model->combinatorial.count(e.signal)
