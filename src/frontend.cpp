@@ -1430,323 +1430,11 @@ class SynthesisParser
 
 }  // namespace
 
-Design parse_design(const std::string& source, FrontendOptions options, const std::string* auxiliary_simulation)
+// Pairing rules that follow the parse: the transfer equation of a declared
+// input pairing, output pairs given on either name, fixed locations of
+// pairs, and the automatic input and output pairing of MACHBPP.
+void resolve_pairing(Design& design, const FrontendOptions& options)
 {
-    if (source.size() > 4 * 1024 * 1024)
-        fail("Source exceeds 4 MiB");
-    auto clean_source = [](const std::string& text) {
-        std::string clean;
-        bool comment = false, quoted = false, metadata = false;
-        std::size_t line_start = 0;
-        // Header text such as "TITLE Bob's design" is free text up to a
-        // comment: an apostrophe there does not open a STRING literal.
-        const auto metadata_line = [&](std::size_t at) {
-            while (at < text.size() && (text[at] == ' ' || text[at] == '\t'))
-                ++at;
-            for (const char* keyword : {"TITLE", "PATTERN", "REVISION", "AUTHOR", "COMPANY", "DATE"}) {
-                const auto length = std::char_traits<char>::length(keyword);
-                bool matches      = at + length <= text.size();
-                for (std::size_t i = 0; matches && i < length; ++i)
-                    matches = std::toupper(static_cast<unsigned char>(text[at + i])) == keyword[i];
-                // Only look past the keyword when it is there: the text may end
-                // before a keyword of this length.
-                if (matches &&
-                    (at + length == text.size() ||
-                     !(std::isalnum(static_cast<unsigned char>(text[at + length])) || text[at + length] == '_')))
-                    return true;
-            }
-            return false;
-        };
-        metadata = metadata_line(0);
-        for (std::size_t position = 0; position < text.size(); ++position) {
-            const unsigned char c = static_cast<unsigned char>(text[position]);
-            if (c == 26)
-                break;
-            if (c == '\r')
-                continue;
-            if (c == '\n') {
-                comment    = false;
-                line_start = position + 1;
-                metadata   = !quoted && metadata_line(line_start);
-                clean += '\n';
-                continue;
-            }
-            if (comment)
-                continue;
-            if (c == '\'' && !metadata)
-                quoted = !quoted;
-            if (c == ';' && !quoted) {
-                comment = true;
-                continue;
-            }
-            clean += c;
-        }
-        if (quoted)
-            fail("Unterminated STRING literal");
-        return clean;
-    };
-    const auto clean       = clean_source(source);
-    std::string normalized = upper(clean);
-    std::smatch section;
-    static const std::regex equations_header(R"((^|\n)[ \t]*(EQUATIONS|EQU|STATE)[ \t]*(\n|$))");
-    if (!std::regex_search(normalized, section, equations_header))
-        fail("Missing EQUATIONS or STATE section");
-    auto equations_start     = static_cast<std::size_t>(section.position() + section.length());
-    std::string declarations = clean.substr(0, section.position());
-    std::string body         = (section[2] == "STATE" ? "STATE\n" : "") + normalized.substr(equations_start);
-    Design design;
-    design.dos_compatibility = options.dos_compatibility;
-    static const std::regex simulation_header(R"((^|\n)[ \t]*(SIMULATION|SIM)[ \t]*(\n|$))");
-    if (std::regex_search(body, section, simulation_header)) {
-        design.simulation = body.substr(section.position() + section.length());
-        body.resize(section.position());
-    }
-    // STATE/CONDITIONS may precede the single EQUATIONS segment.
-    // Process Boolean equations first, then add state-machine equations.
-    static const std::regex boolean_header(R"((^|\n)[ \t]*(EQUATIONS|EQU)[ \t]*(\n|$))");
-    if (std::regex_search(body, section, boolean_header)) {
-        if (section.position() == 0 || body.compare(0, 6, "STATE\n") != 0)
-            fail("Multiple EQUATIONS segments are not allowed");
-        const auto state     = body.substr(0, section.position());
-        const auto equations = body.substr(section.position() + section.length());
-        if (std::regex_search(equations, boolean_header))
-            fail("Multiple EQUATIONS segments are not allowed");
-        body = equations + "\n" + state;
-    }
-    std::string auxiliary_commands, auxiliary_declarations;
-    if (auxiliary_simulation) {
-        if (auxiliary_simulation->size() > 4 * 1024 * 1024)
-            fail("Auxiliary simulation exceeds 4 MiB");
-        const auto auxiliary = upper(clean_source(*auxiliary_simulation));
-        if (!std::regex_search(auxiliary, section, simulation_header))
-            fail("Auxiliary simulation file requires a SIMULATION section");
-        auxiliary_declarations = auxiliary.substr(0, section.position());
-        auxiliary_commands     = auxiliary.substr(section.position() + section.length());
-    }
-    std::map<std::string, std::string> aliases;
-    static const std::regex alias(R"((^|\n)[ \t]*STRING[ \t]+([A-Z0-9_]+)[ \t]+'([^']*)')", std::regex::icase);
-    std::string filtered;
-    std::size_t previous = 0;
-    for (std::sregex_iterator i(declarations.begin(), declarations.end(), alias), end; i != end; ++i) {
-        auto m = *i;
-        filtered += declarations.substr(previous, m.position() - previous) + "\n";
-        validate_declared_name(upper(m[2]), "STRING");
-        if (!aliases.emplace(upper(m[2]), upper(m[3])).second)
-            fail("Duplicate STRING: " + m[2].str());
-        previous = m.position() + m.length();
-    }
-    filtered += declarations.substr(previous);
-    std::set<std::string> declared;
-    std::map<std::string, std::vector<std::string>> groups;
-    // Declarations can share lines, and GROUP/vector locations can wrap.
-    std::stringstream raw_lines(filtered);
-    std::string raw, joined;
-    static const std::regex declaration_start(
-        R"(^[ \t]*(TITLE|PATTERN|REVISION|AUTHOR|COMPANY|DATE|CHIP|PIN|NODE|GROUP|SIGNATURE)\b)", std::regex::icase);
-    static const std::regex metadata_line(R"(^[ \t]*(TITLE|PATTERN|REVISION|AUTHOR|COMPANY|DATE)\b)", std::regex::icase);
-    while (std::getline(raw_lines, raw)) {
-        if (trim(raw).empty())
-            continue;
-        if (std::regex_search(raw, metadata_line)) {
-            joined += "\n" + raw;
-            continue;
-        }
-        raw = std::regex_replace(raw, inline_declaration_pattern(), "\n$1 ");
-        std::stringstream pieces(raw);
-        std::string piece;
-        while (std::getline(pieces, piece))
-            if (!trim(piece).empty())
-                joined += (std::regex_search(piece, declaration_start) ? "\n" : " ") + piece;
-    }
-    std::stringstream lines(joined);
-    std::string line;
-    while (std::getline(lines, line)) {
-        line = trim(line);
-        if (line.empty())
-            continue;
-        line = std::regex_replace(line, glued_location_pattern(), "$1 ?");
-        std::stringstream fields(line);
-        std::string key, value;
-        fields >> key;
-        key = upper(key);
-        std::getline(fields, value);
-        value = trim(value);
-        if (key == "TITLE" || key == "PATTERN" || key == "REVISION" || key == "AUTHOR" || key == "COMPANY" ||
-            key == "DATE") {
-            if (!design.metadata.emplace(key, value).second)
-                fail("Duplicate metadata: " + key);
-        } else if (key == "CHIP") {
-            std::stringstream chip(upper(value));
-            std::string extra;
-            if (!design.chip.empty() || !(chip >> design.chip >> design.device) || (chip >> extra))
-                fail("Expected CHIP <name> <device>");
-            validate_declared_name(design.chip, "CHIP");
-            // Everything after this line may rely on a known device.
-            if (!frontend_devices().count(design.device))
-                fail("Unsupported device: " + design.device);
-        } else if (key == "PIN" || key == "NODE") {
-            auto declaration = upper(value);
-            declaration      = std::regex_replace(declaration, space_after_comma_pattern(), ",");
-            declaration      = std::regex_replace(declaration, space_after_bracket_pattern(), "[");
-            declaration      = std::regex_replace(declaration, space_before_bracket_pattern(), "]");
-            std::stringstream f(declaration);
-            std::string location, name, mode;
-            f >> location >> name;
-            validate_declared_name(name, key);
-            bool inv = !name.empty() && name[0] == '/';
-            if (inv)
-                name.erase(0, 1);
-            auto expanded = expand_signal_names(name);
-            std::vector<std::string> numbers;
-            if (location != "?") {
-                // MACHPAR checks every location number while parsing: P90 for
-                // a numeral it cannot read, P127/P128 for a location the
-                // device does not have. Node 1 is its global node.
-                const bool reserved = name == "NC" || name == "GND" || name == "VCC" || name == "VCC1" ||
-                                      name == "VCC2" || name == "VCC3";
-                const auto device = frontend_devices().find(design.device);
-                for (std::size_t at = 0; at < location.size();) {
-                    if (!std::isdigit(static_cast<unsigned char>(location[at]))) {
-                        ++at;
-                        continue;
-                    }
-                    auto end = at;
-                    while (end < location.size() && std::isdigit(static_cast<unsigned char>(location[end])))
-                        ++end;
-                    // Twenty digits are unreadable to the original; eleven are
-                    // merely out of range. Avoid converting what cannot fit.
-                    if (end - at > 19)
-                        fail("P90: Unexpected number symbol in malformed statement: " + location);
-                    const auto number = end - at > 9 ? ~0UL : std::stoul(location.substr(at, end - at));
-                    at                = end;
-                    if (reserved || device == frontend_devices().end())
-                        continue;  // Checked with the reserved name or the device below.
-                    if (key == "PIN" && (!number || number > device->second.first))
-                        fail("P127: invalid pin number for this device or macro: " + location);
-                    if (key == "NODE" && (!number || number > mach_node_limit(mach_device_layout(design.device))))
-                        fail("P128: invalid node number for this device or macro: " + location);
-                }
-                numbers = expand_signal_names("P[" + location + "]");
-            }
-            if (!numbers.empty() && numbers.size() != expanded.size())
-                fail("Pin location/vector width mismatch");
-            bool reg = false, lat = false, storage_declared = false;
-            std::string pair_kind, pair;
-            while (f >> mode) {
-                if (mode == "REG" || mode == "REGISTERED" || mode == "REGISTER") {
-                    reg              = true;
-                    storage_declared = true;
-                } else if (mode == "LAT" || mode == "LATCHED" || mode == "LATCH") {
-                    lat              = true;
-                    storage_declared = true;
-                } else if (mode == "COMB" || mode == "COMBINATORIAL") {
-                    storage_declared = true;
-                } else if (mode == "PAIR" || mode == "IPAIR" || mode == "OPAIR") {
-                    // MACHPAR accepts IPAIR only on a pin and OPAIR only on a node.
-                    if (mode == (key == "PIN" ? "OPAIR" : "IPAIR"))
-                        fail("P88: Unexpected reserved word or operator " + mode);
-                    pair_kind = mode;
-                    if (!(f >> pair))
-                        fail("Missing pairing signal");
-                } else
-                    fail("Unknown declaration mode: " + mode);
-            }
-            if (name == "NC" || name == "GND" || name == "VCC" || name == "VCC1" || name == "VCC2" || name == "VCC3") {
-                const auto device = frontend_devices().find(design.device);
-                if (device == frontend_devices().end())
-                    fail("Unsupported device: " + design.device);
-                const auto& layout = mach_device_layout(design.device);
-                const auto maximum = key == "PIN" ? device->second.first
-                                                  : layout.blocks * layout.cells + 1 +
-                                                        (design.device[4] == '4' ? layout.io_pins.size() : 0);
-                for (const auto& item : numbers) {
-                    const auto number = std::stoul(item.substr(2));
-                    if (!number || number > maximum)
-                        fail("Invalid " + key + " position for " + name);
-                    if (name != "NC") {
-                        const auto power = name == "GND" ? "GND" : "VCC";
-                        std::istringstream list(device->second.second);
-                        std::string entry;
-                        bool matching = false;
-                        while (list >> entry)
-                            matching |= entry == std::string(power) + ":" + std::to_string(number);
-                        if (!matching)
-                            fail("Invalid PIN position for " + name);
-                    }
-                }
-                // Reserved power/NC declarations annotate locations rather than
-                // logic signals. Repeats are allowed, and these declarations do not
-                // appear in the emitted signal or pairing tables.
-                continue;
-            }
-            auto pairs = pair.empty() ? std::vector<std::string>{} : expand_signal_names(pair);
-            if (!pairs.empty() && pairs.size() != expanded.size())
-                fail("Pair vector width mismatch");
-            for (std::size_t i = 0; i < expanded.size(); ++i) {
-                if (!declared.insert(expanded[i]).second)
-                    fail("Duplicate signal: " + expanded[i]);
-                Pin p;
-                p.name             = expanded[i];
-                p.number           = numbers.empty() ? 0U : static_cast<unsigned>(std::stoul(numbers[i].substr(2)));
-                p.registered       = reg;
-                p.node             = key == "NODE";
-                p.latched          = lat;
-                p.inverted         = inv;
-                p.pair_kind        = pair_kind;
-                p.storage_declared = storage_declared;
-                if (!pairs.empty())
-                    p.pair = pairs[i];
-                design.pins.push_back(p);
-            }
-        } else if (key == "GROUP") {
-            std::stringstream f(upper(value));
-            std::string name, member;
-            f >> name;
-            std::vector<std::string> members;
-            validate_declared_name(name, "GROUP");
-            while (f >> member) {
-                bool inv = member[0] == '/';
-                if (inv)
-                    member.erase(0, 1);
-                for (auto s : expand_signal_names(member))
-                    members.push_back(inv ? "/" + s : s);
-            }
-            if (members.empty() || !groups.emplace(name, members).second)
-                fail("Invalid/duplicate GROUP: " + name);
-            design.groups.emplace_back(name, members);
-        } else if (key == "SIGNATURE") {
-            design.signature = value;
-            if (!design.signature.empty() && design.signature[0] == '=')
-                design.signature = trim(design.signature.substr(1));
-        } else
-            fail("Unsupported declaration: " + key);
-    }
-    if (design.chip.empty())
-        fail("Missing CHIP declaration");
-    if (design.pins.empty())
-        fail("No PIN/NODE declarations");
-    design.simulation = expand_aliases(design.simulation, aliases);
-    if (auxiliary_simulation) {
-        // HELPER inserts the generated .TBL STRING aliases before the
-        // auxiliary SIM section. They affect that command stream only.
-        auto auxiliary_aliases = aliases;
-        std::string remainder;
-        std::size_t consumed = 0;
-        for (std::sregex_iterator i(auxiliary_declarations.begin(), auxiliary_declarations.end(), alias), end; i != end;
-             ++i) {
-            auto m = *i;
-            remainder += auxiliary_declarations.substr(consumed, m.position() - consumed);
-            validate_declared_name(upper(m[2]), "STRING");
-            if (!auxiliary_aliases.emplace(upper(m[2]), upper(m[3])).second)
-                fail("Duplicate auxiliary STRING: " + m[2].str());
-            consumed = m.position() + m.length();
-        }
-        remainder += auxiliary_declarations.substr(consumed);
-        if (!trim(remainder).empty())
-            fail("Unsupported declaration before auxiliary SIMULATION section");
-        design.simulation += "\n" + expand_aliases(auxiliary_commands, auxiliary_aliases);
-    }
-    SynthesisParser(design, options, groups).run(expand_aliases(body, aliases));
     std::map<std::string, Pin*> pin_index;
     for (auto& p : design.pins)
         pin_index[p.name] = &p;
@@ -2191,12 +1879,335 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
                     break;
                 }
             }
+}
+
+Design parse_design(const std::string& source, FrontendOptions options, const std::string* auxiliary_simulation)
+{
+    if (source.size() > 4 * 1024 * 1024)
+        fail("Source exceeds 4 MiB");
+    auto clean_source = [](const std::string& text) {
+        std::string clean;
+        bool comment = false, quoted = false, metadata = false;
+        std::size_t line_start = 0;
+        // Header text such as "TITLE Bob's design" is free text up to a
+        // comment: an apostrophe there does not open a STRING literal.
+        const auto metadata_line = [&](std::size_t at) {
+            while (at < text.size() && (text[at] == ' ' || text[at] == '\t'))
+                ++at;
+            for (const char* keyword : {"TITLE", "PATTERN", "REVISION", "AUTHOR", "COMPANY", "DATE"}) {
+                const auto length = std::char_traits<char>::length(keyword);
+                bool matches      = at + length <= text.size();
+                for (std::size_t i = 0; matches && i < length; ++i)
+                    matches = std::toupper(static_cast<unsigned char>(text[at + i])) == keyword[i];
+                // Only look past the keyword when it is there: the text may end
+                // before a keyword of this length.
+                if (matches &&
+                    (at + length == text.size() ||
+                     !(std::isalnum(static_cast<unsigned char>(text[at + length])) || text[at + length] == '_')))
+                    return true;
+            }
+            return false;
+        };
+        metadata = metadata_line(0);
+        for (std::size_t position = 0; position < text.size(); ++position) {
+            const unsigned char c = static_cast<unsigned char>(text[position]);
+            if (c == 26)
+                break;
+            if (c == '\r')
+                continue;
+            if (c == '\n') {
+                comment    = false;
+                line_start = position + 1;
+                metadata   = !quoted && metadata_line(line_start);
+                clean += '\n';
+                continue;
+            }
+            if (comment)
+                continue;
+            if (c == '\'' && !metadata)
+                quoted = !quoted;
+            if (c == ';' && !quoted) {
+                comment = true;
+                continue;
+            }
+            clean += c;
+        }
+        if (quoted)
+            fail("Unterminated STRING literal");
+        return clean;
+    };
+    const auto clean       = clean_source(source);
+    std::string normalized = upper(clean);
+    std::smatch section;
+    static const std::regex equations_header(R"((^|\n)[ \t]*(EQUATIONS|EQU|STATE)[ \t]*(\n|$))");
+    if (!std::regex_search(normalized, section, equations_header))
+        fail("Missing EQUATIONS or STATE section");
+    auto equations_start     = static_cast<std::size_t>(section.position() + section.length());
+    std::string declarations = clean.substr(0, section.position());
+    std::string body         = (section[2] == "STATE" ? "STATE\n" : "") + normalized.substr(equations_start);
+    Design design;
+    design.dos_compatibility = options.dos_compatibility;
+    static const std::regex simulation_header(R"((^|\n)[ \t]*(SIMULATION|SIM)[ \t]*(\n|$))");
+    if (std::regex_search(body, section, simulation_header)) {
+        design.simulation = body.substr(section.position() + section.length());
+        body.resize(section.position());
+    }
+    // STATE/CONDITIONS may precede the single EQUATIONS segment.
+    // Process Boolean equations first, then add state-machine equations.
+    static const std::regex boolean_header(R"((^|\n)[ \t]*(EQUATIONS|EQU)[ \t]*(\n|$))");
+    if (std::regex_search(body, section, boolean_header)) {
+        if (section.position() == 0 || body.compare(0, 6, "STATE\n") != 0)
+            fail("Multiple EQUATIONS segments are not allowed");
+        const auto state     = body.substr(0, section.position());
+        const auto equations = body.substr(section.position() + section.length());
+        if (std::regex_search(equations, boolean_header))
+            fail("Multiple EQUATIONS segments are not allowed");
+        body = equations + "\n" + state;
+    }
+    std::string auxiliary_commands, auxiliary_declarations;
+    if (auxiliary_simulation) {
+        if (auxiliary_simulation->size() > 4 * 1024 * 1024)
+            fail("Auxiliary simulation exceeds 4 MiB");
+        const auto auxiliary = upper(clean_source(*auxiliary_simulation));
+        if (!std::regex_search(auxiliary, section, simulation_header))
+            fail("Auxiliary simulation file requires a SIMULATION section");
+        auxiliary_declarations = auxiliary.substr(0, section.position());
+        auxiliary_commands     = auxiliary.substr(section.position() + section.length());
+    }
+    std::map<std::string, std::string> aliases;
+    static const std::regex alias(R"((^|\n)[ \t]*STRING[ \t]+([A-Z0-9_]+)[ \t]+'([^']*)')", std::regex::icase);
+    std::string filtered;
+    std::size_t previous = 0;
+    for (std::sregex_iterator i(declarations.begin(), declarations.end(), alias), end; i != end; ++i) {
+        auto m = *i;
+        filtered += declarations.substr(previous, m.position() - previous) + "\n";
+        validate_declared_name(upper(m[2]), "STRING");
+        if (!aliases.emplace(upper(m[2]), upper(m[3])).second)
+            fail("Duplicate STRING: " + m[2].str());
+        previous = m.position() + m.length();
+    }
+    filtered += declarations.substr(previous);
+    std::set<std::string> declared;
+    std::map<std::string, std::vector<std::string>> groups;
+    // Declarations can share lines, and GROUP/vector locations can wrap.
+    std::stringstream raw_lines(filtered);
+    std::string raw, joined;
+    static const std::regex declaration_start(
+        R"(^[ \t]*(TITLE|PATTERN|REVISION|AUTHOR|COMPANY|DATE|CHIP|PIN|NODE|GROUP|SIGNATURE)\b)", std::regex::icase);
+    static const std::regex metadata_line(R"(^[ \t]*(TITLE|PATTERN|REVISION|AUTHOR|COMPANY|DATE)\b)", std::regex::icase);
+    while (std::getline(raw_lines, raw)) {
+        if (trim(raw).empty())
+            continue;
+        if (std::regex_search(raw, metadata_line)) {
+            joined += "\n" + raw;
+            continue;
+        }
+        raw = std::regex_replace(raw, inline_declaration_pattern(), "\n$1 ");
+        std::stringstream pieces(raw);
+        std::string piece;
+        while (std::getline(pieces, piece))
+            if (!trim(piece).empty())
+                joined += (std::regex_search(piece, declaration_start) ? "\n" : " ") + piece;
+    }
+    std::stringstream lines(joined);
+    std::string line;
+    while (std::getline(lines, line)) {
+        line = trim(line);
+        if (line.empty())
+            continue;
+        line = std::regex_replace(line, glued_location_pattern(), "$1 ?");
+        std::stringstream fields(line);
+        std::string key, value;
+        fields >> key;
+        key = upper(key);
+        std::getline(fields, value);
+        value = trim(value);
+        if (key == "TITLE" || key == "PATTERN" || key == "REVISION" || key == "AUTHOR" || key == "COMPANY" ||
+            key == "DATE") {
+            if (!design.metadata.emplace(key, value).second)
+                fail("Duplicate metadata: " + key);
+        } else if (key == "CHIP") {
+            std::stringstream chip(upper(value));
+            std::string extra;
+            if (!design.chip.empty() || !(chip >> design.chip >> design.device) || (chip >> extra))
+                fail("Expected CHIP <name> <device>");
+            validate_declared_name(design.chip, "CHIP");
+            // Everything after this line may rely on a known device.
+            if (!frontend_devices().count(design.device))
+                fail("Unsupported device: " + design.device);
+        } else if (key == "PIN" || key == "NODE") {
+            auto declaration = upper(value);
+            declaration      = std::regex_replace(declaration, space_after_comma_pattern(), ",");
+            declaration      = std::regex_replace(declaration, space_after_bracket_pattern(), "[");
+            declaration      = std::regex_replace(declaration, space_before_bracket_pattern(), "]");
+            std::stringstream f(declaration);
+            std::string location, name, mode;
+            f >> location >> name;
+            validate_declared_name(name, key);
+            bool inv = !name.empty() && name[0] == '/';
+            if (inv)
+                name.erase(0, 1);
+            auto expanded = expand_signal_names(name);
+            std::vector<std::string> numbers;
+            if (location != "?") {
+                // MACHPAR checks every location number while parsing: P90 for
+                // a numeral it cannot read, P127/P128 for a location the
+                // device does not have. Node 1 is its global node.
+                const bool reserved = name == "NC" || name == "GND" || name == "VCC" || name == "VCC1" ||
+                                      name == "VCC2" || name == "VCC3";
+                const auto device = frontend_devices().find(design.device);
+                for (std::size_t at = 0; at < location.size();) {
+                    if (!std::isdigit(static_cast<unsigned char>(location[at]))) {
+                        ++at;
+                        continue;
+                    }
+                    auto end = at;
+                    while (end < location.size() && std::isdigit(static_cast<unsigned char>(location[end])))
+                        ++end;
+                    // Twenty digits are unreadable to the original; eleven are
+                    // merely out of range. Avoid converting what cannot fit.
+                    if (end - at > 19)
+                        fail("P90: Unexpected number symbol in malformed statement: " + location);
+                    const auto number = end - at > 9 ? ~0UL : std::stoul(location.substr(at, end - at));
+                    at                = end;
+                    if (reserved || device == frontend_devices().end())
+                        continue;  // Checked with the reserved name or the device below.
+                    if (key == "PIN" && (!number || number > device->second.first))
+                        fail("P127: invalid pin number for this device or macro: " + location);
+                    if (key == "NODE" && (!number || number > mach_node_limit(mach_device_layout(design.device))))
+                        fail("P128: invalid node number for this device or macro: " + location);
+                }
+                numbers = expand_signal_names("P[" + location + "]");
+            }
+            if (!numbers.empty() && numbers.size() != expanded.size())
+                fail("Pin location/vector width mismatch");
+            bool reg = false, lat = false, storage_declared = false;
+            std::string pair_kind, pair;
+            while (f >> mode) {
+                if (mode == "REG" || mode == "REGISTERED" || mode == "REGISTER") {
+                    reg              = true;
+                    storage_declared = true;
+                } else if (mode == "LAT" || mode == "LATCHED" || mode == "LATCH") {
+                    lat              = true;
+                    storage_declared = true;
+                } else if (mode == "COMB" || mode == "COMBINATORIAL") {
+                    storage_declared = true;
+                } else if (mode == "PAIR" || mode == "IPAIR" || mode == "OPAIR") {
+                    // MACHPAR accepts IPAIR only on a pin and OPAIR only on a node.
+                    if (mode == (key == "PIN" ? "OPAIR" : "IPAIR"))
+                        fail("P88: Unexpected reserved word or operator " + mode);
+                    pair_kind = mode;
+                    if (!(f >> pair))
+                        fail("Missing pairing signal");
+                } else
+                    fail("Unknown declaration mode: " + mode);
+            }
+            if (name == "NC" || name == "GND" || name == "VCC" || name == "VCC1" || name == "VCC2" || name == "VCC3") {
+                const auto device = frontend_devices().find(design.device);
+                if (device == frontend_devices().end())
+                    fail("Unsupported device: " + design.device);
+                const auto& layout = mach_device_layout(design.device);
+                const auto maximum = key == "PIN" ? device->second.first
+                                                  : layout.blocks * layout.cells + 1 +
+                                                        (design.device[4] == '4' ? layout.io_pins.size() : 0);
+                for (const auto& item : numbers) {
+                    const auto number = std::stoul(item.substr(2));
+                    if (!number || number > maximum)
+                        fail("Invalid " + key + " position for " + name);
+                    if (name != "NC") {
+                        const auto power = name == "GND" ? "GND" : "VCC";
+                        std::istringstream list(device->second.second);
+                        std::string entry;
+                        bool matching = false;
+                        while (list >> entry)
+                            matching |= entry == std::string(power) + ":" + std::to_string(number);
+                        if (!matching)
+                            fail("Invalid PIN position for " + name);
+                    }
+                }
+                // Reserved power/NC declarations annotate locations rather than
+                // logic signals. Repeats are allowed, and these declarations do not
+                // appear in the emitted signal or pairing tables.
+                continue;
+            }
+            auto pairs = pair.empty() ? std::vector<std::string>{} : expand_signal_names(pair);
+            if (!pairs.empty() && pairs.size() != expanded.size())
+                fail("Pair vector width mismatch");
+            for (std::size_t i = 0; i < expanded.size(); ++i) {
+                if (!declared.insert(expanded[i]).second)
+                    fail("Duplicate signal: " + expanded[i]);
+                Pin p;
+                p.name             = expanded[i];
+                p.number           = numbers.empty() ? 0U : static_cast<unsigned>(std::stoul(numbers[i].substr(2)));
+                p.registered       = reg;
+                p.node             = key == "NODE";
+                p.latched          = lat;
+                p.inverted         = inv;
+                p.pair_kind        = pair_kind;
+                p.storage_declared = storage_declared;
+                if (!pairs.empty())
+                    p.pair = pairs[i];
+                design.pins.push_back(p);
+            }
+        } else if (key == "GROUP") {
+            std::stringstream f(upper(value));
+            std::string name, member;
+            f >> name;
+            std::vector<std::string> members;
+            validate_declared_name(name, "GROUP");
+            while (f >> member) {
+                bool inv = member[0] == '/';
+                if (inv)
+                    member.erase(0, 1);
+                for (auto s : expand_signal_names(member))
+                    members.push_back(inv ? "/" + s : s);
+            }
+            if (members.empty() || !groups.emplace(name, members).second)
+                fail("Invalid/duplicate GROUP: " + name);
+            design.groups.emplace_back(name, members);
+        } else if (key == "SIGNATURE") {
+            design.signature = value;
+            if (!design.signature.empty() && design.signature[0] == '=')
+                design.signature = trim(design.signature.substr(1));
+        } else
+            fail("Unsupported declaration: " + key);
+    }
+    if (design.chip.empty())
+        fail("Missing CHIP declaration");
+    if (design.pins.empty())
+        fail("No PIN/NODE declarations");
+    design.simulation = expand_aliases(design.simulation, aliases);
+    if (auxiliary_simulation) {
+        // HELPER inserts the generated .TBL STRING aliases before the
+        // auxiliary SIM section. They affect that command stream only.
+        auto auxiliary_aliases = aliases;
+        std::string remainder;
+        std::size_t consumed = 0;
+        for (std::sregex_iterator i(auxiliary_declarations.begin(), auxiliary_declarations.end(), alias), end; i != end;
+             ++i) {
+            auto m = *i;
+            remainder += auxiliary_declarations.substr(consumed, m.position() - consumed);
+            validate_declared_name(upper(m[2]), "STRING");
+            if (!auxiliary_aliases.emplace(upper(m[2]), upper(m[3])).second)
+                fail("Duplicate auxiliary STRING: " + m[2].str());
+            consumed = m.position() + m.length();
+        }
+        remainder += auxiliary_declarations.substr(consumed);
+        if (!trim(remainder).empty())
+            fail("Unsupported declaration before auxiliary SIMULATION section");
+        design.simulation += "\n" + expand_aliases(auxiliary_commands, auxiliary_aliases);
+    }
+    SynthesisParser(design, options, groups).run(expand_aliases(body, aliases));
+    resolve_pairing(design, options);
+    std::set<std::string> declared_names;
+    for (const auto& p : design.pins)
+        declared_names.insert(p.name);
     for (const auto& group : design.groups)
         for (auto member : group.second) {
             if (!member.empty() && member[0] == '/')
                 member.erase(0, 1);
-            if (!pin_index.count(member))
-                fail("Undeclared GROUP member: " + member);
+            if (!declared_names.count(member))
+                fail("Undeclared_names GROUP member: " + member);
         }
     return design;
 }
