@@ -1,0 +1,23 @@
+CHIP F00065 MACH131
+PIN ? CLK
+PIN ? I0
+PIN ? I1
+PIN ? Q0 REG
+PIN ? Q1 REG
+PIN ? Z
+STATE
+MEALY_MACHINE
+CLKF = CLK
+S0 = /Q0*/Q1
+S1 = Q0*/Q1
+S0 := G0 -> S1
+        + G2 -> S1
+        + G1 -> S1
+        +-> S0
+S1 := G0 -> S1
+        + G2 -> S0
+S0.OUTF = /I1 -> Z
+CONDITIONS
+G0 = I1*I0
+G1 = I1*/I0
+G2 = /I1

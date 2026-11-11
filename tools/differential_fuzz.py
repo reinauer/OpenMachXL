@@ -35,6 +35,8 @@ from compare_pla import compare_pla, parse_pla, read_pla  # noqa: E402
 
 DEVICES = ["MACH111", "MACH211", "MACH215", "MACH231", "MACH355", "MACH435", "MACH445", "MACH465", "MACH120",
            "MACH210", "MACH220"]
+# Every device the original fits; --devices may name any of them.
+ALL_DEVICES = DEVICES + ["MACH110", "MACH121", "MACH130", "MACH131", "MACH221", "MACH446"]
 
 
 def product(rng, signals):
@@ -174,10 +176,13 @@ def state_design(rng, name, device):
     return "\r\n".join(lines + body) + "\r\n"
 
 
-def generate(seed, index, scale=1):
+def generate(seed, index, scale=1, devices=None):
     rng = random.Random("%d/%d" % (seed, index) if scale == 1 else "%d/%d/%d" % (seed, index, scale))
     name = "F%05d" % (index % 100000)
     device = rng.choice(DEVICES)
+    if devices:
+        # The default draw above stays, so a seed means the same design body.
+        device = devices[index % len(devices)]
     if rng.random() < 0.25:
         return name, device, state_design(rng, name, device)
     return name, device, equations_design(rng, name, device, scale)
@@ -233,9 +238,13 @@ def main():
     parser.add_argument("--start", type=int, default=0, help="index of the first design of this seed")
     parser.add_argument("--scale", type=int, default=1, choices=range(1, 5),
                         help="size factor for the number of inputs and outputs of equation designs")
+    parser.add_argument("--devices", help="comma-separated devices to cycle through instead of the default mix")
     parser.add_argument("--dos", type=Path, default=ROOT / "dos", help="directory with the original archives")
     parser.add_argument("--timeout", type=int, default=300, help="seconds per run of the original")
     args = parser.parse_args()
+    devices = [d.strip().upper() for d in args.devices.split(",")] if args.devices else None
+    if devices and any(d not in ALL_DEVICES for d in devices):
+        sys.exit("unknown device in --devices; known: " + " ".join(ALL_DEVICES))
     executable = shutil.which("dosbox-x")
     if not executable:
         sys.exit("dosbox-x not found on PATH")
@@ -243,7 +252,7 @@ def main():
     output.mkdir(parents=True, exist_ok=False)
     results = []
     for index in range(args.start, args.start + args.count):
-        name, device, source = generate(args.seed, index, args.scale)
+        name, device, source = generate(args.seed, index, args.scale, devices)
         examples = {name + ".PDS": source.encode("ascii")}
         run = dos_oracle.run_one(args.dos, output, name + ".PDS", examples, executable, args.timeout)
         work = output / name.lower() / "WORK"

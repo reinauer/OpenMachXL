@@ -1,0 +1,35 @@
+CHIP F00044 MACH121
+PIN ? CLK
+PIN ? I0
+PIN ? I1
+PIN ? Q0 REG
+PIN ? Q1 REG
+PIN ? Z
+STATE
+MOORE_MACHINE
+DEFAULT_BRANCH S3
+CLKF = CLK
+S0 = /Q0*/Q1
+S1 = Q0*/Q1
+S2 = /Q0*Q1
+S3 = Q0*Q1
+S0 := G1 -> S3
+        + G0 -> S1
+        + G2 -> S0
+        +-> S0
+S1 := G0 -> S2
+        + G2 -> S2
+        + G1 -> S1
+S2 := I1 -> S3
+        + /I1 -> S1
+        +-> S1
+S3 := I0 -> S3
+        + /I0 -> S1
+        +-> S0
+S0.OUTF = /Z
+S1.OUTF = /Z
+S3.OUTF = Z
+CONDITIONS
+G0 = I1*I0
+G1 = I1*/I0
+G2 = /I1
