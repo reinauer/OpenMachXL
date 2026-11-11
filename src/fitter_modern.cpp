@@ -115,6 +115,7 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
     auto pla            = synthesized_pla(design, options, fitting.report.get());
     discard_combinatorial_storage_controls(pla.outputs, pla.terms);
     validate_node_output_enables(design, pla.outputs);
+    validate_node_equations(design, pla.inputs, pla.outputs);
     validate_storage_control_products(pla.outputs, pla.terms);
     FittingDeadline deadline(fitting.runtime_quarters);
     check_fitting_budget();

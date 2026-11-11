@@ -115,6 +115,7 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
     auto p = prepared;
     discard_combinatorial_storage_controls(p.outputs, p.terms);
     validate_node_output_enables(design, p.outputs);
+    validate_node_equations(design, p.inputs, p.outputs);
     validate_storage_control_products(p.outputs, p.terms);
     check_fitting_budget();
     if (design.dos_compatibility && p.inputs.empty() && p.outputs.size() == 1)

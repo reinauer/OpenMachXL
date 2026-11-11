@@ -40,6 +40,23 @@ inline void validate_node_output_enables(const Design& design, const std::vector
     }
 }
 
+// MACHFITR z5072: a node that some equation reads must have an equation of
+// its own. A buried node has no pad that could supply a value.
+inline void validate_node_equations(const Design& design, const std::vector<std::string>& inputs,
+                                    const std::vector<std::string>& outputs)
+{
+    std::set<std::string> driven;
+    for (auto label : outputs) {
+        while (!label.empty() && (label.back() == '-' || label.back() == '%'))
+            label.pop_back();
+        driven.insert(label.substr(0, label.find('.')));
+    }
+    const std::set<std::string> read(inputs.begin(), inputs.end());
+    for (const auto& pin : design.pins)
+        if (pin.node && read.count(pin.name) && !driven.count(pin.name))
+            throw LogicError("z5072: Missing equation for Node " + pin.name);
+}
+
 // z5091/5092/5093 are warnings for a combinatorial output: set/reset/clock
 // equations are discarded before DRC, routing and input-use classification.
 inline void discard_combinatorial_storage_controls(std::vector<std::string>& outputs,

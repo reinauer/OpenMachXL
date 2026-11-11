@@ -1,0 +1,108 @@
+
+*** Start MACHPAR.E 07:37:19 
+Ne211.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP NE211 MACH211
+   2     |PIN ? A
+   3     |PIN ? B
+   4     |PIN ? Y
+   5     |NODE ? N
+   6     |EQUATIONS
+   7     |Y=N+B*A
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Ne211.pds
+
+*** End MACHPAR.EXE 07:37:19; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 07:37:19 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Y
+
+ %%  MACHBPP  %% Maximum memory allocated was: 59096 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Ne211.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 07:37:19; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 07:37:19 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin Y...
+====> Y                  MIN_ON (2 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 42414 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Ne211.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 07:37:19; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 07:37:19 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file ne211.tre to PLA file ne211.pla...
+
+.
+.
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 40100 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Ne211.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 07:37:19; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 07:37:19 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Ne211.pds . Device is MACH211 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+|> ERROR z5072 - Missing equation for Node N .
+Check clock rules
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Ne211.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 0 .
+
+*** End MACHFITR.EX 07:37:20; (MACHFITR.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

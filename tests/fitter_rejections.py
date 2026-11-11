@@ -11,6 +11,10 @@ for case in json.loads((fixtures/'manifest.json').read_text())['cases']:
  for flags in [[],['--compatibility']]:
   result=subprocess.run([str(compiler),'--emit-jedec',str(fixtures/(name+'.PDS')),'--settings',str(fixtures/(name+'.MXL')),*flags],capture_output=True,timeout=60)
   assert result.returncode and not result.stdout and result.stderr,(name,flags,'original rejection emitted output')
+  # Where the native diagnostic is pinned, the original log must hold the same error code.
+  if 'native_diagnostic' in case:
+   assert case['native_diagnostic'].encode() in result.stderr,(name,flags,result.stderr)
+   assert case['native_diagnostic'].split(':')[0].encode() in (fixtures/(name+'.LOG')).read_bytes(),name
   with tempfile.TemporaryDirectory(prefix='machxl-rejection-reports-') as reports:
    observed=subprocess.run([str(compiler),'--emit-jedec',str(fixtures/(name+'.PDS')),'--settings',str(fixtures/(name+'.MXL')),*flags,'--fitter-reports',reports],capture_output=True,timeout=60)
    assert observed.returncode and not observed.stdout,(name,flags,'failed report emitted programming output')
