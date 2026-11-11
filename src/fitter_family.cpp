@@ -240,6 +240,11 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
             input_registers.insert(pair.first);
         report_fitter_notices(original_design, p.outputs, p.terms, input_registers, d, fitting);
         notices.done();
+        if (!mach215) {
+            if (fitting.ground_implicit_controls)
+                ground_implicit_set_reset(p.outputs, p.terms, input_registers);
+            validate_block_set_reset(design, d, p.outputs, p.terms);
+        }
     }
     if (mach215)
         for (const auto& pin : design.pins)

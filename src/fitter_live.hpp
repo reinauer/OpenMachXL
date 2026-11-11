@@ -375,6 +375,62 @@ inline int fixed_block_of(const Design& design, const MachDeviceLayout& layout, 
                : int(std::size_t(io - layout.io_pins.begin()) / (layout.io_pins.size() / layout.blocks));
 }
 
+// With "SET/RESET treated as DONT_CARE" off, a register without a set or
+// reset equation gets a constant GND one. `skip` names input registers,
+// which have neither.
+inline void ground_implicit_set_reset(std::vector<std::string>& outputs, std::vector<std::vector<std::string>>& terms,
+                                      const std::set<std::string>& skip = {})
+{
+    std::map<std::string, std::set<std::string>> functions;
+    std::vector<std::string> storage;
+    for (auto label : outputs) {
+        while (!label.empty() && (label.back() == '-' || label.back() == '%'))
+            label.pop_back();
+        const auto dot = label.find('.');
+        if (dot == std::string::npos)
+            continue;
+        const auto name = label.substr(0, dot), function = label.substr(dot + 1);
+        if ((function == "REG" || function == "G" || function == "T") && !skip.count(name) &&
+            functions.find(name) == functions.end())
+            storage.push_back(name);
+        functions[name].insert(function);
+    }
+    for (const auto& name : storage)
+        for (const auto* function : {"RE", "PR"})
+            if (!functions[name].count(function)) {
+                outputs.push_back(name + "." + function);
+                terms.emplace_back();
+            }
+}
+
+// MACHFITR z5514/z5515: the registers of a MACH1/2 block share one set and
+// one reset product term. Signals fixed in the same block must not ask for
+// different ones; constant GND counts as a term of its own, an absent
+// equation does not count.
+inline void validate_block_set_reset(const Design& design, const MachDeviceLayout& layout,
+                                     const std::vector<std::string>& outputs,
+                                     const std::vector<std::vector<std::string>>& terms)
+{
+    for (const auto* function : {"PR", "RE"}) {
+        std::map<int, std::set<std::vector<std::string>>> used;
+        for (unsigned column = 0; column < outputs.size() && column < terms.size(); ++column) {
+            const auto& label = outputs[column];
+            const auto dot    = label.find('.');
+            if (dot == std::string::npos || label.substr(dot + 1) != function)
+                continue;
+            const int block = fixed_block_of(design, layout, label.substr(0, dot));
+            if (block >= 0)
+                used[block].insert(terms[column]);
+        }
+        for (const auto& block : used)
+            if (block.second.size() > 1)
+                throw LogicError(std::string(function == std::string("PR") ? "z5514" : "z5515") + ": Block " +
+                                 char('A' + block.first) + " contains " + std::to_string(block.second.size()) +
+                                 (function == std::string("PR") ? " SET" : " RESET") +
+                                 " signals: block limit is 1 signals.");
+    }
+}
+
 // MACHFITR DRC z5510: signals fixed in one block must together read no more
 // signals than the block routes. This is a warning; the fit goes on and
 // fails later if the block cannot be relieved. Clock equations are left out

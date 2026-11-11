@@ -392,6 +392,9 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
         fitting.warn("z5037: Invalid global reset equation.");
     discard_combinatorial_storage_controls(pla.outputs, pla.terms);
     report_fitter_notices(original_design, pla.outputs, pla.terms, {}, mach_device_layout("MACH111"), fitting);
+    if (fitting.ground_implicit_controls)
+        ground_implicit_set_reset(pla.outputs, pla.terms);
+    validate_block_set_reset(design, mach_device_layout("MACH111"), pla.outputs, pla.terms);
     validate_node_output_enables(design, pla.outputs);
     std::vector<std::string> unreferenced_nodes;
     validate_node_equations(design, pla.inputs, pla.outputs, &unreferenced_nodes);

@@ -237,6 +237,35 @@ CASES = [
          files={'T.PDS': 'CHIP T MACH435\nPIN ? A\nPIN ? B\nPIN ? CK\nPIN ? Q REG\nEQUATIONS\nQ=A*B\nQ.CLKF=CK\n',
                 'T.MXL': '[M3XX_SET_RST]=N\n'},
          args=['--emit-jedec', 'T.PDS', '--settings', 'T.MXL'], ok=True, sequence=['z5065', 'z5068']),
+    # A MACH1/2 block has one set and one reset term. A register without
+    # set/reset equations shares the block's terms only while unspecified
+    # set/reset is a don't care; constant GND is a term of its own.
+    dict(name='block_set_reset_dont_care_shares',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? B\nPIN ? CK\nPIN ? S\nPIN ? R\nPIN 2 Q REG\nPIN 3 P REG\nEQUATIONS\n' \
+                         'Q=A*B\nQ.CLKF=CK\nQ.SETF=S\nQ.RSTF=R\nP=A+B\nP.CLKF=CK\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=True),
+    dict(name='block_set_reset_grounded_by_option',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? B\nPIN ? CK\nPIN ? S\nPIN ? R\nPIN 2 Q REG\nPIN 3 P REG\nEQUATIONS\n' \
+                         'Q=A*B\nQ.CLKF=CK\nQ.SETF=S\nQ.RSTF=R\nP=A+B\nP.CLKF=CK\n',
+                'T.MXL': '[M3XX_SET_RST]=N\n'},
+         args=['--emit-jedec', 'T.PDS', '--settings', 'T.MXL'], ok=False,
+         message='z5514: Block A contains 2 SET signals: block limit is 1 signals.'),
+    dict(name='block_set_reset_grounded_by_option_mach111',
+         files={'T.PDS': 'CHIP T MACH111\nPIN ? A\nPIN ? B\nPIN ? CK\nPIN ? S\nPIN ? R\nPIN 2 Q REG\nPIN 3 P REG\nEQUATIONS\n' \
+                         'Q=A*B\nQ.CLKF=CK\nQ.SETF=S\nQ.RSTF=R\nP=A+B\nP.CLKF=CK\n',
+                'T.MXL': '[M3XX_SET_RST]=N\n'},
+         args=['--emit-jedec', 'T.PDS', '--settings', 'T.MXL'], ok=False,
+         message='z5514: Block A contains 2 SET signals: block limit is 1 signals.'),
+    dict(name='block_set_reset_grounded_floating_fits',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? B\nPIN ? CK\nPIN ? S\nPIN ? R\nPIN ? Q REG\nPIN ? P REG\nEQUATIONS\n' \
+                         'Q=A*B\nQ.CLKF=CK\nQ.SETF=S\nQ.RSTF=R\nP=A+B\nP.CLKF=CK\n',
+                'T.MXL': '[M3XX_SET_RST]=N\n'},
+         args=['--emit-jedec', 'T.PDS', '--settings', 'T.MXL'], ok=True, sequence=['z5065', 'z5068']),
+    dict(name='block_set_reset_explicit_ground',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? B\nPIN ? CK\nPIN ? S\nPIN ? R\nPIN 2 Q REG\nPIN 3 P REG\nEQUATIONS\n' \
+                         'Q=A*B\nQ.CLKF=CK\nQ.SETF=S\nQ.RSTF=R\nP=A+B\nP.CLKF=CK\nP.RSTF=GND\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=False,
+         message='z5515: Block A contains 2 RESET signals: block limit is 1 signals.'),
     dict(name='fitter_warning_output_enable_grounded',
          files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? B\nPIN ? Q\nEQUATIONS\nQ=A*B\nQ.TRST=GND\n'},
          args=['--emit-jedec', 'T.PDS'], ok=True, sequence=['z5064'],
