@@ -39,8 +39,8 @@ def main():
             comparison = compare_pla(read_pla(output), read_pla(original))
             semantic=compare(read_pla(output),read_pla(original))
             assert semantic['equivalent'], (name,semantic)
-            if case.get('require_matrix_equal',True):
-                assert comparison['matrix_equal'], (name, comparison)
+            # No probe is exempt: all match the original row for row.
+            assert comparison['matrix_equal'], (name, comparison)
             if case.get('corrected_error'):
                 corrected=subprocess.run([arg for arg in command if arg!='--compatibility'],capture_output=True)
                 assert corrected.returncode and case['corrected_error'].encode() in corrected.stderr,(name,'missing corrected-mode semantic rejection')
@@ -100,7 +100,7 @@ def main():
                 def locations(path):
                     return sorted((kind,symbol) for kind,text in re.findall(r'^#AMD (PIN|NODE) \d+ (.*)',path.read_text(encoding='latin1'),re.M) for symbol in text.split())
                 assert locations(output)==locations(original),(name,'physical pairing constraints',locations(output),locations(original))
-            print(name + (': exact labeled matrix' if comparison['matrix_equal'] else ': equivalent functions; matrix differs'), flush=True)
+            print(name + ': exact labeled matrix', flush=True)
     return 0
 
 

@@ -101,6 +101,7 @@ def main():
     compiler_digest=hashlib.sha256(args.compiler.resolve().read_bytes()).hexdigest()
     results = {}
     expectations=json.loads((ROOT / "tests/frontend-expectations.json").read_text())
+    # The list must name every corpus design, so a new design is added on purpose.
     required_matrices=set(expectations["required_exact_matrices"])
     manifest=json.loads((args.reference / "manifest.json").read_text())
     cases={case["name"]:case for case in manifest["cases"]}
@@ -111,6 +112,8 @@ def main():
         tmp = Path(tmp)
         for name in sorted(n for n in archive.namelist() if n.upper().endswith(".PDS")):
             source = tmp / name
+            if source.stem not in required_matrices:
+                raise AssertionError("Corpus design missing from required_exact_matrices: "+source.stem)
             data=archive.read(name)
             case=cases[source.stem]
             if hashlib.sha256(data).hexdigest()!=case["source_sha256"]:
@@ -134,7 +137,9 @@ def main():
                     raise AssertionError("Original PLA hash mismatch: "+name)
                 results[source.stem] = compare(read_pla(target), read_pla(original))
             result=results[source.stem]
-            result["required_matrix_regression"]=source.stem in required_matrices and not result.get("matrix_identical",False)
+            # Every corpus design matches the original matrix; a design that
+            # is missing from the expectations must not be held to less.
+            result["required_matrix_regression"]=not result.get("matrix_identical",False)
             status="equivalent" if result["equivalent"] else "DIFFERENT"
             if result["required_matrix_regression"]:status+="; REQUIRED MATRIX REGRESSED"
             print(source.stem + ": " + status, flush=True)

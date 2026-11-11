@@ -38,9 +38,11 @@ def main():
             native = tmp / (name + ".PLA")
             native.write_bytes(result.stdout)
             comparison = compare_pla(read_pla(original), read_pla(native))
-            if not comparison["equivalent"]:
+            # Every reference matches row for row; Boolean equivalence alone
+            # would hide a change in product order or sharing.
+            if not comparison["equivalent"] or not comparison["matrix_equal"]:
                 raise AssertionError(f"{name}: {comparison}")
-            print(name + ": equivalent", flush=True)
+            print(name + ": exact labeled matrix", flush=True)
         # Invalid designs must fail without emitting a partial PLA.
         for number, source in enumerate([
             b"CHIP BAD MACH111\nPIN ? Y\nEQUATIONS\nY=UNDECLARED\n",
