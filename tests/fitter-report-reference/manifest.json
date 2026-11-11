@@ -1465,6 +1465,50 @@
         "JED": "74f87c83b4f1e6f6806e818256928786abdba87c78108125588c95d7fc3c7e83"
       },
       "display_filename": "R1.pds"
+    },
+    {
+      "name": "NP111",
+      "device": 111,
+      "sha256": {
+        "PDS": "5945a59ccc9d1caa9dbfdf5d046500b83abec955b1bff98d9f44c00d0d197214",
+        "MXL": "202a19d772abcebb087cc6d1cd4c130b7a2fd04123827607d21cceee95ee6cb8",
+        "RPT": "150f654e923c26043a68fa0bcd1d4b334f4391ee9ab8f33ec3fbb062d2724515",
+        "JED": "86fbc494f9dd3f57b9416805f65e0db6e68ccca7f5c539086d114d9f3df3403a"
+      },
+      "display_filename": "Np111.pds"
+    },
+    {
+      "name": "NP355",
+      "device": 355,
+      "sha256": {
+        "PDS": "c7e69bb151e417e71040f55b939381a6e4526da104bf119d3f1e2017f415fe10",
+        "MXL": "72e208912b31bf8d13a606c06ad4ae6d56b3bd7afcfe22ee2b2f75069d82f786",
+        "RPT": "ff643aa8cc08e57272aad801c30dade5c25fe6bd4b3a3937da3cc0ef85f43778",
+        "JED": "6d913a30bed2dc4278473111d0b39497b712ffa8bed843d8c1ea532d35dae4e4"
+      },
+      "display_filename": "Np355.pds"
+    },
+    {
+      "name": "PO8",
+      "device": 111,
+      "sha256": {
+        "PDS": "25ff48d14b0a01ae8ec48c6db24414990c4065e5d52958ea3a794986f8047571",
+        "MXL": "10da3fe53bc714ce966d034a96c07e26637ccabeeac276ff1f4d6cddd3e5a846",
+        "RPT": "8832e9cae82a07f8ea44928bb7555fa31959dab6bc49ae5a818a4c33174fc940",
+        "JED": "ce0528c2b866aaa910e1918ad9918d880c634d54e59437523560f0b4c2b88d77"
+      },
+      "display_filename": "Po8.pds"
+    },
+    {
+      "name": "Q4C",
+      "device": 355,
+      "sha256": {
+        "PDS": "c5fb5c628a1baf6931cc1e9911e17feebd694653c2140bb9e759a12ecac6c357",
+        "MXL": "e0e1d87b15d7d6de8768a2bfc7d336a4f20165886b182a56298112c368a6992c",
+        "RPT": "dca87fb39b2f0b34370ee020a7793b710ab0094c98982e05f79bd4b607d5e780",
+        "JED": "4660f55a900dde907f94834216aba958a1e639039b694195d0416123be0d9084"
+      },
+      "display_filename": "Q4c.pds"
     }
   ],
   "capture_script": "research/reports/capture_fitter_reports.py",

@@ -125,7 +125,7 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
         for (const auto& pin : pins) {
             auto name = pin.name;
             display(name);
-            logical_order[name] = 2 * unsigned(logical_order.size());
+            logical_order[name] = 2 * unsigned(logical_order.size()) + 2;
         }
         route_order = logical_order;
         for (const auto& node : data.nodes)
@@ -133,6 +133,19 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
                 for (const auto& pin : data.pins)
                     if (int(pin.number) == node.pin)
                         logical_order[node.name] = logical_order[pin.name] + 1;
+        // A device without input registers discards an input pairing, but the
+        // node keeps the place it was given with its pad: directly ahead of it.
+        for (const auto& pad : data.optimized_design->pins) {
+            if (pad.node || pad.pair.empty())
+                continue;
+            auto node = pad.pair, name = pad.name;
+            display(node);
+            display(name);
+            const auto fitted = std::find_if(data.nodes.begin(), data.nodes.end(),
+                                             [&](const auto& candidate) { return candidate.name == node; });
+            if (fitted != data.nodes.end() && !fitted->input_register && !fitted->paired && logical_order.count(name))
+                logical_order[node] = logical_order[name] - 1;
+        }
         std::stable_sort(data.nodes.begin(), data.nodes.end(),
                          [&](const auto& a, const auto& b) { return logical_order[a.name] < logical_order[b.name]; });
     }
