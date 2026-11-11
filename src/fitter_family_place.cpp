@@ -34,8 +34,19 @@ struct ControlSlot
         return true;
     }
 };
-struct Block : std::vector<std::size_t>
+struct Block
 {
+    // The member clusters. They change only through push_back() and erase()
+    // so that the resource bookkeeping below cannot be bypassed.
+    using Members = std::vector<std::size_t>;
+    Members::const_iterator begin() const { return members_.begin(); }
+    Members::const_iterator end() const { return members_.end(); }
+    std::size_t size() const { return members_.size(); }
+    bool empty() const { return members_.empty(); }
+    std::size_t operator[](std::size_t index) const { return members_[index]; }
+    std::size_t back() const { return members_.back(); }
+    void erase(Members::const_iterator at) { members_.erase(at); }
+    const Members& members() const { return members_; }
     Clusters* clusters               = nullptr;
     bool legacy_oe                   = false;
     unsigned legacy_oe_capacity      = 0;
@@ -96,7 +107,7 @@ struct Block : std::vector<std::size_t>
     }
     void push_back(std::size_t id)
     {
-        std::vector<std::size_t>::push_back(id);
+        members_.push_back(id);
         if (!clusters)
             return;
         auto& c             = (*clusters)[id];
@@ -189,6 +200,9 @@ struct Block : std::vector<std::size_t>
         if (c.global_preset && !controls[1].remove(*c.global_preset))
             controls[0].remove(*c.global_preset);
     }
+
+  private:
+    Members members_;
 };
 [[noreturn]] void fail(const std::string& s)
 {

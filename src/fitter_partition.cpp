@@ -9,8 +9,19 @@
 namespace machxl {
 namespace {
 using Clusters = std::vector<Mach111PartitionCluster>;
-struct Block : std::vector<std::size_t>
+struct Block
 {
+    // The member clusters. They change only through push_back() and erase()
+    // so that the resource bookkeeping below cannot be bypassed.
+    using Members = std::vector<std::size_t>;
+    Members::const_iterator begin() const { return members_.begin(); }
+    Members::const_iterator end() const { return members_.end(); }
+    std::size_t size() const { return members_.size(); }
+    bool empty() const { return members_.empty(); }
+    std::size_t operator[](std::size_t index) const { return members_[index]; }
+    std::size_t back() const { return members_.back(); }
+    void erase(Members::const_iterator at) { members_.erase(at); }
+    const Members& members() const { return members_; }
     const Clusters* clusters = nullptr;
     std::vector<std::string> oe_order;
     struct OeSlot
@@ -21,7 +32,7 @@ struct Block : std::vector<std::size_t>
     std::array<OeSlot, 4> oe_resources;
     void push_back(std::size_t id)
     {
-        std::vector<std::size_t>::push_back(id);
+        members_.push_back(id);
         const auto& c = clusters->at(id);
         // Stop at the first empty or matching resource row. A hole before a later
         // match intentionally creates duplicate keys.
@@ -36,6 +47,9 @@ struct Block : std::vector<std::size_t>
             std::find(oe_order.begin(), oe_order.end(), c.oe_product) == oe_order.end())
             oe_order.push_back(c.oe_product);
     }
+
+  private:
+    Members members_;
 };
 
 std::set<std::uint16_t> collect_block_fanins(const Block& block, const Clusters& clusters)
@@ -520,6 +534,6 @@ std::array<std::vector<std::size_t>, 2> partition_mach111_single_group(
     if (oe_order)
         for (unsigned b = 0; b < 2; ++b)
             (*oe_order)[b] = blocks[b].oe_order;
-    return {static_cast<std::vector<std::size_t>>(blocks[0]), static_cast<std::vector<std::size_t>>(blocks[1])};
+    return {blocks[0].members(), blocks[1].members()};
 }
 }  // namespace machxl
