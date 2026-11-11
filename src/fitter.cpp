@@ -397,6 +397,7 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
     if (fitting.use_saved_placement || !fitting.saved_placement.empty())
         apply_saved_placement(design, fitting.saved_placement);
     apply_preplacement_policy(design, fitting.preplacement_policy);
+    validate_fixed_locations(design);
     if (fitting.report)
         fitting.report->optimized_design = std::make_shared<Design>(design);
     const auto placement_design = design;

@@ -17,6 +17,8 @@ SIMULATED_INPUT_REGISTER = ('CHIP T MACH435\nPIN 8 /A IPAIR N\nNODE ? N REG\nPIN
                             'SIMULATION\nSETF /A /CLK\nSETF A\nCLOCKF CLK\n')
 SAVED_SIMULATION_PLACEMENT = '[VERSION]=MACHXL 2.0\n[SIM_PLACE]=Saved placement\n'
 
+FLOATING_DESIGN = 'CHIP T {device}\nPIN ? A\nPIN ? B\nPIN ? Y\nNODE ? N\nEQUATIONS\nN=A*B\nY=N+B\n'
+
 # name, files, arguments after the compiler, expected success, and text that
 # must occur in the diagnostic of an expected rejection.
 CASES = [
@@ -52,6 +54,24 @@ CASES = [
          files={'T.PDS': 'CHIP T MACH111\nPIN ? A\nPIN ? Q\nEQUATIONS\nQ = A\nSIMULATION\nSETF A\n' +
                          'IF A THEN BEGIN ' * 256 + 'CHECK Q ' + 'END ' * 256},
          args=['--emit-jedec', 'T.PDS', '--simulate'], ok=True),
+    # Fixed locations outside the device. The fitters narrowed them to 16 bits
+    # first, so 65540 fitted exactly like pin 4 and 40000 like no constraint.
+    *[dict(name='fixed_location_' + device + '_' + label,
+           files={'T.PDS': FLOATING_DESIGN.format(device=device), 'T.PLC': record + '\n'},
+           args=['--emit-jedec', 'T.PDS', '--placement', 'T.PLC'], ok=message is None, message=message)
+      for device in ('MACH111', 'MACH211', 'MACH435')
+      for label, record, message in (
+          ('valid_pin', 'PIN 4 A', None),
+          ('valid_node', 'NODE 3 N', None),
+          ('pin_aliases_16_bits', 'PIN 65540 A', 'Invalid pin location 65540 for A'),
+          ('pin_past_device', 'PIN 40000 A', 'Invalid pin location 40000 for A'),
+          ('pin_negative', 'PIN -3 Y', 'Invalid pin location 4294967293 for Y'),
+          ('node_past_device', 'NODE 40000 N', 'Invalid node location 40000 for N'),
+          ('node_below_first', 'NODE 1 N', 'Invalid node location 1 for N'))],
+    # The same check applies to a node location written in the design itself.
+    dict(name='fixed_location_declared_node_past_device',
+         files={'T.PDS': FLOATING_DESIGN.format(device='MACH211').replace('NODE ? N', 'NODE 40000 N')},
+         args=['--emit-jedec', 'T.PDS'], ok=False, message='Invalid node location 40000 for N'),
 ]
 
 # Messages of exceptions thrown by the standard library, not by the compiler.

@@ -1,4 +1,5 @@
 #include "fitter_metadata.hpp"
+#include "device_family.hpp"
 #include <algorithm>
 #include <cctype>
 #include <sstream>
@@ -68,6 +69,21 @@ void apply_preplacement_policy(Design& design, const std::string& policy)
             std::remove_if(design.groups.begin(), design.groups.end(),
                            [](const auto& group) { return group.first.compare(0, 9, "MACH_SEG_") == 0; }),
             design.groups.end());
+}
+
+void validate_fixed_locations(const Design& design)
+{
+    // The fitters store locations in 16-bit placement keys. An unchecked
+    // number would alias a real location or turn into "unconstrained".
+    const auto& layout    = mach_device_layout(design.device);
+    const auto node_limit = mach_node_limit(layout);
+    for (const auto& pin : design.pins) {
+        if (!pin.number)
+            continue;
+        if (pin.node ? pin.number < 2 || pin.number > node_limit : pin.number > layout.pins)
+            throw LogicError(std::string("Invalid ") + (pin.node ? "node" : "pin") + " location " +
+                             std::to_string(pin.number) + " for " + pin.name);
+    }
 }
 
 void apply_placement_metadata(FuseImage& image, const Design& design, const std::set<std::string>& active_signals)
