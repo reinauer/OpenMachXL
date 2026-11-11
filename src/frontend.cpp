@@ -865,6 +865,13 @@ class SynthesisParser
             if (r.function.empty() && r.op == ":=")
                 transition_order.push_back(r.name);
         }
+        // MACHEXP E2791: every explicitly encoded state needs a transition
+        // equation, whether or not another state branches to it.
+        for (const auto& r : records)
+            if (r.function.empty() && r.op == "=" &&
+                std::find(transition_order.begin(), transition_order.end(), r.name) == transition_order.end())
+                fail("E2791: State " + r.name +
+                     " has a state assignment equation but is missing a transition equation");
         bool automatic = codes.empty();
         if (automatic) {
             if (transition_order.size() < 2)

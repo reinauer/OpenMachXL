@@ -1,0 +1,76 @@
+
+*** Start MACHPAR.E 23:13:34 
+Munrf.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP MUNRF MACH111
+   2     |PIN ? CLK
+   3     |PIN ? X
+   4     |PIN ? Y
+   5     |PIN ? S0 REG
+   6     |PIN ? S1 REG
+   7     |PIN ? O REG
+   8     |STATE
+   9     |MOORE_MACHINE
+  10     |CLKF = CLK
+  11     |A = /S1 * /S0
+  12     |B = /S1 * S0
+  13     |D = S1 * S0
+  14     |A := X -> B
+  15     |B := X -> A
+|> WARNING P37  No output is defined for state(s) 
+          A
+          B 
+
+  16     |D.OUTF = O
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  2
+
+ %% MACHPAR %%    File processed successfully.    File:  Munrf.pds
+
+*** End MACHPAR.EXE 23:13:34; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 23:13:34 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+STATE SEGMENT
+
+ %%  MACHBPP  %% Maximum memory allocated was: 57204 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Munrf.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 23:13:34; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHEXP.E 23:13:34 
+MACHXL 2.1 R9 MACHEXP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+...
+|> ERROR E2791
+     State D has a state assignment equation but is
+     missing a transition equation.
+
+ %%  MACHEXP  %% Maximum memory allocated was: 7580 bytes.
+
+ %%  MACHEXP  %% File Processing Terminated.  File: Munrf.pds.
+ %%  MACHEXP  %% ERROR count: 1  WARNING count: 0
+
+*** End MACHEXP.EXE 23:13:34; (MACHEXP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
