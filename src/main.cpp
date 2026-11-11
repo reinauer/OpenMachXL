@@ -224,6 +224,12 @@ int main(int argc, char** argv)
             machxl::FitterOptions fitting{settings.yes_no("BALANCED_PAR"), settings.yes_no("SPREAD_PL")};
             if (!fitter_reports_path.empty())
                 fitting.report = std::make_shared<machxl::FitterReportData>();
+            fitting.warnings                 = std::make_shared<std::vector<std::string>>();
+            const auto print_fitter_warnings = [&] {
+                for (const auto& warning : *fitting.warnings)
+                    std::cerr << source_path << ": warning: " << warning << '\n';
+                fitting.warnings->clear();
+            };
             fitting.source_route_limit             = settings.yes_no("ROUTE_PER_PL") ? 2 : 4096;
             fitting.iterate_partition              = settings.yes_no("ITERATE_FITR");
             fitting.runtime_quarters               = settings.integer("M3XX_RUNTIME");
@@ -256,6 +262,7 @@ int main(int argc, char** argv)
                         : modern                   ? machxl::fit_mach_modern(design, options.optimizer, fitting)
                                                    : machxl::fit_mach_family_fixed(design, options.optimizer, fitting);
             } catch (...) {
+                print_fitter_warnings();
                 // Preserve the actual retained trial while keeping failure status
                 // and withholding all programming output.
                 if (fitting.report && !fitting.report->optimized_pla.empty()) {
@@ -294,6 +301,7 @@ int main(int argc, char** argv)
                 }
                 throw;
             }
+            print_fitter_warnings();
             image.dos_compatibility = compatibility;
             machxl::apply_signature(image, design.signature);
             if (!fitter_reports_path.empty()) {

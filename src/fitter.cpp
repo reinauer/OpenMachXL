@@ -385,10 +385,17 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
     if (design.equations.empty())
         unsupported("design has no equations");
     auto pla = prepared;
-    expand_global_node(design, pla.inputs, pla.outputs, pla.terms);
+
+    bool global_reset_overridden = false;
+    expand_global_node(design, pla.inputs, pla.outputs, pla.terms, &global_reset_overridden);
+    if (global_reset_overridden)
+        fitting.warn("z5037: Invalid global reset equation.");
     discard_combinatorial_storage_controls(pla.outputs, pla.terms);
     validate_node_output_enables(design, pla.outputs);
-    validate_node_equations(design, pla.inputs, pla.outputs);
+    std::vector<std::string> unreferenced_nodes;
+    validate_node_equations(design, pla.inputs, pla.outputs, &unreferenced_nodes);
+    for (const auto& name : unreferenced_nodes)
+        fitting.warn("z5071: Nodes not referenced - discarded: " + name);
     validate_equation_fanin(pla.inputs, pla.outputs, pla.terms, mach_device_layout("MACH111").muxes);
     validate_storage_control_products(pla.outputs, pla.terms);
     check_fitting_budget();
@@ -421,7 +428,10 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
         if (pin != design.pins.end() && (pla.terms[out][0][input] == '0') != pin->inverted)
             unsupported("z5093: invalid negative register clock");
     }
-    const auto reachable = retain_reachable_equations(design, pla.inputs, pla.outputs, pla.terms);
+    std::vector<std::string> discarded_nodes;
+    const auto reachable = retain_reachable_equations(design, pla.inputs, pla.outputs, pla.terms, &discarded_nodes);
+    for (const auto& name : discarded_nodes)
+        fitting.warn("z5071: Nodes not referenced - discarded: " + name);
     std::map<std::string, const Pin*> pins;
     for (const auto& pin : design.pins) {
         if (pin.latched)
@@ -471,6 +481,10 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
             if (pin.number && target->second->number && pin_cell(pin) != pin_cell(*target->second))
                 unsupported("conflicting output pair constraints");
             output_aliases[pin.name] = pin.pair;
+            // The node of an output pair is only another name for the pad's
+            // macrocell. If nothing reads it, the original discards it.
+            if (std::find(pla.inputs.begin(), pla.inputs.end(), pin.name) == pla.inputs.end())
+                fitting.warn("z5071: Nodes not referenced - discarded: " + pin.name);
             paired_pins.insert(pin.pair);
             alias_phases[pin.name] = pla.outputs[node].back() == '-';
         }

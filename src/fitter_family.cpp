@@ -113,10 +113,17 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
         d.device != "MACH131")
         unsupported("configuration rules are not implemented for " + d.device);
     auto p = prepared;
-    expand_global_node(design, p.inputs, p.outputs, p.terms);
+
+    bool global_reset_overridden = false;
+    expand_global_node(design, p.inputs, p.outputs, p.terms, &global_reset_overridden);
+    if (global_reset_overridden)
+        fitting.warn("z5037: Invalid global reset equation.");
     discard_combinatorial_storage_controls(p.outputs, p.terms);
     validate_node_output_enables(design, p.outputs);
-    validate_node_equations(design, p.inputs, p.outputs);
+    std::vector<std::string> unreferenced_nodes;
+    validate_node_equations(design, p.inputs, p.outputs, &unreferenced_nodes);
+    for (const auto& name : unreferenced_nodes)
+        fitting.warn("z5071: Nodes not referenced - discarded: " + name);
     validate_equation_fanin(p.inputs, p.outputs, p.terms, d.muxes);
     validate_storage_control_products(p.outputs, p.terms);
     check_fitting_budget();
@@ -267,7 +274,10 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
             if (active.insert(name).second)
                 retained_clock_pins.insert(name);
     };
-    const auto reachable = retain_reachable_equations(design, p.inputs, p.outputs, p.terms);
+    std::vector<std::string> discarded_nodes;
+    const auto reachable = retain_reachable_equations(design, p.inputs, p.outputs, p.terms, &discarded_nodes);
+    for (const auto& name : discarded_nodes)
+        fitting.warn("z5071: Nodes not referenced - discarded: " + name);
     std::map<std::string, unsigned> signal_ids, original_feedback_ids;
     std::map<std::string, const Equation*> primary;
     for (const auto& e : design.equations)
@@ -313,6 +323,10 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
                 unsupported("output pair has different excitation equations");
             alias_phases[pin.name]   = p.outputs[node].back() == '-';
             output_aliases[pin.name] = pin.pair;
+            // The node of an output pair is only another name for the pad's
+            // macrocell. If nothing reads it, the original discards it.
+            if (std::find(p.inputs.begin(), p.inputs.end(), pin.name) == p.inputs.end())
+                fitting.warn("z5071: Nodes not referenced - discarded: " + pin.name);
             paired_pins.insert(pin.pair);
         }
     for (unsigned out = 0; out < p.outputs.size();) {

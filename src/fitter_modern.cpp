@@ -113,10 +113,17 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
     const auto data_row = [&](unsigned cell) { return cell * 5 + cell / (mach355 ? 1 : 2) + 1; };
     const auto oe_row   = [&](unsigned io) { return io * (mach355 ? 6 : 11); };
     auto pla            = synthesized_pla(design, options, fitting.report.get());
-    expand_global_node(design, pla.inputs, pla.outputs, pla.terms);
+
+    bool global_reset_overridden = false;
+    expand_global_node(design, pla.inputs, pla.outputs, pla.terms, &global_reset_overridden);
+    if (global_reset_overridden)
+        fitting.warn("z5037: Invalid global reset equation.");
     discard_combinatorial_storage_controls(pla.outputs, pla.terms);
     validate_node_output_enables(design, pla.outputs);
-    validate_node_equations(design, pla.inputs, pla.outputs);
+    std::vector<std::string> unreferenced_nodes;
+    validate_node_equations(design, pla.inputs, pla.outputs, &unreferenced_nodes);
+    for (const auto& name : unreferenced_nodes)
+        fitting.warn("z5071: Nodes not referenced - discarded: " + name);
     validate_equation_fanin(pla.inputs, pla.outputs, pla.terms, d.muxes);
     validate_storage_control_products(pla.outputs, pla.terms);
     FittingDeadline deadline(fitting.runtime_quarters);
@@ -237,6 +244,9 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
                 retained_clock_pins.insert(name);
     };
     const auto reachable = retained_equation_names(design, primary, dependencies);
+    for (const auto& output : outputs)
+        if (!reachable.count(output.first))
+            fitting.warn("z5071: Nodes not referenced - discarded: " + output.first);
     for (auto it = outputs.begin(); it != outputs.end();)
         if (!reachable.count(it->first))
             it = outputs.erase(it);
@@ -406,6 +416,10 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
             }
             controls[pin.name]       = controls[pin.pair];
             output_aliases[pin.name] = pin.pair;
+            // The node of an output pair is only another name for the pad's
+            // macrocell. If nothing reads it, the original discards it.
+            if (std::find(pla.inputs.begin(), pla.inputs.end(), pin.name) == pla.inputs.end())
+                fitting.warn("z5071: Nodes not referenced - discarded: " + pin.name);
             paired_pins.insert(pin.pair);
         }
     // The input-pair normalization reserves physical clock resources before

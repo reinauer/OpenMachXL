@@ -46,7 +46,8 @@ inline void validate_node_output_enables(const Design& design, const std::vector
 // Replace it by these per-register controls before anything else looks at
 // the design, and drop the node itself.
 inline void expand_global_node(Design& design, const std::vector<std::string>& inputs,
-                               std::vector<std::string>& outputs, std::vector<std::vector<std::string>>& terms)
+                               std::vector<std::string>& outputs, std::vector<std::vector<std::string>>& terms,
+                               bool* reset_overridden = nullptr)
 {
     const auto global = std::find_if(design.pins.begin(), design.pins.end(),
                                      [](const Pin& pin) { return pin.node && pin.number == 1; });
@@ -96,8 +97,11 @@ inline void expand_global_node(Design& design, const std::vector<std::string>& i
                 registers.push_back(signal);
         }
         for (const auto& signal : registers) {
-            if (controlled.count(signal))
+            if (controlled.count(signal)) {
+                if (reset_overridden && std::string(function) == "RE")
+                    *reset_overridden = true;
                 continue;
+            }
             std::size_t last = 0;
             for (std::size_t i = 0; i < outputs.size(); ++i) {
                 const auto label = base(outputs[i]);
@@ -126,7 +130,8 @@ inline void expand_global_node(Design& design, const std::vector<std::string>& i
 // MACHFITR z5072: a node that some equation reads must have an equation of
 // its own. A buried node has no pad that could supply a value.
 inline void validate_node_equations(const Design& design, const std::vector<std::string>& inputs,
-                                    const std::vector<std::string>& outputs)
+                                    const std::vector<std::string>& outputs,
+                                    std::vector<std::string>* unreferenced = nullptr)
 {
     std::set<std::string> driven;
     for (auto label : outputs) {
@@ -138,6 +143,11 @@ inline void validate_node_equations(const Design& design, const std::vector<std:
     for (const auto& pin : design.pins)
         if (pin.node && read.count(pin.name) && !driven.count(pin.name))
             throw LogicError("z5072: Missing equation for Node " + pin.name);
+    // A declared node with neither an equation nor a reader is dropped.
+    if (unreferenced)
+        for (const auto& pin : design.pins)
+            if (pin.node && !read.count(pin.name) && !driven.count(pin.name))
+                unreferenced->push_back(pin.name);
 }
 
 // MACHFITR DRC z5524: all equations of one signal are placed in one block,
@@ -231,7 +241,8 @@ inline std::set<std::string> retained_equation_names(const Design& design, const
 
 inline std::set<std::string> retain_reachable_equations(const Design& design, std::vector<std::string>& inputs,
                                                         std::vector<std::string>& outputs,
-                                                        std::vector<std::vector<std::string>>& terms)
+                                                        std::vector<std::vector<std::string>>& terms,
+                                                        std::vector<std::string>* discarded = nullptr)
 {
     std::map<std::string, std::vector<unsigned>> columns;
     std::set<std::string> primary;
@@ -257,6 +268,11 @@ inline std::set<std::string> retain_reachable_equations(const Design& design, st
                     if (term[i] != '-' && primary.count(inputs[i]))
                         dependencies[name].insert(inputs[i]);
     const auto reachable = retained_equation_names(design, primary, dependencies);
+    if (discarded)
+        for (const auto& name : names)
+            if (primary.count(name) && !reachable.count(name) &&
+                std::find(discarded->begin(), discarded->end(), name) == discarded->end())
+                discarded->push_back(name);
     for (std::size_t column = outputs.size(); column-- > 0;)
         if (!reachable.count(names[column])) {
             outputs.erase(outputs.begin() + column);

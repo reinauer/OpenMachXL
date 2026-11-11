@@ -171,6 +171,17 @@ CASES = [
          files={'T.PDS': 'CHIP T MACH111\n' + ''.join('PIN ? I%d\n' % i for i in range(1, 27)) +
                          'PIN 2 O\nEQUATIONS\nO=' + '*'.join('I%d' % i for i in range(1, 27)) + '\n'},
          args=['--emit-jedec', 'T.PDS'], ok=True),
+    # Warnings of the original fitter, printed once although the fitters
+    # prepare the design again for every placement candidate.
+    dict(name='fitter_warning_unreferenced_node',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? Q\nNODE ? N\nNODE ? M REG\nEQUATIONS\nQ=A\nM=A\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=True,
+         warnings=['z5071: Nodes not referenced - discarded: N', 'z5071: Nodes not referenced - discarded: M']),
+    dict(name='fitter_warning_global_reset_overridden',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? CLK\nPIN ? R\nPIN ? P\nPIN ? A\nPIN ? QA REG\nPIN ? QB REG\n'
+                         'NODE 1 GLOBAL\nEQUATIONS\nGLOBAL.RSTF=R\nQA=A\nQA.CLKF=CLK\nQB=QA\nQB.CLKF=CLK\n'
+                         'QB.RSTF=P\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=True, warnings=['z5037: Invalid global reset equation.']),
 ]
 
 # Messages of exceptions thrown by the standard library, not by the compiler.
@@ -194,6 +205,8 @@ def run(case, flags):
     if case['ok']:
         assert result.returncode == 0 and result.stdout, (label, 'expected success', stderr[-2000:])
         assert not missing, (label, 'missing output files', missing)
+        for warning in case.get('warnings', []):
+            assert warning in stderr, (label, 'missing warning', warning, stderr[-2000:])
     else:
         assert result.returncode == 1 and not result.stdout, (label, 'expected rejection', stderr[-2000:])
         assert case['message'] in stderr, (label, 'unexpected diagnostic', stderr[-2000:])
