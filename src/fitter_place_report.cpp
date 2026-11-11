@@ -1,5 +1,6 @@
 #include "fitter_place_report.hpp"
 #include "banner.hpp"
+#include "pla_text.hpp"
 #include "device_family.hpp"
 #include "frontend.hpp"
 #include "jedec.hpp"
@@ -119,22 +120,12 @@ std::string render_fitter_place_report(const FuseImage& image, const FitterRepor
         return !modern && p && p->input_node >= 0 ? "in2" : signal_type(p);
     };
     std::map<std::string, unsigned> product_ids;
-    std::istringstream pla(data.optimized_pla);
-    std::string line;
-    std::vector<std::vector<std::string>> covers;
-    while (std::getline(pla, line)) {
-        std::istringstream row(line);
-        std::string cube, outputs;
-        row >> cube >> outputs;
-        if (cube == ".o") {
-            covers.resize(std::stoul(outputs));
-            continue;
-        }
-        if (!cube.empty() && cube.find_first_not_of("01-") == std::string::npos && outputs.size() == covers.size())
-            for (unsigned i = 0; i < outputs.size(); ++i)
-                if (outputs[i] == '1')
-                    covers[i].push_back(cube);
-    }
+    auto parsed = parse_pla_text(data.optimized_pla);
+    // The rows of a PLA without inputs carry no product to number.
+    if (parsed.inputs.empty())
+        for (auto& cover : parsed.terms)
+            cover.clear();
+    auto& covers = parsed.terms;
     unsigned product_index = 3;
     for (auto& cover : covers) {
         std::sort(cover.begin(), cover.end());

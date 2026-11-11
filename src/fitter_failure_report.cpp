@@ -1,4 +1,5 @@
 #include "fitter_failure_report.hpp"
+#include "pla_text.hpp"
 #include "device_family.hpp"
 #include "frontend.hpp"
 #include <algorithm>
@@ -35,53 +36,27 @@ void capture_fitter_partition_state(FitterReportData& report, const std::vector<
     };
     std::vector<std::string> inputs;
     std::vector<Column> columns;
-    std::istringstream file(report.optimized_pla);
-    std::string line, labels;
-    bool products = false;
-    while (std::getline(file, line)) {
-        std::istringstream fields(line);
-        std::string token;
-        if (!(fields >> token) || token[0] == '#')
+    const auto pla = parse_pla_text(report.optimized_pla);
+    for (const auto& label : pla.inputs)
+        inputs.push_back(original_names.at(label));
+    for (unsigned c = 0; c < pla.outputs.size(); ++c) {
+        auto token          = pla.outputs[c];
+        const bool negative = token.find('-') != std::string::npos;
+        while (!token.empty() && (token.back() == '%' || token.back() == '-'))
+            token.pop_back();
+        const auto dot  = token.find('.');
+        const auto name = token.substr(0, dot);
+        columns.push_back(
+            {original_names.at(name), dot == std::string::npos ? "COM" : token.substr(dot + 1), 0, {}, negative});
+        // The rows of a PLA without inputs carry no product to report.
+        if (inputs.empty())
             continue;
-        if (token[0] == '.') {
-            labels.clear();
-            if (token == ".ilb" || token == ".ob")
-                labels = token;
-            else if (token == ".p")
-                products = true;
-            else if (token == ".e")
-                break;
-            if (labels.empty())
-                continue;
-        } else if (products) {
-            std::string pattern = token, mask;
-            fields >> mask;
-            for (unsigned c = 0; c < columns.size(); ++c)
-                if (c < mask.size() && mask[c] == '1') {
-                    ++columns[c].terms;
-                    columns[c].products.push_back(pattern);
-                    for (unsigned i = 0; i < inputs.size(); ++i)
-                        if (i < pattern.size() && pattern[i] != '-')
-                            columns[c].fanins.insert(inputs[i]);
-                }
-            continue;
-        } else
-            fields.seekg(0);
-        while (fields >> token) {
-            if (labels == ".ilb")
-                inputs.push_back(original_names.at(token));
-            else if (labels == ".ob") {
-                const bool negative = token.find('-') != std::string::npos;
-                while (!token.empty() && (token.back() == '%' || token.back() == '-'))
-                    token.pop_back();
-                const auto dot  = token.find('.');
-                const auto name = token.substr(0, dot);
-                columns.push_back({original_names.at(name),
-                                   dot == std::string::npos ? "COM" : token.substr(dot + 1),
-                                   0,
-                                   {},
-                                   negative});
-            }
+        for (const auto& pattern : pla.terms[c]) {
+            ++columns[c].terms;
+            columns[c].products.push_back(pattern);
+            for (unsigned i = 0; i < inputs.size(); ++i)
+                if (pattern[i] != '-')
+                    columns[c].fanins.insert(inputs[i]);
         }
     }
     std::map<std::string, const Pin*> declarations;

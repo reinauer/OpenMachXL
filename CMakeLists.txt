@@ -54,7 +54,7 @@ endif()
 
 add_subdirectory(third_party/espresso)
 add_library(machxl_frontend src/logic.cpp src/frontend.cpp src/jedec.cpp src/signature.cpp src/simulator.cpp src/simulation_reports.cpp src/simulation_placement.cpp src/settings.cpp src/synthesis.cpp src/fitter_legacy_failure_report.cpp src/fitter_failure_report.cpp src/power_reports.cpp src/fitter_report_data.cpp src/fitter_reports.cpp src/fitter_place_report.cpp src/timing_report.cpp
-  src/device_mach111.cpp src/fitter.cpp src/fitter_metadata.cpp src/fitter_budget.cpp src/fitter_route.cpp src/fitter_inputs.cpp src/fitter_order.cpp
+  src/device_mach111.cpp src/fitter.cpp src/fitter_metadata.cpp src/fitter_budget.cpp src/pla_text.cpp src/fitter_route.cpp src/fitter_inputs.cpp src/fitter_order.cpp
   src/fitter_partition.cpp src/fitter_place.cpp src/device_family.cpp src/fitter_family.cpp src/fitter_family_place.cpp src/fitter_modern_place.cpp src/fitter_modern.cpp
   src/optimizer.cpp src/optimizer_bridge.c)
 target_link_libraries(machxl_frontend PRIVATE machxl_espresso)
@@ -92,6 +92,9 @@ if(BUILD_TESTING)
   add_executable(fitter_budget_test tests/fitter_budget_test.cpp)
   target_link_libraries(fitter_budget_test PRIVATE machxl_frontend)
   add_test(NAME fitting_runtime_budget COMMAND fitter_budget_test)
+  add_executable(pla_text_test tests/pla_text_test.cpp)
+  target_link_libraries(pla_text_test PRIVATE machxl_frontend)
+  add_test(NAME pla_text_parser COMMAND pla_text_test)
   add_executable(fitter_inputs_test tests/fitter_inputs_test.cpp)
   target_link_libraries(fitter_inputs_test PRIVATE machxl_frontend)
   add_test(NAME original_input_pin_retries COMMAND fitter_inputs_test)

@@ -1,4 +1,5 @@
 #include "fitter_modern.hpp"
+#include "pla_text.hpp"
 #include "device_family.hpp"
 #include "fitter_budget.hpp"
 #include "fitter_failure_report.hpp"
@@ -36,53 +37,15 @@ ParsedPla synthesized_pla(Design& design, OptimizerOptions options, FitterReport
         report->optimized_pla    = text;
         report->optimized_design = std::make_shared<Design>(design);
     }
-    ParsedPla p;
-    unsigned input_count = 0, output_count = 0;
-    std::istringstream file(text);
-    std::string line, labels;
-    bool products = false;
-    while (std::getline(file, line)) {
-        std::istringstream fields(line);
-        std::string token;
-        if (!(fields >> token) || token[0] == '#')
-            continue;
-        if (token[0] == '.') {
-            labels.clear();
-            if (token == ".i")
-                fields >> input_count;
-            else if (token == ".o") {
-                fields >> output_count;
-                p.terms.resize(output_count);
-            } else if (token == ".ilb" || token == ".ob")
-                labels = token;
-            else if (token == ".p")
-                products = true;
-            else if (token == ".e")
-                break;
-            if (labels.empty())
-                continue;
-        } else if (products) {
-            std::string pattern, outputs;
-            if (input_count) {
-                pattern = token;
-                fields >> outputs;
-            } else
-                outputs = token;
-            if (pattern.size() != input_count || outputs.size() != output_count)
-                unsupported("invalid synthesized PLA dimensions");
-            for (unsigned out = 0; out < output_count; ++out)
-                if (outputs[out] == '1' && (input_count || p.terms[out].empty()))
-                    p.terms[out].push_back(pattern);
-            continue;
-        } else if (!labels.empty()) {
-            (labels == ".ilb" ? p.inputs : p.outputs).push_back(token);
-        }
-        if (!labels.empty())
-            while (fields >> token)
-                (labels == ".ilb" ? p.inputs : p.outputs).push_back(token);
-    }
-    if (p.inputs.size() != input_count || p.outputs.size() != output_count)
-        unsupported("invalid synthesized PLA labels");
+    auto parsed = parse_pla_text(text);
+    if (parsed.malformed)
+        unsupported("invalid synthesized PLA");
+    // A constant PLA has no input patterns to tell its rows apart.
+    if (parsed.inputs.empty())
+        for (auto& terms : parsed.terms)
+            if (terms.size() > 1)
+                terms.resize(1);
+    ParsedPla p{std::move(parsed.inputs), std::move(parsed.outputs), std::move(parsed.terms)};
     std::map<std::string, std::string> original_names;
     for (const auto& alias : pla_signal_aliases(design))
         original_names.emplace(alias.second, alias.first);

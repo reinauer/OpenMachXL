@@ -1,4 +1,5 @@
 #include "timing_report.hpp"
+#include "pla_text.hpp"
 #include "fitter_live.hpp"
 #include "fitter_report_data.hpp"
 #include "frontend.hpp"
@@ -65,8 +66,7 @@ std::string render_timing_report(const Design& design, const std::string& pla, c
     std::vector<std::vector<std::string>> terms;
     Design declarations;
     std::istringstream text(pla);
-    std::string line, continuation;
-    bool products = false;
+    std::string line;
     while (std::getline(text, line)) {
         std::istringstream words(line);
         std::string first;
@@ -106,42 +106,12 @@ std::string render_timing_report(const Design& design, const std::string& pla, c
             }
             continue;
         }
-        if (first == ".ilb" || first == ".ob") {
-            continuation = first;
-            auto& labels = first == ".ilb" ? inputs : outputs;
-            std::string label;
-            while (words >> label)
-                labels.push_back(label);
-            continue;
-        }
-        if (first[0] == '.') {
-            continuation.clear();
-            products = first == ".p";
-            if (products)
-                terms.resize(outputs.size());
-            continue;
-        }
-        if (!continuation.empty()) {
-            auto& labels = continuation == ".ilb" ? inputs : outputs;
-            labels.push_back(first);
-            std::string label;
-            while (words >> label)
-                labels.push_back(label);
-            continue;
-        }
-        if (products) {
-            std::string cover;
-            words >> cover;
-            if (inputs.empty()) {
-                cover = first;
-                first.clear();
-            }
-            if (first.size() != inputs.size() || cover.size() != outputs.size())
-                continue;
-            for (unsigned col = 0; col < cover.size(); ++col)
-                if (cover[col] == '1')
-                    terms[col].push_back(first);
-        }
+    }
+    {
+        auto parsed = parse_pla_text(pla);
+        inputs      = std::move(parsed.inputs);
+        outputs     = std::move(parsed.outputs);
+        terms       = std::move(parsed.terms);
     }
     discard_combinatorial_storage_controls(outputs, terms);
     retain_reachable_equations(declarations, inputs, outputs, terms);
