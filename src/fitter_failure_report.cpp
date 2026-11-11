@@ -93,7 +93,10 @@ void capture_fitter_partition_state(FitterReportData& report, const std::vector<
         block.fanin              = unsigned(partition.fanins[b].size());
         block.partition_clusters = partition.product_groups[b];
         block.clusters           = partition.product_groups[b];
-        block.free_clusters      = d.cells - partition.product_groups[b];
+        // MACH215 has one product-term cluster per two cells, as in the
+        // capacity the report prints for a fitted block.
+        const unsigned capacity = d.device == "MACH215" ? d.cells / 2 : d.cells;
+        block.free_clusters     = capacity > partition.product_groups[b] ? capacity - partition.product_groups[b] : 0u;
         for (unsigned cell = 0; cell < d.cells; ++cell) {
             unsigned available = 0;
             const auto offsets = d.device == "MACH215" ? std::vector<int>{0, 2, -2}

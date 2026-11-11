@@ -197,9 +197,13 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
             control_order.push_back(i);
         if (!data.successful)
             std::stable_sort(control_order.begin(), control_order.end(), [&](auto a, auto b) {
-                return data.nodes[a].traversal_order && data.nodes[b].traversal_order
-                           ? *data.nodes[a].traversal_order < *data.nodes[b].traversal_order
-                           : a > b;
+                // Nodes with a traversal position come first, in that order;
+                // the rest follow in reverse index order. Mixing the two rules
+                // per pair would not be a consistent ordering.
+                const auto &x = data.nodes[a].traversal_order, &y = data.nodes[b].traversal_order;
+                if (bool(x) != bool(y))
+                    return bool(x);
+                return x ? *x < *y : a > b;
             });
         for (auto index : control_order) {
             auto& node = data.nodes[index];
@@ -324,10 +328,11 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
     resource("Logical Product Terms", blocks * logic_cells * pts_per_cluster, pt_used);
     resource("Logic Macrocells", blocks * logic_cells, cell_used + (modern ? unusable.value_or(0) : 0));
     if (modern) {
-        out += format_fields(
-            "  > 1 PT Macrocells              ..     %4s   %4s\n",
-            data.successful || data.retained_image ? std::to_string(cell_used - single_used).c_str() : "..",
-            format_number(free_cells).c_str());
+        out += format_fields("  > 1 PT Macrocells              ..     %4s   %4s\n",
+                             data.successful || data.retained_image
+                                 ? std::to_string(cell_used > single_used ? cell_used - single_used : 0u).c_str()
+                                 : "..",
+                             format_number(free_cells).c_str());
         out += format_fields("  1 PT Macrocells                ..     %4s   %4s\n",
                              data.successful || data.retained_image ? std::to_string(single_used).c_str() : "..",
                              format_number(free_single).c_str());

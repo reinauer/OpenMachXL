@@ -273,9 +273,10 @@ std::string render_timing_report(const Design& design, const std::string& pla, c
                     }
                     if (stack.count(input))
                         continue;
-                    const auto found     = signals.find(input);
-                    const bool input_pad = found != signals.end() && found->second.pad && !found->second.pair.empty() &&
-                                           signals.at(found->second.pair).input_pair;
+                    const auto found = signals.find(input);
+                    const auto paired =
+                        found != signals.end() && found->second.pad ? signals.find(found->second.pair) : signals.end();
+                    const bool input_pad = paired != signals.end() && paired->second.input_pair;
                     const bool reg       = found != signals.end() && (found->second.reg || input_pad);
                     const bool comb      = primary.count(input) && !reg;
                     if (comb) {

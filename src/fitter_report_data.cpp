@@ -133,7 +133,7 @@ void finalize_fitter_report_data(const Design& design, const FuseImage& image, F
                 if (data.group_owner.at(b * d.cells + c) >= 0)
                     ++block.clusters;
             const unsigned capacity = d.device == "MACH215" ? d.cells / 2 : d.cells;
-            block.free_clusters     = capacity - block.clusters;
+            block.free_clusters     = capacity > block.clusters ? capacity - block.clusters : 0u;
             block.available_terms.resize(d.cells);
             unsigned unusable = 0, free_multi = 0, free_single = 0;
             for (unsigned c = 0; c < d.cells; ++c) {
