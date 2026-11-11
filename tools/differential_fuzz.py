@@ -56,13 +56,13 @@ def expression(rng, signals):
     return "%s :+: %s" % (product(rng, signals), product(rng, signals))
 
 
-def equations_design(rng, name, device):
+def equations_design(rng, name, device, scale=1):
     """Combinatorial and registered outputs, buried nodes, controls, IF and CASE blocks."""
-    inputs = ["I%d" % i for i in range(rng.randint(2, 6))]
+    inputs = ["I%d" % i for i in range(rng.randint(2, min(6 * scale, 14)))]
     lines = ["CHIP %s %s" % (name, device), "PIN ? CLK"] + ["PIN ? %s" % i for i in inputs]
     equations, readable = [], list(inputs)
     outputs = []
-    for index in range(rng.randint(1, 5)):
+    for index in range(rng.randint(1, 5 * scale)):
         node = index > 0 and rng.random() < 0.2
         signal = ("N%d" if node else "O%d") % index
         storage = rng.choice(["", "", " REG", " REG", " LATCHED"]) if not node else rng.choice(["", " REG"])
@@ -174,12 +174,13 @@ def state_design(rng, name, device):
     return "\r\n".join(lines + body) + "\r\n"
 
 
-def generate(seed, index):
-    rng = random.Random("%d/%d" % (seed, index))
+def generate(seed, index, scale=1):
+    rng = random.Random("%d/%d" % (seed, index) if scale == 1 else "%d/%d/%d" % (seed, index, scale))
     name = "F%05d" % (index % 100000)
     device = rng.choice(DEVICES)
-    maker = state_design if rng.random() < 0.25 else equations_design
-    return name, device, maker(rng, name, device)
+    if rng.random() < 0.25:
+        return name, device, state_design(rng, name, device)
+    return name, device, equations_design(rng, name, device, scale)
 
 
 def native(compiler, mode, source, settings, compatibility):
@@ -230,6 +231,8 @@ def main():
     parser.add_argument("--count", type=int, default=20)
     parser.add_argument("--seed", type=int, default=1)
     parser.add_argument("--start", type=int, default=0, help="index of the first design of this seed")
+    parser.add_argument("--scale", type=int, default=1, choices=range(1, 5),
+                        help="size factor for the number of inputs and outputs of equation designs")
     parser.add_argument("--dos", type=Path, default=ROOT / "dos", help="directory with the original archives")
     parser.add_argument("--timeout", type=int, default=300, help="seconds per run of the original")
     args = parser.parse_args()
@@ -240,7 +243,7 @@ def main():
     output.mkdir(parents=True, exist_ok=False)
     results = []
     for index in range(args.start, args.start + args.count):
-        name, device, source = generate(args.seed, index)
+        name, device, source = generate(args.seed, index, args.scale)
         examples = {name + ".PDS": source.encode("ascii")}
         run = dos_oracle.run_one(args.dos, output, name + ".PDS", examples, executable, args.timeout)
         work = output / name.lower() / "WORK"
@@ -248,7 +251,7 @@ def main():
             differences, errors = ["the original did not finish"], []
         else:
             differences, errors = compare(args.compiler.resolve(), work, name)
-        results.append({"name": name, "seed": args.seed, "index": index, "device": device,
+        results.append({"name": name, "seed": args.seed, "index": index, "scale": args.scale, "device": device,
                         "original_errors": errors, "differences": differences})
         print("%s %-8s %s" % (name, device, "; ".join(differences) if differences
                               else "same" + (" (both reject: %s)" % ",".join(errors) if errors else "")), flush=True)
