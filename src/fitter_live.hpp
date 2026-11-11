@@ -9,6 +9,16 @@
 #include <set>
 
 namespace machxl {
+// A placer marks "not placed" with -1. Reads the cell, pin or input register
+// ordinal of a signal the fitter is about to use; an unplaced one is an
+// internal inconsistency and must not turn into a huge unsigned index.
+inline unsigned placed_location(const std::vector<int>& locations, std::size_t signal, const char* kind)
+{
+    if (signal >= locations.size() || locations[signal] < 0)
+        throw LogicError(std::string("internal fitter error: placement left a signal without ") + kind);
+    return unsigned(locations[signal]);
+}
+
 // MACHFITR checks set/reset product counts before unused-node removal,
 // after discarding controls that do not apply to combinatorial outputs.
 inline void validate_storage_control_products(const std::vector<std::string>& outputs,

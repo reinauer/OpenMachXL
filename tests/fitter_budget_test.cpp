@@ -1,4 +1,5 @@
 #include "fitter_budget.hpp"
+#include "fitter_live.hpp"
 #include "logic.hpp"
 #include "fitter_route.hpp"
 #include <cassert>
@@ -20,6 +21,16 @@ int main() {
             }
         }
         check_fitting_budget();
+    }
+    {
+        // A placer's "not placed" marker must not become an index.
+        const std::vector<int> locations{7,-1};
+        assert(placed_location(locations,0,"a pin")==7);
+        for(std::size_t signal:{std::size_t(1),std::size_t(2)}) {
+            bool unplaced=false;
+            try {placed_location(locations,signal,"a pin");}catch(const LogicError&) {unplaced=true;}
+            assert(unplaced);
+        }
     }
     bool rejected=false;
     try {FittingDeadline invalid(1000);}catch(const LogicError&) {rejected=true;}

@@ -673,7 +673,8 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
             }
         }
         for (unsigned i = 0; i < signals.size(); ++i) {
-            included[i]->number = signals[i].buried ? unsigned(placement.cells[i] + 2) : unsigned(placement.pins[i]);
+            included[i]->number = signals[i].buried ? placed_location(placement.cells, i, "a macrocell") + 2
+                                                    : placed_location(placement.pins, i, "a pin");
             placed_oe_slots[signals[i].name] = placement.oe_slots[i];
             placed_oe_keys[signals[i].name]  = placement.oe_keys[i];
             placed_sequential_search         = placement.sequential_search;
@@ -682,7 +683,8 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
             if (output_aliases.count(pin.name)) {
                 const auto target = std::find_if(signals.begin(), signals.end(),
                                                  [&](const auto& signal) { return signal.name == pin.pair; });
-                pin.number        = unsigned(placement.cells.at(unsigned(target - signals.begin())) + 2);
+                pin.number =
+                    placed_location(placement.cells, std::size_t(target - signals.begin()), "a macrocell") + 2;
             }
     }
     std::map<std::string, const Pin*> pins;

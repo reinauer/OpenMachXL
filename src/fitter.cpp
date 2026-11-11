@@ -351,15 +351,16 @@ LogicalIds place_pins(Design& design, const ParsedPla& pla, const std::map<std::
         ids.sequential_search         = placement.sequential_search;
         if (i < placement.implicit_controls.size() && placement.implicit_controls[i])
             ids.implicit_controls[signals[i].name] = placement.implicit_controls[i];
-        included[i]->number = signals[i].buried ? static_cast<unsigned>(placement.cells[i] + 2)
-                                                : static_cast<unsigned>(placement.pins[i]);
+        included[i]->number = signals[i].buried ? placed_location(placement.cells, i, "a macrocell") + 2
+                                                : placed_location(placement.pins, i, "a pin");
     }
     for (auto& pin : design.pins)
         if (output_aliases.count(pin.name)) {
             const auto target = std::find_if(signals.begin(), signals.end(), [&](const auto& signal) {
                 return signal.name == output_aliases.at(pin.name);
             });
-            pin.number        = unsigned(placement.cells.at(unsigned(target - signals.begin())) + 2);
+            pin.number =
+                placed_location(placement.cells, std::size_t(target - signals.begin()), "a macrocell") + 2;
         }
     return ids;
 }

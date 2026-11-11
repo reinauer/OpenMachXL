@@ -940,13 +940,14 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
         std::map<std::string, const Pin*> pins;
         for (unsigned i = 0; i < signals.size(); ++i) {
             if (signals[i].output)
-                cells[signals[i].name] = unsigned(placement.cells[i]);
+                cells[signals[i].name] = placed_location(placement.cells, i, "a macrocell");
             if (signals[i].input_register)
-                register_ios[signals[i].name] = unsigned(placement.input_registers[i]);
+                register_ios[signals[i].name] = placed_location(placement.input_registers, i, "an input register");
             included[i]->number   = signals[i].input_register
-                                        ? d.blocks * d.cells + unsigned(placement.input_registers[i]) + 2
-                                    : signals[i].buried ? unsigned(placement.cells[i]) + 2
-                                                        : unsigned(placement.pins[i]);
+                                        ? d.blocks * d.cells +
+                                              placed_location(placement.input_registers, i, "an input register") + 2
+                                    : signals[i].buried ? placed_location(placement.cells, i, "a macrocell") + 2
+                                                        : placed_location(placement.pins, i, "a pin");
             pins[signals[i].name] = included[i];
         }
         for (const auto& alias : output_aliases) {
