@@ -1002,8 +1002,14 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
         trial.pin_count = 44;
         std::set<std::string> active(pla.inputs.begin(), pla.inputs.end());
         active.insert(output_names.begin(), output_names.end());
-        apply_placement_metadata(trial, design, active);
-        capture_report(trial, false);
+        // The snapshot is diagnostic only. A failed route can leave two
+        // inputs on one pin, which the metadata step rejects; that must not
+        // replace the retry below and end a fit that would have continued.
+        try {
+            apply_placement_metadata(trial, design, active);
+            capture_report(trial, false);
+        } catch (const LogicError&) {
+        }
     }
     if (!input_route.success) {
         int target = -1;

@@ -1899,11 +1899,11 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
         fitting.report ? ModernPlacementFailureCallback([&](const auto& placement, const auto& movable) {
             try {
                 (void)evaluate_placement(placement, movable, true);
-            } catch (const LogicError& error) {
+            } catch (const LogicError&) {
                 // A best-effort dump cannot replace the proven physical
-                // failure when its diagnostic routing hits the deadline.
-                if (std::string(error.what()) != "Fitting run-time limit exceeded")
-                    throw;
+                // failure, whether its diagnostic pass hits the deadline or
+                // any other condition the real evaluation would retry from.
+                // With reports requested the fit must end as it does without.
             }
         })
                        : ModernPlacementFailureCallback{});
