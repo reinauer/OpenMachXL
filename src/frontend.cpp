@@ -77,6 +77,9 @@ std::vector<std::string> expand_signal_names(const std::string& text)
         std::smatch r;
         if (!std::regex_match(part, r, range))
             fail("Invalid vector range: " + text);
+        // Longer numerals cannot be in range and would overflow the conversion.
+        if (r[1].length() > 5 || r[2].length() > 5)
+            fail("Vector range exceeds frontend limit: " + text);
         int first = std::stoi(r[1]), last = r[2].matched ? std::stoi(r[2]) : first;
         if (first > 65535 || last > 65535 || std::abs(first - last) > 255)
             fail("Vector range exceeds frontend limit: " + text);
@@ -1529,8 +1532,36 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
                 name.erase(0, 1);
             auto expanded = expand_signal_names(name);
             std::vector<std::string> numbers;
-            if (location != "?")
+            if (location != "?") {
+                // MACHPAR checks every location number while parsing: P90 for
+                // a numeral it cannot read, P127/P128 for a location the
+                // device does not have. Node 1 is its global node.
+                const bool reserved = name == "NC" || name == "GND" || name == "VCC" || name == "VCC1" ||
+                                      name == "VCC2" || name == "VCC3";
+                const auto device = frontend_devices().find(design.device);
+                for (std::size_t at = 0; at < location.size();) {
+                    if (!std::isdigit(static_cast<unsigned char>(location[at]))) {
+                        ++at;
+                        continue;
+                    }
+                    auto end = at;
+                    while (end < location.size() && std::isdigit(static_cast<unsigned char>(location[end])))
+                        ++end;
+                    // Twenty digits are unreadable to the original; eleven are
+                    // merely out of range. Avoid converting what cannot fit.
+                    if (end - at > 19)
+                        fail("P90: Unexpected number symbol in malformed statement: " + location);
+                    const auto number = end - at > 9 ? ~0UL : std::stoul(location.substr(at, end - at));
+                    at                = end;
+                    if (reserved || device == frontend_devices().end())
+                        continue;  // Checked with the reserved name or the device below.
+                    if (key == "PIN" && (!number || number > device->second.first))
+                        fail("P127: invalid pin number for this device or macro: " + location);
+                    if (key == "NODE" && (!number || number > mach_node_limit(mach_device_layout(design.device))))
+                        fail("P128: invalid node number for this device or macro: " + location);
+                }
                 numbers = expand_signal_names("P[" + location + "]");
+            }
             if (!numbers.empty() && numbers.size() != expanded.size())
                 fail("Pin location/vector width mismatch");
             bool reg = false, lat = false, storage_declared = false;

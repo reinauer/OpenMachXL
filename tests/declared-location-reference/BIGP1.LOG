@@ -1,0 +1,34 @@
+
+*** Start MACHPAR.E 07:57:46 
+Bigp1.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP BIGP1 MACH111
+   2     |PIN 99999999999999999999 A
+  ERROR ------^ (L2/C5)
+|> ERROR P90  Unexpected number symbol %S in malformed statement.
+
+   3     |PIN ? Q
+   4     |EQUATIONS
+   5     |Q=A
+  ERROR ----^ (L5/C3)
+|> ERROR P60  Undeclared signal name A
+
+
+ %% MACHPAR %%    ERROR count:  2     WARNING count:  1
+
+ %% MACHPAR %%    File processing terminated.     File:  Bigp1.pds
+
+*** End MACHPAR.EXE 07:57:46; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

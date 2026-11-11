@@ -224,6 +224,8 @@ if(BUILD_TESTING)
       COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/state_default_reference.py $<TARGET_FILE:machxl> ${CMAKE_CURRENT_SOURCE_DIR}/tests/input-pair-equation-reference)
     add_test(NAME original_input_pair_equation_fits
       COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/modern_fitter_reference.py $<TARGET_FILE:machxl> ${CMAKE_CURRENT_SOURCE_DIR}/tests/input-pair-fit-reference)
+    add_test(NAME original_declared_locations
+      COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/state_default_reference.py $<TARGET_FILE:machxl> ${CMAKE_CURRENT_SOURCE_DIR}/tests/declared-location-reference)
     add_test(NAME native_input_robustness
       COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/input_robustness.py $<TARGET_FILE:machxl>)
     add_test(NAME original_fitter_rejections

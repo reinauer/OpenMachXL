@@ -53,8 +53,12 @@ SimulationPlacement prepare_simulation_placement(Design& design, const std::stri
             s6[name] = std::regex_search(line, match, s6_field) && match[1] == "1";
             if (kind == "NODE")
                 node_names[number] = name;
-            else if (std::regex_search(line, match, input_pair_field))
-                input_pairs[std::stoul(match[1])] = name;
+            else if (std::regex_search(line, match, input_pair_field)) {
+                // A longer numeral cannot name a node and would overflow.
+                if (match[1].length() > 9)
+                    throw LogicError("Invalid simulation input pair node for " + name);
+                input_pairs[unsigned(std::stoul(match[1]))] = name;
+            }
         }
     }
     SimulationPlacement result;

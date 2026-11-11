@@ -1,0 +1,68 @@
+{
+ "description": "Original MACHXL 2.1 parser rejections of pin and node location numbers the device does not have",
+ "cases": [
+  {
+   "name": "BIGP1",
+   "files": {
+    "BIGP1.PDS": "3992c6eea88d4d310282ccc231ffa831ec4f890fcdf53ef4abe8641283867461",
+    "BIGP1.MXL": "9963adfb24558f9397411d9a3d9c49fa5091597cf8da25b9c0e5c14ae32517c5",
+    "BIGP1.LOG": "1122f5599f308331e72312478673b821afaaad98abbfbdbe0f7e428174747e4c"
+   },
+   "error": "P90"
+  },
+  {
+   "name": "BIGP2",
+   "files": {
+    "BIGP2.PDS": "94ed47ecc26caa603d16ee14662a888ca035502d72f6601aee23273c5c7a6cf0",
+    "BIGP2.MXL": "af1f2232917bbdbcc34d291245d6a08b5d5f08f7c65b1722c53fee94a0736b32",
+    "BIGP2.LOG": "e86f6563fd94dfdc79a72d2040e57f3803b4ec4f2ece63b1ae7f508a606a012b"
+   },
+   "error": "P127"
+  },
+  {
+   "name": "BIGP3",
+   "files": {
+    "BIGP3.PDS": "77e0e75609bfe5b272ddc3aa10c312b07be43e66a6bb652754fa0300205cd582",
+    "BIGP3.MXL": "c6865a85fda3f83751be1cfa7954ee1665c19335802c42f735e119860b09d722",
+    "BIGP3.LOG": "f73201eb50b5b1fa6b348077d525da7eba19846272bd9585f287573d92158d62"
+   },
+   "error": "P127"
+  },
+  {
+   "name": "BIGP4",
+   "files": {
+    "BIGP4.PDS": "778f51de65cade107720e649008cf9a57a54182a0b493d86434717492ea715d6",
+    "BIGP4.MXL": "417af9601b856ab1138cd9a455f9fa98f0f983f1ae0b8336c0ad2b703f0ff223",
+    "BIGP4.LOG": "35c88087d30881c8d7ae14734936b83987a338314690554205226595af52e60c"
+   },
+   "error": "P127"
+  },
+  {
+   "name": "BIGN1",
+   "files": {
+    "BIGN1.PDS": "7495248aa6bbabb17ddef1daeb1a1cb5c90c81d8326d213536f4ff0f0d9f99eb",
+    "BIGN1.MXL": "b301b4aa5bb48e02ea739f78055b50c2356c74aab7583665108c65609aab5e0d",
+    "BIGN1.LOG": "8d444ba135dffb47efe802b9893879544bdcd3459f785fc2ca75a41c2a4a16b5"
+   },
+   "error": "P128"
+  },
+  {
+   "name": "BIGN2",
+   "files": {
+    "BIGN2.PDS": "79e29fdb8a4f81ccd2ef36494de2b6d736086e639ae591e17f4b9fc320fc504e",
+    "BIGN2.MXL": "03d8424376f9993b29df9e930b2c08212e259b3c29d2a771d11a14ce86da06e9",
+    "BIGN2.LOG": "f23046cc05aaee06a20631df76a2da76cf9313905363e278744ba9fc7e1ddf69"
+   },
+   "error": "P128"
+  },
+  {
+   "name": "BIGN3",
+   "files": {
+    "BIGN3.PDS": "2811b2c4478c89fcaab4707bde96dca6c47ba2afdc1f2b5f23b36fb400f6700f",
+    "BIGN3.MXL": "11dadc93ecaffb6b4eb29c8e269e1d0be76b296a6be93cb987c0b16440338583",
+    "BIGN3.LOG": "0fd77eb52645b3a496cead936a7ac36af3042933e4b9173951f59b691088afaf"
+   },
+   "error": "P128"
+  }
+ ]
+}

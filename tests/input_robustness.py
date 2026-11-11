@@ -72,10 +72,30 @@ CASES = [
           ('pin_negative', 'PIN -3 Y', 'Invalid pin location 4294967293 for Y'),
           ('node_past_device', 'NODE 40000 N', 'Invalid node location 40000 for N'),
           ('node_below_first', 'NODE 1 N', 'Invalid node location 1 for N'))],
-    # The same check applies to a node location written in the design itself.
-    dict(name='fixed_location_declared_node_past_device',
-         files={'T.PDS': FLOATING_DESIGN.format(device='MACH211').replace('NODE ? N', 'NODE 40000 N')},
-         args=['--emit-jedec', 'T.PDS'], ok=False, message='Invalid node location 40000 for N'),
+    # A location written in the design itself is checked while parsing, with
+    # the original parser's diagnostics (P127 pins, P128 nodes, P90 for a
+    # numeral it cannot read). These used to reach std::stoi or the fitter.
+    *[dict(name='declared_location_' + label,
+           files={'T.PDS': FLOATING_DESIGN.format(device='MACH211').replace(old, new)},
+           args=[mode, 'T.PDS'], ok=False, message=message)
+      for mode in ('--emit-pla', '--emit-jedec')
+      for label, old, new, message in (
+          ('node_past_device', 'NODE ? N', 'NODE 40000 N', 'P128: invalid node number for this device or macro: 40000'),
+          ('node_eleven_digits', 'NODE ? N', 'NODE 99999999999 N', 'P128: invalid node number'),
+          ('pin_past_device', 'PIN ? A', 'PIN 45 A', 'P127: invalid pin number for this device or macro: 45'),
+          ('pin_zero', 'PIN ? A', 'PIN 0 A', 'P127: invalid pin number for this device or macro: 0'),
+          ('pin_twenty_digits', 'PIN ? A', 'PIN 99999999999999999999 A', 'P90: Unexpected number symbol'))],
+    # An oversized vector index or saved input-pair number is rejected as out
+    # of range, not converted.
+    dict(name='vector_index_eleven_digits',
+         files={'T.PDS': 'CHIP T MACH111\nPIN ? A[99999999999]\nPIN ? Q\nEQUATIONS\nQ=A[99999999999]\n'},
+         args=['--emit-pla', 'T.PDS'], ok=False, message='Vector range exceeds frontend limit'),
+    dict(name='saved_simulation_input_pair_overflow',
+         files={'T.PDS': SIMULATED_INPUT_REGISTER, 'T.MXL': SAVED_SIMULATION_PLACEMENT,
+                'T.BLC': 'Pin 8 /A ; IPair 99999999999999999999999\nPin 9 Q Comb ; S6=1 S9=1 Pair 2\n'
+                         'Pin 20 CLK\nNode 135 N Reg ;\n'},
+         args=['--emit-jedec', 'T.PDS', '--settings', 'T.MXL', '--simulate'], ok=False,
+         message='Invalid simulation input pair node for A'),
     # A saved placement fixes a paired pad and its node in different blocks.
     # The placer used to keep the node's block and silently move the pad.
     dict(name='saved_placement_pair_in_two_blocks',
