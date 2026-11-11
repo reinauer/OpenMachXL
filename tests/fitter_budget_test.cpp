@@ -58,6 +58,22 @@ int main() {
             assert(disabled.failed_placements[0]==400000);
             assert(!disabled.request_repartition);
         }
+        {
+            // With iteration off a search that keeps failing is abandoned
+            // with an error far beyond the repartition thresholds.
+            FittingIterationCounters disabled(2,false);
+            disabled.assume_uniterated_failures(0,4999998,3999999);
+            route_source_choices({congested,routable},{},4);
+            record_fitting_placement(0,false);
+            bool abandoned=false;
+            try {route_source_choices({congested,routable},{},4);}catch(const LogicError&) {abandoned=true;}
+            assert(abandoned);
+            abandoned=false;
+            try {record_fitting_placement(0,false);}catch(const LogicError&) {abandoned=true;}
+            assert(abandoned);
+            record_fitting_placement(1,false);
+            assert(!disabled.request_repartition);
+        }
         repartition=false;
         try {check_fitting_iteration();}catch(const RepartitionRequested&) {repartition=true;}
         assert(repartition);

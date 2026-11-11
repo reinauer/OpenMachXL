@@ -40,10 +40,20 @@ class FittingIterationCounters
     unsigned logical_records = 0;
     void routing_result(unsigned block, unsigned unrouted);
     void placement_result(unsigned block, bool success);
+    // Test hook: failures already counted towards the bound that applies
+    // while iteration is off.
+    void assume_uniterated_failures(unsigned block, std::uint32_t routes, std::uint32_t placements)
+    {
+        uniterated_routes_.at(block)     = routes;
+        uniterated_placements_.at(block) = placements;
+    }
 
    private:
     FittingIterationCounters* previous_;
     bool enabled_;
+    // Failures counted while iteration is off; they only bound the search.
+    std::vector<std::uint32_t> uniterated_routes_;
+    std::vector<std::uint32_t> uniterated_placements_;
 };
 // Called only for full physical block routing, never individual candidate trials.
 void record_fitting_route(unsigned block, unsigned unrouted);

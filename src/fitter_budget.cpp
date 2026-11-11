@@ -32,7 +32,8 @@ void check_fitting_budget()
         throw LogicError("Fitting run-time limit exceeded");
 }
 FittingIterationCounters::FittingIterationCounters(unsigned blocks, bool enabled)
-    : failed_routes(blocks), failed_placements(blocks), previous_(iteration_counters), enabled_(enabled)
+    : failed_routes(blocks), failed_placements(blocks), previous_(iteration_counters), enabled_(enabled),
+      uniterated_routes_(blocks), uniterated_placements_(blocks)
 {
     iteration_counters = this;
 }
@@ -40,15 +41,36 @@ FittingIterationCounters::~FittingIterationCounters()
 {
     iteration_counters = previous_;
 }
+namespace {
+// Without partition iteration nothing ends a physical search that keeps
+// failing. Ten times the repartition thresholds is far beyond any search
+// that is known to succeed; stop there with an error instead of running on.
+constexpr std::uint32_t abandoned_routes     = 5000000;
+constexpr std::uint32_t abandoned_placements = 4000000;
+[[noreturn]] void abandon_search()
+{
+    throw LogicError("Fitting search limit exceeded without partition iteration (ITERATE_FITR=N)");
+}
+}  // namespace
 void FittingIterationCounters::routing_result(unsigned block, unsigned unrouted)
 {
-    if (enabled_ && unrouted && ++failed_routes.at(block) >= 500000)
+    if (!enabled_) {
+        if (unrouted && ++uniterated_routes_.at(block) >= abandoned_routes)
+            abandon_search();
+        return;
+    }
+    if (unrouted && ++failed_routes.at(block) >= 500000)
         request_repartition = true;
 }
 void FittingIterationCounters::placement_result(unsigned block, bool success)
 {
-    if (!enabled_)
+    if (!enabled_) {
+        if (success)
+            uniterated_placements_.at(block) = 0;
+        else if (++uniterated_placements_.at(block) > abandoned_placements)
+            abandon_search();
         return;
+    }
     if (success)
         failed_placements.at(block) = 0;
     else if (++failed_placements.at(block) > 400000)
