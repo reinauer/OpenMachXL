@@ -460,6 +460,26 @@ class Simulator
         }
         return result;
     }
+    // MACHEXP replaces a STATE or CONDITIONS name in SETF and CLOCKF by the
+    // signals of its encoding before the simulator sees the command. A
+    // complemented name has no such encoding (INTERNAL_ERROR E1820).
+    std::vector<Literal> signal_literals(const std::vector<std::string>& args) const
+    {
+        std::vector<Literal> result;
+        for (const auto& literal : literals(args)) {
+            const auto symbol = design.simulation_symbols.find(literal.name);
+            if (pins.count(literal.name) || symbol == design.simulation_symbols.end()) {
+                result.push_back(literal);
+                continue;
+            }
+            const auto cubes = literal.value == Value::High ? sum_of_products(symbol->second) : Sop{};
+            if (cubes.size() != 1)
+                error("E1820: Illegal simulation element: " + literal.name);
+            for (const auto& bit : cubes.front())
+                result.push_back({bit.first, bit.second ? Value::High : Value::Low});
+        }
+        return result;
+    }
     long long comparison_number(const std::string& token) const
     {
         // Numeric relation operands are loop indices or unsigned constants,
@@ -683,7 +703,8 @@ class Simulator
                 if (op == "PRELOAD")
                     result.vectors_disabled_by_preload = true;
                 std::map<std::string, int> edges;
-                for (const auto& literal : literals(command.arguments)) {
+                for (const auto& literal :
+                     op == "PRELOAD" ? literals(command.arguments) : signal_literals(command.arguments)) {
                     if (op == "PRELOAD") {
                         auto alias = design.simulation_symbols.find(literal.name);
                         if (alias != design.simulation_symbols.end()) {
@@ -737,7 +758,7 @@ class Simulator
                     }
                 }
             } else if (op == "CLOCKF") {
-                auto clocks_to_pulse = literals(command.arguments);
+                auto clocks_to_pulse = signal_literals(command.arguments);
                 if (clocks_to_pulse.empty()) {
                     physical_inputs[default_clock_pin]   = default_clock_name;
                     physical_inverted[default_clock_pin] = default_clock_inverted;
@@ -746,7 +767,7 @@ class Simulator
                 std::map<std::string, int> pulses;
                 for (auto& clock : clocks_to_pulse) {
                     if ((pins.count(clock.name) && pins.at(clock.name)->node) || primary.count(clock.name))
-                        error("CLOCKF requires an input pin");
+                        error("D3290: Cannot CLOCKF pin " + clock.name + ". The pin is not a clock pin.");
                     if (!is_known_value(clock.value))
                         error("CLOCKF requires a known polarity");
                     // Negative physical clock pulses are supported only on MACH215 and

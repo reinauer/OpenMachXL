@@ -19,6 +19,9 @@ SAVED_SIMULATION_PLACEMENT = '[VERSION]=MACHXL 2.0\n[SIM_PLACE]=Saved placement\
 
 FLOATING_DESIGN = 'CHIP T {device}\nPIN ? A\nPIN ? B\nPIN ? Y\nNODE ? N\nEQUATIONS\nN=A*B\nY=N+B\n'
 
+STATE_MACHINE = ('CHIP T MACH111\nPIN ? CLK\nPIN ? X\nPIN ? S0 REG\nSTATE\nMEALY_MACHINE\nCLKF = CLK\n'
+                 'SA = /S0\nSB = S0\nSA := X -> SB\nSB := X -> SA\nSIMULATION\n')
+
 # name, files, arguments after the compiler, expected success, text that must
 # occur in the diagnostic of an expected rejection, and optionally files an
 # accepted run must write.
@@ -89,6 +92,20 @@ CASES = [
                          'EQUATIONS\nQ=A*B\nNN=A\nNN.CLKF=CLK\n'},
          args=['--emit-jedec', 'T.PDS', '--fitter-reports', 'R'], ok=True,
          outputs=['R/T.RPT', 'R/T.PRD', 'R/T.TAL']),
+    # A STATE name in SETF or CLOCKF. The original expands it to the signals
+    # of its encoding and then applies its ordinary rules to those signals;
+    # the lookup of the name itself used to fail with "map::at".
+    dict(name='simulation_setf_state_name',
+         files={'T.PDS': STATE_MACHINE + 'SETF /CLK X\nSETF SA\nCLOCKF CLK\n'},
+         args=['--emit-jedec', 'T.PDS', '--simulate'], ok=True),
+    dict(name='simulation_clockf_state_name',
+         files={'T.PDS': STATE_MACHINE + 'SETF /CLK X\nCLOCKF SB\n'},
+         args=['--emit-jedec', 'T.PDS', '--simulate'], ok=False,
+         message='D3290: Cannot CLOCKF pin S0. The pin is not a clock pin.'),
+    dict(name='simulation_setf_complemented_state_name',
+         files={'T.PDS': STATE_MACHINE + 'SETF /CLK X\nSETF /SA\nCLOCKF CLK\n'},
+         args=['--emit-jedec', 'T.PDS', '--simulate'], ok=False,
+         message='E1820: Illegal simulation element: SA'),
 ]
 
 # Messages of exceptions thrown by the standard library, not by the compiler.
