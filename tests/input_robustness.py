@@ -72,6 +72,13 @@ CASES = [
           ('pin_negative', 'PIN -3 Y', 'Invalid pin location 4294967293 for Y'),
           ('node_past_device', 'NODE 40000 N', 'Invalid node location 40000 for N'),
           ('node_below_first', 'NODE 1 N', 'Invalid node location 1 for N'))],
+    # A saved placement puts two signals on one pin. The router used to report
+    # "routing source occurs more than once" on MACH111.
+    *[dict(name='saved_placement_two_signals_on_one_pin_' + device,
+           files={'T.PDS': FLOATING_DESIGN.format(device=device), 'T.PLC': 'PIN 4 A\nPIN 4 B\n'},
+           args=['--emit-jedec', 'T.PDS', '--placement', 'T.PLC'], ok=False,
+           message='Duplicate physical pin assignment: pin 4 for A and B')
+      for device in ('MACH111', 'MACH211', 'MACH435')],
     # A location written in the design itself is checked while parsing, with
     # the original parser's diagnostics (P127 pins, P128 nodes, P90 for a
     # numeral it cannot read). These used to reach std::stoi or the fitter.

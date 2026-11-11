@@ -77,9 +77,18 @@ void validate_fixed_locations(const Design& design)
     // number would alias a real location or turn into "unconstrained".
     const auto& layout    = mach_device_layout(design.device);
     const auto node_limit = mach_node_limit(layout);
+    std::map<unsigned, const Pin*> pads;
     for (const auto& pin : design.pins) {
         if (!pin.number)
             continue;
+        // The design parser rejects two signals on one pin; a saved placement
+        // can still put them there.
+        if (!pin.node) {
+            const auto first = pads.emplace(pin.number, &pin);
+            if (!first.second)
+                throw LogicError("Duplicate physical pin assignment: pin " + std::to_string(pin.number) + " for " +
+                                 first.first->second->name + " and " + pin.name);
+        }
         if (pin.node ? pin.number < 2 || pin.number > node_limit : pin.number > layout.pins)
             throw LogicError(std::string("Invalid ") + (pin.node ? "node" : "pin") + " location " +
                              std::to_string(pin.number) + " for " + pin.name);
