@@ -38,6 +38,25 @@ const MachDeviceLayout& mach_device_layout(const std::string& device)
             return layout;
     throw std::invalid_argument("physical codec is not implemented for " + device);
 }
+std::vector<int> mach_steering_clusters(const MachDeviceLayout& layout, int cell)
+{
+    const auto& name     = layout.device;
+    const bool halves    = name == "MACH110" || name == "MACH111";
+    const int cells      = int(layout.cells);
+    const auto neighbour = name == "MACH215"                    ? std::vector<int>{0, 2, -2}
+                           : name.size() > 4 && name[4] == '1' ? std::vector<int>{0, 1, -1}
+                                                                : std::vector<int>{0, 1, 2, -1};
+    std::vector<int> result;
+    for (int delta : neighbour) {
+        const int cluster = cell + delta;
+        if (cluster < 0 || cluster >= cells)
+            continue;
+        if (halves && cluster / (cells / 2) != cell / (cells / 2))
+            continue;
+        result.push_back(cluster);
+    }
+    return result;
+}
 unsigned mach_node_limit(const MachDeviceLayout& layout)
 {
     const bool input_registers = layout.device.compare(0, 5, "MACH4") == 0;

@@ -74,19 +74,8 @@ void capture_fitter_partition_state(FitterReportData& report, const std::vector<
         block.free_clusters     = capacity > partition.product_groups[b] ? capacity - partition.product_groups[b] : 0u;
         for (unsigned cell = 0; cell < d.cells; ++cell) {
             unsigned available = 0;
-            const auto offsets = d.device == "MACH215" ? std::vector<int>{0, 2, -2}
-                                 : d.device[4] == '1'  ? std::vector<int>{0, 1, -1}
-                                                       : std::vector<int>{0, 1, 2, -1};
-            for (int offset : offsets) {
-                const int target = int(cell) + offset;
-                if (target < 0 || target >= int(d.cells))
-                    continue;
-                if ((d.device == "MACH110" || d.device == "MACH111") &&
-                    target / int(d.cells / 2) != int(cell) / int(d.cells / 2))
-                    continue;
-                if (d.device != "MACH215" || cell % 2 == 0)
-                    available += d.one_hot ? 5 : 4;
-            }
+            if (d.device != "MACH215" || cell % 2 == 0)
+                available += unsigned(mach_steering_clusters(d, int(cell)).size()) * (d.one_hot ? 5u : 4u);
             block.available_terms.push_back(available);
         }
         for (auto cluster : partition.members[b])

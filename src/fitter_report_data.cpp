@@ -143,16 +143,7 @@ void finalize_fitter_report_data(const Design& design, const FuseImage& image, F
                 }
                 const int target   = int(b * d.cells + c);
                 unsigned available = 0;
-                const auto offsets = d.device == "MACH215" ? std::vector<int>{0, 2, -2}
-                                     : d.device[4] == '1'  ? std::vector<int>{0, 1, -1}
-                                                           : std::vector<int>{0, 1, 2, -1};
-                for (int delta : offsets) {
-                    const int local = int(c) + delta;
-                    if (local < 0 || local >= int(d.cells))
-                        continue;
-                    if ((d.device == "MACH110" || d.device == "MACH111") &&
-                        local / int(d.cells / 2) != int(c) / int(d.cells / 2))
-                        continue;
+                for (int local : mach_steering_clusters(d, int(c))) {
                     const auto group       = b * d.cells + unsigned(local);
                     const int owner        = data.group_owner[group];
                     unsigned main_capacity = 4;

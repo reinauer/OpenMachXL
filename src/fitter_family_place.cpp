@@ -1044,25 +1044,7 @@ struct ProductAllocator
         : layout(d), owner(d.cells, -1), saved(d.cells, -1), demand(d.cells), active(d.cells)
     {
     }
-    std::vector<int> candidates(int cell) const
-    {
-        const bool mach2      = layout.device.substr(4, 1) == "2";
-        const bool special215 = layout.device == "MACH215";
-        // MACH110 has distinct steering types at cells7/8. MACH120/121
-        // has one DEV steering type for all12 cells, including cells5/6.
-        const bool half                = layout.device == "MACH110";
-        const std::vector<int> offsets = special215 ? std::vector<int>{0, 2, -2}
-                                         : mach2    ? std::vector<int>{0, 1, 2, -1}
-                                                    : std::vector<int>{0, 1, -1};
-        std::vector<int> result;
-        for (auto delta : offsets) {
-            const auto group = cell + delta;
-            if (group >= 0 && group < int(layout.cells) &&
-                (!half || group / int(layout.cells / 2) == cell / int(layout.cells / 2)))
-                result.push_back(group);
-        }
-        return result;
-    }
+    std::vector<int> candidates(int cell) const { return mach_steering_clusters(layout, cell); }
     bool frame(int cell)
     {
         active[cell]      = true;

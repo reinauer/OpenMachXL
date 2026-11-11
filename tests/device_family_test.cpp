@@ -80,4 +80,12 @@ int main(int argc,char**argv) {
     check(a.mux_code(18,4)==7,"MACH110 slot4 encoding");
     check(mach_device_layout("MACH211").mux_code(0,11)==11,"MACH211 slot encoding");
     check(mach_device_layout("MACH210").mux_code(0,6)==8,"12-way slot encoding");
+    using Clusters=std::vector<int>;
+    check(mach_steering_clusters(mach_device_layout("MACH211"),5)==Clusters({5,6,7,4}),"MACH2 steering order");
+    check(mach_steering_clusters(mach_device_layout("MACH211"),0)==Clusters({0,1,2}),"MACH2 steering at the block start");
+    check(mach_steering_clusters(mach_device_layout("MACH435"),15)==Clusters({15,14}),"MACH4 steering at the block end");
+    check(mach_steering_clusters(mach_device_layout("MACH215"),4)==Clusters({4,6,2}),"MACH215 steers between even cells");
+    check(mach_steering_clusters(mach_device_layout("MACH120"),5)==Clusters({5,6,4}),"MACH120 steers across the middle");
+    check(mach_steering_clusters(mach_device_layout("MACH111"),7)==Clusters({7,6}),"MACH111 does not steer across the middle");
+    check(mach_steering_clusters(mach_device_layout("MACH110"),8)==Clusters({8,9}),"MACH110 does not steer across the middle");
 }

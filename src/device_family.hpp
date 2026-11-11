@@ -39,6 +39,11 @@ const MachDeviceLayout& mach_device_layout(const std::string& device);
 // Highest NODE location number. Macrocell nodes are numbered from 2; MACH4
 // devices follow them with one input-register node per I/O pin.
 unsigned mach_node_limit(const MachDeviceLayout& layout);
+// Product-term clusters of a block that the macrocell `cell` can steer to
+// itself, as block-local cluster numbers in the device's search order: its
+// own first, then the neighbours. MACH215 has a cluster on every second
+// cell; MACH110/111 do not steer across the middle of a block.
+std::vector<int> mach_steering_clusters(const MachDeviceLayout& layout, int cell);
 std::vector<std::string> mach_device_codec_names();
 struct MachDevicePhysical
 {

@@ -439,10 +439,7 @@ std::string render_fitter_place_report(const FuseImage& image, const FitterRepor
                     unsigned capacity = data.blocks[b].available_terms.at(c) + (n ? n->product_terms : 0);
                     if (modern) {
                         capacity = 0;
-                        for (int delta : {0, 1, 2, -1}) {
-                            const int local = int(c) + delta;
-                            if (local < 0 || local >= int(d.cells))
-                                continue;
+                        for (int local : mach_steering_clusters(d, int(c))) {
                             const unsigned g = b * d.cells + unsigned(local);
                             const int target = int(b * d.cells + c);
                             const int main = data.group_owner.at(g), aux = data.auxiliary_owner.at(g);
