@@ -1069,6 +1069,105 @@
         "original": "C0",
         "corrected": "Ck0"
       }
+    },
+    {
+      "name": "M5K11",
+      "device": 215,
+      "sha256": {
+        "PDS": "b439c13894f63f7135c6628ed3f895a7f11929da54364ac3008aa86686a24e11",
+        "MXL": "2cf2a2ae4486bcbeaee3f7e9ace0b76cdb917fee4e1c61251084ff0830bd359f",
+        "RPT": "fd3de16db55050041220e672c09e2483100494b4a81ac976efb9e45170246c6f",
+        "JED": "d5d72ccb88064acad8b4bdeb75b822ac84c840997d1dde484736263102c86057"
+      },
+      "display_filename": "M5k11.pds"
+    },
+    {
+      "name": "M5K13",
+      "device": 215,
+      "sha256": {
+        "PDS": "e2d62c6d130cbac01887b8b77b4f68b64b9fa8ad38834312a9f8e0b381ba67f2",
+        "MXL": "9bed8ad13fe2f7ebdfd4af391a9fd8a8315c283b61533e399ea6abc96fccbfcd",
+        "RPT": "976081b79d116798b5acc3d2b80a96b4e62963b991a663ca254c6a45de1bf402",
+        "JED": "f3f4f094128fc192e5d4a281ff805c4d7c802a4586859024e31799c0f653d389"
+      },
+      "display_filename": "M5k13.pds"
+    },
+    {
+      "name": "M5K33",
+      "device": 215,
+      "sha256": {
+        "PDS": "f7b06e98f4de62ec3a018aa80b1ad1c78964f40079962f56eb68e557468910fe",
+        "MXL": "7b10516cd167890657d712db7be353324b0227592de63a00d113ddffa1614a03",
+        "RPT": "2db4869c6b34a08efafd7db0a8eb9d5ac30a1cfafb451ae7925149134a933b5e",
+        "JED": "0bbceab0c45ce75ea18631a15365cdc3792dd50b499a99f5f6ed9b5c3a834427"
+      },
+      "display_filename": "M5k33.pds"
+    },
+    {
+      "name": "M5KFL",
+      "device": 215,
+      "sha256": {
+        "PDS": "49405254f6db4885ec028e8c91200ff31481679706c90a531600f5da22c804f4",
+        "MXL": "1182201d1c37b6169e4adda888762742a4a6451dbaf9671de9a8a0802128119d",
+        "RPT": "70f81ffe3ba8997048aea81ae15aa301f255b3ef3f72c13ac12c3bed7cb9c4d6",
+        "JED": "aa8aeabb4ed13bcbb2207b0d9c1ed085e97036528c577d673518cb9aff51673b"
+      },
+      "display_filename": "M5kfl.pds"
+    },
+    {
+      "name": "M5KLT",
+      "device": 215,
+      "sha256": {
+        "PDS": "711175713ff247d323700bf6ff07f22e49ed43ba2a8fdb4d25da32e4bc3edad0",
+        "MXL": "089aed45771abe479014cc94597be4aaa6cf7db358504b95ddd444ac9a07bd6a",
+        "RPT": "7e75a188380710498126ffabe9134024335595858b9cd743a1bd78627d3ab1a0",
+        "JED": "8e21b7e941092a1bc78ce0bba622b85e2f49f71fff19ea9c419a8d960dbd9723"
+      },
+      "display_filename": "M5klt.pds"
+    },
+    {
+      "name": "M5KPT",
+      "device": 215,
+      "sha256": {
+        "PDS": "8330f30f098d50763ebf17cb326af3f2d32103077052fd34f99766d5accb5bad",
+        "MXL": "8a2d44ef46c085378007439aed03b554bd664fde4641c6d50680d856f9b10873",
+        "RPT": "a053aaf2442baa879beee0b453f2a4a9394cc35cbcfdd92753c4feb72579cf2f",
+        "JED": "55bc3cf530227e955fa1a4a7469504794eba79aaf034cbb05dd3fa32f77fe406"
+      },
+      "display_filename": "M5kpt.pds"
+    },
+    {
+      "name": "M5LNG",
+      "device": 215,
+      "sha256": {
+        "PDS": "f6914aee9de34ca6fe91e73e6384fcf736dc3d0eb96f395480eaab54a1ed17c5",
+        "MXL": "e2e93947982d5c04034893689adf70dd6200b5790397a40864aa3eac937ec111",
+        "RPT": "12a8121049a2d993f5c23ded478465bb974f08070bb98423787519e84f4bcb2d",
+        "JED": "cc682302bc299b7f8e5320dce5da21d1bb4269e218b7f9055ced7d0407bc1f06"
+      },
+      "display_filename": "M5lng.pds"
+    },
+    {
+      "name": "M5RNG",
+      "device": 215,
+      "sha256": {
+        "PDS": "f2e13e1f74ce65b26db8213e16202844528e8695d399cfee5875f6b19278a765",
+        "MXL": "0d287602be3bc62126df54d877f33db740aa981263a7e51703e63018cbe9736f",
+        "RPT": "de5b5ab13b412b97c7b0917042436693e433a9f990f68d3019d7c0e7f07b4ff7",
+        "JED": "0b5c51888097cc181f84082ce6d84043f9260507f518b6319937e4d7978dd3a6"
+      },
+      "display_filename": "M5rng.pds"
+    },
+    {
+      "name": "CK2150",
+      "device": 215,
+      "sha256": {
+        "PDS": "c8baf39a223b18c316a733e0308252870afeab823e3baa169c0f9e4b8724e73f",
+        "MXL": "741e7d1c41014003940abae40b71600f76da2c09a30b4317c580194a18d84d21",
+        "RPT": "741d9cec40eb9d63e8108f64732264e829ba4e30e894c3db0769ed265a66bd21",
+        "JED": "bc40f70216ed065601ff8841f495973267355a6f8c99fe5fccd09c3ccc4b386f"
+      },
+      "display_filename": "Ck2150.pds"
     }
   ],
   "capture_script": "research/reports/capture_fitter_reports.py",

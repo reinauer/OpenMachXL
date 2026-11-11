@@ -1154,8 +1154,16 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
             node.negative       = inverted[out];
             node.low_power      = low_power.count(name) != 0;
             node.product_terms  = input_storage[out] ? 0 : unsigned(p.terms[out].size());
-            if (registered[out])
+            if (registered[out]) {
                 node.clock = product_clocks.count(name) ? "P" : "Ck" + std::to_string(assigned_clocks[cell]);
+                // MACH215 reports mark a global clock that acts on the falling
+                // edge, or a latch that is open while the clock is high, with a
+                // slash. A product-term clock keeps that position blank.
+                if (mach215)
+                    node.clock = product_clocks.count(name)                  ? "P "
+                                 : clock_negative[cell] != (function == "G") ? "/" + node.clock
+                                                                             : node.clock;
+            }
             std::set<std::string> fanins;
             for (const auto& term : p.terms[out])
                 for (unsigned i = 0; i < term.size(); ++i)
