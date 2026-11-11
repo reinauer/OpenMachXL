@@ -1553,6 +1553,160 @@
         "JED": "69ab455354a1af7e4572d51ae98cbcddfc4f7fd2dbe08df2c67e8af7a2f23bc9"
       },
       "display_filename": "T5c.pds"
+    },
+    {
+      "name": "G4",
+      "device": 211,
+      "sha256": {
+        "PDS": "57af49535869a59516754e840f657704263c3f0df8ccd6338aa177f5f2929748",
+        "MXL": "3cd663744e555fe7c3b64da9c1bd00a5f11b81463ac76c0b24a7f30d56ae7268",
+        "RPT": "dce16eb5f665589e36122d85cc9afcf2b592233f620b0743dfb4ee69b1f58547",
+        "JED": "3892b42dc4eb0fd6f5190038b300e27be76c328349d18e9b8d934aca7f0bfbdb"
+      },
+      "display_filename": "G4.pds"
+    },
+    {
+      "name": "G7",
+      "device": 211,
+      "sha256": {
+        "PDS": "e9a678a2dd595dacc26b29a804ff703b73bc37c3b8708996540f56c14a984c1c",
+        "MXL": "edfecc6952cc8476ab1dc4bcec8255b8fab37dd3f4c2f5a55e130a9be0a5214d",
+        "RPT": "5abf5ffabd8bca4ed88dd12f09eebca1670259f6a3c1b5df32ac4ac1b3127cae",
+        "JED": "52de8e0cc4c551c19c2e1d372923a29ecfbaba668dd43e653e32bdf715b69209"
+      },
+      "display_filename": "G7.PDS"
+    },
+    {
+      "name": "OE1",
+      "device": 111,
+      "sha256": {
+        "PDS": "300374f1444d794198cff188b860bffbcdcb9edd3418dc66cea5aacfe9b4fe34",
+        "MXL": "3fae601c652807208612f03344fccf1f27ea2ec17424245484c16f87c448cf1b",
+        "RPT": "b46a2a9431f1789f9d1a9a2627b830a2711075229f3c6c98d41e0b58ebe697fe",
+        "JED": "9d5e7f44f21c7b4190e92419ee20a81374eed01cee6cebc4d6b31d551ed828c9"
+      },
+      "display_filename": "Oe1.pds"
+    },
+    {
+      "name": "OE5",
+      "device": 211,
+      "sha256": {
+        "PDS": "07da2f861144675d60f005496705352f9256b314ca3ca0d44d8eeb383d3d3d2f",
+        "MXL": "f8700d986d65ab7cf87c396364354ab9f2407e87d2356ba6707794eefb4c1512",
+        "RPT": "b7ea3d4a8fbc897d37e1707f50a9e351f7d43565e336389312bc695c9b34c0fc",
+        "JED": "69bb706eff985d6c215d01c77641d8c6e5234ff1bc6686ab4d3dd0ff78bdc875"
+      },
+      "display_filename": "Oe5.pds"
+    },
+    {
+      "name": "OE7",
+      "device": 111,
+      "sha256": {
+        "PDS": "7e99698461416f1148652679794bb01c035eec9c5908a8fb67c527b19fcc91e2",
+        "MXL": "bf870fa83e6cbb584badd11ab871822df0395c0c93423e820eb47b34ecf4e0da",
+        "RPT": "e585bf130f2d8ae1edb160ab82501cf8925b2a36fa7eb56f4c11f6b28da1248f",
+        "JED": "db08bfb0fc1ff3789bcddbd4c70fb0ed42c03cc07f4eac425c5a8ea56a91f27f"
+      },
+      "display_filename": "Oe7.pds"
+    },
+    {
+      "name": "OE8",
+      "device": 435,
+      "sha256": {
+        "PDS": "742f2b22c504189ca054538906fea2cf3fd70ece51ed67dce17d3593655a0fe3",
+        "MXL": "67ef76a62da02f6b09a4bde8da41082bea650567d7301d5d76edd54dba55c38b",
+        "RPT": "731073fefe9bf1e5249ca19269e4eab93d1b352e655fa7862d89e1878aaa7e1c",
+        "JED": "a2fd08e1f09e8b422c31dee05d5421320b81b887e784f200ed921390a1487916"
+      },
+      "display_filename": "Oe8.pds"
+    },
+    {
+      "name": "E6",
+      "device": 211,
+      "sha256": {
+        "PDS": "0e8cf838b9569337f20e84b7aecb83b02d07e1d5131e0abce10df5d24bea5bf5",
+        "MXL": "3f12fc69323bb73564f5a7ecf14aa7869daae070bd8522dac3be574b7273927a",
+        "RPT": "30e69948c72c4fd705dd6fb58e1e478ff4e230fa5ff58faeb9a86a4a3198136b",
+        "JED": "70ca799bd69b03a5e79ab1be9f8193f2d03ce2b43b81b4f56d27a756c0ec6847"
+      },
+      "display_filename": "E6.pds"
+    },
+    {
+      "name": "FPCON",
+      "device": 435,
+      "sha256": {
+        "PDS": "10da8bd7568e481111e03ceccf6cf7647691a3dedce59930a29e463c805353ec",
+        "MXL": "ac565394d7b164f2197401306d54772e8f0b6b39f2c93c2dc91d7eb52f39ff53",
+        "RPT": "6199f338ad9526a93b91998d1ca9cae5ad6517b4c0c381a9dbc2324e27831305",
+        "JED": "53de819de61a7bc190ca29736938323790df849704deca570ee0dbdea2e7be5b"
+      },
+      "display_filename": "FPCON.PDS"
+    },
+    {
+      "name": "F355A",
+      "device": 355,
+      "sha256": {
+        "PDS": "19e77a23f335e2d7cd5fff8bbac47fbfde8e56ddcf6cd7c51643d1e37e73edd5",
+        "MXL": "0cc23956bdd04137b3f4b4301df6b720bb31d319e5765f2f8783467b4f50de1e",
+        "RPT": "aea2e911076b0628de2b17ba8acfee1bc1c54c50594c830a07abd39720cab4ab",
+        "JED": "af3eb1927975a55062acc3ac8ceb899ffdfc7dd09d939c2fcddfd83649ea48c5"
+      },
+      "display_filename": "F355A.PDS"
+    },
+    {
+      "name": "OKALL",
+      "device": 111,
+      "sha256": {
+        "PDS": "89f44c95a2e4f5c1689481c0d10a6f97e6cb44859d7c095ade67acd673f54859",
+        "MXL": "2aefde32c97cabd2b2ee8618d658e82e7a51e7ac2a62ee48061d8367dca4d200",
+        "RPT": "8de9532a0eac3d2242d0cb52c6a34a55d46e72c7cf8957ce5613bbcd1c451f99",
+        "JED": "bfa7ff6fe0de16999bda124c3f463f3dcb6e30ad5eba067d487fc6e1fa4af866"
+      },
+      "display_filename": "Okall.pds"
+    },
+    {
+      "name": "ZP2",
+      "device": 211,
+      "sha256": {
+        "PDS": "c3c1ebcc13761d4d7ba80a406612490435d7ff0181f498f7b0eca9c0a8f0e195",
+        "MXL": "a2b0beeeb1f892ec9befeb03a12270472ccb59b994d0da89a54fbe4c7120459c",
+        "RPT": "36e1b40e407344047d6a08e455e764ccfd82af83681dd48743ccc58833d9c195",
+        "JED": "eabff47f982d7e90d95dffe1c59a0d06c77d8470bf5969e84070c540a4266486"
+      },
+      "display_filename": "Zp2.pds"
+    },
+    {
+      "name": "ZP3",
+      "device": 435,
+      "sha256": {
+        "PDS": "66bda2981c9249a988720fa782ebbffa15fd7f4599690e5bd5cf1a4ee5d74277",
+        "MXL": "b89193abc8b9bc6524af3964c33533b96ac453f186b22f715b5432213a80f64c",
+        "RPT": "ba5277607a66eb5900bb140360b2cd8186291afe4d5e408c39fd4a7e76b92898",
+        "JED": "d6df83f872d6835ff58c5e5f7ac252dc79f51df9e956120de020eb1741162881"
+      },
+      "display_filename": "Zp3.pds"
+    },
+    {
+      "name": "ZP4",
+      "device": 215,
+      "sha256": {
+        "PDS": "a88c6f98966d9fadbefa7e361af37c0ec90d43afd7cbe0eec7b784bd5c145064",
+        "MXL": "a5ee2a53419f7676c0b3fd86dd87ef1a22924a58c2e0d36fc408221eac53b463",
+        "RPT": "eb9a2bf833d1536e71acdfc1b6924635c2d0274a56c65332f7dbc81f984e0a9b",
+        "JED": "251c4078deaea20dbebf7a4666957cab94c6c899be6c1b49674e934c77604906"
+      },
+      "display_filename": "Zp4.pds"
+    },
+    {
+      "name": "D3",
+      "device": 211,
+      "sha256": {
+        "PDS": "d4f7538872f343ce1a1a6b7eb3f627e5173a8c34cba4b85e4a161ac096f165ee",
+        "MXL": "9dd9d315b2c961cf4b26056164cf0824b94816c880b7e39385abf2c9ba28ea30",
+        "RPT": "b14b61c0333cbcbaeb596892a0ae65a05aa4f569703beab2f2d35b5d1b254555",
+        "JED": "1532ac94c275bd8f90ff2f2acdf167728002133807216f5e73c645f108911a79"
+      },
+      "display_filename": "D3.pds"
     }
   ],
   "capture_script": "research/reports/capture_fitter_reports.py",

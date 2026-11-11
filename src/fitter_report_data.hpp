@@ -35,6 +35,9 @@ struct FitterReportNode
     // dedicated clock pin. They are routed like logic but reported as clock
     // use, not as equations where the signal is used.
     std::vector<std::string> clock_pin_fanins;
+    // The reset or preset was taken from the global node. Such controls are
+    // numbered after those the design gives a register directly.
+    bool global_reset = false, global_preset = false;
     // Data/XOR excitation only; excludes OE, clock and set/reset controls.
     std::vector<std::string> data_fanins;
     std::vector<unsigned> fanout_blocks;

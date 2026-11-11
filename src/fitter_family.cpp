@@ -114,9 +114,9 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
         unsupported("configuration rules are not implemented for " + d.device);
     auto p = prepared;
 
-    bool global_reset_overridden = false;
-    expand_global_node(design, p.inputs, p.outputs, p.terms, &global_reset_overridden);
-    if (global_reset_overridden)
+    GlobalNodeUse global_node;
+    expand_global_node(design, p.inputs, p.outputs, p.terms, &global_node);
+    if (global_node.reset_overridden)
         fitting.warn("z5037: Invalid global reset equation.");
     discard_combinatorial_storage_controls(p.outputs, p.terms);
     validate_node_output_enables(design, p.outputs);
@@ -1197,9 +1197,14 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
                     node.implied = false;
                     node.paired  = true;
                 }
-            if (placed_oe_slots.count(name))
+            // A constant enable is not an output enable resource.
+            const bool constant_enable =
+                enables.count(name) &&
+                std::all_of(enables.at(name).begin(), enables.at(name).end(),
+                            [](const std::string& term) { return term.find_first_not_of('-') == std::string::npos; });
+            if (placed_oe_slots.count(name) && !constant_enable)
                 node.oe_slot = placed_oe_slots.at(name);
-            if (enables.count(name))
+            if (enables.count(name) && !constant_enable)
                 for (const auto& term : enables.at(name))
                     node.oe_expression += term + ";";
             if (node.oe_slot >= 0)
@@ -1208,7 +1213,8 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
             node.logic          = function == "COM" ? 'C' : function == "G" ? 'L' : function == "T" ? 'T' : 'D';
             node.negative       = inverted[out];
             node.low_power      = low_power.count(name) != 0;
-            node.product_terms  = input_storage[out] ? 0 : unsigned(p.terms[out].size());
+            // An equation without products still occupies one grounded term.
+            node.product_terms = input_storage[out] ? 0 : std::max<unsigned>(1, unsigned(p.terms[out].size()));
             if (registered[out]) {
                 node.clock = product_clocks.count(name) ? "P" : "Ck" + std::to_string(assigned_clocks[cell]);
                 // MACH215 reports mark a global clock that acts on the falling
@@ -1248,6 +1254,8 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
                             append(control.term);
                         }
                     }
+                node.global_reset  = global_node.reset.count(name) != 0;
+                node.global_preset = global_node.preset.count(name) != 0;
                 if (product_clocks.count(name) && clock_terms.count(name)) {
                     const auto logic = fanins;
                     for (const auto& term : clock_terms.at(name))
@@ -1277,9 +1285,15 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
                 if (input_pairs.count(route.signal) && found != output_indices.end()) {
                     route.source_input_register = true;
                     route.source_pin            = int(cells[found->second] + 2);
-                } else if (found != output_indices.end()) {
+                } else if (found != output_indices.end() && !paired_pins.count(route.signal) &&
+                           (pins.at(route.signal)->node || registered[found->second])) {
+                    // The same rule that routes the signal: a buried or
+                    // registered output is read from its macrocell, a
+                    // combinatorial or paired pad from its pin.
                     route.source_block = int(cells[found->second] / d.cells);
                     route.source_cell  = int(cells[found->second] % d.cells);
+                } else if (found != output_indices.end()) {
+                    route.source_pin = int(pins.at(route.signal)->number);
                 } else {
                     // input_pairs is built before unused buried equations are
                     // removed. A pad whose input register was removed is an

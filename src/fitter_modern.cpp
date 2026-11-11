@@ -114,9 +114,9 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
     const auto oe_row   = [&](unsigned io) { return io * (mach355 ? 6 : 11); };
     auto pla            = synthesized_pla(design, options, fitting.report.get());
 
-    bool global_reset_overridden = false;
-    expand_global_node(design, pla.inputs, pla.outputs, pla.terms, &global_reset_overridden);
-    if (global_reset_overridden)
+    GlobalNodeUse global_node;
+    expand_global_node(design, pla.inputs, pla.outputs, pla.terms, &global_node);
+    if (global_node.reset_overridden)
         fitting.warn("z5037: Invalid global reset equation.");
     discard_combinatorial_storage_controls(pla.outputs, pla.terms);
     validate_node_output_enables(design, pla.outputs);
@@ -1640,7 +1640,9 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
                 // Report the external phase, including declared pin inversion.
                 // Buried nodes always report H.
                 node.negative      = !pins.at(out.name)->node && (out.negative != pins.at(out.name)->inverted);
-                node.product_terms = node.input_register ? 0 : unsigned(pla.terms[out.column].size());
+                // An equation without products still occupies one grounded term.
+                node.product_terms =
+                    node.input_register ? 0 : std::max<unsigned>(1, unsigned(pla.terms[out.column].size()));
                 if (xor_left.count(out.name))
                     node.xor_terms = unsigned(pla.terms[xor_left.at(out.name)].size());
                 if (!node.input_register)

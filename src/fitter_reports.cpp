@@ -54,11 +54,14 @@ std::string pin_type(const FitterReportPin& pin)
         return "bidir";
     return pin.output ? "output" : "input";
 }
-// A pin that drives out and is read back, through an output enable or
-// through its input register, is reported as an I/O pin.
-std::string pin_kind(const FitterReportPin& pin)
+// A pin that drives out and is read back is reported as an I/O pin: one with
+// an output enable whose signal some equation reads, or one that feeds its
+// input register. An enabled pin that nothing reads is an output.
+std::string pin_kind(const FitterReportPin& pin, const std::set<std::string>& read_signals)
 {
-    return !pin.enable.empty() || (pin.output && pin.input_node >= 0) ? "i/o pin" : pin_type(pin);
+    const bool read =
+        read_signals.count(pin.name) || (!pin.output_signal.empty() && read_signals.count(pin.output_signal));
+    return (!pin.enable.empty() && read) || (pin.output && pin.input_node >= 0) ? "i/o pin" : pin_type(pin);
 }
 std::string node_type(const FitterReportNode& node)
 {
@@ -119,7 +122,7 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
         }
         auto pins = data.optimized_design->pins;
         std::stable_sort(pins.begin(), pins.end(), [](const auto& a, const auto& b) {
-            const auto group = [](const auto& p) { return p.number ? (p.node ? 1 : 0) : (p.node ? 3 : 2); };
+            const auto group = [](const auto& p) { return p.number ? (p.node ? 2 : 0) : (p.node ? 3 : 1); };
             if (group(a) != group(b))
                 return group(a) < group(b);
             return a.number && b.number ? a.number < b.number : false;
@@ -151,6 +154,10 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
         std::stable_sort(data.nodes.begin(), data.nodes.end(),
                          [&](const auto& a, const auto& b) { return logical_order[a.name] < logical_order[b.name]; });
     }
+    // Signals that some equation reads, under the names pins carry.
+    std::set<std::string> read_signals;
+    for (const auto& node : data.nodes)
+        read_signals.insert(node.fanins.begin(), node.fanins.end());
     std::map<std::string, std::string> display_names;
     for (const auto& node : data.nodes)
         if (node.implied && node.logic != 'C' && !node.explicit_output_pair && !node.fanout_blocks.empty())
@@ -195,6 +202,15 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
         std::vector<std::size_t> control_order;
         for (std::size_t i = 0; i < data.nodes.size(); ++i)
             control_order.push_back(i);
+        // Controls a register took from the global node are numbered after
+        // those the design gives a register directly.
+        const auto from_global = [&](std::size_t index) {
+            return category == "RESET"    ? data.nodes[index].global_reset
+                   : category == "PRESET" ? data.nodes[index].global_preset
+                                          : false;
+        };
+        std::stable_sort(control_order.begin(), control_order.end(),
+                         [&](auto a, auto b) { return !from_global(a) && from_global(b); });
         if (!data.successful)
             std::stable_sort(control_order.begin(), control_order.end(), [&](auto a, auto b) {
                 // Nodes with a traversal position come first, in that order;
@@ -214,8 +230,14 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
             if (found == indices.end()) {
                 const auto index = unsigned(indices.size());
                 indices[key]     = index;
-                control_summaries[category].push_back(
-                    {node.name.compare(0, 3, "RN_") == 0 ? node.name.substr(3) : node.name, {}});
+                // A control is listed under its first user; the node of an
+                // output pair goes by its pad's name.
+                auto owner = node.name.compare(0, 3, "RN_") == 0 ? node.name.substr(3) : node.name;
+                if (node.paired)
+                    for (const auto& pin : data.pins)
+                        if (pin.number && int(pin.number) == node.pin)
+                            owner = pin.name;
+                control_summaries[category].push_back({owner, {}});
                 found = indices.find(key);
             }
             auto& control = control_summaries[category][found->second];
@@ -444,7 +466,7 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
         const auto terms = row.node || row.pin->output
                                ? (node && !node->input_register ? std::to_string(node->product_terms) : ".")
                                : ".";
-        const auto kind  = row.node ? node_type(*row.node) : pin_kind(*row.pin);
+        const auto kind  = row.node ? node_type(*row.node) : pin_kind(*row.pin, read_signals);
         const auto logic = row.node ? logic_type(*row.node, modern) : "...";
         const auto fans  = format_fanout(blocks, row.node ? row.node->fanout_blocks : row.pin->fanout_blocks);
         out +=
@@ -757,7 +779,7 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
                                          pin && data.successful ? format_text(pin->enable, "...").c_str() : "...");
                 out += format_fields(
                     "  %16s  %8s  %s\n", pin ? pin->name.c_str() : "................",
-                    pin ? pin_kind(*pin).c_str() : "..",
+                    pin ? pin_kind(*pin, read_signals).c_str() : "..",
                     pin ? format_fanout(blocks, pin->fanout_blocks).c_str() : std::string(blocks, '.').c_str());
             }
             std::vector<const FitterReportPin*> unknown_pins;

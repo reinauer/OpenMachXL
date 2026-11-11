@@ -386,9 +386,9 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
         unsupported("design has no equations");
     auto pla = prepared;
 
-    bool global_reset_overridden = false;
-    expand_global_node(design, pla.inputs, pla.outputs, pla.terms, &global_reset_overridden);
-    if (global_reset_overridden)
+    GlobalNodeUse global_node;
+    expand_global_node(design, pla.inputs, pla.outputs, pla.terms, &global_node);
+    if (global_node.reset_overridden)
         fitting.warn("z5037: Invalid global reset equation.");
     discard_combinatorial_storage_controls(pla.outputs, pla.terms);
     validate_node_output_enables(design, pla.outputs);
@@ -931,7 +931,8 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
             node.logic           = function == "COM" ? 'C' : function == "T" ? 'T' : 'D';
             node.negative        = inverted_outputs[out];
             node.low_power       = physical.low_power[cell];
-            node.product_terms   = unsigned(pla.terms[out].size());
+            // An equation without products still occupies one grounded term.
+            node.product_terms = std::max<unsigned>(1, unsigned(pla.terms[out].size()));
             report.blocks[cell / 16].product_terms += node.product_terms;
             auto append_fanins = [&](const std::string& term) {
                 for (unsigned i = 0; i < term.size(); ++i)
@@ -942,7 +943,14 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
             for (const auto& term : pla.terms[out])
                 append_fanins(term);
             node.data_fanins = node.fanins;
-            if (enables.count(name)) {
+            // A constant enable is not an output enable resource.
+            const auto constant_enable = [&] {
+                const auto& terms = enables.at(name);
+                return std::all_of(terms.begin(), terms.end(), [](const std::string& term) {
+                    return term.find_first_not_of('-') == std::string::npos;
+                });
+            };
+            if (enables.count(name) && !constant_enable()) {
                 for (const auto& term : enables.at(name)) {
                     node.oe_expression += term + ";";
                     append_fanins(term);
@@ -962,6 +970,8 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
                             node.preset = control.term;
                         append_fanins(control.term);
                     }
+                node.global_reset  = global_node.reset.count(name) != 0;
+                node.global_preset = global_node.preset.count(name) != 0;
             }
             if (!successful)
                 node.clock.clear();

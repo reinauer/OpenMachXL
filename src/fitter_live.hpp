@@ -46,9 +46,16 @@ inline void validate_node_output_enables(const Design& design, const std::vector
 // set equations stand for those of every register that has none of its own.
 // Replace it by these per-register controls before anything else looks at
 // the design, and drop the node itself.
+// What the global node did to a design: which registers took its reset and
+// its set, and whether a register kept a reset of its own (warning z5037).
+struct GlobalNodeUse
+{
+    bool reset_overridden = false;
+    std::set<std::string> reset, preset;
+};
 inline void expand_global_node(Design& design, const std::vector<std::string>& inputs,
                                std::vector<std::string>& outputs, std::vector<std::vector<std::string>>& terms,
-                               bool* reset_overridden = nullptr)
+                               GlobalNodeUse* use = nullptr)
 {
     const auto global = std::find_if(design.pins.begin(), design.pins.end(),
                                      [](const Pin& pin) { return pin.node && pin.number == 1; });
@@ -99,10 +106,12 @@ inline void expand_global_node(Design& design, const std::vector<std::string>& i
         }
         for (const auto& signal : registers) {
             if (controlled.count(signal)) {
-                if (reset_overridden && std::string(function) == "RE")
-                    *reset_overridden = true;
+                if (use && std::string(function) == "RE")
+                    use->reset_overridden = true;
                 continue;
             }
+            if (use)
+                (std::string(function) == "RE" ? use->reset : use->preset).insert(signal);
             std::size_t last = 0;
             for (std::size_t i = 0; i < outputs.size(); ++i) {
                 const auto label = base(outputs[i]);
