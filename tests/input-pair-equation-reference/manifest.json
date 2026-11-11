@@ -1,5 +1,5 @@
 {
- "description": "Original MACHXL 2.1 results for input and output pair declarations: generated transfer equations (B1062), rejected equations and storage (B615) and misplaced IPAIR/OPAIR keywords (P88)",
+ "description": "Original MACHXL 2.1 results for input and output pair declarations: generated transfer equations (B1062), rejected equations and storage (B613, B615) and misplaced IPAIR/OPAIR keywords (P88)",
  "cases": [
   {
    "name": "NE2PR",
@@ -214,6 +214,42 @@
     "KWOP.LOG": "68ca61a5ef3d18edec5f0bc5bceb5b23d7d4b56ec9adb258483a712fa6a47652"
    },
    "error": "P88"
+  },
+  {
+   "name": "PB613",
+   "files": {
+    "PB613.PDS": "2f7774ec8b5a24cfc18beb402226575042d1179ba09e58c3cb7d967729695840",
+    "PB613.MXL": "7dfb01ebcb09ea1c6b3692ee63195c47e904c4cb0c1a4a645849ee833a77df41",
+    "PB613.LOG": "9a19a40200aa882ab2e9039151172117439fb8e96c6746266f77664964d8ceb7"
+   },
+   "error": "B613"
+  },
+  {
+   "name": "PB614",
+   "files": {
+    "PB614.PDS": "19d95247bbf92233846a3dfb5c185ea83c1fff277ba336fe1d3536e053237342",
+    "PB614.MXL": "d635b068bdeeabfdecd8a71b24c124d89fe75c88061777380da857a82d155f30",
+    "PB614.LOG": "80d402328b1c1e7832c298cb96342bd25e95394105a740105307d34a0b6e03af"
+   },
+   "error": "B613"
+  },
+  {
+   "name": "PB61P",
+   "files": {
+    "PB61P.PDS": "f3586ce5c3964085b2d1f7591100fd949af3198eca931a1be787bcfa978c3561",
+    "PB61P.MXL": "be8f82d930ac3dc9a13bc7ce95fb2058fed8da5f140c9e78c5bac2bd99fa6454",
+    "PB61P.LOG": "11a0f1db909b2adc4a4f134556edc3e7a04d4b31e184c8131421db60b7972eba"
+   },
+   "error": "B613"
+  },
+  {
+   "name": "KWPP",
+   "files": {
+    "KWPP.PDS": "fe5db1a599c8ddcc94a71acb6df6fcb192ac94dd2d2b9000a787024ed4917dd7",
+    "KWPP.MXL": "f25ad781cd2fe4d19ab0e1b23296faa3788b9184bb066f06c7f430bddf5b9a01",
+    "KWPP.LOG": "7a70b53802b82f04ec8b8968b4fac3a3642bee00541562b471625df169bd602c"
+   },
+   "error": "B615"
   }
  ]
 }

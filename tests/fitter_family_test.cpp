@@ -88,12 +88,12 @@ int main(int argc,char**argv){
     }
     for(const auto device:{211,215})for(unsigned variant=0;variant<14;++variant) {
         const auto name="IC"+std::to_string(device)+std::to_string(variant),base=std::string(argv[1])+"/"+name;
-        const auto design=parse_design(read(base+".PDS"));
         if(variant==6||variant==12||(device==211&&(variant==0||variant==3))) {
-            bool rejected=false;try{fit_mach_family_fixed(design);}catch(const std::exception&){rejected=true;}
+            // The original rejects some of these in MACHBPP, before fitting.
+            bool rejected=false;try{fit_mach_family_fixed(parse_design(read(base+".PDS")));}catch(const std::exception&){rejected=true;}
             check(rejected,name+" accepted an input register rejected by DOS");continue;
         }
-        const auto image=fit_mach_family_fixed(design);
+        const auto image=fit_mach_family_fixed(parse_design(read(base+".PDS")));
         check(bits(serialize_jedec(image))==bits(read(base+".JED")),name+" differs from original input register controls");
         std::cout<<name<<" exact input register controls\n";
     }

@@ -1691,9 +1691,16 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
     //    exactly when its declaration is, so the register stores the pad's
     //    active-high sense.
     //  - A transfer equation on a node without storage: error B615.
-    // Other equations, including toggle and JK/RS excitation, are left to
-    // the fitters.
+    //  - Any other D or latch equation: error B613, preceded by the B1062
+    //    warning when the equation does not read the pad at all.
+    // A toggle or JK/RS excitation is left to the fitter.
     {
+        const auto reads = [](const ExprPtr& expression, const std::string& name) {
+            std::function<bool(const ExprPtr&)> visit = [&](const ExprPtr& e) {
+                return e && ((e->kind == ExprKind::Identifier && e->name == name) || visit(e->left) || visit(e->right));
+            };
+            return visit(expression);
+        };
         for (const auto& pad : design.pins) {
             if (pad.node || pad.pair.empty())
                 continue;
@@ -1724,8 +1731,12 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
                         fail(b615);
                     continue;
                 }
-                // Any other D or latch equation is rejected by the fitters.
-                continue;
+                if (!reads(equation->expression, pad.name))
+                    design.diagnostics.push_back(b1062);
+                if (!stored)
+                    fail(b615);
+                fail("B613: Input-paired node " + pad.pair + " has an equation not of the form: [/]node = [/]pin for " +
+                     "the input-paired pin " + pad.name + ".");
             }
             design.diagnostics.push_back(b1062);
             if (!stored)

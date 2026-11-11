@@ -1,0 +1,51 @@
+
+*** Start MACHPAR.E 08:20:16 
+Pb61p.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP PB61P MACH211
+   2     |PIN ? A PAIR N
+   3     |PIN ? B
+   4     |PIN ? Y
+   5     |NODE ? N REG
+   6     |EQUATIONS
+   7     |N=A*B
+   8     |Y=N+B
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Pb61p.pds
+
+*** End MACHPAR.EXE 08:20:16; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 08:20:16 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>N
+Processing equation for ====>Y
+|> ERROR B613
+     Input-paired node N has an equation not of the form:
+     [/]node = [/]pin for the input-paired pin A.
+
+ %%  MACHBPP  %% Maximum memory allocated was: 59168 bytes.
+
+ %%  MACHBPP  %% File Processing Terminated.  File: Pb61p.pds.
+ %%  MACHBPP  %% ERROR count: 1  WARNING count: 0
+
+*** End MACHBPP.EXE 08:20:16; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
