@@ -1101,7 +1101,9 @@ class SynthesisParser
                     drive(codes.at(target), guard);
                 }
             }
-            if (r.op == ":=" && !local_default && !default_branch.empty()) {
+            // The global default belongs to transition equations. An output
+            // equation's conditions say nothing about the next state.
+            if (r.function.empty() && !local_default && !default_branch.empty()) {
                 auto target = default_branch;
                 if (target == "HOLD_STATE")
                     target = r.name;

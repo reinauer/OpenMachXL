@@ -1,0 +1,14 @@
+CHIP XOUTB MACH111
+PIN ? CLK
+PIN ? X
+PIN ? Y
+PIN ? S0 REG
+PIN ? O REG
+STATE
+MEALY_MACHINE
+CLKF = CLK
+A = /S0
+B = S0
+A := X -> B
+B := X -> A
+B.OUTF := Y -> O

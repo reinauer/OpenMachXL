@@ -1,0 +1,109 @@
+{
+ "description": "Original MACHXL 2.1 results for STATE default branches, output equations and states without a transition equation",
+ "cases": [
+  {
+   "name": "HNONE",
+   "files": {
+    "HNONE.PDS": "3584413ca8845815989e83dfc3f255f6c399dc32e3c58dde1aa166faff5f41bf",
+    "HNONE.MXL": "ee62017ac9d99da0bd8031de8d21e8102a8d6989a088c85e464c71fc6bdf4242",
+    "HNONE.PLA": "0378546c4bf9aa777036a1e06bca765cb30aa44d8595a3bcca5fdf53701e54f0"
+   }
+  },
+  {
+   "name": "HOUTA",
+   "files": {
+    "HOUTA.PDS": "33f0195965bf977dbd1da5bcac7e9968f41a66f400fe19fc08c9b633e1a87c20",
+    "HOUTA.MXL": "c5d863dc22285ab8d6d83177d13dcd8b878a88cb6826d0772bdcfac68aae7704",
+    "HOUTA.PLA": "377e04df5b4581a5b4285d3ac7449dc6555a94d27a4ecd5cbcd45eeea0bb5abb"
+   }
+  },
+  {
+   "name": "HOUTB",
+   "files": {
+    "HOUTB.PDS": "506cc217a423b705344b6db92c4b6a706dfebc78f327999b02ba117fc9c98d6a",
+    "HOUTB.MXL": "93411ec206380ad632222e6917895a00b89605d20b57f2e9cadfd20a3110eae7",
+    "HOUTB.PLA": "65eac9b8674d996ed7904040da17683fb0f35bbfeb8a2feb683b9e7f2f3e1708"
+   }
+  },
+  {
+   "name": "NNONE",
+   "files": {
+    "NNONE.PDS": "99677e01a925e1cd9fdae32dfbaf6ccc075b884ca7bbd30c63f010ed1660f78c",
+    "NNONE.MXL": "9e2c7b871af6ac33f1354010caec5903e45755d5204ddedb1efdc24997a79527",
+    "NNONE.PLA": "5261aa81976953a301334ab9a62a3a6e77cdf57708264831c7eae67910b676c6"
+   }
+  },
+  {
+   "name": "NOUTA",
+   "files": {
+    "NOUTA.PDS": "57f03df8b903c7ac91ffb20ad35528680ac6cebeca501fa463915dc71ba64d20",
+    "NOUTA.MXL": "2b845a9bc498f3805a6299904e834674ba4b983eee6159fecd9bcaefbbd8c756",
+    "NOUTA.PLA": "fc2a8436bcf785282f92c0d228e9b394a515f0ba4c6eb75f79303331e9ce9204"
+   }
+  },
+  {
+   "name": "NOUTB",
+   "files": {
+    "NOUTB.PDS": "4e53bf6d52e82b40f9d8b70d44bb94ac0c68376f9d22f5eb9f8c7927b132db67",
+    "NOUTB.MXL": "c4e39eb7cbb08c215a34a1a7b54cd06f782f93ad3a73cedc931ba1694644f1e7",
+    "NOUTB.PLA": "eb638c73cc6a05640a6e5ea0537d50f38f23fd2e7be8b76abc3cfb6647e7da13"
+   }
+  },
+  {
+   "name": "XNONE",
+   "files": {
+    "XNONE.PDS": "fc794da900d2183f7d1c2e37a4ad691bfd734a08f733bb307e2f45e28bcb7ed0",
+    "XNONE.MXL": "4f763f772e14259efa42a77d49877ca82de392efff19fcf9b1e2af89fc4eb17b",
+    "XNONE.PLA": "c67dfa4d2e854221cf1d9c6212c629259b9a3dd654b607e2cd26ddff51a23c08"
+   }
+  },
+  {
+   "name": "XOUTB",
+   "files": {
+    "XOUTB.PDS": "ecbd3321e99607ca25b8395d5c304182a41fbbde104bb16ec5c5e1870dd2895f",
+    "XOUTB.MXL": "90937b8707361a3523ee34b2bd0bbe0615c0b06832f893e71ec072546c09e855",
+    "XOUTB.PLA": "e9ebdedd43e05f9cc1e3121d0e2d400d573b1150f5549bec397e356f4031a84b"
+   }
+  },
+  {
+   "name": "DNONE",
+   "files": {
+    "DNONE.PDS": "7cf68c8cb6db68606384a65c90ddec2455869edb32c0967990a2c563636fbee2",
+    "DNONE.MXL": "d1e2c8c59c4c7791290feca61698f0751164f36240f1fd32b60ec98564ea867b",
+    "DNONE.PLA": "ec9c8316170bbc1d05202543fe4eed3ad7f147a271025a0c79d23cac22d6cec3"
+   }
+  },
+  {
+   "name": "DOUTA",
+   "files": {
+    "DOUTA.PDS": "afa6a448086ee44986d53e91031962c67e3ad35ef394ee46977e8092ad34ef67",
+    "DOUTA.MXL": "cb8e2fa156a22447a8253f09449fffd05ac8401917fe2b0f90bcb3cb94ed200c",
+    "DOUTA.PLA": "b6dba4107657c03837fe5146b14c73a7dbf8d2fbae49acdbdf45f99a6c975a32"
+   }
+  },
+  {
+   "name": "MNONE",
+   "files": {
+    "MNONE.PDS": "01d3253296ef56f2ca6068f06ad8f305c4df34570a48fe7b7ffebf79f9ca52f5",
+    "MNONE.MXL": "ce9ff90b1dc4f87e6c927aa9b057c6cfe52a2e7ba2309d67b07cdf2a0ce0197d",
+    "MNONE.PLA": "c4ad21bc5c856d3acf514033cef7e204c8afb349fb10e719d1a82171dd11f1ab"
+   }
+  },
+  {
+   "name": "MOUTA",
+   "files": {
+    "MOUTA.PDS": "1bf4994ff80f6d2018348c05463799efc284cb8785740c916a6306c456f0e3a2",
+    "MOUTA.MXL": "6a748d245557eec8612cfa223f86052e4ba7604ae486b38764a5a0fea5d190c3",
+    "MOUTA.PLA": "e430954ab24bd8dd2c66608469a4c434742308bf0909aeeb18ec687ed92be0c5"
+   }
+  },
+  {
+   "name": "OKALL",
+   "files": {
+    "OKALL.PDS": "89f44c95a2e4f5c1689481c0d10a6f97e6cb44859d7c095ade67acd673f54859",
+    "OKALL.MXL": "2aefde32c97cabd2b2ee8618d658e82e7a51e7ac2a62ee48061d8367dca4d200",
+    "OKALL.PLA": "eb583b7a2911a020e58d4f3223b40c8de71bfd3462296ac56111f867f05e44ba"
+   }
+  }
+ ]
+}

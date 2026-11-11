@@ -1,0 +1,18 @@
+CHIP DOUTA MACH111
+PIN ? CLK
+PIN ? X
+PIN ? Y
+PIN ? S0 REG
+PIN ? S1 REG
+PIN ? O REG
+STATE
+MEALY_MACHINE
+DEFAULT_BRANCH C
+CLKF = CLK
+A = /S1 * /S0
+B = /S1 * S0
+C = S1 * /S0
+A := X -> B
+B := X -> C
+C := X -> A
+A.OUTF := Y -> O
