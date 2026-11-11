@@ -99,7 +99,8 @@ struct Command
 class Parser
 {
     std::vector<std::string> words;
-    std::size_t at = 0;
+    std::size_t at   = 0;
+    unsigned nesting = 0;
     std::string pop()
     {
         auto v = words.at(at++);
@@ -114,8 +115,14 @@ class Parser
     }
     std::vector<Command> block()
     {
+        // Parsing, execution and destruction of commands all recurse once
+        // per level. Use the limit of the synthesis block parser.
+        if (nesting >= 256)
+            error("block nesting exceeds 256");
         expect("BEGIN");
+        ++nesting;
         auto result = sequence(true);
+        --nesting;
         expect("END");
         return result;
     }

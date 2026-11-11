@@ -41,6 +41,17 @@ CASES = [
            args=['--emit-jedec', 'T.PDS', '--settings', 'T.MXL', '--simulate'], ok=False,
            message='Invalid simulation node placement for N')
       for label, number in (('wraps_to_zero', '4294967295'), ('negative', '-1'), ('past_device', '200'))],
+    # Simulation blocks nest without limit in the source; the parser recursed
+    # once per level and overflowed the stack.
+    dict(name='simulation_nesting_too_deep',
+         files={'T.PDS': 'CHIP T MACH111\nPIN ? A\nPIN ? Q\nEQUATIONS\nQ = A\nSIMULATION\n' +
+                         'IF A THEN BEGIN ' * 50000 + 'END ' * 50000},
+         args=['--emit-jedec', 'T.PDS', '--simulate'], ok=False,
+         message='Simulation: block nesting exceeds 256'),
+    dict(name='simulation_nesting_at_limit',
+         files={'T.PDS': 'CHIP T MACH111\nPIN ? A\nPIN ? Q\nEQUATIONS\nQ = A\nSIMULATION\nSETF A\n' +
+                         'IF A THEN BEGIN ' * 256 + 'CHECK Q ' + 'END ' * 256},
+         args=['--emit-jedec', 'T.PDS', '--simulate'], ok=True),
 ]
 
 # Messages of exceptions thrown by the standard library, not by the compiler.
