@@ -1,0 +1,132 @@
+
+*** Start MACHPAR.E 23:54:12 
+Fpcel.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP FPCEL MACH435
+   2     |PIN ? A
+   3     |PIN ? B
+   4     |PIN 3 Q0
+   5     |NODE 9 N0 PAIR Q0
+   6     |PIN ? Q1
+   7     |EQUATIONS
+   8     |Q0=A
+   9     |N0=A
+  10     |Q1=N0*B
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Fpcel.pds
+
+*** End MACHPAR.EXE 23:54:12; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 23:54:12 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Q0
+Processing equation for ====>N0
+Processing equation for ====>Q1
+
+ %%  MACHBPP  %% Maximum memory allocated was: 68982 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Fpcel.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 23:54:12; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 23:54:12 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for node N0 and paired pin Q0...
+====> N0                 MIN_ON (1 + pt)
+====> Q0                 MIN_ON (1 + pt)
+Processing equation(s) for pin Q1...
+====> Q1                 MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 48798 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Fpcel.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 23:54:12; (MACHMIN.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 23:54:12 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file fpcel.tre to PLA file fpcel.pla...
+
+...
+...
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 48498 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Fpcel.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 23:54:13; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 23:54:13 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Fpcel.pds . Device is MACH435 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of non-global clocks:
+   None.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+*** Routing successful. Assembler invoked.
+*** The JEDEC file generated is Fpcel.JED .
+*** Report Generator invoked.
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%
+*** Report Generator end.
+
+%%%% MACHFITR %%%% Fitting successful. File Fpcel.pds .
+%%%% MACHFITR %%%% ERROR count 0 WARNING count 0 .
+
+*** End MACHFITR.EX 23:54:14; (MACHFITR.EXE= 1 sec.) elapsed time= 2 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

@@ -1687,6 +1687,24 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
         }
         return true;
     };
+    auto fixed_modern_pair_routes = [&](const Pin& node, const Pin& pad) {
+        const bool modern = design.device == "MACH355" || design.device.compare(0, 5, "MACH4") == 0;
+        if (!modern || node.number < 2 || !pad.number)
+            return true;
+        const auto& layout = mach_device_layout(design.device);
+        const auto io      = std::find(layout.io_pins.begin(), layout.io_pins.end(), pad.number);
+        const auto cell    = node.number - 2;
+        if (io == layout.io_pins.end() || cell >= layout.blocks * layout.cells)
+            return true;  // Not a macrocell/I-O pair; rejected later by the fitter.
+        const unsigned ios   = unsigned(layout.io_pins.size()) / layout.blocks;
+        const unsigned index = unsigned(io - layout.io_pins.begin());
+        if (cell / layout.cells != index / ios)
+            return false;
+        const unsigned local = cell % layout.cells, pin = index % ios;
+        // Sixteen I/O pins per block reach the cells of their own half;
+        // eight reach a window of eight cells starting at twice their index.
+        return ios == 16 ? local / 8 == pin / 8 : (local + 16 - 2 * pin) % 16 < 8;
+    };
     std::set<std::string> paired;
     for (auto& p : design.pins)
         if (!p.pair.empty()) {
@@ -1695,6 +1713,16 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
                 fail("PAIR must connect a declared pin and node: " + p.name);
             if (p.node && p.pair_kind != "IPAIR" && (design.device[4] == '1' || design.device[4] == '2') &&
                 !normalize_fixed_output_pair(p, *other->second)) {
+                p.pair.clear();
+                p.pair_kind.clear();
+                continue;
+            }
+            // MACHBPP B602: on MACH3/4 a fixed node and its fixed pad must be
+            // joined by the block's output switch matrix. Otherwise the pair
+            // is discarded and both signals keep their own locations.
+            if (p.node && p.pair_kind != "IPAIR" && !fixed_modern_pair_routes(p, *other->second)) {
+                design.diagnostics.push_back("B602: Incorrectly paired node " + p.name +
+                                             ". Output pairing of the above node discarded.");
                 p.pair.clear();
                 p.pair_kind.clear();
                 continue;

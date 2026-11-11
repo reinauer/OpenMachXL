@@ -21,6 +21,11 @@ for case in manifest['cases']:
                                  '--settings', str(reference / (name + '.MXL')), *flags],
                                 capture_output=True, timeout=60)
         assert result.returncode == 0, (name, flags, result.stderr)
+        # An optional original warning must be reported, and only when listed.
+        if 'warning' in case:
+            assert case['warning'].encode() in result.stderr, (name, flags, result.stderr)
+        elif reference.name == 'fixed-pair-reference':
+            assert b'B602' not in result.stderr, (name, flags, result.stderr)
         native = jedec.parse(result.stdout)
         comparison = jedec.compare(original, native)
         assert comparison['equal'] and native.transmission_verified, (name, flags, comparison)

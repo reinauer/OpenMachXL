@@ -1,0 +1,186 @@
+{
+ "description": "Original MACHXL 2.1 fits of an output pair whose pad and node are both fixed, including pairs the output switch matrix cannot join (B602)",
+ "cases": [
+  {
+   "name": "FPCEL",
+   "files": {
+    "FPCEL.PDS": "0eb6a904b35069c9427f0703d24feb2ee0e0051918d859b4d078cbbe8651983e",
+    "FPCEL.MXL": "3573aff800dd93de8ebe4142ef2e5e4b6953368fe7a40feeddec20050ec74f7d",
+    "FPCEL.JED": "58e6484a18588c6b3dfe4f318eca92b2a3c3d7ff299aeca300e056ad92bc4927",
+    "FPCEL.LOG": "1fcf7e52dd89a3caf824d892c1b152e113fb6b2548a69882fad55364858e82c7"
+   }
+  },
+  {
+   "name": "FPCON",
+   "files": {
+    "FPCON.PDS": "10da8bd7568e481111e03ceccf6cf7647691a3dedce59930a29e463c805353ec",
+    "FPCON.MXL": "ac565394d7b164f2197401306d54772e8f0b6b39f2c93c2dc91d7eb52f39ff53",
+    "FPCON.JED": "53de819de61a7bc190ca29736938323790df849704deca570ee0dbdea2e7be5b",
+    "FPCON.LOG": "b286884040c0d859cfba9df8e38f9b1e6ed3508b81e0d904c516d733c140f8f8"
+   },
+   "warning": "B602: Incorrectly paired node N0"
+  },
+  {
+   "name": "FPFAR",
+   "files": {
+    "FPFAR.PDS": "9c4365961261223d6acbe09c88ee6ffb8b8b30bb6e8cb7e01af0726e88dfe45b",
+    "FPFAR.MXL": "e9167ef4c86532848b403d78163e8239f0458ea63a9dfa970ed5f4933f76481e",
+    "FPFAR.JED": "df081b236286706708d571e9f10e445670e4e5f235aa00e4f68fbd36e8ad51fc",
+    "FPFAR.LOG": "998b16adbb965c602ca292ea7775724669ad9c49a2c7f02ce4bebe65c2811692"
+   },
+   "warning": "B602: Incorrectly paired node N0"
+  },
+  {
+   "name": "FPNOD",
+   "files": {
+    "FPNOD.PDS": "f463011606d28fae5f7ea323cb648997c33e113b0aec766526e5ac9bcbd14de1",
+    "FPNOD.MXL": "b0b2306ef67fe8d813be80db76630d3e8fa45adcf04d743456122ad71f27af67",
+    "FPNOD.JED": "a3bd4373ccc5ac5271e2636452d22885d9a52fb91c82ddfa5f998a23501accbb",
+    "FPNOD.LOG": "8ba32642f3f97ce50a0113fc2aa5cb525ce5d1746af96ac87e40e7509beffb7e"
+   }
+  },
+  {
+   "name": "FPOK0",
+   "files": {
+    "FPOK0.PDS": "e03e6016ed2bfb6b345d36e39251beac72262484bc88704f4095e731404d8fa6",
+    "FPOK0.MXL": "e45ae866638f32caa617621dd2b3a6e021f6764c8692cd9a2bec99ff5d157862",
+    "FPOK0.JED": "d4457c8b6e54987086569c9786f5919eb6ca141a59ce52f12b8c38ed69aee768",
+    "FPOK0.LOG": "f889e4c03f0646cddd3edd9f074ae6660c65b422de5f794342636c918420ef6e"
+   }
+  },
+  {
+   "name": "FPPIN",
+   "files": {
+    "FPPIN.PDS": "cbfdba1db833e00b3ffd9098073592913eea583009eacc60dfd91ff6cdaf5483",
+    "FPPIN.MXL": "3526e119e7889125bdb0d650ad7dd2a091ec48c5ceba8435c6f895d08429624e",
+    "FPPIN.JED": "360669d75d60ae76fcda56759d04e039327edf3e899afee577b8748be19e438d",
+    "FPPIN.LOG": "9fc7a1f956e776db262155aea07971f760fbd28e4d6d6701793a3fa6c89fad6a"
+   }
+  },
+  {
+   "name": "F355A",
+   "files": {
+    "F355A.PDS": "19e77a23f335e2d7cd5fff8bbac47fbfde8e56ddcf6cd7c51643d1e37e73edd5",
+    "F355A.MXL": "0cc23956bdd04137b3f4b4301df6b720bb31d319e5765f2f8783467b4f50de1e",
+    "F355A.JED": "af3eb1927975a55062acc3ac8ceb899ffdfc7dd09d939c2fcddfd83649ea48c5",
+    "F355A.LOG": "93101aec0ac8826cc1520cfd9844b7fe60aa7cef6794eb7e51d6e26d865fbfc8"
+   },
+   "warning": "B602: Incorrectly paired node N0"
+  },
+  {
+   "name": "F355B",
+   "files": {
+    "F355B.PDS": "b79829d2abab6ec7ed31e563e9c393029882595c17c657c8928941b2f36a2bcf",
+    "F355B.MXL": "732869025024afd290ce5c35a13bdee149a9f8e6ae5901f804f849d20ebbde2a",
+    "F355B.JED": "ec9754739962207e4c7c79b58c57ae768cf7ea6bc3228d4a1c086bba63950279",
+    "F355B.LOG": "6f46a318a53b8822901cae781f8d970321c99a6d33a40a3ac56d851f004e7d55"
+   },
+   "warning": "B602: Incorrectly paired node N0"
+  },
+  {
+   "name": "F355C",
+   "files": {
+    "F355C.PDS": "1167ccfaec613329209637256a13542e89994a7e5293ea9afd0d978226f5b30d",
+    "F355C.MXL": "fe59e7c3cc0ea39410fb9f7fdaa7772aab40f139fbfd0a299333ce44025c819d",
+    "F355C.JED": "25a33c9f607e660c9ae91fc2e3b5794380f1dea74cf1cf3122b52770d540b50b",
+    "F355C.LOG": "4b883b2b4856fe1bd6f5a0c787ddbcf4a01fe433d356ba95efbe2798a5b965c9"
+   }
+  },
+  {
+   "name": "F355D",
+   "files": {
+    "F355D.PDS": "26a06ed56c3e749c128c52f9389d6403010f250c4e12a103ab25c8a37e4442c6",
+    "F355D.MXL": "696bb40efe6b22c4c351369731592638ee5b2b6a747c5d4675482190061ffba0",
+    "F355D.JED": "945df83d997519dd410dac8daaeb4569ef68d50bcaf5eae5902d07162c5915de",
+    "F355D.LOG": "2a57ad7bcab57d5bb7aba554551abae614321ecf687de09753897a207856b30f"
+   }
+  },
+  {
+   "name": "F445A",
+   "files": {
+    "F445A.PDS": "ebc8c3a29d347644948b94d2145d4d316b2b77827ede44f54ff1c52966be5559",
+    "F445A.MXL": "ca1d9f9cb28ca92a69aa961bd041318f94138e081bb78983d28d17105649ff5f",
+    "F445A.JED": "ce6c09b168a25b28b831fcd97d163832468a5290c4bcc79c4d27401b092d1a3d",
+    "F445A.LOG": "085eed4a8d3f576be5166c2e2d5c5f0ca5eacb5c88ba7e3bef943eba1732259d"
+   },
+   "warning": "B602: Incorrectly paired node N0"
+  },
+  {
+   "name": "F445B",
+   "files": {
+    "F445B.PDS": "3569f60f59c0614557a149b344f8c0686dad14004102e00a874c2fa82d2deba3",
+    "F445B.MXL": "73d921bf8b66cb0ce85a7286768feda387a027c96fa30876ce95a23a462dad21",
+    "F445B.JED": "77e90b66fd98db27dea308c63af7ab19deebccea3afc08ac73e2f1a47c26a5f1",
+    "F445B.LOG": "afdbd5605211a734342939dcf3c28a6b61de2e987695a731336b0035a20b78a2"
+   }
+  },
+  {
+   "name": "F465A",
+   "files": {
+    "F465A.PDS": "ec87505d3a3bd47be9c7b80c449c9f7cbeb40fd7f652c91d36ca2e4a2e8ea4cd",
+    "F465A.MXL": "dda6520683449ed61726d31d91bf413f899f117cad0c585deb3e189147e261c6",
+    "F465A.JED": "e5848604adb6334ede6deda5ee5a2b2b8372108231938dce6cebdd36e9c16f2c",
+    "F465A.LOG": "325c07d4dcb2755156d987adfff8f7f9fe65ad7d85fb88b205caa16b6aece78f"
+   },
+   "warning": "B602: Incorrectly paired node N0"
+  },
+  {
+   "name": "FPC08",
+   "files": {
+    "FPC08.PDS": "f1394f38a7abde884c660e15467c6f7af0475bb6057781d54800021850a0e99a",
+    "FPC08.MXL": "defbab053e0c95adbccda16f9084b192a3a7682c054a9bbeb102bde49ef167b0",
+    "FPC08.JED": "8e52b55bc21c3852ea9d884f1465b3a7ce75111a353fe80c00382167c2549dbd",
+    "FPC08.LOG": "9a8b173b4fa5d333961a25a4cd6cae3eb351f6abb826177371d4715c425dd400"
+   },
+   "warning": "B602: Incorrectly paired node N0"
+  },
+  {
+   "name": "FPC15",
+   "files": {
+    "FPC15.PDS": "7bd8c17afd22317dd49a774609b4a941ad05ef9f629cb2f5716f4a4a980d629c",
+    "FPC15.MXL": "af6492f7ad4e8ebac735f0bbc83af6da22ae6001070aaa4c00c1455e1ccf6138",
+    "FPC15.JED": "84d2b5c8a9dbdb0c17e9d16158d2b6b6166fd1817644f998571c306ff4cd3e76",
+    "FPC15.LOG": "c005cc66c211a43fe126aa15f52d8fe7982c25a12886d254738c7a12e92aed35"
+   },
+   "warning": "B602: Incorrectly paired node N0"
+  },
+  {
+   "name": "FPP4A",
+   "files": {
+    "FPP4A.PDS": "e95d891a608a31d67983b3e117214f39fee4cc9fd23951dd391898524d7c3f3a",
+    "FPP4A.MXL": "fdbec945e0d2d436ad064f40d95c5683ca336288dfc97114748ba48b0ccb6dab",
+    "FPP4A.JED": "02fecf6b68f7aff9faf9671207bcbdb4e850d656c99026ecb4b78525d6d45579",
+    "FPP4A.LOG": "469b7eba314dc5f80221727af64f9539b20da514eaac7452802ef698b8b6792d"
+   },
+   "warning": "B602: Incorrectly paired node N0"
+  },
+  {
+   "name": "FPP4B",
+   "files": {
+    "FPP4B.PDS": "631b61b2f54214c0eaf306df669f7486206bb091196beed9b15ca7f8f1c3cf64",
+    "FPP4B.MXL": "b379bd7bf9804036d4195073ae1a622bb5ee0b62d92b7a9e0ccde494999ffa41",
+    "FPP4B.JED": "b93519660d6079f40802beef2f82c29c2d11140946ec201ca77f0ea58db59907",
+    "FPP4B.LOG": "6d8588ab86ba7f6900db1689164459e506a7962615cfa4e7c1bb1414cdac0fb9"
+   }
+  },
+  {
+   "name": "FPP4C",
+   "files": {
+    "FPP4C.PDS": "1d7411ba272ed828883bc5be521e02c12703b83f886a8ebd4e2c303665e06b3e",
+    "FPP4C.MXL": "bcdf151735246f13943bcc201d910159121898c75b452d381615940f53093a4f",
+    "FPP4C.JED": "186384558a9726d55ce319a09cdee048c9f03b9d06818ec5bae0524b8917f6e3",
+    "FPP4C.LOG": "96538a2e2c7ec97904868dd4540a8d4f98a4743de3603c5ba7d8a024eba093ff"
+   }
+  },
+  {
+   "name": "FPP4D",
+   "files": {
+    "FPP4D.PDS": "59b4fa8dcc15a0ad1df117e645e57e219e28c0cb24d2fb9be9d1d1b0c3a9e010",
+    "FPP4D.MXL": "5ed770b2280594deec5370008c273a8b8b5ee1cd2c5f59753485fe1db42f2a1e",
+    "FPP4D.JED": "d7b41677e8b47020da02596d4de2a336cd25521efe6a6aad6ca425e521ad1de7",
+    "FPP4D.LOG": "a1cbc89ddb23cfe3c40c7877d3d9428ec3ea881499285b3d08d5c5dd7c08a3c7"
+   },
+   "warning": "B602: Incorrectly paired node N0"
+  }
+ ]
+}
