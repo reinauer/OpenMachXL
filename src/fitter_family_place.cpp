@@ -514,7 +514,7 @@ bool swap_resources(const std::vector<Block>& blocks, const Clusters& c, unsigne
     // one: both swapped clusters must carry an input-clock record. MACH2
     // exchanges an input register with a macrocell cluster as well, which is
     // why its input registers end up in the earlier blocks.
-    if (d.one_hot && c[a].macrocell != c[b].macrocell)
+    if (d.one_hot && (c[a].macrocell != c[b].macrocell || c[a].input_register_pad != c[b].input_register_pad))
         return false;
     if (d.one_hot) {
         // Check control rows before removing either node. If an incoming global

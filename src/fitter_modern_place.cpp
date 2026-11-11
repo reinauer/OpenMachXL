@@ -840,6 +840,7 @@ ModernPlacement place_mach_modern(const MachDeviceLayout& d, const std::vector<M
             paired_inputs.insert(std::size_t(s.paired_input));
         }
     std::vector<Mach111PartitionCluster> clusters;
+    std::vector<std::pair<std::size_t, std::size_t>> pad_registers;
     for (std::size_t i = 0; i < signals.size(); ++i) {
         const auto& s = signals[i];
         keys.push_back(s.order);
@@ -857,6 +858,12 @@ ModernPlacement place_mach_modern(const MachDeviceLayout& d, const std::vector<M
                 fail("MACH355 input pairs use the ordinary macrocell path");
             const auto& input = signals[std::size_t(s.paired_input)];
             keys[i].fixed_pin = input.order.fixed_pin;
+            // An output pad already has a cluster. Its input register sits
+            // behind the same pin and follows that cluster's block.
+            if (input.output) {
+                pad_registers.emplace_back(std::size_t(s.paired_input), i);
+                continue;
+            }
             Mach111PartitionCluster c;
             c.order.signal_id = std::uint16_t(input.order.serial);
             c.output          = true;
@@ -986,6 +993,10 @@ ModernPlacement place_mach_modern(const MachDeviceLayout& d, const std::vector<M
         observe_partition = [&](const PartitionObservation& frame) {
             options.partition_observer(signals, cluster_signals, frame);
         };
+    for (const auto& pair : pad_registers)
+        for (std::size_t c = 0; c < clusters.size(); ++c)
+            if (cluster_signals[c] == pair.first)
+                clusters[c].input_register_pad = true;
     const auto blocks = partition_mach_family_first_success(
         d, clusters, capacity, options.balanced_partition, &r.global_controls, &cluster_order, &product_clocks,
         &implicit_controls, options.iteration, nullptr, &r.partition_product_groups, observe_partition);
@@ -1000,6 +1011,11 @@ ModernPlacement place_mach_modern(const MachDeviceLayout& d, const std::vector<M
             } else
                 r.cells[i] = int(b * d.cells);
         }
+    for (const auto& pair : pad_registers) {
+        const int b              = r.cells[pair.first] / int(d.cells);
+        input_blocks[pair.first] = input_blocks[pair.second] = b;
+        keys[pair.first].block = keys[pair.second].block = std::int16_t(b);
+    }
     // Modern devices assign automatic clocks in ascending device order.
     // MACH1 instead preassigns a sole clock to its default slot.
     if ((options.reserve_default_clock || !clocks.empty()) && d.clock_pins.empty())

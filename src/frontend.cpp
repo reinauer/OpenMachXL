@@ -1751,14 +1751,16 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
             transfer.source_clauses.push_back(transfer.expression);
             transfer.care = make_constant(true);
             design.equations.push_back(std::move(transfer));
-            // "Generating CLKF equation for INPUT PAIRING": a clocked pad
-            // passes its clock on to the generated register.
+            // "Generating CLKF equation for INPUT PAIRING": on MACH2 a clocked
+            // pad passes its clock on to the generated register. MACH4 leaves
+            // the register on its default clock.
             const auto has_clock = [&](const std::string& name) {
                 return std::find_if(design.equations.begin(), design.equations.end(),
                                     [&](const Equation& e) { return e.signal == name && e.function == "C"; });
             };
             const auto pad_clock = has_clock(pad.name);
-            if (pad_clock != design.equations.end() && has_clock(pad.pair) == design.equations.end()) {
+            if (design.device.compare(0, 5, "MACH2") == 0 && pad_clock != design.equations.end() &&
+                has_clock(pad.pair) == design.equations.end()) {
                 auto clock   = *pad_clock;
                 clock.signal = pad.pair;
                 design.equations.push_back(std::move(clock));

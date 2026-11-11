@@ -46,16 +46,19 @@ struct Mach111PartitionCluster
     std::optional<std::uint16_t> global_reset  = {};
     std::optional<std::uint16_t> global_preset = {};
     bool macrocell                             = true;  // IPAIR input-register clusters only consume IO.
-    int global_clock                           = -1;
-    bool clock_positive                        = true;
-    bool local_clock                           = false;
-    bool allow_global_product_clocks           = false;
-    std::optional<std::uint16_t> clock_fanin   = {};
-    unsigned data_terms                        = 1;      // Constants count one; absent data counts zero.
-    bool explicit_async_control                = false;  // Legacy215 swap precheck.
-    bool force_async                           = false;
-    bool force_sync                            = false;
-    bool clocked_storage                       = false;
+    // The cluster's pad also feeds a MACH4 input register. Such a cluster is
+    // only exchanged with another one of its kind.
+    bool input_register_pad                  = false;
+    int global_clock                         = -1;
+    bool clock_positive                      = true;
+    bool local_clock                         = false;
+    bool allow_global_product_clocks         = false;
+    std::optional<std::uint16_t> clock_fanin = {};
+    unsigned data_terms                      = 1;      // Constants count one; absent data counts zero.
+    bool explicit_async_control              = false;  // Legacy215 swap precheck.
+    bool force_async                         = false;
+    bool force_sync                          = false;
+    bool clocked_storage                     = false;
     // MACH215 materializes absent RE/PR as zero descriptors before ranking.
     bool implicit_storage_controls = false;
     // Partial-group flags: bit0 consumes the fixed-seed balance,
