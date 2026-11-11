@@ -665,6 +665,8 @@ class Simulator
             const auto& op = command.op;
             if (op == "FOR") {
                 auto first = number(command.first), last = number(command.last);
+                // The original's simulator crashes on such a range (general
+                // protection fault); there is no behaviour to reproduce.
                 if (last < first)
                     error("FOR start value must not exceed its end value");
                 auto old       = variables.find(command.variable);
@@ -720,7 +722,7 @@ class Simulator
                             }
                         } else {
                             if (!registers.count(literal.name))
-                                error("PRELOAD requires a register: " + literal.name);
+                                error("D3190: Can only PRELOAD registered pins. Pin " + literal.name + " is not registered.");
                             registers[literal.name] = literal.value;
                             values[literal.name]    = literal.value;
                         }
@@ -757,7 +759,7 @@ class Simulator
                 bool report_clash = false;
                 for (const auto& expected : literals(command.arguments)) {
                     if (!primary.count(expected.name) && !design.simulation_symbols.count(expected.name))
-                        error("CHECK requires an output: " + expected.name);
+                        error("D3180: Cannot CHECK pin " + expected.name + ". CHECK allowed only on output pins.");
                     auto actual = observed_signal(expected.name, op == "CHECKQ");
                     if (actual != expected.value) {
                         result.mismatches.push_back({result.vectors.size(), expected.name, expected.value, actual});

@@ -232,6 +232,33 @@ CASES = [
          files={'T.PDS': 'CHIP T MACH211\nPIN ? CLK\nPIN ? A\nPIN ? B\nPIN ? Q0 REG\nPIN ? Z\nSTATE\nMEALY_MACHINE\nCLKF = CLK\nS0 = /Q0\nS1 = Q0\n'
                          'S0 := A -> S1 +-> S0\nS1 := VCC -> S0\nS0.OUTF = A -> Z + A -> /Z\nS1.OUTF = B -> Z\n'},
          args=['--emit-jedec', 'T.PDS'], ok=False, message='E1260: Conflicting conditions in output equation of state S0'),
+    # Simulation commands the original's simulator rejects (D3180, D3190) or
+    # accepts. On a FOR range that runs backwards the original crashes, so
+    # that one is an error here.
+    dict(name='simulation_check_input',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? CLK\nPIN ? Q\nPIN ? R REG\nEQUATIONS\nQ=A\nR=A\nR.CLKF=CLK\n'
+                         'SIMULATION\nSETF A /CLK\nCHECK A\n'},
+         args=['--emit-jedec', 'T.PDS', '--simulate'], ok=False, message='D3180: Cannot CHECK pin A. CHECK allowed only on output pins.'),
+    dict(name='simulation_preload_combinatorial',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? CLK\nPIN ? Q\nPIN ? R REG\nEQUATIONS\nQ=A\nR=A\nR.CLKF=CLK\n'
+                         'SIMULATION\nSETF A /CLK\nPRELOAD Q\nCHECK Q\n'},
+         args=['--emit-jedec', 'T.PDS', '--simulate'], ok=False, message='D3190: Can only PRELOAD registered pins. Pin Q is not registered.'),
+    dict(name='simulation_for_backwards',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? CLK\nPIN ? Q\nPIN ? R REG\nEQUATIONS\nQ=A\nR=A\nR.CLKF=CLK\n'
+                         'SIMULATION\nSETF A /CLK\nFOR I := 3 TO 1 DO\nBEGIN\nSETF /A\nEND\n'},
+         args=['--emit-jedec', 'T.PDS', '--simulate'], ok=False, message='FOR start value must not exceed its end value'),
+    dict(name='simulation_for_single_pass',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? CLK\nPIN ? Q\nPIN ? R REG\nEQUATIONS\nQ=A\nR=A\nR.CLKF=CLK\n'
+                         'SIMULATION\nSETF A /CLK\nFOR I := 2 TO 2 DO\nBEGIN\nSETF /A\nEND\nCHECK /Q\n'},
+         args=['--emit-jedec', 'T.PDS', '--simulate'], ok=True),
+    dict(name='simulation_while_on_unknown',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? CLK\nPIN ? Q\nPIN ? R REG\nEQUATIONS\nQ=A\nR=A\nR.CLKF=CLK\n'
+                         'SIMULATION\nSETF /CLK\nWHILE (R) DO\nBEGIN\nSETF A\nEND\nSETF A\nCHECK Q\n'},
+         args=['--emit-jedec', 'T.PDS', '--simulate'], ok=True),
+    dict(name='simulation_preload_register',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? CLK\nPIN ? Q\nPIN ? R REG\nEQUATIONS\nQ=A\nR=A\nR.CLKF=CLK\n'
+                         'SIMULATION\nSETF A /CLK\nPRELOAD R\nCHECK R\n'},
+         args=['--emit-jedec', 'T.PDS', '--simulate'], ok=True),
     # Command line and settings errors name what is wrong.
     dict(name='argument_missing_value', files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? Q\nEQUATIONS\nQ=A\n'},
          args=['--emit-jedec', 'T.PDS', '--settings'], ok=False, message='Missing value after --settings'),
