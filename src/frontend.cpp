@@ -602,7 +602,7 @@ class SynthesisParser
         return value;
     }
     void add(const std::string& signal, const std::string& function, ExprPtr value, ExprPtr guard, bool negative,
-             bool replace = false, bool literal_assignment = false, bool source_assignment = false)
+             bool literal_assignment = false, bool source_assignment = false)
     {
         auto key = signal + "." + function;
         auto old = assigned.find(key);
@@ -629,9 +629,12 @@ class SynthesisParser
                 }
                 value = negate(value);
             }
-            replace     = replace || e.inherited;
-            e.inherited = false;
-            auto clause = guarded(value, guard);
+            // Only a control inherited through a primary copy is replaced.
+            // Every other repeated assignment adds a term, including one that
+            // copies its own target with braces.
+            const bool replace = e.inherited;
+            e.inherited        = false;
+            auto clause        = guarded(value, guard);
             if (replace)
                 e.source_clauses.clear();
             e.source_clauses.push_back(clause);
@@ -671,8 +674,7 @@ class SynthesisParser
                 inv   = inv != !value->value;
                 value = make_constant(true);
             }
-            bool replace = rhs.find('{') != std::string::npos && rhs.find(name) != std::string::npos;
-            add(name, function, value, guard, inv, replace, is_numeric_literal(compact(rhs)), true);
+            add(name, function, value, guard, inv, is_numeric_literal(compact(rhs)), true);
             // A primary function copy inherits auxiliary controls. Explicit
             // controls later in the source replace copied values.
             if (f.empty() && compact(rhs).front() == '{' && compact(rhs).back() == '}') {

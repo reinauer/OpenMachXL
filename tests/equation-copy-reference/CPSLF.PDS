@@ -1,0 +1,11 @@
+CHIP CPSLF MACH111
+PIN ? A
+PIN ? B
+PIN ? C
+PIN ? D
+PIN ? Q1
+PIN ? ZZ
+EQUATIONS
+ZZ = A
+Q1 = B
+Q1 = {Q1} * C

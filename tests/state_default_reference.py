@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Compare STATE default-branch handling with original compiler results."""
+"""Compare frontend results with original compiler PLAs and rejections.
+
+The optional second argument selects another fixture directory.
+"""
 import hashlib
 import json
 from pathlib import Path
@@ -11,7 +14,7 @@ sys.path.insert(0, str(ROOT / 'tools'))
 from compare_pla import compare_pla, parse_pla, read_pla
 
 compiler = Path(sys.argv[1]).resolve()
-fixtures = ROOT / 'tests/state-default-reference'
+fixtures = Path(sys.argv[2]).resolve() if len(sys.argv) > 2 else ROOT / 'tests/state-default-reference'
 for case in json.loads((fixtures / 'manifest.json').read_text())['cases']:
     name = case['name']
     for filename, digest in case['files'].items():

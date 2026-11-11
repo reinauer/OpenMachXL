@@ -1,0 +1,85 @@
+{
+ "description": "Original MACHXL 2.1 results for repeated assignments that copy equations with braces",
+ "cases": [
+  {
+   "name": "CPOTH",
+   "files": {
+    "CPOTH.PDS": "fa10b54dbbdd29f68d1eddd4210c6ce6012eb0b9411a4068912555585d9c6953",
+    "CPOTH.MXL": "84f32b7fe8b463ab152c1f89fca6924290bc03e838bd0a98686401777cfbc28a",
+    "CPOTH.PLA": "a42c400a87335297ea2f2532f22279bf97ad527de4cfab51e3c9b35e2e023239"
+   }
+  },
+  {
+   "name": "CPSUB",
+   "files": {
+    "CPSUB.PDS": "548d30e3d424a9d113514009175f0e4c099935440238dcda962bcc1b9e364382",
+    "CPSUB.MXL": "0fb892d137d9cc18d88e89ab5c0659984253e9c0378fb569a857f5ae19143b8f",
+    "CPSUB.PLA": "2708cc5c523f93a0972ab262850d16841051a5837196f7f13a77703c24651643"
+   }
+  },
+  {
+   "name": "CPREV",
+   "files": {
+    "CPREV.PDS": "a223c760bc02dfb4076e75b15d2684d68a7e9ce0d11ede5a588a95ea499eaca7",
+    "CPREV.MXL": "5a6a16e9112af40457ea0e0a1a642a468198902655c754d069088f8a5fd75598",
+    "CPREV.PLA": "0099aa48723a203540166323bc302ae9b44da317ec5d21e922589cb07d3ae00c"
+   }
+  },
+  {
+   "name": "CPSLF",
+   "files": {
+    "CPSLF.PDS": "50c98f2da7dfaa151656dd4adf5a5b01ffdde537057f5e9a00ddf65755b3711a",
+    "CPSLF.MXL": "daca1a14ecdc7e896a35558951ae94ea3c580123805540b1e62619f4a487eb37",
+    "CPSLF.PLA": "a9e4cae4dd84e2c1979ccc81011682d1b8b2434228037482e9d7c7bc82952556"
+   }
+  },
+  {
+   "name": "CPSLO",
+   "files": {
+    "CPSLO.PDS": "715db888f628578ab2a767dfc3f104afd88ece3c21b6a81a02daf8ef992790fa",
+    "CPSLO.MXL": "50afa4d0504ea70a35118c25ac07b3ed165163c0d4ffde8b6369028ee1c19293",
+    "CPSLO.PLA": "6532ac2f22ac93a2e9dbffaf626b979270934a8980eb3a0675988dc6792b8bbc"
+   }
+  },
+  {
+   "name": "CPMIX",
+   "files": {
+    "CPMIX.PDS": "3dbfb4b81504ee74edf207613ccf87630d1a1d44dc649dd4b4bdb2df9e46518b",
+    "CPMIX.MXL": "945ec4749c153d9d6a612d51fd541c64da8553c06b4e4c8b48ac78e64af8dd36",
+    "CPMIX.PLA": "301029ff9e6c6ae0dcd5496c90d5b7e8fb1c3ab824034b21ef5f110671da05d3"
+   }
+  },
+  {
+   "name": "CPPRE",
+   "files": {
+    "CPPRE.PDS": "93b8808057a46897dbca7c9cc18398b6f1732b051773e24ecde936e839e24d2f",
+    "CPPRE.MXL": "5478a9e4bdce2c42ca346b2a25cb5739f2689f5852c687e48e52e9eef5b96c9a",
+    "CPPRE.PLA": "31325fb0ac66ffb0e2f3138dbc2d30bacba3289f7b6f2ac7074f6d04ec3eda2f"
+   }
+  },
+  {
+   "name": "CPFDB",
+   "files": {
+    "CPFDB.PDS": "fd1cd506658698e0b0e1f6851a6067dc5b22242fc48aec99eb63b609bdbc54ca",
+    "CPFDB.MXL": "a8cd073ae161e1150f9dc1effaf3bd2b8f0d4541e0a2b5a5863087753870eced",
+    "CPFDB.PLA": "f30f88fec992eeb287909d25bffa9c3f66d3d008f595565eeca7b447fd1f3b98"
+   }
+  },
+  {
+   "name": "CPTWO",
+   "files": {
+    "CPTWO.PDS": "f9d089af37fb7d731f2b353a1d8b4ad9ec26cd0df32fe4e5ac3ccd7c42a28b72",
+    "CPTWO.MXL": "8a5b87175d4df0f568f0771b5df8aa93054e25d6a293cfcf267f72b1e0055fe4",
+    "CPTWO.PLA": "cb86c069165170beddd12cf8f3aa638776917d3c293f0e24532e8013fcfffb4d"
+   }
+  },
+  {
+   "name": "CPLAT",
+   "files": {
+    "CPLAT.PDS": "dc2aba24256c9bac1289099091ffc4a55bda52163850c42591e04befd556643c",
+    "CPLAT.MXL": "6b05a0857df9fec46b7deae9425d6ba4c517f5ed976144b8db38be47d68ccf1f",
+    "CPLAT.PLA": "4cdd9dc999aff904e481f6df45951c56151ae1d8b5ca3f8864d94d6ccf292eae"
+   }
+  }
+ ]
+}
