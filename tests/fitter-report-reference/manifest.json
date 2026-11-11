@@ -1509,6 +1509,50 @@
         "JED": "4660f55a900dde907f94834216aba958a1e639039b694195d0416123be0d9084"
       },
       "display_filename": "Q4c.pds"
+    },
+    {
+      "name": "M5K35",
+      "device": 215,
+      "sha256": {
+        "PDS": "5f53975dd27b6ea392cd697a2ba56b6c41a0a57744d544775fbad59ca59d1a3a",
+        "MXL": "6715575623ff66bb75ce75d98dc2c5fde79c48b62e38283ba71509928ff4599e",
+        "RPT": "5174bc3bfe4e06c69d011a6ef0495c7aff43250f11b3126a6726c77d838aaadf",
+        "JED": "2579d0da30b9e278feb54adaf37de8b37f5a2485e58bdb2e245c9855a40d6687"
+      },
+      "display_filename": "M5k35.pds"
+    },
+    {
+      "name": "T5A",
+      "device": 215,
+      "sha256": {
+        "PDS": "a394945a69e8e81f68d6e15271043b44811972dd5f8813e186a36e0d568caf23",
+        "MXL": "117efea77c733b75784573d620966ad886b4d70e9eed7b117d895dd19006ddb7",
+        "RPT": "22b43083ed6c5f88f41ad838c9db67e40f02dc92d5314e9c3c97ba5e16dc45d6",
+        "JED": "13caad17f04da505f032b12b261ad57c42f1962a9f71a20dc59547ce49598960"
+      },
+      "display_filename": "T5a.pds"
+    },
+    {
+      "name": "T5B",
+      "device": 215,
+      "sha256": {
+        "PDS": "ea5908270342309da25da391bdd59059c0f1c4b642778608b043cec13c7c4c38",
+        "MXL": "cab1731e62b4ef61fbd6c60408a7a68cec8b52fe344fcb1d9632bf08f21f47bd",
+        "RPT": "16c24501fa8d504c4106437fc8738a8bced28a2f31bcbe495b7c67bfdfa1819c",
+        "JED": "6eafd31f441bc530e3effa175ef5623161ce3f389b77eac6a4e47ff05e1cf6ad"
+      },
+      "display_filename": "T5b.pds"
+    },
+    {
+      "name": "T5C",
+      "device": 215,
+      "sha256": {
+        "PDS": "8ee1ff5c22a81aa2ab7ef824691eaea936faf16251a8f614ea4ac23077e2e6d6",
+        "MXL": "7c7ba62ed11b1155e1a7804529a8dcd766565f0bdd669f5f54c9a20d3a4fbfa3",
+        "RPT": "b44e7ed2c972fb782c0ef84a0e3f69c55a85a03f00037cbb5f783a1c198e117d",
+        "JED": "69ab455354a1af7e4572d51ae98cbcddfc4f7fd2dbe08df2c67e8af7a2f23bc9"
+      },
+      "display_filename": "T5c.pds"
     }
   ],
   "capture_script": "research/reports/capture_fitter_reports.py",

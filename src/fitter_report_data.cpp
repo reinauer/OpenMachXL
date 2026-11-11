@@ -69,6 +69,13 @@ void finalize_fitter_report_data(const Design& design, const FuseImage& image, F
                 if (clock.pin == int(pin.number) &&
                     std::find(pin.clock_blocks.begin(), pin.clock_blocks.end(), b) == pin.clock_blocks.end())
                     pin.clock_blocks.push_back(b);
+        for (const auto& node : data.nodes)
+            if (node.block >= 0 &&
+                std::find(node.clock_pin_fanins.begin(), node.clock_pin_fanins.end(), pin.name) !=
+                    node.clock_pin_fanins.end() &&
+                std::find(pin.clock_blocks.begin(), pin.clock_blocks.end(), unsigned(node.block)) ==
+                    pin.clock_blocks.end())
+                pin.clock_blocks.push_back(unsigned(node.block));
     }
     if (data.optimized_design) {
         std::map<std::string, const Pin*> declarations;

@@ -103,6 +103,8 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
             display(node.name);
             for (auto& name : node.fanins)
                 display(name);
+            for (auto& name : node.clock_pin_fanins)
+                display(name);
         }
         for (auto& pin : data.pins) {
             display(pin.name);
@@ -526,7 +528,9 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
     for (const auto& node : data.nodes)
         if (!node.input_register)
             for (const auto& input : node.fanins)
-                consumers[input].push_back(&node);
+                if (std::find(node.clock_pin_fanins.begin(), node.clock_pin_fanins.end(), input) ==
+                    node.clock_pin_fanins.end())
+                    consumers[input].push_back(&node);
     std::vector<std::string> source_order;
     for (const auto& pair : consumers)
         if (std::none_of(data.nodes.begin(), data.nodes.end(), [&](const auto& n) { return n.name == pair.first; }))

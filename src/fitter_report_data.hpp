@@ -31,6 +31,10 @@ struct FitterReportNode
     std::string clock, preset, reset;
     std::string oe_expression;
     std::vector<std::string> fanins;
+    // Fan-ins that are only the node's product-term clock and come from a
+    // dedicated clock pin. They are routed like logic but reported as clock
+    // use, not as equations where the signal is used.
+    std::vector<std::string> clock_pin_fanins;
     // Data/XOR excitation only; excludes OE, clock and set/reset controls.
     std::vector<std::string> data_fanins;
     std::vector<unsigned> fanout_blocks;

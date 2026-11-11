@@ -1225,9 +1225,16 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
                             append(control.term);
                         }
                     }
-                if (product_clocks.count(name) && clock_terms.count(name))
+                if (product_clocks.count(name) && clock_terms.count(name)) {
+                    const auto logic = fanins;
                     for (const auto& term : clock_terms.at(name))
                         append(term);
+                    for (const auto& source : fanins)
+                        if (!logic.count(source) && !pins.at(source)->node &&
+                            std::find(d.clock_pins.begin(), d.clock_pins.end(), pins.at(source)->number) !=
+                                d.clock_pins.end())
+                            node.clock_pin_fanins.push_back(source);
+                }
             }
             node.fanins.assign(fanins.begin(), fanins.end());
             report.blocks[cell / d.cells].product_terms += node.product_terms;
