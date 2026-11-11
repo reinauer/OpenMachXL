@@ -1,0 +1,109 @@
+{
+ "description": "Original MACHXL 2.1 fits of a signal that is both a global clock and a logic input, on MACH1/2 devices",
+ "cases": [
+  {
+   "name": "CD215",
+   "files": {
+    "CD215.PDS": "2312ed5d70a4374db2b6df30057ce37ea75c35cc4a4a5c59c4b69c3d15e074f7",
+    "CD215.MXL": "3380de70ab1d80c16478573cbf1a82c63a2fbb0899a652078b94ec763145c654",
+    "CD215.JED": "008b7c9544dc679637b5421564c8b04496b8899895d4a78c5c24aff519a0789d"
+   }
+  },
+  {
+   "name": "CF215",
+   "files": {
+    "CF215.PDS": "56b6a1440567507185417053253f7a5a666145f4585792f3b3adf1db70c5afda",
+    "CF215.MXL": "3c1e5a2b0b679c022c55efe49213985683878aa1d897d0bae9bc8349d65acaa5",
+    "CF215.JED": "04768678c648a4f2376b5fc5fb634cdd8b811412f6223266521919d4d7670177"
+   }
+  },
+  {
+   "name": "CR215",
+   "files": {
+    "CR215.PDS": "c4c2499b9375ab168ef998fcd867e5f2a4431b068267973d9c55ece16e7eb875",
+    "CR215.MXL": "60d066965e8ab9b114d5bd8abc84baf5ba967abbf17599ae559fd00e000d5d57",
+    "CR215.JED": "11e7c52a0d927d3eb0dfadabc9a6bf14f0c0e7087a12f90253c2dfa506c78bfd"
+   }
+  },
+  {
+   "name": "CT215",
+   "files": {
+    "CT215.PDS": "80eb3178de278fe23308ac07c0c01cc74fb1622e0c0cf3509964d5fa7a34efb7",
+    "CT215.MXL": "ca48f061a0f1180883b0e36c8bc4d798a907d52e396e2f17362c0f14ceaff1f0",
+    "CT215.JED": "3b6520aabd23135c3e136ca7d16afe19fde75739d426462693e80192882d5179"
+   }
+  },
+  {
+   "name": "CO215",
+   "files": {
+    "CO215.PDS": "beadc230cfc0b401d6fde38babee32a478772885fd1d9848431ef4d930b95ce5",
+    "CO215.MXL": "b36ccee2b1e0abb34a4c15f0d41e42ba7e74ed59d2080a46896730104a632ae4",
+    "CO215.JED": "95cffbcdbbbcef6e59232ff32800fac477d19341fdf9da8d380f99d9bcea389c"
+   }
+  },
+  {
+   "name": "CD211",
+   "files": {
+    "CD211.PDS": "bc1880ba5dee215c8e61d95972ccef96fe357505b78bb190886a8f0b9995d38e",
+    "CD211.MXL": "6fc71382089f445b5f47a2758a156f9047b9ba4df960a3ab478087e5b71e58dc",
+    "CD211.JED": "63197809424bf88a40457173351f3b97bfb71d50d32fefe41da5125c97329049"
+   }
+  },
+  {
+   "name": "CF211",
+   "files": {
+    "CF211.PDS": "e0d04cd606ad410ea14b2ae5741329ea3f04c0ca305df93bc9f9be0f4f7354d1",
+    "CF211.MXL": "841d688be1fbb8e391c5035a50a8c8e37458a29ddcfd32a5ed11c0a40b346823",
+    "CF211.JED": "a0bec1a973383cd2991d3705d9e30390d7125ccf9ca43fdf85b281fd9becb5e2"
+   }
+  },
+  {
+   "name": "CD231",
+   "files": {
+    "CD231.PDS": "3caf007622a62aef86849b4047f040e4ce52a5a64a104bab96f18ec3cfdf61a6",
+    "CD231.MXL": "97664a7dfcbd8ef6cd20c1599f5461f8c7af32d06cfbb28d69d3d3e0296d94b0",
+    "CD231.JED": "3075cec185c5fc01359304755073d5ab477216c334a380d5f9fcdeb352560836"
+   }
+  },
+  {
+   "name": "CD111",
+   "files": {
+    "CD111.PDS": "c0a7f86708ee039046c3acb679b050f471d816e10f951baaac0cc77dd21667a4",
+    "CD111.MXL": "628cae2d7ace175c9a8a74b9efa36d5692c2e7f5b7a561f94b79450c4d76fd1c",
+    "CD111.JED": "8a5828d342a9e4e9183cf7229e0d8fc982671687404000b10483b31a153079cd"
+   }
+  },
+  {
+   "name": "M5LPN",
+   "files": {
+    "M5LPN.PDS": "4c95e907098d479d0ad3e2e8baceed426d4a70d0a0163c07ed47ece7408b4aa0",
+    "M5LPN.MXL": "c48bdfe9af91be0f7dc2d3625d528d07996d40b18cfe756a46a9ba90241fa0ab",
+    "M5LPN.JED": "550504fab61ee415895bf406606b45274b1a447ed353ca0291ff08da343bfdf8"
+   }
+  },
+  {
+   "name": "M5LPT",
+   "files": {
+    "M5LPT.PDS": "4089eddeb22e9370fd95a5dbec6ac0f006a2970521e35c8aa3758a08ea35d359",
+    "M5LPT.MXL": "d95d4fe2fb031e438bd77cf05e09e35af488021330d94d1bdc5f79241e6cb526",
+    "M5LPT.JED": "963d0b1d7673bdf7c43af7ef7db74ad190a776b108ea38073b2967670cc1f548"
+   }
+  },
+  {
+   "name": "M5RP1",
+   "files": {
+    "M5RP1.PDS": "8391b92f4e6b7111879726c399705a7acb36b5b900f684a984f9982272e4302c",
+    "M5RP1.MXL": "29518a57d921530e941fd00c45f9f3d8f46dee164a69180e88af9ca7adfec49e",
+    "M5RP1.JED": "756f4694f6a46f9457c34e3ddce2c0bf57dfb8cb45d9cee3c8f4c7fbe9472eb3"
+   }
+  },
+  {
+   "name": "M5RPN",
+   "files": {
+    "M5RPN.PDS": "2c1e9aaf29bf08b85d10744c9e81684b0b6e23f3ce78670eb37b1e6fb4b63c66",
+    "M5RPN.MXL": "f90d948523b8448b05805c15ed1ddb02c5501a5cc5bb6090c51b146c676677cc",
+    "M5RPN.JED": "4d145f8fac2a7464abffe69b0284ae4f1a1a3a35de673ad180cd14580bd56722"
+   }
+  }
+ ]
+}

@@ -990,6 +990,11 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
                 std::find(d.dedicated_pins.begin(), d.dedicated_pins.end(), declared->number) != d.dedicated_pins.end())
                 key.block = -1;
         }
+        // MACH215 sorts a global clock with the block's ordinary inputs, also
+        // when it sits on a dedicated pin. It is then routed after them and
+        // yields a switch-matrix column that an input could use as well.
+        if (mach215 && clock_inputs.count(input))
+            key.block = 0;
         key.fixed_pin = static_cast<std::int16_t>(pins.at(name)->number - 1);
         if (routing_fixed_nodes.count(name))
             key.fixed_node = routing_fixed_nodes.at(name);
