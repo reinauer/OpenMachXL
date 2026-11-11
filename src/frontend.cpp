@@ -30,6 +30,44 @@ std::string upper(std::string s)
     throw LogicError(text);
 }
 
+// Patterns used once per source line or per expression. A std::regex is
+// costly to construct, so each is built on first use and kept.
+const std::regex& index_suffix_pattern()
+{
+    static const std::regex pattern(R"(\[\d+\])");
+    return pattern;
+}
+const std::regex& bare_number_pattern()
+{
+    static const std::regex pattern(R"(\b[0-9]+\b)");
+    return pattern;
+}
+const std::regex& inline_declaration_pattern()
+{
+    static const std::regex pattern(R"([ \t]+(PIN|NODE|GROUP)(?=[ \t?]))", std::regex::icase);
+    return pattern;
+}
+const std::regex& glued_location_pattern()
+{
+    static const std::regex pattern(R"(^(PIN|NODE)\?)", std::regex::icase);
+    return pattern;
+}
+const std::regex& space_after_comma_pattern()
+{
+    static const std::regex pattern(R"(,[ \t]+)");
+    return pattern;
+}
+const std::regex& space_after_bracket_pattern()
+{
+    static const std::regex pattern(R"(\[[ \t]+)");
+    return pattern;
+}
+const std::regex& space_before_bracket_pattern()
+{
+    static const std::regex pattern(R"([ \t]+\])");
+    return pattern;
+}
+
 const std::map<std::string, std::pair<unsigned, std::string>>& frontend_devices()
 {
     static const std::map<std::string, std::pair<unsigned, std::string>> devices = {
@@ -368,8 +406,8 @@ class SynthesisParser
             copies[id] = design.equations[a->second].expression;
             s.replace(start, end - start + 1, id);
         }
-        auto without_indices = std::regex_replace(s, std::regex(R"(\[\d+\])"), "");
-        if (std::regex_search(without_indices, std::regex(R"(\b[0-9]+\b)")))
+        auto without_indices = std::regex_replace(s, index_suffix_pattern(), "");
+        if (std::regex_search(without_indices, bare_number_pattern()))
             fail("Numeric constants within Boolean expressions require VCC/GND");
         auto e                                  = parse_expression(s);
         std::function<ExprPtr(ExprPtr)> resolve = [&](ExprPtr v) -> ExprPtr {
@@ -1503,9 +1541,9 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
     // Declarations can share lines, and GROUP/vector locations can wrap.
     std::stringstream raw_lines(filtered);
     std::string raw, joined;
-    const std::regex declaration_start(
+    static const std::regex declaration_start(
         R"(^[ \t]*(TITLE|PATTERN|REVISION|AUTHOR|COMPANY|DATE|CHIP|PIN|NODE|GROUP|SIGNATURE)\b)", std::regex::icase);
-    const std::regex metadata_line(R"(^[ \t]*(TITLE|PATTERN|REVISION|AUTHOR|COMPANY|DATE)\b)", std::regex::icase);
+    static const std::regex metadata_line(R"(^[ \t]*(TITLE|PATTERN|REVISION|AUTHOR|COMPANY|DATE)\b)", std::regex::icase);
     while (std::getline(raw_lines, raw)) {
         if (trim(raw).empty())
             continue;
@@ -1513,7 +1551,7 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
             joined += "\n" + raw;
             continue;
         }
-        raw = std::regex_replace(raw, std::regex(R"([ \t]+(PIN|NODE|GROUP)(?=[ \t?]))", std::regex::icase), "\n$1 ");
+        raw = std::regex_replace(raw, inline_declaration_pattern(), "\n$1 ");
         std::stringstream pieces(raw);
         std::string piece;
         while (std::getline(pieces, piece))
@@ -1526,7 +1564,7 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
         line = trim(line);
         if (line.empty())
             continue;
-        line = std::regex_replace(line, std::regex(R"(^(PIN|NODE)\?)", std::regex::icase), "$1 ?");
+        line = std::regex_replace(line, glued_location_pattern(), "$1 ?");
         std::stringstream fields(line);
         std::string key, value;
         fields >> key;
@@ -1548,9 +1586,9 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
                 fail("Unsupported device: " + design.device);
         } else if (key == "PIN" || key == "NODE") {
             auto declaration = upper(value);
-            declaration      = std::regex_replace(declaration, std::regex(R"(,[ \t]+)"), ",");
-            declaration      = std::regex_replace(declaration, std::regex(R"(\[[ \t]+)"), "[");
-            declaration      = std::regex_replace(declaration, std::regex(R"([ \t]+\])"), "]");
+            declaration      = std::regex_replace(declaration, space_after_comma_pattern(), ",");
+            declaration      = std::regex_replace(declaration, space_after_bracket_pattern(), "[");
+            declaration      = std::regex_replace(declaration, space_before_bracket_pattern(), "]");
             std::stringstream f(declaration);
             std::string location, name, mode;
             f >> location >> name;
