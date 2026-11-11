@@ -1707,6 +1707,61 @@
         "JED": "1532ac94c275bd8f90ff2f2acdf167728002133807216f5e73c645f108911a79"
       },
       "display_filename": "D3.pds"
+    },
+    {
+      "name": "FX1Y",
+      "device": 111,
+      "sha256": {
+        "PDS": "1dcc3be12ab7f16c7e5bb09e67933ad6e77e2d1a57d7aa0181cf45b02136ce7a",
+        "MXL": "50b8668477b954c5a2c193422adde16384d7186874950db84806820310e76b46",
+        "RPT": "1d8a00b3b6c95807c4b3827fdd16afa9437d7966abacfbd7a02996077286f63c",
+        "JED": "93da89c91733b40453333e7e813eb04bb1ea1d08d98c88c8981cdb6be82a0099"
+      },
+      "display_filename": "Fx1y.pds"
+    },
+    {
+      "name": "FX2Y",
+      "device": 211,
+      "sha256": {
+        "PDS": "21fe915c745188e306cc9dfff82f664cf0f2a315b6cc42d9c0ed46c4e3d5bd02",
+        "MXL": "b73c6fe04bb6198608a24163004695c22de8db8641d823947943e8ae4421f7e7",
+        "RPT": "d1d771e8d37d23f667f1beb32f38c83358661d8b71c0abf77571effa72beb2aa",
+        "JED": "4b9631d8f8cd71b336d765f0bbbee08d5a9d5ab8f9bca2b1b165905a6352581a"
+      },
+      "display_filename": "Fx2y.pds"
+    },
+    {
+      "name": "FX4Y",
+      "device": 435,
+      "sha256": {
+        "PDS": "d4b3f447ecfa276841f20ffd9c2811adb1a1f3af3c1336dbb739620e97ee7740",
+        "MXL": "37772a78b95c2ccf828ad7cc91511b4268577526bc1727a8ac929488614b5dc1",
+        "RPT": "9286498be22bd8e3a54f4b4c79b1eb116ca26417cfcd6fc7328a89e4614f3574",
+        "JED": "229fa744559ec74a984d57d0d34fb519d49c7c92b05e35f9231b45d2b74ee8ae"
+      },
+      "display_filename": "Fx4y.pds"
+    },
+    {
+      "name": "PC4B",
+      "device": 435,
+      "sha256": {
+        "PDS": "ff55b59daef56cc67b310dea1999eb1f3b8fe5a7b750a7069967698f847b7c86",
+        "MXL": "83680bdb750210d49c95ae8a148846e157f767860ee71a35fbdeb696dbe0dead",
+        "RPT": "1761b452b7817dbdd8e3b4d556f099660ad68eb33db0239832d913cc107a88f7",
+        "JED": "d17354ed574960150f2bebcec7a8b65f93be8ab538cf016d9606de3d82e0aab5"
+      },
+      "display_filename": "Pc4b.pds"
+    },
+    {
+      "name": "PC4E",
+      "device": 435,
+      "sha256": {
+        "PDS": "abc64f9c0225b962d0e03716b5f20f19d2295d3812dedf020a400df407d8a052",
+        "MXL": "9d792a4bdf09827d63c06c0fe4f6fb029b1fea3e850eb48ef6aeb6da8c72f90e",
+        "RPT": "02fb0a93cdde6a7faff2edeabc254673f56dec989201662be6ad870cc88fec59",
+        "JED": "9442b96fffa7b9d4ae2344475c56438d144d013d75a15c927132c846f4f0a640"
+      },
+      "display_filename": "PC4E.PDS"
     }
   ],
   "capture_script": "research/reports/capture_fitter_reports.py",

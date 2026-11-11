@@ -662,6 +662,9 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
     std::vector<SharedControl> controls;
     std::map<std::string, std::vector<std::string>> enables;
     std::set<std::string> reset_outputs;
+    // Registers with a reset or set equation of their own. Others share the
+    // block's term physically, but the reports do not list it for them.
+    std::set<std::string> reset_named, preset_named;
     std::map<std::string, unsigned> signal_clocks;
     std::map<std::string, bool> signal_clock_negative;
     std::map<std::string, std::vector<std::string>> clock_terms;
@@ -686,6 +689,7 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
                 if (p.terms[out].size() > 1)
                     unsupported("reset/preset requires at most one product");
                 reset_outputs.insert(name);
+                (function == "RE" ? reset_named : preset_named).insert(name);
                 const auto block    = io_cell(name) / d.cells;
                 const unsigned row  = mach215       ? 4 * (io_cell(name) % d.cells) + (function == "RE" ? 2 : 3)
                                       : d.legacy110 ? (function == "RE" ? 2 : 67)
@@ -1190,11 +1194,11 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
                 const auto preset_row = mach215 ? 4 * (cell % d.cells) + 3 : d.legacy110 ? 67 : d.rows - 1;
                 for (const auto& control : controls)
                     if (control.block == cell / d.cells) {
-                        if (control.row == reset_row) {
+                        if (control.row == reset_row && (mach215 || reset_named.count(name))) {
                             node.reset = control.term;
                             append(control.term);
                         }
-                        if (control.row == preset_row) {
+                        if (control.row == preset_row && (mach215 || preset_named.count(name))) {
                             node.preset = control.term;
                             append(control.term);
                         }

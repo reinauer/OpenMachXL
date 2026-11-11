@@ -477,6 +477,9 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
         std::string term;
     };
     std::vector<SharedControl> shared_controls;
+    // Registers with a reset or set equation of their own. Others share the
+    // block's term physically, but the reports do not list it for them.
+    std::set<std::string> reset_named, preset_named;
     std::map<std::string, std::vector<std::string>> enables;
     for (unsigned out = 0; out < pla.outputs.size();) {
         const auto& label = pla.outputs[out];
@@ -498,6 +501,7 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
             const auto pin  = pins.find(signal);
             if (pin == pins.end())
                 unsupported("unmapped control output " + signal);
+            (label.substr(label.size() - 3) == ".RE" ? reset_named : preset_named).insert(signal);
             const unsigned block = pin_cell(*pin->second) / 16;
             const unsigned row   = label.substr(label.size() - 3) == ".RE" ? 2 : 67;
             const auto existing  = std::find_if(
@@ -891,6 +895,9 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
                 node.clock = "Ck" + std::to_string(assigned_clocks[cell] < 0 ? 3 : assigned_clocks[cell]);
                 for (const auto& control : shared_controls)
                     if (control.block == cell / 16) {
+                        if ((control.row == 2 && !reset_named.count(name)) ||
+                            (control.row == 67 && !preset_named.count(name)))
+                            continue;
                         if (control.row == 2)
                             node.reset = control.term;
                         if (control.row == 67)

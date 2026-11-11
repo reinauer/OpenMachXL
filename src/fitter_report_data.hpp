@@ -35,6 +35,10 @@ struct FitterReportNode
     // dedicated clock pin. They are routed like logic but reported as clock
     // use, not as equations where the signal is used.
     std::vector<std::string> clock_pin_fanins;
+    // Signals of the node's product-term clock on MACH3/4. One that sits on
+    // a dedicated clock pin is listed there as "clk/inp" although no block
+    // clock uses the pin.
+    std::vector<std::string> product_clock_fanins;
     // The reset or preset was taken from the global node. Such controls are
     // numbered after those the design gives a register directly.
     bool global_reset = false, global_preset = false;

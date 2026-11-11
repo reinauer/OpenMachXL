@@ -146,8 +146,11 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
                         logical_order[node.name] = rank(logical_order, pin.name) + 1;
         // A device without input registers discards an input pairing, but the
         // node keeps the place it was given with its pad: directly ahead of it.
+        // On a device with input registers a paired node that ends up in a
+        // macrocell is listed with the other nodes.
+        const bool pairless = device[4] == '1' || device == "MACH355";
         for (const auto& pad : data.optimized_design->pins) {
-            if (pad.node || pad.pair.empty())
+            if (!pairless || pad.node || pad.pair.empty())
                 continue;
             auto node = pad.pair, name = pad.name;
             display(node);
@@ -508,9 +511,9 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
                    "\n|--------------------------------------------------|\n";
             // The backend supplies canonical shared control identities. A
             // constant/implicit control has no named signal summary entry.
-            static const std::vector<Control> none;
-            const auto summary   = control_summaries.find(category);
-            const auto& controls = summary == control_summaries.end() ? none : summary->second;
+            static const std::vector<Control> no_controls;
+            const auto listed    = control_summaries.find(category);
+            const auto& controls = listed == control_summaries.end() ? no_controls : listed->second;
             for (unsigned i = 0; i < controls.size(); ++i) {
                 const auto used =
                     format_fanout(blocks, std::vector<unsigned>(controls[i].blocks.begin(), controls[i].blocks.end()));
@@ -541,6 +544,12 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
             for (const auto& p : data.pins)
                 if (p.number == number)
                     pin = &p;
+            const auto in_product_clock = [&](const FitterReportPin& candidate) {
+                return std::any_of(data.nodes.begin(), data.nodes.end(), [&](const auto& node) {
+                    return std::find(node.product_clock_fanins.begin(), node.product_clock_fanins.end(),
+                                     candidate.name) != node.product_clock_fanins.end();
+                });
+            };
             const auto clock = std::find(layout.clock_pins.begin(), layout.clock_pins.end(), number);
             const auto label = !modern && pin && clock != layout.clock_pins.end()
                                    ? format_fields("(Ck%u)", unsigned(clock - layout.clock_pins.begin()))
@@ -548,7 +557,7 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
             out += format_fields(
                 blocks > 8 ? "%3u%-5s %14s  %10s  %14s  %14s\n" : "%3u%-5s %14s  %10s    %14s    %14s\n", number,
                 label.c_str(), pin ? pin->name.c_str() : "..............",
-                pin ? (pin->clock_blocks.empty() && !pin->retained_clock ? "input"
+                pin ? (pin->clock_blocks.empty() && !pin->retained_clock && !in_product_clock(*pin) ? "input"
                        : separate_clocks                                 ? "clock"
                                                                          : "clk/inp")
                     : "..",

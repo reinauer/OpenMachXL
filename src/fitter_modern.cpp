@@ -1613,6 +1613,11 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
                 for (const auto& control : controls[out.name]) {
                     if (control.first != "C" || (!node.input_register && local_clocks[cells.at(out.name)]))
                         append_column(control.second);
+                    if (control.first == "C" && !node.input_register && local_clocks[cells.at(out.name)])
+                        for (const auto& term : pla.terms[control.second])
+                            for (unsigned i = 0; i < term.size(); ++i)
+                                if (term[i] != '-')
+                                    node.product_clock_fanins.push_back(pla.inputs[i]);
                     std::string key;
                     for (const auto& term : pla.terms[control.second])
                         key += term + ";";
@@ -1637,8 +1642,19 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
                 if (!node.input_register) {
                     const auto cell    = cells.at(out.name);
                     auto control_label = [&](const char* kind, const std::string& key) {
-                        if (key.empty())
-                            return out.function != "COM" ? std::string("G") : std::string{};
+                        if (key.empty()) {
+                            if (out.function == "COM")
+                                return std::string{};
+                            // A synchronous-mode register with neither a
+                            // reset nor a set equation takes the block's
+                            // terms: B0 resets, B1 presets. With one of the
+                            // two written, the other one is grounded.
+                            const unsigned slot = kind == std::string("RE") ? 0 : 1;
+                            if ((modes[cell] & 512) && !controls[out.name].count("RE") &&
+                                !controls[out.name].count("PR") && global_controls[node.block][slot] >= 0)
+                                return std::string("B") + std::to_string(slot);
+                            return std::string("G");
+                        }
                         if (!(modes[cell] & 512))
                             return std::string("P");
                         const auto column = controls[out.name].at(kind);
