@@ -22,12 +22,6 @@ struct Signal
     std::array<std::vector<std::string>, 2> fanins;
     std::array<int, 8> delays{{-1, -1, -1, -1, -1, -1, -1, -1}};
 };
-std::string strip_signal_phase_suffix(std::string s)
-{
-    while (!s.empty() && (s.back() == '-' || s.back() == '%'))
-        s.pop_back();
-    return s;
-}
 void record_delay_bounds(Signal& s, unsigned kind, int value)
 {
     auto& lo = s.delays[kind * 2];
@@ -85,7 +79,7 @@ std::string render_timing_report(const Design& design, const std::string& pla, c
                 auto colon = field.find(':');
                 if (colon == std::string::npos)
                     continue;
-                auto name = strip_signal_phase_suffix(field.substr(0, colon));
+                auto name = strip_pla_phase(field.substr(0, colon));
                 if (name == "GND" || name == "VCC")
                     continue;
                 auto slash = field.find('/', colon);
@@ -94,7 +88,7 @@ std::string render_timing_report(const Design& design, const std::string& pla, c
                 s.pad  = kind == "PIN";
                 s.pin  = unsigned(std::stoul(field.substr(colon + 1)));
                 if (slash != std::string::npos)
-                    s.pair = strip_signal_phase_suffix(field.substr(slash + 1));
+                    s.pair = strip_pla_phase(field.substr(slash + 1));
                 if (!signals.count(name))
                     declaration_order.push_back(name);
                 signals[name] = s;
@@ -118,7 +112,7 @@ std::string render_timing_report(const Design& design, const std::string& pla, c
     std::set<std::string> primary, used, enabled;
     std::map<std::string, std::array<std::set<std::string>, 2>> dependencies;
     for (unsigned col = 0; col < outputs.size(); ++col) {
-        auto label = strip_signal_phase_suffix(outputs[col]);
+        auto label = strip_pla_phase(outputs[col]);
         auto dot   = label.find('.');
         auto name = label.substr(0, dot), fn = dot == std::string::npos ? "COM" : label.substr(dot + 1);
         if (fn == "OE")

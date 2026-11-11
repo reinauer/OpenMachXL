@@ -25,46 +25,8 @@ namespace {
     throw LogicError("MACH111 fixed-pin fitter: " + reason);
 }
 
-struct ParsedPla
-{
-    std::vector<std::string> inputs, outputs;
-    std::vector<std::vector<std::string>> terms;
-};
+using ParsedPla = FitterPla;
 
-// Consume our own synthesized PLA rather than duplicating the minimizer,
-// don't-care handling, MINIMIZE_OFF semantics and shared-product ordering.
-ParsedPla synthesized_pla(Design& design, OptimizerOptions options, FitterReportData* report = nullptr)
-{
-    const auto text = emit_pla(design, "design.pds", options, &design);
-    if (report) {
-        report->optimized_pla    = text;
-        report->optimized_design = std::make_shared<Design>(design);
-    }
-    auto parsed = parse_pla_text(text);
-    if (parsed.malformed)
-        unsupported("invalid synthesized PLA");
-    // A constant PLA has no input patterns to tell its rows apart.
-    if (parsed.inputs.empty())
-        for (auto& terms : parsed.terms)
-            if (terms.size() > 1)
-                terms.resize(1);
-    ParsedPla p{std::move(parsed.inputs), std::move(parsed.outputs), std::move(parsed.terms)};
-    std::map<std::string, std::string> original_names;
-    for (const auto& alias : pla_signal_aliases(design))
-        original_names.emplace(alias.second, alias.first);
-    for (auto& input : p.inputs)
-        input = original_names.at(input);
-    for (auto& output : p.outputs) {
-        auto length = output.find('.');
-        if (length == std::string::npos) {
-            length = output.size();
-            while (length && (output[length - 1] == '-' || output[length - 1] == '%'))
-                --length;
-        }
-        output = original_names.at(output.substr(0, length)) + output.substr(length);
-    }
-    return p;
-}
 
 unsigned output_cell(unsigned pin)
 {
@@ -145,8 +107,7 @@ LogicalIds place_pins(Design& design, const ParsedPla& pla, const std::map<std::
     std::map<std::string, std::pair<std::uint16_t, bool>> report_clock_inputs;
     for (unsigned out = 0; out < pla.outputs.size(); ++out) {
         auto name = pla.outputs[out];
-        if (!name.empty() && (name.back() == '-' || name.back() == '%'))
-            name.pop_back();
+        name = strip_pla_phase(name);
         const auto dot      = name.find('.');
         const auto function = dot == std::string::npos ? "COM" : name.substr(dot + 1);
         name.resize(dot == std::string::npos ? name.size() : dot);
@@ -432,8 +393,7 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
     std::map<std::string, unsigned> primary_columns;
     for (unsigned out = 0; out < pla.outputs.size(); ++out) {
         auto name = pla.outputs[out];
-        if (name.back() == '-')
-            name.pop_back();
+        name = strip_pla_phase(name);
         const auto dot      = name.find('.');
         const auto function = dot == std::string::npos ? "COM" : name.substr(dot + 1);
         if (function == "COM" || function == "REG" || function == "T")
@@ -466,8 +426,7 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
         }
     for (unsigned out = 0; out < pla.outputs.size();) {
         auto name = pla.outputs[out];
-        if (name.back() == '-')
-            name.pop_back();
+        name = strip_pla_phase(name);
         const auto dot   = name.find('.');
         const auto alias = output_aliases.find(name.substr(0, dot));
         if (alias != output_aliases.end()) {
@@ -1155,7 +1114,7 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
 FuseImage fit_mach111_fixed(const Design& source, OptimizerOptions options, FitterOptions fitting)
 {
     Design design = source;
-    auto prepared = synthesized_pla(design, options, fitting.report.get());
+    auto prepared = synthesize_fitter_pla(design, options, fitting.report.get());
     FittingDeadline deadline(fitting.runtime_quarters);
     return fit_mach111_prepared(design, prepared, fitting);
 }

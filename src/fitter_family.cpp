@@ -22,43 +22,7 @@ namespace {
 {
     throw LogicError("MACH1/2 fitter: " + s);
 }
-struct Pla
-{
-    std::vector<std::string> inputs, outputs;
-    std::vector<std::vector<std::string>> terms;
-};
-Pla synthesize_pla(Design& design, OptimizerOptions options, FitterReportData* report = nullptr)
-{
-    const auto text = emit_pla(design, "design.pds", options, &design);
-    if (report) {
-        report->optimized_pla    = text;
-        report->optimized_design = std::make_shared<Design>(design);
-    }
-    auto parsed = parse_pla_text(text);
-    if (parsed.malformed)
-        unsupported("invalid synthesized PLA");
-    // A constant PLA has no input patterns to tell its rows apart.
-    if (parsed.inputs.empty())
-        for (auto& terms : parsed.terms)
-            if (terms.size() > 1)
-                terms.resize(1);
-    Pla p{std::move(parsed.inputs), std::move(parsed.outputs), std::move(parsed.terms)};
-    std::map<std::string, std::string> original_names;
-    for (const auto& alias : pla_signal_aliases(design))
-        original_names.emplace(alias.second, alias.first);
-    for (auto& input : p.inputs)
-        input = original_names.at(input);
-    for (auto& output : p.outputs) {
-        auto length = output.find('.');
-        if (length == std::string::npos) {
-            length = output.size();
-            if (length && (output.back() == '-' || output.back() == '%'))
-                --length;
-        }
-        output = original_names.at(output.substr(0, length)) + output.substr(length);
-    }
-    return p;
-}
+using Pla = FitterPla;
 }  // namespace
 namespace {
 struct FamilyRouteRetry
@@ -148,8 +112,7 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
                 driven.insert(equation.signal);
         for (unsigned column = 0; column < p.outputs.size(); ++column) {
             auto label = p.outputs[column];
-            if (!label.empty() && (label.back() == '-' || label.back() == '%'))
-                label.pop_back();
+            label = strip_pla_phase(label);
             const auto dot = label.find('.');
             if (dot == std::string::npos)
                 continue;
@@ -284,8 +247,7 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
     std::map<std::string, unsigned> primary_columns;
     for (unsigned out = 0; out < p.outputs.size(); ++out) {
         auto label = p.outputs[out];
-        if (label.back() == '-')
-            label.pop_back();
+        label = strip_pla_phase(label);
         const auto dot = label.find('.');
         const auto fn  = dot == std::string::npos ? "COM" : label.substr(dot + 1);
         if (fn == "COM" || fn == "REG" || fn == "T" || fn == "G")
@@ -324,8 +286,7 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
         }
     for (unsigned out = 0; out < p.outputs.size();) {
         auto label = p.outputs[out];
-        if (label.back() == '-')
-            label.pop_back();
+        label = strip_pla_phase(label);
         const auto dot   = label.find('.');
         const auto alias = output_aliases.find(label.substr(0, dot));
         if (alias != output_aliases.end()) {
@@ -439,8 +400,7 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
         }
         for (unsigned out = 0; out < p.outputs.size(); ++out) {
             auto name = p.outputs[out];
-            if (name.back() == '-' || name.back() == '%')
-                name.pop_back();
+            name = strip_pla_phase(name);
             const auto dot = name.find('.');
             const auto fn  = dot == std::string::npos ? "COM" : name.substr(dot + 1);
             if (dot != std::string::npos)
@@ -1722,7 +1682,7 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
 FuseImage fit_mach_family_fixed(const Design& source, OptimizerOptions options, FitterOptions fitting)
 {
     Design design = source;
-    auto prepared = synthesize_pla(design, options, fitting.report.get());
+    auto prepared = synthesize_fitter_pla(design, options, fitting.report.get());
     FittingDeadline deadline(fitting.runtime_quarters);
     return fit_family_prepared(design, prepared, fitting);
 }

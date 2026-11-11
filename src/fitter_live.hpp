@@ -2,6 +2,7 @@
 #include "device_family.hpp"
 #include "fitter.hpp"
 #include "frontend.hpp"
+#include "pla_text.hpp"
 #include <algorithm>
 #include <exception>
 #include <functional>
@@ -40,8 +41,7 @@ inline void validate_storage_control_products(const std::vector<std::string>& ou
 {
     for (std::size_t column = 0; column < outputs.size(); ++column) {
         auto label = outputs[column];
-        while (!label.empty() && (label.back() == '-' || label.back() == '%'))
-            label.pop_back();
+        label = strip_pla_phase(label);
         const auto dot = label.find('.');
         if (dot == std::string::npos || terms[column].size() <= 1)
             continue;
@@ -61,8 +61,7 @@ inline void validate_node_output_enables(const Design& design, const std::vector
         if (pin.node && pin.pair.empty())
             independent_nodes.insert(pin.name);
     for (auto label : outputs) {
-        while (!label.empty() && (label.back() == '-' || label.back() == '%'))
-            label.pop_back();
+        label = strip_pla_phase(label);
         const auto dot = label.find('.');
         if (dot != std::string::npos && label.substr(dot) == ".OE" && independent_nodes.count(label.substr(0, dot)))
             throw LogicError("z5045: node " + label.substr(0, dot) + " cannot have an output enable equation");
@@ -90,8 +89,7 @@ inline void expand_global_node(Design& design, const std::vector<std::string>& i
         return;
     const auto name = global->name;
     const auto base = [](std::string label) {
-        while (!label.empty() && (label.back() == '-' || label.back() == '%'))
-            label.pop_back();
+        label = strip_pla_phase(label);
         return label;
     };
     // MACHFITR z5040/z5041: only set and reset equations, and no readers.
@@ -219,8 +217,7 @@ inline void report_fitter_notices(const Design& source, const std::vector<std::s
     std::set<std::string> grounded_enable;
     for (unsigned column = 0; column < outputs.size(); ++column) {
         auto label = outputs[column];
-        while (!label.empty() && (label.back() == '-' || label.back() == '%'))
-            label.pop_back();
+        label = strip_pla_phase(label);
         const auto dot      = label.find('.');
         const auto name     = label.substr(0, dot);
         const auto function = dot == std::string::npos ? std::string("COM") : label.substr(dot + 1);
@@ -368,8 +365,7 @@ inline std::vector<std::string> unreferenced_pins(const Design& design, const st
 {
     std::set<std::string> used(inputs.begin(), inputs.end());
     for (auto label : output_labels) {
-        while (!label.empty() && (label.back() == '-' || label.back() == '%'))
-            label.pop_back();
+        label = strip_pla_phase(label);
         used.insert(label.substr(0, label.find('.')));
     }
     std::vector<std::string> result;
@@ -387,8 +383,7 @@ inline void validate_node_equations(const Design& design, const std::vector<std:
 {
     std::set<std::string> driven;
     for (auto label : outputs) {
-        while (!label.empty() && (label.back() == '-' || label.back() == '%'))
-            label.pop_back();
+        label = strip_pla_phase(label);
         driven.insert(label.substr(0, label.find('.')));
     }
     const std::set<std::string> read(inputs.begin(), inputs.end());
@@ -429,8 +424,7 @@ inline void ground_implicit_set_reset(std::vector<std::string>& outputs, std::ve
     std::map<std::string, std::set<std::string>> functions;
     std::vector<std::string> storage;
     for (auto label : outputs) {
-        while (!label.empty() && (label.back() == '-' || label.back() == '%'))
-            label.pop_back();
+        label = strip_pla_phase(label);
         const auto dot = label.find('.');
         if (dot == std::string::npos)
             continue;
@@ -489,8 +483,7 @@ std::vector<std::string> preplaced_fanin_warnings(const std::vector<std::string>
     std::map<int, std::set<std::size_t>> fanin;
     for (std::size_t column = 0; column < outputs.size(); ++column) {
         auto label = outputs[column];
-        while (!label.empty() && (label.back() == '-' || label.back() == '%'))
-            label.pop_back();
+        label = strip_pla_phase(label);
         const auto dot = label.find('.');
         if (dot != std::string::npos && label.substr(dot) == ".C")
             continue;
@@ -523,8 +516,7 @@ inline void validate_equation_fanin(const std::vector<std::string>& inputs, cons
     std::vector<std::string> order;
     for (std::size_t column = 0; column < outputs.size(); ++column) {
         auto label = outputs[column];
-        while (!label.empty() && (label.back() == '-' || label.back() == '%'))
-            label.pop_back();
+        label = strip_pla_phase(label);
         const auto dot = label.find('.');
         if (dot != std::string::npos && label.substr(dot) == ".C")
             continue;
@@ -551,16 +543,14 @@ inline void discard_combinatorial_storage_controls(std::vector<std::string>& out
 {
     std::set<std::string> combinatorial;
     for (auto label : outputs) {
-        while (!label.empty() && (label.back() == '-' || label.back() == '%'))
-            label.pop_back();
+        label = strip_pla_phase(label);
         const auto dot = label.find('.');
         if (dot == std::string::npos || label.substr(dot) == ".XORR")
             combinatorial.insert(label.substr(0, dot));
     }
     for (std::size_t column = outputs.size(); column-- > 0;) {
         auto label = outputs[column];
-        while (!label.empty() && (label.back() == '-' || label.back() == '%'))
-            label.pop_back();
+        label = strip_pla_phase(label);
         const auto dot = label.find('.');
         if (dot != std::string::npos &&
             (label.substr(dot) == ".C" || label.substr(dot) == ".RE" || label.substr(dot) == ".PR") &&
@@ -611,8 +601,7 @@ inline std::set<std::string> retain_reachable_equations(const Design& design, st
     std::vector<std::string> names;
     for (unsigned column = 0; column < outputs.size(); ++column) {
         auto label = outputs[column];
-        while (!label.empty() && (label.back() == '-' || label.back() == '%'))
-            label.pop_back();
+        label = strip_pla_phase(label);
         const auto dot      = label.find('.');
         const auto name     = label.substr(0, dot);
         const auto function = dot == std::string::npos ? "COM" : label.substr(dot + 1);

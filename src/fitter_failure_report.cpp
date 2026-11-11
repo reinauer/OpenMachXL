@@ -42,8 +42,7 @@ void capture_fitter_partition_state(FitterReportData& report, const std::vector<
     for (unsigned c = 0; c < pla.outputs.size(); ++c) {
         auto token          = pla.outputs[c];
         const bool negative = token.find('-') != std::string::npos;
-        while (!token.empty() && (token.back() == '%' || token.back() == '-'))
-            token.pop_back();
+        token = strip_pla_phase(token);
         const auto dot  = token.find('.');
         const auto name = token.substr(0, dot);
         columns.push_back(

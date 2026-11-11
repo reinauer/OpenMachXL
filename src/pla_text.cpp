@@ -1,4 +1,6 @@
 #include "pla_text.hpp"
+#include "logic.hpp"
+#include <map>
 #include <sstream>
 
 namespace machxl {
@@ -57,6 +59,36 @@ PlaText parse_pla_text(const std::string& text)
     if (counted_outputs && p.outputs.size() != output_count)
         p.malformed = true;
     p.terms.resize(counted_outputs ? output_count : p.outputs.size());
+    return p;
+}
+FitterPla synthesize_fitter_pla(Design& design, OptimizerOptions options, FitterReportData* report)
+{
+    const auto text = emit_pla(design, "design.pds", options, &design);
+    if (report) {
+        report->optimized_pla    = text;
+        report->optimized_design = std::make_shared<Design>(design);
+    }
+    auto parsed = parse_pla_text(text);
+    if (parsed.malformed)
+        throw LogicError("invalid synthesized PLA");
+    // A constant PLA has no input patterns to tell its rows apart.
+    if (parsed.inputs.empty())
+        for (auto& terms : parsed.terms)
+            if (terms.size() > 1)
+                terms.resize(1);
+    FitterPla p{std::move(parsed.inputs), std::move(parsed.outputs), std::move(parsed.terms)};
+    // emit_pla() writes PLA-safe aliases; the fitters use the design's names.
+    std::map<std::string, std::string> original_names;
+    for (const auto& alias : pla_signal_aliases(design))
+        original_names.emplace(alias.second, alias.first);
+    for (auto& input : p.inputs)
+        input = original_names.at(input);
+    for (auto& output : p.outputs) {
+        auto length = output.find('.');
+        if (length == std::string::npos)
+            length = strip_pla_phase(output).size();
+        output = original_names.at(output.substr(0, length)) + output.substr(length);
+    }
     return p;
 }
 }  // namespace machxl

@@ -22,46 +22,8 @@ namespace {
 {
     throw LogicError("MACH3/4 fitter: " + reason);
 }
-struct ParsedPla
-{
-    std::vector<std::string> inputs, outputs;
-    std::vector<std::vector<std::string>> terms;
-};
+using ParsedPla = FitterPla;
 
-// Consume our own synthesized PLA rather than duplicating the minimizer,
-// don't-care handling, MINIMIZE_OFF semantics and shared-product ordering.
-ParsedPla synthesized_pla(Design& design, OptimizerOptions options, FitterReportData* report = nullptr)
-{
-    const auto text = emit_pla(design, "design.pds", options, &design);
-    if (report) {
-        report->optimized_pla    = text;
-        report->optimized_design = std::make_shared<Design>(design);
-    }
-    auto parsed = parse_pla_text(text);
-    if (parsed.malformed)
-        unsupported("invalid synthesized PLA");
-    // A constant PLA has no input patterns to tell its rows apart.
-    if (parsed.inputs.empty())
-        for (auto& terms : parsed.terms)
-            if (terms.size() > 1)
-                terms.resize(1);
-    ParsedPla p{std::move(parsed.inputs), std::move(parsed.outputs), std::move(parsed.terms)};
-    std::map<std::string, std::string> original_names;
-    for (const auto& alias : pla_signal_aliases(design))
-        original_names.emplace(alias.second, alias.first);
-    for (auto& input : p.inputs)
-        input = original_names.at(input);
-    for (auto& output : p.outputs) {
-        auto length = output.find('.');
-        if (length == std::string::npos) {
-            length = output.size();
-            while (length && (output[length - 1] == '-' || output[length - 1] == '%'))
-                --length;
-        }
-        output = original_names.at(output.substr(0, length)) + output.substr(length);
-    }
-    return p;
-}
 
 }  // namespace
 FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions options, FitterOptions fitting)
@@ -75,7 +37,7 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
     const unsigned ios  = mach355 ? 16 : 8;
     const auto data_row = [&](unsigned cell) { return cell * 5 + cell / (mach355 ? 1 : 2) + 1; };
     const auto oe_row   = [&](unsigned io) { return io * (mach355 ? 6 : 11); };
-    auto pla            = synthesized_pla(design, options, fitting.report.get());
+    auto pla            = synthesize_fitter_pla(design, options, fitting.report.get());
 
     GlobalNodeUse global_node;
     expand_global_node(design, pla.inputs, pla.outputs, pla.terms, &global_node);
