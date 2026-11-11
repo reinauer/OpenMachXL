@@ -1,4 +1,5 @@
 #include "synthesis.hpp"
+#include "logic.hpp"
 
 #include <algorithm>
 #include <cctype>
@@ -25,7 +26,7 @@ SynthesisOptions synthesis_options(const CompilerSettings& settings, const std::
     else if (conditional == "DON'T CARE")
         result.frontend.conditional_default_off = false;
     else
-        throw std::invalid_argument("Unsupported BPP_SIGNAL setting: " + settings.get("BPP_SIGNAL"));
+        throw LogicError("Unsupported BPP_SIGNAL setting: " + settings.get("BPP_SIGNAL"));
     result.optimizer.fast                   = settings.yes_no("FAST_MIN");
     result.optimizer.external_best_polarity = settings.yes_no("EQN_22V10");
     const auto registers                    = uppercase(settings.get("D_T_REG_OPTM"));
@@ -40,7 +41,7 @@ SynthesisOptions synthesis_options(const CompilerSettings& settings, const std::
     else if (registers == "D,T AS SPECIFIED. JK,RS TO BEST")
         result.optimizer.best_jk_rs = true;
     else if (registers != "D,T AS SPECIFIED. JK,RS TO D")
-        throw std::invalid_argument("Register selection policy is not implemented: " + settings.get("D_T_REG_OPTM"));
+        throw LogicError("Register selection policy is not implemented: " + settings.get("D_T_REG_OPTM"));
     const auto polarity = uppercase(settings.get("M_POLAR"));
     if (polarity == "HIGH, ACTIVE HIGH")
         result.polarity = PolaritySelection::High;
@@ -49,7 +50,7 @@ SynthesisOptions synthesis_options(const CompilerSettings& settings, const std::
     else if (polarity == "BEST FOR DEVICE")
         result.optimizer.best_polarity = true;
     else if (polarity != "AS SPECIFIED IN DESIGN FILE")
-        throw std::invalid_argument("Polarity selection policy is not implemented: " + settings.get("M_POLAR"));
+        throw LogicError("Polarity selection policy is not implemented: " + settings.get("M_POLAR"));
     if (result.polarity != PolaritySelection::AsSpecified)
         result.optimizer.forced_polarity = result.polarity == PolaritySelection::Low ? 1 : 0;
     result.optimizer.gate_split          = settings.yes_no("GATE_SPLIT");
@@ -58,7 +59,7 @@ SynthesisOptions synthesis_options(const CompilerSettings& settings, const std::
         auto positive = [&](const char* key) {
             auto value = settings.integer(key);
             if (!settings.dos_compatibility() && (value == 0 || value > 960))
-                throw std::invalid_argument(std::string("Invalid gate splitting setting: ") + key);
+                throw LogicError(std::string("Invalid gate splitting setting: ") + key);
             return unsigned(value);
         };
         if (device.compare(0, 5, "MACH1") == 0) {

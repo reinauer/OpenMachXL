@@ -1,5 +1,6 @@
 #include "fitter.hpp"
 #include "machxl_version.hpp"
+#include "logic.hpp"
 #include "fitter_family.hpp"
 #include "fitter_metadata.hpp"
 #include "fitter_modern.hpp"
@@ -27,7 +28,7 @@ std::string read_file(const std::string& path)
 {
     std::ifstream input(path, std::ios::binary);
     if (!input)
-        throw std::runtime_error("Cannot open file: " + path);
+        throw machxl::LogicError("Cannot open file: " + path);
     return {(std::istreambuf_iterator<char>(input)), std::istreambuf_iterator<char>()};
 }
 std::string report_timestamp(bool weekday = false)
@@ -35,7 +36,7 @@ std::string report_timestamp(bool weekday = false)
     const auto now    = std::time(nullptr);
     const auto* local = std::localtime(&now);
     if (!local)
-        throw std::runtime_error("Cannot obtain report timestamp");
+        throw machxl::LogicError("Cannot obtain report timestamp");
     std::ostringstream stamp;
     stamp.imbue(std::locale::classic());
     stamp << std::put_time(local, weekday ? "%a %b %d %H:%M:%S %Y" : "%b %d %H:%M:%S %Y");
@@ -57,7 +58,7 @@ void reject_report_input_overwrites(const std::string& destination, const std::s
             if (resolved == std::filesystem::weakly_canonical(input) ||
                 (std::filesystem::exists(output) && std::filesystem::exists(input) &&
                  std::filesystem::equivalent(output, input)))
-                throw std::runtime_error("Report output would overwrite input: " + output.string());
+                throw machxl::LogicError("Report output would overwrite input: " + output.string());
         }
     }
 }
@@ -74,7 +75,7 @@ void clear_previous_reports(const std::string& destination, const std::string& s
     for (const auto& extension : extensions) {
         const auto path = directory / (stem + extension);
         if (std::filesystem::is_directory(path))
-            throw std::runtime_error("Report output is a directory: " + path.string());
+            throw machxl::LogicError("Report output is a directory: " + path.string());
         std::filesystem::remove(path);
     }
 }
@@ -92,7 +93,7 @@ void write_reports(const std::string& destination, const std::string& source,
         file << *report.second;
         file.close();
         if (!file)
-            throw std::runtime_error("Cannot write report: " + path.string());
+            throw machxl::LogicError("Cannot write report: " + path.string());
     }
 }
 std::filesystem::path find_sibling_file(const std::string& source, const std::string& extension)
@@ -146,7 +147,7 @@ int main(int argc, char** argv)
             else if (!arg.empty() && arg.front() != '-' && source_path.empty())
                 source_path = arg;
             else
-                throw std::invalid_argument("Unknown or repeated argument: " + arg);
+                throw machxl::LogicError("Unknown or repeated argument: " + arg);
         }
         if (mode == Output::None || source_path.empty()) {
             std::cerr << "Usage: machxl --emit-pla input.pds [--settings input.mxl] [--compatibility]\n"
@@ -163,14 +164,14 @@ int main(int argc, char** argv)
         if (!settings_path.empty())
             settings.parse(read_file(settings_path), compatibility);
         if (simulate && mode != Output::Jedec)
-            throw std::invalid_argument("--simulate requires --emit-jedec");
+            throw machxl::LogicError("--simulate requires --emit-jedec");
         if (!reports_path.empty() && !simulate)
-            throw std::invalid_argument("--simulation-reports requires --simulate");
+            throw machxl::LogicError("--simulation-reports requires --simulate");
         if (!fitter_reports_path.empty() && mode != Output::Jedec)
-            throw std::invalid_argument("--fitter-reports requires --emit-jedec");
+            throw machxl::LogicError("--fitter-reports requires --emit-jedec");
         if (simulate && !compatibility && settings.get("SIM_PLACE") != "Last successful placement" &&
             settings.get("SIM_PLACE") != "Design file" && settings.get("SIM_PLACE") != "Saved placement")
-            throw std::invalid_argument("Unknown simulation placement: " + settings.get("SIM_PLACE"));
+            throw machxl::LogicError("Unknown simulation placement: " + settings.get("SIM_PLACE"));
         std::string auxiliary_simulation;
         const bool use_auxiliary = simulate && settings.yes_no("SIMF_OPT");
         if (use_auxiliary) {
@@ -189,7 +190,7 @@ int main(int argc, char** argv)
         auto options                       = machxl::synthesis_options(settings);
         options.frontend.dos_compatibility = compatibility;
         if (!placement_path.empty() && mode != Output::Jedec)
-            throw std::invalid_argument("--placement requires --emit-jedec");
+            throw machxl::LogicError("--placement requires --emit-jedec");
         // MACHSP 2.1 omits the filename after +P for FITR_PLACE. Explicit
         // --placement exposes the working standalone MACHFITR operation.
         if (mode == Output::Jedec && placement_path.empty() && !compatibility &&
@@ -322,7 +323,7 @@ int main(int argc, char** argv)
             machxl::apply_signature(image, design.signature);
             if (!fitter_reports_path.empty()) {
                 if (!image.fitter_report)
-                    throw std::runtime_error("Missing fitting report observations");
+                    throw machxl::LogicError("Missing fitting report observations");
                 const auto end_stamp = report_timestamp(true);
                 const auto seconds =
                     std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - start_time)
@@ -407,8 +408,14 @@ int main(int argc, char** argv)
             write_reports(reports_path, source_path, {{".HST", &history_report}, {".TRF", &trace_report}});
         std::cout << output;
         return 0;
-    } catch (const std::exception& error) {
+    } catch (const std::runtime_error& error) {
+        // LogicError and the placers' failures: the input cannot be compiled.
         std::cerr << (source_path.empty() ? "machxl" : source_path) << ": " << error.what() << '\n';
+        return 1;
+    } catch (const std::exception& error) {
+        // Anything else is a violated internal assumption, not a statement
+        // about the design; a bare library text such as "vector" says nothing.
+        std::cerr << (source_path.empty() ? "machxl" : source_path) << ": internal error: " << error.what() << '\n';
         return 1;
     }
 }

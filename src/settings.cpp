@@ -1,4 +1,5 @@
 #include "settings.hpp"
+#include "logic.hpp"
 
 #include <algorithm>
 #include <array>
@@ -181,7 +182,7 @@ const std::string& CompilerSettings::get(const std::string& key) const
 {
     auto found = values_.find(upper(key));
     if (found == values_.end())
-        throw std::invalid_argument("Missing setting: " + key);
+        throw LogicError("Missing setting: " + key);
     return found->second;
 }
 
@@ -198,7 +199,7 @@ bool CompilerSettings::yes_no(const std::string& key) const
         return true;
     if (value == "N")
         return false;
-    throw std::invalid_argument("Expected Y/N for setting " + key + ": " + value);
+    throw LogicError("Expected Y/N for setting " + key + ": " + value);
 }
 
 bool CompilerSettings::fitter_yes_no(const std::string& key) const
@@ -219,7 +220,7 @@ unsigned CompilerSettings::integer(const std::string& key) const
         const auto token = trim(text);
         if (gate) {
             if (token.empty() || token.find_first_not_of("0123456789") != std::string::npos)
-                throw std::invalid_argument("L108: gate splitting parameter is not a number: " + text);
+                throw LogicError("L108: gate splitting parameter is not a number: " + text);
             unsigned value = 0;
             for (char c : token)
                 value = (value * 10 + unsigned(c - '0')) & 0xffff;
@@ -229,7 +230,7 @@ unsigned CompilerSettings::integer(const std::string& key) const
         // Leading or internal whitespace leaves an extra CLI argument.
         if (!token.empty() && (std::isspace(static_cast<unsigned char>(text.front())) ||
                                token.find_first_of(" \t\r\n") != std::string::npos))
-            throw std::invalid_argument("z5008: extra argument in fitter setting " + key);
+            throw LogicError("z5008: extra argument in fitter setting " + key);
         std::size_t i = 0;
         while (i < text.size() && std::isspace(static_cast<unsigned char>(text[i])))
             ++i;
@@ -242,11 +243,11 @@ unsigned CompilerSettings::integer(const std::string& key) const
         return negative ? (-result) & 0xffff : result;
     }
     if (text.empty())
-        throw std::invalid_argument("Empty integer setting: " + key);
+        throw LogicError("Empty integer setting: " + key);
     unsigned result = 0;
     for (char c : text) {
         if (c < '0' || c > '9' || result > (std::numeric_limits<unsigned>::max() - unsigned(c - '0')) / 10)
-            throw std::invalid_argument("Invalid integer setting: " + key);
+            throw LogicError("Invalid integer setting: " + key);
         result = result * 10 + unsigned(c - '0');
     }
     return result;
@@ -273,19 +274,19 @@ void CompilerSettings::parse(const std::string& source, bool dos_compatibility)
             continue;
         auto end = line.find(']');
         if (line[0] != '[' || end == std::string::npos)
-            throw std::invalid_argument("Invalid MXL record at line " + std::to_string(line_number));
+            throw LogicError("Invalid MXL record at line " + std::to_string(line_number));
         auto key = upper(line.substr(1, end - 1));
         if (key.empty() || key.find_first_not_of("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_") != std::string::npos)
-            throw std::invalid_argument("Invalid MXL setting name");
+            throw LogicError("Invalid MXL setting name");
         auto tail = trim(line.substr(end + 1));
         if (tail.empty() || tail[0] != '=')
-            throw std::invalid_argument("Missing '=' after MXL setting " + key);
+            throw LogicError("Missing '=' after MXL setting " + key);
         // Read records in order; a later occurrence replaces the earlier value,
         // including repeated synthesis policy selections.
         next[key] = trim(tail.substr(1));
     }
     if (next.at("VERSION") != "MACHXL 2.0" && next.at("VERSION") != "MACHXL 2.1")
-        throw std::invalid_argument("Unsupported MACHXL settings version: " + next.at("VERSION"));
+        throw LogicError("Unsupported MACHXL settings version: " + next.at("VERSION"));
     values_            = std::move(next);
     dos_compatibility_ = false;
 }

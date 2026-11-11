@@ -1,4 +1,5 @@
 #include "simulator.hpp"
+#include "logic.hpp"
 
 #include <algorithm>
 #include <cctype>
@@ -13,7 +14,7 @@ namespace {
 using Value = SimulationValue;
 [[noreturn]] void error(const std::string& message)
 {
-    throw std::invalid_argument("Simulation: " + message);
+    throw LogicError("Simulation: " + message);
 }
 Value invert_value(Value v)
 {

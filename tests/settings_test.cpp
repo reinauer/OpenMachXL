@@ -1,4 +1,5 @@
 #include "settings.hpp"
+#include "logic.hpp"
 #include <iostream>
 #include <stdexcept>
 
@@ -13,7 +14,7 @@ int main() {
         if(settings.yes_no("P_N"))throw std::runtime_error("last setting must win");
         for (auto bad : { "[VERSION]=MACHXL 9", "[P_N]Y", "not a setting"}) {
             bool rejected = false;
-            try { settings.parse(bad); } catch (const std::invalid_argument&) { rejected = true; }
+            try { settings.parse(bad); } catch (const LogicError&) { rejected = true; }
             if (!rejected || settings.yes_no("P_N")) throw std::runtime_error("settings parse is not atomic");
         }
         CompilerSettings legacy;
@@ -47,7 +48,7 @@ int main() {
         for(const auto& record:{"[THRESHOLD]=12x\n","[THRESHOLD]=+2\n","[M3XX_RUNTIME]= 2\n"}) {
             legacy.parse(record,true);bool invalid=false;
             try {legacy.integer(std::string(record).find("RUNTIME")!=std::string::npos?"M3XX_RUNTIME":"THRESHOLD");}
-            catch(const std::invalid_argument&){invalid=true;}
+            catch(const LogicError&){invalid=true;}
             if(!invalid)throw std::runtime_error("DOS invalid numeric token accepted");
         }
         legacy.parse("[SIM_PLACE]=Designjunk\n[BPP_SIGNAL]=off\n",true);
@@ -59,7 +60,7 @@ int main() {
         if(!legacy.yes_no("FAST_MIN"))throw std::runtime_error("DOS fgets record width");
         settings.parse("[THRESHOLD]=42949672960\n");
         bool rejected = false;
-        try { settings.integer("THRESHOLD"); } catch (const std::invalid_argument&) { rejected = true; }
+        try { settings.integer("THRESHOLD"); } catch (const LogicError&) { rejected = true; }
         if (!rejected) throw std::runtime_error("integer overflow accepted");
         std::cout << "settings tests passed\n";
         return 0;

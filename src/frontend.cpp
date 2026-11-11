@@ -1,4 +1,5 @@
 #include "frontend.hpp"
+#include "logic.hpp"
 #include "device_family.hpp"
 
 #include <algorithm>
@@ -26,7 +27,7 @@ std::string upper(std::string s)
 }
 [[noreturn]] void fail(const std::string& text)
 {
-    throw std::runtime_error(text);
+    throw LogicError(text);
 }
 
 const std::map<std::string, std::pair<unsigned, std::string>>& frontend_devices()
