@@ -214,6 +214,8 @@ if(BUILD_TESTING)
     set_tests_properties(reference_file_validation PROPERTIES WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
     add_test(NAME original_simulation_placement
       COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/simulation_placement_reference.py $<TARGET_FILE:machxl>)
+    add_test(NAME native_input_robustness
+      COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/input_robustness.py $<TARGET_FILE:machxl>)
     add_test(NAME original_fitter_rejections
       COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/fitter_rejections.py $<TARGET_FILE:machxl>)
     add_test(NAME original_saved_placement

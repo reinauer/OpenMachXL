@@ -554,6 +554,9 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
             (*pin)->number && std::find(d.clock_pins.begin(), d.clock_pins.end(), (*pin)->number) != d.clock_pins.end();
         candidate.excluded |= demoted_clocks.count(name) || (*pin)->node || outputs.count(name) ||
                               constrained.count(name) || ((*pin)->number && !fixed_global);
+        // An input-register pad must stay on an I/O pin: a dedicated clock
+        // pin has no input register behind it.
+        candidate.excluded |= input_pairs.count(name) != 0;
         const bool async = asynchronous.count(output.first) && !synchronous.count(output.first);
         const bool sync  = synchronous.count(output.first) && !asynchronous.count(output.first);
         candidate.excluded |= async && !fixed_global && !fitting.product_term_clocks;

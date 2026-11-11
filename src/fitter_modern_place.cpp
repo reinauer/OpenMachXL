@@ -1291,6 +1291,8 @@ ModernPlacement place_mach_modern(const MachDeviceLayout& d, const std::vector<M
                     trial.pins[paired]         = assigned[paired];
                     const auto reg             = unsigned(pair_register[paired]);
                     trial.input_registers[reg] = io_for_pin(unsigned(assigned[paired]));
+                    if (trial.input_registers[reg] < 0)
+                        fail("input-register pad is not on an I/O pin");
                     movable[paired] = movable[reg] = pair_cursor[paired] < pair_lists[paired].size();
                 }
             for (auto i : trial.global_order)
