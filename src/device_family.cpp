@@ -38,6 +38,11 @@ const MachDeviceLayout& mach_device_layout(const std::string& device)
             return layout;
     throw std::invalid_argument("physical codec is not implemented for " + device);
 }
+unsigned mach_node_limit(const MachDeviceLayout& layout)
+{
+    const bool input_registers = layout.device.compare(0, 5, "MACH4") == 0;
+    return layout.blocks * layout.cells + 1 + (input_registers ? unsigned(layout.io_pins.size()) : 0u);
+}
 std::vector<std::string> mach_device_codec_names()
 {
     std::vector<std::string> names;

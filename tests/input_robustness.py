@@ -12,6 +12,11 @@ import tempfile
 
 compiler = Path(sys.argv[1]).resolve()
 
+SIMULATED_INPUT_REGISTER = ('CHIP T MACH435\nPIN 8 /A IPAIR N\nNODE ? N REG\nPIN 20 CLK\nPIN 9 Q\n'
+                            'EQUATIONS\nN=A\nN.CLKF=CLK\nQ=N\n'
+                            'SIMULATION\nSETF /A /CLK\nSETF A\nCLOCKF CLK\n')
+SAVED_SIMULATION_PLACEMENT = '[VERSION]=MACHXL 2.0\n[SIM_PLACE]=Saved placement\n'
+
 # name, files, arguments after the compiler, expected success, and text that
 # must occur in the diagnostic of an expected rejection.
 CASES = [
@@ -27,6 +32,15 @@ CASES = [
                          'EQUATIONS\nN = P\nN.CLKF = P\nQ = N\n'},
          args=['--emit-jedec', 'T.PDS'], ok=False,
          message='input-register clock requires a dedicated pin'),
+    # A saved simulation placement names a node location beyond the device.
+    # The number used to size and index the node table without a check.
+    *[dict(name='saved_simulation_node_' + label,
+           files={'T.PDS': SIMULATED_INPUT_REGISTER, 'T.MXL': SAVED_SIMULATION_PLACEMENT,
+                  'T.BLC': 'Pin 8 /A ; IPair 135\nPin 9 Q Comb ; S6=1 S9=1 Pair 2\nPin 20 CLK\n'
+                           'Node ' + number + ' N Reg ;\n'},
+           args=['--emit-jedec', 'T.PDS', '--settings', 'T.MXL', '--simulate'], ok=False,
+           message='Invalid simulation node placement for N')
+      for label, number in (('wraps_to_zero', '4294967295'), ('negative', '-1'), ('past_device', '200'))],
 ]
 
 # Messages of exceptions thrown by the standard library, not by the compiler.

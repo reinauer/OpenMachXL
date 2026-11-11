@@ -1,4 +1,5 @@
 #include "simulation_placement.hpp"
+#include "device_family.hpp"
 #include <algorithm>
 #include <cctype>
 #include <regex>
@@ -60,7 +61,8 @@ SimulationPlacement prepare_simulation_placement(Design& design, const std::stri
     const std::map<std::string, std::pair<unsigned, std::string>> devices = {
 #include "frontend_devices.inc"
     };
-    const auto& device = devices.at(design.device);
+    const auto& device    = devices.at(design.device);
+    const auto node_limit = mach_node_limit(mach_device_layout(design.device));
     result.pins.signals.resize(device.first + 1);
     result.pins.inverted.resize(device.first + 1);
     std::istringstream supplies(device.second);
@@ -79,6 +81,9 @@ SimulationPlacement prepare_simulation_placement(Design& design, const std::stri
                     result.register_power_up[pin.name] =
                         (!s6[pin.name] != pin.inverted) ? SimulationValue::High : SimulationValue::Low;
         if (pin.node) {
+            // The number sizes and indexes the node table below.
+            if (pin.number > node_limit)
+                throw LogicError("Invalid simulation node placement for " + pin.name);
             if (pin.number) {
                 if (result.pins.nodes.size() <= pin.number)
                     result.pins.nodes.resize(pin.number + 1);

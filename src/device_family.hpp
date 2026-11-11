@@ -36,6 +36,9 @@ struct MachDeviceLayout
     std::size_t block_control_address(unsigned block) const;
 };
 const MachDeviceLayout& mach_device_layout(const std::string& device);
+// Highest NODE location number. Macrocell nodes are numbered from 2; MACH4
+// devices follow them with one input-register node per I/O pin.
+unsigned mach_node_limit(const MachDeviceLayout& layout);
 std::vector<std::string> mach_device_codec_names();
 struct MachDevicePhysical
 {
