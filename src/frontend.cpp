@@ -906,8 +906,13 @@ class SynthesisParser
                     fail("Duplicate STATE encoding: " + r.name);
                 predicates[r.name] = e;
             }
-            if (r.function.empty() && r.op == ":=")
+            if (r.function.empty() && r.op == ":=") {
+                // The original's E1020. A second equation used to be added
+                // to the first as further branches.
+                if (std::find(transition_order.begin(), transition_order.end(), r.name) != transition_order.end())
+                    fail("E1020: Multiple state transition equations for the same state " + r.name);
                 transition_order.push_back(r.name);
+            }
         }
         // MACHEXP E2791: every explicitly encoded state needs a transition
         // equation, whether or not another state branches to it.
