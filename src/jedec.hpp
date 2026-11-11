@@ -2,6 +2,7 @@
 
 #include "fitter_report_data.hpp"
 #include "simulation_model.hpp"
+#include <optional>
 #include <cstdint>
 #include <string>
 #include <vector>

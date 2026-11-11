@@ -197,6 +197,22 @@ CASES = [
          args=['--emit-jedec', 'T.PDS'], ok=False, message='z5524: The logic and functional equations for O',
          warnings=['z5510: Block A has a logic fanin of 27 due to preplaced or block-restricted signals: '
                    'routing capacity is 26 signals.']),
+    # Command line and settings errors name what is wrong.
+    dict(name='argument_missing_value', files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? Q\nEQUATIONS\nQ=A\n'},
+         args=['--emit-jedec', 'T.PDS', '--settings'], ok=False, message='Missing value after --settings'),
+    dict(name='argument_repeated', files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? Q\nEQUATIONS\nQ=A\n', 'T.MXL': ''},
+         args=['--emit-jedec', 'T.PDS', '--settings', 'T.MXL', '--settings', 'T.MXL'], ok=False,
+         message='Repeated argument: --settings'),
+    dict(name='argument_unknown', files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? Q\nEQUATIONS\nQ=A\n'},
+         args=['--emit-jedec', 'T.PDS', '--frobnicate'], ok=False, message='Unknown argument: --frobnicate'),
+    dict(name='argument_two_modes', files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? Q\nEQUATIONS\nQ=A\n'},
+         args=['--emit-jedec', '--emit-pla', 'T.PDS'], ok=False,
+         message='Repeated or conflicting argument: --emit-pla'),
+    dict(name='argument_two_inputs', files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? Q\nEQUATIONS\nQ=A\n'},
+         args=['--emit-jedec', 'T.PDS', 'U.PDS'], ok=False, message='More than one input file: U.PDS'),
+    dict(name='settings_unknown_fitter_placement', files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? Q\nEQUATIONS\nQ=A\n', 'T.MXL': '[FITR_PLACE]=Nowhere\n'},
+         args=['--emit-jedec', 'T.PDS', '--settings', 'T.MXL'], ok=False, native_only=True,
+         message='Unknown fitter placement'),
     # The device name is checked where CHIP is read; later code relies on it.
     dict(name='unsupported_device_mpla',
          files={'T.PDS': 'CHIP T M\nPIN 99 A\nNODE 9999 N\nPIN ? Q PAIR N\nEQUATIONS\nQ=A\nSIMULATION\nSETF A\n'},
@@ -348,6 +364,7 @@ def run(case, flags):
 
 
 for case in CASES:
-    for flags in ([], ['--compatibility']):
+    # 'native_only' marks a check that compatibility mode leaves out on purpose.
+    for flags in ([],) if case.get('native_only') else ([], ['--compatibility']):
         run(case, flags)
     print(case['name'] + ': ' + ('fits' if case['ok'] else 'rejected with a compiler diagnostic'))

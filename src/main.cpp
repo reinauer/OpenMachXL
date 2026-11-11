@@ -19,6 +19,7 @@
 #include <filesystem>
 #include <fstream>
 #include <iomanip>
+#include <map>
 #include <iostream>
 #include <iterator>
 #include <sstream>
@@ -149,28 +150,36 @@ int main(int argc, char** argv)
             Jedec
         };
         Output mode = Output::None;
+        // Options that take a value, each allowed once.
+        const std::map<std::string, std::string*> valued{{"--settings", &settings_path},
+                                                         {"--placement", &placement_path},
+                                                         {"--simulation-reports", &reports_path},
+                                                         {"--fitter-reports", &fitter_reports_path}};
         for (int i = 1; i < argc; ++i) {
             const std::string arg = argv[i];
-            if (arg == "--emit-pla" && mode == Output::None)
-                mode = Output::Pla;
-            else if (arg == "--emit-jedec" && mode == Output::None)
-                mode = Output::Jedec;
-            else if (arg == "--simulate" && !simulate)
-                simulate = true;
-            else if (arg == "--compatibility" && !compatibility)
-                compatibility = true;
-            else if (arg == "--settings" && settings_path.empty() && i + 1 < argc)
-                settings_path = argv[++i];
-            else if (arg == "--placement" && placement_path.empty() && i + 1 < argc)
-                placement_path = argv[++i];
-            else if (arg == "--simulation-reports" && reports_path.empty() && i + 1 < argc)
-                reports_path = argv[++i];
-            else if (arg == "--fitter-reports" && fitter_reports_path.empty() && i + 1 < argc)
-                fitter_reports_path = argv[++i];
-            else if (!arg.empty() && arg.front() != '-' && source_path.empty())
-                source_path = arg;
+            const auto option     = valued.find(arg);
+            if (option != valued.end()) {
+                if (!option->second->empty())
+                    throw machxl::LogicError("Repeated argument: " + arg);
+                // Another option where the value should be is a missing value.
+                if (i + 1 >= argc || !*argv[i + 1] || std::string(argv[i + 1]).compare(0, 2, "--") == 0)
+                    throw machxl::LogicError("Missing value after " + arg);
+                *option->second = argv[++i];
+            } else if (arg == "--emit-pla" || arg == "--emit-jedec") {
+                if (mode != Output::None)
+                    throw machxl::LogicError("Repeated or conflicting argument: " + arg);
+                mode = arg == "--emit-pla" ? Output::Pla : Output::Jedec;
+            } else if (arg == "--simulate" || arg == "--compatibility") {
+                auto& flag = arg == "--simulate" ? simulate : compatibility;
+                if (flag)
+                    throw machxl::LogicError("Repeated argument: " + arg);
+                flag = true;
+            } else if (arg.empty() || arg.front() == '-')
+                throw machxl::LogicError("Unknown argument: " + arg);
+            else if (!source_path.empty())
+                throw machxl::LogicError("More than one input file: " + arg);
             else
-                throw machxl::LogicError("Unknown or repeated argument: " + arg);
+                source_path = arg;
         }
         if (mode == Output::None || source_path.empty()) {
             std::cerr << "Usage: machxl --emit-pla input.pds [--settings input.mxl] [--compatibility]\n"
@@ -195,6 +204,9 @@ int main(int argc, char** argv)
         if (simulate && !compatibility && settings.get("SIM_PLACE") != "Last successful placement" &&
             settings.get("SIM_PLACE") != "Design file" && settings.get("SIM_PLACE") != "Saved placement")
             throw machxl::LogicError("Unknown simulation placement: " + settings.get("SIM_PLACE"));
+        if (mode == Output::Jedec && !compatibility && settings.get("FITR_PLACE") != "Last successful placement" &&
+            settings.get("FITR_PLACE") != "Design file" && settings.get("FITR_PLACE") != "Saved placement")
+            throw machxl::LogicError("Unknown fitter placement: " + settings.get("FITR_PLACE"));
         std::string auxiliary_simulation;
         const bool use_auxiliary = simulate && settings.yes_no("SIMF_OPT");
         if (use_auxiliary) {
@@ -397,6 +409,9 @@ int main(int argc, char** argv)
         if (!reports_path.empty())
             write_reports(reports_path, source_path, {{".HST", &history_report}, {".TRF", &trace_report}});
         std::cout << output;
+        // A full disk or a closed pipe must not pass for a compiled design.
+        if (!std::cout.flush())
+            throw machxl::LogicError("Cannot write the output");
         return 0;
     } catch (const std::runtime_error& error) {
         // LogicError and the placers' failures: the input cannot be compiled.

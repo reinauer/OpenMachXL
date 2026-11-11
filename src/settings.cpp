@@ -268,8 +268,7 @@ void CompilerSettings::parse(const std::string& source, bool dos_compatibility)
     unsigned line_number = 0;
     while (std::getline(stream, line)) {
         ++line_number;
-        const auto raw_line = line;
-        line                = trim(line);
+        line = trim(line);
         if (line.empty() || line[0] == ';')
             continue;
         auto end = line.find(']');
