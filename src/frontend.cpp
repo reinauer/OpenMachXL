@@ -1115,6 +1115,7 @@ class SynthesisParser
             std::size_t at     = 0;
             auto covered       = make_constant(false);
             bool local_default = false;
+            std::vector<ExprPtr> branch_conditions;
             while (!branches[at].text.empty()) {
                 ExprPtr cond;
                 if (branches[at].text == "+->") {
@@ -1125,12 +1126,29 @@ class SynthesisParser
                     if (branches[at].text == "+")
                         ++at;
                     std::string text;
-                    while (!branches[at].text.empty() && branches[at].text != "->")
+                    std::vector<std::string> words;
+                    while (!branches[at].text.empty() && branches[at].text != "->") {
+                        words.push_back(branches[at].text);
                         text += branches[at++].text;
+                    }
                     if (branches[at].text != "->")
                         fail("Expected STATE transition arrow");
                     ++at;
-                    cond    = expression(text);
+                    // The original takes a single signal or CONDITIONS name
+                    // here, optionally complemented; an expression is P88.
+                    const std::size_t name = !words.empty() && words[0] == "/" ? 1 : 0;
+                    if (words.size() != name + 1)
+                        fail("P88: Unexpected reserved word or operator " +
+                             (words.size() > name + 1 ? words[name + 1] : std::string("->")));
+                    cond = expression(text);
+                    // E1250/E1260: the conditions of one equation must exclude
+                    // each other, whatever their destinations are.
+                    for (const auto& earlier : branch_conditions)
+                        if (!sum_of_products(conjunction(earlier, cond)).empty())
+                            fail(r.function == "OUTF"
+                                     ? "E1260: Conflicting conditions in output equation of state " + r.name
+                                     : "E1250: Conflicting conditions in transition equation of state " + r.name);
+                    branch_conditions.push_back(cond);
                     covered = disjunction(covered, cond);
                 }
                 std::string target;

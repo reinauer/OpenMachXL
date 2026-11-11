@@ -197,6 +197,41 @@ CASES = [
          args=['--emit-jedec', 'T.PDS'], ok=False, message='z5524: The logic and functional equations for O',
          warnings=['z5510: Block A has a logic fanin of 27 due to preplaced or block-restricted signals: '
                    'routing capacity is 26 signals.']),
+    # A branch condition of a state equation is one signal or CONDITIONS name,
+    # optionally complemented, and the conditions of one equation exclude
+    # each other. The original rejects anything else (P88, E1250, E1260).
+    dict(name='state_condition_single_signal',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? CLK\nPIN ? A\nPIN ? B\nPIN ? Q0 REG\nSTATE\nMOORE_MACHINE\nCLKF = CLK\nS0 = /Q0\nS1 = Q0\n'
+                         'S0 := A -> S1 + /A -> S0\nS1 := VCC -> S0\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=True),
+    dict(name='state_condition_named',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? CLK\nPIN ? A\nPIN ? B\nPIN ? Q0 REG\nSTATE\nMOORE_MACHINE\nCLKF = CLK\nS0 = /Q0\nS1 = Q0\n'
+                         'S0 := G1 -> S1 + G2 -> S0\nS1 := VCC -> S0\nCONDITIONS\nG1 = A*B\nG2 = A*/B\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=True),
+    dict(name='state_condition_expression',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? CLK\nPIN ? A\nPIN ? B\nPIN ? Q0 REG\nSTATE\nMOORE_MACHINE\nCLKF = CLK\nS0 = /Q0\nS1 = Q0\n'
+                         'S0 := A*B -> S1\nS1 := VCC -> S0\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=False, message='P88: Unexpected reserved word or operator *'),
+    dict(name='state_condition_parenthesized',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? CLK\nPIN ? A\nPIN ? B\nPIN ? Q0 REG\nSTATE\nMOORE_MACHINE\nCLKF = CLK\nS0 = /Q0\nS1 = Q0\n'
+                         'S0 := (A*B) -> S1\nS1 := VCC -> S0\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=False, message='P88: Unexpected reserved word or operator'),
+    dict(name='state_conditions_overlap',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? CLK\nPIN ? A\nPIN ? B\nPIN ? Q0 REG\nSTATE\nMOORE_MACHINE\nCLKF = CLK\nS0 = /Q0\nS1 = Q0\n'
+                         'S0 := A -> S1 + B -> S0\nS1 := VCC -> S0\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=False, message='E1250: Conflicting conditions in transition equation of state S0'),
+    dict(name='state_conditions_repeated',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? CLK\nPIN ? A\nPIN ? B\nPIN ? Q0 REG\nSTATE\nMOORE_MACHINE\nCLKF = CLK\nS0 = /Q0\nS1 = Q0\n'
+                         'S0 := A -> S1 + A -> S1\nS1 := VCC -> S0\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=False, message='E1250: Conflicting conditions in transition equation of state S0'),
+    dict(name='state_named_conditions_overlap',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? CLK\nPIN ? A\nPIN ? B\nPIN ? Q0 REG\nSTATE\nMOORE_MACHINE\nCLKF = CLK\nS0 = /Q0\nS1 = Q0\n'
+                         'S0 := G1 -> S1 + G2 -> S0\nS1 := VCC -> S0\nCONDITIONS\nG1 = A\nG2 = A*B\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=False, message='E1250: Conflicting conditions in transition equation of state S0'),
+    dict(name='state_output_conditions_overlap',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? CLK\nPIN ? A\nPIN ? B\nPIN ? Q0 REG\nPIN ? Z\nSTATE\nMEALY_MACHINE\nCLKF = CLK\nS0 = /Q0\nS1 = Q0\n'
+                         'S0 := A -> S1 +-> S0\nS1 := VCC -> S0\nS0.OUTF = A -> Z + A -> /Z\nS1.OUTF = B -> Z\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=False, message='E1260: Conflicting conditions in output equation of state S0'),
     # Command line and settings errors name what is wrong.
     dict(name='argument_missing_value', files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? Q\nEQUATIONS\nQ=A\n'},
          args=['--emit-jedec', 'T.PDS', '--settings'], ok=False, message='Missing value after --settings'),
