@@ -27,10 +27,13 @@ struct FitterOptions
     // Optional native report observations, also retained on fitting failure.
     std::shared_ptr<FitterReportData> report;
     bool automatic_legacy_input_pairing = true;
-    // Optional sink for the original fitter's warnings. The fitters run
-    // their preparation once per placement candidate; each text is kept once.
+    // Optional sink for the original fitter's warnings and INFO lines, each
+    // stored with its severity. The fitters run their preparation once per
+    // placement candidate; each text is kept once.
     std::shared_ptr<std::vector<std::string>> warnings;
-    void warn(const std::string& text) const
+    void warn(const std::string& text) const { message("warning: " + text); }
+    void info(const std::string& text) const { message("info: " + text); }
+    void message(const std::string& text) const
     {
         if (warnings && std::find(warnings->begin(), warnings->end(), text) == warnings->end())
             warnings->push_back(text);

@@ -119,6 +119,14 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
     if (global_node.reset_overridden)
         fitting.warn("z5037: Invalid global reset equation.");
     discard_combinatorial_storage_controls(pla.outputs, pla.terms);
+    FitterNoticeGuard notices([&] {
+        std::set<std::string> registers;
+        if (d.device != "MACH355")
+            for (const auto& pin : original_design.pins)
+                if (!pin.node && !pin.pair.empty())
+                    registers.insert(pin.pair);
+        report_fitter_notices(original_design, pla.outputs, pla.terms, registers, d, fitting);
+    });
     validate_node_output_enables(design, pla.outputs);
     std::vector<std::string> unreferenced_nodes;
     validate_node_equations(design, pla.inputs, pla.outputs, &unreferenced_nodes);
@@ -508,6 +516,19 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
             if (declaration.name == pin.name && declaration.number >= d.blocks * d.cells + 2)
                 declaration.number = 0;
         }
+    }
+    {
+        std::set<std::string> registers;
+        for (const auto& pair : input_registers)
+            registers.insert(pair.first);
+        // A paired node that nothing reads is discarded, yet the original
+        // has taken it for an input register by then.
+        if (!mach355)
+            for (const auto& pin : original_design.pins)
+                if (!pin.node && !pin.pair.empty())
+                    registers.insert(pin.pair);
+        report_fitter_notices(original_design, pla.outputs, pla.terms, registers, d, fitting);
+        notices.done();
     }
     if (fitting.ground_implicit_controls)
         for (const auto& entry : outputs)

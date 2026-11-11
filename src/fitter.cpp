@@ -391,6 +391,7 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
     if (global_node.reset_overridden)
         fitting.warn("z5037: Invalid global reset equation.");
     discard_combinatorial_storage_controls(pla.outputs, pla.terms);
+    report_fitter_notices(original_design, pla.outputs, pla.terms, {}, mach_device_layout("MACH111"), fitting);
     validate_node_output_enables(design, pla.outputs);
     std::vector<std::string> unreferenced_nodes;
     validate_node_equations(design, pla.inputs, pla.outputs, &unreferenced_nodes);

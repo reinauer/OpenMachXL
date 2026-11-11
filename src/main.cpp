@@ -226,8 +226,24 @@ int main(int argc, char** argv)
                 fitting.report = std::make_shared<machxl::FitterReportData>();
             fitting.warnings                 = std::make_shared<std::vector<std::string>>();
             const auto print_fitter_warnings = [&] {
+                // The original prints its messages phase by phase: the global
+                // node, the device note, the signal walk, unreferenced
+                // pins, unreferenced nodes and last the clock rules.
+                const auto phase = [](const std::string& message) {
+                    const auto code = message.substr(message.find(": ") + 2, 5);
+                    return code == "z5037" ? 0 : code == "z5109" ? 1
+                           : code == "z5029" || code == "z5064" || code == "z5065" || code == "z5068" ||
+                                     code == "z5070" || code == "z5128"
+                               ? 2
+                           : code == "z5073"                    ? 3
+                           : code == "z5071"                    ? 4
+                           : code == "z5121" || code == "z5056" ? 6
+                                                                : 5;
+                };
+                std::stable_sort(fitting.warnings->begin(), fitting.warnings->end(),
+                                 [&](const auto& a, const auto& b) { return phase(a) < phase(b); });
                 for (const auto& warning : *fitting.warnings)
-                    std::cerr << source_path << ": warning: " << warning << '\n';
+                    std::cerr << source_path << ": " << warning << '\n';
                 fitting.warnings->clear();
             };
             fitting.source_route_limit             = settings.yes_no("ROUTE_PER_PL") ? 2 : 4096;

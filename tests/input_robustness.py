@@ -197,6 +197,54 @@ CASES = [
          args=['--emit-jedec', 'T.PDS'], ok=False, message='z5524: The logic and functional equations for O',
          warnings=['z5510: Block A has a logic fanin of 27 due to preplaced or block-restricted signals: '
                    'routing capacity is 26 signals.']),
+    # INFO lines of the original fitter about equations a design leaves out,
+    # in the original's order.
+    dict(name='fitter_info_implicit_controls',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? B\nPIN ? Q REG\nEQUATIONS\nQ=A*B\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=True, sequence=['z5065', 'z5070', 'z5121'],
+         warnings=['info: z5065: For outputs, implicit output enables will be set to VCC.',
+                   'info: z5070: Unspecified SET/RESETs are to be treated as DON\'T CARE.',
+                   'info: z5121: Implicit clock or latch enable will be assigned to the default Clock/LE Pin 35.']),
+    dict(name='fitter_info_fixed_pins_first',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? B\nPIN ? CK\nPIN ? E\nPIN 3 Q REG\nPIN 5 Y\n'
+                         'EQUATIONS\nQ=A*B\nQ.CLKF=CK\nQ.TRST=E\nY=A+B\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=True, sequence=['z5070', 'z5065']),
+    dict(name='fitter_info_nothing_implicit',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? B\nPIN ? CK\nPIN ? S\nPIN ? R\nPIN ? E\nPIN ? Q REG\n'
+                         'EQUATIONS\nQ=A*B\nQ.CLKF=CK\nQ.SETF=S\nQ.RSTF=R\nQ.TRST=E\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=True, sequence=[]),
+    dict(name='fitter_info_input_register',
+         files={'T.PDS': 'CHIP T MACH435\nPIN ? A\nPIN 5 Q IPAIR N\nPIN ? Y\nNODE ? N REG\nEQUATIONS\nQ=A\nY=N\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=True, sequence=['z5065']),
+    dict(name='fitter_info_mach2_input_register',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A PAIR N\nPIN ? B\nPIN ? Y\nPIN ? CK\nNODE ? N REG\n'
+                         'EQUATIONS\nY=N+B*A\nN.CLKF=CK\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=True, sequence=['z5070', 'z5065']),
+    dict(name='fitter_info_mach215',
+         files={'T.PDS': 'CHIP T MACH215\nPIN ? A\nPIN ? B\nPIN ? Q REG\nEQUATIONS\nQ=A*B\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=True, sequence=['z5065', 'z5128', 'z5121'],
+         warnings=['info: z5128: Any unspecified SET/RESET equation will be defaulted to GND.',
+                   'default Clock/LE Pin 13.']),
+    dict(name='fitter_info_mach4_default_clock',
+         files={'T.PDS': 'CHIP T MACH435\nPIN ? A\nPIN ? B\nPIN ? Q REG\nEQUATIONS\nQ=A*B\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=True, sequence=['z5065', 'z5070', 'z5056'],
+         warnings=['will be assigned to the default CLOCK/LE Pin 20.']),
+    dict(name='fitter_info_no_input_registers',
+         files={'T.PDS': 'CHIP T MACH111\nPIN ? A PAIR N\nPIN ? B\nPIN ? Y\nNODE ? N REG\nEQUATIONS\nY=N+B*A\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=True, sequence=['z5109', 'z5029', 'z5070', 'z5065', 'z5121'],
+         warnings=['info: z5109: For this device, all input pairing is ignored']),
+    dict(name='fitter_info_set_reset_grounded',
+         files={'T.PDS': 'CHIP T MACH435\nPIN ? A\nPIN ? B\nPIN ? CK\nPIN ? Q REG\nEQUATIONS\nQ=A*B\nQ.CLKF=CK\n',
+                'T.MXL': '[M3XX_SET_RST]=N\n'},
+         args=['--emit-jedec', 'T.PDS', '--settings', 'T.MXL'], ok=True, sequence=['z5065', 'z5068']),
+    dict(name='fitter_warning_output_enable_grounded',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? B\nPIN ? Q\nEQUATIONS\nQ=A*B\nQ.TRST=GND\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=True, sequence=['z5064'],
+         warnings=['warning: z5064: Output signal Q has output enable equal GND.']),
+    dict(name='fitter_info_before_rejection',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? B\nPIN ? Y\nNODE ? N\nEQUATIONS\nY=N+B*A\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=False, message='z5072: Missing equation for Node N',
+         sequence=['z5065']),
 ]
 
 # Messages of exceptions thrown by the standard library, not by the compiler.
@@ -219,6 +267,10 @@ def run(case, flags):
         (label, 'bare library exception', diagnostic)
     for warning in case.get('warnings', []):
         assert warning in stderr, (label, 'missing warning', warning, stderr[-2000:])
+    if 'sequence' in case:
+        codes = [line.split(': ')[2] for line in stderr.splitlines()
+                 if len(line.split(': ')) > 2 and line.split(': ')[1] in ('info', 'warning') and line.split(': ')[2].startswith('z')]
+        assert codes == case['sequence'], (label, 'fitter messages', codes, stderr[-2000:])
     if case['ok']:
         assert result.returncode == 0 and result.stdout, (label, 'expected success', stderr[-2000:])
         assert not missing, (label, 'missing output files', missing)

@@ -1,7 +1,10 @@
 #pragma once
 #include "device_family.hpp"
+#include "fitter.hpp"
 #include "frontend.hpp"
 #include <algorithm>
+#include <exception>
+#include <functional>
 #include <map>
 #include <set>
 
@@ -156,6 +159,160 @@ inline std::vector<std::string> discarded_input_pairs(const Design& design)
     }
     return result;
 }
+
+// MACHFITR's INFO lines, and warning z5064, about what the fitter assumes for
+// equations a design leaves out. The original walks the signals in its
+// logical order: fixed pins by number, floating pins as declared, then the
+// nodes. A node that a pin declares as its input pair is looked at with that
+// pin. Each signal is checked for an implicit output enable first and for
+// implicit set/reset second, and the default clock is announced last.
+//
+//   z5109  the device has no input registers (MACH1, MACH355)
+//   z5065  an output pin has no output enable equation
+//   z5064  an output enable equation is constant GND
+//   z5070  a register lacks a set or reset equation; z5068 when unspecified
+//          set/reset is not a don't care, z5128 on MACH215. MACH2 input
+//          registers count as well, except on MACH215.
+//   z5121  a macrocell register or latch has no clock equation and gets the
+//          default clock pin; z5056 on MACH3/4
+//
+// `source` is the design as written, `outputs` and `terms` the prepared PLA,
+// `input_registers` the nodes the fitter realizes as input registers.
+inline void report_fitter_notices(const Design& source, const std::vector<std::string>& outputs,
+                                  const std::vector<std::vector<std::string>>& terms,
+                                  const std::set<std::string>& input_registers, const MachDeviceLayout& d,
+                                  const FitterOptions& fitting)
+{
+    const bool mach1    = d.device.compare(0, 5, "MACH1") == 0;
+    const bool mach2    = d.device.compare(0, 5, "MACH2") == 0;
+    const bool mach215  = d.device == "MACH215";
+    const bool pairless = mach1 || d.device == "MACH355";
+    if (pairless)
+        fitting.info("z5109: For this device, all input pairing is ignored since input registers or latches do "
+                     "not exist. All signals must pass through the central switch matrix before being latched "
+                     "or registered.");
+    std::map<std::string, std::set<std::string>> functions;
+    std::set<std::string> grounded_enable;
+    for (unsigned column = 0; column < outputs.size(); ++column) {
+        auto label = outputs[column];
+        while (!label.empty() && (label.back() == '-' || label.back() == '%'))
+            label.pop_back();
+        const auto dot      = label.find('.');
+        const auto name     = label.substr(0, dot);
+        const auto function = dot == std::string::npos ? std::string("COM") : label.substr(dot + 1);
+        functions[name].insert(function);
+        if (function == "OE" && column < terms.size() && terms[column].empty())
+            grounded_enable.insert(name);
+    }
+    const auto has = [&](const std::string& name, const char* function) {
+        const auto found = functions.find(name);
+        return found != functions.end() && found->second.count(function);
+    };
+    const auto driven = [&](const std::string& name) {
+        return has(name, "COM") || has(name, "REG") || has(name, "G") || has(name, "T");
+    };
+    bool default_clock      = false;
+    const auto set_reset    = [&] {
+        if (mach215)
+            fitting.info("z5128: Any unspecified SET/RESET equation will be defaulted to GND.");
+        else if (fitting.ground_implicit_controls)
+            fitting.info("z5068: Since unspecified SET/RESET is NOT to be treated as DON'T CARE, any unspecified "
+                         "SET/RESET will be defaulted to GND.");
+        else
+            fitting.info("z5070: Unspecified SET/RESETs are to be treated as DON'T CARE. Hence, a register with "
+                         "unspecified SET/RESET equation(s) may be initialized via SET/RESET product terms that "
+                         "are inherited from partitioning/placement to the same PAL block as other registers for "
+                         "which SET/RESET equations have been written. Therefore, simulation results may be "
+                         "unexpected for any register uninitialized via explicit SET/RESET in the design file.");
+    };
+    const auto storage_of = [&](const Pin& pin, bool through_pair) {
+        if (input_registers.count(pin.name)) {
+            if (mach2 && !mach215)
+                set_reset();
+            return;
+        }
+        bool storage = has(pin.name, "REG") || has(pin.name, "G") || has(pin.name, "T");
+        // A discarded input pairing leaves a declared register without
+        // equations; it is fitted as a macrocell register all the same.
+        if (through_pair && pairless && !driven(pin.name) && (pin.registered || pin.latched))
+            storage = true;
+        if (!storage)
+            return;
+        if (!has(pin.name, "PR") || !has(pin.name, "RE"))
+            set_reset();
+        default_clock |= !has(pin.name, "C");
+    };
+    std::vector<const Pin*> order;
+    for (const bool node : {false, true}) {
+        const auto first = order.size();
+        for (const auto& pin : source.pins)
+            if (pin.node == node && pin.number)
+                order.push_back(&pin);
+        std::stable_sort(order.begin() + long(first), order.end(),
+                         [](const Pin* a, const Pin* b) { return a->number < b->number; });
+        for (const auto& pin : source.pins)
+            if (pin.node == node && !pin.number)
+                order.push_back(&pin);
+    }
+    for (const auto* pin : order) {
+        if (pin->node) {
+            storage_of(*pin, false);
+            continue;
+        }
+        if (!pin->pair.empty())
+            for (const auto& partner : source.pins)
+                if (partner.node && partner.name == pin->pair) {
+                    if (pairless)
+                        fitting.warn("z5029: Invalid pairing of signals " + pin->name + " and " + pin->pair +
+                                     " - discard pairing.");
+                    storage_of(partner, true);
+                }
+        if (driven(pin->name)) {
+            if (grounded_enable.count(pin->name))
+                fitting.warn("z5064: Output signal " + pin->name + " has output enable equal GND.");
+            else if (!has(pin->name, "OE"))
+                fitting.info("z5065: For outputs, implicit output enables will be set to VCC.");
+        }
+        storage_of(*pin, false);
+    }
+    if (!default_clock || d.clock_pins.empty())
+        return;
+    const auto pin = std::to_string(mach215 || !(mach1 || mach2) ? d.clock_pins.front() : d.clock_pins.back());
+    if (mach1 || mach2)
+        fitting.info("z5121: Implicit clock or latch enable will be assigned to the default Clock/LE Pin " + pin +
+                     ".");
+    else
+        fitting.info("z5056: If a signal is preplaced on the default clock pin or the default clock pin is "
+                     "required for an explicit clock due to clocking requirements, then all clock and latch "
+                     "enable equations must be explicitly defined in the design file. However, if the default "
+                     "clock is not used and a clock equation for a register, or a latch enable equation for a "
+                     "latch, is not written, then a clock or latch enable will be created for the signal and "
+                     "will be assigned to the default CLOCK/LE Pin " + pin + ".");
+}
+
+// Reports the notices on the way out when a check rejects the design before
+// the fitter has settled its input registers; the original has printed them
+// by then. `report` is the best estimate available at that point.
+class FitterNoticeGuard
+{
+  public:
+    explicit FitterNoticeGuard(std::function<void()> report) : report_(std::move(report)) {}
+    FitterNoticeGuard(const FitterNoticeGuard&)            = delete;
+    FitterNoticeGuard& operator=(const FitterNoticeGuard&) = delete;
+    void done() { report_ = nullptr; }
+    ~FitterNoticeGuard()
+    {
+        if (report_ && std::uncaught_exceptions() > exceptions_)
+            try {
+                report_();
+            } catch (...) {
+            }
+    }
+
+  private:
+    std::function<void()> report_;
+    int exceptions_ = std::uncaught_exceptions();
+};
 
 // MACHFITR z5073: a declared pin that no remaining equation drives or reads
 // is dropped, which frees its package pin. Returns such pins in declaration

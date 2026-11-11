@@ -119,6 +119,14 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
     if (global_node.reset_overridden)
         fitting.warn("z5037: Invalid global reset equation.");
     discard_combinatorial_storage_controls(p.outputs, p.terms);
+    FitterNoticeGuard notices([&] {
+        std::set<std::string> registers;
+        if (mach2)
+            for (const auto& pin : original_design.pins)
+                if (!pin.node && !pin.pair.empty())
+                    registers.insert(pin.pair);
+        report_fitter_notices(original_design, p.outputs, p.terms, registers, d, fitting);
+    });
     validate_node_output_enables(design, p.outputs);
     std::vector<std::string> unreferenced_nodes;
     validate_node_equations(design, p.inputs, p.outputs, &unreferenced_nodes);
@@ -226,6 +234,13 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
                 node->number = number;
             }
         }
+    {
+        std::set<std::string> input_registers;
+        for (const auto& pair : input_pairs)
+            input_registers.insert(pair.first);
+        report_fitter_notices(original_design, p.outputs, p.terms, input_registers, d, fitting);
+        notices.done();
+    }
     if (mach215)
         for (const auto& pin : design.pins)
             if (pin.node && pin.number && (pin.number & 1) && !input_pairs.count(pin.name))
