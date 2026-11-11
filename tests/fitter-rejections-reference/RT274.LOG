@@ -1,0 +1,146 @@
+
+*** Start MACHPAR.E 08:02:28 
+Rt274.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP RT274 MACH435
+   2     |PIN ? I1
+   3     |PIN ? I2
+   4     |PIN ? I3
+   5     |PIN ? I4
+   6     |PIN ? I5
+   7     |PIN ? I6
+   8     |PIN ? I7
+   9     |PIN ? I8
+  10     |PIN ? I9
+  11     |PIN ? I10
+  12     |PIN ? I11
+  13     |PIN ? I12
+  14     |PIN ? I13
+  15     |PIN ? I14
+  16     |PIN ? I15
+  17     |PIN ? I16
+  18     |PIN ? I17
+  19     |PIN ? I18
+  20     |PIN ? I19
+  21     |PIN ? I20
+  22     |PIN ? I21
+  23     |PIN ? I22
+  24     |PIN ? I23
+  25     |PIN ? I24
+  26     |PIN ? I25
+  27     |PIN ? I26
+  28     |PIN ? I27
+  29     |PIN ? I28
+  30     |PIN ? I29
+  31     |PIN ? I30
+  32     |PIN ? I31
+  33     |PIN ? I32
+  34     |PIN ? I33
+  35     |PIN ? I34
+  36     |PIN 3 O
+  37     |EQUATIONS
+  38     |O=I1*I2*I3*I4*I5*I6*I7*I8*I9*I10*I11*I12*I13*I14*I15*I16*I17*I18*I19*I20*I21*I22*I23*I24*I25*I26*I27*I28*I29*I30*I31*I32*I33*I34
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Rt274.pds
+
+*** End MACHPAR.EXE 08:02:28; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 08:02:28 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>O
+
+ %%  MACHBPP  %% Maximum memory allocated was: 70850 bytes.
+
+ %%  MACHBPP  %% File Processed Successfully.  File: Rt274.pds.
+ %%  MACHBPP  %% ERROR count: 0  WARNING count: 0
+
+*** End MACHBPP.EXE 08:02:28; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 08:02:28 
+MACHXL 2.1 R9 MACHMIN   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Processing equation(s) for pin O...
+====> O                  MIN_ON (1 + pt)
+
+ %%  MACHMIN  %% Maximum memory allocated was: 59402 bytes.
+
+ %%  MACHMIN  %% File Processed Successfully.  File: Rt274.pds.
+ %%  MACHMIN  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 08:02:29; (MACHMIN.EXE= 1 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHMIN.E 08:02:29 
+MACHXL 2.1 R9 MACHTPLA   - (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1994, 1995
+
+
+Converting TRE file rt274.tre to PLA file rt274.pla...
+
+.
+.
+
+ %%  MACHTPLA  %% Maximum memory allocated was: 54722 bytes.
+
+ %%  MACHTPLA  %% File Processed Successfully.  File: Rt274.pds.
+ %%  MACHTPLA  %% ERROR count: 0  WARNING count: 0
+
+
+*** End MACHMIN.EXE 08:02:29; (MACHMIN.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHFITR. 08:02:29 
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+*** Source file is Rt274.pds . Device is MACH435 .
+|> INFO z5065 - For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of non-global clocks:
+   None.
+
+*** End of Normalization.
+|> WARNING z5510 - Block A has a logic fanin of 34 due to preplaced or
+                   block-restricted signals: routing capacity is 33
+                   signals.
+|> ERROR z5524 - The logic and functional equations for O require 34
+                 distinct signals: routing capacity is 33 signals.
+
+*** End of DRC. 
+
+%%%% MACHFITR %%%% Too many errors. Processing aborted. File Rt274.pds .
+%%%% MACHFITR %%%% ERROR count 1 WARNING count 1 .
+
+*** End MACHFITR.EX 08:02:29; (MACHFITR.EXE= 0 sec.) elapsed time= 1 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

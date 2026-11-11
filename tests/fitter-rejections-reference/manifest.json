@@ -813,6 +813,54 @@
         "NF211.LOG": "014cbf86fdbadf59df1ce9c4f779adc31b408995b125db52f3aaf79852748c4a"
       },
       "native_diagnostic": "z5072: Missing equation for Node N"
+    },
+    {
+      "name": "RT27X",
+      "errors": [
+        "z5524"
+      ],
+      "files": {
+        "RT27X.PDS": "a1dd727f37211232706be3bcb3a7ec45b65d165c04ac936df9ce8b34f5ebb826",
+        "RT27X.MXL": "752f8f1100b7bcd5633ab2e18e3a7a91436bb5f14a71af247ad2480e6acce905",
+        "RT27X.LOG": "7d78b5ee300c4db565947cd4f27b4636f8b85114c8f95c870596e6a15db34ad7"
+      },
+      "native_diagnostic": "z5524: The logic and functional equations for O require 27 distinct signals: routing capacity is 26 signals."
+    },
+    {
+      "name": "RT27F",
+      "errors": [
+        "z5524"
+      ],
+      "files": {
+        "RT27F.PDS": "c013575c047df914cdcc392f233078a685eb28969544845d79e953f07fceee8a",
+        "RT27F.MXL": "d11db6b7026794851be2c087c154ba712e5b7a4c295789d1a2b70bde98b3b9a9",
+        "RT27F.LOG": "599c3adcdad6e97c2f2cce97daeb1f46774facf8d92100a5bf834f22b84d1cae"
+      },
+      "native_diagnostic": "z5524: The logic and functional equations for O require 27 distinct signals: routing capacity is 26 signals."
+    },
+    {
+      "name": "RT272",
+      "errors": [
+        "z5524"
+      ],
+      "files": {
+        "RT272.PDS": "fb7c116f331704d6a25354b92240e39c5579da26be2b417f6c9f67d10d631d55",
+        "RT272.MXL": "607067e5a60dbc2847acc9da1a9a1b6af90b04f573d2628b3bffd71daf260b50",
+        "RT272.LOG": "68ab7118702a981f9ed5827cbc26085cfc94d3d53aee91ffc37f6b241086a00e"
+      },
+      "native_diagnostic": "z5524: The logic and functional equations for O require 27 distinct signals: routing capacity is 26 signals."
+    },
+    {
+      "name": "RT274",
+      "errors": [
+        "z5524"
+      ],
+      "files": {
+        "RT274.PDS": "2bfc59b4e2e1d37431798ea3e382a470b154e3c5aee78d203cad06e5369740e3",
+        "RT274.MXL": "ab8a67a0596be7878d60eb9eaa4f5330d1fb8fc83a7332d6ebd4a549f86fc734",
+        "RT274.LOG": "25eca47c69b4e8e89fc9fd46d27416781c4fe341a1b5f4657011a47fad923b51"
+      },
+      "native_diagnostic": "z5524: The logic and functional equations for O require 34 distinct signals: routing capacity is 33 signals."
     }
   ]
 }

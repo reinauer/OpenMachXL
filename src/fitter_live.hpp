@@ -57,6 +57,38 @@ inline void validate_node_equations(const Design& design, const std::vector<std:
             throw LogicError("z5072: Missing equation for Node " + pin.name);
 }
 
+// MACHFITR DRC z5524: all equations of one signal are placed in one block,
+// so together they may read no more signals than a block's switch matrix
+// routes. A dedicated clock does not pass through the matrix and is left
+// out of the count.
+inline void validate_equation_fanin(const std::vector<std::string>& inputs, const std::vector<std::string>& outputs,
+                                    const std::vector<std::vector<std::string>>& terms, std::size_t capacity)
+{
+    std::map<std::string, std::set<std::size_t>> fanin;
+    std::vector<std::string> order;
+    for (std::size_t column = 0; column < outputs.size(); ++column) {
+        auto label = outputs[column];
+        while (!label.empty() && (label.back() == '-' || label.back() == '%'))
+            label.pop_back();
+        const auto dot = label.find('.');
+        if (dot != std::string::npos && label.substr(dot) == ".C")
+            continue;
+        const auto name = label.substr(0, dot);
+        if (!fanin.count(name))
+            order.push_back(name);
+        auto& used = fanin[name];
+        for (const auto& term : terms[column])
+            for (std::size_t input = 0; input < term.size() && input < inputs.size(); ++input)
+                if (term[input] != '-')
+                    used.insert(input);
+    }
+    for (const auto& name : order)
+        if (fanin.at(name).size() > capacity)
+            throw LogicError("z5524: The logic and functional equations for " + name + " require " +
+                             std::to_string(fanin.at(name).size()) + " distinct signals: routing capacity is " +
+                             std::to_string(capacity) + " signals.");
+}
+
 // z5091/5092/5093 are warnings for a combinatorial output: set/reset/clock
 // equations are discarded before DRC, routing and input-use classification.
 inline void discard_combinatorial_storage_controls(std::vector<std::string>& outputs,

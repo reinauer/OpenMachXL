@@ -126,6 +126,12 @@ CASES = [
          files={'T.PDS': STATE_MACHINE + 'SETF /CLK X\nSETF /SA\nCLOCKF CLK\n'},
          args=['--emit-jedec', 'T.PDS', '--simulate'], ok=False,
          message='E1820: Illegal simulation element: SA'),
+    # Exactly as many inputs as a block's switch matrix routes must still fit;
+    # one more is the original DRC error z5524 (see the rejection reference).
+    dict(name='equation_fanin_at_routing_capacity',
+         files={'T.PDS': 'CHIP T MACH111\n' + ''.join('PIN ? I%d\n' % i for i in range(1, 27)) +
+                         'PIN 2 O\nEQUATIONS\nO=' + '*'.join('I%d' % i for i in range(1, 27)) + '\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=True),
 ]
 
 # Messages of exceptions thrown by the standard library, not by the compiler.

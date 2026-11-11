@@ -388,6 +388,7 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
     discard_combinatorial_storage_controls(pla.outputs, pla.terms);
     validate_node_output_enables(design, pla.outputs);
     validate_node_equations(design, pla.inputs, pla.outputs);
+    validate_equation_fanin(pla.inputs, pla.outputs, pla.terms, mach_device_layout("MACH111").muxes);
     validate_storage_control_products(pla.outputs, pla.terms);
     check_fitting_budget();
     if (design.dos_compatibility && pla.inputs.empty() && pla.outputs.size() == 1)
