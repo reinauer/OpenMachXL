@@ -35,6 +35,23 @@ void finalize_fitter_report_data(const Design& design, const FuseImage& image, F
             pin.input = !pin.output;
             data.pins.push_back(std::move(pin));
         }
+    // A register without a clock equation uses the device's default clock
+    // pin. No design signal sits there; the original reports the pin under
+    // the name DEF_GCLOCK.
+    for (auto& block : data.blocks)
+        for (auto& clock : block.clocks) {
+            if (!clock.signal.empty() || clock.pin <= 0)
+                continue;
+            clock.signal = "DEF_GCLOCK";
+            if (std::none_of(data.pins.begin(), data.pins.end(),
+                             [&](const auto& pin) { return int(pin.number) == clock.pin; })) {
+                FitterReportPin pin;
+                pin.name   = clock.signal;
+                pin.number = unsigned(clock.pin);
+                pin.input  = true;
+                data.pins.push_back(std::move(pin));
+            }
+        }
     std::map<std::string, std::set<unsigned>> fanout;
     for (const auto& node : data.nodes)
         if (node.block >= 0 && !node.input_register)

@@ -439,7 +439,8 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
                                  row.node && data.successful ? format_text(node->oe_expression, "...").c_str() : "...",
                                  fans.c_str());
             if (power_column)
-                out += format_fields("     %c", node ? (node->low_power ? 'L' : 'H') : '.');
+                // An input register has no power setting of its own.
+                out += format_fields("     %c", node && !node->input_register ? (node->low_power ? 'L' : 'H') : '.');
             out += '\n';
         }
     }
