@@ -2331,18 +2331,7 @@ std::string emit_pla(const Design& input_design, const std::string& source_name,
                 d.inverted = options.forced_polarity != 0;
             }
             auto raw_count = [](const ExprPtr& expression) {
-                std::vector<std::string> variables;
-                std::set<std::string> seen;
-                std::function<void(const ExprPtr&)> visit = [&](const ExprPtr& x) {
-                    if (!x)
-                        return;
-                    if (x->kind == ExprKind::Identifier && seen.insert(x->name).second)
-                        variables.push_back(x->name);
-                    visit(x->left);
-                    visit(x->right);
-                };
-                visit(expression);
-                return machmin_products(expression, variables).size();
+                return machmin_products(expression, expression_variables(expression)).size();
             };
             if (hardware_xor) {
                 auto prepared_d = prepare_xor(d.expression, d.care, d.opposite_expression, !d.converted_excitation);
@@ -2668,18 +2657,9 @@ std::string emit_pla(const Design& input_design, const std::string& source_name,
                        equation.function == "G") &&
                       (equation.expression->kind == ExprKind::Xor || equation.expression->kind == ExprKind::Xnor)))) {
                     std::vector<std::string> variables;
-                    std::set<std::string> seen;
-                    std::function<void(const ExprPtr&)> visit = [&](const ExprPtr& e) {
-                        if (!e)
-                            return;
-                        if (e->kind == ExprKind::Identifier && seen.insert(e->name).second)
-                            variables.push_back(e->name);
-                        visit(e->left);
-                        visit(e->right);
-                    };
-                    visit(equation.expression->right);
-                    visit(equation.expression->left);
-                    visit(equation.care);
+                    append_expression_variables(variables, equation.expression->right);
+                    append_expression_variables(variables, equation.expression->left);
+                    append_expression_variables(variables, equation.care);
                     OptimizedXor result;
                     if (!equation.minimize) {
                         // MINIMIZE_OFF retains both structural legs, including ties
@@ -2695,10 +2675,9 @@ std::string emit_pla(const Design& input_design, const std::string& source_name,
                             std::swap(left_cover, right_cover);
                         }
                         variables.clear();
-                        seen.clear();
-                        visit(right);
-                        visit(left);
-                        visit(equation.care);
+                        append_expression_variables(variables, right);
+                        append_expression_variables(variables, left);
+                        append_expression_variables(variables, equation.care);
                         result.split    = true;
                         result.inverted = equation.expression->kind == ExprKind::Xnor;
                         result.left     = std::move(left_cover);
@@ -2773,25 +2752,15 @@ std::string emit_pla(const Design& input_design, const std::string& source_name,
                 } else
                     cover = expanded_products(equation.expression);
                 if (equation.minimize) {
-                    std::vector<std::string> variables;
-                    std::set<std::string> seen;
-                    std::function<void(const ExprPtr&)> visit = [&](const ExprPtr& e) {
-                        if (!e)
-                            return;
-                        if (e->kind == ExprKind::Identifier && seen.insert(e->name).second)
-                            variables.push_back(e->name);
-                        visit(e->left);
-                        visit(e->right);
-                    };
-                    visit(equation.expression);
-                    visit(equation.care);
+                    auto variables = expression_variables(equation.expression);
+                    append_expression_variables(variables, equation.care);
                     bool primary = equation.function == "REG" || equation.function == "COM" || equation.function == "G";
                     bool best_phase =
                         (primary && options.best_polarity) || (hardware_xor && (primary || equation.function == "T"));
                     if (design.requested_power_up.count(equation.signal) && equation.function == "REG")
                         best_phase = false;
                     if (options.best_polarity && primary)
-                        visit(equation.opposite_expression);
+                        append_expression_variables(variables, equation.opposite_expression);
                     ordered_variables[equation.signal + "." + equation.function] = variables;
                     cover = machmin_products(equation.expression, variables);
                     if (best_register_signals.count(equation.signal) &&

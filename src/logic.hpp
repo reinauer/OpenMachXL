@@ -40,6 +40,13 @@ class LogicError : public std::runtime_error
     using std::runtime_error::runtime_error;
 };
 
+// Appends the identifiers of `expression` that `variables` does not hold yet,
+// in the order a left-to-right walk first meets them. A null expression adds
+// nothing.
+void append_expression_variables(std::vector<std::string>& variables, const ExprPtr& expression);
+// The identifiers of `expression`, each once, in first-occurrence order.
+std::vector<std::string> expression_variables(const ExprPtr& expression);
+
 ExprPtr make_constant(bool value);
 ExprPtr make_identifier(std::string name);
 ExprPtr make_not(ExprPtr operand);

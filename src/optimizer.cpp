@@ -213,21 +213,6 @@ class OrderedCoverExpander
         return left;
     }
 };
-std::vector<std::string> collect_expression_variables(const ExprPtr& expression)
-{
-    std::vector<std::string> variables;
-    std::set<std::string> seen;
-    auto visit = [&](auto&& self, const ExprPtr& e) -> void {
-        if (!e)
-            return;
-        if (e->kind == ExprKind::Identifier && seen.insert(e->name).second)
-            variables.push_back(e->name);
-        self(self, e->left);
-        self(self, e->right);
-    };
-    visit(visit, expression);
-    return variables;
-}
 void append_unique_variables(std::vector<std::string>& target, const std::vector<std::string>& source)
 {
     for (const auto& name : source)
@@ -255,7 +240,7 @@ Sop machmin_unreduced_products(const ExprPtr& expression, SopLimits limits)
     // MINIMIZE_OFF bypasses cross-list OR reduction. Intersection and
     // complement still use the ordinary cover operations. Each structural
     // XOR leg collects variables in first-occurrence order before joining.
-    auto variables = collect_expression_variables(expression);
+    auto variables = expression_variables(expression);
     if (variables.size() > 64)
         throw LogicError("optimizer equation exceeds the MACHXL 64-signal limit");
     return OrderedCoverExpander(variables, limits, false).expand(expression);
@@ -293,9 +278,9 @@ PreparedXor prepare_xor(const ExprPtr& expression, const ExprPtr& care, const Ex
         throw LogicError("null expression");
     PreparedXor result;
     if (explicit_offset || (expression->kind != ExprKind::Xor && expression->kind != ExprKind::Xnor)) {
-        result.variables = collect_expression_variables(expression);
-        append_unique_variables(result.variables, collect_expression_variables(care));
-        append_unique_variables(result.variables, collect_expression_variables(explicit_offset));
+        result.variables = expression_variables(expression);
+        append_unique_variables(result.variables, expression_variables(care));
+        append_unique_variables(result.variables, expression_variables(explicit_offset));
         result.plain           = machmin_products(expression, result.variables);
         result.dontcare        = care ? machmin_products(make_not(care), result.variables) : Sop{};
         result.explicit_offset = bool(explicit_offset);
@@ -304,8 +289,8 @@ PreparedXor prepare_xor(const ExprPtr& expression, const ExprPtr& care, const Ex
         return result;
     }
     result.inverted                    = expression->kind == ExprKind::Xnor;
-    auto left_variables                = collect_expression_variables(expression->left);
-    auto right_variables               = collect_expression_variables(expression->right);
+    auto left_variables                = expression_variables(expression->left);
+    auto right_variables               = expression_variables(expression->right);
     auto left                          = machmin_products(expression->left, left_variables);
     auto right                         = machmin_products(expression->right, right_variables);
     auto orient_single_product_xor_leg = [](Sop& l, Sop& r, auto& lv, auto& rv) {
@@ -331,7 +316,7 @@ PreparedXor prepare_xor(const ExprPtr& expression, const ExprPtr& care, const Ex
     // Preserve right-leg variable order, then append unseen left-leg variables.
     auto variables = right_variables;
     append_unique_variables(variables, left_variables);
-    append_unique_variables(variables, collect_expression_variables(care));
+    append_unique_variables(variables, expression_variables(care));
     if (variables.size() > 64)
         throw LogicError("optimizer equation exceeds the MACHXL 64-signal limit");
     auto plain            = OrderedCoverExpander(variables, {}).xor_covers(left, right);

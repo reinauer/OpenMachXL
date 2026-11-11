@@ -7,6 +7,25 @@
 
 namespace machxl {
 
+void append_expression_variables(std::vector<std::string>& variables, const ExprPtr& expression)
+{
+    std::set<std::string> seen(variables.begin(), variables.end());
+    const auto visit = [&](auto&& self, const ExprPtr& e) -> void {
+        if (!e)
+            return;
+        if (e->kind == ExprKind::Identifier && seen.insert(e->name).second)
+            variables.push_back(e->name);
+        self(self, e->left);
+        self(self, e->right);
+    };
+    visit(visit, expression);
+}
+std::vector<std::string> expression_variables(const ExprPtr& expression)
+{
+    std::vector<std::string> variables;
+    append_expression_variables(variables, expression);
+    return variables;
+}
 ExprPtr make_constant(bool value)
 {
     return std::make_shared<Expr>(Expr{ExprKind::Constant, value, {}, {}, {}});
