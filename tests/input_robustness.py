@@ -72,6 +72,14 @@ CASES = [
     dict(name='fixed_location_declared_node_past_device',
          files={'T.PDS': FLOATING_DESIGN.format(device='MACH211').replace('NODE ? N', 'NODE 40000 N')},
          args=['--emit-jedec', 'T.PDS'], ok=False, message='Invalid node location 40000 for N'),
+    # A saved placement fixes a paired pad and its node in different blocks.
+    # The placer used to keep the node's block and silently move the pad.
+    dict(name='saved_placement_pair_in_two_blocks',
+         files={'T.PDS': 'CHIP T MACH435\nPIN ? A\nPIN ? B\nPIN ? Q0\nNODE ? N0 PAIR Q0\nPIN ? Q1\n'
+                         'EQUATIONS\nQ0=A\nN0=A\nQ1=N0*B\n',
+                'T.PLC': 'PIN 3 Q0\nNODE 20 N0\n'},
+         args=['--emit-jedec', 'T.PDS', '--placement', 'T.PLC'], ok=False,
+         message='conflicting fixed pin and node'),
 ]
 
 # Messages of exceptions thrown by the standard library, not by the compiler.

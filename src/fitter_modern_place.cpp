@@ -950,7 +950,11 @@ ModernPlacement place_mach_modern(const MachDeviceLayout& d, const std::vector<M
                 reserved_cells[unsigned(s.fixed_cell)])
                 fail("invalid fixed node: " + s.name);
             reserved_cells[unsigned(s.fixed_cell)] = true;
-            c.fixed_block                          = s.fixed_cell / int(d.cells);
+            // A fixed pin already chose the block. Taking the node's block
+            // instead would move the pin to the same index in that block.
+            if (c.fixed_block >= 0 && c.fixed_block != s.fixed_cell / int(d.cells))
+                fail("conflicting fixed pin and node: " + s.name);
+            c.fixed_block = s.fixed_cell / int(d.cells);
         }
         if (s.order.block >= 0) {
             if (unsigned(s.order.block) >= d.blocks || (c.fixed_block >= 0 && c.fixed_block != s.order.block))
