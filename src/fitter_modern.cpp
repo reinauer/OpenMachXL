@@ -1639,7 +1639,7 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
                 node.logic = out.function == "COM" ? 'C' : out.function == "T" ? 'T' : out.function == "G" ? 'L' : 'D';
                 // Report the external phase, including declared pin inversion.
                 // Buried nodes always report H.
-                node.negative      = !pins.at(out.name)->node && (out.negative != pins.at(out.name)->inverted);
+                node.negative = !pins.at(out.name)->node && (out.negative != pins.at(out.name)->inverted);
                 // An equation without products still occupies one grounded term.
                 node.product_terms =
                     node.input_register ? 0 : std::max<unsigned>(1, unsigned(pla.terms[out.column].size()));

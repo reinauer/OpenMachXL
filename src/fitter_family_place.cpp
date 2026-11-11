@@ -559,8 +559,16 @@ bool swap_resources(const std::vector<Block>& blocks, const Clusters& c, unsigne
     if (macrocell_count(blocks[x], c) - c[a].macrocell + c[b].macrocell > groups ||
         macrocell_count(blocks[y], c) - c[b].macrocell + c[a].macrocell > groups)
         return false;
-    return product_groups(blocks[x], c) - c[a].product_groups + c[b].product_groups <= groups &&
-           product_groups(blocks[y], c) - c[b].product_groups + c[a].product_groups <= groups;
+    // Take out what the outgoing cluster is charged in its block, which is
+    // what the block total holds, and add what the incoming one would be
+    // charged there. Using the clusters' base counts instead could subtract
+    // more than the total holds and wrap.
+    const auto charged = [&](unsigned block, std::size_t member) {
+        const auto at = blocks[block].product_charges.find(member);
+        return at == blocks[block].product_charges.end() ? c[member].product_groups : at->second;
+    };
+    return product_groups(blocks[x], c) - charged(x, a) + blocks[x].product_charge(c[b]) <= groups &&
+           product_groups(blocks[y], c) - charged(y, b) + blocks[y].product_charge(c[a]) <= groups;
 }
 bool rescue(std::vector<Block>& blocks, const Clusters& c, std::size_t incoming, const MachDeviceLayout& d,
             const std::vector<unsigned>& capacity, bool balanced)
@@ -1742,6 +1750,10 @@ FamilyPlacement place_mach_family(
         unsigned spread_retries = 10;
         bool spread_enabled     = options.spread_placement;
         publish[b]              = [&]() {
+            // Only occupied slots are written. A slot that a later attempt
+            // leaves empty keeps the product of an earlier one, as in the
+            // original: clearing it here changes the fuses of reference
+            // designs that the original fits (AO1203, DO1202, DP1 and others).
             for (unsigned slot = 0; slot < 4; ++slot)
                 if (!oe_products[slot].empty())
                     r.oe_products[b][slot] = oe_products[slot];
