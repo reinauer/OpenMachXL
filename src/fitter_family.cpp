@@ -1202,22 +1202,26 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
                 route.logical_id = unsigned(keys[inputs[i]].serial);
                 route.source     = int(input_route.signal_sources[block][i]);
                 const auto found = output_indices.find(route.signal);
-                if (input_pairs.count(route.signal)) {
+                if (input_pairs.count(route.signal) && found != output_indices.end()) {
                     route.source_input_register = true;
                     route.source_pin            = int(cells[found->second] + 2);
                 } else if (found != output_indices.end()) {
                     route.source_block = int(cells[found->second] / d.cells);
                     route.source_cell  = int(cells[found->second] % d.cells);
                 } else {
+                    // input_pairs is built before unused buried equations are
+                    // removed. A pad whose input register was removed is an
+                    // ordinary pin source: there is no cell to report.
                     const auto pair = std::find_if(input_pairs.begin(), input_pairs.end(),
                                                    [&](const auto& item) { return item.second == route.signal; });
-                    if (pair != input_pairs.end()) {
-                        route.source_pin   = int(pins.at(route.signal)->number);
-                        const auto cell    = cells[output_indices.at(pair->first)];
+                    const auto node =
+                        pair == input_pairs.end() ? output_indices.end() : output_indices.find(pair->first);
+                    route.source_pin = int(pins.at(route.signal)->number);
+                    if (node != output_indices.end()) {
+                        const auto cell    = cells[node->second];
                         route.source_block = int(cell / d.cells);
                         route.source_cell  = int(cell % d.cells);
-                    } else
-                        route.source_pin = int(pins.at(route.signal)->number);
+                    }
                 }
                 report.blocks[block].routes.push_back(std::move(route));
             }

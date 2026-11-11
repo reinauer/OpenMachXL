@@ -19,8 +19,9 @@ SAVED_SIMULATION_PLACEMENT = '[VERSION]=MACHXL 2.0\n[SIM_PLACE]=Saved placement\
 
 FLOATING_DESIGN = 'CHIP T {device}\nPIN ? A\nPIN ? B\nPIN ? Y\nNODE ? N\nEQUATIONS\nN=A*B\nY=N+B\n'
 
-# name, files, arguments after the compiler, expected success, and text that
-# must occur in the diagnostic of an expected rejection.
+# name, files, arguments after the compiler, expected success, text that must
+# occur in the diagnostic of an expected rejection, and optionally files an
+# accepted run must write.
 CASES = [
     # A pad feeding a MACH4 input register also clocks another register. It
     # must stay on an I/O pin and clock that register through a product term.
@@ -80,6 +81,14 @@ CASES = [
                 'T.PLC': 'PIN 3 Q0\nNODE 20 N0\n'},
          args=['--emit-jedec', 'T.PDS', '--placement', 'T.PLC'], ok=False,
          message='conflicting fixed pin and node'),
+    # MACH2 pairs pad A with input register NN, then removes NN because
+    # nothing uses it. Capturing the fitter report looked up the removed
+    # register's cell, so requesting reports turned the fit into a failure.
+    dict(name='reports_with_removed_input_register',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? B\nPIN 11 CLK\nPIN ? Q\nNODE ? NN REG\n'
+                         'EQUATIONS\nQ=A*B\nNN=A\nNN.CLKF=CLK\n'},
+         args=['--emit-jedec', 'T.PDS', '--fitter-reports', 'R'], ok=True,
+         outputs=['R/T.RPT', 'R/T.PRD', 'R/T.TAL']),
 ]
 
 # Messages of exceptions thrown by the standard library, not by the compiler.
@@ -92,6 +101,7 @@ def run(case, flags):
             (Path(directory) / filename).write_text(text)
         result = subprocess.run([str(compiler), *case['args'], *flags], cwd=directory,
                                 capture_output=True, timeout=120)
+        missing = [name for name in case.get('outputs', []) if not (Path(directory) / name).is_file()]
     label = (case['name'], flags)
     stderr = result.stderr.decode(errors='replace')
     assert result.returncode in (0, 1), (label, 'crashed', result.returncode, stderr[-2000:])
@@ -101,6 +111,7 @@ def run(case, flags):
         (label, 'bare library exception', diagnostic)
     if case['ok']:
         assert result.returncode == 0 and result.stdout, (label, 'expected success', stderr[-2000:])
+        assert not missing, (label, 'missing output files', missing)
     else:
         assert result.returncode == 1 and not result.stdout, (label, 'expected rejection', stderr[-2000:])
         assert case['message'] in stderr, (label, 'unexpected diagnostic', stderr[-2000:])
