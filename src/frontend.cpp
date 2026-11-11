@@ -1542,6 +1542,9 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
             if (!design.chip.empty() || !(chip >> design.chip >> design.device) || (chip >> extra))
                 fail("Expected CHIP <name> <device>");
             validate_declared_name(design.chip, "CHIP");
+            // Everything after this line may rely on a known device.
+            if (!frontend_devices().count(design.device))
+                fail("Unsupported device: " + design.device);
         } else if (key == "PIN" || key == "NODE") {
             auto declaration = upper(value);
             declaration      = std::regex_replace(declaration, std::regex(R"(,[ \t]+)"), ",");
