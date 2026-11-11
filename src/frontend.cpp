@@ -1751,6 +1751,18 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
             transfer.source_clauses.push_back(transfer.expression);
             transfer.care = make_constant(true);
             design.equations.push_back(std::move(transfer));
+            // "Generating CLKF equation for INPUT PAIRING": a clocked pad
+            // passes its clock on to the generated register.
+            const auto has_clock = [&](const std::string& name) {
+                return std::find_if(design.equations.begin(), design.equations.end(),
+                                    [&](const Equation& e) { return e.signal == name && e.function == "C"; });
+            };
+            const auto pad_clock = has_clock(pad.name);
+            if (pad_clock != design.equations.end() && has_clock(pad.pair) == design.equations.end()) {
+                auto clock   = *pad_clock;
+                clock.signal = pad.pair;
+                design.equations.push_back(std::move(clock));
+            }
         }
     }
     auto normalize_fixed_output_pair = [&](Pin& node, Pin& pad) {
@@ -1895,7 +1907,7 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
     // normalization. Retain the resulting numbers: conflicting fixed cells
     // remain a fitting error even though the logical pair has been deleted.
     for (auto& declared_pair : design.pins)
-        if (!declared_pair.pair.empty() && declared_pair.pair_kind != "IPAIR") {
+        if (!declared_pair.pair.empty() && declared_pair.pair_kind != "IPAIR" && declared_pair.node) {
             auto& partner = *pin_index.at(declared_pair.pair);
             const auto* a = primary(declared_pair);
             const auto* b = primary(partner);

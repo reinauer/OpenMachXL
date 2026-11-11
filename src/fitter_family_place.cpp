@@ -1156,7 +1156,7 @@ std::vector<std::vector<std::size_t>> partition_mach_family_first_success(
     return result;
 }
 FamilyPlacement place_mach_family(
-    const MachDeviceLayout& d, const std::vector<Mach111PlaceSignal>& signals, Mach111PlaceOptions options,
+    const MachDeviceLayout& d, const std::vector<Mach111PlaceSignal>& declared_signals, Mach111PlaceOptions options,
     std::function<PlacementRouteFeedback(const FamilyPlacement&, const std::vector<bool>&)> route,
     std::function<void(const FamilyPlacement&, unsigned, const std::vector<bool>&)> failure)
 {
@@ -1167,7 +1167,7 @@ FamilyPlacement place_mach_family(
             FittingIterationCounters counters(d.blocks, options.iterate_partition);
             const auto previous = iteration.completed;
             try {
-                return place_mach_family(d, signals, options, route, failure);
+                return place_mach_family(d, declared_signals, options, route, failure);
             } catch (const PhysicalPlacementFailure&) {
                 if (!iteration.remaining || iteration.completed == previous)
                     throw;
@@ -1180,6 +1180,21 @@ FamilyPlacement place_mach_family(
     const bool mach2 = d.device.substr(4, 1) == "2";
     if (d.one_hot || (!mach2 && d.device.substr(4, 1) != "1"))
         fail("MACH1/2 placement geometry required");
+    // A fixed input register behind an output pad fixes that pad: the
+    // register is the odd cell of the pad's pin.
+    auto signals = declared_signals;
+    for (const auto& s : declared_signals) {
+        if (!s.input_register || !mach2 || s.fixed_cell < 0 || s.paired_input < 0 ||
+            unsigned(s.paired_input) >= signals.size() || !signals[unsigned(s.paired_input)].output)
+            continue;
+        if (unsigned(s.fixed_cell) >= d.blocks * d.cells || !(s.fixed_cell & 1))
+            fail("invalid input register cell");
+        auto& pad      = signals[unsigned(s.paired_input)];
+        const auto pin = std::int16_t(d.io_pins[unsigned(s.fixed_cell) / 2] - 1);
+        if (pad.order.fixed_pin >= 0 && pad.order.fixed_pin != pin)
+            fail("input pair location conflict");
+        pad.order.fixed_pin = pin;
+    }
     const unsigned cell_step = mach2 ? 2 : 1;
     FamilyPlacement r;
     r.sequential_search.assign(d.blocks, false);
@@ -1272,12 +1287,23 @@ FamilyPlacement place_mach_family(
     std::vector<std::vector<std::string>> partition_oe_order(d.blocks);
     auto cluster_signals = outputs;
     std::map<std::size_t, std::size_t> paired_nodes;
+    std::vector<std::pair<std::size_t, std::size_t>> pad_registers;
     for (auto node : input_nodes) {
         const auto& s = signals[node];
         if (!mach2 || s.paired_input < 0 || unsigned(s.paired_input) >= signals.size())
             fail("invalid input pair");
         const auto pad = std::size_t(s.paired_input);
-        if (signals[pad].output || !paired_nodes.emplace(pad, node).second)
+        // A pad that is itself an output keeps its own macrocell. Its input
+        // register is the odd cell behind the same pin: no further cluster,
+        // block choice or pin is involved.
+        if (signals[pad].output) {
+            if (std::any_of(pad_registers.begin(), pad_registers.end(),
+                            [&](const auto& pair) { return pair.first == pad; }))
+                fail("conflicting input pair");
+            pad_registers.emplace_back(pad, node);
+            continue;
+        }
+        if (!paired_nodes.emplace(pad, node).second)
             fail("conflicting input pair");
         int cell = s.fixed_cell;
         if (r.pins[pad] >= 0) {
@@ -1414,6 +1440,10 @@ FamilyPlacement place_mach_family(
         import_signal(id);
     for (const auto& pair : paired_nodes)
         keys[pair.first].block = keys[pair.second].block = std::int16_t(r.cells[pair.second] / int(d.cells));
+    for (const auto& pair : pad_registers) {
+        r.cells[pair.second]    = r.cells[pair.first];
+        keys[pair.second].block = std::int16_t(r.cells[pair.first] / int(d.cells));
+    }
     for (std::size_t i = 0; i < signals.size(); ++i)
         if (keys[i].type != 9) {
             std::set<unsigned> destinations;
@@ -1479,6 +1509,17 @@ FamilyPlacement place_mach_family(
             }
             return true;
         };
+        for (const auto& pair : pad_registers) {
+            const auto cell = unsigned(r.cells[pair.first]) + 1;
+            if (!(cell & 1) || cell >= occupied_cells.size() || occupied_cells[cell]) {
+                r              = saved;
+                occupied_pins  = saved_pins;
+                occupied_cells = saved_cells;
+                return false;
+            }
+            occupied_cells[cell] = true;
+            r.cells[pair.second] = int(cell);
+        }
         std::vector<std::size_t> pairs;
         for (auto pad : r.global_order)
             if (paired_nodes.count(pad) && r.pins[pad] < 0)
