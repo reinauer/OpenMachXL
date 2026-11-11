@@ -952,10 +952,10 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
         // or a product clock. Sorting uses source constraints: floating inputs
         // have not yet acquired a physical block.
         if (!is_feedback) {
-            const auto declared = std::find_if(original_design.pins.begin(), original_design.pins.end(),
+            const auto source_pin = std::find_if(original_design.pins.begin(), original_design.pins.end(),
                                                [&](const auto& pin) { return pin.name == name; });
-            if (declared != original_design.pins.end() && declared->number && !declared->node &&
-                std::find(d.dedicated_pins.begin(), d.dedicated_pins.end(), declared->number) != d.dedicated_pins.end())
+            if (source_pin != original_design.pins.end() && source_pin->number && !source_pin->node &&
+                std::find(d.dedicated_pins.begin(), d.dedicated_pins.end(), source_pin->number) != d.dedicated_pins.end())
                 key.block = -1;
         }
         // MACH215 sorts a global clock with the block's ordinary inputs, also

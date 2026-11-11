@@ -242,7 +242,7 @@ class Simulator
             return {name};
         if (name.back() != ']')
             error("invalid vector: " + name);
-        std::vector<std::string> result;
+        std::vector<std::string> names;
         auto body = name.substr(open + 1, name.size() - open - 2);
         std::stringstream list(body);
         std::string part;
@@ -253,12 +253,12 @@ class Simulator
             if (first > 65535 || last > 65535 || std::max(first, last) - std::min(first, last) > 4096)
                 error("vector range exceeds limit");
             for (auto index = first;; index += first <= last ? 1 : -1) {
-                result.push_back(name.substr(0, open) + "[" + std::to_string(index) + "]");
+                names.push_back(name.substr(0, open) + "[" + std::to_string(index) + "]");
                 if (index == last)
                     break;
             }
         }
-        return result;
+        return names;
     }
     Value evaluate(const ExprPtr& expression) const
     {
@@ -419,7 +419,7 @@ class Simulator
     }
     std::vector<Literal> literals(const std::vector<std::string>& args) const
     {
-        std::vector<Literal> result;
+        std::vector<Literal> parsed;
         for (std::size_t i = 0; i < args.size();) {
             if (args[i] == ",") {
                 ++i;
@@ -456,30 +456,30 @@ class Simulator
                     v = invert_value(v);
                 if (!pins.count(name) && !design.simulation_symbols.count(name))
                     error("undeclared signal: " + name);
-                result.push_back({name, v});
+                parsed.push_back({name, v});
             }
         }
-        return result;
+        return parsed;
     }
     // MACHEXP replaces a STATE or CONDITIONS name in SETF and CLOCKF by the
     // signals of its encoding before the simulator sees the command. A
     // complemented name has no such encoding (INTERNAL_ERROR E1820).
     std::vector<Literal> signal_literals(const std::vector<std::string>& args) const
     {
-        std::vector<Literal> result;
+        std::vector<Literal> expanded;
         for (const auto& literal : literals(args)) {
             const auto symbol = design.simulation_symbols.find(literal.name);
             if (pins.count(literal.name) || symbol == design.simulation_symbols.end()) {
-                result.push_back(literal);
+                expanded.push_back(literal);
                 continue;
             }
             const auto cubes = literal.value == Value::High ? sum_of_products(symbol->second) : Sop{};
             if (cubes.size() != 1)
                 error("E1820: Illegal simulation element: " + literal.name);
             for (const auto& bit : cubes.front())
-                result.push_back({bit.first, bit.second ? Value::High : Value::Low});
+                expanded.push_back({bit.first, bit.second ? Value::High : Value::Low});
         }
-        return result;
+        return expanded;
     }
     long long comparison_number(const std::string& token) const
     {
@@ -970,11 +970,11 @@ std::vector<std::string> encode_simulation_vectors(const SimulationResult& simul
     for (const auto& vector : simulation.vectors) {
         std::string text;
         for (std::size_t pin = 1; pin < placement.signals.size(); ++pin) {
-            if (defaults != reserved.end() && defaults->second.count(pin)) {
-                text += defaults->second.at(pin);
+            if (defaults != reserved.end() && defaults->second.count(unsigned(pin))) {
+                text += defaults->second.at(unsigned(pin));
                 continue;
             }
-            auto physical = vector.physical_inputs.find(pin);
+            auto physical = vector.physical_inputs.find(unsigned(pin));
             if (physical != vector.physical_inputs.end()) {
                 const auto& signal = physical->second;
                 if (signal.clock_pulse)

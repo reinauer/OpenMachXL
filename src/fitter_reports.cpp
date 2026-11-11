@@ -228,8 +228,8 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
                 continue;
             auto found = indices.find(key);
             if (found == indices.end()) {
-                const auto index = unsigned(indices.size());
-                indices[key]     = index;
+                const auto ordinal = unsigned(indices.size());
+                indices[key]     = ordinal;
                 // A control is listed under its first user; the node of an
                 // output pair goes by its pad's name.
                 auto owner = node.name.compare(0, 3, "RN_") == 0 ? node.name.substr(3) : node.name;

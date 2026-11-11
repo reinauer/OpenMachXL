@@ -438,8 +438,8 @@ std::array<std::vector<std::size_t>, 2> partition_mach111_single_group(
                     mach_device_layout("MACH111"), clusters, {output_capacity[0], output_capacity[1]}, spread, nullptr,
                     nullptr, nullptr, nullptr, nullptr, &ordered_oe);
                 if (oe_order)
-                    for (unsigned b = 0; b < 2; ++b)
-                        (*oe_order)[b] = std::move(ordered_oe[b]);
+                    for (unsigned half = 0; half < 2; ++half)
+                        (*oe_order)[half] = std::move(ordered_oe[half]);
                 return {result[0], result[1]};
             }
             sorted   = partition_signal_order(keys);

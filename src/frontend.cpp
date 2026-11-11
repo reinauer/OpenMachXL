@@ -1693,17 +1693,17 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
         // auxiliary SIM section. They affect that command stream only.
         auto auxiliary_aliases = aliases;
         std::string remainder;
-        std::size_t previous = 0;
+        std::size_t consumed = 0;
         for (std::sregex_iterator i(auxiliary_declarations.begin(), auxiliary_declarations.end(), alias), end; i != end;
              ++i) {
             auto m = *i;
-            remainder += auxiliary_declarations.substr(previous, m.position() - previous);
+            remainder += auxiliary_declarations.substr(consumed, m.position() - consumed);
             validate_declared_name(upper(m[2]), "STRING");
             if (!auxiliary_aliases.emplace(upper(m[2]), upper(m[3])).second)
                 fail("Duplicate auxiliary STRING: " + m[2].str());
-            previous = m.position() + m.length();
+            consumed = m.position() + m.length();
         }
-        remainder += auxiliary_declarations.substr(previous);
+        remainder += auxiliary_declarations.substr(consumed);
         if (!trim(remainder).empty())
             fail("Unsupported declaration before auxiliary SIMULATION section");
         design.simulation += "\n" + expand_aliases(auxiliary_commands, auxiliary_aliases);
@@ -2358,7 +2358,7 @@ std::string emit_pla(const Design& input_design, const std::string& source_name,
     std::string label;
     while (supplies >> label) {
         auto c                                  = label.find(':');
-        supply[std::stoul(label.substr(c + 1))] = label.substr(0, c);
+        supply[unsigned(std::stoul(label.substr(c + 1)))] = label.substr(0, c);
     }
     std::vector<Pin> pins = design.pins;
     std::stable_sort(pins.begin(), pins.end(), [](const Pin& a, const Pin& b) {

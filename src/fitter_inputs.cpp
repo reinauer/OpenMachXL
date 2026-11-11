@@ -136,17 +136,17 @@ InputPinResult route_input_pins(const InputPinProblem& p, unsigned limit)
         if (!initialized) {
             // Preliminary routing excludes floating input pins and reserves
             // feedback CSM muxes for subsequent input-candidate feasibility checks.
-            for (unsigned b = 0; b < p.blocks.size(); ++b) {
-                auto block = p.blocks[b];
+            for (unsigned block_index = 0; block_index < p.blocks.size(); ++block_index) {
+                auto block = p.blocks[block_index];
                 block.signal_sources.clear();
                 block.allow_alternates.clear();
-                for (unsigned n = 0; n < p.block_signals[b].size(); ++n)
-                    if (p.feedback[p.block_signals[b][n]]) {
-                        block.signal_sources.push_back(p.blocks[b].signal_sources[n]);
-                        block.allow_alternates.push_back(p.blocks[b].allow_alternates[n]);
+                for (unsigned n = 0; n < p.block_signals[block_index].size(); ++n)
+                    if (p.feedback[p.block_signals[block_index][n]]) {
+                        block.signal_sources.push_back(p.blocks[block_index].signal_sources[n]);
+                        block.allow_alternates.push_back(p.blocks[block_index].allow_alternates[n]);
                     }
-                partial[b] = route_ordered(block);
-                if (partial[b].unrouted) {
+                partial[block_index] = route_ordered(block);
+                if (partial[block_index].unrouted) {
                     select_outer();
                     return result;
                 }

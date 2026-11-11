@@ -999,7 +999,7 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
             input_muxes[block][input_indices[i]] = mux;
             for (unsigned slot = 0; slot < 8; ++slot)
                 if (mach111_mux_source(mux, slot) == sources[i])
-                    physical.blocks[block].mux_slots[mux] = slot;
+                    physical.blocks[block].mux_slots[mux] = std::uint8_t(slot);
         }
         for (unsigned mux = 0; mux < 26; ++mux)
             if (routes.mux_to_signal[mux] == -1)

@@ -510,13 +510,13 @@ Mach111Placement place_mach111(
     const auto partition_order = result.output_order;
     result.oe_keys.assign(signals.size(), -1);
     for (const auto& order : partition_order) {
-        std::map<std::string, int> keys;
+        std::map<std::string, int> oe_key_ids;
         for (auto i : order)
             if (!signals[i].oe_product.empty()) {
                 const auto& key = signals[i].oe_product;
-                if (!keys.count(key))
-                    keys[key] = int(keys.size());
-                result.oe_keys[i] = keys.at(key);
+                if (!oe_key_ids.count(key))
+                    oe_key_ids[key] = int(oe_key_ids.size());
+                result.oe_keys[i] = oe_key_ids.at(key);
             }
     }
     std::vector<OutputSearchCallbacks> search_operations(signals.size());

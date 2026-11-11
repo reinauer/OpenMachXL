@@ -139,7 +139,7 @@ struct Block : std::vector<std::size_t>
                 // placement or partition trial moves it.
                 if (c.clock_fanin && std::find(c.fanins.begin(), c.fanins.end(), *c.clock_fanin) == c.fanins.end())
                     c.fanins.push_back(*c.clock_fanin);
-            } else if (clocks[slot].add(unsigned(c.clock_positive)))
+            } else if (clocks[slot].add(std::uint16_t(c.clock_positive)))
                 clock_members.insert(id);
         }
         auto add = [&](unsigned primary, std::uint16_t key, bool has_other) {
@@ -182,7 +182,7 @@ struct Block : std::vector<std::size_t>
                 oe_order.erase(at);
         }
         if (clock_members.erase(id))
-            clocks[unsigned(c.global_clock ^ (c.clock_positive ? 0 : 1))].remove(unsigned(c.clock_positive));
+            clocks[unsigned(c.global_clock ^ (c.clock_positive ? 0 : 1))].remove(std::uint16_t(c.clock_positive));
         product_clock_members.erase(id);
         if (c.global_reset && !controls[0].remove(*c.global_reset))
             controls[1].remove(*c.global_reset);
@@ -610,7 +610,7 @@ bool rescue(std::vector<Block>& blocks, const Clusters& c, std::size_t incoming,
                         const auto a = blocks[x][ai - 1], b = blocks[y][bi - 1];
                         if (c[b].fixed_block >= 0)
                             break;
-                        if (!swap_resources(blocks, c, x, a, y, b, d, capacity))
+                        if (!swap_resources(blocks, c, unsigned(x), a, unsigned(y), b, d, capacity))
                             continue;
                         const auto before =
                             collect_block_fanins(blocks[x], c).size() + collect_block_fanins(blocks[y], c).size();
@@ -1565,13 +1565,13 @@ FamilyPlacement place_mach_family(
     const auto partition_order = r.output_order;
     r.oe_keys.assign(signals.size(), -1);
     for (const auto& order : partition_order) {
-        std::map<std::string, int> keys;
+        std::map<std::string, int> oe_key_ids;
         for (auto i : order)
             if (!signals[i].oe_product.empty()) {
                 const auto& key = signals[i].oe_product;
-                if (!keys.count(key))
-                    keys[key] = int(keys.size());
-                r.oe_keys[i] = keys.at(key);
+                if (!oe_key_ids.count(key))
+                    oe_key_ids[key] = int(oe_key_ids.size());
+                r.oe_keys[i] = oe_key_ids.at(key);
             }
     }
     std::vector<OutputSearchCallbacks> search_operations(signals.size());

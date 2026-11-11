@@ -972,7 +972,7 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
             const unsigned cell = cells.at(out.name), block = cell / d.cells, local = cell % d.cells;
             used[cell] = true;
             if (!hw.low_power.empty())
-                hw.low_power[cell] = low_power.count(out.name);
+                hw.low_power[cell] = std::uint8_t(low_power.count(out.name));
             const auto count = pla.terms[out.column].size();
             const bool split = xor_left.count(out.name);
             unsigned word    = 0x240;

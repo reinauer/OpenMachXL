@@ -240,7 +240,7 @@ MachDevicePhysical decode_mach_device(const FuseImage& image)
         for (unsigned row = 0; row < d.rows; ++row)
             for (unsigned mux = 0; mux < d.muxes; ++mux) {
                 auto address             = d.product_address(b, row, mux);
-                block.products[row][mux] = image.fuses.at(address) | (image.fuses.at(address + 1) << 1);
+                block.products[row][mux] = std::uint8_t(image.fuses.at(address) | (image.fuses.at(address + 1) << 1));
             }
         if (d.one_hot)
             for (unsigned bit = 0; bit < 4; ++bit)

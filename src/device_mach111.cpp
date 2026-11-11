@@ -206,8 +206,8 @@ Mach111Physical decode_mach111(const FuseImage& image)
         auto& block     = physical.blocks[b];
         const auto base = b * 3862;
         for (unsigned m = 0; m < 26; ++m)
-            block.mux_slots[m] =
-                image.fuses[base + m] | (image.fuses[base + 26 + 2 * m] << 1) | (image.fuses[base + 27 + 2 * m] << 2);
+            block.mux_slots[m] = std::uint8_t(image.fuses[base + m] | (image.fuses[base + 26 + 2 * m] << 1) |
+                                              (image.fuses[base + 27 + 2 * m] << 2));
         for (unsigned r = 0; r < 70; ++r)
             for (unsigned m = 0; m < 26; ++m) {
                 const auto address = mach111_product_address(b, r, m);
