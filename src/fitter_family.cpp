@@ -1165,8 +1165,11 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
             if (input_pairs.count(name))
                 node.pin = int(pins.at(input_pairs.at(name))->number);
             node.implied = !pins.at(name)->node;
+            // A paired node that nothing reads is discarded (z5071): the cell
+            // is then reported as the pad's implied macrocell.
             for (const auto& alias : output_aliases)
-                if (alias.second == name) {
+                if (alias.second == name &&
+                    std::find(p.inputs.begin(), p.inputs.end(), alias.first) != p.inputs.end()) {
                     node.name    = alias.first;
                     node.implied = false;
                     node.paired  = true;

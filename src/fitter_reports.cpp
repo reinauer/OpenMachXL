@@ -54,6 +54,12 @@ std::string pin_type(const FitterReportPin& pin)
         return "bidir";
     return pin.output ? "output" : "input";
 }
+// A pin that drives out and is read back, through an output enable or
+// through its input register, is reported as an I/O pin.
+std::string pin_kind(const FitterReportPin& pin)
+{
+    return !pin.enable.empty() || (pin.output && pin.input_node >= 0) ? "i/o pin" : pin_type(pin);
+}
 std::string node_type(const FitterReportNode& node)
 {
     return node.input_register ? "ipair" : node.implied ? "implied" : node.paired ? "opair" : "buried";
@@ -418,7 +424,7 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
         const auto terms = row.node || row.pin->output
                                ? (node && !node->input_register ? std::to_string(node->product_terms) : ".")
                                : ".";
-        const auto kind  = row.node ? node_type(*row.node) : !row.pin->enable.empty() ? "i/o pin" : pin_type(*row.pin);
+        const auto kind  = row.node ? node_type(*row.node) : pin_kind(*row.pin);
         const auto logic = row.node ? logic_type(*row.node, modern) : "...";
         const auto fans  = format_fanout(blocks, row.node ? row.node->fanout_blocks : row.pin->fanout_blocks);
         out +=
@@ -471,9 +477,10 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
             dedicated_pins.push_back(p);
     std::sort(dedicated_pins.begin(), dedicated_pins.end());
     bool any_dedicated = false;
+    // The table lists dedicated inputs and clock pins, which are separate
+    // pins on MACH465; a signal on either kind calls for it.
     for (const auto& p : data.pins)
-        any_dedicated |= std::find(layout.dedicated_pins.begin(), layout.dedicated_pins.end(), p.number) !=
-                         layout.dedicated_pins.end();
+        any_dedicated |= std::find(dedicated_pins.begin(), dedicated_pins.end(), p.number) != dedicated_pins.end();
     if (any_dedicated && !(modern && data.partition_failure)) {
         out +=
             "DEDICATED PINS\n                                             Logic             Clock\nPin              "
@@ -728,7 +735,7 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
                                          pin && data.successful ? format_text(pin->enable, "...").c_str() : "...");
                 out += format_fields(
                     "  %16s  %8s  %s\n", pin ? pin->name.c_str() : "................",
-                    pin ? (!pin->enable.empty() ? "i/o pin" : pin_type(*pin).c_str()) : "..",
+                    pin ? pin_kind(*pin).c_str() : "..",
                     pin ? format_fanout(blocks, pin->fanout_blocks).c_str() : std::string(blocks, '.').c_str());
             }
             std::vector<const FitterReportPin*> unknown_pins;

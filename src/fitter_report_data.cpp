@@ -97,13 +97,19 @@ void finalize_fitter_report_data(const Design& design, const FuseImage& image, F
                 if (node.input_register && node.block == int(b))
                     for (auto& pin : data.pins)
                         if (node.pin > 0 && pin.number == unsigned(node.pin)) {
+                            // A pad that is an output as well keeps its own
+                            // macrocell as the output node.
+                            if (pin.output) {
+                                pin.input_node = node.number;
+                                continue;
+                            }
                             pin.input      = false;
                             pin.output     = false;
                             pin.input_node = pin.output_node = node.number;
                         }
         std::set<int> cells;
         for (const auto& pin : data.pins)
-            if (pin.block == int(b) && (d.one_hot || pin.input_node < 0))
+            if (pin.block == int(b) && (d.one_hot || pin.input_node < 0 || pin.output))
                 ++block.io_pins;
         for (const auto& node : data.nodes)
             if (node.block == int(b)) {
