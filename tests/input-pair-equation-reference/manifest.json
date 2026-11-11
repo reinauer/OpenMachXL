@@ -1,0 +1,120 @@
+{
+ "description": "Original MACHXL 2.1 results for an input pair declared on a pin whose node has no equation: generated transfer equation (B1062) or rejection (B615)",
+ "cases": [
+  {
+   "name": "NE2PR",
+   "files": {
+    "NE2PR.PDS": "678bce502d3af073197cd5f58d412b66b5ac7559996899c458db24d4a883a5db",
+    "NE2PR.MXL": "af47b70b806e36a504c5b6be5a163e73aab11e1a7ea50cf0ee678bf0c13bc39b",
+    "NE2PR.PLA": "b227de6bf90890484eef0c2ca014abf1285ed50182198a84f8ce002602c5e487"
+   }
+  },
+  {
+   "name": "NE2PF",
+   "files": {
+    "NE2PF.PDS": "6bd5a234be56ab10204c2fd95b99e349fb6b7092b2a16dc3a1bd1391076959bb",
+    "NE2PF.MXL": "e56f3502777da7ec0d9f6e59206cfad9298cf2b57ea5bacbb19a5747b186e7b0",
+    "NE2PF.PLA": "b600b2747069edeb52031f7d40f514157dcfb5f9bbee4bd8d468d72335b76185"
+   }
+  },
+  {
+   "name": "NE4PR",
+   "files": {
+    "NE4PR.PDS": "8fe755787b9e77e5af782be5abc9a9e7ccd492a653d571cdff6a3725160e9173",
+    "NE4PR.MXL": "23e6845565e6daa3335c8ffe5279ae2b75d6073b1de2f2e70b408eda51ddb5be",
+    "NE4PR.PLA": "477998c2f5aab84ec0307928a0f3fe9142436e9473e30f5a8d1dc34a9c9160d8"
+   }
+  },
+  {
+   "name": "NP111",
+   "files": {
+    "NP111.PDS": "5945a59ccc9d1caa9dbfdf5d046500b83abec955b1bff98d9f44c00d0d197214",
+    "NP111.MXL": "202a19d772abcebb087cc6d1cd4c130b7a2fd04123827607d21cceee95ee6cb8",
+    "NP111.PLA": "19259fedddb644fdd5f49214f077e142ce960bf4ca82d21c41d1a3268141543c"
+   }
+  },
+  {
+   "name": "NP355",
+   "files": {
+    "NP355.PDS": "c7e69bb151e417e71040f55b939381a6e4526da104bf119d3f1e2017f415fe10",
+    "NP355.MXL": "72e208912b31bf8d13a606c06ad4ae6d56b3bd7afcfe22ee2b2f75069d82f786",
+    "NP355.PLA": "f24bbe4ec6e6bb3658432107540f53a2a2046980addbe454013b94b22c3a13e5"
+   }
+  },
+  {
+   "name": "NPCK2",
+   "files": {
+    "NPCK2.PDS": "1e6794845127ecf0cf2729626b908ae1a3d12bafeee2067a2b1c608128fd6ca9",
+    "NPCK2.MXL": "8e09fadc59ed591650b516b405d3ea84e41f81c9b452fa5ed1851a4c2dfb70b1",
+    "NPCK2.PLA": "19494eff2a2c0e34b4d27c9560dce5cac9d996fad2dfb9e5bcb8ce5b46919d19"
+   }
+  },
+  {
+   "name": "NPLT2",
+   "files": {
+    "NPLT2.PDS": "07214c2c770bb42a757c6db9c2cece6e6658e0385e858b64d084c8d9bca78558",
+    "NPLT2.MXL": "05f73fcb94e6c3944894609999766bc802fd184dcfe6d64006da79c8d6d29910",
+    "NPLT2.PLA": "19d97b0090afeca385a76317fcaae14b4c56962bd8f7a237f889401b382ca086"
+   }
+  },
+  {
+   "name": "NPIP2",
+   "files": {
+    "NPIP2.PDS": "5f7e1a424e35f8ad616bc1ece2aeb9be382bb3bb5d2863beb5aa97fc9d16baf2",
+    "NPIP2.MXL": "1bf2a5cd0e2e572c3a91bb19f044188ca2c0627753f08048d121960f277cc8ca",
+    "NPIP2.PLA": "1cb24a10b0ad43e56d581d5f527c4a45df86dbeb377e84cc7ce687f04c446352"
+   }
+  },
+  {
+   "name": "NPIN2",
+   "files": {
+    "NPIN2.PDS": "8c8466db0f0509f9cc97003c1b628333878b730e65a57b81afc117ce779fda3d",
+    "NPIN2.MXL": "92f59040267cf599c1fd81c1d994e247b7d76d028c19067401ddee120541d7e4",
+    "NPIN2.PLA": "04489fea20f985162d805430e59d7d134f568165567767eeeea2df2ea1d9833d"
+   }
+  },
+  {
+   "name": "NPII2",
+   "files": {
+    "NPII2.PDS": "87b3e345ae2a8d53013f70807bed34b9b005a1a66ad659ec8005d34e4f362486",
+    "NPII2.MXL": "b6481bca7ac237575b05c0a926ce1110be129dcb1b6d169f906a86e75deca2c1",
+    "NPII2.PLA": "fb089254a4b237f995a0a06afe1692cc755cbd7a02a0389c25b5f230046988ae"
+   }
+  },
+  {
+   "name": "NPUN2",
+   "files": {
+    "NPUN2.PDS": "fbd375fe3909ed6268a52b9584858be1718e63002664648992adcb996db8f5bd",
+    "NPUN2.MXL": "623d308ec82a3ccd014a6de0ca6ee1bf8e6cad3afd4c1111f8d88da55914a6df",
+    "NPUN2.PLA": "e3e7dd06ab97cbb34fe6855ea0f9354e41107fc42c31348b6e3637fbb72e2028"
+   }
+  },
+  {
+   "name": "NPCM2",
+   "files": {
+    "NPCM2.PDS": "ef8ea066160ed13650831d7413fa1e2e35492c72c6a1dbfe80d539c834a7c31b",
+    "NPCM2.MXL": "0faf4ad4cbf608f27e75dadec3dbff201f40ce8972a4a0d37fb7e59c2e82871a",
+    "NPCM2.LOG": "a8a7db4e6e1f616f27e8ca04ade8b7fcc41695e61cd505788a44997053078ab6"
+   },
+   "error": "B615"
+  },
+  {
+   "name": "NPNS2",
+   "files": {
+    "NPNS2.PDS": "dfe8e568b0b5b0ce7d1f8fc5812fc1b0bb95d4834c2bfdb98109136c2b87646a",
+    "NPNS2.MXL": "7a612eba26e517b4ca7499b942667ef6e4ff7e34d5496eaaa2ed8e97601c3205",
+    "NPNS2.LOG": "23d6ee3d89def8b5ded8606df6d80d7a418af20dbb9f9d8c8367c92085c34612"
+   },
+   "error": "B615"
+  },
+  {
+   "name": "NPNS4",
+   "files": {
+    "NPNS4.PDS": "4c06bd6323f2d46dd908168556d1d7bd21a6c5bfe545ee5d2f1fadee512dc713",
+    "NPNS4.MXL": "4c130cd2c6ba9c21e5cc4609c5d72c01ad9227031866fef060ef173a1d87066b",
+    "NPNS4.LOG": "8995f29c13b24b1fcacba3083835c957d768d6d302f45abb36aa98c873543054"
+   },
+   "error": "B615"
+  }
+ ]
+}

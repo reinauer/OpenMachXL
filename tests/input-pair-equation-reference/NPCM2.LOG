@@ -1,0 +1,55 @@
+
+*** Start MACHPAR.E 07:38:18 
+Npcm2.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP NPCM2 MACH211
+   2     |PIN ? A PAIR N
+   3     |PIN ? B
+   4     |PIN ? Y
+   5     |NODE ? N COMB
+   6     |EQUATIONS
+   7     |Y=N+B*A
+
+ %% MACHPAR %%    ERROR count:  0     WARNING count:  1
+
+ %% MACHPAR %%    File processed successfully.    File:  Npcm2.pds
+
+*** End MACHPAR.EXE 07:38:18; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes
+
+*** Start MACHBPP.E 07:38:18 
+MACHXL 2.1 R9 MACHBPP (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+EQUATIONS SEGMENT
+Processing equation for ====>Y
+Generating equation for INPUT PAIRING ====>
+|> WARNING B1062
+     Canonical equation [/] N (node) = [/] A (pin)
+     generated from PAIRing. Polarity chosen to achieve active high
+     sense.
+|> ERROR B615
+     Node N input-paired with pin A does not have REG/LAT
+     attribute and the transfer equation is not of the form
+     [/]node := [/]pin or [/]node *= [/]pin.
+
+ %%  MACHBPP  %% Maximum memory allocated was: 59168 bytes.
+
+ %%  MACHBPP  %% File Processing Terminated.  File: Npcm2.pds.
+ %%  MACHBPP  %% ERROR count: 1  WARNING count: 1
+
+*** End MACHBPP.EXE 07:38:18; (MACHBPP.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

@@ -1650,6 +1650,43 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
     std::map<std::string, Pin*> pin_index;
     for (auto& p : design.pins)
         pin_index[p.name] = &p;
+    // MACHBPP B1062: a PAIR declared on a pin is an input pairing. If neither
+    // signal has an equation, the original generates the transfer equation
+    // [/]node = [/]pin with the node's declared storage type. Each side is
+    // complemented exactly when its declaration is, so the register stores
+    // the pad's active-high sense.
+    {
+        const auto has_primary = [&](const std::string& name) {
+            return std::any_of(design.equations.begin(), design.equations.end(), [&](const Equation& e) {
+                return e.signal == name &&
+                       (e.function == "REG" || e.function == "T" || e.function == "G" || e.function == "COM");
+            });
+        };
+        for (const auto& pad : design.pins) {
+            if (pad.node || pad.pair.empty() || has_primary(pad.name) || has_primary(pad.pair))
+                continue;
+            const auto node = pin_index.find(pad.pair);
+            if (node == pin_index.end() || !node->second->node)
+                continue;  // Reported by the pair validation below.
+            design.diagnostics.push_back(
+                std::string("B1062: Canonical equation ") + (node->second->inverted ? "/" : "") + pad.pair +
+                " (node) = " + (pad.inverted ? "/" : "") + pad.name + " (pin) generated from PAIRing.");
+            if (!node->second->registered && !node->second->latched)
+                fail("B615: Node " + pad.pair + " input-paired with pin " + pad.name +
+                     " does not have REG/LAT attribute and the transfer equation is not of the form "
+                     "[/]node := [/]pin or [/]node *= [/]pin.");
+            Equation transfer;
+            transfer.signal     = pad.pair;
+            transfer.function   = node->second->latched ? "G" : "REG";
+            transfer.expression = make_identifier(pad.name);
+            if (pad.inverted)
+                transfer.expression = make_not(transfer.expression);
+            transfer.inverted = node->second->inverted;
+            transfer.source_clauses.push_back(transfer.expression);
+            transfer.care = make_constant(true);
+            design.equations.push_back(std::move(transfer));
+        }
+    }
     auto normalize_fixed_output_pair = [&](Pin& node, Pin& pad) {
         if (!node.number && !pad.number)
             return true;

@@ -1,0 +1,50 @@
+{
+ "description": "Original MACHXL 2.1 fits of designs whose input-pair transfer equation is generated (B1062)",
+ "cases": [
+  {
+   "name": "NE2PR",
+   "files": {
+    "NE2PR.PDS": "678bce502d3af073197cd5f58d412b66b5ac7559996899c458db24d4a883a5db",
+    "NE2PR.MXL": "af47b70b806e36a504c5b6be5a163e73aab11e1a7ea50cf0ee678bf0c13bc39b",
+    "NE2PR.JED": "6bb54ade0e02207fac0aa535dbc3edf12b8c789e636ce61c50758322e1cd42e7"
+   },
+   "warning": "B1062: Canonical equation N (node) = A (pin) generated from PAIRing."
+  },
+  {
+   "name": "NE4PR",
+   "files": {
+    "NE4PR.PDS": "8fe755787b9e77e5af782be5abc9a9e7ccd492a653d571cdff6a3725160e9173",
+    "NE4PR.MXL": "23e6845565e6daa3335c8ffe5279ae2b75d6073b1de2f2e70b408eda51ddb5be",
+    "NE4PR.JED": "a6a760bef1beedb0889dc830920a877c25ad37a78e5025c949b45e480ecf9f27"
+   },
+   "warning": "B1062: Canonical equation N (node) = A (pin) generated from PAIRing."
+  },
+  {
+   "name": "NP111",
+   "files": {
+    "NP111.PDS": "5945a59ccc9d1caa9dbfdf5d046500b83abec955b1bff98d9f44c00d0d197214",
+    "NP111.MXL": "202a19d772abcebb087cc6d1cd4c130b7a2fd04123827607d21cceee95ee6cb8",
+    "NP111.JED": "86fbc494f9dd3f57b9416805f65e0db6e68ccca7f5c539086d114d9f3df3403a"
+   },
+   "warning": "B1062: Canonical equation N (node) = A (pin) generated from PAIRing."
+  },
+  {
+   "name": "NP355",
+   "files": {
+    "NP355.PDS": "c7e69bb151e417e71040f55b939381a6e4526da104bf119d3f1e2017f415fe10",
+    "NP355.MXL": "72e208912b31bf8d13a606c06ad4ae6d56b3bd7afcfe22ee2b2f75069d82f786",
+    "NP355.JED": "6d913a30bed2dc4278473111d0b39497b712ffa8bed843d8c1ea532d35dae4e4"
+   },
+   "warning": "B1062: Canonical equation N (node) = A (pin) generated from PAIRing."
+  },
+  {
+   "name": "NPUN2",
+   "files": {
+    "NPUN2.PDS": "fbd375fe3909ed6268a52b9584858be1718e63002664648992adcb996db8f5bd",
+    "NPUN2.MXL": "623d308ec82a3ccd014a6de0ca6ee1bf8e6cad3afd4c1111f8d88da55914a6df",
+    "NPUN2.JED": "bd5e92f3571fe27f509c32a7d871e8e07de3adf30d7bf25d98bf5d0afbadecfb"
+   },
+   "warning": "B1062: Canonical equation N (node) = A (pin) generated from PAIRing."
+  }
+ ]
+}

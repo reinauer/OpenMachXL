@@ -220,6 +220,10 @@ if(BUILD_TESTING)
       COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/state_default_reference.py $<TARGET_FILE:machxl> ${CMAKE_CURRENT_SOURCE_DIR}/tests/equation-copy-reference)
     add_test(NAME original_fixed_output_pairs
       COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/modern_fitter_reference.py $<TARGET_FILE:machxl> ${CMAKE_CURRENT_SOURCE_DIR}/tests/fixed-pair-reference)
+    add_test(NAME original_input_pair_equations
+      COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/state_default_reference.py $<TARGET_FILE:machxl> ${CMAKE_CURRENT_SOURCE_DIR}/tests/input-pair-equation-reference)
+    add_test(NAME original_input_pair_equation_fits
+      COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/modern_fitter_reference.py $<TARGET_FILE:machxl> ${CMAKE_CURRENT_SOURCE_DIR}/tests/input-pair-fit-reference)
     add_test(NAME native_input_robustness
       COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/input_robustness.py $<TARGET_FILE:machxl>)
     add_test(NAME original_fitter_rejections
