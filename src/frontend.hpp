@@ -17,6 +17,9 @@ struct Pin
     bool inverted   = false;
     std::string pair;
     std::string pair_kind;
+    // The node's transfer equation was generated from a declared input
+    // pairing (B1062); the design has no equation for it.
+    bool generated_transfer = false;
     bool storage_declared = false;
 };
 struct Equation

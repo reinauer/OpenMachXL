@@ -9,6 +9,20 @@
 #include <set>
 
 namespace machxl {
+// Position of the literal in a product term that has exactly one, else npos.
+inline std::size_t single_literal(const std::string& term)
+{
+    const auto at = term.find_first_not_of('-');
+    return at == std::string::npos || term.find_first_not_of('-', at + 1) != std::string::npos ? std::string::npos
+                                                                                              : at;
+}
+// The same for an equation: one product term with exactly one literal, as
+// in a clock or a register input that is a plain signal.
+inline std::size_t single_literal(const std::vector<std::string>& terms)
+{
+    return terms.size() == 1 ? single_literal(terms.front()) : std::string::npos;
+}
+
 // A placer marks "not placed" with -1. Reads the cell, pin or input register
 // ordinal of a signal the fitter is about to use; an unplaced one is an
 // internal inconsistency and must not turn into a huge unsigned index.
@@ -298,6 +312,27 @@ inline void report_fitter_notices(const Design& source, const std::vector<std::s
                      "clock is not used and a clock equation for a register, or a latch enable equation for a "
                      "latch, is not written, then a clock or latch enable will be created for the signal and "
                      "will be assigned to the default CLOCK/LE Pin " + pin + ".");
+}
+
+// MACHFITR z5094: an input register is clocked from a dedicated clock pin
+// only, so its clock equation must be a single signal. This is the MACH2
+// rule. MACH4 moves a paired node that has an equation of its own into a
+// macrocell instead and rejects only a node whose transfer equation was
+// generated from the pairing.
+inline void validate_input_register_clocks(const std::vector<std::string>& outputs,
+                                           const std::vector<std::vector<std::string>>& terms,
+                                           const std::set<std::string>& input_registers)
+{
+    for (unsigned column = 0; column < outputs.size() && column < terms.size(); ++column) {
+        const auto& label = outputs[column];
+        const auto dot    = label.find('.');
+        if (dot == std::string::npos || label.substr(dot + 1) != "C" || !input_registers.count(label.substr(0, dot)))
+            continue;
+        if (single_literal(terms[column]) == std::string::npos)
+            throw LogicError("z5094: Signal " + label.substr(0, dot) +
+                             " is an input node whose clock is either a product term clock or a single-literal "
+                             "clock not placeable at a dedicated clock pin.");
+    }
 }
 
 // Reports the notices on the way out when a check rejects the design before

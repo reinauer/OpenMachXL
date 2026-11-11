@@ -262,6 +262,20 @@ CASES = [
          files={'T.PDS': 'CHIP T MACH435\nPIN ? A\nPIN ? B\nPIN ? CK\nPIN ? Q REG\nEQUATIONS\nQ=A*B\nQ.CLKF=CK\n',
                 'T.MXL': '[M3XX_SET_RST]=N\n'},
          args=['--emit-jedec', 'T.PDS', '--settings', 'T.MXL'], ok=True, sequence=['z5065', 'z5068']),
+    # An input register takes its clock from a dedicated clock pin; a product
+    # term clock was once fitted with its first literal alone.
+    dict(name='input_register_product_clock_mach4',
+         files={'T.PDS': 'CHIP T MACH435\nPIN ? A\nPIN ? B\nPIN ? D IPAIR N\nPIN ? Y\nNODE ? N REG\n'
+                         'EQUATIONS\nN.CLKF=A*B\nY=N\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=False, message='z5094: Signal N is an input node whose clock'),
+    dict(name='input_register_product_clock_mach2',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? B\nPIN ? D PAIR N\nPIN ? Y\nNODE ? N REG\n'
+                         'EQUATIONS\nN.CLKF=A*B\nY=N\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=False, message='z5094: Signal N is an input node whose clock'),
+    dict(name='pin_fed_register_product_clock_stays_macrocell',
+         files={'T.PDS': 'CHIP T MACH435\nPIN ? A\nPIN ? B\nPIN ? D\nPIN ? Y\nNODE ? N REG\n'
+                         'EQUATIONS\nN=D\nN.CLKF=A*B\nY=N\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=True),
     # A MACH1/2 block has one set and one reset term. A register without
     # set/reset equations shares the block's terms only while unspecified
     # set/reset is a don't care; constant GND is a term of its own.

@@ -161,8 +161,8 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
             if (node == design.pins.end() || !node->node || node->number || paired.count(name))
                 continue;
             const auto& terms = p.terms[column];
-            const auto bit    = terms.size() == 1 ? terms[0].find_first_not_of('-') : std::string::npos;
-            if (bit == std::string::npos || terms[0].find_first_not_of('-', bit + 1) != std::string::npos)
+            const auto bit    = single_literal(terms);
+            if (bit == std::string::npos)
                 continue;
             auto pad = std::find_if(design.pins.begin(), design.pins.end(),
                                     [&](const auto& pin) { return pin.name == p.inputs[bit]; });
@@ -204,6 +204,7 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
             input_registers.insert(pair.first);
         report_fitter_notices(original_design, p.outputs, p.terms, input_registers, d, fitting);
         notices.done();
+        validate_input_register_clocks(p.outputs, p.terms, input_registers);
         if (!mach215) {
             if (fitting.ground_implicit_controls)
                 ground_implicit_set_reset(p.outputs, p.terms, input_registers);
@@ -229,8 +230,8 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
                 !storage.count(label.substr(0, label.size() - 2)))
                 continue;
             const bool latched = storage.at(label.substr(0, label.size() - 2));
-            const auto input   = p.terms[out].size() == 1 ? p.terms[out][0].find_first_not_of('-') : std::string::npos;
-            if (input == std::string::npos || p.terms[out][0].find_first_not_of('-', input + 1) != std::string::npos)
+            const auto input   = single_literal(p.terms[out]);
+            if (input == std::string::npos)
                 continue;
             const auto pin = std::find_if(design.pins.begin(), design.pins.end(),
                                           [&](const auto& item) { return item.name == p.inputs[input]; });
@@ -250,8 +251,8 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
             const auto& label = p.outputs[out];
             if (label.size() < 2 || label.substr(label.size() - 2) != ".C" || p.terms[out].size() != 1)
                 continue;
-            const auto input = p.terms[out][0].find_first_not_of('-');
-            if (input == std::string::npos || p.terms[out][0].find_first_not_of('-', input + 1) != std::string::npos)
+            const auto input = single_literal(p.terms[out][0]);
+            if (input == std::string::npos)
                 continue;
             const auto pin = std::find_if(design.pins.begin(), design.pins.end(),
                                           [&](const auto& item) { return item.name == p.inputs[input]; });
@@ -398,8 +399,8 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
                 const auto output = label.substr(0, label.size() - 2);
                 clocked.insert(output);
                 const auto& terms = p.terms[out];
-                const auto input  = terms.size() == 1 ? terms[0].find_first_not_of('-') : std::string::npos;
-                if (input == std::string::npos || terms[0].find_first_not_of('-', input + 1) != std::string::npos)
+                const auto input  = single_literal(terms);
+                if (input == std::string::npos)
                     continue;
                 const auto& name = p.inputs[input];
                 auto& c          = candidates[name];
@@ -445,10 +446,8 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
             if (dot != std::string::npos)
                 name.resize(dot);
             if (fn == "C") {
-                const auto input =
-                    p.terms[out].size() == 1 ? p.terms[out][0].find_first_not_of('-') : std::string::npos;
-                const bool single  = input != std::string::npos &&
-                                     p.terms[out][0].find_first_not_of('-', input + 1) == std::string::npos;
+                const auto input   = single_literal(p.terms[out]);
+                const bool single  = input != std::string::npos;
                 unsigned clock_pin = 0;
                 if (single) {
                     if (!mach215)
@@ -486,8 +485,8 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
             for (unsigned out = 0; out < p.outputs.size(); ++out)
                 if (p.outputs[out] == pin->name + ".C" && p.terms[out].size() == 1) {
                     const auto& term   = p.terms[out][0];
-                    const auto literal = term.find_first_not_of('-');
-                    if (literal != std::string::npos && term.find_first_not_of('-', literal + 1) == std::string::npos) {
+                    const auto literal = single_literal(term);
+                    if (literal != std::string::npos) {
                         signal.clock_fanin    = std::uint16_t(signal_ids.at(p.inputs[literal]));
                         signal.clock_positive = term[literal] == '1';
                     }
@@ -751,9 +750,9 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
         const auto name    = label.substr(0, label.size() - 2);
         clock_terms[name]  = p.terms[out];
         const bool latched = primary.count(name) && primary.at(name)->function == "G";
-        const auto input   = p.terms[out].size() == 1 ? p.terms[out][0].find_first_not_of('-') : std::string::npos;
+        const auto input   = single_literal(p.terms[out]);
         const bool single =
-            input != std::string::npos && p.terms[out][0].find_first_not_of('-', input + 1) == std::string::npos;
+            input != std::string::npos;
         const Pin* pin = single ? pins.at(p.inputs[input]) : nullptr;
         if (mach215 && !input_pairs.count(name) &&
             (!single || !global_clock_names.count(p.inputs[input]) || pin->number != d.clock_pins.front())) {
@@ -763,8 +762,8 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
                 // The clock-polarity bit restores the original expression.
                 std::string complement(p.inputs.size(), '-');
                 for (const auto& term : terms) {
-                    const auto literal = term.find_first_not_of('-');
-                    if (literal == std::string::npos || term.find_first_not_of('-', literal + 1) != std::string::npos)
+                    const auto literal = single_literal(term);
+                    if (literal == std::string::npos)
                         unsupported("product clock and complement both exceed one product");
                     complement[literal] = term[literal] == '1' ? '0' : '1';
                 }

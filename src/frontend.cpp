@@ -1779,6 +1779,7 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
             transfer.source_clauses.push_back(transfer.expression);
             transfer.care = make_constant(true);
             design.equations.push_back(std::move(transfer));
+            node->second->generated_transfer = true;
             // "Generating CLKF equation for INPUT PAIRING": on MACH2 a clocked
             // pad passes its clock on to the generated register. MACH4 leaves
             // the register on its default clock.

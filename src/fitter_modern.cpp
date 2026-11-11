@@ -206,8 +206,8 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
         if (clock == entry.second.end() || pla.terms[clock->second].size() != 1)
             continue;
         const auto& term = pla.terms[clock->second].front();
-        const auto input = term.find_first_not_of('-');
-        if (input == std::string::npos || term.find_first_not_of('-', input + 1) != std::string::npos)
+        const auto input = single_literal(term);
+        if (input == std::string::npos)
             continue;
         const auto pin = std::find_if(design.pins.begin(), design.pins.end(),
                                       [&](const auto& item) { return item.name == pla.inputs[input]; });
@@ -293,8 +293,8 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
             if (node == design.pins.end() || !node->node || node->number)
                 continue;
             const auto& terms = pla.terms[out.column];
-            const auto input  = terms.size() == 1 ? terms[0].find_first_not_of('-') : std::string::npos;
-            if (input == std::string::npos || terms[0].find_first_not_of('-', input + 1) != std::string::npos)
+            const auto input  = single_literal(terms);
+            if (input == std::string::npos)
                 continue;
             auto pad = std::find_if(design.pins.begin(), design.pins.end(),
                                     [&](const auto& p) { return p.name == pla.inputs[input]; });
@@ -308,8 +308,8 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
                 if (control.first == "RE" || control.first == "PR")
                     eligible = false;
                 if (control.first == "C") {
-                    const auto ci = ts.size() == 1 ? ts[0].find_first_not_of('-') : std::string::npos;
-                    if (ci == std::string::npos || ts[0].find_first_not_of('-', ci + 1) != std::string::npos)
+                    const auto ci = single_literal(ts);
+                    if (ci == std::string::npos)
                         eligible = false;
                     else {
                         const auto clock = std::find_if(design.pins.begin(), design.pins.end(),
@@ -345,19 +345,26 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
                     unsupported("paired input has no register excitation");
                 const auto& excitation = outputs.at(target->name);
                 const auto& terms      = pla.terms[excitation.column];
-                const auto input       = terms.size() == 1 ? terms[0].find_first_not_of('-') : std::string::npos;
-                bool eligible =
-                    (excitation.function == "REG" || excitation.function == "G") && input != std::string::npos &&
-                    terms[0].find_first_not_of('-', input + 1) == std::string::npos && pla.inputs[input] == pin.name;
+                const auto input       = single_literal(terms);
+                bool eligible = (excitation.function == "REG" || excitation.function == "G") &&
+                                input != std::string::npos && pla.inputs[input] == pin.name;
                 for (const auto& control : controls[target->name]) {
                     if ((control.first == "RE" || control.first == "PR") && !pla.terms[control.second].empty())
                         eligible = false;
                     if (control.first == "C") {
                         const auto& ts = pla.terms[control.second];
-                        const auto ci  = ts.size() == 1 ? ts[0].find_first_not_of('-') : std::string::npos;
-                        if (ci == std::string::npos || ts[0].find_first_not_of('-', ci + 1) != std::string::npos)
+                        const auto ci  = single_literal(ts);
+                        if (ci == std::string::npos) {
+                            // MACHFITR z5094. A node with an equation of its
+                            // own becomes a macrocell register; one whose
+                            // transfer was generated from the pairing cannot.
+                            if (target->generated_transfer)
+                                throw LogicError(
+                                    "z5094: Signal " + target->name +
+                                    " is an input node whose clock is either a product term clock or a "
+                                    "single-literal clock not placeable at a dedicated clock pin.");
                             eligible = false;
-                        else {
+                        } else {
                             const auto cp = std::find_if(design.pins.begin(), design.pins.end(),
                                                          [&](const auto& p) { return p.name == pla.inputs[ci]; });
                             if (cp != design.pins.end() && cp->number &&
@@ -430,8 +437,8 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
                 pla.terms[out.second.column].size() > 18) {
                 const auto& ts = pla.terms[ctrl.at("C")];
                 if (ts.size() == 1) {
-                    const auto i = ts[0].find_first_not_of('-');
-                    if (i != std::string::npos && ts[0].find_first_not_of('-', i + 1) == std::string::npos)
+                    const auto i = single_literal(ts[0]);
+                    if (i != std::string::npos)
                         paired_clocks.insert(pla.inputs[i]);
                 }
             }
@@ -454,7 +461,7 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
         if (controls[pin.name].count("C")) {
             const auto& ts = pla.terms[controls[pin.name].at("C")];
             if (ts.size() == 1) {
-                const auto i = ts[0].find_first_not_of('-');
+                const auto i = single_literal(ts[0]);
                 if (i != std::string::npos)
                     clock = pla.inputs[i];
             }
@@ -528,8 +535,8 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
             const auto& terms = pla.terms[entry.second.at("C")];
             if (terms.size() != 1)
                 continue;
-            const auto input = terms[0].find_first_not_of('-');
-            if (input != std::string::npos && terms[0].find_first_not_of('-', input + 1) == std::string::npos)
+            const auto input = single_literal(terms[0]);
+            if (input != std::string::npos)
                 clocks.insert(pla.inputs[input]);
         }
     std::map<std::string, int> constrained;
@@ -580,8 +587,8 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
         const auto& terms = pla.terms[control.at("C")];
         if (terms.size() != 1)
             continue;
-        const auto input = terms.front().find_first_not_of('-');
-        if (input == std::string::npos || terms.front().find_first_not_of('-', input + 1) != std::string::npos)
+        const auto input = single_literal(terms.front());
+        if (input == std::string::npos)
             continue;
         const auto& name = pla.inputs[input];
         auto& candidate  = clock_candidates[name];
@@ -709,10 +716,8 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
                 }
             if (controls[pin->name].count("C")) {
                 const auto& terms = pla.terms[controls[pin->name].at("C")];
-                const auto input  = terms.size() == 1 ? terms[0].find_first_not_of('-') : std::string::npos;
-                s.local_clock     = input == std::string::npos ||
-                                    terms[0].find_first_not_of('-', input + 1) != std::string::npos ||
-                                    !clocks.count(pla.inputs[input]);
+                const auto input  = single_literal(terms);
+                s.local_clock     = input == std::string::npos || !clocks.count(pla.inputs[input]);
                 if (!s.local_clock) {
                     const auto clock_pin = std::find_if(declared.begin(), declared.end(),
                                                         [&](const auto* p) { return p->name == pla.inputs[input]; });
@@ -749,8 +754,8 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
         for (const auto& control : controls[output.first]) {
             if (control.first == "C") {
                 const auto& ts = pla.terms[control.second];
-                const auto at  = ts.size() == 1 ? ts[0].find_first_not_of('-') : std::string::npos;
-                if (at != std::string::npos && ts[0].find_first_not_of('-', at + 1) == std::string::npos &&
+                const auto at  = single_literal(ts);
+                if (at != std::string::npos &&
                     clocks.count(pla.inputs[at]))
                     continue;
             }
@@ -822,8 +827,8 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
                 signal.global_clock = 0;
             else {
                 const auto& terms = pla.terms[control.at("C")];
-                const auto input  = terms.size() == 1 ? terms.front().find_first_not_of('-') : std::string::npos;
-                if (input == std::string::npos || terms.front().find_first_not_of('-', input + 1) != std::string::npos)
+                const auto input  = single_literal(terms);
+                if (input == std::string::npos)
                     continue;
                 const auto& name = pla.inputs[input];
                 if (!clock_numbers.count(name))
@@ -1049,9 +1054,9 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
                     const auto& terms = pla.terms[control.at("C")];
                     if (terms.size() > 1)
                         unsupported("multi-product clock");
-                    const auto i   = terms.empty() ? std::string::npos : terms[0].find_first_not_of('-');
+                    const auto i   = single_literal(terms);
                     bool dedicated = false;
-                    if (i != std::string::npos && terms[0].find_first_not_of('-', i + 1) == std::string::npos) {
+                    if (i != std::string::npos) {
                         const auto at =
                             std::find(d.clock_pins.begin(), d.clock_pins.end(), pins.at(pla.inputs[i])->number);
                         if (at != d.clock_pins.end() && clocks.count(pla.inputs[i])) {

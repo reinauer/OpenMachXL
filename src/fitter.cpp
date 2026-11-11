@@ -154,8 +154,8 @@ LogicalIds place_pins(Design& design, const ParsedPla& pla, const std::map<std::
             clocked_outputs.insert(name);
             if (pla.terms[out].size() == 1) {
                 const auto& term   = pla.terms[out][0];
-                const auto literal = term.find_first_not_of('-');
-                if (literal != std::string::npos && term.find_first_not_of('-', literal + 1) == std::string::npos)
+                const auto literal = single_literal(term);
+                if (literal != std::string::npos)
                     report_clock_inputs[name] = {std::uint16_t(ids.signal.at(pla.inputs[literal])),
                                                  term[literal] == '1'};
             }
@@ -394,8 +394,8 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
             continue;
         if (pla.terms[out].size() != 1)
             continue;
-        const auto input = pla.terms[out][0].find_first_not_of('-');
-        if (input == std::string::npos || pla.terms[out][0].find_first_not_of('-', input + 1) != std::string::npos)
+        const auto input = single_literal(pla.terms[out][0]);
+        if (input == std::string::npos)
             continue;
         const auto pin = std::find_if(design.pins.begin(), design.pins.end(),
                                       [&](const auto& item) { return item.name == pla.inputs[input]; });
@@ -562,8 +562,8 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
         if (pla.terms[out].size() != 1)
             unsupported("clock must be one dedicated input");
         const auto& term = pla.terms[out][0];
-        const auto input = term.find_first_not_of('-');
-        if (input == std::string::npos || term.find_first_not_of('-', input + 1) != std::string::npos)
+        const auto input = single_literal(term);
+        if (input == std::string::npos)
             unsupported("clock must be one dedicated input");
         const auto pin = pins.find(pla.inputs[input]);
         if (pin == pins.end() || ((term[input] == '1') == pin->second->inverted))
