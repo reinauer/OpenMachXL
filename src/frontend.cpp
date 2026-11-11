@@ -1576,6 +1576,9 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
                 } else if (mode == "COMB" || mode == "COMBINATORIAL") {
                     storage_declared = true;
                 } else if (mode == "PAIR" || mode == "IPAIR" || mode == "OPAIR") {
+                    // MACHPAR accepts IPAIR only on a pin and OPAIR only on a node.
+                    if (mode == (key == "PIN" ? "OPAIR" : "IPAIR"))
+                        fail("P88: Unexpected reserved word or operator " + mode);
                     pair_kind = mode;
                     if (!(f >> pair))
                         fail("Missing pairing signal");
@@ -1681,31 +1684,52 @@ Design parse_design(const std::string& source, FrontendOptions options, const st
     std::map<std::string, Pin*> pin_index;
     for (auto& p : design.pins)
         pin_index[p.name] = &p;
-    // MACHBPP B1062: a PAIR declared on a pin is an input pairing. If neither
-    // signal has an equation, the original generates the transfer equation
-    // [/]node = [/]pin with the node's declared storage type. Each side is
-    // complemented exactly when its declaration is, so the register stores
-    // the pad's active-high sense.
+    // MACHBPP treats a PAIR declared on a pin as an input pairing: the node
+    // must be a register or latch whose equation transfers the pad.
+    //  - No equation for the node: generate [/]node = [/]pin with the node's
+    //    declared storage type (warning B1062). Each side is complemented
+    //    exactly when its declaration is, so the register stores the pad's
+    //    active-high sense.
+    //  - A transfer equation on a node without storage: error B615.
+    // Other equations, including toggle and JK/RS excitation, are left to
+    // the fitters.
     {
-        const auto has_primary = [&](const std::string& name) {
-            return std::any_of(design.equations.begin(), design.equations.end(), [&](const Equation& e) {
-                return e.signal == name &&
-                       (e.function == "REG" || e.function == "T" || e.function == "G" || e.function == "COM");
-            });
-        };
         for (const auto& pad : design.pins) {
-            if (pad.node || pad.pair.empty() || has_primary(pad.name) || has_primary(pad.pair))
+            if (pad.node || pad.pair.empty())
                 continue;
             const auto node = pin_index.find(pad.pair);
             if (node == pin_index.end() || !node->second->node)
                 continue;  // Reported by the pair validation below.
-            design.diagnostics.push_back(
-                std::string("B1062: Canonical equation ") + (node->second->inverted ? "/" : "") + pad.pair +
-                " (node) = " + (pad.inverted ? "/" : "") + pad.name + " (pin) generated from PAIRing.");
-            if (!node->second->registered && !node->second->latched)
-                fail("B615: Node " + pad.pair + " input-paired with pin " + pad.name +
-                     " does not have REG/LAT attribute and the transfer equation is not of the form "
-                     "[/]node := [/]pin or [/]node *= [/]pin.");
+            const auto equation =
+                std::find_if(design.equations.begin(), design.equations.end(), [&](const Equation& e) {
+                    return e.signal == pad.pair &&
+                           (e.function == "REG" || e.function == "T" || e.function == "G" || e.function == "COM");
+                });
+            const bool stored = node->second->registered || node->second->latched;
+            const auto b615   = "B615: Node " + pad.pair + " input-paired with pin " + pad.name +
+                              " does not have REG/LAT attribute and the transfer equation is not of the form "
+                              "[/]node := [/]pin or [/]node *= [/]pin.";
+            const auto b1062 = std::string("B1062: Canonical equation ") + (node->second->inverted ? "/" : "") +
+                               pad.pair + " (node) = " + (pad.inverted ? "/" : "") + pad.name +
+                               " (pin) generated from PAIRing.";
+            if (equation != design.equations.end()) {
+                if (equation->function == "T" || !equation->excitation_origin.empty())
+                    continue;
+                auto literal = equation->expression;
+                if (literal->kind == ExprKind::Not)
+                    literal = literal->left;
+                if (literal->kind == ExprKind::Identifier && literal->name == pad.name &&
+                    !equation->opposite_expression) {
+                    if (!stored)
+                        fail(b615);
+                    continue;
+                }
+                // Any other D or latch equation is rejected by the fitters.
+                continue;
+            }
+            design.diagnostics.push_back(b1062);
+            if (!stored)
+                fail(b615);
             Equation transfer;
             transfer.signal     = pad.pair;
             transfer.function   = node->second->latched ? "G" : "REG";

@@ -1,0 +1,35 @@
+
+*** Start MACHPAR.E 08:19:15 
+Kwop.pds
+
+MACHXL 2.1 R9 PARSER (1-24-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+
+                    ***********************************
+                    *     MACHXL PARSER LISTING       *
+                    ***********************************
+
+LINE #   |----+----1----+----2----+----3----+----4----+----5----+----6----+
+|> WARNING P45  Missing design file header.
+
+   1     |CHIP KWOP MACH435
+   2     |PIN ? A
+   3     |PIN ? Q OPAIR N
+  ERROR ----------^ (L3/C9)
+|> ERROR P88  Unexpected reserved word or operator OPAIR
+
+   4     |NODE ? N
+   5     |EQUATIONS
+   6     |Q=A
+   7     |N=A
+|> ERROR P88  Unexpected reserved word or operator -- ABORTING
+
+
+ %% MACHPAR %%    ERROR count:  2     WARNING count:  1
+
+ %% MACHPAR %%    File processing terminated.     File:  Kwop.pds
+
+*** End MACHPAR.EXE 08:19:15; (MACHPAR.EXE= 0 sec.) elapsed time= 0 sec.
+Accumulated Disk space used = 0 bytes
+Free Disk space = 2013265920 bytes

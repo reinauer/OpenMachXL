@@ -1,5 +1,5 @@
 {
- "description": "Original MACHXL 2.1 results for an input pair declared on a pin whose node has no equation: generated transfer equation (B1062) or rejection (B615)",
+ "description": "Original MACHXL 2.1 results for input and output pair declarations: generated transfer equations (B1062), rejected equations and storage (B615) and misplaced IPAIR/OPAIR keywords (P88)",
  "cases": [
   {
    "name": "NE2PR",
@@ -115,6 +115,105 @@
     "NPNS4.LOG": "8995f29c13b24b1fcacba3083835c957d768d6d302f45abb36aa98c873543054"
    },
    "error": "B615"
+  },
+  {
+   "name": "PBPAD",
+   "files": {
+    "PBPAD.PDS": "28232beac57a781a33d4bbacc074f646930b5997a1cd1e801357f9b8203c2d41",
+    "PBPAD.MXL": "71df1cb63917b7a2d785cb54e61934f3c454a341aa588231993912d09a3f1121",
+    "PBPAD.PLA": "00ee1d3fcc42acb4782c167ab529ef470d72dcee4d120a6d2d852a57a824dce2"
+   }
+  },
+  {
+   "name": "PB61R",
+   "files": {
+    "PB61R.PDS": "e02086e13bfad7a12b8f74e896fcfd954b04f3089f9ad3cf40d703a5f01eb40f",
+    "PB61R.MXL": "1b8cbb5935e9baaac3553351453d0009216bba8d32117225afedd61a1cf78349",
+    "PB61R.PLA": "28b53baa8e3510562b9c0325cae289ffb096352173893363e1eb3f34e3435ac9"
+   }
+  },
+  {
+   "name": "PB61T",
+   "files": {
+    "PB61T.PDS": "8b394e8b2285573dd29584bf4f4e14cbdf1a912365b9d04b9578cc84b8edc9a1",
+    "PB61T.MXL": "5e0a903b45fbab3bb69f810af84d684b377c35b5e06280e1874fba3cf25757b8",
+    "PB61T.PLA": "e460b4653296f5884d40bdbd6e69a191a8a9631c6dd61dc728e2aae6fb745a95"
+   }
+  },
+  {
+   "name": "PBINV",
+   "files": {
+    "PBINV.PDS": "c4917abf117fa5804939909b0ec96e36c9462a617d81fb90a1817e3a4034d1b9",
+    "PBINV.MXL": "fae17fea9d7adc8f83daecd3132ad06bafafeea7ae3fbb97f6291f3ca923861c",
+    "PBINV.PLA": "8fd5423d187a4939cbeba56f881ede0aa5cc606d6980acd7426c2aeda5471c10"
+   }
+  },
+  {
+   "name": "KWON",
+   "files": {
+    "KWON.PDS": "8a4b18bc1cbff62e6be2f553fd5c73229b33ec7d4774e340dcfbdaa569bad2fb",
+    "KWON.MXL": "5b86b73e2c32a790daeef7bdc315228cd057290284cbe5f7bbe4367e41e501b7",
+    "KWON.PLA": "74c18c8bf097c4e8657df1d3f67ba2e652fb21faf225cbeeaec71c00f8907bfe"
+   }
+  },
+  {
+   "name": "KWPN",
+   "files": {
+    "KWPN.PDS": "5b4ed5187d7a85948bf282e0981780dc290df2424e9cf6fdd4691abe240bc2d0",
+    "KWPN.MXL": "6842a46132b9f2ab9a385a4c8f91ee29ce36d6687d2cf45eab51a4ae84fedca9",
+    "KWPN.PLA": "71b4b3560c6c0953572c4b76b0f99df2e492a875d175011fe440be892d908c62"
+   }
+  },
+  {
+   "name": "KWIP",
+   "files": {
+    "KWIP.PDS": "735267dacff3e5b59e33c11c88c52dc5fa70a3835ec84822a172e825e88575ff",
+    "KWIP.MXL": "d26ce4ffbe6dcf9d529649a62d24d8272a85818072dee4dd562532779a2753ed",
+    "KWIP.PLA": "2ea5841414e5460394134175f0818cf08b257f04f3a60ba6253f98ca49950f59"
+   }
+  },
+  {
+   "name": "KWO2",
+   "files": {
+    "KWO2.PDS": "f158f5fc0cb62e77a9950bd4c4d8a050dcabee6cc95c33233fb0c04e04bbd63d",
+    "KWO2.MXL": "8a35eb1d95a1f2b52952bb8de462fa929ae9e04108799b0d90897ef8bb7f55e2",
+    "KWO2.PLA": "c0e247ee01e95f95b36f7effc696b73f317a2fb47f741a2d098071133771b77a"
+   }
+  },
+  {
+   "name": "KWI2",
+   "files": {
+    "KWI2.PDS": "d27301a947a6f98e13ae6070e89a17f01e4bcc8f7de6803b551e1f5e335b21e2",
+    "KWI2.MXL": "1536aaa514f8daf71faae21bbb179a7855989ca1409dd4e1385e83fa92e6c166",
+    "KWI2.PLA": "d26fe9bb023a7c50700231d250181ebdd33fada6e8b405d4c93c239130e8a5cd"
+   }
+  },
+  {
+   "name": "PB615",
+   "files": {
+    "PB615.PDS": "036aa54003a54085cc93dca632b4b390be1782590715551ec5c6984d7bdf2b30",
+    "PB615.MXL": "1880a506058760dfe478b047235a4fa979c1a7afc8576b5b8913c9848582dd94",
+    "PB615.LOG": "662da911fc3d53ad6a5589bcbf2e264817edb6bac2ad26667b4c28b68f5e9055"
+   },
+   "error": "B615"
+  },
+  {
+   "name": "KWIN",
+   "files": {
+    "KWIN.PDS": "c1707b1bcc597eb6863053063fd4b5334f449a222b44876dad989af281478eb2",
+    "KWIN.MXL": "e64cff88a8722ce8b426468f54b229111a63eab72e3928464ced8c25e1c27188",
+    "KWIN.LOG": "c0dc688c2a4ce2cf574f4556bccda1b89ff5fb693d0824afcf0e385ceb9f5189"
+   },
+   "error": "P88"
+  },
+  {
+   "name": "KWOP",
+   "files": {
+    "KWOP.PDS": "1419c732a9fa3b7b95fde1e8b9e1fa066d27a8864666c391d46ec10ba4b09dd5",
+    "KWOP.MXL": "f426b613450c5e15167009744090b7f35575b1fef71cc51855f873deaf0238d8",
+    "KWOP.LOG": "68ca61a5ef3d18edec5f0bc5bceb5b23d7d4b56ec9adb258483a712fa6a47652"
+   },
+   "error": "P88"
   }
  ]
 }

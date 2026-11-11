@@ -1,5 +1,5 @@
 {
- "description": "Original MACHXL 2.1 fits of designs whose input-pair transfer equation is generated (B1062)",
+ "description": "Original MACHXL 2.1 fits of pair declarations: generated input-pair transfer equations (B1062) and the pair keywords on pins and nodes",
  "cases": [
   {
    "name": "NE2PR",
@@ -45,6 +45,38 @@
     "NPUN2.JED": "bd5e92f3571fe27f509c32a7d871e8e07de3adf30d7bf25d98bf5d0afbadecfb"
    },
    "warning": "B1062: Canonical equation N (node) = A (pin) generated from PAIRing."
+  },
+  {
+   "name": "KWON",
+   "files": {
+    "KWON.PDS": "8a4b18bc1cbff62e6be2f553fd5c73229b33ec7d4774e340dcfbdaa569bad2fb",
+    "KWON.MXL": "5b86b73e2c32a790daeef7bdc315228cd057290284cbe5f7bbe4367e41e501b7",
+    "KWON.JED": "2ef3ba466c5332adeea19f4ec1d15fbd71f04e232b6e416c84cf07196c35b6f1"
+   }
+  },
+  {
+   "name": "KWPN",
+   "files": {
+    "KWPN.PDS": "5b4ed5187d7a85948bf282e0981780dc290df2424e9cf6fdd4691abe240bc2d0",
+    "KWPN.MXL": "6842a46132b9f2ab9a385a4c8f91ee29ce36d6687d2cf45eab51a4ae84fedca9",
+    "KWPN.JED": "ae415572a0b8153742489e7f6748e5be2db4dd682ec8fe1160ff29e09740ef64"
+   }
+  },
+  {
+   "name": "KWIP",
+   "files": {
+    "KWIP.PDS": "735267dacff3e5b59e33c11c88c52dc5fa70a3835ec84822a172e825e88575ff",
+    "KWIP.MXL": "d26ce4ffbe6dcf9d529649a62d24d8272a85818072dee4dd562532779a2753ed",
+    "KWIP.JED": "be067379832a54ab90fc483a4dd50217d7f492d5bb6d9db0db91ab1fc1789818"
+   }
+  },
+  {
+   "name": "KWO2",
+   "files": {
+    "KWO2.PDS": "f158f5fc0cb62e77a9950bd4c4d8a050dcabee6cc95c33233fb0c04e04bbd63d",
+    "KWO2.MXL": "8a35eb1d95a1f2b52952bb8de462fa929ae9e04108799b0d90897ef8bb7f55e2",
+    "KWO2.JED": "66b754270193216a2bf4d6f09f7902414137583f2aa6171bc242d054ea5b377d"
+   }
   }
  ]
 }
