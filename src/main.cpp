@@ -96,16 +96,39 @@ void write_reports(const std::string& destination, const std::string& source,
             throw machxl::LogicError("Cannot write report: " + path.string());
     }
 }
+std::string lower_case(std::string text)
+{
+    for (auto& c : text)
+        c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
+    return text;
+}
+// The reports name the design file the way the original prints it: all
+// lower case in the place report, with a capital first letter elsewhere.
+std::string capitalized(std::string text)
+{
+    text = lower_case(std::move(text));
+    if (!text.empty())
+        text.front() = static_cast<char>(std::toupper(static_cast<unsigned char>(text.front())));
+    return text;
+}
+// Time since `start` as hh:mm:ss.
+std::string elapsed_since(std::chrono::steady_clock::time_point start)
+{
+    const auto seconds =
+        std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - start).count();
+    std::ostringstream elapsed;
+    elapsed << std::setfill('0') << std::setw(2) << seconds / 3600 << ':' << std::setw(2) << (seconds / 60) % 60 << ':'
+            << std::setw(2) << seconds % 60;
+    return elapsed.str();
+}
+// The file beside `source` with `extension`, in upper case if that exists
+// and in lower case otherwise.
 std::filesystem::path find_sibling_file(const std::string& source, const std::string& extension)
 {
     auto path = std::filesystem::path(source);
     path.replace_extension(extension);
-    if (!std::filesystem::exists(path)) {
-        auto lower = extension;
-        for (auto& c : lower)
-            c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
-        path.replace_extension(lower);
-    }
+    if (!std::filesystem::exists(path))
+        path.replace_extension(lower_case(extension));
     return path;
 }
 }  // namespace
@@ -196,15 +219,7 @@ int main(int argc, char** argv)
         if (mode == Output::Jedec && placement_path.empty() && !compatibility &&
             settings.get("FITR_PLACE") != "Design file") {
             const auto extension = settings.get("FITR_PLACE") == "Saved placement" ? ".BLC" : ".PLC";
-            auto path            = std::filesystem::path(source_path);
-            path.replace_extension(extension);
-            if (!std::filesystem::exists(path)) {
-                std::string lower = extension;
-                for (auto& c : lower)
-                    c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
-                path.replace_extension(lower);
-            }
-            placement_path = path.string();
+            placement_path       = find_sibling_file(source_path, extension).string();
         }
         const auto saved_placement         = placement_path.empty() ? std::string{} : read_file(placement_path);
         auto source_design                 = machxl::parse_design(read_file(source_path), options.frontend,
@@ -290,27 +305,14 @@ int main(int argc, char** argv)
                     std::string resource, placement;
                     std::vector<std::pair<std::string, const std::string*>> reports{{".TAL", &timing}};
                     if (captured.complete) {
-                        auto display = filename;
-                        for (auto& c : display)
-                            c = char(std::tolower(static_cast<unsigned char>(c)));
-                        auto resource_filename = display;
-                        if (!resource_filename.empty())
-                            resource_filename.front() =
-                                char(std::toupper(static_cast<unsigned char>(resource_filename.front())));
                         const auto end_stamp = report_timestamp(true);
-                        resource = machxl::render_fitter_report(design.device, captured, settings, resource_filename,
-                                                                end_stamp.substr(4));
+                        resource             = machxl::render_fitter_report(design.device, captured, settings,
+                                                                            capitalized(filename), end_stamp.substr(4));
                         reports.push_back({".RPT", &resource});
                         if (captured.retained_image) {
-                            const auto seconds = std::chrono::duration_cast<std::chrono::seconds>(
-                                                     std::chrono::steady_clock::now() - start_time)
-                                                     .count();
-                            std::ostringstream elapsed;
-                            elapsed << std::setfill('0') << std::setw(2) << seconds / 3600 << ':' << std::setw(2)
-                                    << (seconds / 60) % 60 << ':' << std::setw(2) << seconds % 60;
-                            placement =
-                                machxl::render_fitter_place_report(*captured.retained_image, captured, settings,
-                                                                   display, start_stamp, end_stamp, elapsed.str());
+                            placement = machxl::render_fitter_place_report(*captured.retained_image, captured, settings,
+                                                                           lower_case(filename), start_stamp, end_stamp,
+                                                                           elapsed_since(start_time));
                             reports.push_back({".PRD", &placement});
                         }
                     }
@@ -325,24 +327,12 @@ int main(int argc, char** argv)
                 if (!image.fitter_report)
                     throw machxl::LogicError("Missing fitting report observations");
                 const auto end_stamp = report_timestamp(true);
-                const auto seconds =
-                    std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - start_time)
-                        .count();
-                std::ostringstream elapsed;
-                elapsed << std::setfill('0') << std::setw(2) << seconds / 3600 << ':' << std::setw(2)
-                        << (seconds / 60) % 60 << ':' << std::setw(2) << seconds % 60;
-                const auto& captured    = *image.fitter_report;
-                auto placement_filename = filename;
-                for (auto& c : placement_filename)
-                    c = char(std::tolower(static_cast<unsigned char>(c)));
-                auto resource_filename = placement_filename;
-                if (!resource_filename.empty())
-                    resource_filename.front() =
-                        char(std::toupper(static_cast<unsigned char>(resource_filename.front())));
-                const auto resource = machxl::render_fitter_report(design.device, captured, settings, resource_filename,
-                                                                   end_stamp.substr(4));
-                const auto placement = machxl::render_fitter_place_report(image, captured, settings, placement_filename,
-                                                                          start_stamp, end_stamp, elapsed.str());
+                const auto elapsed   = elapsed_since(start_time);
+                const auto& captured = *image.fitter_report;
+                const auto resource  = machxl::render_fitter_report(design.device, captured, settings,
+                                                                    capitalized(filename), end_stamp.substr(4));
+                const auto placement = machxl::render_fitter_place_report(
+                    image, captured, settings, lower_case(filename), start_stamp, end_stamp, elapsed);
                 const auto timing =
                     machxl::render_timing_report(captured.optimized_design ? *captured.optimized_design : design,
                                                  captured.optimized_pla, &captured, filename);
