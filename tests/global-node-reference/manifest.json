@@ -1,0 +1,101 @@
+{
+ "description": "Original MACHXL 2.1 fits of designs that set or reset all registers through the global node (node 1)",
+ "cases": [
+  {
+   "name": "G1",
+   "files": {
+    "G1.PDS": "93624950bb1291de52a9064b6a6c7a83e1a389f41ea9d00e87f2384b71ba3c11",
+    "G1.MXL": "0b1d48fee54996e1bfa04af270a386a912f8e25b7203cc7a40fc425f05e4b0b9",
+    "G1.JED": "1c95f48afd0a290be416fa7bc1edf8662854de88a203157bbe3944f512f18f2e"
+   }
+  },
+  {
+   "name": "G2",
+   "files": {
+    "G2.PDS": "54b348ac759e9e7f966fc908dfaed3a68ee5d37055e6cd423fe3cb0fa2a07c8e",
+    "G2.MXL": "a585f0e0a9ea400a6915bcc2a7bce5e22fd023b1191b2be67379b8162a6c26e3",
+    "G2.JED": "cffd3a3eb36d4f6436e2f035db68dc892bdf3a6d90dcd8140400690a33039991"
+   }
+  },
+  {
+   "name": "G3",
+   "files": {
+    "G3.PDS": "43a70aeaa5c193869e742c82d7ac8c42081f1afb628ddf1a64bf6afa710223e5",
+    "G3.MXL": "07b36d233e192b079e307c26bd6aa5bdb45a4ac73397b6af531c701124cf70e3",
+    "G3.JED": "e19a05eb17353ba6844e8bfbee476c1bdcb231f0e073f2b518ae7d2d738bba42"
+   }
+  },
+  {
+   "name": "G4",
+   "files": {
+    "G4.PDS": "57af49535869a59516754e840f657704263c3f0df8ccd6338aa177f5f2929748",
+    "G4.MXL": "3cd663744e555fe7c3b64da9c1bd00a5f11b81463ac76c0b24a7f30d56ae7268",
+    "G4.JED": "3892b42dc4eb0fd6f5190038b300e27be76c328349d18e9b8d934aca7f0bfbdb"
+   }
+  },
+  {
+   "name": "G5",
+   "files": {
+    "G5.PDS": "084cd0f8f72fa79550af2e3464266dac12d3c06ab1f0be1828778042d517af66",
+    "G5.MXL": "eb59be0db069b0a34688eeaf35fb7d8918e33b2d3e86bf5c3224a1e252c50dba",
+    "G5.JED": "5dab986733eec37bb7aaa15392869f56037df3debf9976a66c915ff717a77a8a"
+   }
+  },
+  {
+   "name": "G6",
+   "files": {
+    "G6.PDS": "eaf8f5aa073a23a0dba49790f6ce77dee0811e7dd8e114a46dbe880e21a6c1e0",
+    "G6.MXL": "bb33b35194be512894e5110ce6e34a2952fb8a489638ac2427e785fc10e8be6c",
+    "G6.JED": "3a629179d8939ab822dba83bbc11a727e697e32c7ef0b33f734ef2feab394804"
+   }
+  },
+  {
+   "name": "G7",
+   "files": {
+    "G7.PDS": "e9a678a2dd595dacc26b29a804ff703b73bc37c3b8708996540f56c14a984c1c",
+    "G7.MXL": "edfecc6952cc8476ab1dc4bcec8255b8fab37dd3f4c2f5a55e130a9be0a5214d",
+    "G7.JED": "52de8e0cc4c551c19c2e1d372923a29ecfbaba668dd43e653e32bdf715b69209"
+   }
+  },
+  {
+   "name": "G8",
+   "files": {
+    "G8.PDS": "6a8ce67942dd0f46771081307cda26a2f50738e3662a384076a25a74358cd860",
+    "G8.MXL": "650640e1d977aa23bd3a505262e6726706f08579b3c7346cf8c7f7b9b0c35d06",
+    "G8.JED": "91d4d31491653a6b8b8d40a27b06f415ea67816213ea0d1e7214d67cdb70a890"
+   }
+  },
+  {
+   "name": "G9",
+   "files": {
+    "G9.PDS": "31e0f1799e06919c7f56f89234459ccc6d046b388288d51808e80cdbc6cc582b",
+    "G9.MXL": "26f5becf544aa11d08faf8676c7173b3557f6d890571aecd626b6f91d8c1a26e",
+    "G9.JED": "67d9a6a70c27f74f70bd2bd5b66c61ee4343417c4de86697cab5ff69acd20feb"
+   }
+  },
+  {
+   "name": "GA",
+   "files": {
+    "GA.PDS": "76686df2f1032a935aa0756da2c66ed9b00ede5def20cbf92ed63af017f79a01",
+    "GA.MXL": "d6e5c862a505ec0b3d309c3f6cd2356fa74d8c58ec10fac6e207e64a5abda693",
+    "GA.JED": "0cb8077ea3afb955fb96e0552d4b69e7858505a214f698e1c19e5fb272b4f181"
+   }
+  },
+  {
+   "name": "GB",
+   "files": {
+    "GB.PDS": "75dcc43ed6377ff9fd59e967a3f1604fc0c5cdc62b4f2813f75f638ade5696c6",
+    "GB.MXL": "9e874b2b4e89593e5dff0e5196487459cbb7373b7151b0ff1933c9fdb0617fd0",
+    "GB.JED": "92a19965f2cf407366776f036239680674e11e20d019c6f055b783f104acb1bb"
+   }
+  },
+  {
+   "name": "GC",
+   "files": {
+    "GC.PDS": "a1ea65516a0a36f4be07376926a9339e742a6cabd32acdcf63972082200226d8",
+    "GC.MXL": "998273c86a43d10a98e15ec78c32b545022017f0eddf14426291829449d2dfc7",
+    "GC.JED": "e23ff229c3de49a5c5e4568eadc339d798335e8a53a84eeb27a006e3625ba9a3"
+   }
+  }
+ ]
+}

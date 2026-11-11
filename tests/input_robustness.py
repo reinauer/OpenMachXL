@@ -82,6 +82,13 @@ CASES = [
            args=['--emit-jedec', 'T.PDS', '--placement', 'T.PLC'], ok=False,
            message='Duplicate physical pin assignment: pin 4 for A and B')
       for device in ('MACH111', 'MACH211', 'MACH435')],
+    # Node 1 is the global node: it may only carry set and reset equations.
+    dict(name='global_node_with_logic_equation',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? Q\nNODE 1 N\nEQUATIONS\nN=A\nQ=N\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=False, message='z5040: Invalid global node defining equation.'),
+    dict(name='global_node_read_as_input',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? R\nPIN ? Q REG\nNODE 1 G\nEQUATIONS\nG.RSTF=R\nQ=A*G\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=False, message='z5041: Global node cannot be used as an input'),
     # A location written in the design itself is checked while parsing, with
     # the original parser's diagnostics (P127 pins, P128 nodes, P90 for a
     # numeral it cannot read). These used to reach std::stoi or the fitter.

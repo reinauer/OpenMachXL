@@ -113,6 +113,7 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
     const auto data_row = [&](unsigned cell) { return cell * 5 + cell / (mach355 ? 1 : 2) + 1; };
     const auto oe_row   = [&](unsigned io) { return io * (mach355 ? 6 : 11); };
     auto pla            = synthesized_pla(design, options, fitting.report.get());
+    expand_global_node(design, pla.inputs, pla.outputs, pla.terms);
     discard_combinatorial_storage_controls(pla.outputs, pla.terms);
     validate_node_output_enables(design, pla.outputs);
     validate_node_equations(design, pla.inputs, pla.outputs);

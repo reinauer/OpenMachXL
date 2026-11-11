@@ -113,6 +113,7 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
         d.device != "MACH131")
         unsupported("configuration rules are not implemented for " + d.device);
     auto p = prepared;
+    expand_global_node(design, p.inputs, p.outputs, p.terms);
     discard_combinatorial_storage_controls(p.outputs, p.terms);
     validate_node_output_enables(design, p.outputs);
     validate_node_equations(design, p.inputs, p.outputs);

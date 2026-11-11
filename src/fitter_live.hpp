@@ -1,5 +1,6 @@
 #pragma once
 #include "frontend.hpp"
+#include <algorithm>
 #include <map>
 #include <set>
 
@@ -38,6 +39,88 @@ inline void validate_node_output_enables(const Design& design, const std::vector
         if (dot != std::string::npos && label.substr(dot) == ".OE" && independent_nodes.count(label.substr(0, dot)))
             throw LogicError("z5045: node " + label.substr(0, dot) + " cannot have an output enable equation");
     }
+}
+
+// Node 1 is the global node. It has no location in the device: its reset and
+// set equations stand for those of every register that has none of its own.
+// Replace it by these per-register controls before anything else looks at
+// the design, and drop the node itself.
+inline void expand_global_node(Design& design, const std::vector<std::string>& inputs,
+                               std::vector<std::string>& outputs, std::vector<std::vector<std::string>>& terms)
+{
+    const auto global = std::find_if(design.pins.begin(), design.pins.end(),
+                                     [](const Pin& pin) { return pin.node && pin.number == 1; });
+    if (global == design.pins.end())
+        return;
+    const auto name = global->name;
+    const auto base = [](std::string label) {
+        while (!label.empty() && (label.back() == '-' || label.back() == '%'))
+            label.pop_back();
+        return label;
+    };
+    // MACHFITR z5040/z5041: only set and reset equations, and no readers.
+    for (const auto& output : outputs) {
+        const auto label = base(output);
+        if (label.substr(0, label.find('.')) == name && label != name + ".RE" && label != name + ".PR")
+            throw LogicError("z5040: Invalid global node defining equation.");
+    }
+    const auto read = std::find(inputs.begin(), inputs.end(), name);
+    if (read != inputs.end()) {
+        const auto column = std::size_t(read - inputs.begin());
+        for (const auto& products : terms)
+            for (const auto& term : products)
+                if (column < term.size() && term[column] != '-')
+                    throw LogicError(
+                        "z5041: Global node cannot be used as an input (i.e. referenced on right "
+                        "hand side of equations).");
+    }
+    for (const char* function : {"RE", "PR"}) {
+        const auto column = std::find_if(outputs.begin(), outputs.end(),
+                                         [&](const auto& label) { return base(label) == name + "." + function; });
+        if (column == outputs.end())
+            continue;
+        const auto control = terms[std::size_t(column - outputs.begin())];
+        std::vector<std::string> registers;
+        std::set<std::string> controlled;
+        for (const auto& output : outputs) {
+            const auto label = base(output);
+            const auto dot   = label.find('.');
+            if (dot == std::string::npos)
+                continue;
+            const auto signal = label.substr(0, dot), kind = label.substr(dot + 1);
+            if (kind == function)
+                controlled.insert(signal);
+            const bool storage = kind == "REG" || kind == "T" || kind == "G" || kind == "XORR_REG" ||
+                                 kind == "XORR_T" || kind == "XORR_G";
+            if (storage && signal != name && std::find(registers.begin(), registers.end(), signal) == registers.end())
+                registers.push_back(signal);
+        }
+        for (const auto& signal : registers) {
+            if (controlled.count(signal))
+                continue;
+            std::size_t last = 0;
+            for (std::size_t i = 0; i < outputs.size(); ++i) {
+                const auto label = base(outputs[i]);
+                if (label.substr(0, label.find('.')) == signal)
+                    last = i;
+            }
+            outputs.insert(outputs.begin() + std::ptrdiff_t(last + 1), signal + "." + function);
+            terms.insert(terms.begin() + std::ptrdiff_t(last + 1), control);
+        }
+    }
+    for (std::size_t i = outputs.size(); i-- > 0;) {
+        const auto label = base(outputs[i]);
+        if (label.substr(0, label.find('.')) == name) {
+            outputs.erase(outputs.begin() + std::ptrdiff_t(i));
+            terms.erase(terms.begin() + std::ptrdiff_t(i));
+        }
+    }
+    design.equations.erase(std::remove_if(design.equations.begin(), design.equations.end(),
+                                          [&](const Equation& e) { return e.signal == name; }),
+                           design.equations.end());
+    design.pins.erase(
+        std::remove_if(design.pins.begin(), design.pins.end(), [&](const Pin& pin) { return pin.name == name; }),
+        design.pins.end());
 }
 
 // MACHFITR z5072: a node that some equation reads must have an equation of

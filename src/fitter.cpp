@@ -385,6 +385,7 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
     if (design.equations.empty())
         unsupported("design has no equations");
     auto pla = prepared;
+    expand_global_node(design, pla.inputs, pla.outputs, pla.terms);
     discard_combinatorial_storage_controls(pla.outputs, pla.terms);
     validate_node_output_enables(design, pla.outputs);
     validate_node_equations(design, pla.inputs, pla.outputs);
