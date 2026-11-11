@@ -242,6 +242,30 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
                 unsupported("latch on a MACH1 device");
         }
     }
+    // The original classifies clock signals before it removes unused buried
+    // equations. A signal fixed on a dedicated clock pin therefore keeps its
+    // pin, and its place in the reports, even when the only register it
+    // clocked is removed. Observed on MACH2; MACH111 drops such a signal.
+    std::set<std::string> fixed_clock_inputs, retained_clock_pins;
+    if (mach2 && !mach215)
+        for (unsigned out = 0; out < p.outputs.size(); ++out) {
+            const auto& label = p.outputs[out];
+            if (label.size() < 2 || label.substr(label.size() - 2) != ".C" || p.terms[out].size() != 1)
+                continue;
+            const auto input = p.terms[out][0].find_first_not_of('-');
+            if (input == std::string::npos || p.terms[out][0].find_first_not_of('-', input + 1) != std::string::npos)
+                continue;
+            const auto pin = std::find_if(design.pins.begin(), design.pins.end(),
+                                          [&](const auto& item) { return item.name == p.inputs[input]; });
+            if (pin != design.pins.end() && !pin->node &&
+                std::find(d.clock_pins.begin(), d.clock_pins.end(), pin->number) != d.clock_pins.end())
+                fixed_clock_inputs.insert(pin->name);
+        }
+    const auto retain_removed_clocks = [&](std::set<std::string>& active) {
+        for (const auto& name : fixed_clock_inputs)
+            if (active.insert(name).second)
+                retained_clock_pins.insert(name);
+    };
     const auto reachable = retain_reachable_equations(design, p.inputs, p.outputs, p.terms);
     std::map<std::string, unsigned> signal_ids, original_feedback_ids;
     std::map<std::string, const Equation*> primary;
@@ -1245,6 +1269,8 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
             }
         }
         finalize_fitter_report_data(design, image, report);
+        for (auto& pin : report.pins)
+            pin.retained_clock = retained_clock_pins.count(pin.name) != 0;
         if (!successful) {
             report.partitioned = report.partition_total = unsigned(report.nodes.size());
             report.placed = report.placement_total = unsigned(report.nodes.size() + report.pins.size());
@@ -1274,6 +1300,7 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
         trial.pin_count = d.pins;
         std::set<std::string> active(p.inputs.begin(), p.inputs.end());
         active.insert(output_names.begin(), output_names.end());
+        retain_removed_clocks(active);
         apply_placement_metadata(trial, design, active);
         capture_report(trial, false);
     }
@@ -1596,6 +1623,7 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
     auto image = encode_mach_device(d, physical, design.chip);
     std::set<std::string> active(p.inputs.begin(), p.inputs.end());
     active.insert(output_names.begin(), output_names.end());
+    retain_removed_clocks(active);
     apply_placement_metadata(image, design, active);
     auto expression = [&](const std::vector<std::string>& terms) { return simulation_cover(p.inputs, terms); };
     for (unsigned out = 0; out < output_names.size(); ++out) {

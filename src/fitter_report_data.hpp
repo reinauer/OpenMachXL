@@ -54,6 +54,9 @@ struct FitterReportPin
     std::vector<unsigned> fanout_blocks, clock_blocks;
     bool fixed           = false;
     bool dedicated_clock = false;  // Retained partition signal-record type9.
+    // Fixed clock pin whose only register was removed as unused. The original
+    // still reports the pin as a clock input, with no fanout.
+    bool retained_clock = false;
     std::optional<unsigned> traversal_order;
 };
 struct FitterReportRoute

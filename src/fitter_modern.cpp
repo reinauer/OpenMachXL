@@ -212,6 +212,29 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
         for (const auto& control : controls[name])
             follow(control.second);
     }
+    // The original classifies clock signals before it removes unused buried
+    // equations. A signal fixed on a dedicated clock pin keeps its pin, and
+    // its place in the reports, even when its only register is removed.
+    std::set<std::string> fixed_clock_inputs, retained_clock_pins;
+    for (const auto& entry : controls) {
+        const auto clock = entry.second.find("C");
+        if (clock == entry.second.end() || pla.terms[clock->second].size() != 1)
+            continue;
+        const auto& term = pla.terms[clock->second].front();
+        const auto input = term.find_first_not_of('-');
+        if (input == std::string::npos || term.find_first_not_of('-', input + 1) != std::string::npos)
+            continue;
+        const auto pin = std::find_if(design.pins.begin(), design.pins.end(),
+                                      [&](const auto& item) { return item.name == pla.inputs[input]; });
+        if (pin != design.pins.end() && !pin->node &&
+            std::find(d.clock_pins.begin(), d.clock_pins.end(), pin->number) != d.clock_pins.end())
+            fixed_clock_inputs.insert(pin->name);
+    }
+    const auto retain_removed_clocks = [&](std::set<std::string>& active) {
+        for (const auto& name : fixed_clock_inputs)
+            if (active.insert(name).second)
+                retained_clock_pins.insert(name);
+    };
     const auto reachable = retained_equation_names(design, primary, dependencies);
     for (auto it = outputs.begin(); it != outputs.end();)
         if (!reachable.count(it->first))
@@ -1680,6 +1703,8 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
                     }
             }
             finalize_fitter_report_data(design, image, report);
+            for (auto& pin : report.pins)
+                pin.retained_clock = retained_clock_pins.count(pin.name) != 0;
             if (successful && d.device == "MACH446")
                 report.estimated_static_icc_milliamps = corrected_mach446_icc(hw);
             if (!successful) {
@@ -1714,6 +1739,7 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
             std::set<std::string> active(pla.inputs.begin(), pla.inputs.end());
             for (const auto& entry : outputs)
                 active.insert(entry.first);
+            retain_removed_clocks(active);
             apply_placement_metadata(trial, design, active);
             capture_report(trial, false);
         }
@@ -1859,6 +1885,7 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
         std::set<std::string> active(pla.inputs.begin(), pla.inputs.end());
         for (const auto& entry : outputs)
             active.insert(entry.first);
+        retain_removed_clocks(active);
         validate_requested_power_up(image.simulation_model, design);
         apply_placement_metadata(image, design, active);
         capture_report(image, true);

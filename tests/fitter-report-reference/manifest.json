@@ -1168,6 +1168,83 @@
         "JED": "bc40f70216ed065601ff8841f495973267355a6f8c99fe5fccd09c3ccc4b386f"
       },
       "display_filename": "Ck2150.pds"
+    },
+    {
+      "name": "UR11",
+      "device": 211,
+      "sha256": {
+        "PDS": "58ff39c66ce7203ff9574ba64e5089e6f1cca93611721c1bc4dad2041f107655",
+        "MXL": "3ab51e72b11ee1b181c03d480034882802a1e0ccee97f5b956a41ff8d8eca3f6",
+        "RPT": "f513ed383d850c7c5eb8edf0508a02f4b095fdfb764b9a6668bfd38226a2ccb6",
+        "JED": "18019d2ce0155b6e61c7c090f0010b2fb25a461399411ac22fc5bc132482e081"
+      },
+      "display_filename": "Ur11.pds"
+    },
+    {
+      "name": "U411",
+      "device": 435,
+      "sha256": {
+        "PDS": "e1c1b3b188360daf96f2d7ab9cc87f43bcf4e68087c01999dc0e3142a7716618",
+        "MXL": "2fc1da450baa8ae092c81fdf4e587f5970b5b0aefcb805a597161099497f11ff",
+        "RPT": "ef531e05720913fe7de7d496da6a02bfed8b90a18c974a728a2aaa1ce805709c",
+        "JED": "35cd3a78f4d7d6b7e7f9f0e765ad58237576cbed708a940f3585c10cf2c4c353"
+      },
+      "display_filename": "U411.PDS"
+    },
+    {
+      "name": "U111",
+      "device": 111,
+      "sha256": {
+        "PDS": "4426bfc5681007ef7971349512a5f88702577aa166b6efe236cf036594e3fd3c",
+        "MXL": "720967dfb9909d6e77dc4f603ae7fa3b410d914bd98bc1a8f32d0259da6f3a00",
+        "RPT": "bc95c0e85ec7d6d6101c4fe7de413576dcfb7b7f133f604e15ef3ceb8441c509",
+        "JED": "6c1ec71d65e1e9807ad76447506cb51cbeaac0bb8daf91c5f3499b98f3bb4200"
+      },
+      "display_filename": "U111.pds"
+    },
+    {
+      "name": "UP11",
+      "device": 211,
+      "sha256": {
+        "PDS": "9443c21f442519472540954e181cb935646a454403294015650f4be41a33226e",
+        "MXL": "4fc09bd03c744255c032ebf4346c40ed696de0e425c703cb6ffae121de5d755a",
+        "RPT": "111c3e9fc1060a5d2ed243c9404dfecedead62faef6324cc0d7023c74b6e3c5a",
+        "JED": "64d580ccfd3be6eeb14fa8d01a8f4bd0a8e13a2f9057eca48839469b3c2c3aef"
+      },
+      "display_filename": "Up11.pds"
+    },
+    {
+      "name": "UR10",
+      "device": 211,
+      "sha256": {
+        "PDS": "10e133cc817bbb8305e5139e162e635592a208aa0676356d0a0f2a6d5ee6a94b",
+        "MXL": "be40594454d761f7f218ea68ecfea4af44764bbee928f8529a2e7ec3dc44af3d",
+        "RPT": "7e45977e17de868647cf64bdd1469c73963b35359e453ad787e1df93f469e740",
+        "JED": "ad6b486b1d1d95b034c2b317d60f6fd00bfc4daf22ecd4031f54bbbf50de1d8d"
+      },
+      "display_filename": "Ur10.pds"
+    },
+    {
+      "name": "UR04",
+      "device": 211,
+      "sha256": {
+        "PDS": "4cae0b842cbb538adc483caab69a888b2a9a831301cab67a49c215c155334f71",
+        "MXL": "aa08103b7ffd2a60fadb3239a5306fdc8a2afe5046efca6cdedd9b11361314b8",
+        "RPT": "4bfa4879fc7ccaadeb042757b05d5ea8996446bd6168a6e6eb89ca721e7f8d16",
+        "JED": "db54e47038d0cb4ac56a6059c39fc60e6ad655180ed66dabf608774365cff023"
+      },
+      "display_filename": "Ur04.pds"
+    },
+    {
+      "name": "GM2110",
+      "device": 211,
+      "sha256": {
+        "PDS": "8ca055dd82e2529073bb5f9e7451c6f4e8fa72ed36fe0964a50d95c5f2648cdb",
+        "MXL": "71d7b8bfeaf6c489bbbd0c5cf8c14cbef7ee069a1f1c29e1d1c7b93d8c3cb950",
+        "RPT": "9801577dd7d3c7fb3757202219585ea4d1698912622db2dcb48ab9b4f8d8be85",
+        "JED": "0c39914a8c091aeaeb2396cc69a21d58a7629d0063927da18fc74eaa98301786"
+      },
+      "display_filename": "GM2110.PDS"
     }
   ],
   "capture_script": "research/reports/capture_fitter_reports.py",
