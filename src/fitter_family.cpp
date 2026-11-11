@@ -122,8 +122,14 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
     validate_node_output_enables(design, p.outputs);
     std::vector<std::string> unreferenced_nodes;
     validate_node_equations(design, p.inputs, p.outputs, &unreferenced_nodes);
+    for (const auto& warning : discarded_input_pairs(design))
+        fitting.warn(warning);
     for (const auto& name : unreferenced_nodes)
         fitting.warn("z5071: Nodes not referenced - discarded: " + name);
+    for (const auto& warning :
+         preplaced_fanin_warnings(p.inputs, p.outputs, p.terms, d.muxes,
+                                  [&](const std::string& name) { return fixed_block_of(design, d, name); }))
+        fitting.warn(warning);
     validate_equation_fanin(p.inputs, p.outputs, p.terms, d.muxes);
     validate_storage_control_products(p.outputs, p.terms);
     check_fitting_budget();
@@ -278,6 +284,8 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
     const auto reachable = retain_reachable_equations(design, p.inputs, p.outputs, p.terms, &discarded_nodes);
     for (const auto& name : discarded_nodes)
         fitting.warn("z5071: Nodes not referenced - discarded: " + name);
+    for (const auto& name : unreferenced_pins(design, p.inputs, p.outputs, fixed_clock_inputs))
+        fitting.warn("z5073: Input Pins not referenced - discarded: " + name);
     std::map<std::string, unsigned> signal_ids, original_feedback_ids;
     std::map<std::string, const Equation*> primary;
     for (const auto& e : design.equations)

@@ -122,8 +122,14 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
     validate_node_output_enables(design, pla.outputs);
     std::vector<std::string> unreferenced_nodes;
     validate_node_equations(design, pla.inputs, pla.outputs, &unreferenced_nodes);
+    for (const auto& warning : discarded_input_pairs(design))
+        fitting.warn(warning);
     for (const auto& name : unreferenced_nodes)
         fitting.warn("z5071: Nodes not referenced - discarded: " + name);
+    for (const auto& warning :
+         preplaced_fanin_warnings(pla.inputs, pla.outputs, pla.terms, d.muxes,
+                                  [&](const std::string& name) { return fixed_block_of(design, d, name); }))
+        fitting.warn(warning);
     validate_equation_fanin(pla.inputs, pla.outputs, pla.terms, d.muxes);
     validate_storage_control_products(pla.outputs, pla.terms);
     FittingDeadline deadline(fitting.runtime_quarters);
@@ -283,6 +289,13 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
                 for (auto& term : terms)
                     term.erase(i, 1);
         }
+    {
+        std::vector<std::string> driven;
+        for (const auto& output : outputs)
+            driven.push_back(output.first);
+        for (const auto& name : unreferenced_pins(design, pla.inputs, driven, fixed_clock_inputs))
+            fitting.warn("z5073: Input Pins not referenced - discarded: " + name);
+    }
     std::set<std::string> automatic_input_pairs;
     // MACHFITR performs a second input-pairing pass after MACHBPP. In
     // particular, BPP leaves a fixed pad and floating node unpaired, while

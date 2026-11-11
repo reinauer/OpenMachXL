@@ -1,4 +1,5 @@
 #pragma once
+#include "device_family.hpp"
 #include "frontend.hpp"
 #include <algorithm>
 #include <map>
@@ -127,6 +128,46 @@ inline void expand_global_node(Design& design, const std::vector<std::string>& i
         design.pins.end());
 }
 
+// MACHFITR z5029: MACH1 and MACH355 have no input registers. An input
+// pairing declared on a pin is discarded there and the node is fitted as
+// ordinary logic. Returns the text of one warning per such pairing.
+inline std::vector<std::string> discarded_input_pairs(const Design& design)
+{
+    std::vector<std::string> result;
+    if (design.device.compare(0, 5, "MACH1") != 0 && design.device != "MACH355")
+        return result;
+    for (const auto& pad : design.pins) {
+        if (pad.node || pad.pair.empty())
+            continue;
+        const auto node = std::find_if(design.pins.begin(), design.pins.end(),
+                                       [&](const Pin& other) { return other.node && other.name == pad.pair; });
+        if (node != design.pins.end())
+            result.push_back("z5029: Invalid pairing of signals " + pad.name + " and " + pad.pair +
+                             " - discard pairing.");
+    }
+    return result;
+}
+
+// MACHFITR z5073: a declared pin that no remaining equation drives or reads
+// is dropped, which frees its package pin. Returns such pins in declaration
+// order; labels of outputs name the driven signals.
+inline std::vector<std::string> unreferenced_pins(const Design& design, const std::vector<std::string>& inputs,
+                                                  const std::vector<std::string>& output_labels,
+                                                  const std::set<std::string>& kept = {})
+{
+    std::set<std::string> used(inputs.begin(), inputs.end());
+    for (auto label : output_labels) {
+        while (!label.empty() && (label.back() == '-' || label.back() == '%'))
+            label.pop_back();
+        used.insert(label.substr(0, label.find('.')));
+    }
+    std::vector<std::string> result;
+    for (const auto& pin : design.pins)
+        if (!pin.node && !used.count(pin.name) && !kept.count(pin.name))
+            result.push_back(pin.name);
+    return result;
+}
+
 // MACHFITR z5072: a node that some equation reads must have an equation of
 // its own. A buried node has no pad that could supply a value.
 inline void validate_node_equations(const Design& design, const std::vector<std::string>& inputs,
@@ -148,6 +189,60 @@ inline void validate_node_equations(const Design& design, const std::vector<std:
         for (const auto& pin : design.pins)
             if (pin.node && !read.count(pin.name) && !driven.count(pin.name))
                 unreferenced->push_back(pin.name);
+}
+
+// Block that a design's fixed location puts a signal in, or -1: the block of
+// a fixed node's macrocell, or of the I/O pin a pad is fixed on.
+inline int fixed_block_of(const Design& design, const MachDeviceLayout& layout, const std::string& name)
+{
+    const auto pin =
+        std::find_if(design.pins.begin(), design.pins.end(), [&](const Pin& item) { return item.name == name; });
+    if (pin == design.pins.end() || !pin->number)
+        return -1;
+    if (pin->node)
+        return pin->number >= 2 && pin->number - 2 < layout.blocks * layout.cells
+                   ? int((pin->number - 2) / layout.cells)
+                   : -1;
+    const auto io = std::find(layout.io_pins.begin(), layout.io_pins.end(), pin->number);
+    return io == layout.io_pins.end()
+               ? -1
+               : int(std::size_t(io - layout.io_pins.begin()) / (layout.io_pins.size() / layout.blocks));
+}
+
+// MACHFITR DRC z5510: signals fixed in one block must together read no more
+// signals than the block routes. This is a warning; the fit goes on and
+// fails later if the block cannot be relieved. Clock equations are left out
+// as in z5524. `block_of` maps a signal name to its fixed block or -1.
+template <class BlockOf>
+std::vector<std::string> preplaced_fanin_warnings(const std::vector<std::string>& inputs,
+                                                  const std::vector<std::string>& outputs,
+                                                  const std::vector<std::vector<std::string>>& terms,
+                                                  std::size_t capacity, const BlockOf& block_of)
+{
+    std::map<int, std::set<std::size_t>> fanin;
+    for (std::size_t column = 0; column < outputs.size(); ++column) {
+        auto label = outputs[column];
+        while (!label.empty() && (label.back() == '-' || label.back() == '%'))
+            label.pop_back();
+        const auto dot = label.find('.');
+        if (dot != std::string::npos && label.substr(dot) == ".C")
+            continue;
+        const int block = block_of(label.substr(0, dot));
+        if (block < 0)
+            continue;
+        for (const auto& term : terms[column])
+            for (std::size_t input = 0; input < term.size() && input < inputs.size(); ++input)
+                if (term[input] != '-')
+                    fanin[block].insert(input);
+    }
+    std::vector<std::string> result;
+    for (const auto& block : fanin)
+        if (block.second.size() > capacity)
+            result.push_back(std::string("z5510: Block ") + char('A' + block.first) + " has a logic fanin of " +
+                             std::to_string(block.second.size()) +
+                             " due to preplaced or block-restricted signals: routing capacity is " +
+                             std::to_string(capacity) + " signals.");
+    return result;
 }
 
 // MACHFITR DRC z5524: all equations of one signal are placed in one block,

@@ -182,6 +182,21 @@ CASES = [
                          'NODE 1 GLOBAL\nEQUATIONS\nGLOBAL.RSTF=R\nQA=A\nQA.CLKF=CLK\nQB=QA\nQB.CLKF=CLK\n'
                          'QB.RSTF=P\n'},
          args=['--emit-jedec', 'T.PDS'], ok=True, warnings=['z5037: Invalid global reset equation.']),
+    dict(name='fitter_warning_unused_pin',
+         files={'T.PDS': 'CHIP T MACH211\nPIN ? A\nPIN ? X\nPIN 10 Z\nPIN ? Q\nEQUATIONS\nQ=A\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=True,
+         warnings=['z5073: Input Pins not referenced - discarded: X',
+                   'z5073: Input Pins not referenced - discarded: Z']),
+    dict(name='fitter_warning_pairing_discarded',
+         files={'T.PDS': 'CHIP T MACH111\nPIN ? A PAIR N\nPIN ? B\nPIN ? Y\nNODE ? N REG\nEQUATIONS\nY=N+B*A\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=True,
+         warnings=['z5029: Invalid pairing of signals A and N - discard pairing.']),
+    dict(name='fitter_warning_preplaced_fanin',
+         files={'T.PDS': 'CHIP T MACH111\n' + ''.join('PIN ? I%d\n' % i for i in range(1, 28)) +
+                         'PIN 2 O\nEQUATIONS\nO=' + '*'.join('I%d' % i for i in range(1, 28)) + '\n'},
+         args=['--emit-jedec', 'T.PDS'], ok=False, message='z5524: The logic and functional equations for O',
+         warnings=['z5510: Block A has a logic fanin of 27 due to preplaced or block-restricted signals: '
+                   'routing capacity is 26 signals.']),
 ]
 
 # Messages of exceptions thrown by the standard library, not by the compiler.
@@ -202,11 +217,11 @@ def run(case, flags):
     text = diagnostic.split(': ', 1)[-1]
     assert not any(text.strip() == m or text.startswith(m + ':') for m in LIBRARY_MESSAGES), \
         (label, 'bare library exception', diagnostic)
+    for warning in case.get('warnings', []):
+        assert warning in stderr, (label, 'missing warning', warning, stderr[-2000:])
     if case['ok']:
         assert result.returncode == 0 and result.stdout, (label, 'expected success', stderr[-2000:])
         assert not missing, (label, 'missing output files', missing)
-        for warning in case.get('warnings', []):
-            assert warning in stderr, (label, 'missing warning', warning, stderr[-2000:])
     else:
         assert result.returncode == 1 and not result.stdout, (label, 'expected rejection', stderr[-2000:])
         assert case['message'] in stderr, (label, 'unexpected diagnostic', stderr[-2000:])

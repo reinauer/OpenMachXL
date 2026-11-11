@@ -394,8 +394,14 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
     validate_node_output_enables(design, pla.outputs);
     std::vector<std::string> unreferenced_nodes;
     validate_node_equations(design, pla.inputs, pla.outputs, &unreferenced_nodes);
+    for (const auto& warning : discarded_input_pairs(design))
+        fitting.warn(warning);
     for (const auto& name : unreferenced_nodes)
         fitting.warn("z5071: Nodes not referenced - discarded: " + name);
+    for (const auto& warning : preplaced_fanin_warnings(
+             pla.inputs, pla.outputs, pla.terms, mach_device_layout("MACH111").muxes,
+             [&](const std::string& name) { return fixed_block_of(design, mach_device_layout("MACH111"), name); }))
+        fitting.warn(warning);
     validate_equation_fanin(pla.inputs, pla.outputs, pla.terms, mach_device_layout("MACH111").muxes);
     validate_storage_control_products(pla.outputs, pla.terms);
     check_fitting_budget();
@@ -432,6 +438,8 @@ FuseImage fit_mach111_prepared(const Design& original_design, const ParsedPla& p
     const auto reachable = retain_reachable_equations(design, pla.inputs, pla.outputs, pla.terms, &discarded_nodes);
     for (const auto& name : discarded_nodes)
         fitting.warn("z5071: Nodes not referenced - discarded: " + name);
+    for (const auto& name : unreferenced_pins(design, pla.inputs, pla.outputs))
+        fitting.warn("z5073: Input Pins not referenced - discarded: " + name);
     std::map<std::string, const Pin*> pins;
     for (const auto& pin : design.pins) {
         if (pin.latched)
