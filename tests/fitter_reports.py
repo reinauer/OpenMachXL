@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Byte-level RPT comparison using original reports and a fixed timestamp."""
 from pathlib import Path
-import difflib,hashlib,json,re,subprocess,sys
+import difflib,hashlib,json,re,subprocess,sys,tempfile
 from report_banner import without_banner
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'tools'))
@@ -30,5 +30,14 @@ def main():
     assert not fitted.returncode,(name,compatibility,fitted.stderr)
     comparison=compare(parse(fitted.stdout),parse((root/(name+'.JED')).read_bytes()))
     assert comparison['equal'],(name,compatibility,comparison)
+  if 'clock_column' in case:
+   # The original labels clock 0 with the macrocell location. Normal mode
+   # prints the clock; compatibility mode reproduces the original.
+   for mode,flags in (('corrected',[]),('original',['--compatibility'])):
+    with tempfile.TemporaryDirectory(prefix='machxl-clock-column-') as reports:
+     fitted=subprocess.run([sys.argv[2],'--emit-jedec',str(root/(name+'.PDS')),'--settings',str(root/(name+'.MXL')),'--fitter-reports',reports,*flags],capture_output=True,timeout=30)
+     assert not fitted.returncode,(name,mode,fitted.stderr)
+     row=re.search(rb'(?m)^[A-H]\d+ +\d+ +Q +D +\d+ +\d+ +H +(\S+)',(Path(reports)/(name+'.RPT')).read_bytes())
+     assert row and row[1].decode()==case['clock_column'][mode],(name,mode,row and row[1])
  print(f"{len(manifest['cases'])} original RPT reports matched byte-for-byte")
 if __name__=='__main__':main()

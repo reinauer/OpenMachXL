@@ -619,8 +619,16 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
                     "L                            Y   S   V  P   C  S  R   P\nO                            P   E   A  "
                     "O   L  E  E   I\nC     Node          Signal   E   D   L  L   K  T  S   N   Fanout\n";
             out += line;
+            // DOS defect: on MACH1/2 the original prints the macrocell's own
+            // location in the clock column when the clock is Ck0. Clocks 1-3
+            // are labelled correctly. Reproduced only in compatibility mode.
+            const auto first_clock_defect = [&](const FitterReportNode* node) {
+                return !modern && device != "MACH215" && data.optimized_design &&
+                       data.optimized_design->dos_compatibility && node->clock == "Ck0";
+            };
             const auto node_row = [&](const FitterReportNode* node, unsigned c, bool input_register) {
-                std::string location = std::string(1, char('A' + b)) + std::to_string(c);
+                std::string location     = std::string(1, char('A' + b)) + std::to_string(c);
+                const auto cell_location = location;
                 if (input_register)
                     location = modern ? std::string(1, char('A' + b)) + "ir-" + std::to_string(c) : location + "-ir";
                 const bool unknown = node && node->cell < 0;
@@ -645,8 +653,9 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
                     : device == "MACH215" && node && (data.successful || node->logic == 'C') ? "  %c %4s"
                                                                                              : "  %c %3s",
                     node ? (node->negative ? 'L' : 'H') : '.',
-                    node ? (modern && input_register
-                                ? (data.successful ? location : ".")
+                    node ? (modern && input_register ? (data.successful ? location : ".")
+                            : first_clock_defect(node)
+                                ? cell_location
                                 : format_text(node->clock, device == "MACH215" && node->logic != 'C' ? ".." : "."))
                                .c_str()
                     : modern || device != "MACH215" ? "."
