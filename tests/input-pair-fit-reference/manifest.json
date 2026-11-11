@@ -1,5 +1,5 @@
 {
- "description": "Original MACHXL 2.1 fits of pair declarations: generated input-pair transfer equations (B1062) and the pair keywords on pins and nodes",
+ "description": "Original MACHXL 2.1 fits of input pairs: generated transfer equations (B1062), the pair keywords on pins and nodes, and block placement of MACH2 input registers with floating pads",
  "cases": [
   {
    "name": "NE2PR",
@@ -76,6 +76,230 @@
     "KWO2.PDS": "f158f5fc0cb62e77a9950bd4c4d8a050dcabee6cc95c33233fb0c04e04bbd63d",
     "KWO2.MXL": "8a35eb1d95a1f2b52952bb8de462fa929ae9e04108799b0d90897ef8bb7f55e2",
     "KWO2.JED": "66b754270193216a2bf4d6f09f7902414137583f2aa6171bc242d054ea5b377d"
+   }
+  },
+  {
+   "name": "IPAUT",
+   "files": {
+    "IPAUT.PDS": "a146987c77348bb4ec7970b951f87f04b127f2e1405e54ada9a5ac99cd30376b",
+    "IPAUT.MXL": "ac10ada99801a58d708bb8b07be20dd21d33ebbc19ef3cb2870a50c78588c2df",
+    "IPAUT.JED": "926768032f1953479bc48bb8d9f0f38955e590e8dc2660e8933c321222525d33"
+   }
+  },
+  {
+   "name": "IPEXP",
+   "files": {
+    "IPEXP.PDS": "c985b5b37b84c1a6da56ae8f5c80554091c88cd3989f0f43faf06334f797a9cd",
+    "IPEXP.MXL": "12600a4fe7b6b60ba8cb79245aa3fe00f7be677692822377f43c0148a79896a0",
+    "IPEXP.JED": "e45a680370a14648da98d11dc4d6861792ae380ac90edd0bb259e6ba77253e12"
+   }
+  },
+  {
+   "name": "IPEXR",
+   "files": {
+    "IPEXR.PDS": "79fe2272aa1b9bc3f051f92af9ec66008ecf02ccc49048da060451738e03902d",
+    "IPEXR.MXL": "48845b1d498b879c4e8b5a3f9b191c022ba2d92204d37a43884a5ccec53d0938",
+    "IPEXR.JED": "60bda559f5e45dc0938bdaae6cc493f122f6b5537f8994b524fe4399bb28b1a7"
+   }
+  },
+  {
+   "name": "IPDEC",
+   "files": {
+    "IPDEC.PDS": "d009e7cc95c7481c86041c8d4233f0df9bc288805e82531e2aee75f87b8be379",
+    "IPDEC.MXL": "0b2c5b2be18877621c7cd3772f3d7325ae969fed1cffd50740d063bda9f22f28",
+    "IPDEC.JED": "5861a7b28a2f3e5d98c872d0b17fcee05edba950fa1d901c35934d7c68377597"
+   }
+  },
+  {
+   "name": "IPNOA",
+   "files": {
+    "IPNOA.PDS": "bd31fa627eadb626acac5ee17c67219baf072afea1235161e772fe910815aba1",
+    "IPNOA.MXL": "6ab59fb569c79bbfa8ad097c5473f697c94d63a4f1c5aa28ecf2bd21ef014cff",
+    "IPNOA.JED": "79c15232ed390be2fafdc7cd9129bb8527c8b0468ffe18f63bd818024acde62e"
+   }
+  },
+  {
+   "name": "IPAU2",
+   "files": {
+    "IPAU2.PDS": "1476c14d04585160192536f9efd7a95a21e5e850dea310e54d014cb5e3730e84",
+    "IPAU2.MXL": "8865dc63d38480da2a1e4dc6b00bbcd535e8e0dac2b7a2330ce9f9ea5c0ef5ab",
+    "IPAU2.JED": "71f965838dff66319d5603fa0fbf174b262eec90885f2cf54ffe57f084e6ca8f"
+   }
+  },
+  {
+   "name": "IV1",
+   "files": {
+    "IV1.PDS": "620b4d1949870ab196be25163aa93e757aa81af0ab17d7d2cb2f1a9bb626372c",
+    "IV1.MXL": "c1ec8d520f8f4eeae507d43225942fe3b093c13e8dcce3eeee9040a4442b4d36",
+    "IV1.JED": "93999930f5e5983db7491e1b88981abc46e6fff46bbebde1c2526ca78c4f7a09"
+   }
+  },
+  {
+   "name": "IV2",
+   "files": {
+    "IV2.PDS": "1a6446ad16f225ee58cab20f8e39b423affec845bc1d1c7ff1b0d323643d87d3",
+    "IV2.MXL": "7d0805d2ed2f137a0e222e326ac853792c854c1dfac6afc8e402eb7fae3ec0a5",
+    "IV2.JED": "b61acf5c74cb0f12759b9b1185d59af901c9953f8627a00c425fa9be2a6896c3"
+   }
+  },
+  {
+   "name": "IV3",
+   "files": {
+    "IV3.PDS": "fd82552c016aff94ade99258b3ef350008a5305166ba6be45cc4dbd30a10e444",
+    "IV3.MXL": "9774a9b5574c4e65a3f668523eeced92af1b59b089515e7cb98ee50ab720e610",
+    "IV3.JED": "296789c5e990e0679c06f95fb32ae39e04f90ee6b0d55594b08710b8189a7f6c"
+   }
+  },
+  {
+   "name": "IV4",
+   "files": {
+    "IV4.PDS": "485d9cb7ddab2d14462e657a4175b834fcb44739ab295398431a62dbdf74c89e",
+    "IV4.MXL": "db5ca65329402c3d2b790ccf38a8863a77ac4287805a5a805fd9d67304b9e25a",
+    "IV4.JED": "1c1f749970dfdae41d655eb74850c41c5ca74e2e1e79df3831f33c7399b4111c"
+   }
+  },
+  {
+   "name": "IV5",
+   "files": {
+    "IV5.PDS": "28094d7e394f9f11e36a7ce709b1e26674a0e32361cfdf038378a8ecd0d344e1",
+    "IV5.MXL": "7782ba71342f622c175a9f680d3952a0f980f61c7226f49ae5fbe5405c976ee1",
+    "IV5.JED": "e9125609b0759b4ef88e2e4dfbd229b9690622d52a784d8235a59ecb5cfa33b6"
+   }
+  },
+  {
+   "name": "IV6",
+   "files": {
+    "IV6.PDS": "30b81e793cacf03af4dc9d98a5f024a9eead51ffb317257124f1e4674b3700a2",
+    "IV6.MXL": "5e6cccc4b6ed5d759b93d637b3ab6072c649c49f83d08766d42b7868a11dec13",
+    "IV6.JED": "6cbea9185e63f2b59b64304ad1eaa3e4973ca69fea2bdfd2d3f3ccd645b14016"
+   }
+  },
+  {
+   "name": "IV7",
+   "files": {
+    "IV7.PDS": "46b43b047f239e948eab6042a60e96392a1dc4d89edacf0e3df7f2dfc9a011a6",
+    "IV7.MXL": "16dfe63cdcc75db5419cb0787effd6e2227e3ae37789470e4a452e3f0f48e09f",
+    "IV7.JED": "c1f69d05190386fac7ed02a7c35577b4976b7531ebbd38592ee6ca727f63b1cc"
+   }
+  },
+  {
+   "name": "IV8",
+   "files": {
+    "IV8.PDS": "c12f33da6550ade5dac20c8e140917bc134c6fa3ba9d6a0e55fcd67a29b50b44",
+    "IV8.MXL": "18e4d6b55908ae01604c8c069872700d9cbf1829d914515563023ae9985b0390",
+    "IV8.JED": "e986a46345637b2abb56e4ce49cfe4550223edf7f1bf2631b44072c2bf9136f8"
+   }
+  },
+  {
+   "name": "IV9",
+   "files": {
+    "IV9.PDS": "93cf90390bd424565eb403feace965897526b0d560f554bda78ed82ea2a7e2c5",
+    "IV9.MXL": "7d2a31afaecc6251f8ee8234cdb07a4ce4c42bce03f6c01731b165f2b6533fdc",
+    "IV9.JED": "6924e9ce6ac94ef4ccd1df5c72b40b338b0c44dc14e0b7c157cd8e0384ee0acc"
+   }
+  },
+  {
+   "name": "IVA",
+   "files": {
+    "IVA.PDS": "5add2c0af068d5708e65723c72706528e6024e3f2edcd5c732d01387d13449d2",
+    "IVA.MXL": "6449bdd412dd4fbef195dac97bee49635613b0ac6db8eeec4c09e551d9ce7f71",
+    "IVA.JED": "6c9539f34df3fcb39a1c25a649c9685c40295d18ba4d345a1a1adf042896eca0"
+   }
+  },
+  {
+   "name": "IVB",
+   "files": {
+    "IVB.PDS": "c2570c54b5d29d45e042bbfda5aba7a7e66c768c15595d46c051bc8b0641e8a5",
+    "IVB.MXL": "f0aa60855ea508164e050acd7f6d1cf6d53b0d14f70fca798a8a45f80e5c03d3",
+    "IVB.JED": "197110905b536a42ca90e96b07414cd14fdb35ed0c79fe03d191a28127f0f7b4"
+   }
+  },
+  {
+   "name": "IVC",
+   "files": {
+    "IVC.PDS": "49a295e15cc17501fe0a01431668888b99fcc426cdf2c2076a33f6844bce37c6",
+    "IVC.MXL": "5cd9c23854ef73518a74d8a9b8f7b5c4cd7e351be6cf66d55ce40cb47a92fafe",
+    "IVC.JED": "ac03bf93738464865bc0daca01662139131aa42f219bc3a43ede4b91451cc2d8"
+   }
+  },
+  {
+   "name": "NE2PF",
+   "files": {
+    "NE2PF.PDS": "6bd5a234be56ab10204c2fd95b99e349fb6b7092b2a16dc3a1bd1391076959bb",
+    "NE2PF.MXL": "e56f3502777da7ec0d9f6e59206cfad9298cf2b57ea5bacbb19a5747b186e7b0",
+    "NE2PF.JED": "1e3ddc486a3b80433bc965fb9203a021cf52477326510ad1af1573c8191cf48e"
+   }
+  },
+  {
+   "name": "NPCK2",
+   "files": {
+    "NPCK2.PDS": "1e6794845127ecf0cf2729626b908ae1a3d12bafeee2067a2b1c608128fd6ca9",
+    "NPCK2.MXL": "8e09fadc59ed591650b516b405d3ea84e41f81c9b452fa5ed1851a4c2dfb70b1",
+    "NPCK2.JED": "e5a5045a57731e04133e674661b6997006b5e08ab6cb2703832f55ab59236c54"
+   }
+  },
+  {
+   "name": "NPLT2",
+   "files": {
+    "NPLT2.PDS": "07214c2c770bb42a757c6db9c2cece6e6658e0385e858b64d084c8d9bca78558",
+    "NPLT2.MXL": "05f73fcb94e6c3944894609999766bc802fd184dcfe6d64006da79c8d6d29910",
+    "NPLT2.JED": "1de393c019927d8034a46cd83a137d27b7e31ac0747486faa5a7d74da95c74d2"
+   }
+  },
+  {
+   "name": "NPIP2",
+   "files": {
+    "NPIP2.PDS": "5f7e1a424e35f8ad616bc1ece2aeb9be382bb3bb5d2863beb5aa97fc9d16baf2",
+    "NPIP2.MXL": "1bf2a5cd0e2e572c3a91bb19f044188ca2c0627753f08048d121960f277cc8ca",
+    "NPIP2.JED": "e405bff69747711e219e0b0d62afb5ce9aff7619e25e95fe15e3c4dd0c4d09ba"
+   }
+  },
+  {
+   "name": "NPIN2",
+   "files": {
+    "NPIN2.PDS": "8c8466db0f0509f9cc97003c1b628333878b730e65a57b81afc117ce779fda3d",
+    "NPIN2.MXL": "92f59040267cf599c1fd81c1d994e247b7d76d028c19067401ddee120541d7e4",
+    "NPIN2.JED": "df72cfafcde4432f5f10fc2641782865f20d0a8b7455ab832d5713503684a48a"
+   }
+  },
+  {
+   "name": "NPII2",
+   "files": {
+    "NPII2.PDS": "87b3e345ae2a8d53013f70807bed34b9b005a1a66ad659ec8005d34e4f362486",
+    "NPII2.MXL": "b6481bca7ac237575b05c0a926ce1110be129dcb1b6d169f906a86e75deca2c1",
+    "NPII2.JED": "fb38f6674f823e40731c1a8342e9c90068e63007f26b0bc4b6910d88b2409dce"
+   }
+  },
+  {
+   "name": "KWI2",
+   "files": {
+    "KWI2.PDS": "d27301a947a6f98e13ae6070e89a17f01e4bcc8f7de6803b551e1f5e335b21e2",
+    "KWI2.MXL": "1536aaa514f8daf71faae21bbb179a7855989ca1409dd4e1385e83fa92e6c166",
+    "KWI2.JED": "d8217595a5654618e03104ccdda6becdb37b30e166382f5b4bb26df4c97e62a6"
+   }
+  },
+  {
+   "name": "PB61R",
+   "files": {
+    "PB61R.PDS": "e02086e13bfad7a12b8f74e896fcfd954b04f3089f9ad3cf40d703a5f01eb40f",
+    "PB61R.MXL": "1b8cbb5935e9baaac3553351453d0009216bba8d32117225afedd61a1cf78349",
+    "PB61R.JED": "e235a5c0a0b8a2f002f237fd210c16a1cd05da7e06e398420cc2e8440204d261"
+   }
+  },
+  {
+   "name": "PB61T",
+   "files": {
+    "PB61T.PDS": "8b394e8b2285573dd29584bf4f4e14cbdf1a912365b9d04b9578cc84b8edc9a1",
+    "PB61T.MXL": "5e0a903b45fbab3bb69f810af84d684b377c35b5e06280e1874fba3cf25757b8",
+    "PB61T.JED": "e0c053edd1d1b0b7838c82079f430922da1b5ade9cbd23c62709b12ca02ce354"
+   }
+  },
+  {
+   "name": "PBINV",
+   "files": {
+    "PBINV.PDS": "c4917abf117fa5804939909b0ec96e36c9462a617d81fb90a1817e3a4034d1b9",
+    "PBINV.MXL": "fae17fea9d7adc8f83daecd3132ad06bafafeea7ae3fbb97f6291f3ca923861c",
+    "PBINV.JED": "84beafbffb7b86cd00fb35543705a05ca57f4c9e14056089c6158fe426e6276f"
    }
   }
  ]

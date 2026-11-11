@@ -510,9 +510,11 @@ int select(const std::vector<Block>& blocks, const Clusters& c, std::size_t inco
 bool swap_resources(const std::vector<Block>& blocks, const Clusters& c, unsigned x, std::size_t a, unsigned y,
                     std::size_t b, const MachDeviceLayout& d, const std::vector<unsigned>& capacity)
 {
-    // When the incoming cluster is an input-register pair, both swapped
-    // clusters must carry an input-clock record.
-    if (c[a].macrocell != c[b].macrocell)
+    // On MACH3/4 an input-register pair can only be exchanged with another
+    // one: both swapped clusters must carry an input-clock record. MACH2
+    // exchanges an input register with a macrocell cluster as well, which is
+    // why its input registers end up in the earlier blocks.
+    if (d.one_hot && c[a].macrocell != c[b].macrocell)
         return false;
     if (d.one_hot) {
         // Check control rows before removing either node. If an incoming global
