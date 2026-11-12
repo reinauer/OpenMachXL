@@ -499,8 +499,13 @@ unsigned violations(const Block& block, const Clusters& c, std::size_t incoming,
     result += !d.one_hot && d.device != "MACH215" &&
               (!shared_controls_compatible(block, c, incoming) || set_reset_overlap(block, c, incoming));
     result += !oe_compatible(block, c, incoming, d);
-    if (d.one_hot)
+    if (d.one_hot) {
         result += modern_control_violations(block, c, incoming);
+        // A set or reset that the two shared rows cannot take does not keep
+        // the cluster out, since it can use a term of its own, but it counts
+        // against the block when the rescue orders the blocks.
+        result += !block.shared_controls(c[incoming]);
+    }
     auto inputs = collect_block_fanins(block, c);
     inputs.insert(c[incoming].fanins.begin(), c[incoming].fanins.end());
     if (d.one_hot && block.product_clock(c[incoming]) && c[incoming].clock_fanin)
