@@ -361,7 +361,7 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
     resource("Central Switch Matrix Outputs", blocks * layout.muxes, mux_used);
     resource("Product Term Clusters", blocks * logic_cells, cluster_used);
     resource("Logical Product Terms", blocks * logic_cells * pts_per_cluster, pt_used);
-    resource("Logic Macrocells", blocks * logic_cells, cell_used + (modern ? unusable.value_or(0) : 0));
+    resource("Logic Macrocells", blocks * logic_cells, cell_used + unusable.value_or(0));
     if (modern) {
         out += format_fields("  > 1 PT Macrocells              ..     %4s   %4s\n",
                              data.successful || data.retained_image

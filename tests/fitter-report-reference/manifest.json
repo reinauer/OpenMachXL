@@ -1806,6 +1806,17 @@
         "JED": "0969c5c9253bc2777f39ac12c1033a981a9f7b8b80bf62bdd7154c385a995599"
       },
       "display_filename": "Sf231.pds"
+    },
+    {
+      "name": "SF215",
+      "device": 215,
+      "sha256": {
+        "PDS": "e9124d993d462ba4053048992aefead933fc52275062f56cb2bfd6b32ba087cf",
+        "MXL": "d232b7e26dfd609565eb6ef1290abfee53152cf5374e91ac390159194ea6bf29",
+        "RPT": "1065d4c5b97557ed8c978f69d7952a7f9a54db0071e97a85a48467315a4badfd",
+        "JED": "27c8f150b3ca182516880954732d629001d7e34603de061af6876780a8d5cce2"
+      },
+      "display_filename": "Sf215.pds"
     }
   ],
   "capture_script": "research/reports/capture_fitter_reports.py",
