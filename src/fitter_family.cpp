@@ -1594,6 +1594,11 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
         if (owner >= 0 && !allocated[group] && !mach215 && (!mach2 || !(local & 1)))
             hw.macrocell_words[local] &=
                 std::uint16_t(~(1u << ((d.legacy110 || (mach2 && d.device != "MACH210")) ? 2 : 5)));
+        // A MACH2 macrocell that takes its logic from a neighbouring group
+        // and leaves its own group unused has the bit set, also when it is a
+        // buried node, for which the mode word above cleared it.
+        if (owner < 0 && allocated[group] && mach2 && !mach215 && !(local & 1))
+            hw.macrocell_words[local] |= std::uint16_t(1u << (d.device != "MACH210" ? 2 : 5));
     }
     for (unsigned out = 0; out < p.outputs.size(); ++out) {
         if (input_storage[out])
