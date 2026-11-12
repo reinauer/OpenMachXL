@@ -1905,6 +1905,17 @@
         "JED": "7c7d7fe55bd0038944df4c2d66d21901cc02d157b30cf40fcdfe5fade35f8f8a"
       },
       "display_filename": "M032.pds"
+    },
+    {
+      "name": "MGBN",
+      "device": 435,
+      "sha256": {
+        "PDS": "d970bacbf5ce182099742c4d204e88c58432ce71276ad548f22a8607cbfc1219",
+        "MXL": "dc3c9911069a4086cb1c33e7c375be9320f8226e637020e0925fa75f1e576a8c",
+        "RPT": "42aea0fc818c2639a981d51b2c31319dccc261e1da7a13b22dda5f851d17c715",
+        "JED": "f6796ea698cfeaee79623bdc8138ef1d7ce9f4d9f11c622fd507dee97436ce46"
+      },
+      "display_filename": "Mgbn.pds"
     }
   ],
   "capture_script": "research/reports/capture_fitter_reports.py",

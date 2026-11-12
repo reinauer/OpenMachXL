@@ -561,7 +561,9 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
             out += format_fields(
                 blocks > 8 ? "%3u%-5s %14s  %10s  %14s  %14s\n" : "%3u%-5s %14s  %10s    %14s    %14s\n", number,
                 label.c_str(), pin ? pin->name.c_str() : "..............",
-                pin ? (pin->clock_blocks.empty() && !pin->retained_clock && !in_product_clock(*pin) ? "input"
+                pin ? (pin->clock_blocks.empty() && !pin->retained_clock &&
+                               !(clock != layout.clock_pins.end() && in_product_clock(*pin))
+                           ? "input"
                        : separate_clocks                                 ? "clock"
                                                                          : "clk/inp")
                     : "..",
