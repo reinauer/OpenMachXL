@@ -1850,6 +1850,61 @@
         "JED": "572469d9dacebe2628bd0e40e0c132d445498db12c22117cd6ee09dfd66d6e95"
       },
       "display_filename": "U8.pds"
+    },
+    {
+      "name": "V5",
+      "device": 435,
+      "sha256": {
+        "PDS": "d2de188aeeb26bb7cf3f69513c97bedff9019f76799b12dd62e1f09c1a781c78",
+        "MXL": "7edb7d2b3f38f7216d574b7bca312ac3a05d8f367da7a678e20af49dcc1d6551",
+        "RPT": "a4a14d117b667bbd388dab36e6b703742864247995dc6aa284c5960aef686238",
+        "JED": "41ebdfff60f45976aa89f79a07716684fab2a4ffa96decdf97340d304b268d76"
+      },
+      "display_filename": "V5.pds"
+    },
+    {
+      "name": "V8",
+      "device": 435,
+      "sha256": {
+        "PDS": "fee977dda441e287d3595922648b255a4210bf9af2fb420c1b4437479d7d89bd",
+        "MXL": "13a74a51b9f0da8fc62061bc07aee36e7b228b1248d578422c4f054fb16d3bc5",
+        "RPT": "6abbd0524b901bfc833c6be2bb4de1819595b4d08c5e1b42ad25261135f9f8b8",
+        "JED": "4b898763fde03484017c20f183b8a71fa88b11bd067a474ef0682d8053f7aed2"
+      },
+      "display_filename": "V8.pds"
+    },
+    {
+      "name": "QC4",
+      "device": 435,
+      "sha256": {
+        "PDS": "3241c77a5ca98bce1fad22bbaaef8e131bd6658692137f730582ecf58c3a9bb3",
+        "MXL": "f95dcb56d210024bc9a1715d941e47c0ecb9e6f8ed4256a0c82376baf68d8c01",
+        "RPT": "1e6390f9e0821c5765e0a8cfc19af869351677018d2d695f38e21b9cf40fe25a",
+        "JED": "4de4a898033581eed5235e275f27822feee5695d739df21c00936cefc0850ad9"
+      },
+      "display_filename": "Qc4.pds"
+    },
+    {
+      "name": "L053",
+      "device": 435,
+      "sha256": {
+        "PDS": "ab334befe3d07a21a01a71e553ee917ef8341e8cf3d35ae155016b88f495ad99",
+        "MXL": "ac4d4121fc93db82556af062c9f050ad2236167bd02679ee2db71a38845870d4",
+        "RPT": "d44d626127f2f36c266c79782b4223ee20ef4e4b9a666a631fb7e2dfdc56582e",
+        "JED": "3b4671cf4c2ccf44e45b6f6cba4d47eedb8b3ea86454f6e1c4269dfde0789883"
+      },
+      "display_filename": "L053.pds"
+    },
+    {
+      "name": "M032",
+      "device": 435,
+      "sha256": {
+        "PDS": "c9bfa0d6aa14fcfa24aa78d6051a797405bf554e272a64725da2def41b49e00f",
+        "MXL": "44c210d13f8c93bf0d2d4b6052242bf4d99ab444d9e2d78f2cbfdd723f7d3fb8",
+        "RPT": "c3da8759fd124e24299f2126a235df187c01e337f4ec221912bf8bed92ce85bd",
+        "JED": "7c7d7fe55bd0038944df4c2d66d21901cc02d157b30cf40fcdfe5fade35f8f8a"
+      },
+      "display_filename": "M032.pds"
     }
   ],
   "capture_script": "research/reports/capture_fitter_reports.py",

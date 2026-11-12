@@ -1,0 +1,272 @@
+MACHXL 2.1 R11 MACHFITR (3-31-95)
+ (C) - COPYRIGHT ADVANCED MICRO DEVICES INC., 1993, 1994, 1995
+
+****************************************************************
+* Design Name = V5.pds, Device = MACH435, Nov 11 18:42:53 2026 *
+****************************************************************
+
+***********************
+* MACH FITTER OPTIONS *
+***********************
+SIGNAL PLACEMENT:
+  Handling of Preplacements                      No Change
+  Use placement data from                        Design file
+
+FITTING OPTIONS:
+  Global clocks routable as PT clocks?           N
+  22V10/MACH1XX/2XX S/R Compatibility?           Y
+  SET/RESET treated as DONT_CARE?                Y
+  Reduce Unforced Global Clocks?                 N 
+  Iterate between partitioning and place/route?  Y
+  Balanced partitioning?                         Y
+  Reduce Routes Per Placement?                   N
+  Maximun Run Time                               run until completion
+
+***************************
+* DEVICE RESOURCE SUMMARY *
+***************************
+                                 Total
+                               Available  Used  Available  Utilization
+Dedicated Pins
+  Input-Only Pins                 2        0      2    -->     0%
+  Clock/Input Pins                4        2      2    -->    50%
+I/O Pins                         64        5     59    -->     7%
+Input Registers                  64        0     64    -->     0%
+Central Switch Matrix Outputs   264        4    260    -->     1%
+Product Term Clusters           128        1    127    -->     0%
+Logical Product Terms           640        2    638    -->     0%
+Logic Macrocells                128        2    126    -->     1%
+  > 1 PT Macrocells              ..        0    126
+  1 PT Macrocells                ..        2      0
+  Unusable Macrocells            ..        0     ..
+
+******************************
+* BLOCK PARTITIONING SUMMARY *
+******************************
+                                                      Macrocells  # of PT  
+                  Logic   I/O    Inp    Macrocells    available   clusters 
+          Fanin    PTs    Pins   Reg   Used Unusable  1PT   >1PT  available
+|---------------------------------------------------------------------------|
+Maximum     33     80      8      8     ..     ..         16        16
+|---------------------------------------------------------------------------|
+Block A      4      2      2      0      2      0      0     14     16
+Block B      0      0      1      0      0      0      0     16     16
+Block C      0      0      0      0      0      0      0     16     16
+Block D      0      0      0      0      0      0      0     16     16
+Block E      0      0      0      0      0      0      0     16     16
+Block F      0      0      1      0      0      0      0     16     16
+Block G      0      0      1      0      0      0      0     16     16
+Block H      0      0      0      0      0      0      0     16     16
+
+> Four rightmost columns above reflect last status of the placement process.
+
+******************
+* SIGNAL SUMMARY *
+******************
+                                 Pin/Node Logic
+       Signals Block Loc PTs XOR   Type   Type    Fanout
+|---------------------------------------------------------------------------|
+             K   A     5  1   .   output   ...   --------
+            R1   F    54  .   .    input   ...   A-------
+            R2   G    67  .   .    input   ...   A-------
+          SIGA   B    19  .   .    input   ...   A-------
+             W   A     3  1   .   output   ...   --------
+             K   A    A4  1   P  implied   D/S   --------
+             W   A    A0  1   P  implied   D/A   --------
+
+***********************
+* TABULAR INFORMATION *
+***********************
+
+DEDICATED PINS
+                                             Logic             Clock
+Pin              Signal        Type          Fanout            Fanout
+|------------------------------------------------------------------------|
+ 20      ..............          ..          ........          ........
+ 23                CLK1     clk/inp          --------          A-------
+ 41      ..............          ..          ........          ........
+ 62      ..............          ..          ........          ........
+ 65                SIGE       input          A-------          --------
+ 83      ..............          ..          ........          ........
+
+**********************************
+* Signals - Equations Where Used *
+**********************************
+Signal Source :    Fanout List
+|---------------------------------------------------------------------------|
+          SIGA:              W{A}
+              {A}
+            R1:              W{A}
+              {A}
+          SIGE:              W{A}
+              {A}
+            R2:              K{A}
+              {A}
+
+Block A singular list (Input drives only one logic equation)
+          SIGA:              W
+            R1:              W
+          SIGE:              W
+            R2:              K
+
+BLOCK A CLOCK MUX 
+Block Clocks     Signal    Pin   Pol
+|-----------------------------------|
+Ck0                CLK1     23    L
+Ck1                 ...     ..    .
+Ck2                 ...     ..    .
+Ck3                 ...     ..    .
+
+
+BLOCK A LOGIC MACROCELLS & INPUT REGISTERS
+                                  PTS 
+                             T   U   A
+L                            Y   S   V  X  P   C  S  R   P
+O                            P   E   A  O  O   L  E  E   I
+C     Node          Signal   E   D   L  R  L   K  T  S   N   Fanout
+|---------------------------------------------------------------------------|
+A0      2                W  D/A  1  12  P  H   P  G  P   3  --------
+A1      3 ................  ...  .  17  .  .   .  .  .  ..  ........
+A2      4 ................  ...  .  19  .  .   .  .  .  ..  ........
+A3      5 ................  ...  .  19  .  .   .  .  .  ..  ........
+A4      6                K  D/S  1  19  P  H  A4  G B0   5  --------
+A5      7 ................  ...  .  19  .  .   .  .  .  ..  ........
+A6      8 ................  ...  .  20  .  .   .  .  .  ..  ........
+A7      9 ................  ...  .  20  .  .   .  .  .  ..  ........
+A8     10 ................  ...  .  20  .  .   .  .  .  ..  ........
+A9     11 ................  ...  .  20  .  .   .  .  .  ..  ........
+A10    12 ................  ...  .  20  .  .   .  .  .  ..  ........
+A11    13 ................  ...  .  20  .  .   .  .  .  ..  ........
+A12    14 ................  ...  .  20  .  .   .  .  .  ..  ........
+A13    15 ................  ...  .  20  .  .   .  .  .  ..  ........
+A14    16 ................  ...  .  15  .  .   .  .  .  ..  ........
+A15    17 ................  ...  .  10  .  .   .  .  .  ..  ........
+Air-0 130 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-1 131 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-2 132 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-3 133 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-4 134 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-5 135 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-6 136 ................  ...  .   .  .  .   .  .  .  ..  ........
+Air-7 137 ................  ...  .   .  .  .   .  .  .  ..  ........
+
+BLOCK A I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+  3    2   ...                 W    output  --------
+  4  ...   ...  ................        ..  ........
+  5    6   ...                 K    output  --------
+  6  ...   ...  ................        ..  ........
+  7  ...   ...  ................        ..  ........
+  8  ...   ...  ................        ..  ........
+  9  ...   ...  ................        ..  ........
+ 10  ...   ...  ................        ..  ........
+
+
+BLOCK A LOGIC ARRAY FANIN
+CSM             Signal    Source        CSM             Signal    Source
+|----------------------------------|    |----------------------------------|
+mxA0              ...           ...     mxA17             ...           ...
+mxA1              ...           ...     mxA18             ...           ...
+mxA2              ...           ...     mxA19             ...           ...
+mxA3              ...           ...     mxA20             ...           ...
+mxA4             SIGE        pin 65     mxA21             ...           ...
+mxA5               R1        pin 54     mxA22             ...           ...
+mxA6               R2        pin 67     mxA23             ...           ...
+mxA7              ...           ...     mxA24             ...           ...
+mxA8              ...           ...     mxA25             ...           ...
+mxA9              ...           ...     mxA26             ...           ...
+mxA10             ...           ...     mxA27             ...           ...
+mxA11            SIGA        pin 19     mxA28             ...           ...
+mxA12             ...           ...     mxA29             ...           ...
+mxA13             ...           ...     mxA30             ...           ...
+mxA14             ...           ...     mxA31             ...           ...
+mxA15             ...           ...     mxA32             ...           ...
+mxA16             ...           ...
+
+BLOCK B I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 12  ...   ...  ................        ..  ........
+ 13  ...   ...  ................        ..  ........
+ 14  ...   ...  ................        ..  ........
+ 15  ...   ...  ................        ..  ........
+ 16  ...   ...  ................        ..  ........
+ 17  ...   ...  ................        ..  ........
+ 18  ...   ...  ................        ..  ........
+ 19  ...   ...              SIGA     input  A-------
+
+BLOCK F I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 54  ...   ...                R1     input  A-------
+ 55  ...   ...  ................        ..  ........
+ 56  ...   ...  ................        ..  ........
+ 57  ...   ...  ................        ..  ........
+ 58  ...   ...  ................        ..  ........
+ 59  ...   ...  ................        ..  ........
+ 60  ...   ...  ................        ..  ........
+ 61  ...   ...  ................        ..  ........
+
+BLOCK G I/O PINS
+Pin onode inode           Signal     Type    Fanout
+|----------------------------------------------------------------|
+ 66  ...   ...  ................        ..  ........
+ 67  ...   ...                R2     input  A-------
+ 68  ...   ...  ................        ..  ........
+ 69  ...   ...  ................        ..  ........
+ 70  ...   ...  ................        ..  ........
+ 71  ...   ...  ................        ..  ........
+ 72  ...   ...  ................        ..  ........
+ 73  ...   ...  ................        ..  ........
+
+
+MACH435 report file key:
+
+A             - Asynchronous mode
+AVAL          - Additional product terms available within the current
+                steering allocation, plus those potentially available
+                through resteering of free clusters.
+B0            - Block Asynchronous Reset/Preset product term 0
+B1            - Block Asynchronous Reset/Preset product term 1
+C             - Combinatorial
+Ck0           - Block clock generated from pin 20 or pin 23
+Ck1           - Block clock generated from pin 20 or pin 23
+Ck2           - Block clock generated from pin 62 or pin 65
+Ck3           - Block clock generated from pin 62 or pin 65
+clk           - Clock
+CSM           - Central Switch Matrix
+D             - D-type flip flop
+G             - Ground
+H             - High
+implied       - Node occupying the macrocell drives the output pin
+                but not defined in the design file.
+inode         - Input node
+Inp           - Input
+ipair         - Input paired node
+I/O           - Input or Output
+L             - Low
+L             - Latch
+LOC           - Location
+mcell <X>     - Source is macrocell from block <X>
+Mux           - Multiplexer
+mx            - Block Array input multiplexer
+onode         - Output node
+opair         - Output paired node
+P             - Product Term
+Pol           - Polarity
+PT(s)         - Product term(s)
+Reg           - Register
+Res           - Reset control
+RN_<pin_name> - Output node paired with <pin_name> created by Fitter.
+S             - Synchronous mode
+Set           - Preset control
+T             - T-type flip flop
+XOR           - Exclusive OR gate
+<X>ir         - Input register in block <X>
+.             - Not available or Not applicable
+
+Partitioning 100% - Completed
+Placement    100% - Completed
+Routing      100% - Completed
+%%% Fitting process is successful %%%

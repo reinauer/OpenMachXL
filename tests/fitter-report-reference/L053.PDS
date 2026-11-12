@@ -1,0 +1,96 @@
+CHIP L053 MACH435
+PIN  19         SIGA
+PIN  33         SIGB
+PIN  20         SIGC
+PIN  23         CLK1
+PIN  41         CLK2
+PIN  54         SIGD
+PIN  62         CLOCKIN
+PIN  65         SIGE
+PIN  66         SIGF
+PIN  67         SIGG
+PIN  82         SIGH                        COMBINATORIAL
+NODE ?          SIGJ                        REGISTERED
+PIN  12         SIGBD                       REGISTERED
+NODE  ?         SIGBE                       REGISTERED
+NODE  ?         SIGBF                       REGISTERED
+PIN  14         SIGBG                       REGISTERED
+NODE  ?         SIGBH                       REGISTERED
+NODE  ?         SIGBI                       REGISTERED
+PIN  15         SIGBJ                       REGISTERED
+NODE  ?         SIGBK                       REGISTERED
+NODE  ?         SIGBL                       REGISTERED
+PIN  16         SIGBM                       REGISTERED
+NODE  ?         SIGBN                       REGISTERED
+NODE  ?         SIGBO                       REGISTERED
+PIN  49         SIGBV                       REGISTERED
+NODE  ?         SIGBW                       REGISTERED
+NODE  ?         SIGBX                       REGISTERED
+PIN  51         SIGCA                       REGISTERED
+NODE  ?         SIGCB                       REGISTERED
+NODE  ?         SIGCC                       REGISTERED
+PIN  52         SIGCD                       REGISTERED
+NODE  ?         SIGCE                       REGISTERED
+NODE  ?         SIGCF                       REGISTERED
+STRING  SHIFT_EN  '(SIGE)'
+EQUATIONS
+/SIGH  = /CLK2 * SIGJ
+SIGBD.CLKF  = CLK1
+SIGBE.CLKF  = SIGE
+SIGBF.CLKF  = CLK1
+SIGBE.RSTF  = SIGBD
+SIGBF.RSTF  = SIGBD
+SIGBG.CLKF  = CLK1
+SIGBH.CLKF  = /SIGE
+SIGBI.CLKF  = CLK1
+SIGBH.RSTF  = SIGBG
+SIGBI.RSTF  = SIGBG
+SIGBJ.CLKF  = CLK1
+SIGBK.CLKF  = /SIGC
+SIGBL.CLKF  = CLK1
+SIGBK.RSTF  = SIGBJ
+SIGBL.RSTF  = SIGBJ
+SIGBM.CLKF  = CLK1
+SIGBN.CLKF  = SIGC
+SIGBO.CLKF  = CLK1
+SIGBN.RSTF  = SIGBM
+SIGBO.RSTF  = SIGBM
+SIGBV.CLKF  = CLK1
+SIGBW.CLKF  = /SIGA
+SIGBX.CLKF  = CLK1
+SIGBW.RSTF  = SIGBV
+SIGBX.RSTF  = SIGBV
+SIGCA.CLKF  = CLK1
+SIGCB.CLKF  = /SIGD
+SIGCC.CLKF  = CLK1
+SIGCB.RSTF  = SIGCA
+SIGCC.RSTF  = SIGCA
+SIGCD.CLKF  = CLK1
+SIGCE.CLKF  = /SIGB
+SIGCF.CLKF  = CLK1
+SIGCE.RSTF  = SIGCD
+SIGCF.RSTF  = SIGCD
+SIGBD  := SIGBF
+SIGBE  := VCC
+SIGBF  := SIGBE
+SIGBG  := SIGBI
+SIGBH  := VCC
+SIGBI  := SIGBH
+SIGBJ  := SIGBL
+SIGBK  := VCC
+SIGBL  := SIGBK
+SIGBM  := SIGBO
+SIGBN  := VCC
+SIGBO  := SIGBN
+SIGBV  := SIGBX
+SIGBW  := SIGA * SIGE
+SIGBX  := SIGBW
+SIGCA  := SIGCC
+SIGCB  := SIGE
+SIGCC  := SIGCB
+SIGCD  := SIGCF
+SIGCE  := SIGE
+SIGCF  := SIGCE
+SIGJ.CLKF     = CLOCKIN
+SIGJ.RSTF     = SIGA
+SIGJ       := SIGA * SIGA * SIGA * SIGA

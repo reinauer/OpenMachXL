@@ -1715,9 +1715,12 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
                     }
                 for (unsigned clock = 0; clock < clock_polarity[b].size(); ++clock)
                     if (clock_polarity[b][clock] >= 0) {
-                        const auto pin = d.clock_pins.at(clock);
-                        report.blocks[b].clocks.push_back(
-                            {image.pin_signals[pin], int(clock), int(pin), !bool(clock_polarity[b][clock])});
+                        // A block clock line carries its own clock pin or the
+                        // complement of the other pin of its pair. The record
+                        // names the pin the signal comes from.
+                        const bool negative = !bool(clock_polarity[b][clock]);
+                        const auto pin      = d.clock_pins.at(negative ? clock ^ 1u : clock);
+                        report.blocks[b].clocks.push_back({image.pin_signals[pin], int(clock), int(pin), negative});
                     }
             }
             finalize_fitter_report_data(design, image, report);
