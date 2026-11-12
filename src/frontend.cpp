@@ -1930,8 +1930,15 @@ void resolve_pairing(Design& design, const FrontendOptions& options)
                         shared_control(eq(node.name, "PR"), eq(p.name, "PR")) &&
                         shared_control(eq(node.name, "RE"), eq(p.name, "RE")))
                         matches.push_back(&p);
-                // BPP greedily selects the first physically eligible pad in source
-                // declaration order; an ineligible fixed location does not consume it.
+                // The candidates are tried in the order in which their own equations
+                // appear, not in the order of the pin declarations. The first physically
+                // eligible one is taken; an ineligible fixed location does not consume it.
+                const auto equation_position = [&](const Pin* pad) {
+                    return primary(*pad) - design.equations.data();
+                };
+                std::stable_sort(matches.begin(), matches.end(), [&](const Pin* a, const Pin* b) {
+                    return equation_position(a) < equation_position(b);
+                });
                 auto selected_pad = std::find_if(matches.begin(), matches.end(),
                                                  [&](Pin* pad) { return normalize_fixed_output_pair(node, *pad); });
                 if (selected_pad != matches.end()) {

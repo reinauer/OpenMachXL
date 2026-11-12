@@ -1,5 +1,5 @@
 {
- "description": "Automatic output pairing when only one of node and pad has a clock, set or reset equation: the pair is made and the equation copied; two different equations prevent it",
+ "description": "Automatic output pairing when only one of node and pad has a clock, set or reset equation: the pair is made and the equation copied; two different equations prevent it; among several matching pads the one whose equation comes first is taken",
  "cases": [
   {
    "name": "OA2",
@@ -111,6 +111,86 @@
     "OG4.PDS": "18bed4d225e875fd3759cc1a59c06b4b95047a49f2e1f35e485c4e1aa6e3f0e2",
     "OG4.MXL": "2d71c9c9d9db909bfa191450f9e1b2123251c4831836828b987092ae685f01e0",
     "OG4.PLA": "0b7368ee28619049314a77096704739101ae0f6eb344f3a3d028a3b29cc92b0e"
+   }
+  },
+  {
+   "name": "PA",
+   "files": {
+    "PA.PDS": "9add08cc74baabc246ec6df5086f6950e040629222c69769a7772373cca4f179",
+    "PA.MXL": "1a218c70926e620db86d22a6e50c0c94f3a9ea2f35092b69d16eaba77a189781",
+    "PA.PLA": "0e152a1bf657e10174c5c5b4cc43420a890b90522cd4454bd323c4f6a76df8a6"
+   }
+  },
+  {
+   "name": "PB",
+   "files": {
+    "PB.PDS": "300114874df5b4a2d46c04922c9da738ae00a8d25a92aa0ca1abdba785f984a3",
+    "PB.MXL": "4d799659c02c7a467fed3ae05aba262807ed8d8f66f2c6d76ab4526515c58d90",
+    "PB.PLA": "5f7cd5fcf8eccf81c59fa2cc68ec40c581f73f8c97e1063e1fbf9a51d76805ac"
+   }
+  },
+  {
+   "name": "PC",
+   "files": {
+    "PC.PDS": "c0f3fe0de5fed2b15be2fc666cc56d2ddbaf3466b549cc0e3426f0eed32a6fef",
+    "PC.MXL": "8ee100014890fa88e7ba4ee2a051c00cbac54dc873a450d175e4987278ce1385",
+    "PC.PLA": "0479b18a1834b0b709add497e9ec5626909bb12170cc7798b77aacb7501c82b9"
+   }
+  },
+  {
+   "name": "PD",
+   "files": {
+    "PD.PDS": "5b6407f75c8e28a510b1223ec46a3ca658d29ed05abb9e97804ada887e8c75d3",
+    "PD.MXL": "838d544660754f968fb0043035f1ecd1e45c0644e785986f17820fddad44a647",
+    "PD.PLA": "229a65febc85cab720af8c58654a3f63c3423f7650b5655ee4ec655c5587826c"
+   }
+  },
+  {
+   "name": "PE",
+   "files": {
+    "PE.PDS": "4eaf22daf82066ab230392db056178b65684ad1bfd8a173ab19157ffea748807",
+    "PE.MXL": "9cbdd39acad65e3e43c49ae2c7856819913768f7497c95a5acecea456f6fce1c",
+    "PE.PLA": "75d3e3922028f6aa83d592b97517f7f4a2b6e86b6dad1c1501da2d549c1c5d27"
+   }
+  },
+  {
+   "name": "PF",
+   "files": {
+    "PF.PDS": "8dd225b7b25eb0061302bb482a6cff965e6a0a534b98ce8130ed21b7bd5fc656",
+    "PF.MXL": "3b6e7fefdf95b08188a4358bca25c5ec4ece8fe567ec12ca95a21126c2a545cf",
+    "PF.PLA": "c27cffbfd31aaed518ad78f9a37ee95f17a9813e1ac87c79b303a0627970237f"
+   }
+  },
+  {
+   "name": "PG",
+   "files": {
+    "PG.PDS": "cdf86957c36f524468e75f09a0e85b582862e6a00da258a568dc0c6e0f435f85",
+    "PG.MXL": "912a43a143d5bbfab387b56d3f957bdc0294097aedf8fd93a685ccc4c46f33f3",
+    "PG.PLA": "9e306f00fd8c68309fcb46122c858ad5880a689b19aac9875af616110ef24e65"
+   }
+  },
+  {
+   "name": "PH",
+   "files": {
+    "PH.PDS": "d49eb43d97651471623af9291b0e85d33a2b9396fb73180f7ab357efc929bbaa",
+    "PH.MXL": "5d6d2804e1fc026f1e93522ea84f3d8ce35e331033ef7f0ee204b6a8649e150e",
+    "PH.PLA": "48e35de7b2d5bff34a0088da917bc0848a8e77dec3f7a2a409ecd3b10cd88ad6"
+   }
+  },
+  {
+   "name": "PI",
+   "files": {
+    "PI.PDS": "97bdd5cb26f5c33ba31d1caf00a26752678dc815f118394d597111cf4adb82f4",
+    "PI.MXL": "a00a24b70453a7d0773ebce823cfe5a566b028f2e2242f6fc998d28655e07737",
+    "PI.PLA": "c97d929d4a33fd9add2258eeafcd342c235f8866b38c9cd04cec3b1b751023d0"
+   }
+  },
+  {
+   "name": "PJ",
+   "files": {
+    "PJ.PDS": "ece4c2fb99e6d0b1a91a147ebad7fb96bff4844d2cbe32a5e97d9241d03480ab",
+    "PJ.MXL": "eb6941e5632edd7f28bf9fabf503ad6a2566ce959f83170945fd2463f001c399",
+    "PJ.PLA": "ffdbec220b92914a27923e431570fa8790fe48b550aeffd7325e54be155567d4"
    }
   }
  ]
