@@ -1,0 +1,61 @@
+{
+ "description": "Fits in which a register's reset term and another register's set term contain one another and must stay in different blocks",
+ "cases": [
+  {
+   "name": "D025",
+   "files": {
+    "D025.PDS": "620569cc7a29f5ce8ccffe69355eba223abe2227a15ee6c7bce85995feda46e8",
+    "D025.MXL": "cd256404f4f7da7914312f96fceba9182ff2be766976c47b3b89ac0716340dc9",
+    "D025.JED": "519cfd22b21a8a2ceb93a6fd9c0391bcf312643e356652cf76cf8a143e83bbf3"
+   }
+  },
+  {
+   "name": "SR111",
+   "files": {
+    "SR111.PDS": "d5523186374354aefef3b3536aa5e62b48d85a13e554339c6c52dbb24dc5e9aa",
+    "SR111.MXL": "bccbcb0c6a70e32844b9f648d71763ffbaa9d90bbc97c9072c669e7067b80921",
+    "SR111.JED": "ecedce184e62c5e10dfa066eefca014c9d8b9444213ed12174af04d52e8ce488"
+   }
+  },
+  {
+   "name": "SR211",
+   "files": {
+    "SR211.PDS": "422f07eb10132391af8d482ad1a180656c5b15d194b9bbf1f5bbbb0e74756f89",
+    "SR211.MXL": "a6efaa8e15ce566044c0e16fd8d68cd08c1cf4356c9c428c68417087da1d492c",
+    "SR211.JED": "7be4233adb992b4b475cb3c7458e1d60441791bf50e590613e3c486e59590377"
+   }
+  },
+  {
+   "name": "SR130",
+   "files": {
+    "SR130.PDS": "5081809f5fff93475e593e2055881bcdca82735ec7e7e46f35da8ae7ca6dc4b9",
+    "SR130.MXL": "d3d0f96676bc7238ee3ef09e0f3414a5a1fd2cc639b07dda437d6b41f60c65c4",
+    "SR130.JED": "ad9f09fe97248e5c1162a12dd7954c773493e3b3ecdcdfc17bb30a7b28bfb3bc"
+   }
+  },
+  {
+   "name": "SF231",
+   "files": {
+    "SF231.PDS": "44899edcb089a02e290ec4081201b0a21bf74b16b1e312d08e530a5b6a27d49d",
+    "SF231.MXL": "e61121388039e699a110037d9a7d2de4091d6e491f8ea0bb83e750db9dc1a3e5",
+    "SF231.JED": "0969c5c9253bc2777f39ac12c1033a981a9f7b8b80bf62bdd7154c385a995599"
+   }
+  },
+  {
+   "name": "SF130",
+   "files": {
+    "SF130.PDS": "3be839aaeafb9cced24f24ba2ba13bd0a0c8e4a8bb195d03485bd7d018e03229",
+    "SF130.MXL": "d008051d1af2bfed99dc5397fc8a495540d22f5b850e2dacff24d377484a9646",
+    "SF130.JED": "a522eb17d2b9b96cc0c2aaffae474a67d797fa0ec7e54b07dfba3f84850fd5e1"
+   }
+  },
+  {
+   "name": "F00002",
+   "files": {
+    "F00002.PDS": "53c171b45d8142a47e5e5cbeea16494f15e15fa85bac29466aa8967641c1a789",
+    "F00002.MXL": "1f5b3663098425e63e32ea5a9d92f2ee93f7439ba8894b63a30b5c5e50084b51",
+    "F00002.JED": "5f353bd628e3c17c98cbde0a149edd78c08e286851f0a7e207abd6403c4e25a0"
+   }
+  }
+ ]
+}

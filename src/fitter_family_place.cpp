@@ -371,6 +371,15 @@ bool shared_controls_compatible(const Block& block, const Clusters& c, std::size
         }
     return true;
 }
+// A reset term beside a set term it is contained in, or contains.
+bool set_reset_overlap(const Block& block, const Clusters& c, std::size_t incoming)
+{
+    for (auto i : block)
+        if (set_reset_products_related(c[incoming].reset_product, c[i].preset_product) ||
+            set_reset_products_related(c[incoming].preset_product, c[i].reset_product))
+            return true;
+    return false;
+}
 // Legacy shared output-enable resource tables: four rows on MACH1,
 // two on MACH2; MACH215 and modern devices have local output enables.
 bool oe_compatible(const Block& block, const Clusters& c, std::size_t incoming, const MachDeviceLayout&,
@@ -441,7 +450,8 @@ bool block_accepts_cluster(const Block& block, const Clusters& c, std::size_t in
 {
     if (macrocell_count(block, c) + c[incoming].macrocell > (d.device == "MACH215" ? d.cells / 2 : d.cells) ||
         pin_count(block, c) + c[incoming].output > capacity ||
-        (!d.one_hot && d.device != "MACH215" && !shared_controls_compatible(block, c, incoming)))
+        (!d.one_hot && d.device != "MACH215" &&
+         (!shared_controls_compatible(block, c, incoming) || set_reset_overlap(block, c, incoming))))
         return false;
     if (!oe_compatible(block, c, incoming, d))
         return false;
@@ -476,7 +486,8 @@ unsigned violations(const Block& block, const Clusters& c, std::size_t incoming,
     unsigned result      = macrocell_count(block, c) + c[incoming].macrocell > cells;
     result += pin_count(block, c) + c[incoming].output > capacity;
     result += product_groups(block, c) + block.product_charge(c[incoming]) > cells;
-    result += !d.one_hot && d.device != "MACH215" && !shared_controls_compatible(block, c, incoming);
+    result += !d.one_hot && d.device != "MACH215" &&
+              (!shared_controls_compatible(block, c, incoming) || set_reset_overlap(block, c, incoming));
     result += !oe_compatible(block, c, incoming, d);
     if (d.one_hot)
         result += modern_control_violations(block, c, incoming);
@@ -1261,6 +1272,8 @@ FamilyPlacement place_mach_family(
                             unsigned((s.order.product_terms + 3) / 4),
                             s.oe_product,
                             s.preset});
+        clusters.back().reset_product          = s.reset_product;
+        clusters.back().preset_product         = s.preset_product;
         clusters.back().explicit_async_control = s.explicit_async_control;
         clusters.back().data_terms             = unsigned(s.order.product_terms);
         clusters.back().clocked_storage        = s.clocked_storage;

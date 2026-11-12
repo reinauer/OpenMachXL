@@ -176,6 +176,7 @@ LogicalIds place_pins(Design& design, const ParsedPla& pla, const std::map<std::
                     const auto id =
                         control_ids.emplace(term, static_cast<std::uint16_t>(control_ids.size())).first->second;
                     (function == "RE" ? signal.reset : signal.preset) = id;
+                    (function == "RE" ? signal.reset_product : signal.preset_product) = term;
                 }
                 if (function == "OE") {
                     if (pla.terms[out].size() > 1)

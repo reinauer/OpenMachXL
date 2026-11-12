@@ -68,7 +68,17 @@ struct Mach111PartitionCluster
     // Modern asynchronous fallback has its own product descriptor; shared
     // control conflicts can select it after the initial synchronous rank.
     std::optional<unsigned> asynchronous_product_groups = std::nullopt;
+    // The reset and the set equation when each is a single product term, as
+    // its PLA cube; empty otherwise. See set_reset_products_related().
+    std::string reset_product  = {};
+    std::string preset_product = {};
 };
+
+// The original keeps a register's reset term out of a block that holds
+// another register's set term (and the reverse) when both are single
+// products and the literals of one are all among those of the other: the
+// two would then fire together.
+bool set_reset_products_related(const std::string& a, const std::string& b);
 
 // First-pass mode-zero keys for this IR. Keeps each order.signal_id;
 // computes rank and summed fanout from all clusters' logical fanin sets.

@@ -26,6 +26,8 @@ struct Mach111PlaceSignal
     // Equal cubes share a physical enable product within a half-block.
     std::string oe_product;
     std::optional<std::uint16_t> preset;
+    // PLA cube of a single-product reset or set equation, else empty.
+    std::string reset_product, preset_product;
     // Physical comparator uses the parser's abbreviated vector spelling.
     std::string sort_name;
     // Modern global-row identities, including explicit constants.

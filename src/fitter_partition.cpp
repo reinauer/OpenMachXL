@@ -7,6 +7,20 @@
 #include <stdexcept>
 
 namespace machxl {
+bool set_reset_products_related(const std::string& a, const std::string& b)
+{
+    if (a.empty() || b.empty() || a.size() != b.size())
+        return false;
+    const auto literals = [](const std::string& cube) {
+        return std::size_t(std::count_if(cube.begin(), cube.end(), [](char c) { return c != '-'; }));
+    };
+    const auto& fewer = literals(a) <= literals(b) ? a : b;
+    const auto& more  = &fewer == &a ? b : a;
+    for (std::size_t i = 0; i < fewer.size(); ++i)
+        if (fewer[i] != '-' && fewer[i] != more[i])
+            return false;
+    return true;
+}
 namespace {
 using Clusters = std::vector<Mach111PartitionCluster>;
 struct Block
@@ -71,6 +85,15 @@ bool reset_compatible(const Block& block, const Clusters& clusters, std::size_t 
         }
     return true;
 }
+// A reset term beside a set term it is contained in, or contains.
+bool set_reset_overlap(const Block& block, const Clusters& clusters, std::size_t incoming)
+{
+    for (auto id : block)
+        if (set_reset_products_related(clusters[incoming].reset_product, clusters[id].preset_product) ||
+            set_reset_products_related(clusters[incoming].preset_product, clusters[id].reset_product))
+            return true;
+    return false;
+}
 bool oe_compatible(const Block& block, const Clusters& clusters, std::size_t incoming,
                    std::optional<std::size_t> outgoing = {})
 {
@@ -99,7 +122,8 @@ bool oe_compatible(const Block& block, const Clusters& clusters, std::size_t inc
 bool resource_limits_allow(const Block& block, const Clusters& clusters, std::size_t incoming)
 {
     // All three resource limits are 16 for one-group MACH111 output clusters.
-    if (block.size() >= 16 || !reset_compatible(block, clusters, incoming) || !oe_compatible(block, clusters, incoming))
+    if (block.size() >= 16 || !reset_compatible(block, clusters, incoming) ||
+        set_reset_overlap(block, clusters, incoming) || !oe_compatible(block, clusters, incoming))
         return false;
     unsigned groups = clusters[incoming].product_groups;
     for (auto id : block)
@@ -175,7 +199,7 @@ unsigned count_resource_violations(const Block& block, const Clusters& clusters,
         groups += clusters[id].product_groups;
     count += groups > 16;
     count += count_output_clusters(block, clusters) + clusters[incoming].output > capacity;
-    count += !reset_compatible(block, clusters, incoming);
+    count += !reset_compatible(block, clusters, incoming) || set_reset_overlap(block, clusters, incoming);
     count += !oe_compatible(block, clusters, incoming);
     auto inputs = collect_block_fanins(block, clusters);
     inputs.insert(clusters[incoming].fanins.begin(), clusters[incoming].fanins.end());

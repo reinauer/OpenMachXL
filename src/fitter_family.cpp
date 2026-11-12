@@ -487,6 +487,8 @@ FuseImage fit_family_prepared(const Design& original_design, const Pla& prepared
                                             : control_ids.emplace(p.terms[out], std::uint16_t(control_ids.size() + 1))
                                                   .first->second;
                         (fn == "RE" ? signal.reset : signal.preset) = id;
+                        (fn == "RE" ? signal.reset_product : signal.preset_product) =
+                            p.terms[out].size() == 1 ? p.terms[out][0] : std::string{};
                     }
                     for (const auto& term : p.terms[out])
                         for (unsigned input = 0; input < term.size(); ++input)

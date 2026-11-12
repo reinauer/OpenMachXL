@@ -326,6 +326,8 @@ Mach111Placement place_mach111(
                             static_cast<unsigned>((s.order.product_terms + 3) / 4),
                             s.oe_product});
         clusters.back().preset          = s.preset;
+        clusters.back().reset_product   = s.reset_product;
+        clusters.back().preset_product  = s.preset_product;
         clusters.back().data_terms      = unsigned(s.order.product_terms);
         clusters.back().clocked_storage = s.clocked_storage;
         if (s.order.fixed_pin >= 0) {
