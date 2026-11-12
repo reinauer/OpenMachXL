@@ -1,0 +1,159 @@
+CHIP J020 MACH435
+PIN  19         SIGA
+PIN  33         SIGB
+PIN  20         SIGC
+PIN  23         CLK1
+PIN  41         CLK2
+PIN  54         SIGD
+PIN  62         CLOCKIN
+PIN  65         SIGE
+PIN  66         SIGF
+PIN  67         SIGG
+PIN  82         SIGH                        COMBINATORIAL
+PIN  10         SIGI                        COMBINATORIAL
+NODE ?          SIGJ                        REGISTERED
+NODE ?          SIGK                        REGISTERED
+PIN  55         SIGAG                       REGISTERED
+PIN  57         SIGAH                       REGISTERED
+PIN  58         SIGAI                       REGISTERED
+PIN  59         SIGAJ                       REGISTERED
+PIN  75         SIGAS                       REGISTERED
+PIN  76         SIGAT                       REGISTERED
+PIN  78         SIGAU                       REGISTERED
+PIN  79         SIGAV                       REGISTERED
+PIN  80         SIGBA                       REGISTERED
+NODE  ?         SIGBB                       REGISTERED
+NODE  ?         SIGBC                       REGISTERED
+PIN  12         SIGBD                       REGISTERED
+NODE  ?         SIGBE                       REGISTERED
+NODE  ?         SIGBF                       REGISTERED
+PIN  14         SIGBG                       REGISTERED
+NODE  ?         SIGBH                       REGISTERED
+NODE  ?         SIGBI                       REGISTERED
+PIN  15         SIGBJ                       REGISTERED
+NODE  ?         SIGBK                       REGISTERED
+NODE  ?         SIGBL                       REGISTERED
+PIN  16         SIGBM                       REGISTERED
+NODE  ?         SIGBN                       REGISTERED
+NODE  ?         SIGBO                       REGISTERED
+PIN  17         SIGBP                       REGISTERED
+NODE  ?         SIGBQ                       REGISTERED
+NODE  ?         SIGBR                       REGISTERED
+PIN  18         SIGBS                       REGISTERED
+NODE  ?         SIGBT                       REGISTERED
+NODE  ?         SIGBU                       REGISTERED
+PIN  49         SIGBV                       REGISTERED
+NODE  ?         SIGBW                       REGISTERED
+NODE  ?         SIGBX                       REGISTERED
+PIN  51         SIGCA                       REGISTERED
+NODE  ?         SIGCB                       REGISTERED
+NODE  ?         SIGCC                       REGISTERED
+PIN  52         SIGCD                       REGISTERED
+NODE  ?         SIGCE                       REGISTERED
+NODE  ?         SIGCF                       REGISTERED
+STRING  SHIFT_EN  '(SIGE)'
+EQUATIONS
+/SIGI    = /CLK1 *              (SIGBD + SIGBG + SIGBM + SIGBJ + SIGBP + SIGBS + SIGBV + SIGCA + SIGCD + SIGBA)
+/SIGH  = /CLK2 * SIGJ
+SIGBD.CLKF  = CLK1
+SIGBE.CLKF  = SIGE
+SIGBF.CLKF  = CLK1
+SIGBE.RSTF  = SIGBD
+SIGBF.RSTF  = SIGBD
+SIGBG.CLKF  = CLK1
+SIGBH.CLKF  = /SIGE
+SIGBI.CLKF  = CLK1
+SIGBH.RSTF  = SIGBG
+SIGBI.RSTF  = SIGBG
+SIGBJ.CLKF  = CLK1
+SIGBK.CLKF  = /SIGC
+SIGBL.CLKF  = CLK1
+SIGBK.RSTF  = SIGBJ
+SIGBL.RSTF  = SIGBJ
+SIGBM.CLKF  = CLK1
+SIGBN.CLKF  = SIGC
+SIGBO.CLKF  = CLK1
+SIGBN.RSTF  = SIGBM
+SIGBO.RSTF  = SIGBM
+SIGBP.CLKF  = CLK1
+SIGBQ.CLKF  = /SIGF
+SIGBR.CLKF  = CLK1
+SIGBQ.RSTF  = SIGBP
+SIGBR.RSTF  = SIGBP
+SIGBS.CLKF  = CLK1
+SIGBT.CLKF  = SIGF
+SIGBU.CLKF  = CLK1
+SIGBT.RSTF  = SIGBS
+SIGBU.RSTF  = SIGBS
+SIGBV.CLKF  = CLK1
+SIGBW.CLKF  = /SIGA
+SIGBX.CLKF  = CLK1
+SIGBW.RSTF  = SIGBV
+SIGBX.RSTF  = SIGBV
+SIGCA.CLKF  = CLK1
+SIGCB.CLKF  = /SIGD
+SIGCC.CLKF  = CLK1
+SIGCB.RSTF  = SIGCA
+SIGCC.RSTF  = SIGCA
+SIGCD.CLKF  = CLK1
+SIGCE.CLKF  = /SIGB
+SIGCF.CLKF  = CLK1
+SIGCE.RSTF  = SIGCD
+SIGCF.RSTF  = SIGCD
+SIGBA.CLKF  = CLK1
+SIGBB.CLKF  = /CLK2
+SIGBC.CLKF  = CLK1
+SIGBB.RSTF  = SIGBA
+SIGBC.RSTF  = SIGBA
+SIGBD  := SIGBF
+SIGBE  := VCC
+SIGBF  := SIGBE
+SIGBG  := SIGBI
+SIGBH  := VCC
+SIGBI  := SIGBH
+SIGBJ  := SIGBL
+SIGBK  := VCC
+SIGBL  := SIGBK
+SIGBM  := SIGBO
+SIGBN  := VCC
+SIGBO  := SIGBN
+SIGBP  := SIGBR
+SIGBQ  := VCC
+SIGBR  := SIGBQ
+SIGBS  := SIGBU
+SIGBT  := VCC
+SIGBU  := SIGBT
+SIGBV  := SIGBX
+SIGBW  := SIGK * SIGE
+SIGBX  := SIGBW
+SIGCA  := SIGCC
+SIGCB  := SIGE
+SIGCC  := SIGCB
+SIGCD  := SIGCF
+SIGCE  := SIGE
+SIGCF  := SIGCE
+SIGBA  := SIGBC
+SIGBB  := /SIGE
+SIGBC  := SIGBB
+SIGJ.CLKF     = CLOCKIN
+SIGK.CLKF     = CLOCKIN
+SIGJ.RSTF     = SIGA
+SIGK.RSTF     = SIGA
+SIGJ       := SIGA * SIGA * SIGA * SIGA
+SIGK       := SIGJ
+SIGAG.CLKF  = CLOCKIN
+SIGAH.CLKF  = CLOCKIN
+SIGAI.CLKF  = CLOCKIN
+SIGAJ.CLKF  = CLOCKIN
+SIGAS.CLKF  = CLOCKIN
+SIGAT.CLKF  = CLOCKIN
+SIGAU.CLKF  = CLOCKIN
+SIGAV.CLKF  = CLOCKIN
+SIGAG       := SIGE * SIGA + /SIGE * SIGAG
+SIGAH       := SIGE * SIGAG + /SIGE * SIGAH
+SIGAI       := SIGE * SIGAH + /SIGE * SIGAI
+SIGAJ       := SIGE * SIGAI + /SIGE * SIGAJ
+SIGAS       := SIGE * SIGA + /SIGE * SIGAS
+SIGAT       := SIGE * SIGAS + /SIGE * SIGAT
+SIGAU       := SIGE * SIGAT + /SIGE * SIGAU
+SIGAV       := SIGE * SIGAU + /SIGE * SIGAV  

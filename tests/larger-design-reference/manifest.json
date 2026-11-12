@@ -288,6 +288,30 @@
     "OD2.MXL": "105f6237f42ed69d2590a0a9132814649d97eb1ce2ca02fb54e373a1b6f71f91",
     "OD2.JED": "55c2209eeeb0973ae126217ab19c2e4810a6e4e79f9ccb467ad61edcacf6af07"
    }
+  },
+  {
+   "name": "L053",
+   "files": {
+    "L053.PDS": "ab334befe3d07a21a01a71e553ee917ef8341e8cf3d35ae155016b88f495ad99",
+    "L053.MXL": "ac4d4121fc93db82556af062c9f050ad2236167bd02679ee2db71a38845870d4",
+    "L053.JED": "3b4671cf4c2ccf44e45b6f6cba4d47eedb8b3ea86454f6e1c4269dfde0789883"
+   }
+  },
+  {
+   "name": "K033",
+   "files": {
+    "K033.PDS": "230dc62598ae1ad0d9b6ba93fe1e989c9b8cf8e2338316f1b7e9ed3f30ef7244",
+    "K033.MXL": "cf7a302d2769521d42d43abb73fdf936983ae04bd01533897dcb6a2df22bdb57",
+    "K033.JED": "f292f38a87e280c0c7d433e0e3fe872732ca56abb1e6a155e7b19355950e0d1e"
+   }
+  },
+  {
+   "name": "J020",
+   "files": {
+    "J020.PDS": "fe478d0cb6588e18b8da46c3dbadf1c1fe4c26eff594c4addcb11ac39ef80b28",
+    "J020.MXL": "ece8e2d35845730f27d2b17c743b3a90c5d788d44e053fd5c4d9a6a65da802ab",
+    "J020.JED": "160b73e6237d99e4fa6b17912ae386e69f88276d610d30c01fc648bf491b412f"
+   }
   }
  ]
 }

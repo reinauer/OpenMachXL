@@ -85,6 +85,10 @@ struct Block
     std::array<ControlSlot, 2> controls;
     std::array<ControlSlot, 4> clocks;
     std::set<std::size_t> clock_members, product_clock_members;
+    // Members whose set or reset found no room in the two shared rows when
+    // they were added. They use their own term and hold no row, also after
+    // a row becomes free or another member brings the same term.
+    std::set<std::size_t> local_control_members;
     bool shared_controls(const Mach111PartitionCluster& c) const
     {
         auto accepts = [&](const auto& value, unsigned index) {
@@ -160,6 +164,10 @@ struct Block
             if (!controls[first].add(key))
                 controls[1 - first].add(key);
         };
+        if (!shared_controls(c)) {
+            local_control_members.insert(id);
+            return;
+        }
         if (c.global_reset)
             add(0, *c.global_reset, bool(c.global_preset));
         if (c.global_preset)
@@ -195,6 +203,8 @@ struct Block
         if (clock_members.erase(id))
             clocks[unsigned(c.global_clock ^ (c.clock_positive ? 0 : 1))].remove(std::uint16_t(c.clock_positive));
         product_clock_members.erase(id);
+        if (local_control_members.erase(id))
+            return;
         if (c.global_reset && !controls[0].remove(*c.global_reset))
             controls[1].remove(*c.global_reset);
         if (c.global_preset && !controls[1].remove(*c.global_preset))
