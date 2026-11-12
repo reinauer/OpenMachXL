@@ -336,6 +336,22 @@
     "M032.MXL": "44c210d13f8c93bf0d2d4b6052242bf4d99ab444d9e2d78f2cbfdd723f7d3fb8",
     "M032.JED": "7c7d7fe55bd0038944df4c2d66d21901cc02d157b30cf40fcdfe5fade35f8f8a"
    }
+  },
+  {
+   "name": "M005",
+   "files": {
+    "M005.PDS": "5e12b614ecf44b73eff0082d1195b67045a634724c438bf3a64838eab39d1bba",
+    "M005.MXL": "0decf17591aa5a2006003180490bbfa406d53a2798c00029ba060d1dc03154ab",
+    "M005.JED": "cea7ed3bb5f5ca4108e922455615526c5288b6b6afc077809043d0f55131a11f"
+   }
+  },
+  {
+   "name": "M001",
+   "files": {
+    "M001.PDS": "9519cd08e98a29c11e564796b50841d44ece00bda8f1c121f2666b9436994932",
+    "M001.MXL": "28b7e398dfb1cfe8829da9e3a47e098e9c68769b921d049d44e9038392a2326c",
+    "M001.JED": "3051cdbcce47387e9ce991a76e9a03e74e464e34933539bf11d63bd7413e6c77"
+   }
   }
  ]
 }

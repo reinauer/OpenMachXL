@@ -581,6 +581,29 @@ bool swap_resources(const std::vector<Block>& blocks, const Clusters& c, unsigne
         if ((grounded(b) && missing_clock_record(x, a, b)) || (grounded(a) && missing_clock_record(y, b, a)))
             return false;
     }
+    if (d.one_hot) {
+        // Two clusters on pin clocks: when the receiving block still uses all
+        // of its clock lines once the outgoing cluster is gone, and none of
+        // them carries the incoming clock, the exchange is refused here. With
+        // a line to spare it goes on to the trial, which then fails on the
+        // clock and puts both clusters back at the end of their lists.
+        const auto pin_clocked = [&](std::size_t id) {
+            return c[id].global_clock >= 0 && !c[id].local_clock && !c[id].force_async;
+        };
+        const auto line_of = [&](std::size_t id) {
+            return unsigned(c[id].global_clock ^ (c[id].clock_positive ? 0 : 1));
+        };
+        const auto no_clock_line = [&](unsigned block, std::size_t outgoing, std::size_t incoming) {
+            const auto& lines   = blocks[block].clocks;
+            const bool releases = blocks[block].clock_members.count(outgoing) != 0;
+            for (unsigned line = 0; line < lines.size(); ++line)
+                if (!lines[line].key || (releases && line == line_of(outgoing) && lines[line].count == 1))
+                    return false;
+            return *lines[line_of(incoming)].key != unsigned(c[incoming].clock_positive);
+        };
+        if (pin_clocked(a) && pin_clocked(b) && (no_clock_line(x, a, b) || no_clock_line(y, b, a)))
+            return false;
+    }
     // Check the outgoing synchronous resources before removal. Forced
     // asynchronous cells with a retained global clock still have synchronous
     // block membership; product-clock membership selects asynchronous resources
