@@ -1648,10 +1648,30 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
                             // A synchronous-mode register with neither a
                             // reset nor a set equation takes the block's
                             // terms: B0 resets, B1 presets. With one of the
-                            // two written, the other one is grounded.
-                            const unsigned slot = kind == std::string("RE") ? 0 : 1;
-                            if ((modes[cell] & 512) && !controls[out.name].count("RE") &&
-                                !controls[out.name].count("PR") && global_controls[node.block][slot] >= 0)
+                            // two written, the other one is the block term
+                            // that the written one does not use.
+                            unsigned slot = kind == std::string("RE") ? 0 : 1;
+                            // A constant is written out as ground, and so
+                            // is the other one beside it.
+                            if (!(modes[cell] & 512) || controls[out.name].count(kind))
+                                return std::string("G");
+                            const char* written = controls[out.name].count("RE")   ? "RE"
+                                                  : controls[out.name].count("PR") ? "PR"
+                                                                                   : nullptr;
+                            if (written) {
+                                const auto column = controls[out.name].at(written);
+                                if (pla.terms[column].empty())
+                                    return std::string("G");
+                                slot = 2;
+                                for (unsigned used = 0; used < 2; ++used)
+                                    if (global_controls[node.block][used] >= 0 &&
+                                        control_term(column) ==
+                                            control_term(unsigned(global_controls[node.block][used]))) {
+                                        slot = 1 - used;
+                                        break;
+                                    }
+                            }
+                            if (slot < 2 && global_controls[node.block][slot] >= 0)
                                 return std::string("B") + std::to_string(slot);
                             return std::string("G");
                         }

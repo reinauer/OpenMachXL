@@ -1817,6 +1817,39 @@
         "JED": "27c8f150b3ca182516880954732d629001d7e34603de061af6876780a8d5cce2"
       },
       "display_filename": "Sf215.pds"
+    },
+    {
+      "name": "QB1",
+      "device": 435,
+      "sha256": {
+        "PDS": "8b4b8e270a22de1b2077d9dec259f30ca7b4e7413f66e9036cfabb1dd1e5436d",
+        "MXL": "b521a44b67afda837d3ad81d055fb2078ed24225da785aebe9d438cc3f022346",
+        "RPT": "f4e410759d77ca5ffca4ebfccff3afa693c21b09fcb1320cc67e5b5e69e2b52f",
+        "JED": "f9b5c1943fc66dfed96cdff99ef7be770fac2a85fb3d23c5414d5cb7fb058f37"
+      },
+      "display_filename": "Qb1.pds"
+    },
+    {
+      "name": "U5",
+      "device": 435,
+      "sha256": {
+        "PDS": "ffd2ca58970367c7e4744f8c275ee93241cd617d168be2cf02e864e5b6e4dbef",
+        "MXL": "1eb51fa234e33f393bb84116c7f0496df5200c5c79eb54d09b298b982cd33352",
+        "RPT": "4c73656f6bf5fc7b5be6e597f2823b11818843fb23f6582f3b4c65affc84beb8",
+        "JED": "4f0203376ac0c9c383d3a4efd2a2fce87afed91519d54e32c6ce889a3a7bbe7c"
+      },
+      "display_filename": "U5.pds"
+    },
+    {
+      "name": "U8",
+      "device": 435,
+      "sha256": {
+        "PDS": "be1def5ede063c7697ef405c68a4e1eb95272163c65c5fd62b0a7d7c59ed3ba3",
+        "MXL": "fbf8dd93a3143493d659fbde3a5b53cc7d84b70e334e802310c5d3c040999f2b",
+        "RPT": "e6ff38ede3ccadb4f4262d317007f8ee5935a9226ea68f6a84aaab2e865294c4",
+        "JED": "572469d9dacebe2628bd0e40e0c132d445498db12c22117cd6ee09dfd66d6e95"
+      },
+      "display_filename": "U8.pds"
     }
   ],
   "capture_script": "research/reports/capture_fitter_reports.py",
