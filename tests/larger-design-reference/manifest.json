@@ -240,6 +240,22 @@
     "SF211.MXL": "0a3d94bf258fc6f7a59c1ae7f8204be3e41184117a631a18b4ddaed12873570c",
     "SF211.JED": "4bbf1be0336a25897146e735cdef29eff464e8a6c26e43e1f5a87e0e69ed83c3"
    }
+  },
+  {
+   "name": "E029",
+   "files": {
+    "E029.PDS": "e35f1b8f8b2cbfc194ae4b274781eb4fd582ecd944029809a16e98fec0c1d38e",
+    "E029.MXL": "95de803484bf706257f2e1f63330690770e4d80e2ae8199bae5bb1dcef7c9924",
+    "E029.JED": "74688ad3b0f9c57cebd719828f5b642ee87f7d9a9a145ed29d8747b9bbb35115"
+   }
+  },
+  {
+   "name": "H005",
+   "files": {
+    "H005.PDS": "bed6dfb4d3c6fb9744668c37fc92012e188405282e2867429219b5e9bf8c287e",
+    "H005.MXL": "412e78de22cd54d842fa83d529e38af8d4c8d0a7d51e6d226561c090080b3d4c",
+    "H005.JED": "09a676e85748a1ec7a2c2652b04ac5ce3126dd55e1ea74d1e61d28b1f048a3ba"
+   }
   }
  ]
 }

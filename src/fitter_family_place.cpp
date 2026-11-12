@@ -555,7 +555,15 @@ bool swap_resources(const std::vector<Block>& blocks, const Clusters& c, unsigne
             return c[old].local_clock && c[incoming].global_clock >= 0 && !c[incoming].local_clock &&
                    !blocks[block].shared_controls(c[incoming]);
         };
-        if (missing_clock_record(x, a, b) || missing_clock_record(y, b, a))
+        // This holds only for an incoming cluster whose set or reset is the
+        // grounded constant. One with a real term, or with none, may take
+        // the place of a locally clocked cluster and fall back to an
+        // asynchronous macrocell there.
+        const auto grounded = [&](std::size_t incoming) {
+            return (c[incoming].global_reset && *c[incoming].global_reset == 0) ||
+                   (c[incoming].global_preset && *c[incoming].global_preset == 0);
+        };
+        if ((grounded(b) && missing_clock_record(x, a, b)) || (grounded(a) && missing_clock_record(y, b, a)))
             return false;
     }
     // Check the outgoing synchronous resources before removal. Forced

@@ -1,0 +1,73 @@
+CHIP H005 MACH435
+PIN  19         SIGA
+PIN  33         SIGB
+PIN  20         SIGC
+PIN  23         CLK1
+PIN  41         CLK2
+PIN  54         SIGD
+PIN  62         CLOCKIN
+PIN  65         SIGE
+PIN  66         SIGF
+PIN  67         SIGG
+PIN  82         SIGH                        COMBINATORIAL
+PIN  10         SIGI                        COMBINATORIAL
+PIN  30         SIGP                        REGISTERED
+PIN  31         SIGQ                        REGISTERED
+PIN  35         SIGR                        REGISTERED
+PIN  36         SIGS                        REGISTERED
+PIN  18         SIGBS                       REGISTERED
+NODE 31 SIGBT                       REGISTERED
+NODE 127 SIGBU                       REGISTERED
+PIN  49         SIGBV                       REGISTERED
+NODE 15 SIGBW                       REGISTERED
+NODE  ?         SIGBX                       REGISTERED
+PIN  51         SIGCA                       REGISTERED
+NODE 95 SIGCB                       REGISTERED
+NODE  ?         SIGCC                       REGISTERED
+PIN  52         SIGCD                       REGISTERED
+NODE  ?         SIGCE                       REGISTERED
+NODE  ?         SIGCF                       REGISTERED
+STRING  SHIFT_EN  '(SIGE)'
+EQUATIONS
+/SIGI    = /CLK1 *              (SIGA + SIGA + SIGA + SIGA + SIGA + SIGBS + SIGBV + SIGCA + SIGCD + SIGA)
+/SIGH  = /CLK2 * SIGA
+SIGBS.CLKF  = CLK1
+SIGBT.CLKF  = SIGF
+SIGBU.CLKF  = CLK1
+SIGBT.RSTF  = SIGBS
+SIGBU.RSTF  = SIGBS
+SIGBV.CLKF  = CLK1
+SIGBW.CLKF  = /SIGA
+SIGBX.CLKF  = CLK1
+SIGBW.RSTF  = SIGBV
+SIGBX.RSTF  = SIGBV
+SIGCA.CLKF  = CLK1
+SIGCB.CLKF  = /SIGD
+SIGCC.CLKF  = CLK1
+SIGCB.RSTF  = SIGCA
+SIGCC.RSTF  = SIGCA
+SIGCD.CLKF  = CLK1
+SIGCE.CLKF  = /SIGB
+SIGCF.CLKF  = CLK1
+SIGCE.RSTF  = SIGCD
+SIGCF.RSTF  = SIGCD
+SIGBS  := SIGBU
+SIGBT  := VCC
+SIGBU  := SIGBT
+SIGBV  := SIGBX
+SIGBW  := SIGA * SIGE
+SIGBX  := SIGBW
+SIGCA  := SIGCC
+SIGCB  := SIGE
+SIGCC  := SIGCB
+SIGCD  := SIGCF
+SIGCE  := SIGE
+SIGCF  := SIGCE
+SIGP.CLKF    = CLOCKIN
+SIGQ.CLKF    = CLOCKIN
+SIGR.CLKF    = CLOCKIN
+SIGS.CLKF    = CLOCKIN
+SIGP         := SIGE * SIGA + /SIGE * SIGP
+SIGQ         := SIGE * SIGP + /SIGE * SIGQ
+SIGR         := SIGE * SIGQ + /SIGE * SIGR
+SIGS         := SIGE * SIGR + /SIGE * SIGS
