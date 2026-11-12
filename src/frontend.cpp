@@ -1914,15 +1914,21 @@ void resolve_pairing(Design& design, const FrontendOptions& options)
                 if (!expression)
                     continue;
                 std::vector<Pin*> matches;
+                // A clock, set or reset equation that only one of the two has
+                // does not prevent the pairing; the other one receives a copy
+                // below. Two different equations do.
+                const auto shared_control = [&](const Equation* a, const Equation* b) {
+                    return !a || !b || equivalent(a, b);
+                };
                 // PAIRNEG proves that D-register output phase may differ while
                 // the raw physical excitation cover and all controls still match.
                 for (auto& p : design.pins)
                     if (!p.node && !paired.count(p.name) && !design.requested_power_up.count(p.name) &&
                         (equivalent(expression, primary(p), expression->function == "REG") ||
                          opposite_pair(expression, primary(p))) &&
-                        equivalent(eq(node.name, "C"), eq(p.name, "C")) &&
-                        equivalent(eq(node.name, "PR"), eq(p.name, "PR")) &&
-                        equivalent(eq(node.name, "RE"), eq(p.name, "RE")))
+                        shared_control(eq(node.name, "C"), eq(p.name, "C")) &&
+                        shared_control(eq(node.name, "PR"), eq(p.name, "PR")) &&
+                        shared_control(eq(node.name, "RE"), eq(p.name, "RE")))
                         matches.push_back(&p);
                 // BPP greedily selects the first physically eligible pad in source
                 // declaration order; an ineligible fixed location does not consume it.
@@ -1947,6 +1953,19 @@ void resolve_pairing(Design& design, const FrontendOptions& options)
                                 e.inverted      = phase;
                             }
                     }
+                    // "Generating ... equation for OUTPUT PAIRING": give each side
+                    // the control equations only the other one has.
+                    std::vector<Equation> generated;
+                    for (const auto* function : {"C", "PR", "RE"}) {
+                        const auto* of_node = eq(node.name, function);
+                        const auto* of_pad  = eq(p.name, function);
+                        if (bool(of_node) == bool(of_pad))
+                            continue;
+                        generated.push_back(of_node ? *of_node : *of_pad);
+                        generated.back().signal = of_node ? p.name : node.name;
+                    }
+                    for (auto& equation : generated)
+                        design.equations.push_back(std::move(equation));
                     // The physical pin's MINIMIZE policy controls a paired macrocell.
                     for (auto& e : design.equations)
                         if (e.signal == node.name)

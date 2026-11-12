@@ -256,6 +256,38 @@
     "H005.MXL": "412e78de22cd54d842fa83d529e38af8d4c8d0a7d51e6d226561c090080b3d4c",
     "H005.JED": "09a676e85748a1ec7a2c2652b04ac5ce3126dd55e1ea74d1e61d28b1f048a3ba"
    }
+  },
+  {
+   "name": "OA4",
+   "files": {
+    "OA4.PDS": "ea5f97624876e1369e79ebaa27e214f2ec8e600cb723b54b2f20587cdc9b5b5c",
+    "OA4.MXL": "e7ac8e428856011b227f848df8bef82ecd29411248f29c489baf083e264ace1a",
+    "OA4.JED": "3509ea160cce11a68f49ffbcd966687a1905d005d3653da2d62beb328a3aee6f"
+   }
+  },
+  {
+   "name": "OF4",
+   "files": {
+    "OF4.PDS": "5424c7ebef7aa9b05feb86abf67a3727f0204bda18b12b51204d2deecec6b689",
+    "OF4.MXL": "1042753b5092be250020a5a6449e72f28f37e7c635fb722b1148b238c875b256",
+    "OF4.JED": "426ea62c3b4f5a1188df27f331ca5fd2baea888a72d205249c70ed568addb9a8"
+   }
+  },
+  {
+   "name": "OE2",
+   "files": {
+    "OE2.PDS": "90ec05fa0d0d14457880f7eb73d65e72fb5c4c0826f212e0f316a32f0b80dcc6",
+    "OE2.MXL": "37d70067db7eca5b32ae921e32034fe8aee190d87ec74cf48af094653bce0d40",
+    "OE2.JED": "95064e230dedcfdba9a5292e1046941118066f0ab8c370b84cc9c3bc2f4b5982"
+   }
+  },
+  {
+   "name": "OD2",
+   "files": {
+    "OD2.PDS": "7c99d29ca1a1ddec11c9686de414881851b8f489e8a05dd3599b4f38c40cd810",
+    "OD2.MXL": "105f6237f42ed69d2590a0a9132814649d97eb1ce2ca02fb54e373a1b6f71f91",
+    "OD2.JED": "55c2209eeeb0973ae126217ab19c2e4810a6e4e79f9ccb467ad61edcacf6af07"
+   }
   }
  ]
 }

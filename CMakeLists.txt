@@ -237,6 +237,8 @@ if(BUILD_TESTING)
       COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/modern_fitter_reference.py $<TARGET_FILE:machxl> ${CMAKE_CURRENT_SOURCE_DIR}/tests/device-coverage-reference)
     add_test(NAME reference_larger_designs
       COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/modern_fitter_reference.py $<TARGET_FILE:machxl> ${CMAKE_CURRENT_SOURCE_DIR}/tests/larger-design-reference)
+    add_test(NAME reference_output_pair_controls
+      COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/state_default_reference.py $<TARGET_FILE:machxl> ${CMAKE_CURRENT_SOURCE_DIR}/tests/output-pair-control-reference)
     add_test(NAME reference_set_reset_overlap
       COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/modern_fitter_reference.py $<TARGET_FILE:machxl> ${CMAKE_CURRENT_SOURCE_DIR}/tests/set-reset-overlap-reference)
     add_test(NAME original_header_text

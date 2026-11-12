@@ -1,0 +1,117 @@
+{
+ "description": "Automatic output pairing when only one of node and pad has a clock, set or reset equation: the pair is made and the equation copied; two different equations prevent it",
+ "cases": [
+  {
+   "name": "OA2",
+   "files": {
+    "OA2.PDS": "eeb03184451b75c3d6fd085d964bcc60368f1b33e9332e9e3257a99744847252",
+    "OA2.MXL": "8e02672e10e680f9234991b43a1e18270b7eb8c1c8f0179a3d908ae07ac3ae31",
+    "OA2.PLA": "dc05129146d23e6d6f6063d5840c9affc237b14d8c382336db1a30d9dd41bf44"
+   }
+  },
+  {
+   "name": "OA4",
+   "files": {
+    "OA4.PDS": "ea5f97624876e1369e79ebaa27e214f2ec8e600cb723b54b2f20587cdc9b5b5c",
+    "OA4.MXL": "e7ac8e428856011b227f848df8bef82ecd29411248f29c489baf083e264ace1a",
+    "OA4.PLA": "7a45e8c17b4a8929477f5692bf0c61922be1c3efecba62382a2728d72a306e38"
+   }
+  },
+  {
+   "name": "OB2",
+   "files": {
+    "OB2.PDS": "1e847f860c609546652e1736cf11508ec2933164e2d5372305e6af380b611805",
+    "OB2.MXL": "5de18a0c456f4bb5d84872e43fdb19f96bde0da7e7b860982ad4c03e8ca2fcab",
+    "OB2.PLA": "67327000caf1d57cdc8f45c17181448499a0c46f1a5ce00c4d3370da57d624de"
+   }
+  },
+  {
+   "name": "OB4",
+   "files": {
+    "OB4.PDS": "ac8690722a43ad6ed6736ebd4d27d9ce28bf83b36c8ff3935982e72311212062",
+    "OB4.MXL": "3be2856ed4084466da76b4b9237e50da512439a58ba9cc5921748b90799a8918",
+    "OB4.PLA": "e3c2cc403f13bbc629813d23631c771df97671877dd7f557f6959bdb820850d7"
+   }
+  },
+  {
+   "name": "OC2",
+   "files": {
+    "OC2.PDS": "48fe24409f3b3518c220adc01a87e9b6e52c8bb94e193db540c7a60815c64e95",
+    "OC2.MXL": "e98d376dda52a03dda1e38adcc5db098d6a4e603141aeed47a16a176045e0e04",
+    "OC2.PLA": "c9246c40381ae5610177e63e8a822061b7cb8de0d4ab4a24284c93fc61ac940f"
+   }
+  },
+  {
+   "name": "OC4",
+   "files": {
+    "OC4.PDS": "608af2bd966514c2f1b3dd3820136d4813b99491d91bb9b5f52a9d910f4d5f42",
+    "OC4.MXL": "7d105e3d48e20d38170aa9787aa6d4f38785286899ead820dae72fa5f40ba9f9",
+    "OC4.PLA": "9c39e15411b772faafd7ac4ee2963f6ccc934ef3fc112188d9038dd9a43d3e81"
+   }
+  },
+  {
+   "name": "OD2",
+   "files": {
+    "OD2.PDS": "7c99d29ca1a1ddec11c9686de414881851b8f489e8a05dd3599b4f38c40cd810",
+    "OD2.MXL": "105f6237f42ed69d2590a0a9132814649d97eb1ce2ca02fb54e373a1b6f71f91",
+    "OD2.PLA": "52a3700af8ab1566a6bb87d09d4f7b83199cfdf497098dcf8181a7d6da535019"
+   }
+  },
+  {
+   "name": "OD4",
+   "files": {
+    "OD4.PDS": "c1d742cd52ce5b571ad33f394b320d5da7b4595d338b033f2f092eaa2166fe81",
+    "OD4.MXL": "7aceba7ac77ea88de20b66414286f95d9b644c6b56db73e67030a06125f9df6e",
+    "OD4.PLA": "07f5c1f4641c74db94c84fd270b38eb7d8fccc573ca7a81016ba5142898fbf4b"
+   }
+  },
+  {
+   "name": "OE2",
+   "files": {
+    "OE2.PDS": "90ec05fa0d0d14457880f7eb73d65e72fb5c4c0826f212e0f316a32f0b80dcc6",
+    "OE2.MXL": "37d70067db7eca5b32ae921e32034fe8aee190d87ec74cf48af094653bce0d40",
+    "OE2.PLA": "97d52d9e8510a078d94314e2c38f0cf0f614adaeb7cf958673776d37fd13e4eb"
+   }
+  },
+  {
+   "name": "OE4",
+   "files": {
+    "OE4.PDS": "3b0ef79954ad80fc2b052c1a0852c8f46c5b4cd7579c757526f96bc975ddc345",
+    "OE4.MXL": "2b11a42a8a25fedf3b2037002b4e27d1de2464548a81173f5f16e305857f7907",
+    "OE4.PLA": "33074e124b8fa6a9b3d1aad5a4bf7d51d9ada2aca165e45073d5ad48b1c4c135"
+   }
+  },
+  {
+   "name": "OF2",
+   "files": {
+    "OF2.PDS": "3f89a6041503be96d81a0354b7ee37cc471076f3a5e17bc4b7f952c60751ed4e",
+    "OF2.MXL": "b0064873bb0721172bf99cc2c9b3b258855396079bb38b1168ebfc1c66eecc46",
+    "OF2.PLA": "68cd366dd15f39d007fe969e1eeb158f0ddc4bf5c865e7a9a4e9204045aa1523"
+   }
+  },
+  {
+   "name": "OF4",
+   "files": {
+    "OF4.PDS": "5424c7ebef7aa9b05feb86abf67a3727f0204bda18b12b51204d2deecec6b689",
+    "OF4.MXL": "1042753b5092be250020a5a6449e72f28f37e7c635fb722b1148b238c875b256",
+    "OF4.PLA": "96ca5778e93578074ccbc0c75b882c4808b01d2ae6cbbca89bf61943e90aca48"
+   }
+  },
+  {
+   "name": "OG2",
+   "files": {
+    "OG2.PDS": "0a3b68713f1a1d52c670fd636ac652ccd370465dea8976ad439245be60c9cbad",
+    "OG2.MXL": "dd66ea446306fbd00966e22b26997cebd3cb13d2b901583fb29e72033b2a370a",
+    "OG2.PLA": "1e611fa7e912e4ee4a3d46bb992dd7f2b9f8c81a3cf076bdc31b1acf19da3636"
+   }
+  },
+  {
+   "name": "OG4",
+   "files": {
+    "OG4.PDS": "18bed4d225e875fd3759cc1a59c06b4b95047a49f2e1f35e485c4e1aa6e3f0e2",
+    "OG4.MXL": "2d71c9c9d9db909bfa191450f9e1b2123251c4831836828b987092ae685f01e0",
+    "OG4.PLA": "0b7368ee28619049314a77096704739101ae0f6eb344f3a3d028a3b29cc92b0e"
+   }
+  }
+ ]
+}
