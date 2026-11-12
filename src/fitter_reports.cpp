@@ -211,15 +211,6 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
         std::vector<std::size_t> control_order;
         for (std::size_t i = 0; i < data.nodes.size(); ++i)
             control_order.push_back(i);
-        // Controls a register took from the global node are numbered after
-        // those the design gives a register directly.
-        const auto from_global = [&](std::size_t index) {
-            return category == "RESET"    ? data.nodes[index].global_reset
-                   : category == "PRESET" ? data.nodes[index].global_preset
-                                          : false;
-        };
-        std::stable_sort(control_order.begin(), control_order.end(),
-                         [&](auto a, auto b) { return !from_global(a) && from_global(b); });
         if (!data.successful)
             std::stable_sort(control_order.begin(), control_order.end(), [&](auto a, auto b) {
                 // Nodes with a traversal position come first, in that order;
@@ -256,6 +247,19 @@ std::string render_fitter_report(const std::string& device, const FitterReportDa
                      node.name == data.partition_failure->signal)
                 control.blocks.insert(unsigned(data.partition_failure->fixed_block));
             key = std::to_string(found->second + 1);
+        }
+        // A fitted design lists each set or reset term under its first user,
+        // as collected above, but numbers the terms from the last one found
+        // to the first.
+        if (data.successful && category != "OUTPUT ENABLE") {
+            auto& summaries  = control_summaries[category];
+            const auto count = unsigned(summaries.size());
+            std::reverse(summaries.begin(), summaries.end());
+            for (auto& node : data.nodes) {
+                auto& key = category == "PRESET" ? node.preset : node.reset;
+                if (!key.empty())
+                    key = std::to_string(count + 1 - unsigned(std::stoul(key)));
+            }
         }
     }
     for (auto& pin : data.pins)
