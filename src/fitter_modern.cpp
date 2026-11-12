@@ -1581,9 +1581,15 @@ FuseImage fit_mach_modern(const Design& original_design, OptimizerOptions option
                 node.implied              = !pins.at(out.name)->node;
                 node.paired               = node.pin >= 0;
                 node.explicit_output_pair = paired_pins.count(out.name) != 0;
+                // The macrocell of an output pair goes by the node's name
+                // when something reads the node or the node has a location,
+                // which it takes over from a pad that is fixed to a pin.
                 for (const auto& alias : output_aliases)
                     if (alias.second == out.name &&
-                        std::find(pla.inputs.begin(), pla.inputs.end(), alias.first) != pla.inputs.end()) {
+                        (std::find(pla.inputs.begin(), pla.inputs.end(), alias.first) != pla.inputs.end() ||
+                         std::any_of(original_design.pins.begin(), original_design.pins.end(), [&](const Pin& p) {
+                             return p.name == alias.first && p.number != 0;
+                         }))) {
                         node.name    = alias.first;
                         node.implied = false;
                         break;

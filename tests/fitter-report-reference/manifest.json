@@ -1916,6 +1916,39 @@
         "JED": "f6796ea698cfeaee79623bdc8138ef1d7ce9f4d9f11c622fd507dee97436ce46"
       },
       "display_filename": "Mgbn.pds"
+    },
+    {
+      "name": "PA",
+      "device": 435,
+      "sha256": {
+        "PDS": "9add08cc74baabc246ec6df5086f6950e040629222c69769a7772373cca4f179",
+        "MXL": "1a218c70926e620db86d22a6e50c0c94f3a9ea2f35092b69d16eaba77a189781",
+        "RPT": "9dd80f524f342a750defd542f81128c0f8dbcd2dbe1aadd7a9f8281c088624e0",
+        "JED": "bd6aae5db4c1450468b679af788df66baf83c6418b29e32eea205034caf81efd"
+      },
+      "display_filename": "PA.PDS"
+    },
+    {
+      "name": "PB",
+      "device": 435,
+      "sha256": {
+        "PDS": "300114874df5b4a2d46c04922c9da738ae00a8d25a92aa0ca1abdba785f984a3",
+        "MXL": "4d799659c02c7a467fed3ae05aba262807ed8d8f66f2c6d76ab4526515c58d90",
+        "RPT": "16aa6135383617c02617a54377c859f1a348576392ba1f4a6af880ced270aac5",
+        "JED": "cb46bd84a09bebd6f80712d503f05a0e4fbfc6aabca8937e410c9a7c4d052a89"
+      },
+      "display_filename": "PB.PDS"
+    },
+    {
+      "name": "PG",
+      "device": 435,
+      "sha256": {
+        "PDS": "cdf86957c36f524468e75f09a0e85b582862e6a00da258a568dc0c6e0f435f85",
+        "MXL": "912a43a143d5bbfab387b56d3f957bdc0294097aedf8fd93a685ccc4c46f33f3",
+        "RPT": "c7b7543af204dfdb53b2161b9da020d82b2b0bb407b9db8ab52eec6b3bffc592",
+        "JED": "78d1d6f8a430b7709afd05a61c0709ee16ef01ff42fb9e73d11f2dd8de139d2e"
+      },
+      "display_filename": "PG.PDS"
     }
   ],
   "capture_script": "research/reports/capture_fitter_reports.py",
