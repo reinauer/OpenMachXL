@@ -1,0 +1,31 @@
+#$ TOOL AMD 2.7
+#AMD FILENAME F00018.pds
+#AMD TITLE 
+#AMD PATTERN 
+#AMD REVISION 
+#AMD AUTHOR 
+#AMD COMPANY 
+#AMD DATE 
+#AMD CHIP F00018
+#AMD DEVICE MACH210
+#AMD JED_FILE F00018.jed
+#AMD SIGNATURE 
+#AMD PIN 6 GND:1 GND:12 VCC:22 GND:23 GND:34 VCC:44 
+#AMD PIN 7 CLK:0 I0:0 I1:0 I2:0 Q0:0 Q1:0 Z:0 
+.type f
+.i 6
+.o 5
+.ilb CLK I0 I1 I2 Q0 Q1
+.ob  Q0.REG Q0.C Q1.REG Q1.C Z
+.phase 11111
+.p 9
+--0-11 1~~~~
+-0--10 1~~~~
+---101 1~~~~
+1----- ~1~1~
+----11 ~~1~~
+----00 ~~1~~
+---0-1 ~~1~~
+-1--11 ~~~~1
+-0--00 ~~~~1
+.e

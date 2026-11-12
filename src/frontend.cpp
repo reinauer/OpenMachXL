@@ -921,6 +921,100 @@ class SynthesisParser
                 std::find(transition_order.begin(), transition_order.end(), r.name) == transition_order.end())
                 fail("E2791: State " + r.name +
                      " has a state assignment equation but is missing a transition equation");
+        // The term a global DEFAULT_BRANCH adds for a state: the state's code
+        // under the complement of the conditions its equation covers. The
+        // original writes the complement out as products. Within a product
+        // the signals stand in the order in which the transition equations
+        // first mention them, followed by the state code; the products are
+        // listed with the latest-mentioned signal first. The order decides
+        // the variable order of the minimizer and with it the product rows.
+        std::vector<std::string> mention_order;
+        for (const auto& r : records)
+            if (r.function.empty() && r.op == ":=")
+                for (const auto& token : tokenize(r.rhs)) {
+                    if (token.text.empty() ||
+                        !(std::isalpha(static_cast<unsigned char>(token.text[0])) || token.text[0] == '_'))
+                        continue;
+                    std::vector<std::string> names;
+                    const auto condition = conditions.find(token.text);
+                    if (condition != conditions.end())
+                        names = expression_variables(condition->second);
+                    else if (!codes.count(token.text))
+                        names = {token.text};
+                    for (const auto& name : names)
+                        if (std::find(mention_order.begin(), mention_order.end(), name) == mention_order.end())
+                            mention_order.push_back(name);
+                }
+        const auto default_branch_term = [&](const ExprPtr& active, const ExprPtr& covered,
+                                             const std::vector<ExprPtr>& branches) -> ExprPtr {
+            using Literal = std::pair<std::string, bool>;
+            using Product = std::vector<Literal>;
+            // The literals of a plain product; false for anything else.
+            std::function<bool(const ExprPtr&, bool, Product&)> literals = [&](const ExprPtr& e, bool negated,
+                                                                             Product& out) -> bool {
+                if (e->kind == ExprKind::Identifier) {
+                    out.push_back({e->name, !negated});
+                    return true;
+                }
+                if (e->kind == ExprKind::Not)
+                    return literals(e->left, !negated, out);
+                return e->kind == ExprKind::And && !negated && literals(e->left, false, out) &&
+                       literals(e->right, false, out);
+            };
+            Product state;
+            bool plain = literals(active, false, state);
+            std::vector<Product> complement{Product{}};
+            for (const auto& branch : branches) {
+                Product condition;
+                plain = plain && literals(branch, false, condition);
+                if (!plain)
+                    break;
+                // De Morgan: multiply by the sum of the complemented literals.
+                std::vector<Product> next;
+                for (const auto& base : complement)
+                    for (const auto& literal : condition) {
+                        const auto same = std::find_if(base.begin(), base.end(),
+                                                       [&](const Literal& l) { return l.first == literal.first; });
+                        if (same == base.end()) {
+                            next.push_back(base);
+                            next.back().push_back({literal.first, !literal.second});
+                        } else if (same->second != literal.second)
+                            next.push_back(base);
+                    }
+                complement = std::move(next);
+            }
+            // A condition that is not a plain product keeps the general form.
+            if (!plain)
+                return conjunction(active, negate(covered));
+            const auto mentioned = [&](const std::string& name) {
+                return std::find(mention_order.begin(), mention_order.end(), name) - mention_order.begin();
+            };
+            for (auto& product : complement)
+                std::stable_sort(product.begin(), product.end(), [&](const Literal& a, const Literal& b) {
+                    return mentioned(a.first) < mentioned(b.first);
+                });
+            std::stable_sort(complement.begin(), complement.end(), [&](const Product& a, const Product& b) {
+                std::vector<std::ptrdiff_t> x, y;
+                for (const auto& literal : a)
+                    x.push_back(mentioned(literal.first));
+                for (const auto& literal : b)
+                    y.push_back(mentioned(literal.first));
+                std::sort(x.rbegin(), x.rend());
+                std::sort(y.rbegin(), y.rend());
+                return x > y;
+            });
+            auto sum = make_constant(false);
+            for (const auto& product : complement) {
+                auto term = make_constant(true);
+                for (const Product* part : {&product, static_cast<const Product*>(&state)})
+                    for (const auto& literal : *part) {
+                        auto signal = make_identifier(literal.first);
+                        term        = conjunction(term, literal.second ? signal : negate(signal));
+                    }
+                sum = disjunction(sum, term);
+            }
+            return sum;
+        };
         bool automatic = codes.empty();
         if (automatic) {
             if (transition_order.size() < 2)
@@ -1190,7 +1284,7 @@ class SynthesisParser
                 }
                 if (!codes.count(target))
                     fail("Unknown default STATE: " + target);
-                drive(codes.at(target), conjunction(active, negate(covered)));
+                drive(codes.at(target), default_branch_term(active, covered, branch_conditions));
             }
         }
         for (const auto& name : transition_order) {

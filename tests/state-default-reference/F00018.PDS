@@ -1,0 +1,28 @@
+CHIP F00018 MACH210
+PIN ? CLK
+PIN ? I0
+PIN ? I1
+PIN ? I2
+PIN ? Q0 REG
+PIN ? Q1 REG
+PIN ? Z
+STATE
+MEALY_MACHINE
+DEFAULT_BRANCH NEXT_STATE
+CLKF = CLK
+S0 = /Q0*/Q1
+S1 = Q0*/Q1
+S2 = /Q0*Q1
+S3 = Q0*Q1
+S0 := I2 -> S2
+        + /I2 -> S2
+S1 := I0 -> S0
+        + /I0 -> S1
+S2 := /I2 -> S2
+        +-> S1
+S3 := I1 -> S2
+        +-> S3
+S0.OUTF = /I0 -> Z
+S1.OUTF = /I2 -> /Z
+S2.OUTF = /I0 -> /Z
+S3.OUTF = I0 -> Z
