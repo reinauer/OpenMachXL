@@ -235,6 +235,8 @@ if(BUILD_TESTING)
       COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/modern_fitter_reference.py $<TARGET_FILE:machxl> ${CMAKE_CURRENT_SOURCE_DIR}/tests/global-node-reference)
     add_test(NAME reference_device_coverage
       COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/modern_fitter_reference.py $<TARGET_FILE:machxl> ${CMAKE_CURRENT_SOURCE_DIR}/tests/device-coverage-reference)
+    add_test(NAME reference_larger_designs
+      COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/modern_fitter_reference.py $<TARGET_FILE:machxl> ${CMAKE_CURRENT_SOURCE_DIR}/tests/larger-design-reference)
     add_test(NAME original_header_text
       COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/state_default_reference.py $<TARGET_FILE:machxl> ${CMAKE_CURRENT_SOURCE_DIR}/tests/header-text-reference)
     add_test(NAME native_input_robustness

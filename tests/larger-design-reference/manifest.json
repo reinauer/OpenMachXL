@@ -1,0 +1,229 @@
+{
+ "description": "Original MACHXL 2.1 fits of larger generated designs (tools/differential_fuzz.py --seed 4 --scale 3; median about 33 source lines)",
+ "cases": [
+  {
+   "name": "F00000",
+   "files": {
+    "F00000.PDS": "e70d1d7f31d09150b1a240b3bdb4cc0232484a8841db462ac621f5f424fe5154",
+    "F00000.MXL": "7e3a523e22c86c83e2bb8c58f87220b014868eae81bd7b5ab9bb0e31e307cfb1",
+    "F00000.JED": "5947e75aa65cfade135af4963893003e16937d0c41860c6750d9253335c01955"
+   }
+  },
+  {
+   "name": "F00004",
+   "files": {
+    "F00004.PDS": "95332dc21deb134819dfbef4bd687bff169fc5004e42c5cb49e5811536ba279e",
+    "F00004.MXL": "2bf38a4996cb6b843faad4d650b21a33eed51f28f59fdedd3c208bef4297c78f",
+    "F00004.JED": "994f5a97dffec8e5c18c9e43ee2ed850fdfa0534f896fa72963720c34205e37c"
+   }
+  },
+  {
+   "name": "F00005",
+   "files": {
+    "F00005.PDS": "ce64a61cc4c01aa130196152c2615c6633323a4b406ca5c12bfba3d6613e1dad",
+    "F00005.MXL": "69725b50f45673d1613509770b6c628fee94915f4d0f3d79777aacb85370fe9c",
+    "F00005.JED": "a147783c051658dc9fcae114da9b5c47f64f7629b87e8d7d061af9413bf6d7c3"
+   }
+  },
+  {
+   "name": "F00006",
+   "files": {
+    "F00006.PDS": "dabbc15cf5515dd93f8f3ebce6d57fc10587413184690e38fd975e07d8a4ae72",
+    "F00006.MXL": "0ae1fcec89265b0b49a9d01e32f4c8f22115b5c0a8cca76569375b64c0c54ad6",
+    "F00006.JED": "12897628e4a93b3802d72937c89b2939ee3892f3f69a97a708ce006a6c28265e"
+   }
+  },
+  {
+   "name": "F00013",
+   "files": {
+    "F00013.PDS": "a4b6c8b12fb25194210527a47afb99a431c86b260e2641599d57afdde0661c0b",
+    "F00013.MXL": "c2d2ef7f30ce9909507905e87863d2a96df6d53079575648db6e6919399c8d62",
+    "F00013.JED": "409ecd655acfcecd99e39730c112b67671c7e91b9c87d70e1ae2325c457c9825"
+   }
+  },
+  {
+   "name": "F00014",
+   "files": {
+    "F00014.PDS": "d8e642ca1a5c1279091599132e578da7b311ec610b718fa84b923eff8106060f",
+    "F00014.MXL": "093ea656d0d806f2327b1961b1ad4ab88d88e53568f482c552fb023bda63f0fb",
+    "F00014.JED": "43eac6a37fbcb5eeb89d813cbdb3e90c0a1206db70ea6dbacfe842fec1ddd399"
+   }
+  },
+  {
+   "name": "F00015",
+   "files": {
+    "F00015.PDS": "a0d982ba6fad9bcd4e959c003ecd1b862be5c44bec3b07afa37607fc12713811",
+    "F00015.MXL": "40caf775a5ad593cf2170e190915667697730566185ff767577e42abd9a71936",
+    "F00015.JED": "f26274f96dea93fad34a45f03c1c2891ea78980187d84b08d14252843bee0edd"
+   }
+  },
+  {
+   "name": "F00016",
+   "files": {
+    "F00016.PDS": "29bdfa0c8d9757c1dd3be5c38fb3733f0525e5bc18fc8048db8789407873bb37",
+    "F00016.MXL": "c47d9270ea4bf5678c266eaf1ac2cab5c415b06b62f0c3d33bff7fa21d2f4460",
+    "F00016.JED": "0c73ac226bd6b487d0b0c9aeb4478ef50e314574454b337df2f1142ffa3c4236"
+   }
+  },
+  {
+   "name": "F00019",
+   "files": {
+    "F00019.PDS": "a3f6b89f0f324b03ce13521c56ec14bfd96038204976cf71bc6f0e825077d194",
+    "F00019.MXL": "7a35cda883448b9aeadab012b3a6d592fb2ba036545db2678c67bf059583c8b9",
+    "F00019.JED": "7934cb3fb3650be565949ce80321bb418dcc8ed82cc794c4edaf77416be01641"
+   }
+  },
+  {
+   "name": "F00020",
+   "files": {
+    "F00020.PDS": "1fa1a83b53eaa5bc2580b6ce5cdad6ae78b610f9abbcb6f8797ba42cacb11b9a",
+    "F00020.MXL": "3b4f9783bce6bc06693fd8f1eb668561f96a3d8e65429ba99c89fe03441565a5",
+    "F00020.JED": "140f2e9bf26703e8a9bcc8f8593fcb326579a687c26e6eb5af8b53b875724b97"
+   }
+  },
+  {
+   "name": "F00023",
+   "files": {
+    "F00023.PDS": "fa8f9b47002393174df5a635f4111d7ba75d040af764a6f5cbedcb1aa958e2ad",
+    "F00023.MXL": "638aee86680ab7bbc9dd6a754b03b2a98c1449f6c58a5d9b9a943866869d5811",
+    "F00023.JED": "4e0da9eea7458f69eea1ca5eaa371c148a6f23508a845834f68b1b4524b52090"
+   }
+  },
+  {
+   "name": "F00024",
+   "files": {
+    "F00024.PDS": "ccad6fc805941e7723b199a248ddddfbc6755ae0f7d1c96efea92ddbd3c2d2c7",
+    "F00024.MXL": "f0011aebaa0f1c221031f7e5d71749cc252ef171a850a1b12793e20cfda1187b",
+    "F00024.JED": "bcce43bb5f391e16bca0a03108417b33385a9c07150bdd201cf66415fe541bec"
+   }
+  },
+  {
+   "name": "F00025",
+   "files": {
+    "F00025.PDS": "c0b8cd2c908132ef36e8d23ee8dfb5307c0525498c14d4b3031a614616d33f68",
+    "F00025.MXL": "e8f3869b9b883b190d1f775b690033d8399228da65e8674757d7215ad0a8b8e3",
+    "F00025.JED": "45226e9faa4d0f6274b09f5da4da963d49c3753d5729528d5d51f29de91e3f7f"
+   }
+  },
+  {
+   "name": "F00026",
+   "files": {
+    "F00026.PDS": "507349e078dea4b5c9b2d11fc99c04f0d33e476e1a955e0239cec005c274ea97",
+    "F00026.MXL": "9b00fe77b25f9b9aedd2ce640340c65a5294c00dcb2f8d9fdb1751e4675d57e6",
+    "F00026.JED": "7d7982d2a57f1b33aca0265cc98b0d1f798e94c844a0247a79a2a22c5dfe86b4"
+   }
+  },
+  {
+   "name": "F00027",
+   "files": {
+    "F00027.PDS": "b4e74213a83975c1832175ee93bb270488e64516433df83487fffdcbbc1a504f",
+    "F00027.MXL": "c9b3e6fce9c135e055e7d4b755fe0d8f429782aff0d62e3bb98cd619b1049948",
+    "F00027.JED": "816e6c97756e83a56b430b4148c7970be819b95353afc4a41e90ddeeea7c00ea"
+   }
+  },
+  {
+   "name": "F00028",
+   "files": {
+    "F00028.PDS": "f501b7337ad9cf03f64fe27563c2b80ac000ab02576296164aada59d677b65cd",
+    "F00028.MXL": "83dc6aeed220d9267bf76f9e87874db30af49da303d4d37b8cad7b47853fca32",
+    "F00028.JED": "9493fbfa72cc439de9fbda0288041a2793ea855a4b233f86a2f4984317447003"
+   }
+  },
+  {
+   "name": "F00029",
+   "files": {
+    "F00029.PDS": "d2c737f503724bcd6ccd4393d36dd9a34b60f41bc31e7b69c862aff3aa4f5394",
+    "F00029.MXL": "36c20d0a5e90e3fbae2ed450487227af8380f3155770a41658cbd23dab6d00a3",
+    "F00029.JED": "b4b3e249fbdf3feaf23b952a1b4a7a101a5b8d984a94de5dfc515aaf1bd90674"
+   }
+  },
+  {
+   "name": "F00030",
+   "files": {
+    "F00030.PDS": "da3b4a3366ad6ae9e0cd415b59bfdee5eba4bd25ea284b4db42bbef190c8869f",
+    "F00030.MXL": "f371966f6ff919dfd8325226f76aa1bab5f8123eb0fea9cabec57c2a38f700bb",
+    "F00030.JED": "dc2d642359476130840133e2feaa9b131253b23fc82c6f1281bb0186dfd5d100"
+   }
+  },
+  {
+   "name": "F00034",
+   "files": {
+    "F00034.PDS": "7ac977831950be592a29c9e326198e341dd9169583b96af8ffc2e79408925551",
+    "F00034.MXL": "ee3f8c7ae3a6d01a9f76ae585342748291f2ce7f20c3d83b3acc2442aab1939e",
+    "F00034.JED": "be014f87e0a13396f90f469e95a8f4a2659505b14dc26a09d69d41c6687d2f17"
+   }
+  },
+  {
+   "name": "F00035",
+   "files": {
+    "F00035.PDS": "71f47892c56c78386aa26555645fd65efab69d9c3e23a529c6d47fd4c8ae8878",
+    "F00035.MXL": "a46ae5e1db9df2b2461a16c4a1678094f722e14702bd772caebc06bfc0a1e75d",
+    "F00035.JED": "67914a953adf93da318c315cafcc4087c76b88ff911a8ddf3f28db5bb403e796"
+   }
+  },
+  {
+   "name": "F00036",
+   "files": {
+    "F00036.PDS": "c8a371592ce05701923253c42b1d2a9ede88e354a8f6328562262e02519a161e",
+    "F00036.MXL": "ddfa34024f304d0fefcc3c1e1f736320820ff64f27701a80d94a5277f27a3620",
+    "F00036.JED": "231be7cae7c3f7bf5043a8ee824b671b6866d5cb2a20ed69af9c45ef10f2b95a"
+   }
+  },
+  {
+   "name": "F00038",
+   "files": {
+    "F00038.PDS": "0202250da8248a2ac579580f18ab5dc21bf28dd8178e4091bb212e608b98ea48",
+    "F00038.MXL": "6ed91dc61cb71502a90c1d03abe5d36a6d8198ee974b0f9ce1de829ecf2907ca",
+    "F00038.JED": "3e5dc2ef783e840708f7069b2e8c0ab8745819d9284282b4e4d1cd3f6f42acea"
+   }
+  },
+  {
+   "name": "F00039",
+   "files": {
+    "F00039.PDS": "bd933342ad77b4fd41110f7de8652df514e060e33e30c3a02e6844839dec5090",
+    "F00039.MXL": "071a747a0d5a1289ffe21d5c2d4c023419c1fb2f0001e9b12bb4591884120ff3",
+    "F00039.JED": "a9843569e0bcb6a0838f5525d8f35119b3d79ff1107fb3b2f12674f182d255f8"
+   }
+  },
+  {
+   "name": "F00040",
+   "files": {
+    "F00040.PDS": "1d46e8b3a0bc1bc68163fe8ad1d8357ad5db79ed8495e943d395a324c7740d46",
+    "F00040.MXL": "6d65767d92eaabe69586bdc4248a0a059c12dd333b1f4a4d343e40c750b6c46d",
+    "F00040.JED": "564edc6d4d723e1eea81e8b4cca82e3cd6150948cda3bb18098f9de5dd2a5310"
+   }
+  },
+  {
+   "name": "F00041",
+   "files": {
+    "F00041.PDS": "00bb77c428837760647d7f0036c7009948620545f2d6171efbabf7c0a83a86cf",
+    "F00041.MXL": "d82e8933245ad24e622464a377f7048b7976551ba4b3b0416ae611520421cf78",
+    "F00041.JED": "6a242ccb772e5b7facee391d1b9cb37b2de7c279ad0cef3a38a157831b385590"
+   }
+  },
+  {
+   "name": "F00045",
+   "files": {
+    "F00045.PDS": "c1dd57e7dce8c55b7327bea3149244e282406d86a86fa82822a795dca6e377e6",
+    "F00045.MXL": "b875b2ef4400e1a29e4826e35c7b12925fcdfcde51d53c0c4319586b8b5ac066",
+    "F00045.JED": "15179addb24dbe68da28a3a682a91a4c1987b121a2e1f535dc79a026a81974ff"
+   }
+  },
+  {
+   "name": "F00046",
+   "files": {
+    "F00046.PDS": "d8cd30669fbff07d33f066b8ff095e4e317c8ff42f59564e89a6fe838063910d",
+    "F00046.MXL": "7846b761b974e3446f1ea32a2df5ff34c8ddecf84cd8e8011a284cdae9e6e1a5",
+    "F00046.JED": "1131f8136adff40b513a328b9f357ccf75e93bc7656558b8b408c4b97b243a8a"
+   }
+  },
+  {
+   "name": "F00047",
+   "files": {
+    "F00047.PDS": "34d594dd1c6bcacc1bce9e5849de87592942493f35326b3dbaebd9a17fb32d84",
+    "F00047.MXL": "3a7c68affcd83b4b1b197cf973c9577c3cce2a3e7bd0599e78114f2dc2f8702e",
+    "F00047.JED": "929ccc3e517ecf614421ffb45055a03c628e2fa77c5bf13a987c3da10221003c"
+   }
+  }
+ ]
+}
